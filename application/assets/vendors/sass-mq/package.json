@@ -1,0 +1,63 @@
+{
+  "name": "sass-mq",
+  "description": "mq() is a Sass mixin that helps manipulating media queries in an elegant way.",
+  "version": "3.2.9",
+  "keywords": [
+    "responsive",
+    "sass",
+    "rwd",
+    "mediaquery",
+    "query",
+    "queries",
+    "media",
+    "eyeglass-module"
+  ],
+  "ignore": [
+    "test",
+    "sassdoc",
+    "**/.*",
+    "sache.json",
+    "bower.json",
+    "sassdoc.sh",
+    "scripts"
+  ],
+  "files": [
+    "_mq.scss",
+    "LICENSE.md",
+    "README.md",
+    "sass/index.scss"
+  ],
+  "main": "_mq.scss",
+  "scripts": {
+    "test": "./scripts/test.sh",
+    "sassdoc": "./scripts/sassdoc.sh"
+  },
+  "contributors": [
+    {
+      "name": "Guardian Media Group and Contributors.",
+      "email": "",
+      "web": ""
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/sass-mq/sass-mq/issues"
+  },
+  "repository": [
+    {
+      "type": "git",
+      "url": "https://github.com/sass-mq/sass-mq.git"
+    }
+  ],
+  "license": "MIT",
+  "homepage": "http://sass-mq.github.io/sass-mq/",
+  "eyeglass": {
+    "needs": "^0.8.2",
+    "sassDir": "./_mq.scss",
+    "exports": false
+  },
+  "devDependencies": {
+    "eyeglass": "^0.8.3",
+    "node-sass": "^3.4.2",
+    "sassdoc": "^2.1.20"
+  }
+}

@@ -1,0 +1,21 @@
+$mq-breakpoints: (
+    mobile: 480px,
+    s-tablet: 768px,
+    l-tablet: 992px,
+    desktop: 1200px,
+    wide: 1600px
+);
+
+$layers: (
+    behind: -1,
+    base: 0,
+    above: 1,
+    modal: 10,
+    loader: 100
+);
+
+//PSD base viewport size
+$viewport-width: 1280px;
+$viewport-height: 720px;
+
+$container-width: 1200px;

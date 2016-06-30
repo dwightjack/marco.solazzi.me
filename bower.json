@@ -1,0 +1,19 @@
+{
+  "name": "resume",
+  "version": "0.0.1",
+  "authors": [
+    "Marco Solazzi"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "sass-mq": "3.2.9",
+    "normalize-css": "4.1.1"
+  }
+}

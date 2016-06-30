@@ -1,0 +1,57 @@
+{
+    "extends": [
+        "airbnb",
+        "../../../.eslintrc"
+    ],
+
+    "env": {
+        "commonjs": true,
+        "browser": true,
+        "es6": true
+    },
+
+    "plugins": [
+        "react"
+    ],
+
+    "parser": "babel-eslint",          // https://github.com/babel/babel-eslint
+
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "arrowFunctions": true,
+            "blockBindings": true,
+            "classes": true,
+            "defaultParams": true,
+            "destructuring": true,
+            "forOf": true,
+            "generators": false,
+            "objectLiteralComputedProperties": true,
+            "objectLiteralDuplicateProperties": false,
+            "objectLiteralShorthandMethods": true,
+            "objectLiteralShorthandProperties": true,
+            "spread": true,
+            "superInFunctions": true,
+            "templateStrings": true,
+            "jsx": true
+        }
+    },
+
+    "rules": {
+        /**
+         * ES6
+         */
+        "prefer-const": 0,               // http://eslint.org/docs/rules/prefer-const
+        "arrow-body-style": [2, "as-needed"],
+        "arrow-spacing": [2, {
+            "before": true,
+            "after": true
+        }],
+        "object-curly-spacing": 0,
+
+
+        "react/prefer-stateless-function": 0,
+        "react/jsx-indent": [2, 4]
+    }
+}
