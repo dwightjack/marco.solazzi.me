@@ -3,8 +3,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const _ = require('lodash');
 
+const getModernizrPath = require('../scripts/utils').getModernizrPath;
 const paths = require('./paths');
 const webpackConf = require('./webpack.base');
+
 
 const loaders = webpackConf.module.loaders.map((loader) => {
     if (loader.loader === 'babel-loader') {
@@ -32,10 +34,11 @@ const config = _.assign({}, webpackConf, {
         new webpack.HotModuleReplacementPlugin(),
 
         new HtmlWebpackPlugin({
-            template: paths.toPath('src.root') + '/index.html',
+            template: paths.toPath('src.root') + '/index.ejs',
             inject: true,
             minify: false,
-            filename: paths.toAbsPath('dist.root') + '/index.html'
+            filename: paths.toAbsPath('dist.root') + '/index.html',
+            modernizr: getModernizrPath()
         })
     ]),
 
@@ -55,9 +58,9 @@ config.module.loaders = loaders.concat([
         include: [paths.toAbsPath('src.assets/images')],
         loader: 'file-loader?name=[path][name].[ext]'
     }, {
-        test: /\.scss$/,
+        test: /\.(scss|css)$/,
         exclude: /(node_modules|vendors)/,
-        loaders: [ 'style', 'css?sourceMap', 'sass?sourceMap' ]
+        loaders: [ 'style', 'css?sourceMap', 'postcss', 'sass?sourceMap' ]
     }
 ]);
 

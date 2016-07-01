@@ -6,6 +6,8 @@
  *
  */
 
+import 'scss/_base.scss';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Counter from './components/counter/counter';

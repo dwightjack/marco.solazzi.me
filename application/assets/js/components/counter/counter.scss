@@ -2,4 +2,9 @@
 
 .c-counter {
     color: $color-white;
+    appearance: none;
+
+    .cssgradients {
+        background: blue;
+    }
 }

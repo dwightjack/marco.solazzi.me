@@ -9,9 +9,11 @@ const paths = {
     },
 
     dist: {
-        root: 'dist', //where static files are to be saved
-        assets: 'dist/assets'
+        root: 'public', //where static files are to be saved
+        assets: 'public/assets'
     },
+
+    publicPath: '/assets/',
 
     js: 'js',
     sass: 'scss',
@@ -35,4 +37,4 @@ module.exports.toPath = (pathMatch) => {
 
 module.exports.toAbsPath = (pathMatch) => {
     return path.join.apply(null, [process.cwd()].concat(translatePath(pathMatch)));
-}
+};

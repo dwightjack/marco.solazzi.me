@@ -1,6 +1,6 @@
 import React from 'react';
 
-require('./counter.scss');
+import './counter.scss';
 
 export default class Counter extends React.Component {
 
@@ -24,7 +24,7 @@ export default class Counter extends React.Component {
 
     render() {
         return (
-            <p>pippo: {this.state.counter}</p>
+            <p>pippo matto: {this.state.counter}</p>
         );
     }
 

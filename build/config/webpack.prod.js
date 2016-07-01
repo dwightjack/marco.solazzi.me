@@ -7,6 +7,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpackConf = require('./webpack.base');
 const paths = require('./paths');
 
+const getModernizrPath = require('../scripts/utils').getModernizrPath;
+
 const config = _.assign({}, webpackConf, {
 
     entry: {
@@ -47,7 +49,7 @@ const config = _.assign({}, webpackConf, {
         new ExtractTextPlugin(paths.css + '/[name].[contenthash].css'),
 
         new HtmlWebpackPlugin({
-            template: paths.toPath('src.root') + '/index.html',
+            template: paths.toPath('src.root') + '/index.ejs',
             filename: paths.toAbsPath('dist.root') + '/index.html',
             minify: {
                 removeComments: true,
@@ -61,6 +63,7 @@ const config = _.assign({}, webpackConf, {
                 minifyCSS: true,
                 minifyURLs: true
             },
+            modernizr: getModernizrPath(),
             inject: true
         })
     ]),
@@ -83,11 +86,11 @@ config.module.loaders = webpackConf.module.loaders.concat([
             'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}'
         ]
     }, {
-        test: /\.scss$/,
+        test: /\.(scss|css)$/,
         exclude: /(node_modules|vendors)/,
         loader: ExtractTextPlugin.extract(
             'style', // The backup style loader
-            'css?sourceMap!sass?sourceMap'
+            'css?sourceMap!postcss!sass?sourceMap'
         )
     }
 ]);

@@ -12,7 +12,7 @@ module.exports = {
     progress: true,
     output: {
         path: destPath,
-        publicPath: '/assets/',
+        publicPath: paths.publicPath,
         chunkFilename: paths.js + '/[name].chunk.js',
         filename: paths.js + '/[name].js'
     },
@@ -61,7 +61,9 @@ module.exports = {
     },
 
     resolve: {
-        alias: {},
+        alias: {
+            scss: paths.toAbsPath('src.assets/sass')
+        },
         modulesDirectories: ['node_modules', paths.toPath('src.assets/vendors')]
     }
 };
