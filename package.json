@@ -21,7 +21,9 @@
     "clean": "rimraf ./public/*",
     "build": "npm run clean && npm run modernizr && npm run webpack",
     "build:production": "npm run clean && npm run modernizr:production && npm run webpack:production",
-    "lint": "eslint -c ./application/assets/js/.eslintrc \"./application/assets/js/**\""
+    "eslint": "eslint -c ./application/assets/js/.eslintrc \"./application/assets/js/**\"",
+    "sasslint": "sass-lint -c .sass-lint.yml 'application/assets/**/*.scss' -v -q -i 'application/assets/vendors/**/*.scss'",
+    "lint": "npm run eslint && npm run sasslint"
   },
   "dependencies": {
     "babel-polyfill": "6.9.1",
@@ -69,6 +71,7 @@
     "raw-loader": "0.5.1",
     "resolve-url-loader": "1.5.0",
     "rimraf": "2.5.3",
+    "sass-lint": "1.8.2",
     "sass-loader": "4.0.0",
     "style-loader": "0.13.1",
     "webpack": "1.13.1",
