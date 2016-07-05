@@ -52,11 +52,11 @@ config.module.loaders = loaders.concat([
     {
         test: /\.(eot|svg|ttf|woff|woff2)$/,
         include: [paths.toAbsPath('src.assets/fonts')],
-        loader: 'file-loader?name=[path][name].[ext]'
+        loader: 'file-loader?name=[path][name].[ext]&context=' + paths.toPath('src.assets')
     }, {
         test: /\.(jpg|png|gif)$/,
         include: [paths.toAbsPath('src.assets/images')],
-        loader: 'file-loader?name=[path][name].[ext]'
+        loader: 'file-loader?name=[path][name].[ext]&context=' + paths.toPath('src.assets')
     }, {
         test: /\.(scss|css)$/,
         exclude: /(node_modules|vendors)/,

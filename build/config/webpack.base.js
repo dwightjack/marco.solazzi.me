@@ -7,6 +7,7 @@ const destPath = paths.toAbsPath('dist.assets');
 const sassFunctions = require('../scripts/sass-functions');
 
 module.exports = {
+    context: process.cwd(),
     externals: {},
     entry: {},
     target: 'web', // Make web variables accessible to webpack, e.g. window

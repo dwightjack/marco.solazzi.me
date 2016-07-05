@@ -77,12 +77,12 @@ config.module.loaders = webpackConf.module.loaders.concat([
     {
         test: /\.(eot|svg|ttf|woff|woff2)$/,
         include: [paths.toAbsPath('src.assets/fonts')],
-        loader: 'file-loader?name=[path][name].[hash:10].[ext]'
+        loader: 'file-loader?name=[path][name].[hash:10].[ext]&context=' + paths.toPath('src.assets')
     }, {
         test: /\.(jpg|png|gif)$/,
         include: [paths.toAbsPath('src.assets/images')],
         loaders: [
-            'file-loader?name=[path][name].[hash:10].[ext]',
+            'file-loader?name=[path][name].[hash:10].[ext]&context=' + paths.toPath('src.assets'),
             'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}'
         ]
     }, {

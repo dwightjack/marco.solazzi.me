@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './counter.scss';
+import image from '../../../images/photo-demo.jpg';
 
 export default class Counter extends React.Component {
 
@@ -24,7 +25,10 @@ export default class Counter extends React.Component {
 
     render() {
         return (
-            <p>pippo matto: {this.state.counter}</p>
+            <div>
+                <p className="c-counter">pippo matto: {this.state.counter}</p>
+                <img src={image} alt="" width="500"/>
+            </div>
         );
     }
 
