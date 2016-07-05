@@ -1,13 +1,10 @@
-const crypto = require('crypto');
+var revHash = require('rev-hash');
 const fs = require('fs');
 
 const chalk = require('chalk');
 
 const paths = require('../config/paths');
 const filePath = paths.toPath('dist.assets/vendors/modernizr');
-
-const checksum = (str) => crypto.createHash('md5').update(str, 'utf8').digest('hex');
-
 
 require('mkdirp').sync(filePath);
 
@@ -75,7 +72,7 @@ if (process.env.NODE_ENV === 'production') {
     };
 
     require('customizr')(distConfig, (obj) => {
-        const hash = checksum(obj.result);
+        const hash = revHash(obj.result);
         const destPath = filePath + '/modernizr.' + hash + '.js';
         fs.writeFile(destPath, obj.result, () => {
             console.log(chalk.white('File ' + destPath + ' created'));

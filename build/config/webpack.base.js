@@ -4,6 +4,8 @@ const paths = require('./paths');
 const srcPath = paths.toAbsPath('src.assets');
 const destPath = paths.toAbsPath('dist.assets');
 
+const sassFunctions = require('../scripts/sass-functions');
+
 module.exports = {
     externals: {},
     entry: {},
@@ -57,6 +59,7 @@ module.exports = {
             paths.toPath('src.assets/vendors'),
             'node_modules'
         ],
+        functions: sassFunctions,
         outputStyle: 'expanded'
     },
 

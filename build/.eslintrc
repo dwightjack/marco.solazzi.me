@@ -1,5 +1,8 @@
 {
-    "extends": "../.eslintrc",
+    "extends": [
+        "eslint:recommended",
+        "../.eslintrc"
+    ],
 
     "env": {
         "node": true,

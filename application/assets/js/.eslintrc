@@ -1,5 +1,6 @@
 {
     "extends": [
+        "eslint:recommended",
         "airbnb",
         "../../../.eslintrc"
     ],
@@ -38,6 +39,13 @@
         }
     },
 
+    "settings": {
+        "import/ignore": [
+            "node_modules",
+            ".(json|scss)$"
+        ]
+    },
+
     "rules": {
         /**
          * ES6
@@ -50,6 +58,7 @@
         }],
         "object-curly-spacing": 0,
 
+        "import/no-unresolved": [2, { "ignore": ["(png|jpg|gif)$", "s?css$"] }],
 
         "react/prefer-stateless-function": 0,
         "react/jsx-indent": [2, 4]

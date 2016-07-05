@@ -1,2 +1,7 @@
 application/assets/vendors/
 node_modules/
+*.scss
+*.css
+*.png
+*.jpg
+*.gif

@@ -18,8 +18,8 @@ const config = _.assign({}, webpackConf, {
     },
 
     output: _.assign({}, webpackConf.output, {
-        filename: paths.js + '/[name].[chunkhash].js',
-        chunkFilename: paths.js + '/[name].[chunkhash].chunk.js'
+        filename: paths.js + '/[name].[chunkhash:10].js',
+        chunkFilename: paths.js + '/[name].[chunkhash:10].chunk.js'
     }),
 
     debug: false,
@@ -46,7 +46,7 @@ const config = _.assign({}, webpackConf, {
         //     {entryOnly: true, raw: true}
         // ),
 
-        new ExtractTextPlugin(paths.css + '/[name].[contenthash].css'),
+        new ExtractTextPlugin(paths.css + '/[name].[contenthash:10].css'),
 
         new HtmlWebpackPlugin({
             template: paths.toPath('src.root') + '/index.ejs',
@@ -77,12 +77,12 @@ config.module.loaders = webpackConf.module.loaders.concat([
     {
         test: /\.(eot|svg|ttf|woff|woff2)$/,
         include: [paths.toAbsPath('src.assets/fonts')],
-        loader: 'file-loader?name=[path][name].[hash].[ext]'
+        loader: 'file-loader?name=[path][name].[hash:10].[ext]'
     }, {
         test: /\.(jpg|png|gif)$/,
         include: [paths.toAbsPath('src.assets/images')],
         loaders: [
-            'file-loader?name=[path][name].[hash].[ext]',
+            'file-loader?name=[path][name].[hash:10].[ext]',
             'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}'
         ]
     }, {
