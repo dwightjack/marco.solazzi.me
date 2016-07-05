@@ -12,7 +12,7 @@
     "node": "^4.0.0"
   },
   "scripts": {
-    "start": "npm run modernizr && cross-env NODE_ENV=development node ./build/scripts/server.js",
+    "start": "npm run clean && npm run modernizr && cross-env NODE_ENV=development node ./build/scripts/server.js",
     "server": "cross-env NODE_ENV=production node ./build/scripts/server.js",
     "webpack": "cross-env NODE_ENV=development webpack --config build/config/webpack.dev.js --color",
     "webpack:production": "cross-env NODE_ENV=production webpack --config build/config/webpack.prod.js --color -p",
@@ -20,7 +20,7 @@
     "modernizr:production": "cross-env NODE_ENV=production node ./build/scripts/modernizr",
     "clean": "rimraf ./public/*",
     "build": "npm run clean && npm run modernizr && npm run webpack",
-    "build:production": "cross-env NODE_ENV=production npm run clean && npm run modernizr:production && npm run webpack:production",
+    "build:production": "npm run clean && npm run modernizr:production && npm run webpack:production",
     "lint": "eslint -c ./application/assets/js/.eslintrc \"./application/assets/js/**\""
   },
   "dependencies": {
