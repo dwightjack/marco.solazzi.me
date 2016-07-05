@@ -6,12 +6,15 @@
  *
  */
 
-import 'scss/_base.scss';
+import 'scss/app.scss';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Counter from './components/counter/counter';
 
 import './base/plugins';
 
-ReactDOM.render(<Counter />, document.getElementById('app-root'));
+const App = () => (
+    <h1>.jobs.current</h1>
+);
+
+ReactDOM.render(<App />, document.getElementById('app-root'));

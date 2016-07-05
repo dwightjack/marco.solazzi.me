@@ -1,5 +1,242 @@
-@import 'normalize-css/normalize';
+/* ==========================================================================
+
+   Base Styles
+   ====
+
+
+   Some Basic Styles
+
+   ```
+   ```
+
+   ========================================================================== */
+
+@import "globals";
+@import "colors";
+@import "mixins";
+@import "sass-mq/mq";
+
+
+//Fix IE10 on WP8 visualization issues
+//see http://getbootstrap.com/getting-started/#ie-10-width
+//see http://timkadlec.com/2013/01/windows-phone-8-and-device-width/
+@-webkit-viewport {
+    width: device-width;
+}
+
+@-moz-viewport {
+    width: device-width;
+}
+
+@-ms-viewport {
+    width: device-width;
+}
+
+@-o-viewport {
+    width: device-width;
+}
+
+@viewport {
+    width: device-width;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+html,
+button,
+input,
+select,
+textarea {
+    color: $color-text;
+}
+
+html,
+body {
+    font-size: percentage($font-size-default / 16px); //16px
+    line-height: $font-lheight-default / $font-size-default;
+}
 
 body {
-    background: limegreen;
+    min-width: 320px;
+    background: $color-bg;
+    color: $color-text;
+    font-family: $font-family-base;
+}
+
+//Remove text-shadow in selection highlight: h5bp.com/i
+//These selection declarations have to be separate.
+//Customize the background color to match your design.
+
+::-moz-selection {
+    color: $color-text-selection;
+    text-shadow: none;
+}
+
+::selection {
+    color: $color-text-selection;
+    text-shadow: none;
+}
+
+// Remove the gap between images and the bottom of their containers: h5bp.com/i/440
+
+audio,
+canvas,
+iframe,
+svg,
+video,
+img {
+    vertical-align: middle;
+}
+
+// A better looking default horizontal rule
+
+hr {
+    display: block;
+    height: 1px;
+    margin: 1rem 0;
+    padding: 0;
+    border: 0;
+    border-top: 1px solid $color-border;
+}
+
+// Remove default fieldset styles.
+fieldset {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+// Allow only vertical resizing of textareas.
+
+textarea {
+    resize: vertical;
+}
+
+input::-moz-focus-inner {
+    border: 0;
+}
+
+
+/* ==========================================================================
+   ##prevent 300ms delay in FF, Chrome and IE on touch devices
+   ========================================================================== */
+
+a[href],
+button {
+    touch-action: manipulation;
+}
+
+/* ==========================================================================
+   ##Shared Styles
+
+   Shared placeholder
+
+   ```
+   ```
+   ========================================================================== */
+
+//DEPRECATED
+%inline-block {
+    display: inline-block;
+}
+
+//DEPRECATED
+%img-responsive {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+//DEPRECATED
+%clearfix {
+    @include clearfix;
+}
+
+/* ==========================================================================
+   ##Headings and Base
+
+   1 to 6 heading
+
+   ```
+   ```
+   ========================================================================== */
+
+%heading-base {
+    margin: 0 0 0.2em;
+    //color: $color-text
+    font-family: $font-family-h;
+    font-weight: font-weight(regular);
+}
+
+@include classed-headings {
+    @extend %heading-base;
+}
+
+@each $font-head-num, $font-head-size in $font-sizes-headings {
+
+    h#{$font-head-num},
+    .h#{$font-head-num} {
+        font-size: font-size($font-head-size);
+        line-height: $font-lheight-h;
+    }
+
+}
+
+p {
+    margin: 0 0 0.2em;
+    line-height: $font-lheight-h;
+}
+
+a {
+    color: $color-link;
+    text-decoration: underline;
+
+    &:hover {
+        //set to important so that hover is hardly overwritten by other styles
+        color: $color-link-hover !important;
+        text-decoration: none;
+    }
+}
+
+/* ==========================================================================
+   ## CSS to JS Breakpoint Bridge
+   ========================================================================== */
+
+@if $mq-responsive {
+
+    body::after,
+    body::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: z-index(behind) - 2;
+        display: block;
+        visibility: hidden;
+        overflow: hidden;
+        width: 1px;
+        height: 1px;
+    }
+
+    body::after {
+        content: "xs";
+        @each $mq-key, $mq-value in $mq-breakpoints {
+            @include mq($mq-key) {
+                content: "#{$mq-key}";
+            }
+        }
+    }
+
+    body::before {
+        content: "/#{map-to-JSON($mq-breakpoints)}/";
+    }
+
+    //fallback
+    head {
+        font-family: "/#{map-to-JSON($mq-breakpoints)}/";
+    }
 }

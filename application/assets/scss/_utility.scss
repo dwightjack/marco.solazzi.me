@@ -1,0 +1,216 @@
+/* ==========================================================================
+
+   Utilities
+   ====
+
+   ========================================================================== */
+
+@import "mixins";
+
+/* ==========================================================================
+   Section Title
+
+   ```
+   <p class="u-text--left">Left aligned text</p>
+   <p class="u-text--right">Right aligned text</p>
+   <p class="u-text--center">Centered text</p>
+   <p class="u-text--hide">Hidden text</p>
+   <p class="u-text--ellipsis">This text is one line with ellipsis</p>
+   ```
+   ========================================================================== */
+
+.u-text--left {
+    text-align: left !important;
+}
+
+.u-text--right {
+    text-align: right !important;
+}
+
+.u-text--center {
+    text-align: center !important;
+}
+
+//@see bootstrap
+.u-text--hide {
+    border: 0;
+    background-color: transparent;
+    color: transparent;
+    font: 0 / 0 a;
+    font-size: 0.1px;
+    text-shadow: none;
+}
+
+.u-text--ellipsis {
+    @include text-ellipsis;
+}
+
+/* ==========================================================================
+   ##Box model helpers
+
+   ```
+
+   <div class="u-clearfix">Clearfixed box</div>
+   <div class="u-centered">Centered</div>
+   <div class="u-float--left">Floated left</div>
+   <div class="u-float--right">Floated right</div>
+   <div class="u-clear">Clearing box</div>
+
+   <div class="u-inline">
+    <div>inlined</div>
+    <div>items</div>
+   </div>
+
+   <div class="u-stacked">
+    <span>stacked</span>
+    <span>items</span>
+   </div>
+   ```
+   ========================================================================== */
+
+
+.u-clearfix,
+.clearfix {
+    @include clearfix;
+}
+
+.u-clear {
+    clear: both !important;
+}
+
+.u-centered {
+    float: none !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+}
+
+.u-float,
+.u-float--left {
+    float: left !important;
+}
+
+.u-float--right {
+    float: right !important;
+}
+
+//DEPRECATED
+%u-inline {
+    display: inline-block !important;
+}
+
+//inline children
+.u-inline > * {
+    display: inline-block !important;
+}
+
+// vertically stacked
+.u-stacked > * {
+    display: block !important;
+}
+
+// inline
+.u-inline--baseline > * {
+    display: inline-block !important;
+    vertical-align: baseline !important;
+}
+
+/* ==========================================================================
+   ##Typographic Helpers
+
+   ```
+   <p class="u-type--xs">font size extra small</p>
+   <p class="u-type--s">font size small</p>
+   <p class="u-type--m">font size medium (default)</p>
+   <p class="u-type--l">font size large</p>
+   <p class="u-type--xl">font size extra large</p>
+   <p class="u-type--xxl">font size oversized</p>
+
+   <p class="u-type--larger">relative size</p>
+   <p class="u-weight--strong">strong font weight</p>
+   <p class="u-weight--medium">medium font weight</p>
+   <p class="u-weight--light">light font weight</p>
+   ```
+   ========================================================================== */
+
+@each $font-size-key, $font-size-value in $font-sizes {
+    .u-type--#{$font-size-key} {
+        font-size: rem($font-size-value) !important;
+    }
+}
+
+.u-type--default {
+    font-size: rem($font-size-default) !important;
+}
+
+.u-type--larger {
+    font-size: 130% !important;
+}
+
+.u-type--smaller {
+    font-size: 85% !important;
+}
+
+@each $font-weight-key, $font-weight-value in $font-weights {
+    .u-weight--#{$font-weight-key} {
+        font-weight: $font-weight-value !important;
+    }
+}
+
+
+
+/* ==========================================================================
+
+   ### Visibility Helpers
+
+   ```
+   <p class="u-hidden">this is hidden from mobile screens</p>
+   <p class="u-visuallyhidden">this is hidden from small tablet screens</p>
+   <p class="u-invisible">this is hidden from large tablets screens</p>
+   ```
+   ========================================================================== */
+
+
+.u-hidden,
+.js .is-jshidden {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+.u-visuallyhidden {
+    @include visually-hidden;
+
+    .focusable {
+
+        &:active,
+        &:focus {
+            position: static;
+            overflow: visible;
+            clip: auto;
+            width: auto;
+            height: auto;
+            margin: 0;
+        }
+    }
+}
+
+//also as global state
+.u-invisible {
+    visibility: hidden !important;
+}
+
+@each $mq-key, $mq-value in $mq-breakpoints {
+
+    @include mq($mq-key) {
+        .u-hidden--from-#{$mq-key} {
+            display: none !important;
+            visibility: hidden !important;
+        }
+    }
+
+    @include mq($until: $mq-key) {
+        .u-hidden--until-#{$mq-key} {
+            display: none !important;
+            visibility: hidden !important;
+        }
+    }
+}

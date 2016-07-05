@@ -1,0 +1,211 @@
+// ==========================================================================
+// Mixins and functions
+//
+// Note: always put function at the beginning of the sub-section
+// ==========================================================================
+
+@import "globals";
+@import "fonts";
+
+// Generic
+// ==========================================================================
+
+@function perc($width, $container-width: $container-width) {
+    @return percentage($width / $container-width);
+}
+
+@function perc-image-width($image-src, $container-width: $container-width) {
+    @return percentage(image-width($image-src) / $container-width);
+}
+
+@function strip-units($value) {
+    @return $value / ($value * 0 + 1);
+}
+
+@function z-index($level: base) {
+    @return map-get($layers, $level);
+}
+
+@function vw($width, $viewport-reference-width: $viewport-width) {
+    @return (strip-units($width) / strip-units($viewport-reference-width)) * 100 + vw;
+}
+
+@function vh($height, $viewport-reference-height: $viewport-height) {
+    @return (strip-units($height) / strip-units($viewport-reference-height)) * 100 + vh;
+}
+
+
+// Elements
+// ==========================================================================
+
+@mixin boost-performance ($translate: true) {
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    @if ($translate) {
+        transform: translate3d(0, 0, 0);
+        will-change: transform;
+    }
+}
+
+@mixin clearfix {
+    //*zoom: 1;
+
+    &:before,
+    &:after {
+        display: table;
+        content: "";
+    }
+
+    &:after {
+        clear: both;
+    }
+}
+
+@mixin fit-background-image($image-url, $inline: false, $ratio: 1, $line-height: false) {
+    @if $line-height {
+        line-height: ceil(image-height($image-url) * $ratio);
+    } @else {
+        width: ceil(image-width($image-url) * $ratio);
+        height: ceil(image-height($image-url) * $ratio);
+    }
+    @if $inline {
+        background-image: inline-image($image-url);
+        background-repeat: no-repeat;
+        background-position: 0 0;
+    } @else {
+        background: image-url($image-url) no-repeat 0 0;
+    }
+    @if $ratio != 1 {
+        background-size: ceil(image-width($image-url) * $ratio) auto;
+    }
+}
+
+@mixin img-responsive($display: block) {
+    display: $display;
+    max-width: 100%;
+    height: auto;
+}
+
+//see https://github.com/tinganho/compass-placeholder
+@mixin placeholder {
+    &::-webkit-input-placeholder {
+        @content;
+    }
+
+    &:-moz-placeholder {
+        @content;
+    }
+
+    &::-moz-placeholder {
+        @content;
+    }
+
+    &:-ms-input-placeholder {
+        @content;
+    }
+}
+
+@mixin classed-headings($headings...) {
+    @if length($headings) == 0 {
+        $headings: map-keys($font-sizes-headings);
+    }
+    $selectors: ();
+    @each $i in $headings {
+        $current-heading: nth($headings, $i);
+        $selector: unquote("h#{$current-heading}, .h#{$current-heading}");
+        $selectors: append($selectors, $selector, comma);
+    }
+
+    #{$selectors} {
+        @content;
+    }
+}
+
+// Typography
+//
+// ==========================================================================
+
+@function em($pixels, $context: $font-size-default) {
+    @if (unitless($pixels)) {
+        $pixels: $pixels * 1px;
+    }
+
+    @if (unitless($context)) {
+        $context: $context * 1px;
+    }
+
+    @return #{$pixels / $context}em;
+}
+
+@function rem($pixels) {
+    @if (unitless($pixels)) {
+        $pixels: $pixels * 1px;
+    }
+    @return #{$pixels / $font-size-default}rem;
+}
+
+
+@function font-size($size, $rem: true) {
+    $result: $size;
+    @if map-has-key($font-sizes, $size) {
+        $result: map-get($font-sizes, $size);
+    }
+
+    @if $rem == true {
+        @return rem($result);
+    }
+    @return $result;
+}
+
+@function font-weight($weight) {
+    @if map-has-key($font-weights, $weight) {
+        @return map-get($font-weights, $weight);
+    } @else {
+        @warn "Weight #{$weight} undefined";
+    }
+}
+
+@function line-height($size, $context: m) {
+    $context-size: font-size($context, false);
+    @return em($size, $context-size);
+}
+
+
+@mixin text-ellipsis() {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+@mixin visually-hidden {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+}
+
+@mixin reset-typography($font-weight: normal, $line-height: inherit) {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: $font-size-default;
+    font-weight: $font-weight;
+    line-height: $line-height;
+}
+
+//DEPRECATED
+@mixin rem-font-size($font-size, $line-height: $font-lheight-default) {
+    font-size: rem($font-size);
+    @if $line-height != false {
+        $lh-unit: unit($line-height);
+        @if $lh-unit == "" {
+            line-height: $line-height;
+        } @else {
+            line-height: ceil($font-size / $line-height) * $line-height / $font-size;
+        }
+    }
+    @warn "This mixin is deprecated";
+}
