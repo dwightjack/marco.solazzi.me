@@ -60,7 +60,7 @@ config.module.loaders = loaders.concat([
     }, {
         test: /\.(scss|css)$/,
         exclude: /(node_modules|vendors)/,
-        loaders: [ 'style', 'css?sourceMap', 'postcss', 'sass?sourceMap' ]
+        loaders: [ 'style', 'css?importLoaders=1&sourceMap', 'resolve-url?sourceMap', 'postcss', 'sass?sourceMap' ]
     }
 ]);
 

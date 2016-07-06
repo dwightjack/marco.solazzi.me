@@ -90,7 +90,7 @@ config.module.loaders = webpackConf.module.loaders.concat([
         exclude: /(node_modules|vendors)/,
         loader: ExtractTextPlugin.extract(
             'style', // The backup style loader
-            'css?sourceMap!postcss!sass?sourceMap'
+            'css?sourceMap!postcss!resolve-url!sass?sourceMap'
         )
     }
 ]);
