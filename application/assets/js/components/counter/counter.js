@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './counter.scss';
-import image from '../../../images/photo-demo.jpg';
+import image from 'images/photo-demo.jpg';
 
 export default class Counter extends React.Component {
 

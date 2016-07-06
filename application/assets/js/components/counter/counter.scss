@@ -1,7 +1,7 @@
 @import 'colors';
 
 body {
-    background-image: url('../../../images/photo-demo.jpg');
+    background-image: url('images/photo-demo.jpg');
     height: image-height('photo-demo.jpg');
 }
 
@@ -9,7 +9,7 @@ body {
     appearance: none;
     color: $color-white;
 
-    .cssgradients {
+    .cssgradients & {
         background: blue;
     }
 }

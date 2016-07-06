@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const paths = require('./paths');
-
 const srcPath = paths.toAbsPath('src.assets');
 const destPath = paths.toAbsPath('dist.assets');
 
@@ -66,7 +65,8 @@ module.exports = {
 
     resolve: {
         alias: {
-            scss: paths.toAbsPath('src.assets/sass')
+            scss: paths.toAbsPath('src.assets/sass'),
+            images: paths.toAbsPath('src.assets/images')
         },
         modulesDirectories: ['node_modules', paths.toPath('src.assets/vendors')]
     }
