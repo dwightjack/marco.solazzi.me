@@ -13,8 +13,16 @@ import ReactDOM from 'react-dom';
 
 import './base/plugins';
 
-const App = () => (
-    <h1>.jobs.current</h1>
-);
+// const App = () => (
+//     <h1>.jobs.current</h1>
+// );
+
+class App extends React.Component {
+    render() {
+        return (
+            <h1>.jobs.curxrent</h1>
+        );
+    }
+}
 
 ReactDOM.render(<App />, document.getElementById('app-root'));
