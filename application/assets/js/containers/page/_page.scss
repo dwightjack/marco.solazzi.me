@@ -1,0 +1,11 @@
+@import "mixins";
+
+.c-page {
+    position: relative;
+    min-height: 100vh;
+}
+
+.c-page__body {
+    min-height: inherit;
+    padding: vh(60px) vw(70);
+}

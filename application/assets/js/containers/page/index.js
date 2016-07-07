@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import './_page.scss';
+
 export default class Page extends Component {
 
     render() {

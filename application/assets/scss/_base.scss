@@ -231,6 +231,7 @@ a {
         }
     }
 
+
     body::before {
         content: "/#{map-to-JSON($mq-breakpoints)}/";
     }
@@ -239,4 +240,12 @@ a {
     head {
         font-family: "/#{map-to-JSON($mq-breakpoints)}/";
     }
+}
+
+/* ==========================================================================
+   ## Layout settings
+   ========================================================================== */
+
+#app-root {
+    min-height: 100vh;
 }

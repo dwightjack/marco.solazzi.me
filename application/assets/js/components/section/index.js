@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
 
+import './_section.scss';
+
+import Title from '../title';
+
 export default class Section extends Component {
 
     render() {
@@ -8,10 +12,7 @@ export default class Section extends Component {
 
         return (
             <section className="c-section">
-                <h2 className="c-section__title o-title">
-                    <strong className="o-title__prefix">{prefix || 'me'}</strong>
-                    <span className="o-title__text">.{title}</span>
-                </h2>
+                <Title className="c-section__title" prefix={prefix} title={title} />
                 <div className="c-section__body">
                     {children}
                 </div>
