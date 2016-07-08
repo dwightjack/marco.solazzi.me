@@ -1,0 +1,29 @@
+@import "mixins";
+
+$table-list-gutter-v: 50px;
+
+.c-table-list {
+    @include clearfix;
+    margin-right: rem($table-list-gutter-v * -1);
+    margin-left: rem($table-list-gutter-v * -1);
+
+    > .c-table {
+        float: left;
+        padding-right: rem($table-list-gutter-v);
+        padding-left: rem($table-list-gutter-v);
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        &:nth-child(2n) ~ .c-table {
+            margin-top: rem(70px);
+        }
+
+        &:nth-child(2n + 1) {
+            clear: both;
+        }
+
+
+    }
+}

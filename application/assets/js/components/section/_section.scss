@@ -1,7 +1,7 @@
 @import "mixins";
 
 .c-section {
-
+    margin-bottom: rem(90px);
 }
 
 .c-section__title {
@@ -9,5 +9,5 @@
 }
 
 .c-section__body {
-
+    margin-left: rem(65px);
 }

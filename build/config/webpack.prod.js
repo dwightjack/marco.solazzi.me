@@ -79,7 +79,7 @@ config.module.loaders = webpackConf.module.loaders.concat([
         include: [paths.toAbsPath('src.assets/fonts')],
         loader: 'file-loader?name=[path][name].[hash:10].[ext]&context=' + paths.toPath('src.assets')
     }, {
-        test: /\.(jpg|png|gif)$/,
+        test: /\.(jpg|png|gif|svg)$/,
         include: [paths.toAbsPath('src.assets/images')],
         loaders: [
             'file-loader?name=[path][name].[hash:10].[ext]&context=' + paths.toPath('src.assets'),

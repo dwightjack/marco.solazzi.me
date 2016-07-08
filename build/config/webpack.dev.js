@@ -54,7 +54,7 @@ config.module.loaders = loaders.concat([
         include: [paths.toAbsPath('src.assets/fonts')],
         loader: 'file-loader?name=[path][name].[ext]&context=' + paths.toPath('src.assets')
     }, {
-        test: /\.(jpg|png|gif)$/,
+        test: /\.(jpg|png|gif|svg)$/,
         include: [paths.toAbsPath('src.assets/images')],
         loader: 'file-loader?name=[path][name].[ext]&context=' + paths.toPath('src.assets')
     }, {

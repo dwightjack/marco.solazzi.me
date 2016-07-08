@@ -6,11 +6,13 @@ export default class Page extends Component {
 
     render() {
 
-        const {children} = this.props;
+        const {children, glyph} = this.props;
+
+        const glyphStyle = glyph ? {backgroundImage: `url("${glyph}")`} : '';
 
         return (
             <section className="c-page">
-                <span className="c-page__glyph"></span>
+                <span className="c-page__glyph" style={glyphStyle} />
                 <div className="c-page__body">
                     {children}
                 </div>
@@ -21,5 +23,6 @@ export default class Page extends Component {
 }
 
 Page.propTypes = {
-    children: React.PropTypes.node
+    children: React.PropTypes.node,
+    glyph: React.PropTypes.string
 };

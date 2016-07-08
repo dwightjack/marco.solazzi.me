@@ -3,6 +3,17 @@
 .c-page {
     position: relative;
     min-height: 100vh;
+    overflow: hidden;
+}
+
+.c-page__glyph {
+    position: absolute;
+    top: -10%;
+    bottom: 0;
+    left: 30vw;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: 0 0;
 }
 
 .c-page__body {

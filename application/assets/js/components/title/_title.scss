@@ -8,7 +8,7 @@ $title-size: 32px;
     margin-top: 0;
     color: inherit;
     font-family: $font-family-h;
-    font-size: rem($title-size);
+    font-size: font-size($title-size);
     font-weight: font-weight(regular);
     line-height: em(47px, $title-size);
 }
