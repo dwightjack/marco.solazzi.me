@@ -1,0 +1,42 @@
+[
+    {
+        "company": {
+            "name": "AQuest Srl",
+            "url": "http://www.aquest.it/"
+        },
+        "title": "Senior Frontend Developer",
+        "description": "Working as Senior Developer, Frontend / <abbr title=\"Developer Experience\">DX</abbr> Ops and Technical Evangelist for <abbr title=\"Single Page Applications\">SPA<abbr>s Architecture.",
+        "from": "2014-12-01",
+        "to": null
+    },
+    {
+        "company": {
+            "name": "Intesys Srl",
+            "url": "http://www.intesys.it/"
+        },
+        "title": "Senior Frontend Developer",
+        "description": "Frontend and PHH Senior Developer, Frontend Advisory Group Leader and WordPress Advisory Group Leader",
+        "from": "2009-12-01",
+        "to": "2014-12-01"
+    },
+    {
+        "company": {
+            "name": "HTML.it",
+            "url": "http://www.html.it/"
+        },
+        "title": "Freelance JavaScript Columnist",
+        "description": "I wrote guides, tutorial and technical articles about JavaScript",
+        "from": "2009-07-04",
+        "to": "2014-09-30"
+    },
+    {
+        "company": {
+            "name": "Promobit Communications Srl",
+            "url": "http://www.promobit.it/"
+        },
+        "title": "Frontend Web Developer && Full Stack Web Developer",
+        "description": "Full Stack Web Developer, System Administrator and Web Development Area Manager",
+        "from": "2005-07-04",
+        "to": "2009-12-01"
+    }
+]
