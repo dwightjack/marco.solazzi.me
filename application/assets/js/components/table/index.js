@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import omit from 'lodash/omit';
+
+import Time from '../time';
 
 import './_table.scss';
 
@@ -11,34 +14,48 @@ class Table extends Component {
         this._id = `table-${(++id)}`;
     }
 
+
+    buildRows(rows) {
+
+        return Object.keys(rows).map((key) => {
+
+            let value = rows[key];
+
+            if (key === 'to' || key === 'from') {
+                value = <Time dateTime={value} />;
+            }
+
+            return (
+                <tr>
+                    <th scope="row">{key}</th>
+                    <td>
+                        {value}
+                    </td>
+                </tr>
+            );
+        });
+    }
+
     render() {
-        const now = Date.now();
+        const {caption, data = {}} = this.props;
+        const captionText = `${caption}: ${data[caption]}`;
+
+        const rows = this.buildRows(omit(data, caption));
+
         return (
             <article className="c-table">
-                <h3 className="c-table__caption" id={this._id}>company: AQuest Srl</h3>
+                <h3 className="c-table__caption" id={this._id}>{captionText}</h3>
                 <table className="c-table__data" aria-labelledby={this._id}>
-                    <tr>
-                        <th scope="row">title</th>
-                        <td>
-                            Senior Frontend Developer
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">from</th>
-                        <td>
-                            <time dateTime="2014-12-01">Date.parse('2014-12')</time>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">to</th>
-                        <td>
-                            <time dateTime={now}>Date.now()</time>
-                        </td>
-                    </tr>
+                    {rows}
                 </table>
             </article>
         );
     }
 }
+
+Table.propTypes = {
+    caption: React.propTypes.string.required,
+    data: React.propTypes.arrayOf(Object)
+};
 
 export default Table;
