@@ -1,15 +1,17 @@
 [
     {
+        "id": 0,
         "company": {
             "name": "AQuest Srl",
             "url": "http://www.aquest.it/"
         },
         "title": "Senior Frontend Developer",
-        "description": "Working as Senior Developer, Frontend / <abbr title=\"Developer Experience\">DX</abbr> Ops and Technical Evangelist for <abbr title=\"Single Page Applications\">SPA<abbr>s Architecture.",
+        "description": "Working as Senior Developer, Frontend / <abbr title=\"Developer Experience\">DX</abbr> Ops and Technical Evangelist for <abbr title=\"Single Page Applications\">SPA</abbr>s Architecture.",
         "from": "2014-12-01",
         "to": null
     },
     {
+        "id": 1,
         "company": {
             "name": "Intesys Srl",
             "url": "http://www.intesys.it/"
@@ -20,6 +22,7 @@
         "to": "2014-12-01"
     },
     {
+        "id": 2,
         "company": {
             "name": "HTML.it",
             "url": "http://www.html.it/"
@@ -30,6 +33,7 @@
         "to": "2014-09-30"
     },
     {
+        "id": 3,
         "company": {
             "name": "Promobit Communications Srl",
             "url": "http://www.promobit.it/"

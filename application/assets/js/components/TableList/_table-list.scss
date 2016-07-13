@@ -6,9 +6,14 @@ $table-list-gutter-v: 50px;
     @include clearfix;
     margin-right: rem($table-list-gutter-v * -1);
     margin-left: rem($table-list-gutter-v * -1);
+    //display: flex;
+    //align-items: flex-start;
+    //justify-content: flex-start;
+    //flex-wrap: wrap;
 
     > .c-table {
         float: left;
+        max-width: 50%;
         padding-right: rem($table-list-gutter-v);
         padding-left: rem($table-list-gutter-v);
 

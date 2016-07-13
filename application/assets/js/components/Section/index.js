@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import './_section.scss';
 
-import Title from '../title';
+import Title from '../Title';
 
 export default class Section extends Component {
 

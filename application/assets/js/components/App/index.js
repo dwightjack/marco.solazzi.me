@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 
-import Page from '../../containers/page';
-import PageList from '../pagelist';
-import Section from '../section';
-import TableList from '../table-list';
-import Table from '../table';
+import Page from '../../containers/Page';
+import PageList from '../PageList';
+import Section from '../Section';
+import TableList from '../TableList';
+import Table from '../Table';
 
 import jobs from '../../database/jobs.json';
 
@@ -20,14 +20,15 @@ export default class App extends Component {
             <PageList>
                 <Page id="job" glyph={glyph}>
                     <Section title="jobs.current">
-                        <Table caption="company" data={currentJob} />
+                        <TableList>
+                            <Table caption="company" data={currentJob} />
+                        </TableList>
                     </Section>
                     <Section title="jobs.previous">
                         <TableList>
-                            <Table />
-                            <Table />
-                            <Table />
-                            <Table />
+                            {jobs.map((job) => (
+                                <Table caption="company" key={job.id} data={job} />
+                            ))}
                         </TableList>
                     </Section>
                 </Page>

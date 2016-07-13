@@ -58,7 +58,7 @@
         }],
         "object-curly-spacing": 0,
 
-        "import/no-unresolved": [2, { "ignore": ["(png|jpg|gif)$", "s?css$"] }],
+        "import/no-unresolved": [2, { "ignore": ["(png|jpg|gif|svg)[?]*(.*)$", "s?css$"] }],
 
         "react/prefer-stateless-function": 0,
         "react/jsx-indent": [2, 4]
