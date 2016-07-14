@@ -1,0 +1,45 @@
+@import "mixins";
+
+.o-time {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: inherit;
+
+    > span {
+        position: relative;
+        display: inline-block;
+        float: left;
+        margin-right: -100%;
+        transform: translateX(0);
+        transition: all 0.3s ease;
+        transition-property: opacity, transform;
+        will-change: opacity, transform;
+    }
+
+    &::after {
+        position: relative;
+        z-index: z-index(behind);
+        display: inline-block;
+        opacity: 0;
+        content: attr(aria-label);
+        transform: translateX(-30%);
+        transition: all 0.3s ease;
+        transition-property: opacity, transform;
+        will-change: opacity, transform;
+    }
+
+    &:hover {
+        > span {
+            opacity: 0;
+            transform: translateX(-30%);
+            transition-delay: 0.1s;
+        }
+
+        &::after {
+            opacity: 1;
+            transform: translateX(0);
+            transition-delay: 0.2s;
+        }
+    }
+}

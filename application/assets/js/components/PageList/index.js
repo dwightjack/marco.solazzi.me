@@ -9,9 +9,9 @@ export default class PageList extends Component {
         const {children} = this.props;
 
         return (
-            <div className="c-pagelist">
+            <main className="c-pagelist">
                 {children}
-            </div>
+            </main>
         );
     }
 

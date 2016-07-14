@@ -1,15 +1,15 @@
 import React from 'react';
 
-
+import './_time.scss';
 
 const Time = ({dateTime = ''}) => {
 
     const matches = typeof dateTime === 'string' ? dateTime.match(Time.DATE_PARSE_REGEXP) : null;
     const attr = matches ? dateTime : Date.now();
-    const text = matches ? `Date.parse(${matches[1]})` : 'Date.now()';
+    const text = matches ? `Date.parse('${matches[1]}')` : 'Date.now()';
 
     return (
-        <time dateTime={attr}>{text}</time>
+        <time className="o-time" dateTime={attr} aria-label={attr}><span>{text}</span></time>
     );
 };
 

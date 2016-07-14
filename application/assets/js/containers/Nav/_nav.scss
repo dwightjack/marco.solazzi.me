@@ -1,0 +1,31 @@
+@import "colors";
+@import "mixins";
+
+
+.c-nav {
+    position: fixed;
+    top: 0;
+    right: 15px;
+    bottom: 0;
+    z-index: z-index(above);
+}
+
+.c-nav__menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 0 0 0;
+    padding: 10vh 10px 0;
+    list-style: none;
+    background-color: $color-link;
+    transform: translateX(100%);
+}
+
+.c-nav__route {
+    display: block;
+    min-width: 30vw;
+    padding: 1em 2em;
+    color: $color-light;
+    text-decoration: none;
+}

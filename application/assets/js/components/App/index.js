@@ -5,6 +5,7 @@ import PageList from '../PageList';
 import Section from '../Section';
 import TableList from '../TableList';
 import Table from '../Table';
+import Nav from '../../containers/Nav';
 
 import jobs from '../../database/jobs.json';
 
@@ -17,22 +18,25 @@ export default class App extends Component {
         const currentJob = jobs.shift();
 
         return (
-            <PageList>
-                <Page id="job" glyph={glyph}>
-                    <Section title="jobs.current">
-                        <TableList>
-                            <Table caption="company" data={currentJob} />
-                        </TableList>
-                    </Section>
-                    <Section title="jobs.previous">
-                        <TableList>
-                            {jobs.map((job) => (
-                                <Table caption="company" key={job.id} data={job} />
-                            ))}
-                        </TableList>
-                    </Section>
-                </Page>
-            </PageList>
+            <div>
+                <Nav />
+                <PageList>
+                    <Page id="job" glyph={glyph}>
+                        <Section title="jobs.current">
+                            <TableList>
+                                <Table caption="company" data={currentJob} />
+                            </TableList>
+                        </Section>
+                        <Section title="jobs.previous">
+                            <TableList>
+                                {jobs.map((job) => (
+                                    <Table caption="company" key={job.id} data={job} />
+                                ))}
+                            </TableList>
+                        </Section>
+                    </Page>
+                </PageList>
+            </div>
         );
     }
 
