@@ -1,0 +1,84 @@
+@import "colors";
+
+$burger-size: 24px;
+
+%o-burger-bar {
+    display: block;
+    height: 3px;
+    margin-bottom: 4px;
+    background-color: currentColor;
+    content: "";
+    transform-origin: 100% 0;
+    transition: all 0.2s ease;
+
+}
+
+.o-burger {
+    display: block;
+    width: $burger-size;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    background-image: none;
+    color: lighten($color-dark, 50);
+    cursor: pointer;
+
+    &::before {
+        @extend %o-burger-bar;
+    }
+
+    &::after {
+        @extend %o-burger-bar;
+        transform: scaleX(0.7);
+    }
+
+}
+
+.o-burger__label {
+    @extend %o-burger-bar;
+    overflow: hidden;
+    transform: scaleX(0.85);
+}
+
+
+.o-burger:focus,
+.o-burger:active {
+    outline: 0;
+}
+
+.o-burger:hover,
+.o-burger.is-active {
+
+    .o-burger__label,
+    &::before,
+    &::after {
+        animation: burger-animation 1.2s ease;
+        animation-fill-mode: forwards;
+    }
+
+    .o-burger__label {
+        animation-delay: 0.1s;
+    }
+
+    &::after {
+        animation-delay: 0.2s;
+    }
+}
+
+@keyframes burger-animation {
+    25% {
+        transform: scaleX(0);
+    }
+    40% {
+        transform: scaleX(0);
+    }
+    45% {
+        opacity: 0;
+        transform: scaleX(1) translateY(70%);
+    }
+    100% {
+        transform: scale(1);
+    }
+
+}

@@ -5,9 +5,16 @@
 .c-nav {
     position: fixed;
     top: 0;
-    right: 15px;
+    right: 0;
     bottom: 0;
     z-index: z-index(above);
+
+    .o-burger {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        z-index: z-index(above);
+    }
 }
 
 .c-nav__menu {
@@ -15,11 +22,12 @@
     top: 0;
     right: 0;
     bottom: 0;
-    margin: 0 0 0 0;
+    margin: 0;
     padding: 10vh 10px 0;
     list-style: none;
     background-color: $color-link;
     transform: translateX(100%);
+    transition: transform 0.3s ease;
 }
 
 .c-nav__route {
@@ -28,4 +36,10 @@
     padding: 1em 2em;
     color: $color-light;
     text-decoration: none;
+}
+
+.c-nav.is-active {
+    .c-nav__menu {
+        transform: translateX(0);
+    }
 }
