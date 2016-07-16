@@ -8,13 +8,13 @@
     right: 0;
     bottom: 0;
     z-index: z-index(above);
+}
 
-    .o-burger {
-        position: absolute;
-        top: 30px;
-        right: 30px;
-        z-index: z-index(above);
-    }
+.c-nav__burger {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    z-index: z-index(above);
 }
 
 .c-nav__menu {
@@ -22,20 +22,45 @@
     top: 0;
     right: 0;
     bottom: 0;
+    min-width: 30vw;
     margin: 0;
-    padding: 10vh 10px 0;
+    padding: 10vh 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     list-style: none;
     background-color: $color-link;
     transform: translateX(100%);
     transition: transform 0.3s ease;
+    text-align: center;
 }
 
 .c-nav__route {
-    display: block;
-    min-width: 30vw;
-    padding: 1em 2em;
+    position: relative;
+    display: inline-block;
+    padding: 1.5em 1.5em;
     color: $color-light;
     text-decoration: none;
+    text-align: center;
+    opacity: 0.8;
+
+    &::after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border-bottom: 1px solid currentColor;
+        content: "";
+        opacity: 0.4;
+        transition: all 0.2s ease;
+    }
+
+    &:hover {
+        &::after {
+            opacity: 0.8;
+            transform: scaleX(1.5);
+        }
+    }
 }
 
 .c-nav.is-active {

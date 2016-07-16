@@ -1,0 +1,9 @@
+{
+    "current": {
+        "company": "AQuest",
+        "title": "Senior Frontend Developer",
+        "from": "Date.parse('2014-12')",
+        "fromDate": "2014-12-01", 
+        "to": "Date.now()"
+    }
+}

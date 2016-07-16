@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import classNames from 'classnames';
 
 import Burger from '../../components/Burger';
 
@@ -21,10 +22,11 @@ export default class Nav extends Component {
     }
 
     render() {
-
+        const {active} = this.state;
+        const navClassName = classNames('c-nav', {'is-active': active});
         return (
-            <nav className={`c-nav${this.state.active ? ' is-active' : ''}`}>
-                <Burger onClick={this.onBurgerClick} />
+            <nav className={navClassName}>
+                <Burger className="c-nav__burger" onClick={this.onBurgerClick} />
                 <ul className="c-nav__menu">
                     <li className="c-nav__item">
                         <a href="#" className="c-nav__route">Home</a>
