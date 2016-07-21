@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 
-import Page from '../../containers/Page';
-import PageList from '../PageList';
-import Section from '../Section';
-import TableList from '../TableList';
-import Table from '../Table';
-import Nav from '../../containers/Nav';
+import PageList from '../../components/PageList';
+import Section from '../../components/Section';
+import TableList from '../../components/TableList';
+import Table from '../../components/Table';
+
+import DevTools from '../DevTools';
+import Page from '../Page';
+import Nav from '../Nav';
 
 import jobs from '../../database/jobs.json';
 
@@ -36,6 +38,7 @@ export default class App extends Component {
                         </Section>
                     </Page>
                 </PageList>
+                <DevTools />
             </div>
         );
     }

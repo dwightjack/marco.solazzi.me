@@ -10,12 +10,19 @@ import 'scss/app.scss';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 
 import './base/plugins';
 
-import App from './components/App';
+import configureStore from './store';
+
+import App from './containers/App';
+
+const store = configureStore();
 
 ReactDOM.render(
-    <App />,
+    <Provider store={store}>
+        <App />
+    </Provider>,
     document.getElementById('app-root')
 );

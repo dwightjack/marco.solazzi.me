@@ -1,16 +1,20 @@
 @import "colors";
+@import "mixins";
 
 $burger-size: 24px;
+$burger-height: 17px;
+$burger-bar-height: 3px;
+$burger-bar-spacing: 4px;
 
 %o-burger-bar {
+    position: absolute;
+    right: 0;
+    left: 0;
     display: block;
-    height: 3px;
-    margin-bottom: 4px;
+    height: $burger-bar-height;
     background-color: currentColor;
     content: "";
     transform-origin: 100% 0;
-    transition: all 0.2s ease;
-
 }
 
 .o-burger {
@@ -23,22 +27,33 @@ $burger-size: 24px;
     background-image: none;
     color: lighten($color-dark, 50);
     cursor: pointer;
+    transition: transform 0.2s ease;
 
     &::before {
         @extend %o-burger-bar;
+        top: 0;
     }
 
     &::after {
         @extend %o-burger-bar;
+        bottom: 0;
         transform: scaleX(0.7);
     }
 
 }
 
 .o-burger__label {
-    @extend %o-burger-bar;
-    overflow: hidden;
-    transform: scaleX(0.85);
+    display: block;
+    height: $burger-height;
+    font-size: 0;
+    transition: inherit;
+
+    &::after {
+        @extend %o-burger-bar;
+        top: $burger-bar-spacing + $burger-bar-height;
+        transform: scaleX(0.85);
+    }
+
 }
 
 
@@ -46,18 +61,17 @@ $burger-size: 24px;
 .o-burger:active {
     outline: 0;
 }
+.o-burger.is-active,
+.o-burger:hover {
 
-.o-burger:hover,
-.o-burger.is-active {
-
-    .o-burger__label,
+    .o-burger__label::after,
     &::before,
     &::after {
         animation: burger-animation 1.2s ease;
         animation-fill-mode: forwards;
     }
 
-    .o-burger__label {
+    .o-burger__label::after {
         animation-delay: 0.1s;
     }
 
@@ -70,13 +84,16 @@ $burger-size: 24px;
     25% {
         transform: scaleX(0);
     }
+
     40% {
         transform: scaleX(0);
     }
+
     45% {
         opacity: 0;
         transform: scaleX(1) translateY(70%);
     }
+
     100% {
         transform: scale(1);
     }
