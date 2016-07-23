@@ -9,7 +9,7 @@ const Burger = ({onClick, className}) => (
 );
 
 Burger.propTypes = {
-    onClick: React.PropTypes.func,
+    onClick: React.PropTypes.func.isRequired,
     className: React.PropTypes.string
 };
 

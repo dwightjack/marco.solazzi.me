@@ -1,14 +1,14 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import classNames from 'classnames';
-
+import PureComponent from '../../base/PureComponent';
 import {toggleNavAction} from './actions';
 
 import Burger from '../../components/Burger';
 
 import './_nav.scss';
 
-export class Nav extends Component {
+export class Nav extends PureComponent {
 
     constructor(props) {
         super(props);
@@ -55,5 +55,3 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(Nav);
-
-

@@ -1,11 +1,14 @@
 import React from 'react';
+import classNames from 'classnames';
+
+import pure from '../../base/pure';
 
 import './_title.scss';
 
-const Title = (props) => (
-    <h2 className={`o-title ${props.className}`}>
-        <strong className="o-title__prefix">{props.prefix || 'me'}</strong>
-        <span className="o-title__text">.{props.title}</span>
+export const Title = ({className, prefix = 'me', title}) => (
+    <h2 className={classNames('o-title', className)}>
+        <strong className="o-title__prefix">{prefix}</strong>
+        <span className="o-title__text">.{title}</span>
     </h2>
 );
 
@@ -15,4 +18,5 @@ Title.propTypes = {
     title: React.PropTypes.string.isRequired
 };
 
-export default Title;
+
+export default pure(Title);

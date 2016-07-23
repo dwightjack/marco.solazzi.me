@@ -55,10 +55,21 @@ textarea {
     color: $color-text;
 }
 
-html,
-body {
-    font-size: percentage($font-size-default / 16px); //16px
-    line-height: $font-lheight-default / $font-size-default;
+html {
+    //https://www.smashingmagazine.com/2016/05/fluid-typography/
+    $font-min: $font-size-default;
+    $font-max: 24px;
+    $font-diff: ($font-max - $font-min);
+    $breakpoint-min: 1280px;
+    $breakpoint-max: 1920px;
+    $breakpoint-diff: ($breakpoint-max - $breakpoint-min);
+    $font-scale: $font-diff / $breakpoint-diff;
+    $base-font-size: percentage($font-size-default / 16px);
+    font-size: $base-font-size;
+
+    @include mq(desktop) {
+        font-size: calc(#{$base-font-size} + (#{strip-units($font-diff)} * (100vw - #{$breakpoint-min}) / #{strip-units($breakpoint-diff)}));
+    }
 }
 
 body {
@@ -67,6 +78,7 @@ body {
     color: $color-text;
     font-family: $font-family-base;
     overflow-x: hidden;
+    line-height: $font-lheight-default / $font-size-default;
 }
 
 //Remove text-shadow in selection highlight: h5bp.com/i

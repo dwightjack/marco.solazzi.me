@@ -1,8 +1,9 @@
-import React, {Component} from 'react';
+import React from 'react';
 
+import PureComponent from '../../base/PureComponent';
 import './_pagelist.scss';
 
-export default class PageList extends Component {
+export default class PageList extends PureComponent {
 
     render() {
 

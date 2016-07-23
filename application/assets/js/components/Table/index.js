@@ -1,7 +1,9 @@
-import React, {Component} from 'react';
+import React from 'react';
 import omit from 'lodash/omit';
 import isPlainObject from 'lodash/isPlainObject';
 
+
+import PureComponent from '../../base/PureComponent';
 import Time from '../Time';
 
 import './_table.scss';
@@ -9,7 +11,7 @@ import Bracket from 'babel!svg-react!../../../images/bracket-left.svg?name=Brack
 
 let id = 0;
 
-class Table extends Component {
+class Table extends PureComponent {
 
     constructor(props) {
         super(props);
@@ -51,7 +53,9 @@ class Table extends Component {
         const {caption, data = {}} = this.props;
         return (
             <article className="c-table">
-                <h3 className="c-table__caption" id={this._id}>{`${caption}: `}{this.renderCaption(data[caption])}</h3>
+                <h3 className="c-table__caption" id={this._id}>
+                    {`${caption}: `}{this.renderCaption(data[caption])}
+                </h3>
                 <Bracket className="c-table__bracket" />
                 <table className="c-table__data" aria-labelledby={this._id}>
                     <tbody>
