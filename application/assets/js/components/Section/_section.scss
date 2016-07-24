@@ -5,9 +5,14 @@
 }
 
 .c-section__title {
-    margin-bottom: em(42px, 32px);
+    //margin-bottom: em(42px, 32px);
+    width: 35%;
+    margin-left: 5%;
+    float: left;
 }
 
 .c-section__body {
-    margin-left: rem(65px);
+    //margin-left: rem(65px);
+    float: left;
+    width: 50%;
 }
