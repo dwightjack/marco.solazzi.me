@@ -1,6 +1,7 @@
 @import "mixins";
 
 .c-section {
+    @include clearfix;
     margin-bottom: rem(90px);
 }
 

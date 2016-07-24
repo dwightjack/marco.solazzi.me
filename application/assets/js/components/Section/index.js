@@ -11,21 +11,18 @@ export default class Section extends PureComponent {
         const root = findDOMNode(this);
         const title = root.querySelector('.c-section__title');
 
-        let atTop = 0;
-        let max = 0;
-
-        window.addEventListener('scroll', function (e) {
-            if (atTop == 0) {
-                atTop = title.getBoundingClientRect().top + window.scrollY;
-                max = root.getBoundingClientRect().top + window.scrollY + root.offsetHeight - title.offsetHeight;
-            }
-            console.log(max);
-            if (window.scrollY >= atTop) {
-                title.style.transform = 'translateY(' + (window.scrollY - Math.min(atTop, max)) + 'px)';
+        window.addEventListener('scroll', () => {
+            const scrollDiff = title.offsetTop - window.scrollY;
+            const maxScroll = root.offsetTop + root.offsetHeight - title.offsetHeight;
+            console.log(maxScroll);
+            if (scrollDiff <= 0) {
+                if (window.scrollY < maxScroll) {
+                    title.style.transform = `translateY(${scrollDiff * -1}px)`;
+                }
             } else {
-                title.style.transform = 'translateY(0)';
+                title.style.transform = 'none';
             }
-        })
+        });
     }
 
     render() {
