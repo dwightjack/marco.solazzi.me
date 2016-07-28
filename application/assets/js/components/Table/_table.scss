@@ -23,7 +23,7 @@ $c-table-row-indent: 0.3em;
 }
 
 .c-table__caption {
-    margin-bottom: 1em;
+    margin-bottom: 0.7em;
     padding-left: $c-table-row-indent;
     font-family: $font-family-sans;
     font-size: font-size(22px);
@@ -83,6 +83,11 @@ $c-table-row-indent: 0.3em;
 
     th + td:before {
         content: ": ";
+    }
+
+    tr[data-row="title"] {
+        //font-size: 0.8em;
+        padding-top: 0.5em;
     }
 
 }

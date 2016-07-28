@@ -3,6 +3,7 @@ import React from 'react';
 import PureComponent from '../../base/PureComponent';
 import './_pagelist.scss';
 
+
 export default class PageList extends PureComponent {
 
     render() {
@@ -11,6 +12,7 @@ export default class PageList extends PureComponent {
 
         return (
             <main className="c-pagelist">
+                <span className="c-pagelist__glyph" />
                 {children}
             </main>
         );
@@ -19,5 +21,6 @@ export default class PageList extends PureComponent {
 }
 
 PageList.propTypes = {
-    children: React.PropTypes.node
+    children: React.PropTypes.node,
+    glyph: React.PropTypes.string
 };

@@ -65,6 +65,7 @@
         position: relative;
         display: inline-block;
         opacity: 0;
+        left: -0.05em;
         content: ".";
         transform: translateX(-0.2em);
         transition: all 0.2s ease;
@@ -72,12 +73,21 @@
 
     &::after {
         position: absolute;
-        right: 0;
+        //right: 0;
         bottom: 0;
         left: 0;
-        opacity: 0.4;
-        border-bottom: 1px solid currentColor;
+        //opacity: 0.4;
+        //border-bottom: 1px solid currentColor;
+        background-image: linear-gradient(to left,
+            rgba($color-light, 0.4) 0%,
+            rgba($color-light, 0.4) 50%,
+            rgba($color-light, 0.8) 50.00000001%,
+            rgba($color-light, 0.8) 100%
+        );
+        width: 200%;
+        height: 1px;
         content: "";
+        transform: translateX(-50%);
         transition: all 0.2s ease;
     }
 
@@ -85,17 +95,17 @@
         &::before {
             opacity: 1;
             transform: translateX(0);
+            transition-delay: 0.15s;
         }
 
         &::after {
-            opacity: 0.8;
+            //opacity: 0.8;
+            transform: translateX(0);
         }
     }
 }
 
-.c-pagelist {
-    transition: all 0.2s ease;
-}
+
 
 .c-nav.is-active {
 
@@ -106,9 +116,11 @@
 
     .c-nav__menu {
         transform: translateX(0);
+        transition-delay: 0.3s;
     }
 
-    + .c-pagelist {
+    + .c-pagelist,
+    ~ .c-glyph {
         transform: scale(0.9);
     }
 }

@@ -3,6 +3,13 @@
         "browser": false                 // browser global variables
     },
 
+    "settings": {
+        "import/ignore": [
+            "node_modules",
+            ".(json|scss)$"
+        ]
+    },
+
     "rules": {
         /**
          * Strict mode

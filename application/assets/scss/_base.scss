@@ -58,7 +58,7 @@ textarea {
 html {
     //https://www.smashingmagazine.com/2016/05/fluid-typography/
     $font-min: $font-size-default;
-    $font-max: 24px;
+    $font-max: 20px;
     $font-diff: ($font-max - $font-min);
     $breakpoint-min: 1280px;
     $breakpoint-max: 1920px;

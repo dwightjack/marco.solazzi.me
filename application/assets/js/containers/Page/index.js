@@ -7,13 +7,10 @@ export default class Page extends PureComponent {
 
     render() {
 
-        const {children, glyph} = this.props;
-
-        const glyphStyle = glyph ? {backgroundImage: `url("${glyph}")`} : '';
+        const {children} = this.props;
 
         return (
             <section className="c-page">
-                <span className="c-page__glyph" style={glyphStyle} />
                 <div className="c-page__body">
                     {children}
                 </div>
@@ -24,6 +21,5 @@ export default class Page extends PureComponent {
 }
 
 Page.propTypes = {
-    children: React.PropTypes.node,
-    glyph: React.PropTypes.string
+    children: React.PropTypes.node
 };

@@ -39,13 +39,6 @@
         }
     },
 
-    "settings": {
-        "import/ignore": [
-            "node_modules",
-            ".(json|scss)$"
-        ]
-    },
-
     "rules": {
         /**
          * ES6

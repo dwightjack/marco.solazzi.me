@@ -66,7 +66,8 @@ module.exports = {
     resolve: {
         alias: {
             scss: paths.toAbsPath('src.assets/sass'),
-            images: paths.toAbsPath('src.assets/images')
+            images: paths.toAbsPath('src.assets/images'),
+            base: paths.toAbsPath('src.assets/js/base')
         },
         modulesDirectories: ['node_modules', paths.toPath('src.assets/vendors')]
     }

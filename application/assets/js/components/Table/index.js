@@ -32,7 +32,7 @@ class Table extends PureComponent {
             }
 
             return (
-                <tr key={idx}>
+                <tr key={key} data-row={key}>
                     <th scope="row">{key}</th>
                     {value}
                 </tr>

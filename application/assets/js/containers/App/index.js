@@ -8,6 +8,7 @@ import Table from '../../components/Table';
 import DevTools from '../DevTools';
 import Page from '../Page';
 import Nav from '../Nav';
+import Glyph from '../../components/Glyph';
 
 import jobs from '../../database/jobs.json';
 
@@ -23,7 +24,7 @@ export default class App extends Component {
             <div>
                 <Nav />
                 <PageList>
-                    <Page id="job" glyph={glyph}>
+                    <Page id="job">
                         <Section title="jobs.current">
                             <TableList>
                                 <Table caption="company" data={currentJob} />
@@ -38,6 +39,7 @@ export default class App extends Component {
                         </Section>
                     </Page>
                 </PageList>
+                <Glyph glyph={glyph} />
                 <DevTools />
             </div>
         );

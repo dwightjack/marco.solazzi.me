@@ -1,0 +1,12 @@
+.c-glyph {
+    position: fixed;
+    top: -10%;
+    bottom: 0;
+    left: 30vw;
+    z-index: z-index(behind);
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    transition: transform 0.2s ease;
+    transform-origin: 20% 50%;
+}
