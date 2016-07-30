@@ -1,0 +1,59 @@
+{
+    "Languages": [
+        {
+            "id": "html5",
+            "label": "HTML5",
+            "level": 100
+        }, {
+            "id": "css3",
+            "label": "CSS3",
+            "level": 100
+        }, {
+            "id": "pre-post-processors",
+            "label": "Sass, SCSS, PostCSS",
+            "level": 100
+        }, {
+            "id": "es2015",
+            "label": "JavaScript (ES2015)",
+            "level": 100
+        }, {
+            "id": "backend",
+            "label": "PHP5.5+",
+            "level": 80
+        }
+    ],
+    "JavaScript Libraries": [
+        {
+            "id": "react",
+            "label": "React 15+ ( + Redux)",
+            "level": 70
+        }, {
+            "id": "angular",
+            "label": "Angular 1.x",
+            "level": 100
+        }, {
+            "id": "vue",
+            "label": "Vue.js",
+            "level": 100
+        }, {
+            "id": "backbone",
+            "label": "Backbone.js ( + Marionette)",
+            "level": 100
+        }
+    ],
+    "Frontend Ops": [
+        {
+            "id": "grunt",
+            "label": "Grunt",
+            "level": 100
+        }, {
+            "id": "gulp",
+            "label": "Gulp.js",
+            "level": 100
+        }, {
+            "id": "webpack",
+            "label": "Webpack",
+            "level": 70
+        }
+    ]
+}

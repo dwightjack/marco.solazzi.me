@@ -1,5 +1,6 @@
 import React from 'react';
 import { findDOMNode } from 'react-dom';
+import classNames from 'classnames';
 import PureComponent from '../../base/PureComponent';
 import { bindAll } from '../../base/utils';
 import Title from '../Title';
@@ -13,6 +14,10 @@ export default class Section extends PureComponent {
 
         this.offsetTop = 0;
         this.maxScroll = 0;
+        this.state = {
+            inView: false,
+            atBottom: false
+        };
 
         bindAll(this, 'setTitlePosition');
     }
@@ -24,14 +29,10 @@ export default class Section extends PureComponent {
         //wait just nothing for the layout to render
         setTimeout(() => {
             const offset = parseInt(window.innerHeight * 0.05, 10);
-            const {offsetTop, offsetHeight} = this.title;
-            this.offsetTop = offsetTop - offset;
-            this.maxScroll = root.offsetTop + root.offsetHeight - offsetHeight - offset;
-            console.log(offsetHeight);
+            const rect = this.title.getBoundingClientRect();
+            this.offsetTop = rect.top - offset;
+            this.maxScroll = root.offsetTop + root.offsetHeight - rect.height - offset;
         }, 100);
-
-
-
 
         window.addEventListener('scroll', this.setTitlePosition);
     }
@@ -41,18 +42,23 @@ export default class Section extends PureComponent {
 
         if (scrollDiff <= 0) {
             if (window.scrollY < this.maxScroll) {
-                this.title.style.transform = `translateY(${scrollDiff * -1}px)`;
+                this.setState({inView: true, atBottom: false});
+            } else {
+                this.setState({inView: false, atBottom: true});
             }
+
         } else {
-            this.title.style.transform = 'none';
+            this.setState({inView: false, atBottom: false});
         }
     }
 
     render() {
         const {children, title, prefix} = this.props;
+        const {inView, atBottom} = this.state;
+        const titleClass = classNames('c-section__title', {'is-fixed': inView, 'is-bottom': atBottom});
         return (
             <section className="c-section">
-                <Title className="c-section__title" prefix={prefix} title={title} />
+                <Title className={titleClass} prefix={prefix} title={title} />
                 <div className="c-section__body">
                     {children}
                 </div>

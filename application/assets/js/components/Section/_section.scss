@@ -1,19 +1,32 @@
+@import "globals";
 @import "mixins";
 
 .c-section {
-    @include clearfix;
+    position: relative;
     padding-bottom: rem(90px);
 }
 
 .c-section__title {
-    //margin-bottom: em(42px, 32px);
-    width: 35%;
-    margin-left: 5%;
-    float: left;
+    position: absolute;
+    top: 0;
+    left: vw(60px);
+    max-width: 35%;
+    white-space: nowrap;
+
+    &.is-fixed {
+        position: fixed;
+        margin-top: 5vh;
+        left: vw(60px + $page-gutter);
+    }
+
+    &.is-bottom {
+        top: auto;
+        bottom: 0;
+    }
 }
 
 .c-section__body {
-    //margin-left: rem(65px);
-    float: left;
-    width: 50%;
+    display: block;
+    padding-left: 40%;
+    width: 85%;
 }
