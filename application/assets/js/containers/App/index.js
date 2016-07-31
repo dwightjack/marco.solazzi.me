@@ -9,6 +9,7 @@ import DevTools from '../DevTools';
 import Page from '../Page';
 import Nav from '../Nav';
 import Glyph from '../../components/Glyph';
+import Meter from '../../components/Meter';
 
 import jobs from '../../database/jobs.json';
 import techSkills from '../../database/skills.tech.json';
@@ -33,8 +34,7 @@ const PageJob = ({j}) => (
 const SkillList = ({skills}) => {
     const skillItems = skills.map((skill) => (
         <li key={skill.id}>
-            <p>{skill.label}</p>
-            <meter max="100" value={skill.level} />
+            <Meter label={skill.label} value={skill.level} />
         </li>
     ));
     return (<ul>{skillItems}</ul>);
@@ -46,7 +46,7 @@ const PageSkills = (
             <ul>
                 {Object.keys(techSkills).map((field) => (
                     <li key={field}>
-                        <span>{field}></span>
+                        <span>{field}</span>
                         <SkillList label={field} skills={techSkills[field]} />
                     </li>
                 ))}
