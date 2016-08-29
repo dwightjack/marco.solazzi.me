@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 
-import PureComponent from '../../base/PureComponent';
 import './_glyph.scss';
 
 const DEFAULT_GLYPH = {};

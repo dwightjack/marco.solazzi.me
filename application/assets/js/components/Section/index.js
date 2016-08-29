@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { findDOMNode } from 'react-dom';
 import classNames from 'classnames';
-import PureComponent from '../../base/PureComponent';
 import { bindAll } from '../../base/utils';
 import Title from '../Title';
 

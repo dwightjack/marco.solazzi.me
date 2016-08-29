@@ -1,59 +1,138 @@
-{
-    "Languages": [
-        {
-            "id": "html5",
-            "label": "HTML5",
-            "level": 100
-        }, {
-            "id": "css3",
-            "label": "CSS3",
-            "level": 100
-        }, {
-            "id": "pre-post-processors",
-            "label": "Sass, SCSS, PostCSS",
-            "level": 100
-        }, {
-            "id": "es2015",
-            "label": "JavaScript (ES2015)",
-            "level": 100
-        }, {
-            "id": "backend",
-            "label": "PHP5.5+",
-            "level": 80
-        }
-    ],
-    "JavaScript Libraries": [
-        {
-            "id": "react",
-            "label": "React 15+ ( + Redux)",
-            "level": 70
-        }, {
-            "id": "angular",
-            "label": "Angular 1.x",
-            "level": 100
-        }, {
-            "id": "vue",
-            "label": "Vue.js",
-            "level": 100
-        }, {
-            "id": "backbone",
-            "label": "Backbone.js ( + Marionette)",
-            "level": 100
-        }
-    ],
-    "Frontend Ops": [
-        {
-            "id": "grunt",
-            "label": "Grunt",
-            "level": 100
-        }, {
-            "id": "gulp",
-            "label": "Gulp.js",
-            "level": 100
-        }, {
-            "id": "webpack",
-            "label": "Webpack",
-            "level": 70
-        }
-    ]
-}
+[
+    {
+        "label": "Languages",
+        "data": [
+            {
+                "id": "html5",
+                "label": "HTML5",
+                "level": 100
+            },
+            {
+                "id": "css3",
+                "label": "CSS3",
+                "level": 100
+            },
+            {
+                "id": "pre-post-processors",
+                "label": "Sass, SCSS, PostCSS",
+                "level": 100
+            },
+            {
+                "id": "es2015",
+                "label": "JavaScript (ES2015)",
+                "level": 100
+            },
+            {
+                "id": "backend",
+                "label": "PHP5.5+",
+                "level": 80
+            }
+        ]
+    },
+    {
+        "label": "JavaScript Libraries",
+        "data": [
+            {
+                "id": "react",
+                "label": "React 15+ ( + Redux)",
+                "level": 70
+            },
+            {
+                "id": "angular",
+                "label": "Angular 1.x",
+                "level": 100
+            },
+            {
+                "id": "vue",
+                "label": "Vue.js",
+                "level": 100
+            },
+            {
+                "id": "backbone",
+                "label": "Backbone.js ( + Marionette)",
+                "level": 100
+            },
+            {
+                "id": "animation",
+                "label": "GSAP, velocity.js",
+                "level": 100
+            },
+            {
+                "id": "dom-libraries",
+                "label": "jQuery 3+",
+                "level": 100
+            }
+        ]
+    },
+    {
+        "label": "Code Quality Tools",
+        "data": [
+            {
+                "id": "unit-testing",
+                "label": "Karma, Mocha + Chai, Jasmine",
+                "level": 90
+            }, {
+                "id": "e2e-testing",
+                "label": "Nightwatch.js, Protractor",
+                "level": "70"
+            }, {
+                "id": "linting-js",
+                "label": "eslint, jscs",
+                "level": 100
+            }, {
+                "id": "linting-style",
+                "label": "sass-lint, scss-lint",
+                "level": 100
+            }
+        ]
+    },
+    {
+        "label": "Frontend Ops",
+        "data": [
+            {
+                "id": "grunt",
+                "label": "Grunt",
+                "level": 100
+            },
+            {
+                "id": "gulp",
+                "label": "Gulp.js",
+                "level": 100
+            },
+            {
+                "id": "webpack",
+                "label": "Webpack",
+                "level": 80
+            }
+        ]
+    },
+    {
+        "label": "Tooling & Workflow",
+        "data": [
+            {
+                "id": "editors",
+                "label": "Webstorm, Sublime Text, Atom",
+                "level": 100
+            },
+            {
+                "id": "vcs",
+                "label": "Git (git-flow)",
+                "level": 70
+            },
+            {
+                "id": "svn",
+                "label": "SVN",
+                "level": 100
+            },
+            {
+                "id": "software",
+                "label": "Photoshop, Fireworks",
+                "level": 80
+            }, {
+                "id": "software-vector",
+                "label": "Inkscape",
+                "level": 100
+            }
+        ]
+    }
+]

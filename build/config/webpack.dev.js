@@ -10,10 +10,13 @@ const webpackConf = require('./webpack.base');
 
 const loaders = webpackConf.module.loaders.map((loader) => {
     if (loader.loader === 'babel-loader') {
-        loader.query.presets = ['react-hmre'];
+        delete loader.loader;
+        delete loader.query;
+        loader.loaders = ['react-hot', 'babel-loader?cacheDirectory=true'];
     }
     return loader;
 });
+
 
 const config = _.assign({}, webpackConf, {
 

@@ -209,3 +209,16 @@
     }
     @warn "This mixin is deprecated";
 }
+
+
+@mixin font-heading() {
+    margin-bottom: 0.7em;
+    font-family: $font-family-sans;
+    font-size: font-size(22px);
+    font-weight: font-weight(bold);
+}
+
+@mixin font-content() {
+    font-size: font-size(18px);
+    font-weight: font-weight(regular);
+}

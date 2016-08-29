@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import {connect} from 'react-redux';
 import classNames from 'classnames';
-import PureComponent from '../../base/PureComponent';
 import {toggleNavAction} from './actions';
 
 import Burger from '../../components/Burger';

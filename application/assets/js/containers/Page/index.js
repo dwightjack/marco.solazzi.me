@@ -1,5 +1,4 @@
-import React from 'react';
-import PureComponent from '../../base/PureComponent';
+import React, { PureComponent } from 'react';
 
 import './_page.scss';
 

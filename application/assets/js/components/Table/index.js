@@ -1,9 +1,6 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import omit from 'lodash/omit';
 import isPlainObject from 'lodash/isPlainObject';
-
-
-import PureComponent from '../../base/PureComponent';
 import Time from '../Time';
 
 import './_table.scss';

@@ -1,0 +1,26 @@
+@import "mixins";
+
+.c-data-list {
+    display: flex;
+    margin: 0 rem(-20px);
+    padding: 0;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.c-data-list__item {
+    max-width: 50%;
+    margin: 0;
+    padding: 0 rem(20px) rem(30px);
+    flex: 1 0 40%;
+
+}
+
+.c-data-list__label {
+    @include font-heading;
+    display: block;
+}
+
+.c-data-list__body {
+    @include font-content;
+}

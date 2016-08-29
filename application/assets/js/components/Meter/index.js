@@ -1,5 +1,8 @@
 import React from 'react';
 
+
+import './_meter.scss';
+
 const Meter = ({label, value}) => (
     <div className="c-meter">
         <span className="c-meter__label">{label}</span>

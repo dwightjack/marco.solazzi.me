@@ -4,8 +4,8 @@ $table-list-gutter-v: 50px;
 
 .c-table-list {
     @include clearfix;
-    margin-right: rem($table-list-gutter-v * -1);
-    margin-left: rem($table-list-gutter-v * -1);
+    //margin-right: rem($table-list-gutter-v * -1);
+    //margin-left: rem($table-list-gutter-v * -1);
 
     > .c-table {
         margin-bottom: rem(70px);
