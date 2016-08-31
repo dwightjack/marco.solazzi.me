@@ -5,22 +5,22 @@
     position: relative;
     margin-bottom: em(20px);
     transition-delay: inherit;
+
+
 }
 
 .c-meter__label {
-    display: inline-block;
+    display: block;
     padding: em(1px) em(16px) em(1px) em(8px);
     white-space: nowrap;
     transition: all 250ms ease-out;
 
     .c-data-list__item:hover & {
         color: $color-light;
-
     }
-
 }
 
-.c-meter__value {
+.c-meter__bar {
     position: absolute;
     top: 0;
     left: 0;
@@ -29,65 +29,132 @@
     width: 100%;
     height: 100%;
     background-color: transparent;
+    font-weight: font-weight(regular);
     transition: all 200ms ease-out;
 
-    appearance: none;
-
-    .c-data-list__item:hover & {
-        background-color: rgba($color-link, 0.4);
-        transition-delay: inherit;
-
-        &:before {
-            opacity: 0.9;
-            transform: scaleY(1);
-
-        }
-
-        &:after {
-            opacity: 1;
-            transform: translateX(0);
-            transition-delay: inherit;
-        }
+    &::before {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: z-index(avove);
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $color-link;
+        content: "";
+        transform: scaleY(0);
+        transform-origin: 0 100%;
+        transition: all 200ms ease-out;
     }
 
-    &:before {
+    &::after {
         position: absolute;
         bottom: 0;
         left: 0;
         z-index: z-index(avove);
         opacity: 0.4;
         height: 100%;
-        background-color: $color-link;
+        background-color: rgba($color-link, 0.6);
         content: "";
         transform: scaleY(0.2);
         transform-origin: 0 120%;
-        transition: all 200ms ease-out;
+        //transition: all 200ms ease-out;
+
+        animation: bar-down 0.5s;
+        animation-fill-mode: forwards;
     }
 
+    .c-data-list__item:hover & {
 
-    &:after {
-        position: absolute;
-        top: 100%;
+        &::before {
+            opacity: 0.4;
+            transform: scaleY(1);
+        }
+
+        &::after {
+            //opacity: 0.9;
+            //transform: scaleY(1);
+            animation: bar-up 1s;
+            animation-fill-mode: forwards;
+        }
+
+    }
+}
+
+@keyframes bar-up {
+    0% {
+        opacity: 0.4;
+        transform: scaleY(0.2);
+    }
+
+    50% {
         opacity: 0;
-        height: 0.7em;
-        margin-top: 2px;
-        margin-right: 1px;
-        padding-right: 5px;
-        background-image: linear-gradient(to left, currentColor 0, transparent 1px);
-        font-size: em(10px);
-        content: attr(value)"%";
-        transform: translateX(-3em);
-        transition: all 180ms ease-out;
-
+        transform: translateY(-2px) scaleY(0.2);
     }
 
-    @for $value from 1 through 10 {
-        &[value="#{($value * 10)}"]:before {
-            width: percentage($value / 10);
-        }
+    50.0000001% {
+        opacity: 0;
+        transform: scaleX(0);
+    }
 
-        &[value="#{($value * 10)}"]:after {
-            right: percentage((10 - $value) / 10);
-        }
+    70% {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+}
+
+@keyframes bar-down {
+    0% {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+
+    100% {
+        opacity: 0.4;
+        transform: scaleY(0.2);
+    }
+}
+
+@for $value from 1 through 10 {
+    .c-meter__bar--#{($value * 10)}::after {
+        width: percentage($value / 10);
+    }
+
+    .c-meter__bar--#{($value * 10)} > .c-meter__value {
+        right: percentage((10 - $value) / 10);
+    }
+}
+
+.c-meter__value {
+    position: absolute;
+    top: 100%;
+    opacity: 0;
+    height: 0.7em;
+    margin-top: 2px;
+    margin-right: 1px;
+    padding-right: 5px;
+    border-right: 1px solid currentColor;
+    font-size: em(10px);
+    transform: translateY(-0.5em);
+    transition: all 200ms ease-out;
+
+
+    .c-data-list__item:hover & {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 500ms;
+    }
+
+}
+
+
+.c-meter--high {
+    .c-meter__bar::after {
+        background-color: $color-link;
     }
 }

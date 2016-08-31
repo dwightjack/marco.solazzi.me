@@ -1,12 +1,15 @@
 import React from 'react';
+import classNames from 'classnames';
 
 
 import './_meter.scss';
 
 const Meter = ({label, value}) => (
-    <div className="c-meter">
+    <div className={classNames('c-meter', {'c-meter--high': value > 80})}>
         <span className="c-meter__label">{label}</span>
-        <meter className="c-meter__value" min="0" max="100" value={value} />
+        <strong className={`c-meter__bar c-meter__bar--${value}`}>
+            <span className="c-meter__value">{value}%</span>
+        </strong>
     </div>
 );
 
