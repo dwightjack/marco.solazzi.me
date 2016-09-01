@@ -2,11 +2,15 @@
 @import "mixins";
 
 .c-page {
-    position: relative;
+    //position: relative;
     min-height: 100vh;
 }
 
 .c-page__body {
     min-height: inherit;
-    padding: vh(60px) vw($page-gutter);
+    padding: vh(60px) vw($page-gutter) 0;
+
+    > :last-child {
+        padding-bottom: vh(60px);
+    }
 }

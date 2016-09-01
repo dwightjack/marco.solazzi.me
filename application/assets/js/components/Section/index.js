@@ -31,6 +31,7 @@ export default class Section extends PureComponent {
             const rect = this.title.getBoundingClientRect();
             this.offsetTop = rect.top - offset;
             this.maxScroll = root.offsetTop + root.offsetHeight - rect.height - offset;
+            console.log(this.props.title, root, root.offsetTop, root.offsetHeight, rect.height, this.maxScroll);
         }, 100);
 
         window.addEventListener('scroll', this.setTitlePosition);

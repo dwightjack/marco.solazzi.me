@@ -1,3 +1,4 @@
+@import "colors";
 @import "mixins";
 
 .c-data-list {
@@ -9,16 +10,24 @@
 }
 
 .c-data-list__item {
-    max-width: 50%;
     margin: 0;
     padding: 0 rem(20px) rem(30px);
-    flex: 1 0 40%;
-
+    flex: 0 0 45%;
 }
 
 .c-data-list__label {
     @include font-heading;
     display: block;
+
+    &::before {
+        position: relative;
+        display: inline-block;
+        opacity: 0.6;
+        width: 1em;
+        margin-left: -1em;
+        color: $color-link;
+        content: "+";
+    }
 }
 
 .c-data-list__body {

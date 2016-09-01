@@ -54,7 +54,12 @@
         z-index: z-index(avove);
         opacity: 0.4;
         height: 100%;
-        background-color: rgba($color-link, 0.6);
+        //background-color: rgba($color-link, 0.6);
+        background-image: linear-gradient(
+            to right,
+            rgba($color-link, 0.8) 0,
+            rgba($color-link, 1) 100%
+        );
         content: "";
         transform: scaleY(0.2);
         transform-origin: 0 120%;
@@ -148,13 +153,5 @@
         opacity: 1;
         transform: translateY(0);
         transition-delay: 500ms;
-    }
-
-}
-
-
-.c-meter--high {
-    .c-meter__bar::after {
-        background-color: $color-link;
     }
 }
