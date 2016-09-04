@@ -14,6 +14,7 @@ import SkillList from '../../components/SkillList';
 
 import jobs from '../../database/jobs.json';
 import techSkills from '../../database/skills.tech.json';
+import teamSkills from '../../database/skills.team.json';
 
 import glyph from '../../../images/job-gliph.svg';
 
@@ -38,6 +39,11 @@ const PageSkills = (
     <Page id="skills">
         <Section title="skills.tech">
             <DataList items={techSkills}>
+                <SkillList />
+            </DataList>
+        </Section>
+        <Section title="skills.team">
+            <DataList items={teamSkills}>
                 <SkillList />
             </DataList>
         </Section>

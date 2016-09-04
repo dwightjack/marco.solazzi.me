@@ -6,7 +6,7 @@ import './_skill-list.scss';
 const SkillList = ({data}) => {
     const skillItems = data.map((skill, idx) => (
         <li key={skill.id} className="c-skill-list__item" style={{transitionDelay: `${idx * 150}ms`}}>
-            {skill.level ? <Meter label={skill.label} value={parseInt(skill.level, 10)} /> : skill.label}
+            {skill.level ? <Meter label={skill.label} value={parseInt(skill.level, 10)} /> : <p>{skill.label}</p>}
         </li>
     ));
     return (<ul className="c-skill-list">{skillItems}</ul>);

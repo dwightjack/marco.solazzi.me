@@ -107,21 +107,36 @@
         ]
     },
     {
-        "label": "Tools & Workflow",
+        "label": "Best Practices",
+        "data": [
+            {
+                "id": "progressive",
+                "label": "Progressive Enhancement",
+                "level": 100
+            },
+            {
+                "id": "a11y",
+                "label": "Accessibility",
+                "level": 70
+            },
+            {
+                "id": "responsive",
+                "label": "Responsive Design",
+                "level": 100
+            },
+            {
+                "id": "styleguide",
+                "label": "Styleguide Driven Development",
+                "level": 100
+            }
+        ]
+    },
+    {
+        "label": "Tools",
         "data": [
             {
                 "id": "editors",
                 "label": "Webstorm, Sublime Text, Atom",
-                "level": 100
-            },
-            {
-                "id": "vcs",
-                "label": "Git (git-flow)",
-                "level": 70
-            },
-            {
-                "id": "svn",
-                "label": "SVN",
                 "level": 100
             },
             {

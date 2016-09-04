@@ -1,0 +1,56 @@
+[
+    {
+        "label": "Workflow",
+        "data": [
+            {
+                "id": "scrum",
+                "label": "Scrum",
+                "level": 90
+            },
+            {
+                "id": "lean",
+                "label": "Lean Frontend",
+                "level": 100
+            },
+            {
+                "id": "code-review",
+                "label": "Code Review",
+                "level": 100
+            },
+            {
+                "id": "beer",
+                "label": "After Work Beers",
+                "level": 100
+            }
+        ]
+    }, {
+        "label": "Tools",
+        "data": [
+            {
+                "id": "vcs",
+                "label": "Git (git-flow)",
+                "level": 80
+            },
+            {
+                "id": "svn",
+                "label": "SVN",
+                "level": 100
+            },
+            {
+                "id": "github",
+                "label": "Github / Gitlab",
+                "level": 100
+            },
+            {
+                "id": "redmine",
+                "label": "Redmine",
+                "level": 70
+            },
+            {
+                "id": "jira",
+                "label": "Jira",
+                "level": 100
+            }
+        ]
+    }
+]
