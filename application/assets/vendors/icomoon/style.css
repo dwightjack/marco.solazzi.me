@@ -1,0 +1,40 @@
+.o-ico {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+/* ==========================================
+Single-colored icons can be modified like so:
+.o-ico--name {
+  font-size: 32px;
+  color: red;
+}
+========================================== */
+
+.o-ico--checklist {
+  width: 0.7470703125em;
+}
+
+.o-ico--code {
+  width: 0.875em;
+}
+
+.o-ico--heart {
+  width: 0.75em;
+}
+
+.o-ico--organization {
+  width: 0.875em;
+}
+
+.o-ico--pencil {
+  width: 0.875em;
+}
+
+.o-ico--terminal {
+  width: 0.875em;
+}

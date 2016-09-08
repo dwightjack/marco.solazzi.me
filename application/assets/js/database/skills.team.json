@@ -1,6 +1,7 @@
 [
     {
         "label": "Workflow",
+        "ico": "split",
         "data": [
             {
                 "id": "scrum",
@@ -25,6 +26,7 @@
         ]
     }, {
         "label": "Tools",
+        "ico": "organization",
         "data": [
             {
                 "id": "vcs",

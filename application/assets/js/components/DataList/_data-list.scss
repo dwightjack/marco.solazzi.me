@@ -17,19 +17,51 @@
 
 .c-data-list__label {
     @include font-heading;
+    position: relative;
     display: block;
 
     &::before {
         position: relative;
+        left: -0.5em;
         display: inline-block;
         opacity: 0.6;
         width: 1em;
         margin-left: -1em;
         color: $color-link;
+        text-align: center;
         content: "+";
+        transition: all 250ms;
     }
+}
+
+.c-data-list__ico {
+    position: absolute;
+    top: 50%;
+    left: -1.5em;
+    display: inline-block;
+    opacity: 0;
+    width: 1em;
+    text-align: center;
+    color: $color-link;
+    content: "+";
+    transform: translate(0, -50%) scale(0.2);
+    transition: all 150ms ease-out;
 }
 
 .c-data-list__body {
     @include font-content;
+}
+
+.c-data-list__item:hover {
+
+    .c-data-list__label::before {
+        opacity: 0;
+        transform: scale(1.5);
+    }
+
+    .c-data-list__ico {
+        opacity: 0.6;
+        transform: translate(0, -50%) scale(1);
+        transition-delay: 240ms;
+    }
 }
