@@ -1,6 +1,9 @@
 @import "globals";
 @import "mixins";
 
+
+//@include parallax-init;
+
 .c-section {
     position: relative;
     padding-bottom: rem(90px);
@@ -12,6 +15,8 @@
     left: vw(60px);
     max-width: 35%;
     white-space: nowrap;
+    //@include parallax(-.2);
+
 
     &.is-fixed {
         position: fixed;
@@ -29,4 +34,6 @@
     display: block;
     padding-left: 33%;
     width: 85%;
+    //@include parallax(0.1);
+
 }
