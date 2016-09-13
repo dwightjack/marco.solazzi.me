@@ -44,28 +44,28 @@
     padding: 10vh 0 0;
     list-style: none;
     background-color: $color-link;
+    text-align: center;
     transform: translateX(100%);
     transition: transform 0.3s ease;
-    text-align: center;
 }
 
 .c-nav__route {
     position: relative;
     display: block;
-    padding: 1.5em 1.5em;
-    color: $color-light;
-    text-decoration: none;
-    text-align: left;
     opacity: 0.8;
+    padding: 1.5em;
+    color: $color-light;
     font-family: $font-family-h;
     font-size: font-size(22px);
+    text-align: left;
+    text-decoration: none;
     letter-spacing: 0.05em;
 
     &::before {
         position: relative;
+        left: -0.05em;
         display: inline-block;
         opacity: 0;
-        left: -0.05em;
         content: ".";
         transform: translateX(-0.2em);
         transition: all 0.2s ease;
@@ -73,19 +73,16 @@
 
     &::after {
         position: absolute;
-        //right: 0;
         bottom: 0;
         left: 0;
-        //opacity: 0.4;
-        //border-bottom: 1px solid currentColor;
+        width: 200%;
+        height: 1px;
         background-image: linear-gradient(to left,
             rgba($color-light, 0.4) 0%,
             rgba($color-light, 0.4) 50%,
             rgba($color-light, 0.8) 50.00000001%,
             rgba($color-light, 0.8) 100%
         );
-        width: 200%;
-        height: 1px;
         content: "";
         transform: translateX(-50%);
         transition: all 0.2s ease;
@@ -117,10 +114,5 @@
     .c-nav__menu {
         transform: translateX(0);
         transition-delay: 0.3s;
-    }
-
-    + .c-pagelist,
-    ~ .c-glyph {
-        transform: scale(0.9);
     }
 }

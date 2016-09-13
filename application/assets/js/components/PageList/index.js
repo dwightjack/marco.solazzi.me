@@ -6,7 +6,6 @@ import './_pagelist.scss';
 
 export const PageList = ({children}) => (
     <main className="c-pagelist">
-        <span className="c-pagelist__glyph" />
         {children}
     </main>
 );

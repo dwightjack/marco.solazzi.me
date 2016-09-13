@@ -10,30 +10,30 @@
 }
 
 .c-section__title {
+    @include boost-performance;
     position: absolute;
-    top: 0;
+    top: 10vh;
     left: vw(60px);
     max-width: 35%;
     white-space: nowrap;
-    //@include parallax(-.2);
 
 
     &.is-fixed {
         position: fixed;
-        margin-top: 5vh;
         left: vw(60px + $page-gutter);
+        margin-top: 5vh;
     }
 
     &.is-bottom {
-        top: auto;
+        top: 100%;
         bottom: 0;
     }
 }
 
 .c-section__body {
     display: block;
-    padding-left: 33%;
     width: 85%;
-    //@include parallax(0.1);
+    padding-left: 33%;
+    transition: transform 200ms ease-out;
 
 }

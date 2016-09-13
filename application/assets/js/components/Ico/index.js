@@ -10,7 +10,7 @@ const Ico = ({name, className = ''}) => (
 
 Ico.propTypes = {
     className: React.PropTypes.string,
-    name: React.PropTypes.string.required
+    name: React.PropTypes.string.isRequired
 };
 
 export default Ico;
