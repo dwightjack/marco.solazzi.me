@@ -8,6 +8,7 @@ import Table from '../../components/Table';
 import DevTools from '../DevTools';
 import Page from '../Page';
 import Nav from '../Nav';
+import Wrapper from '../../components/Wrapper';
 import Glyph from '../../components/Glyph';
 import DataList from '../../components/DataList';
 import SkillList from '../../components/SkillList';
@@ -66,11 +67,13 @@ export default class App extends Component {
         return (
             <div>
                 <Nav />
-                <PageList>
-                    <PageJob j={this.jobs} />
-                    {PageSkills}
-                </PageList>
-                <Glyph glyph={glyph} />
+                <Wrapper>
+                    <PageList>
+                        <PageJob j={this.jobs} />
+                        {PageSkills}
+                    </PageList>
+                    <Glyph glyph={glyph} />
+                </Wrapper>
                 <DevTools />
             </div>
         );

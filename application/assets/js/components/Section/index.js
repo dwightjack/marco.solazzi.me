@@ -36,15 +36,16 @@ export default class Section extends PureComponent {
             this.setTitlePosition();
         }, 100);
 
-        window.addEventListener('scroll', this.setTitlePosition);
+        document.querySelector('.c-pagelist').addEventListener('scroll', this.setTitlePosition);
     }
 
     setTitlePosition() {
-        const scrollDiff = this.offsetTop - window.pageYOffset;
-        const scrollAmount = this.rootOffsetTop + parseInt(window.innerHeight * 0.2, 10) - (window.pageYOffset + (window.innerHeight / 2));
+        const scroll = document.querySelector('.c-pagelist').scrollTop; //window.pageYOffset
+        const scrollDiff = this.offsetTop - scroll;
+        const scrollAmount = this.rootOffsetTop + parseInt(window.innerHeight * 0.2, 10) - (scroll + (window.innerHeight / 2));
 
         if (scrollDiff <= 0) {
-            if (window.scrollY < this.maxScroll) {
+            if (scroll < this.maxScroll) {
                 this.setState({inView: true, atBottom: false, scrollAmount});
             } else {
                 this.setState({inView: false, atBottom: true, scrollAmount});

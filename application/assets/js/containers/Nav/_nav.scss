@@ -115,4 +115,12 @@
         transform: translateX(0);
         transition-delay: 0.3s;
     }
+
+    + .o-wrapper {
+        transform: scale(0.95);
+
+        .c-pagelist {
+            overflow-y: hidden !important;
+        }
+    }
 }

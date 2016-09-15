@@ -74,10 +74,12 @@ html {
 
 body {
     min-width: 320px;
+    height: 100vh;
     background: $color-bg;
     color: $color-text;
     font-family: $font-family-base;
-    overflow-x: hidden;
+    //overflow-x: hidden;
+    overflow: hidden;
     line-height: $font-lheight-default / $font-size-default;
 }
 
@@ -303,5 +305,10 @@ a:not([class]) {
    ========================================================================== */
 
 #app-root {
-    min-height: 100vh;
+
+    .c-pagelist {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
 }

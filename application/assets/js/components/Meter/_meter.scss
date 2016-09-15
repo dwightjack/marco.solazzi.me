@@ -6,6 +6,27 @@
     margin-bottom: em(20px);
     transition-delay: inherit;
 
+    //&::after {
+    //    position: absolute;
+    //    top: 3px;
+    //    left: -3px;
+    //    width: 100%;
+    //    height: 100%;
+    //    z-index: z-index(behind);
+    //    content: "";
+    //    border: 4px solid rgba(0, 0, 0, 0.4);
+    //    border-width: 0 0 3px 3px;
+    //    opacity: 0;
+    //    transform: translate(3px, -3px);
+    //    transition: transform 230ms ease-out, opacity 80ms linear;
+    //}
+    //
+    //.c-data-list__item:hover &::after {
+    //    opacity: 1;
+    //    transform: translate(0, 0);
+    //    transition-delay: 1000ms;
+    //}
+
 
 }
 
@@ -13,7 +34,7 @@
     display: block;
     padding: em(1px) em(16px) em(1px) em(8px);
     white-space: nowrap;
-    transition: all 250ms ease-out;
+    transition: color 250ms ease-out;
 
     .c-data-list__item:hover & {
         color: $color-light;
