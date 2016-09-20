@@ -18,11 +18,11 @@ class Table extends PureComponent {
 
     buildRows(rows) {
 
-        return Object.keys(rows).map((key, idx) => {
+        return Object.keys(rows).filter((key) => key.indexOf('_') !== 0).map((key, idx) => {
 
             let value = rows[key];
 
-            if (key === 'to' || key === 'from') {
+            if (key === 'to' || key === 'from' || key === 'date') {
                 value = <td><Time dateTime={value} /></td>;
             } else {
                 value = <td dangerouslySetInnerHTML={{__html: value}} />;
@@ -37,13 +37,19 @@ class Table extends PureComponent {
         });
     }
 
-    renderCaption(caption) {
+    renderCaption(data, caption) {
 
-        if (isPlainObject(caption)) {
-            return <a href={caption.url} target="_blank">{caption.name}</a>;
+        const captionData = data[caption] || '';
+
+        if (isPlainObject(captionData)) {
+            return <a href={captionData.url} target="_blank">{captionData.name}</a>;
         }
 
-        return caption.toString();
+        if (data._link) {
+            return <a href={data._link} target="_blank">{captionData.toString()}</a>;
+        }
+
+        return captionData.toString();
     }
 
     render() {
@@ -51,7 +57,7 @@ class Table extends PureComponent {
         return (
             <article className="c-table">
                 <h3 className="c-table__caption" id={this._id}>
-                    {`${caption}: `}{this.renderCaption(data[caption])}
+                    {`${caption}: `}{this.renderCaption(data, caption)}
                 </h3>
                 <Bracket className="c-table__bracket" />
                 <table className="c-table__data" aria-labelledby={this._id}>

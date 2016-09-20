@@ -13,6 +13,8 @@ import Glyph from '../../components/Glyph';
 import DataList from '../../components/DataList';
 import SkillList from '../../components/SkillList';
 
+import awards from '../../database/public.awards.json';
+import education from '../../database/education.json';
 import jobs from '../../database/jobs.json';
 import techSkills from '../../database/skills.tech.json';
 import teamSkills from '../../database/skills.team.json';
@@ -51,6 +53,26 @@ const PageSkills = (
     </Page>
 );
 
+const pageEducation = (
+    <Page id="education">
+        <Section title="education">
+            <TableList>
+                {education.map((school) => <Table key={school.id} caption="title" data={school} />)}
+            </TableList>
+        </Section>
+    </Page>
+);
+
+const pageAwards = (
+    <Page id="awards">
+        <Section title="public.awards">
+            <TableList>
+                {awards.map((award) => <Table key={award.id} caption="award" data={award} />)}
+            </TableList>
+        </Section>
+    </Page>
+);
+
 export default class App extends Component {
 
     constructor(props) {
@@ -70,7 +92,9 @@ export default class App extends Component {
                 <Wrapper>
                     <PageList>
                         <PageJob j={this.jobs} />
+                        {pageEducation}
                         {PageSkills}
+                        {pageAwards}
                     </PageList>
                     <Glyph glyph={glyph} />
                 </Wrapper>
