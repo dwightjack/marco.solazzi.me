@@ -57,13 +57,13 @@ export default class Section extends PureComponent {
     }
 
     render() {
-        const {children, title, prefix} = this.props;
+        const {children, title, subtitle, prefix} = this.props;
         const {inView, atBottom, scrollAmount} = this.state;
         const titleClass = classNames('c-section__title', {'is-fixed': inView, 'is-bottom': atBottom});
         const style = {transform: `translateY(${scrollAmount * 0.2}px)`};
         return (
             <section className="c-section">
-                <Title className={titleClass} prefix={prefix} title={title} />
+                <Title className={titleClass} prefix={prefix} title={title} subtitle={subtitle} />
                 <div className="c-section__body" style={style}>
                     {children}
                 </div>
@@ -74,6 +74,7 @@ export default class Section extends PureComponent {
 
 Section.propTypes = {
     children: React.PropTypes.node,
-    title: React.PropTypes.string,
+    title: React.PropTypes.string.isRequired,
+    subtitle: React.PropTypes.string,
     prefix: React.PropTypes.string
 };

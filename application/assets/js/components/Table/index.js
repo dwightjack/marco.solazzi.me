@@ -13,8 +13,12 @@ class Table extends PureComponent {
     constructor(props) {
         super(props);
         this._id = `table-${(++id)}`;
+        this.caption = this.renderCaption(props.data, props.caption);
     }
 
+    componentWillUpdate({data, caption}) {
+        this.caption = this.renderCaption(data, caption);
+    }
 
     buildRows(rows) {
 
@@ -37,16 +41,13 @@ class Table extends PureComponent {
         });
     }
 
-    renderCaption(data, caption) {
+    renderCaption(data = {}, caption) {
 
         const captionData = data[caption] || '';
+        const {_link} = data;
 
-        if (isPlainObject(captionData)) {
-            return <a href={captionData.url} target="_blank">{captionData.name}</a>;
-        }
-
-        if (data._link) {
-            return <a href={data._link} target="_blank">{captionData.toString()}</a>;
+        if (_link) {
+            return <a href={_link} target="_blank">{captionData.toString()}</a>;
         }
 
         return captionData.toString();
@@ -57,7 +58,7 @@ class Table extends PureComponent {
         return (
             <article className="c-table">
                 <h3 className="c-table__caption" id={this._id}>
-                    {`${caption}: `}{this.renderCaption(data, caption)}
+                    {`${caption}: `}{this.caption}
                 </h3>
                 <Bracket className="c-table__bracket" />
                 <table className="c-table__data" aria-labelledby={this._id}>

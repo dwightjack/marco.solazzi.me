@@ -1,46 +1,38 @@
 [
     {
         "id": 0,
-        "company": {
-            "name": "AQuest Srl",
-            "url": "http://www.aquest.it/"
-        },
+        "company": "AQuest Srl",
         "from": "2014-12-01",
         "to": null,
         "title": "Senior Frontend Developer",
-        "description": "Working as Senior Developer, Frontend / <abbr title=\"Developer Experience\">DX</abbr> Ops and Technical Evangelist for <abbr title=\"Single Page Applications\">SPA</abbr>s Architecture."
+        "description": "Working as Senior Developer, Frontend / <abbr title=\"Developer Experience\">DX</abbr> Ops and Technical Evangelist for <abbr title=\"Single Page Applications\">SPA</abbr>s Architecture.",
+        "_link": "http://www.aquest.it/"
     },
     {
         "id": 1,
-        "company": {
-            "name": "Intesys Srl",
-            "url": "http://www.intesys.it/"
-        },
+        "company": "Intesys Srl",
         "from": "2009-12-01",
         "to": "2014-12-01",
         "title": "Senior Frontend Developer",
-        "description": "Frontend and PHP Senior Developer, Frontend Advisory Group Leader and WordPress Advisory Group Leader"
+        "description": "Frontend and PHP Senior Developer, Frontend Advisory Group Leader and WordPress Advisory Group Leader",
+        "_link": "http://www.intesys.it/"
     },
     {
         "id": 2,
-        "company": {
-            "name": "HTML.it",
-            "url": "http://www.html.it/"
-        },
+        "company": "HTML.it",
         "from": "2009-07-04",
         "to": "2014-09-30",
         "title": "Freelance JavaScript Columnist",
-        "description": "I wrote guides, tutorials and technical articles about JavaScript"
+        "description": "I wrote guides, tutorials and technical articles about JavaScript",
+        "_link": "http://www.html.it/"
     },
     {
         "id": 3,
-        "company": {
-            "name": "Promobit Communications Srl",
-            "url": "http://www.promobit.it/"
-        },
+        "company": "Promobit Communications Srl",
         "from": "2005-07-04",
         "to": "2009-12-01",
         "title": "Frontend Web Developer && Full Stack Web Developer",
-        "description": "Full Stack Web Developer, System Administrator and Web Development Area Manager"
+        "description": "Full Stack Web Developer, System Administrator and Web Development Area Manager",
+        "_link": "http://www.promobit.it/"
     }
 ]

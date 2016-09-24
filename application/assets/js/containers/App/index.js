@@ -13,7 +13,8 @@ import Glyph from '../../components/Glyph';
 import DataList from '../../components/DataList';
 import SkillList from '../../components/SkillList';
 
-import awards from '../../database/public.awards.json';
+import works from '../../database/portfolio.works.json';
+import talks from '../../database/portfolio.talks.json';
 import education from '../../database/education.json';
 import jobs from '../../database/jobs.json';
 import techSkills from '../../database/skills.tech.json';
@@ -40,12 +41,18 @@ const PageJob = ({j}) => (
 
 const PageSkills = (
     <Page id="skills">
-        <Section title="skills.tech">
+        <Section
+            title="skills.tech"
+            subtitle="Technological stack"
+        >
             <DataList items={techSkills}>
                 <SkillList />
             </DataList>
         </Section>
-        <Section title="skills.team">
+        <Section
+            title="skills.team"
+            subtitle="Teamwork skills and tools"
+        >
             <DataList items={teamSkills}>
                 <SkillList />
             </DataList>
@@ -55,7 +62,10 @@ const PageSkills = (
 
 const pageEducation = (
     <Page id="education">
-        <Section title="education">
+        <Section
+            title="education"
+            subtitle="Learning never ends"
+        >
             <TableList>
                 {education.map((school) => <Table key={school.id} caption="title" data={school} />)}
             </TableList>
@@ -63,11 +73,27 @@ const pageEducation = (
     </Page>
 );
 
-const pageAwards = (
+const pagePortfolioWorks = (
     <Page id="awards">
-        <Section title="public.awards">
+        <Section
+            title="portfolio.works"
+            subtitle="Latest agency projects"
+        >
             <TableList>
-                {awards.map((award) => <Table key={award.id} caption="award" data={award} />)}
+                {works.map((work) => <Table key={work.id} caption="project" data={work} />)}
+            </TableList>
+        </Section>
+    </Page>
+);
+
+const pagePortfolioTalks = (
+    <Page id="talks">
+        <Section
+            title="portfolio.talks"
+            subtitle="Sharing the knowledge"
+        >
+            <TableList>
+                {talks.map((talk) => <Table key={talk.id} caption="title" data={talk} />)}
             </TableList>
         </Section>
     </Page>
@@ -94,7 +120,8 @@ export default class App extends Component {
                         <PageJob j={this.jobs} />
                         {pageEducation}
                         {PageSkills}
-                        {pageAwards}
+                        {pagePortfolioWorks}
+                        {pagePortfolioTalks}
                     </PageList>
                     <Glyph glyph={glyph} />
                 </Wrapper>

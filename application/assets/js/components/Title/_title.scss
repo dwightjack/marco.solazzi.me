@@ -37,3 +37,11 @@ $title-size: 32px;
         transform-origin: 0 50%;
     }
 }
+
+
+.o-title--sub {
+    margin-top: 0.8em;
+
+    //text-align: right;
+    font-size: font-size($title-size / 2);
+}
