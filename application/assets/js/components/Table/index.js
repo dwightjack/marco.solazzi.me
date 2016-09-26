@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import omit from 'lodash/omit';
-import isPlainObject from 'lodash/isPlainObject';
 import Time from '../Time';
+import { AnchorIco } from '../Anchor';
 
 import './_table.scss';
 import Bracket from 'babel!svg-react!../../../images/bracket-left.svg?name=Bracket';
@@ -53,8 +53,24 @@ class Table extends PureComponent {
         return captionData.toString();
     }
 
+    metaTitle(type, title = '') {
+
+        switch (type) {
+        case 'video':
+            return `Watch video for: ${title}`;
+
+        case 'slides':
+            return `Slides for: ${title}`;
+
+        default:
+            return '';
+        }
+    }
+
     render() {
         const {caption, data = {}} = this.props;
+        const {_meta = []} = data;
+
         return (
             <article className="c-table">
                 <h3 className="c-table__caption" id={this._id}>
@@ -66,6 +82,11 @@ class Table extends PureComponent {
                         {this.buildRows(omit(data, [caption, 'id']))}
                     </tbody>
                 </table>
+                <footer className="c-table__footer">
+                    {_meta.map(({type, link}) => (
+                        <AnchorIco link={link} ico={type} label={type} title={this.metaTitle(type, data[caption])} />
+                    ))}
+                </footer>
             </article>
         );
     }
