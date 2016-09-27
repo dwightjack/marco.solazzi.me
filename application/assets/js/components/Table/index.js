@@ -83,8 +83,8 @@ class Table extends PureComponent {
                     </tbody>
                 </table>
                 <footer className="c-table__footer">
-                    {_meta.map(({type, link}) => (
-                        <AnchorIco link={link} ico={type} label={type} title={this.metaTitle(type, data[caption])} />
+                    {_meta.map(({type, link, label}) => (
+                        <AnchorIco link={link} ico={type} label={label || type} title={this.metaTitle(type, data[caption])} />
                     ))}
                 </footer>
             </article>

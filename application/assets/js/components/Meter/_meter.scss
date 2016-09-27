@@ -165,7 +165,7 @@
     margin-right: 1px;
     padding-right: 5px;
     border-right: 1px solid currentColor;
-    font-size: em(10px);
+    font-size: em(font-size(xs, false));
     transform: translateY(-0.5em);
     transition: all 200ms ease-out;
 

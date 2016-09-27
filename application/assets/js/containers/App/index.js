@@ -9,6 +9,7 @@ import DevTools from '../DevTools';
 import Page from '../Page';
 import Nav from '../Nav';
 import Wrapper from '../../components/Wrapper';
+import Cover from '../../components/Cover';
 import Glyph from '../../components/Glyph';
 import DataList from '../../components/DataList';
 import SkillList from '../../components/SkillList';
@@ -116,6 +117,7 @@ export default class App extends Component {
             <div>
                 <Nav />
                 <Wrapper>
+                    <Cover />
                     <PageList>
                         <PageJob j={this.jobs} />
                         {pageEducation}

@@ -2,7 +2,8 @@
 @import "fonts";
 @import "mixins";
 
-$title-size: 32px;
+$title-size: font-size(l, false);
+
 
 .o-title {
     margin-top: 0;
@@ -43,5 +44,5 @@ $title-size: 32px;
     margin-top: 0.8em;
 
     //text-align: right;
-    font-size: font-size($title-size / 2);
+    font-size: font-size(m);
 }

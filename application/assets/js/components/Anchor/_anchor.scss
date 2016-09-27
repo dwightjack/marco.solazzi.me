@@ -2,13 +2,18 @@
 @import "colors";
 
 .o-anchor {
-    font-size: font-size(14px);
+    font-size: font-size(s);
     text-decoration: none;
     color: currentColor;
 
     + .o-anchor {
         margin-left: 1em;
     }
+}
+
+.o-anchor__ico {
+    display: inline-block;
+    margin-top: -0.1em;
 }
 
 .o-anchor__label {
@@ -23,6 +28,7 @@
         bottom: -0.1em;
         display: inline-block;
         width: 0.5em;
+        margin-right: 0.1em;
         border-bottom: 2px solid currentColor;
         content: "";
     }

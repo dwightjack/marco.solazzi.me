@@ -1,0 +1,44 @@
+@import "colors";
+@import "mixins";
+
+.c-cover {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+}
+
+.c-cover__body {
+    font-size: font-size(xl);
+    font-weight: font-weight(regular);
+    flex: 0 0 50%;
+    white-space: pre;
+
+    > * {
+        display: block;
+    }
+
+    mark {
+        position: relative;
+        display: inline-block;
+        //margin: 0 0.1em;
+        padding: 0 0.2em 0.1em;
+        background-color: transparent;
+        color: $color-light;
+        line-height: 1;
+
+        &::after {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: z-index(behind);
+            background-color: $color-link;
+            content: "";
+        }
+    }
+}

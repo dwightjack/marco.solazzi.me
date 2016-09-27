@@ -15,6 +15,10 @@ Single-colored icons can be modified like so:
 }
 ========================================== */
 
+.o-ico--award {
+  width: 0.9285712447017431em;
+}
+
 .o-ico--video {
   width: 1.071429569274187em;
 }
