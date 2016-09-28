@@ -25,11 +25,17 @@ export class Nav extends PureComponent {
                     <li className="c-nav__item">
                         <a href="#" className="c-nav__route">Home</a>
                     </li>
-                    <li>
+                    <li className="c-nav__item">
                         <a href="#" className="c-nav__route">Jobs</a>
                     </li>
-                    <li>
+                    <li className="c-nav__item">
+                        <a href="#" className="c-nav__route">Education</a>
+                    </li>
+                    <li className="c-nav__item">
                         <a href="#" className="c-nav__route">Skills</a>
+                    </li>
+                    <li className="c-nav__item">
+                        <a href="#" className="c-nav__route">Public</a>
                     </li>
                 </ul>
             </nav>
