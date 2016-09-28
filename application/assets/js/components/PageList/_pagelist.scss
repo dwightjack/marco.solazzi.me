@@ -1,4 +1,13 @@
+@import "colors";
+@import "mixins";
+
 .c-pagelist {
     position: relative;
-    min-height: 100vh;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    .c-page:last-child .c-section:last-child {
+        min-height: 100vh;
+    }
 }

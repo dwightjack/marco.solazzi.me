@@ -1,23 +1,18 @@
 import React from 'react';
 
-import PureComponent from '../../base/PureComponent';
+import pure from '../../base/pure';
 import './_pagelist.scss';
 
-export default class PageList extends PureComponent {
 
-    render() {
-
-        const {children} = this.props;
-
-        return (
-            <main className="c-pagelist">
-                {children}
-            </main>
-        );
-    }
-
-}
+export const PageList = ({children}) => (
+    <main className="c-pagelist">
+        {children}
+    </main>
+);
 
 PageList.propTypes = {
-    children: React.PropTypes.node
+    children: React.PropTypes.node,
+    glyph: React.PropTypes.string
 };
+
+export default pure(PageList);

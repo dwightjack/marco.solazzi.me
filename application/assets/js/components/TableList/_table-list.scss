@@ -4,31 +4,10 @@ $table-list-gutter-v: 50px;
 
 .c-table-list {
     @include clearfix;
-    margin-right: rem($table-list-gutter-v * -1);
-    margin-left: rem($table-list-gutter-v * -1);
-    //display: flex;
-    //align-items: flex-start;
-    //justify-content: flex-start;
-    //flex-wrap: wrap;
+    //margin-right: rem($table-list-gutter-v * -1);
+    //margin-left: rem($table-list-gutter-v * -1);
 
     > .c-table {
-        float: left;
-        max-width: 50%;
-        padding-right: rem($table-list-gutter-v);
-        padding-left: rem($table-list-gutter-v);
-
-        &:first-child {
-            margin-top: 0;
-        }
-
-        &:nth-child(2n) ~ .c-table {
-            margin-top: rem(70px);
-        }
-
-        &:nth-child(2n + 1) {
-            clear: both;
-        }
-
-
+        margin-bottom: rem(70px);
     }
 }

@@ -1,0 +1,68 @@
+.o-ico {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+/* ==========================================
+Single-colored icons can be modified like so:
+.o-ico--name {
+  font-size: 32px;
+  color: red;
+}
+========================================== */
+
+.o-ico--award {
+  width: 0.9285712447017431em;
+}
+
+.o-ico--video {
+  width: 1.071429569274187em;
+}
+
+.o-ico--twitter {
+  width: 0.9285703301429749em;
+}
+
+.o-ico--github {
+  width: 0.8571436107158661em;
+}
+
+.o-ico--link {
+  width: 0.9285722523927689em;
+}
+
+.o-ico--linkedin {
+  width: 0.8571425303816795em;
+}
+
+.o-ico--slides {
+  width: 0.9999999590218067em;
+}
+
+.o-ico--checklist {
+  width: 0.7470703125em;
+}
+
+.o-ico--code {
+  width: 0.875em;
+}
+
+.o-ico--heart {
+  width: 0.75em;
+}
+
+.o-ico--organization {
+  width: 0.875em;
+}
+
+.o-ico--pencil {
+  width: 0.875em;
+}
+
+.o-ico--terminal {
+  width: 0.875em;
+}

@@ -1,22 +1,16 @@
+@import "globals";
 @import "mixins";
 
 .c-page {
-    position: relative;
+    //position: relative;
     min-height: 100vh;
-    //overflow: hidden;
-}
-
-.c-page__glyph {
-    position: absolute;
-    top: -10%;
-    bottom: 0;
-    left: 30vw;
-    width: 100%;
-    background-repeat: no-repeat;
-    background-position: 0 0;
 }
 
 .c-page__body {
     min-height: inherit;
-    padding: vh(60px) vw(70);
+    padding: vh(60px) vw($page-gutter) 0;
+
+    > :last-child {
+        padding-bottom: vh(60px);
+    }
 }

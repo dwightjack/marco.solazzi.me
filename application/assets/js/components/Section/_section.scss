@@ -1,13 +1,38 @@
+@import "globals";
 @import "mixins";
 
+
+//@include parallax-init;
+
 .c-section {
-    margin-bottom: rem(90px);
+    position: relative;
+    padding-bottom: rem(90px);
 }
 
 .c-section__title {
-    margin-bottom: em(42px, 32px);
+    @include boost-performance;
+    position: absolute;
+    top: 10vh;
+    left: vw(60px);
+    max-width: 35%;
+    white-space: nowrap;
+
+
+    &.is-fixed {
+        position: fixed;
+        left: vw(60px + $page-gutter);
+        margin-top: 5vh;
+    }
+
+    &.is-bottom {
+        top: 100%;
+        bottom: 0;
+    }
 }
 
 .c-section__body {
-    margin-left: rem(65px);
+    display: block;
+    width: 85%;
+    padding-left: 33%;
+    transition: transform 200ms ease-out;
 }

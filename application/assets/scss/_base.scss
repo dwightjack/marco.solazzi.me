@@ -58,7 +58,7 @@ textarea {
 html {
     //https://www.smashingmagazine.com/2016/05/fluid-typography/
     $font-min: $font-size-default;
-    $font-max: 24px;
+    $font-max: 20px;
     $font-diff: ($font-max - $font-min);
     $breakpoint-min: 1280px;
     $breakpoint-max: 1920px;
@@ -74,10 +74,12 @@ html {
 
 body {
     min-width: 320px;
+    height: 100vh;
     background: $color-bg;
     color: $color-text;
     font-family: $font-family-base;
-    overflow-x: hidden;
+    //overflow-x: hidden;
+    overflow: hidden;
     line-height: $font-lheight-default / $font-size-default;
 }
 
@@ -95,6 +97,19 @@ body {
     color: currentColor;
     background-color: rgba($color-link, 0.2);
     text-shadow: none;
+}
+
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: darken($color-link, 10%);
+}
+
+::-webkit-scrollbar-track {
+    background: $color-link;
 }
 
 // Remove the gap between images and the bottom of their containers: h5bp.com/i/440
@@ -302,6 +317,3 @@ a:not([class]) {
    ## Layout settings
    ========================================================================== */
 
-#app-root {
-    min-height: 100vh;
-}

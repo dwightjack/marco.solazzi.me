@@ -39,13 +39,6 @@
         }
     },
 
-    "settings": {
-        "import/ignore": [
-            "node_modules",
-            ".(json|scss)$"
-        ]
-    },
-
     "rules": {
         /**
          * ES6
@@ -61,6 +54,8 @@
         "import/no-unresolved": [2, { "ignore": ["(png|jpg|gif|svg)[?]*(.*)$", "s?css$"] }],
 
         "react/prefer-stateless-function": 0,
-        "react/jsx-indent": [2, 4]
+        "react/jsx-indent": [2, 4],
+        "react/jsx-indent-props": [2, 4],
+        "max-len": 0
     }
 }
