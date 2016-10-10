@@ -38,6 +38,7 @@ $c-table-row-indent: 0.3em;
 
 .c-table__data {
     @include font-content;
+    width: 90%;
     text-align: left;
     vertical-align: top;
 
@@ -51,12 +52,6 @@ $c-table-row-indent: 0.3em;
         display: inline;
         font-weight: font-weight(bold);
         vertical-align: top;
-
-        &:before {
-            display: inline-block;
-            margin-left: $c-table-row-indent * -1;
-            content: ". ";
-        }
     }
 
     td {
@@ -64,9 +59,7 @@ $c-table-row-indent: 0.3em;
         vertical-align: top;
     }
 
-    th + td:before {
-        content: ": ";
-    }
+
 
     tr[data-row="title"] {
         padding-top: 0.5em;
@@ -79,3 +72,37 @@ $c-table-row-indent: 0.3em;
     margin-left: 0.5em;
 }
 
+
+
+.c-table--brackets {
+
+    .c-table__data {
+
+        th:before {
+            display: inline-block;
+            margin-left: $c-table-row-indent * -1;
+            content: ". ";
+        }
+
+        th + td:before {
+            content: ": ";
+        }
+    }
+}
+
+.c-table--ico {
+
+    th,
+    td {
+        line-height: 1.7em;
+    }
+
+    th .o-ico {
+        font-size: 1.4em;
+        line-height: inherit;
+    }
+
+    td {
+        padding-left: 0.2em;
+    }
+}

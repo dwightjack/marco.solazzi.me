@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import omit from 'lodash/omit';
+import classnames from 'classnames';
 import Time from '../Time';
+import Ico from '../Ico';
 import { AnchorIco } from '../Anchor';
 
 import './_table.scss';
@@ -22,7 +24,7 @@ class Table extends PureComponent {
 
     buildRows(rows) {
 
-        return Object.keys(rows).filter((key) => key.indexOf('_') !== 0).map((key, idx) => {
+        return Object.keys(rows).filter((key) => key.indexOf('_') !== 0).map((key) => {
 
             let value = rows[key];
 
@@ -41,18 +43,6 @@ class Table extends PureComponent {
         });
     }
 
-    renderCaption(data = {}, caption) {
-
-        const captionData = data[caption] || '';
-        const {_link} = data;
-
-        if (_link) {
-            return <a href={_link} target="_blank">{captionData.toString()}</a>;
-        }
-
-        return captionData.toString();
-    }
-
     metaTitle(type, title = '') {
 
         switch (type) {
@@ -67,16 +57,30 @@ class Table extends PureComponent {
         }
     }
 
+    renderCaption(data = {}, caption) {
+
+        const captionData = data[caption] || '';
+        const {_link} = data;
+
+        if (_link) {
+            return <a href={_link} target="_blank" rel="noopener noreferrer">{captionData.toString()}</a>;
+        }
+
+        return captionData.toString();
+    }
+
+
     render() {
         const {caption, data = {}} = this.props;
         const {_meta = []} = data;
+        const styles = this.props.styles.map((style) => `c-table--${style}`).join(' ');
 
         return (
-            <article className="c-table">
-                <h3 className="c-table__caption" id={this._id}>
+            <article className={classnames('c-table', styles)}>
+                {caption ? <h3 className="c-table__caption" id={this._id}>
                     {`${caption}: `}{this.caption}
-                </h3>
-                <Bracket className="c-table__bracket" />
+                </h3> : null}
+                {styles.indexOf('c-table--brackets') !== -1 ? <Bracket className="c-table__bracket" /> : null}
                 <table className="c-table__data" aria-labelledby={this._id}>
                     <tbody>
                         {this.buildRows(omit(data, [caption, 'id']))}
@@ -93,8 +97,39 @@ class Table extends PureComponent {
 }
 
 Table.propTypes = {
-    caption: React.PropTypes.string.isRequired,
-    data: React.PropTypes.object
+    caption: React.PropTypes.string,
+    data: React.PropTypes.object,
+    styles: React.PropTypes.arrayOf(React.PropTypes.string)
+};
+
+Table.defaultProps = {
+    styles: ['brackets']
+};
+
+
+export class IcoTable extends Table {
+    buildRows(rows) {
+
+        return Object.keys(rows).filter((key) => key.indexOf('_') !== 0).map((key) => {
+
+            let value = rows[key];
+
+            return (
+                <tr key={key} data-row={key}>
+                    <th scope="row">
+                        <Ico name={key} />
+                    </th>
+                    <td dangerouslySetInnerHTML={{__html: value}} />
+                </tr>
+            );
+        });
+    }
+}
+
+IcoTable.propTypes = Table.propTypes;
+
+IcoTable.defaultProps = {
+    styles: ['ico']
 };
 
 export default Table;
