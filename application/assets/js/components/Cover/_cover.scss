@@ -11,7 +11,24 @@
 
 }
 
+.c-cover__title {
+    font-weight: 700;
+    font-size: font-size(45px);
+}
+
 .c-cover__body {
+    flex: 1 1 100%;
+
+    .c-section__body > * {
+        margin-bottom: rem(60px);
+
+        &::last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.c-cover__intro {
     font-size: font-size(xl);
     font-weight: font-weight(regular);
     flex: 0 0 50%;
