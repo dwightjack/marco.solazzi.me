@@ -125,7 +125,8 @@ export default class App extends Component {
                         {pagePortfolioWorks}
                         {pagePortfolioTalks}
                     </PageList>
-                    <Glyph glyph={glyph} />
+                    { /*<Glyph glyph={glyph} /> */}
+                    <div className="pattern" />
                 </Wrapper>
                 <DevTools />
             </div>
