@@ -15,6 +15,7 @@ $burger-bar-spacing: 4px;
     background-color: currentColor;
     content: "";
     transform-origin: 100% 0;
+    //transition: all 0.2s ease-out;
 }
 
 .o-burger {
@@ -25,7 +26,7 @@ $burger-bar-spacing: 4px;
     border: 0;
     background-color: transparent;
     background-image: none;
-    color: lighten($color-dark, 50);
+    color: lighten($color-link, 30);
     cursor: pointer;
     transition: transform 0.2s ease;
 
@@ -61,6 +62,8 @@ $burger-bar-spacing: 4px;
 .o-burger:active {
     outline: 0;
 }
+
+
 .o-burger.is-active,
 .o-burger:hover {
 

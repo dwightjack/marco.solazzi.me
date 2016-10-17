@@ -157,9 +157,14 @@
         transform: translateX(0);
         opacity: 1;
     }
+    99.999% {
+        transform: translateX(-10%);
+        opacity: 0;
+    }
     100% {
         transform: translateX(-10%);
         opacity: 0;
+        visibility: hidden;
     }
 }
 

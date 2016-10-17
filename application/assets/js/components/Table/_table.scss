@@ -92,6 +92,17 @@ $c-table-row-indent: 0.3em;
 
 .c-table--ico {
 
+    &::before {
+        position: absolute;
+        top: -0.4em;
+        left: -0.4em;
+        content:"\201c";
+        color: $color-link;
+        opacity: 0.4;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 4em;
+    }
+
     th,
     td {
         line-height: 1.7em;

@@ -6,6 +6,8 @@
    ========================================================================== */
 
 @import "mixins";
+@import "fonts";
+@import "colors";
 
 /* ==========================================================================
    Section Title
@@ -211,6 +213,39 @@
         .u-hidden--until-#{$mq-key} {
             display: none !important;
             visibility: hidden !important;
+        }
+    }
+}
+
+
+a.u-arrowlink {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: currentColor;
+    transition: all 0.25s ease-out;
+
+    &::before {
+        position: relative;
+        top: -0.2em;
+        display: inline-block;
+        width: 2em;
+        margin-right: -2em;
+        content: "\203A\203A";
+        font-family: $font-family-typescript;
+        font-weight: bold;
+        opacity: 0;
+        transition: inherit;
+        color: $color-link;
+        font-size: 0.9em;
+    }
+
+    &:hover {
+        transform: translateX(1.2em);
+
+        &::before {
+            transform: translateX(-1.2em);
+            opacity: 1;
         }
     }
 }

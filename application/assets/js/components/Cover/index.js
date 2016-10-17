@@ -17,9 +17,9 @@ const data = {
 };
 
 const contacts = {
-    twitter: '@dwightjack',
+    twitter: '<a href="https://twitter.com/dwightjack" class="u-arrowlink">@dwightjack</a>',
     pencil: 'marco@solazzi.me',
-    github: 'dwightjack',
+    github: '<a href="#" class="u-arrowlink">dwightjack</a>',
     linkedin: 'in/marcosolazzi'
 };
 
