@@ -88,7 +88,7 @@ class Table extends PureComponent {
                 </table>
                 <footer className="c-table__footer">
                     {_meta.map(({type, link, label}) => (
-                        <AnchorIco link={link} ico={type} label={label || type} title={this.metaTitle(type, data[caption])} />
+                        <AnchorIco className="o-anchor--cursor" link={link} key={link} ico={type} label={label || type} title={this.metaTitle(type, data[caption])} />
                     ))}
                 </footer>
             </article>
@@ -104,32 +104,6 @@ Table.propTypes = {
 
 Table.defaultProps = {
     styles: ['brackets']
-};
-
-
-export class IcoTable extends Table {
-    buildRows(rows) {
-
-        return Object.keys(rows).filter((key) => key.indexOf('_') !== 0).map((key) => {
-
-            let value = rows[key];
-
-            return (
-                <tr key={key} data-row={key}>
-                    <th scope="row">
-                        <Ico name={key} />
-                    </th>
-                    <td dangerouslySetInnerHTML={{__html: value}} />
-                </tr>
-            );
-        });
-    }
-}
-
-IcoTable.propTypes = Table.propTypes;
-
-IcoTable.defaultProps = {
-    styles: ['ico']
 };
 
 export default Table;

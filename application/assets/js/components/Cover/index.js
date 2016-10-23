@@ -2,7 +2,9 @@ import React from 'react';
 
 import './_cover.scss';
 
-import Table, { IcoTable } from '../Table';
+import Table from '../Table';
+import List, { ListItem } from '../List';
+import { AnchorIco } from '../Anchor';
 import Avatar from '../Avatar';
 import pic from '../../../images/marco.jpg';
 import svg from '../../../images/circuits.svg';
@@ -16,12 +18,22 @@ const data = {
     nationality: 'Italian'
 };
 
-const contacts = {
-    twitter: '<a href="https://twitter.com/dwightjack" class="u-arrowlink">@dwightjack</a>',
-    pencil: 'marco@solazzi.me',
-    github: '<a href="#" class="u-arrowlink">dwightjack</a>',
-    linkedin: 'in/marcosolazzi'
-};
+const contacts = (
+    <List>
+        <ListItem>
+            <AnchorIco className="u-link--mark" ico="twitter" label="@dwightjack" link="https://twitter.com/dwightjack" />
+        </ListItem>
+        <ListItem>
+            <AnchorIco className="u-link--mark" ico="pencil" label="marco@solazzi.me" link="mailto:marco@solazzi.me" />
+        </ListItem>
+        <ListItem>
+            <AnchorIco className="u-link--mark" ico="github" label="dwightjack" link="https://github.com/dwightjack" />
+        </ListItem>
+        <ListItem>
+            <AnchorIco className="u-link--mark" ico="linkedin" label="in/marcosolazzi" link="https://it.linkedin.com/in/marcosolazzi" />
+        </ListItem>
+    </List>
+);
 
 const Cover = () => (
 
@@ -44,7 +56,7 @@ const Cover = () => (
                 <Table
                     data={data}
                 />
-                <IcoTable data={contacts} />
+                {contacts}
             </div>
         </section>
     </div>
