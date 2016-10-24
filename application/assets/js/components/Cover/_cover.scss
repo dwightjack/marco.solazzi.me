@@ -2,8 +2,11 @@
 @import "mixins";
 
 .c-cover {
+    position: relative;
+    z-index: z-index(above);
     display: flex;
     align-items: center;
+    flex-wrap: nowrap;
     justify-content: flex-end;
     height: 100vh;
     overflow-x: hidden;
@@ -17,7 +20,7 @@
 }
 
 .c-cover__body {
-    flex: 1 1 100%;
+    flex: 0 0 100%;
 
     .c-section__body > * {
         margin-bottom: rem(60px);
@@ -68,4 +71,22 @@
             content: "";
         }
     }
+}
+
+.coverAnimation-enter {
+  opacity: 1;
+}
+
+.coverAnimation-enter.coverAnimation-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.coverAnimation-leave {
+  opacity: 1;
+}
+
+.coverAnimation-leave.coverAnimation-leave-active {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
 }

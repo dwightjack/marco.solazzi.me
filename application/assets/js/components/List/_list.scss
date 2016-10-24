@@ -29,11 +29,14 @@
         margin-bottom: 0;
     }
 
+    > * {
+        vertical-align: middle;
+    }
+
     .o-ico {
         display: inline-block;
-        margin-right: 0.2em;    
-        font-size: 1.3em;
-        vertical-align: text-top;
+        margin-right: 0.2em;
+        font-size: 1.2em;
     }
 }
 

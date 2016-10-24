@@ -10,8 +10,9 @@ import Page from '../Page';
 import Nav from '../Nav';
 import Wrapper from '../../components/Wrapper';
 import Cover from '../../components/Cover';
-import Glyph from '../../components/Glyph';
+//import Glyph from '../../components/Glyph';
 import DataList from '../../components/DataList';
+import Pattern from '../../components/Pattern';
 import SkillList from '../../components/SkillList';
 
 import works from '../../database/portfolio.works.json';
@@ -22,6 +23,9 @@ import techSkills from '../../database/skills.tech.json';
 import teamSkills from '../../database/skills.team.json';
 
 import glyph from '../../../images/job-gliph.svg';
+
+
+import './_app.scss';
 
 const PageJob = ({j}) => (
     <Page id="job">
@@ -125,10 +129,7 @@ export default class App extends Component {
                         {pagePortfolioWorks}
                         {pagePortfolioTalks}
                     </PageList>
-                    { /*<Glyph glyph={glyph} /> */}
-                    <div className="pattern">
-                        <span></span>
-                    </div>
+                    <Pattern />
                 </Wrapper>
                 <DevTools />
             </div>
