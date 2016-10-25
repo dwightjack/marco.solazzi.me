@@ -1,15 +1,13 @@
 import React, {Component} from 'react';
+import ReactTransitionGroup from 'react-addons-transition-group';
 
 import PageList from '../../components/PageList';
 import Section from '../../components/Section';
 import TableList from '../../components/TableList';
 import Table from '../../components/Table';
 
-import DevTools from '../DevTools';
-import Page from '../Page';
-import Nav from '../Nav';
 import Wrapper from '../../components/Wrapper';
-import Cover from '../../components/Cover';
+
 //import Glyph from '../../components/Glyph';
 import DataList from '../../components/DataList';
 import Pattern from '../../components/Pattern';
@@ -22,8 +20,11 @@ import jobs from '../../database/jobs.json';
 import techSkills from '../../database/skills.tech.json';
 import teamSkills from '../../database/skills.team.json';
 
-import glyph from '../../../images/job-gliph.svg';
-
+import DevTools from '../DevTools';
+import Page from '../Page';
+import Nav from '../Nav';
+import Cover from '../Cover';
+import Intro from '../Intro';
 
 import './_app.scss';
 
@@ -109,19 +110,39 @@ export default class App extends Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            activeGroup: 'intro'
+        };
+
         this.jobs = {
             current: jobs[0],
             previous: jobs.slice(1).map((job) => <Table key={job.id} caption="company" data={job} />)
         };
     }
 
+    componentDidMount() {
+
+        setTimeout(() => {
+            this.setState({activeGroup: 'cover'});
+        }, 2000);
+
+    }
+
     render() {
+
+        const {activeGroup} = this.state;
 
         return (
             <div>
-                <Wrapper>
-                    <Cover />
-                </Wrapper>
+                <Nav />
+                <ReactTransitionGroup
+                    component={Wrapper}
+                >
+                    { activeGroup === 'intro' && <Intro />}
+                    <Cover active={activeGroup === 'cover'} />
+                    { activeGroup !== 'intro' && <Pattern />}
+
+                </ReactTransitionGroup>
                 <DevTools />
             </div>
         );

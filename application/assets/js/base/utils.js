@@ -118,3 +118,34 @@ export const shallowEqual = (objA, objB) => {
 
     return true;
 };
+
+
+/**
+ * Utility to generate ref generation methods and pointers.
+ *
+ * @param {object} ctx - Context to bind the reference to
+ * @param {...refs} references - Base name for the references to generate
+ * @example
+ *  //In constructor
+ *  createRefs(this, 'header', 'body');
+ *
+ *  //In JSX
+ *  <header ref={this.headerRef} />
+ *
+ *  //wherever you want
+ *  this.header
+ *
+ *
+ */
+export const createRefs = (ctx, ...refs) => {
+    refs.forEach((ref) => {
+        const refMethodName = `${ref}Ref`;
+        if (refMethodName in ctx) {
+            console.warn(`Reference method name "${refMethodName}" is already taken`); //eslint-disable-line no-console
+        } else {
+            ctx[refMethodName] = (el) => (ctx[ref] = el); //eslint-disable-line no-param-reassign
+        }
+
+    });
+
+};

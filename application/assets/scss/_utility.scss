@@ -158,6 +158,26 @@
     }
 }
 
+.u-type--mark {
+    position: relative;
+        display: inline-block;
+        padding: 0 0.2em 0.1em;
+        background-color: transparent;
+        color: $color-light;
+        line-height: 1;
+
+        &::after {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: z-index(behind);
+            background-color: $color-link;
+            content: "";
+        }
+}
+
 
 
 /* ==========================================================================
@@ -213,39 +233,6 @@
         .u-hidden--until-#{$mq-key} {
             display: none !important;
             visibility: hidden !important;
-        }
-    }
-}
-
-
-a.u-arrowlink {
-    position: relative;
-    display: inline-block;
-    text-decoration: none;
-    color: currentColor;
-    transition: all 0.25s ease-out;
-
-    &::before {
-        position: relative;
-        top: -0.2em;
-        display: inline-block;
-        width: 2em;
-        margin-right: -2em;
-        content: "\203A\203A";
-        font-family: $font-family-typescript;
-        font-weight: bold;
-        opacity: 0;
-        transition: inherit;
-        color: $color-link;
-        font-size: 0.9em;
-    }
-
-    &:hover {
-        transform: translateX(1.2em);
-
-        &::before {
-            transform: translateX(-1.2em);
-            opacity: 1;
         }
     }
 }

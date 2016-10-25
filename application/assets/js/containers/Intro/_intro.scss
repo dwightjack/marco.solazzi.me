@@ -1,0 +1,27 @@
+@import "mixins";
+
+.c-intro {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: z-index(above);
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    overflow: hidden;
+
+}
+
+.c-intro__body {
+    font-size: font-size(xl);
+    font-weight: font-weight(regular);
+    flex: 0 0 50%;
+    white-space: pre;
+}
+
+.c-intro__line {
+    display: block;
+}
