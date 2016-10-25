@@ -30,7 +30,7 @@ const config = _.assign({}, webpackConf, {
 
     debug: true,
 
-    devtool: '#cheap-module-source-map',
+    devtool: '#source-map',
 
     plugins: webpackConf.plugins.concat([
         // Tell webpack we want hot reloading

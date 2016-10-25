@@ -119,17 +119,8 @@ export default class App extends Component {
 
         return (
             <div>
-                <Nav />
                 <Wrapper>
                     <Cover />
-                    <PageList>
-                        <PageJob j={this.jobs} />
-                        {pageEducation}
-                        {PageSkills}
-                        {pagePortfolioWorks}
-                        {pagePortfolioTalks}
-                    </PageList>
-                    <Pattern />
                 </Wrapper>
                 <DevTools />
             </div>

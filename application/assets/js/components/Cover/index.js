@@ -36,31 +36,41 @@ const contacts = (
     </List>
 );
 
+const setRefs = (refs, ctx) => {
+    refs.forEach((ref) => {
+        ctx[ref + 'Ref'] = (el) => (ctx[ref] = el);
+    });
+
+};
+
 class CoverIntro extends Component {
 
     constructor(props) {
         super(props);
 
-        this.getRootNode = this.getRootNode.bind(this);
+        setRefs(['root'], this);
     }
 
-    getRootNode(el) {
-        this.rootEl = el;
-    }
+    componentWillAppear(callback) {
 
-    componentWillAppear(done) {
-
-
-        TweenMax.set(this.rootEl, {
-            autoApha: 0
+        TweenMax.fromTo(this.root, 1, {
+            autoAlpha: 0
+        }, {
+            autoAlpha: 1,
+            onComplete: callback
         });
-        console.log(this.rootEl);
-        done();
+    }
+
+    componentWillLeave(callback) {
+        TweenMax.to(this.root, 2, {
+            xPercent: -100,
+            onComplete: callback
+        });
     }
 
     render() {
         return (
-            <header className="c-cover__intro h1" ref={this.getRootNode}>
+            <header className="c-cover__intro h1" ref={this.rootRef}>
                 <span>Geeks.query(</span>
                 <span>    '/usr/<mark>marco+solazzi</mark>',</span>
                 <span>    'job=<mark>frontend</mark>'</span>
@@ -72,9 +82,32 @@ class CoverIntro extends Component {
 
 class CoverBody extends Component {
 
+    constructor(props) {
+        super(props);
+
+        setRefs(['root'], this);
+    }
+
+    componentWillEnter(callback) {
+
+        TweenMax.fromTo(this.root, 1, {
+            xPercent: 100
+        }, {
+            xPercent: 0,
+            onComplete: callback
+        });
+    }
+
+    componentWillLeave(callback) {
+        TweenMax.to(this.root, 2, {
+            xPercent: -100,
+            onComplete: callback
+        });
+    }
+
     render() {
         return (
-            <section className="c-section c-cover__body">
+            <section className="c-section c-cover__body" ref={this.rootRef}>
 
                 <Avatar src={pic} className="c-cover__pic" />
 
@@ -102,9 +135,9 @@ class Cover extends Component {
     }
 
     componentDidMount() {
-        /*setTimeout(() => {
+        setTimeout(() => {
             this.setState({step: 'body'});
-        }, 5000);*/
+        }, 5000);
     }
 
     render() {
@@ -113,7 +146,7 @@ class Cover extends Component {
                 component="div"
                 className="c-cover"
             >
-                {this.state.step === 'intro' ? <CoverIntro /> : <CoverBody />}
+                {this.state.step === 'intro' ? <CoverIntro key="intro" /> : <CoverBody key="body" />}
             </ReactTransitionGroup>
         );
     }
