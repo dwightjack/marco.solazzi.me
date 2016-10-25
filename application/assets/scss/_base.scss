@@ -88,13 +88,13 @@ body {
 //Customize the background color to match your design.
 
 ::-moz-selection {
-    color: currentColor;
+    color: darken($color-link, 15%);
     background-color: rgba($color-link, 0.2);
     text-shadow: none;
 }
 
 ::selection {
-    color: currentColor;
+    color: darken($color-link, 15%);
     background-color: rgba($color-link, 0.2);
     text-shadow: none;
 }
@@ -227,6 +227,7 @@ abbr[title] {
     border-bottom: 1px dotted currentColor;
 }
 
+a.u-link--mark,
 a:not([class]) {
     position: relative;
     color: inherit;
@@ -316,4 +317,3 @@ a:not([class]) {
 /* ==========================================================================
    ## Layout settings
    ========================================================================== */
-

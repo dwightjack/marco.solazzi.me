@@ -1,0 +1,42 @@
+@import "fonts";
+@import "colors";
+@import "mixins";
+
+.o-list {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    &::before {
+        position: absolute;
+        top: -0.5em;
+        left: -0.5em;
+        content:"\201c";
+        color: $color-link;
+        opacity: 0.4;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 4em;
+    }
+
+}
+
+.o-list__item {
+    @include font-content;
+    margin-bottom: 0.3em;
+
+    &::last-child {
+        margin-bottom: 0;
+    }
+
+    > * {
+        vertical-align: middle;
+    }
+
+    .o-ico {
+        display: inline-block;
+        margin-right: 0.2em;
+        font-size: 1.2em;
+    }
+}
+
