@@ -8,9 +8,17 @@
 
 .c-page__body {
     min-height: inherit;
-    padding: vh(60px) vw($page-gutter) 0;
+    padding: 0 vw($page-gutter);
 
     > :last-child {
         padding-bottom: vh(60px);
+    }
+
+    > :first-child {
+        padding-top: vh(60px);
+    }
+
+    > :only-child {
+        min-height: inherit;
     }
 }

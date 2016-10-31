@@ -99,7 +99,7 @@ body {
     text-shadow: none;
 }
 
-
+/*
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -111,7 +111,7 @@ body {
 ::-webkit-scrollbar-track {
     background: $color-link;
 }
-
+*/
 // Remove the gap between images and the bottom of their containers: h5bp.com/i/440
 
 audio,
@@ -317,3 +317,11 @@ a:not([class]) {
 /* ==========================================================================
    ## Layout settings
    ========================================================================== */
+
+[data-scrollbar].sticky .scrollbar-track {
+    background: $color-link;
+}
+
+[data-scrollbar] .scrollbar-thumb {
+    background: darken($color-link, 10%);
+}

@@ -1,8 +1,9 @@
 @import "mixins";
 @import "colors";
 
-.o-avatar[class="o-avatar"] { //just when alone...
+.o-avatar{ //just when alone...
     position: relative;
+    margin: 0;
 }
 
 .o-avatar__img {

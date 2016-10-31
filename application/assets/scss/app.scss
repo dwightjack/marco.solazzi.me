@@ -1,8 +1,10 @@
 //base styles and mixins
 @import "normalize-css/normalize";
 
-//uncomment to use custom grid
+@import "smooth-scrollbar/dist/smooth-scrollbar";
 @import "base";
+
+
 
 //utility come last so they can overwrite stuff...
 @import "utility";

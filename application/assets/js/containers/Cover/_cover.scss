@@ -1,3 +1,4 @@
+@import "colors";
 @import "mixins";
 
 .c-cover {
@@ -9,8 +10,8 @@
     justify-content: flex-start;
     width: 100vw;
     height: 100vh;
-    overflow-x: hidden;
-    overflow-y: scroll;
+    overflow: hidden;
+    border-right: 8px solid $color-link;
 
 }
 
@@ -20,9 +21,11 @@
 }
 
 .c-cover__body {
-
     padding-left: 33%;
     flex: 1 1 auto;
+    opacity: 0;
+    transform: translateX(7%);
+    transition: all 0.4s ease-out 0.35s;
 
     > * {
         margin-bottom: rem(60px);
@@ -31,21 +34,31 @@
             margin-bottom: 0;
         }
     }
+
+    .is-active > & {
+            opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .c-cover__pic {
     position: absolute;
     top: 50%;
     left: vw(60px);
+    z-index: 1;
     width: vw(270px);
     height: vw(270px);
     margin: vw(270px / -2) 0 0;
     opacity: 0;
     transform: translateX(15%);
-    transition: all 0.5s ease-out 0.9s;
+    transition: all 0.4s ease-out 0.35s;
 
     .is-active > & {
         opacity: 1;
         transform: translateX(0);
+    }
+
+    &.is-leaving {
+        transition-delay: 0s;
     }
 }

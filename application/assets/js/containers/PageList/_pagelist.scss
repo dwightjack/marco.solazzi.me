@@ -4,8 +4,11 @@
 .c-pagelist {
     position: relative;
     height: 100vh;
-    overflow-x: hidden;
-    overflow-y: scroll;
+    overflow: hidden;
+
+    > [data-scrollbar] {
+        height: 100vh;
+    }
 
     .c-page:last-child .c-section:last-child {
         min-height: 100vh;

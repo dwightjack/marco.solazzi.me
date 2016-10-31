@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react';
-import { findDOMNode } from 'react-dom';
+import { connect } from 'react-redux';
 import classNames from 'classnames';
-import { bindAll } from '../../base/utils';
+import { bindAll, createRefs } from '../../base/utils';
 import Title from '../Title';
 
 import './_section.scss';
 
-export default class Section extends PureComponent {
+class Section extends PureComponent {
 
     constructor(props) {
         super(props);
@@ -18,29 +18,32 @@ export default class Section extends PureComponent {
             scrollAmount: false,
             atBottom: false
         };
-
-        bindAll(this, 'setTitlePosition');
+        createRefs(this, 'root');
     }
 
     componentDidMount() {
-        const root = findDOMNode(this);
+        const root = this.root;
         this.title = root.querySelector('.c-section__title');
 
         //wait just nothing for the layout to render
         setTimeout(() => {
-            const offset = parseInt(window.innerHeight * 0.1, 10);
+            const offset = parseInt(window.innerHeight * 0.01, 10);
             const rect = this.title.getBoundingClientRect();
             this.offsetTop = rect.top - offset - rect.height;
             this.rootOffsetTop = root.offsetTop;
             this.maxScroll = root.offsetTop + root.offsetHeight - rect.height - offset;
             this.setTitlePosition();
-        }, 100);
+        }, 3000);
+    }
 
-        document.querySelector('.c-pagelist').addEventListener('scroll', this.setTitlePosition);
+    componentWillReceiveProps(nextProps) {
+        if (this.props.pagelistScroll !== nextProps.pagelistScroll) {
+            this.setTitlePosition();
+        }
     }
 
     setTitlePosition() {
-        const scroll = document.querySelector('.c-pagelist').scrollTop; //window.pageYOffset
+        const scroll = this.props.pagelistScroll;
         const scrollDiff = this.offsetTop - scroll;
         const scrollAmount = this.rootOffsetTop + parseInt(window.innerHeight * 0.2, 10) - (scroll + (window.innerHeight / 2));
 
@@ -58,12 +61,12 @@ export default class Section extends PureComponent {
 
     render() {
         const {children, title, subtitle, prefix} = this.props;
-        const {inView, atBottom, scrollAmount} = this.state;
-        const titleClass = classNames('c-section__title', {'is-fixed': inView, 'is-bottom': atBottom});
+        const {scrollAmount} = this.state;
         const style = {transform: `translateY(${scrollAmount * 0.2}px)`};
+
         return (
-            <section className="c-section">
-                <Title className={titleClass} prefix={prefix} title={title} subtitle={subtitle} />
+            <section className="c-section" ref={this.rootRef}>
+                <Title className="c-section__title" prefix={prefix} title={title} subtitle={subtitle} />
                 <div className="c-section__body" style={style}>
                     {children}
                 </div>
@@ -76,5 +79,13 @@ Section.propTypes = {
     children: React.PropTypes.node,
     title: React.PropTypes.string.isRequired,
     subtitle: React.PropTypes.string,
-    prefix: React.PropTypes.string
+    prefix: React.PropTypes.string,
+    pagelistScroll: React.PropTypes.number
 };
+
+const mapStateToProps = (state) => ({pagelistScroll: state.pagelistScroll});
+
+export default connect(
+    mapStateToProps,
+    null
+)(Section);

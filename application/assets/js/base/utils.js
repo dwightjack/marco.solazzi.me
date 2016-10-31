@@ -9,6 +9,10 @@ export const bindAll = (ctx, ...methods) => methods.forEach((m) => {
     ctx[m] = ctx[m].bind(ctx); //eslint-disable-line
 });
 
+export const bindProps = (ctx, ...methods) => methods.forEach((m) => {
+    ctx[m] = ctx.props[m].bind(ctx); //eslint-disable-line
+});
+
 
 
 /**

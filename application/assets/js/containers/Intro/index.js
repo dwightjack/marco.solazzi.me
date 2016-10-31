@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TweenMax } from 'gsap';
+import { TweenMax, Power3 } from 'gsap';
 
 import { createRefs } from '../../base/utils';
 
@@ -11,12 +11,12 @@ class Intro extends Component {
     constructor(props) {
         super(props);
 
-        createRefs(this, 'root');
+        createRefs(this, 'body');
     }
 
     componentWillAppear(callback) {
 
-        TweenMax.fromTo(this.root, 1, {
+        TweenMax.fromTo(this.body, 0.5, {
             autoAlpha: 0
         }, {
             autoAlpha: 1,
@@ -25,16 +25,18 @@ class Intro extends Component {
     }
 
     componentWillLeave(callback) {
-        TweenMax.to(this.root, 1, {
-            xPercent: -100,
-            onComplete: callback
+        TweenMax.to(this.body, 0.35, {
+            xPercent: -5,
+            autoAlpha: 0,
+            onComplete: callback,
+            ease: Power3.easeOut
         });
     }
 
     render() {
         return (
-            <header className="c-intro" ref={this.rootRef}>
-                <div className="c-intro__body h1">
+            <header className="c-intro">
+                <div className="c-intro__body h1" ref={this.bodyRef}>
                     <span className="c-intro__line">Geeks.query(</span>
                     <span className="c-intro__line">    '/usr/<mark className="u-type--mark">marco+solazzi</mark>',</span>
                     <span className="c-intro__line">    'job=<mark className="u-type--mark">frontend</mark>'</span>

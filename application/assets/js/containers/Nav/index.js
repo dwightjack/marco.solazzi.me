@@ -1,7 +1,9 @@
 import React, { PureComponent } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import classNames from 'classnames';
-import {toggleNavAction} from './actions';
+
+import { bindProps } from '../../base/utils';
+import { toggleNavAction } from './actions';
 
 import Burger from '../../components/Burger';
 
@@ -11,7 +13,7 @@ export class Nav extends PureComponent {
 
     constructor(props) {
         super(props);
-        this.onBurgerClick = this.props.onBurgerClick.bind(this);
+        bindProps(this, 'onBurgerClick');
     }
 
     render() {
@@ -45,7 +47,8 @@ export class Nav extends PureComponent {
 }
 
 Nav.propTypes = {
-    active: React.PropTypes.bool
+    active: React.PropTypes.bool,
+    onBurgerClick: React.PropTypes.func
 };
 
 const mapStateToProps = (state) => ({active: state.activeNav});

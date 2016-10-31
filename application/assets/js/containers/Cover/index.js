@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TweenMax } from 'gsap';
+import { TweenMax, Power2, TimelineMax } from 'gsap';
 import classnames from 'classnames';
 
 import './_cover.scss';
@@ -25,60 +25,110 @@ class Cover extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            active: false
-        };
+        createRefs(this, 'root', 'avatar', 'title', 'table', 'footer');
+    }
 
-        createRefs(this, 'body');
+    componentWillLeave(callback) {
+        const tl = this.tl = new TimelineMax();
+
+        this.avatar.classList.add('is-leaving');
+
+        tl.to(this.avatar, 0.2, {
+            autoAlpha: 0,
+            ease: Power2.easeInOut
+        })
+        .to(this.title, 0.5, {
+            yPercent: -300,
+            autoAlpha: 0,
+            ease: Power2.easeInOut
+        }, '+=0.35')
+        .to(this.table, 0.5, {
+            yPercent: -200,
+            autoAlpha: 0,
+            ease: Power2.easeInOut
+        }, '-=0.3')
+
+        .to(this.footer, 0.5, {
+            yPercent: -200,
+            autoAlpha: 0,
+            ease: Power2.easeInOut
+        }, '-=0.3')
+        .to(this.root, 0.7, {
+            yPercent: -100,
+            ease: Power2.easeInOut,
+            onComplete: () => {
+                callback();
+            }
+        });
+
+    }
+
+    componentDidUnMount() {
+        this.tl = null;
     }
 
     componentWillEnter(callback) {
-
-        this.setState({active: true});
-
-        TweenMax.fromTo(this.body, 1, {
-            xPercent: 100
+        if (this.tl) {
+            this.tl.pause(0, true); //Go back to the start (true is to suppress events)
+            this.tl.remove();
+            debugger;
+        }
+        TweenMax.fromTo(this.root, 0.8, {
+            yPercent: -100
         }, {
-            xPercent: 0,
+            yPercent: 0,
+            ease: Power2.easeOut,
+            clearProps: 'all',
             onComplete: callback
         });
-
-
     }
 
     render() {
 
-        const {active} = this.state;
+        const {active} = this.props;
 
         return (
-            <section className={classnames('c-cover', {'is-active': active})}>
+            <section className={classnames('c-cover', {'is-active': active})} ref={this.rootRef}>
 
-                <Avatar src={pic} className="c-cover__pic" />
+                <div className="c-cover__pic" ref={this.avatarRef}>
+                    <Avatar src={pic} />
+                </div>
+                <div className="c-cover__body">
 
-                <div className="c-cover__body" ref={this.bodyRef}>
-
-                    <h2 className="c-cover__headline">こんにちわ！</h2>
-                    <Table
-                        data={data}
-                    />
-                    <List>
-                        <ListItem>
-                            <Ico name="twitter" /> <a href="https://twitter.com/dwightjack" target="_blank" rel="noopener noreferrer">@dwightjack</a>
-                        </ListItem>
-                        <ListItem>
-                            <Ico name="pencil" /> <a href="mailto:marco@solazzi.me" target="_blank" rel="noopener noreferrer">marco@solazzi.me</a>
-                        </ListItem>
-                        <ListItem>
-                            <Ico name="github" /> <a href="https://github.com/dwightjack" target="_blank" rel="noopener noreferrer">dwightjack</a>
-                        </ListItem>
-                        <ListItem>
-                            <Ico name="linkedin" /> <a href="https://it.linkedin.com/in/marcosolazzi" target="_blank" rel="noopener noreferrer">in/marcosolazzi</a>
-                        </ListItem>
-                    </List>
+                    <h2 className="c-cover__headline" ref={this.titleRef}>こんにちわ！</h2>
+                    <article ref={this.tableRef}>
+                        <Table
+                            data={data}
+                        />
+                    </article>
+                    <footer ref={this.footerRef}>
+                        <List>
+                            <ListItem>
+                                <Ico name="twitter" /> <a href="https://twitter.com/dwightjack" target="_blank" rel="noopener noreferrer">@dwightjack</a>
+                            </ListItem>
+                            <ListItem>
+                                <Ico name="pencil" /> <a href="mailto:marco@solazzi.me" target="_blank" rel="noopener noreferrer">marco@solazzi.me</a>
+                            </ListItem>
+                            <ListItem>
+                                <Ico name="github" /> <a href="https://github.com/dwightjack" target="_blank" rel="noopener noreferrer">dwightjack</a>
+                            </ListItem>
+                            <ListItem>
+                                <Ico name="linkedin" /> <a href="https://it.linkedin.com/in/marcosolazzi" target="_blank" rel="noopener noreferrer">in/marcosolazzi</a>
+                            </ListItem>
+                        </List>
+                    </footer>
                 </div>
             </section>
         );
     }
 }
+
+Cover.propTypes = {
+    active: React.PropTypes.bool
+};
+
+Cover.defaultProps = {
+    active: false
+};
 
 export default Cover;

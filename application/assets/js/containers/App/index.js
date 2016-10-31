@@ -1,7 +1,11 @@
 import React, {Component} from 'react';
 import ReactTransitionGroup from 'react-addons-transition-group';
+import { connect } from 'react-redux';
 
-import PageList from '../../components/PageList';
+import { bindAll } from '../../base/utils';
+
+import { pagelistScrollUpdateAction } from './actions';
+
 import Section from '../../components/Section';
 import TableList from '../../components/TableList';
 import Table from '../../components/Table';
@@ -23,21 +27,25 @@ import teamSkills from '../../database/skills.team.json';
 import DevTools from '../DevTools';
 import Page from '../Page';
 import Nav from '../Nav';
+import PageList from '../PageList';
 import Cover from '../Cover';
 import Intro from '../Intro';
 
 import './_app.scss';
 
-const PageJob = ({j}) => (
-    <Page id="job">
+const currentJob = jobs[0];
+const previousJobs = jobs.slice(1).map((job) => <Table key={job.id} caption="company" data={job} />);
+
+const pageJob = (
+    <Page id="job" key="job">
         <Section title="jobs.current">
             <TableList>
-                <Table caption="company" data={j.current} />
+                <Table caption="company" data={currentJob} />
             </TableList>
         </Section>
         <Section title="jobs.previous">
             <TableList>
-                {j.previous}
+                {previousJobs}
             </TableList>
         </Section>
     </Page>
@@ -45,8 +53,8 @@ const PageJob = ({j}) => (
 
 
 
-const PageSkills = (
-    <Page id="skills">
+const pageSkills = (
+    <Page id="skills" key="skills">
         <Section
             title="skills.tech"
             subtitle="Technological stack"
@@ -67,7 +75,7 @@ const PageSkills = (
 );
 
 const pageEducation = (
-    <Page id="education">
+    <Page id="education" key="education">
         <Section
             title="education"
             subtitle="Learning never ends"
@@ -80,7 +88,7 @@ const pageEducation = (
 );
 
 const pagePortfolioWorks = (
-    <Page id="awards">
+    <Page id="awards" key="awards">
         <Section
             title="portfolio.works"
             subtitle="Latest agency projects"
@@ -93,7 +101,7 @@ const pagePortfolioWorks = (
 );
 
 const pagePortfolioTalks = (
-    <Page id="talks">
+    <Page id="talks" key="talks">
         <Section
             title="portfolio.talks"
             subtitle="Sharing the knowledge"
@@ -105,20 +113,28 @@ const pagePortfolioTalks = (
     </Page>
 );
 
-export default class App extends Component {
+const Pages = [
+    pageJob,
+    pageEducation,
+    pageSkills,
+    pagePortfolioWorks,
+    pagePortfolioTalks
+];
+
+class App extends Component {
 
     constructor(props) {
         super(props);
 
-        this.state = {
-            activeGroup: 'intro'
-        };
+        bindAll(this, 'onPageListScroll');
 
-        this.jobs = {
-            current: jobs[0],
-            previous: jobs.slice(1).map((job) => <Table key={job.id} caption="company" data={job} />)
+        this.state = {
+            activeGroup: 'intro',
+            scrollAmount: 0
         };
     }
+
+
 
     componentDidMount() {
 
@@ -126,6 +142,22 @@ export default class App extends Component {
             this.setState({activeGroup: 'cover'});
         }, 2000);
 
+        window.addEventListener('wheel', (e) => {
+            if (e.deltaY > 0 && this.state.activeGroup === 'cover') {
+                e.preventDefault();
+                this.setState({activeGroup: 'pagelist'});
+            } else if (e.deltaY < 0 && this.state.activeGroup === 'pagelist' && this.state.scrollAmount <= 0) {
+                e.preventDefault();
+                this.setState({activeGroup: 'cover'});
+            }
+        });
+
+    }
+
+    onPageListScroll({offset}) {
+        const scrollAmount = offset.y;
+        this.props.onPageListScroll(scrollAmount);
+        this.setState({scrollAmount});
     }
 
     render() {
@@ -139,17 +171,36 @@ export default class App extends Component {
                     component={Wrapper}
                 >
                     { activeGroup === 'intro' && <Intro />}
-                    <Cover active={activeGroup === 'cover'} />
+                    { (activeGroup === 'intro' || activeGroup === 'cover') && <Cover active={activeGroup === 'cover'} />}
+                    { activeGroup === 'pagelist' &&
+                        <PageList
+                            active={activeGroup === 'pagelist'}
+                            onScrollCallback={this.onPageListScroll}
+                        >
+                            {Pages}
+                        </PageList>}
                     { activeGroup !== 'intro' && <Pattern />}
 
                 </ReactTransitionGroup>
-                <DevTools />
+
+                { /* <DevTools /> */ }
             </div>
         );
     }
 
 }
 
-// App.propTypes = {
-//     children: React.PropTypes.node
-// };
+App.propTypes = {
+    onPageListScroll: React.PropTypes.func
+};
+
+const mapDispatchToProps = (dispatch) => ({
+    onPageListScroll: (scrollAmount) => {
+        dispatch(pagelistScrollUpdateAction(scrollAmount));
+    }
+});
+
+export default connect(
+    null,
+    mapDispatchToProps
+)(App);
