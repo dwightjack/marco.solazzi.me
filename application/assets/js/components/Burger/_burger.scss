@@ -15,7 +15,7 @@ $burger-bar-spacing: 4px;
     background-color: currentColor;
     content: "";
     transform-origin: 100% 0;
-    //transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
 }
 
 .o-burger {
@@ -28,7 +28,7 @@ $burger-bar-spacing: 4px;
     background-image: none;
     color: lighten($color-link, 30);
     cursor: pointer;
-    transition: transform 0.2s ease;
+    transition: all 0.2s ease-out;
 
     &::before {
         @extend %o-burger-bar;
@@ -47,7 +47,6 @@ $burger-bar-spacing: 4px;
     display: block;
     height: $burger-height;
     font-size: 0;
-    transition: inherit;
 
     &::after {
         @extend %o-burger-bar;
@@ -67,38 +66,47 @@ $burger-bar-spacing: 4px;
 .o-burger.is-active,
 .o-burger:hover {
 
-    .o-burger__label::after,
-    &::before,
+    &::before {
+        transform: scaleX(1);
+    }
+
     &::after {
-        animation: burger-animation 1.2s ease;
-        animation-fill-mode: forwards;
+        transform: scaleX(1);
     }
 
     .o-burger__label::after {
-        animation-delay: 0.1s;
+        transform: scaleX(1);
+    }
+
+}
+
+.is-active > .o-burger.is-active {
+
+    color: $color-light;
+    opacity: 0.8;
+
+    &:hover {
+        opacity: 1;
+    }
+
+    &::before {
+        transform: translate(0, 17px) rotate(45deg);
+        transition: all 0.2s ease-out;
+        transition-property: color, transform;
+        transition-delay: 0.15s, 1s, 1s;
     }
 
     &::after {
-        animation-delay: 0.2s;
-    }
-}
-
-@keyframes burger-animation {
-    25% {
-        transform: scaleX(0);
+        transform: translate(-3px, -14px) rotate(-45deg);
+        transition: all 0.2s ease-out;
+        transition-property: color, transform;
+        transition-delay: 0.15s, 1s, 1s;
     }
 
-    40% {
-        transform: scaleX(0);
-    }
-
-    45% {
+    .o-burger__label::after {
         opacity: 0;
-        transform: scaleX(1) translateY(70%);
+        transition: all 0.2s ease-out;
+        transition-property: color, opacity;
+        transition-delay: 0.15s, 1s;
     }
-
-    100% {
-        transform: scale(1);
-    }
-
 }

@@ -4,8 +4,8 @@ $color-light: #fff;
 $color-dark-red: #a02c2c;
 
 //colors by function
-$color-text: $color-dark;
-$color-bg: $color-light;
+$color-text: $color-dark; // #d2d2d2
+$color-bg: $color-light; // #1e1e23
 $color-link: $color-dark-red;
 $color-link-hover: lighten($color-dark-red, 20%);
 $color-border: $color-dark;

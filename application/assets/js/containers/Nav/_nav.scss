@@ -62,6 +62,12 @@
         right: 0;
         z-index: z-index(behind);
         display: block;
+        background-color: $color-link;
+        background-image: linear-gradient(55deg,
+            rgba($color-link, 1) 40%,
+            rgba($color-link, 0.2) 100%
+        ), url("../images/circuits-full.svg");
+        background-position: right 0;
         border-bottom: 1px solid $color-link;
         content: "";
     }
@@ -72,17 +78,16 @@
         right: 0;
         bottom: 0;
         left: 0;
+        z-index: z-index(behind) - 1;
         background-color: $color-link;
         content: "";
-        //transform: scaleY(0);
-        //transition: transform 250ms ease-out;
     }
 }
 
 .c-nav__item {
     opacity: 0;
     transform: translateY(0.5em);
-    transition: all 150ms linear;
+    transition: all 150ms ease-out;
     transition-delay: 200ms;
     transition-property: opacity, transform;
 }
@@ -111,6 +116,7 @@
         opacity: 0;
         background-color: rgba(black, 0.1);
         content: "";
+        transform: translateY(-5%);
         transition: all 150ms linear;
     }
 }
@@ -119,6 +125,12 @@
     .c-nav__menu {
         animation: 250ms ease-out menu-enter;
         animation-fill-mode: forwards;
+
+        &::after {
+            animation: 250ms ease-out menu-enter-pattern;
+            animation-fill-mode: forwards;
+            animation-delay: 600ms;
+        }
 
         &::before {
             transform: scaleY(0);
@@ -148,6 +160,7 @@
             opacity: 1;
             transition-duration: 250ms;
             transition-delay: 100ms;
+            transform: translateY(0);
         }
     }
 }
@@ -185,6 +198,19 @@
     100% {
         opacity: 1;
         transform: scaleY(1);
+    }
+}
+
+@keyframes menu-enter-pattern {
+    0% {
+        top: 0;
+        height: 100%;
+        opacity: 0;
+    }
+    100% {
+        top: 0;
+        height: 100%;
+        opacity: 1;
     }
 }
 

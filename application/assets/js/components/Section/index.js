@@ -33,7 +33,7 @@ class Section extends PureComponent {
             this.rootOffsetTop = root.offsetTop;
             this.maxScroll = root.offsetTop + root.offsetHeight - rect.height - offset;
             this.setTitlePosition();
-        }, 3000);
+        }, 100);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -62,7 +62,7 @@ class Section extends PureComponent {
     render() {
         const {children, title, subtitle, prefix} = this.props;
         const {scrollAmount} = this.state;
-        const style = {transform: `translateY(${scrollAmount * 0.2}px)`};
+        const style = {transform: `translateY(${scrollAmount * 0.1}px)`};
 
         return (
             <section className="c-section" ref={this.rootRef}>

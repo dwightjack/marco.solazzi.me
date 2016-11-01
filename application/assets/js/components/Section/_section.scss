@@ -1,39 +1,48 @@
 @import "globals";
 @import "mixins";
+@import "sass-mq/mq";
 
 
 //@include parallax-init;
 
 .c-section {
     position: relative;
-    padding-bottom: rem(90px);
+    padding-bottom: rem(120px);
+    transform-style: preserve-3d;
 }
 
 .c-section__title {
-    @include boost-performance;
-    position: absolute;
-    top: 1vh;
-    left: vw(60px);
-    max-width: 35%;
-    white-space: nowrap;
+    margin-bottom: 2em;
+    text-align: center;
 
-
-    &.is-fixed {
-        position: fixed;
-        left: vw(60px + $page-gutter);
-        margin-top: 5vh;
-    }
-
-    &.is-bottom {
-        top: 100%;
-        bottom: 0;
+    @include mq(tablet-portrait) {
+        @include boost-performance;
+        position: absolute;
+        top: rem(10px);
+        left: vw(60px);
+        max-width: 35%;
+        margin-bottom: 0;
+        white-space: nowrap;
+        text-align: left;
     }
 }
 
 .c-section__body {
     display: block;
-    //width: 85%;
     width: 100%;
-    padding-left: 33%;
-    transition: transform 200ms ease-out;
+
+    @include mq($until: tablet-portrait) {
+        transform: none !important;
+    }
+
+    @include mq(tablet) {
+        padding-right: 7%;
+        padding-left: 10%;
+    }
+
+    @include mq(tablet-portrait) {
+        padding-right: 0;
+        padding-left: 33%;
+        transition: transform 0.2s ease-out;
+    }
 }

@@ -1,19 +1,30 @@
+@import "globals";
 @import "colors";
 @import "mixins";
+@import "sass-mq/mq";
 
 .c-data-list {
-    display: flex;
-    width: 90%;
-    margin: 0 rem(-20px);
+    display: block;
+    margin: 0;
     padding: 0;
     list-style: none;
-    flex-wrap: wrap;
+
+    @include mq(tablet-portrait) {
+        width: 90%;
+        margin: 0 rem(-20px);
+        display: flex;
+        flex-wrap: wrap;
+    }
 }
 
 .c-data-list__item {
     margin: 0;
-    padding: 0 rem(20px) rem(30px);
-    flex: 0 0 47%;
+    padding: 0;
+
+    @include mq(tablet-portrait) {
+        padding: 0 rem(20px) rem(30px);
+        flex: 0 0 47%;
+    }
 }
 
 .c-data-list__label {

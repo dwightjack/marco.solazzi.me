@@ -10,6 +10,7 @@
     justify-content: flex-start;
     width: 100vw;
     height: 100vh;
+    padding: 0 vw($page-gutter);
     overflow: hidden;
     border-right: 8px solid $color-link;
 
@@ -46,12 +47,17 @@
     top: 50%;
     left: vw(60px);
     z-index: 1;
-    width: vw(270px);
-    height: vw(270px);
-    margin: vw(270px / -2) 0 0;
+    width: 33 - 4.6875#{vw};
+    flex: 0 0 auto;
     opacity: 0;
     transform: translateX(15%);
     transition: all 0.4s ease-out 0.35s;
+
+    > .o-avatar {
+        width: vw(270px);
+        height: vw(270px);
+        margin: vw(270px / -2) auto 0;
+    }
 
     .is-active > & {
         opacity: 1;

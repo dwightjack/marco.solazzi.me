@@ -42,7 +42,7 @@
 
     &:hover {
 
-        .o-anchor__label--cursor::before {
+        .o-anchor__label::before {
             animation: 0.7s ease-out infinite blinking-cursor;
             color: $color-link;
         }

@@ -9,5 +9,9 @@ $table-list-gutter-v: 50px;
 
     > .c-table {
         margin-bottom: rem(70px);
+
+        &:last-child {
+            margin-bottom: 0;
+        }
     }
 }

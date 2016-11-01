@@ -12,7 +12,7 @@ import Table from '../../components/Table';
 
 import Wrapper from '../../components/Wrapper';
 
-//import Glyph from '../../components/Glyph';
+import Page from '../../components/Page';
 import DataList from '../../components/DataList';
 import Pattern from '../../components/Pattern';
 import SkillList from '../../components/SkillList';
@@ -25,7 +25,7 @@ import techSkills from '../../database/skills.tech.json';
 import teamSkills from '../../database/skills.team.json';
 
 import DevTools from '../DevTools';
-import Page from '../Page';
+
 import Nav from '../Nav';
 import PageList from '../PageList';
 import Cover from '../Cover';
