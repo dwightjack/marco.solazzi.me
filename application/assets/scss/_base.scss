@@ -57,6 +57,7 @@ textarea {
 
 html {
     //https://www.smashingmagazine.com/2016/05/fluid-typography/
+    /*
     $font-min: $font-size-default;
     //$font-min: 14px;
     //$font-max: 18px;
@@ -68,11 +69,17 @@ html {
     //$breakpoint-max: 1920px;
     $breakpoint-diff: ($breakpoint-max - $breakpoint-min);
     $font-scale: $font-diff / $breakpoint-diff;
-    $base-font-size: percentage($font-min / 16px);
+    */
+    $base-font-size: percentage($font-size-default / 16px);
     font-size: $base-font-size;
 
     @include mq(tablet-portrait) {
-        font-size: calc(#{$base-font-size} + (#{strip-units($font-diff)} * (100vw - #{$breakpoint-min}) / #{strip-units($breakpoint-diff)}));
+        @include responsive-typography(
+            $font-min: $font-size-default,
+            $font-max: 20px,
+            $breakpoint-min: 1280px,
+            $breakpoint-max: 2560px
+        )
     }
 }
 

@@ -10,7 +10,7 @@ import List, { ListItem } from '../../components/List';
 import Avatar from '../../components/Avatar';
 import Ico from '../../components/Ico';
 import pic from '../../../images/marco.jpg';
-
+import social from '../../database/social.json';
 
 const data = {
     name: 'Marco',
@@ -69,9 +69,8 @@ class Cover extends Component {
 
     componentWillEnter(callback) {
         if (this.tl) {
-            this.tl.pause(0, true); //Go back to the start (true is to suppress events)
+            this.tl.pause(0, true); // Go back to the start (true is to suppress events)
             this.tl.remove();
-            debugger;
         }
         TweenMax.fromTo(this.root, 0.8, {
             yPercent: -100
@@ -103,18 +102,11 @@ class Cover extends Component {
                     </article>
                     <footer ref={this.footerRef}>
                         <List>
-                            <ListItem>
-                                <Ico name="twitter" /> <a href="https://twitter.com/dwightjack" target="_blank" rel="noopener noreferrer">@dwightjack</a>
-                            </ListItem>
-                            <ListItem>
-                                <Ico name="pencil" /> <a href="mailto:marco@solazzi.me" target="_blank" rel="noopener noreferrer">marco@solazzi.me</a>
-                            </ListItem>
-                            <ListItem>
-                                <Ico name="github" /> <a href="https://github.com/dwightjack" target="_blank" rel="noopener noreferrer">dwightjack</a>
-                            </ListItem>
-                            <ListItem>
-                                <Ico name="linkedin" /> <a href="https://it.linkedin.com/in/marcosolazzi" target="_blank" rel="noopener noreferrer">in/marcosolazzi</a>
-                            </ListItem>
+                            {social.map(({type, url, label}) => (
+                                <ListItem key={type}>
+                                    <Ico name={type} /> <a href={url} target="_blank" rel="noopener noreferrer">{label}</a>
+                                </ListItem>
+                            ))}
                         </List>
                     </footer>
                 </div>

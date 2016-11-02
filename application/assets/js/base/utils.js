@@ -86,7 +86,12 @@ export const pick = (obj, keys) => {
     return result;
 };
 
-
+/**
+ * Fallback for `requestAnimationFrame`
+ *
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame
+ */
+export const raf = 'requestAnimationFrame' in global ? global.requestAnimationFrame : (callback) => callback();
 
 /**
  * Shallowly checks if passed in arguments are equal. Doesn't traverse nested objects

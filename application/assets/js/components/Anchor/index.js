@@ -7,7 +7,7 @@ import './_anchor.scss';
 
 export const AnchorIco = ({ico, label = '', title = '', link, className}) => (
     <a href={link} target="_blank" rel="noopener noreferrer" className={classnames('o-anchor', className)} title={title}>
-        <Ico name={ico} className="o-anchor__ico" /> <span className="o-anchor__label">{label}</span>
+        <Ico name={ico} className="o-anchor__ico" /> {label && <span className="o-anchor__label">{label}</span>}
     </a>
 );
 

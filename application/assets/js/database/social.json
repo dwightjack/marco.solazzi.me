@@ -1,0 +1,19 @@
+[
+    {
+        "type": "twitter",
+        "url": "https://twitter.com/dwightjack",
+        "label": "@dwightjack"
+    }, {
+        "type": "pencil",
+        "url": "mailto:marco@solazzi.me",
+        "label": "marco@solazzi.me"
+    }, {
+        "type": "github",
+        "url": "https://github.com/dwightjack",
+        "label": "dwightjack"
+    }, {
+        "type": "linkedin",
+        "url": "https://it.linkedin.com/in/marcosolazzi",
+        "label": "in/marcosolazzi"
+    }
+]

@@ -91,22 +91,16 @@ $burger-bar-spacing: 4px;
 
     &::before {
         transform: translate(0, 17px) rotate(45deg);
-        transition: all 0.2s ease-out;
-        transition-property: color, transform;
-        transition-delay: 0.15s, 1s, 1s;
+        transition: color 0.2s ease-out 0.15s, transform 0.2s ease-out 1s;
     }
 
     &::after {
         transform: translate(-3px, -14px) rotate(-45deg);
-        transition: all 0.2s ease-out;
-        transition-property: color, transform;
-        transition-delay: 0.15s, 1s, 1s;
+        transition: color 0.2s ease-out 0.15s, transform 0.2s ease-out 1s;
     }
 
     .o-burger__label::after {
         opacity: 0;
-        transition: all 0.2s ease-out;
-        transition-property: color, opacity;
-        transition-delay: 0.15s, 1s;
+        transition: color 0.2s ease-out 0.15s, opacity 0.2s ease-out 1s;
     }
 }

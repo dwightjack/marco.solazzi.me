@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
-import { bindAll, createRefs } from '../../base/utils';
+import { bindAll, createRefs, raf } from '../../base/utils';
 import Title from '../Title';
 
 import './_section.scss';
@@ -19,6 +19,7 @@ class Section extends PureComponent {
             atBottom: false
         };
         createRefs(this, 'root');
+        bindAll(this, 'setTitlePosition');
     }
 
     componentDidMount() {
@@ -31,21 +32,21 @@ class Section extends PureComponent {
             const rect = this.title.getBoundingClientRect();
             this.offsetTop = rect.top - offset - rect.height;
             this.rootOffsetTop = root.offsetTop;
-            this.maxScroll = root.offsetTop + root.offsetHeight - rect.height - offset;
+            this.maxScroll = (root.offsetTop + root.offsetHeight) - rect.height - offset;
             this.setTitlePosition();
         }, 100);
     }
 
     componentWillReceiveProps(nextProps) {
         if (this.props.pagelistScroll !== nextProps.pagelistScroll) {
-            this.setTitlePosition();
+            raf(this.setTitlePosition);
         }
     }
 
     setTitlePosition() {
         const scroll = this.props.pagelistScroll;
         const scrollDiff = this.offsetTop - scroll;
-        const scrollAmount = this.rootOffsetTop + parseInt(window.innerHeight * 0.2, 10) - (scroll + (window.innerHeight / 2));
+        const scrollAmount = (this.rootOffsetTop + parseInt(window.innerHeight * 0.2, 10)) - (scroll + (window.innerHeight / 2));
 
         if (scrollDiff <= 0) {
             if (scroll < this.maxScroll) {
@@ -62,7 +63,7 @@ class Section extends PureComponent {
     render() {
         const {children, title, subtitle, prefix} = this.props;
         const {scrollAmount} = this.state;
-        const style = {transform: `translateY(${scrollAmount * 0.1}px)`};
+        const style = {transform: `translateY(${Math.floor(scrollAmount * 0.1)}px)`};
 
         return (
             <section className="c-section" ref={this.rootRef}>
