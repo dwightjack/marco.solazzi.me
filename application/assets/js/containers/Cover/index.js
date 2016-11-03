@@ -4,6 +4,7 @@ import classnames from 'classnames';
 
 import './_cover.scss';
 
+import { NAV_PATH_JOBS } from '../../base/constants';
 import { createRefs } from '../../base/utils';
 import Table from '../../components/Table';
 import List, { ListItem } from '../../components/List';
@@ -25,15 +26,15 @@ class Cover extends Component {
     constructor(props) {
         super(props);
 
-        createRefs(this, 'root', 'avatar', 'title', 'table', 'footer');
+        createRefs(this, 'root', 'avatar', 'title', 'table', 'footer', 'scrollHint');
     }
 
     componentWillLeave(callback) {
         const tl = this.tl = new TimelineMax();
 
-        this.avatar.classList.add('is-leaving');
+        this.root.classList.add('is-leaving');
 
-        tl.to(this.avatar, 0.2, {
+        tl.to([this.avatar, this.scrollHint], 0.2, {
             autoAlpha: 0,
             ease: Power2.easeInOut
         })
@@ -69,6 +70,7 @@ class Cover extends Component {
 
     componentWillEnter(callback) {
         if (this.tl) {
+            this.root.classList.remove('is-leaving');
             this.tl.pause(0, true); // Go back to the start (true is to suppress events)
             this.tl.remove();
         }
@@ -110,6 +112,10 @@ class Cover extends Component {
                         </List>
                     </footer>
                 </div>
+                <a href={NAV_PATH_JOBS} className="c-cover__scrollhint" ref={this.scrollHintRef}>
+                    <span className="u-block">Get to know me</span>
+                    <Ico name="chevron-down" />
+                </a>
             </section>
         );
     }

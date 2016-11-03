@@ -138,19 +138,22 @@ class App extends Component {
 
     componentDidMount() {
 
-        setTimeout(() => {
+        /*setTimeout(() => {
             this.setState({activeGroup: 'cover'});
-        }, 2000);
 
-        window.addEventListener('wheel', (e) => {
-            if (e.deltaY > 0 && this.state.activeGroup === 'cover') {
-                e.preventDefault();
-                this.setState({activeGroup: 'pagelist'});
-            } else if (e.deltaY < 0 && this.state.activeGroup === 'pagelist' && this.state.scrollAmount <= 0) {
-                e.preventDefault();
-                this.setState({activeGroup: 'cover'});
-            }
-        });
+            /*window.addEventListener('wheel', (e) => {
+                if (e.deltaY > 0 && this.state.activeGroup === 'cover') {
+                    e.preventDefault();
+                    this.setState({activeGroup: 'pagelist'});
+                } else if (e.deltaY < 0 && this.state.activeGroup === 'pagelist' && this.state.scrollAmount <= 0) {
+                    e.preventDefault();
+                    this.setState({activeGroup: 'cover'});
+                }
+            });* /
+
+        }, 2000);*/
+
+
 
     }
 

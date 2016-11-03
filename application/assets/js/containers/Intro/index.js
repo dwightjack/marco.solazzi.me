@@ -11,17 +11,23 @@ class Intro extends Component {
     constructor(props) {
         super(props);
 
-        createRefs(this, 'body');
+        createRefs(this, 'body', 'line1', 'line2', 'line3', 'line4');
     }
 
-    componentWillAppear(callback) {
+    componentDidMount() {
 
-        TweenMax.fromTo(this.body, 0.5, {
+        setTimeout(() => {
+            this.body.classList.add('is-entering');
+        }, 500);
+
+
+
+        /*TweenMax.fromTo(this.body, 0.5, {
             autoAlpha: 0
         }, {
             autoAlpha: 1,
             onComplete: callback
-        });
+        });*/
     }
 
     componentWillLeave(callback) {
@@ -38,9 +44,9 @@ class Intro extends Component {
             <header className="c-intro">
                 <div className="c-intro__body h1" ref={this.bodyRef}>
                     <span className="c-intro__line">Geeks.query(</span>
-                    <span className="c-intro__line">    '/usr/<mark className="u-type--mark">marco+solazzi</mark>',</span>
-                    <span className="c-intro__line">    'job=<mark className="u-type--mark">frontend</mark>'</span>
-                    <span className="c-intro__line">).then((me) => ...</span>
+                    <span className="c-intro__line">   &apos;/usr/<mark className="u-type--mark">marco+solazzi</mark>&apos;,</span>
+                    <span className="c-intro__line">    &apos;job=<mark className="u-type--mark">frontend</mark>&apos;</span>
+                    <span className="c-intro__line">).then((me) =&rsaquo; <i>...</i></span>
                 </div>
             </header>
         );

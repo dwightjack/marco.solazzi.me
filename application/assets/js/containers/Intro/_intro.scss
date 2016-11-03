@@ -1,4 +1,5 @@
 @import "mixins";
+@import "colors";
 
 .c-intro {
     position: absolute;
@@ -23,5 +24,39 @@
 }
 
 .c-intro__line {
+    position: relative;
     display: block;
+    overflow: hidden;
+    //opacity: 0.5;
+    transition: all 0.6s cubic-bezier(.62,.07,.72,.86);
+
+    &::before {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: z-index(above);
+        display: block;
+        background-color: $color-bg;
+        content: "";
+        transform: translate3d(0, 0, 0);
+        transition: inherit;
+        transition-delay: inherit;
+
+        .is-entering & {
+            transform: translate3d(100%, 0, 0);
+        }
+    }
+
+    @for $i from 1 through 4 {
+        &:nth-child(#{$i}) {
+            transition-delay: 0.3s * $i;
+        }
+    }
+
+    .is-entering & {
+        opacity: 1;
+    }
+
 }
