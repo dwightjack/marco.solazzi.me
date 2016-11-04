@@ -4,7 +4,11 @@ import { connect } from 'react-redux';
 
 import { bindAll } from '../../base/utils';
 
-import { pagelistScrollUpdateAction } from './actions';
+import {
+    pagelistScrollUpdateAction,
+    appActiveGroupAction,
+    navigateToAction
+} from './actions';
 
 import Section from '../../components/Section';
 import TableList from '../../components/TableList';
@@ -23,8 +27,6 @@ import education from '../../database/education.json';
 import jobs from '../../database/jobs.json';
 import techSkills from '../../database/skills.tech.json';
 import teamSkills from '../../database/skills.team.json';
-
-import DevTools from '../DevTools';
 
 import Nav from '../Nav';
 import PageList from '../PageList';
@@ -127,31 +129,33 @@ class App extends Component {
         super(props);
 
         bindAll(this, 'onPageListScroll');
-
-        this.state = {
-            activeGroup: 'intro',
-            scrollAmount: 0
-        };
     }
 
 
 
     componentDidMount() {
 
-        /*setTimeout(() => {
-            this.setState({activeGroup: 'cover'});
+        const { setActiveGroup } = this.props;
 
-            /*window.addEventListener('wheel', (e) => {
-                if (e.deltaY > 0 && this.state.activeGroup === 'cover') {
+        setTimeout(() => {
+            setActiveGroup('cover');
+
+            window.addEventListener('wheel', (e) => {
+                if (e.deltaY > 0 && this.props.activeGroup === 'cover') {
                     e.preventDefault();
-                    this.setState({activeGroup: 'pagelist'});
-                } else if (e.deltaY < 0 && this.state.activeGroup === 'pagelist' && this.state.scrollAmount <= 0) {
+                    setActiveGroup('pagelist');
+                } else if (e.deltaY < 0 && this.props.activeGroup === 'pagelist' && this.props.scrollAmount <= 0) {
                     e.preventDefault();
-                    this.setState({activeGroup: 'cover'});
+                    setActiveGroup('cover');
                 }
-            });* /
+            });
 
-        }, 2000);*/
+        }, 7500);
+
+        window.addEventListener('hashchange', (e) => {
+            e.preventDefault();
+            this.props.navigateTo(window.location.hash);
+        });
 
 
 
@@ -160,16 +164,15 @@ class App extends Component {
     onPageListScroll({offset}) {
         const scrollAmount = offset.y;
         this.props.onPageListScroll(scrollAmount);
-        this.setState({scrollAmount});
     }
 
     render() {
 
-        const {activeGroup} = this.state;
+        const {activeGroup} = this.props;
 
         return (
             <div>
-                <Nav />
+                <Nav className={activeGroup !== 'intro' ? 'is-visible' : ''} />
                 <ReactTransitionGroup
                     component={Wrapper}
                 >
@@ -194,16 +197,31 @@ class App extends Component {
 }
 
 App.propTypes = {
-    onPageListScroll: React.PropTypes.func
+    onPageListScroll: React.PropTypes.func,
+    setActiveGroup: React.PropTypes.func,
+    navigateTo: React.PropTypes.func,
+    scrollAmount: React.PropTypes.number,
+    activeGroup: React.PropTypes.string
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    onPageListScroll: (scrollAmount) => {
+    onPageListScroll(scrollAmount) {
         dispatch(pagelistScrollUpdateAction(scrollAmount));
+    },
+    setActiveGroup(activeGroup) {
+        dispatch(appActiveGroupAction(activeGroup));
+    },
+    navigateTo(hash) {
+        dispatch(navigateToAction(hash));
     }
 });
 
+const mapStateToProps = (state) => ({
+    scrollAmount: state.pagelistScroll,
+    activeGroup: state.activeGroup
+});
+
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
 )(App);

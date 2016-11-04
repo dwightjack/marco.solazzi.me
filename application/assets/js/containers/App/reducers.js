@@ -1,10 +1,26 @@
-import {PAGELIST_SCROLL_UPDATE} from '../../base/constants';
+import { PAGELIST_SCROLL_UPDATE, APP_ACTIVE_GROUP, NAVIGATE_TO } from '../../base/constants';
 
-const initialState = 0;
-
-export const pagelistScroll = (state = initialState, {type, payload = 0}) => {
+export const pagelistScroll = (state = 0, {type, payload = 0}) => {
 
     if (type === PAGELIST_SCROLL_UPDATE) {
+        return payload;
+    }
+
+    return state;
+};
+
+export const activeGroup = (state = 'intro', {type, payload}) => {
+
+    if (type === APP_ACTIVE_GROUP && typeof payload === 'string') {
+        return payload;
+    }
+
+    return state;
+};
+
+export const currentPath = (state = '', {type, payload}) => {
+
+    if (type === NAVIGATE_TO) {
         return payload;
     }
 

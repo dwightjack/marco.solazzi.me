@@ -5,14 +5,14 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100vh;
     z-index: z-index(above);
     display: flex;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
     align-items: center;
     flex-wrap: nowrap;
     justify-content: flex-end;
-    overflow: hidden;
 
 }
 
@@ -27,8 +27,8 @@
     position: relative;
     display: block;
     overflow: hidden;
-    //opacity: 0.5;
-    transition: all 0.6s cubic-bezier(.62,.07,.72,.86);
+    transform: translateX(em(-5px, font-size(xl, false)));
+    transition: all 0.6s ease-in-out;
 
     &::before {
         position: absolute;
@@ -41,8 +41,7 @@
         background-color: $color-bg;
         content: "";
         transform: translate3d(0, 0, 0);
-        transition: inherit;
-        transition-delay: inherit;
+        transition: all 0.8s ease-in-out;
 
         .is-entering & {
             transform: translate3d(100%, 0, 0);
@@ -50,13 +49,56 @@
     }
 
     @for $i from 1 through 4 {
+
         &:nth-child(#{$i}) {
-            transition-delay: 0.3s * $i;
+            $before-delay: 0.25s * $i;
+            transition-delay: $before-delay - 0.2s;
+
+            &::before {
+                transition-delay: $before-delay;
+            }
         }
     }
 
     .is-entering & {
-        opacity: 1;
+        transform: translateX(0);
+
+        &:last-child {
+
+            &::after {
+                content: "";
+                animation: intro-dots 2.5s;
+                animation-delay: 2s;
+                animation-iteration-count: 2;
+            }
+        }
+    }
+}
+
+.c-intro__line--pre {
+    left: 0.8em;
+}
+
+
+@keyframes intro-dots {
+
+    0% {
+        content: "";
     }
 
+    25% {
+        content: ".";
+    }
+
+    50% {
+        content: "..";
+    }
+
+    75% {
+        content: "...";
+    }
+
+    100% {
+        content: "";
+    }
 }

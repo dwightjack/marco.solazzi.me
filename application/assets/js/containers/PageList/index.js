@@ -9,7 +9,7 @@ import { createRefs } from '../../base/utils';
 import './_pagelist.scss';
 
 
-export class PageList extends Component {
+class PageList extends Component {
 
     constructor(props) {
         super(props);

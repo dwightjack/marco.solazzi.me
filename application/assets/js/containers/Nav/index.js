@@ -21,8 +21,8 @@ export class Nav extends PureComponent {
 
     render() {
 
-        const {active} = this.props;
-        const navClassName = classNames('c-nav', {'is-active': active});
+        const {active, className} = this.props;
+        const navClassName = classNames('c-nav', className, {'is-active': active});
         const burgerClassName = classNames('c-nav__burger', {'is-active': active});
 
         const socialAnchors = social.filter((i) => i.type !== 'pencil').map(({type, url, label}) => (
@@ -59,8 +59,9 @@ export class Nav extends PureComponent {
 }
 
 Nav.propTypes = {
+    className: React.PropTypes.string,
     active: React.PropTypes.bool,
-    onBurgerClick: React.PropTypes.func
+    onBurgerClick: React.PropTypes.func //eslint-disable-line react/no-unused-prop-types
 };
 
 const mapStateToProps = (state) => ({active: state.activeNav});
