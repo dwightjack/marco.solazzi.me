@@ -9,11 +9,24 @@ export const bindAll = (ctx, ...methods) => methods.forEach((m) => {
     ctx[m] = ctx[m].bind(ctx); //eslint-disable-line
 });
 
+/**
+ * Binds function props to instance methods within a context
+ * @param {object} ctx - Context to bind methods to
+ * @param {...string} methods - Name of props to bind as strings
+ * @example
+ *  bindAll(this, 'myMethod');
+ *
+ * // same as this.myMethod = this.props.myMethod.bind(this)
+ */
 export const bindProps = (ctx, ...methods) => methods.forEach((m) => {
     ctx[m] = ctx.props[m].bind(ctx); //eslint-disable-line
 });
 
 
+export const getPseudoContent = (el, pseudo, castFn = String) => {
+    const content = (window.getComputedStyle(el, pseudo).content || '').replace(/('|")/g, '');
+    return castFn(content);
+};
 
 /**
  * A function that returns `undefined`

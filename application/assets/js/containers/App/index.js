@@ -2,6 +2,14 @@ import React, {Component} from 'react';
 import ReactTransitionGroup from 'react-addons-transition-group';
 import { connect } from 'react-redux';
 
+import {
+    NAV_PATH_HOME,
+    NAV_PATH_JOBS,
+    NAV_PATH_EDUCATION,
+    NAV_PATH_SKILLS,
+    NAV_PATH_PORTFOLIO
+} from '../../base/constants';
+
 import { bindAll } from '../../base/utils';
 
 import {
@@ -39,7 +47,7 @@ const currentJob = jobs[0];
 const previousJobs = jobs.slice(1).map((job) => <Table key={job.id} caption="company" data={job} />);
 
 const pageJob = (
-    <Page id="job" key="job">
+    <Page id="job" key="job" name={NAV_PATH_JOBS}>
         <Section title="jobs.current">
             <TableList>
                 <Table caption="company" data={currentJob} />
@@ -56,7 +64,7 @@ const pageJob = (
 
 
 const pageSkills = (
-    <Page id="skills" key="skills">
+    <Page id="skills" key="skills" name={NAV_PATH_SKILLS}>
         <Section
             title="skills.tech"
             subtitle="Technological stack"
@@ -77,7 +85,7 @@ const pageSkills = (
 );
 
 const pageEducation = (
-    <Page id="education" key="education">
+    <Page id="education" key="education" name={NAV_PATH_EDUCATION}>
         <Section
             title="education"
             subtitle="Learning never ends"
@@ -90,7 +98,7 @@ const pageEducation = (
 );
 
 const pagePortfolioWorks = (
-    <Page id="awards" key="awards">
+    <Page id="awards" key="awards" name={NAV_PATH_PORTFOLIO}>
         <Section
             title="portfolio.works"
             subtitle="Latest agency projects"
@@ -143,10 +151,10 @@ class App extends Component {
             window.addEventListener('wheel', (e) => {
                 if (e.deltaY > 0 && this.props.activeGroup === 'cover') {
                     e.preventDefault();
-                    setActiveGroup('pagelist');
+                    window.location.hash = NAV_PATH_JOBS;
                 } else if (e.deltaY < 0 && this.props.activeGroup === 'pagelist' && this.props.scrollAmount <= 0) {
                     e.preventDefault();
-                    setActiveGroup('cover');
+                    window.location.hash = NAV_PATH_HOME;
                 }
             });
 
@@ -168,7 +176,7 @@ class App extends Component {
 
     render() {
 
-        const {activeGroup} = this.props;
+        const {activeGroup, route} = this.props;
 
         return (
             <div>
@@ -182,6 +190,7 @@ class App extends Component {
                         <PageList
                             active={activeGroup === 'pagelist'}
                             onScrollCallback={this.onPageListScroll}
+                            route={route}
                         >
                             {Pages}
                         </PageList>}
@@ -201,7 +210,8 @@ App.propTypes = {
     setActiveGroup: React.PropTypes.func,
     navigateTo: React.PropTypes.func,
     scrollAmount: React.PropTypes.number,
-    activeGroup: React.PropTypes.string
+    activeGroup: React.PropTypes.string,
+    route: React.PropTypes.string
 };
 
 const mapDispatchToProps = (dispatch) => ({
@@ -218,7 +228,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => ({
     scrollAmount: state.pagelistScroll,
-    activeGroup: state.activeGroup
+    activeGroup: state.activeGroup,
+    route: state.route
 });
 
 export default connect(

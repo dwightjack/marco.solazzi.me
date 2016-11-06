@@ -9,20 +9,6 @@
     right: 0;
     bottom: 0;
     z-index: z-index(above);
-
-    &::after {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 0;
-        opacity: 0;
-        width: 100vw;
-        background-color: rgba($color-light, 0.2);
-        content: "";
-        transform: scaleX(0);
-        transition: opacity 0.2s ease;
-    }
 }
 
 .c-nav__burger {
@@ -40,6 +26,8 @@
         transition-delay: 1.7s;
     }
 }
+
+$nav-anim-out: 150ms;
 
 .c-nav__menu {
     position: fixed;
@@ -61,9 +49,10 @@
     //transform: translateX(100%);/
     transform-origin: 0 50%;
     //transition: transform 250ms ease-out;
-    animation: 150ms ease-out menu-leave;
+    animation: $nav-anim-out ease-out menu-leave;
     animation-fill-mode: forwards;
 
+    // the line and the background wit pattern
     &::after {
         position: absolute;
         top: 50%;
@@ -84,6 +73,7 @@
         content: "";
     }
 
+    // the red background
     &::before {
         position: absolute;
         top: 0;
@@ -130,8 +120,10 @@
         pointer-events: none;
         transform: translateY(-5%);
         transition: all 150ms linear;
+    }
 
-
+    .is-current > & {
+        opacity: 1;
     }
 }
 
@@ -185,21 +177,58 @@
     }
 }
 
+$nav-timing-in: 250ms;
+$nav-pattern-delay-in: 600ms;
+$nav-items-delay-in: 800ms;
+$nav-items: 5;
+
+/* pattern appearance vs  nav items appearance */
+$nav-total-timing-in: max(
+    ($nav-timing-in + $nav-pattern-delay-in),
+    ($nav-items-delay-in + ($nav-items * 80))
+);
+
+.c-nav {
+
+    &::after,
+    &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: z-index(behind);
+        visibility: hidden;
+        overflow: hidden;
+        width: 1px;
+        height: 1px;
+    }
+
+    //in timing
+    &::after {
+        content: "#{$nav-total-timing-in}";
+    }
+
+    //out timing
+    &::before {
+        content: "#{$nav-anim-out}";
+    }
+}
+
 .c-nav.is-active {
 
     .c-nav__menu {
-        animation: 250ms ease-out menu-enter;
+        animation: $nav-timing-in ease-out menu-enter;
         animation-fill-mode: forwards;
 
         &::after {
-            animation: 250ms ease-out menu-enter-pattern;
+            animation: $nav-timing-in ease-out menu-enter-pattern;
             animation-fill-mode: forwards;
-            animation-delay: 600ms;
+            animation-delay: $nav-pattern-delay-in;
         }
 
+        // the red background
         &::before {
             transform: scaleY(0);
-            animation: 250ms ease-out menu-enter-bg;
+            animation: $nav-timing-in ease-out menu-enter-bg;
             animation-fill-mode: forwards;
             animation-delay: 350ms;
         }
@@ -208,19 +237,18 @@
     .c-nav__item {
         opacity: 1;
         transform: translateY(0);
-        transition-delay: 800ms;
+        transition-delay: $nav-items-delay-in;
 
-        @for $i from 1 through 6 {
+        @for $i from 1 through $nav-items {
 
             &:nth-child(#{$i+1}) {
-                transition-delay: #{800 + ($i * 80)}ms;
+                transition-delay: $nav-items-delay-in + ($i * 80);
             }
         }
     }
 
     .c-nav__route:hover {
         opacity: 1;
-
 
         &::before {
             opacity: 1;

@@ -8,7 +8,9 @@
   "rules": {
       "indentation": 4,
       "max-empty-lines": 3,
-      "rule-nested-empty-line-before": "always",
+      "rule-nested-empty-line-before": ["always", {"ignore": [
+          "after-comment"
+      ]}],
       "no-missing-end-of-source-newline": null,
       "declaration-empty-line-before": "never",
       "declaration-block-properties-order": [

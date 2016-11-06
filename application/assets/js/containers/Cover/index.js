@@ -4,7 +4,7 @@ import classnames from 'classnames';
 
 import './_cover.scss';
 
-import { NAV_PATH_JOBS } from '../../base/constants';
+import { NAV_PATH_JOBS, NAV_PATH_HOME } from '../../base/constants';
 import { createRefs } from '../../base/utils';
 import Table from '../../components/Table';
 import List, { ListItem } from '../../components/List';
@@ -89,7 +89,7 @@ class Cover extends Component {
         const {active} = this.props;
 
         return (
-            <section className={classnames('c-cover', {'is-active': active})} ref={this.rootRef}>
+            <section className={classnames('c-cover', {'is-active': active})} ref={this.rootRef} name={NAV_PATH_HOME}>
 
                 <div className="c-cover__pic" ref={this.avatarRef}>
                     <Avatar src={pic} />
