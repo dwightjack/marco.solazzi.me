@@ -27,7 +27,7 @@ class Intro extends Component {
         }, 500);
     }
 
-    componentWillLeave(callback) {
+    componentLeave(el, callback) {
         TweenMax.to(this.body, 0.35, {
             xPercent: -5,
             autoAlpha: 0,
@@ -50,5 +50,9 @@ class Intro extends Component {
         );
     }
 }
+
+Intro.propTypes = {
+    active: React.PropTypes.bool
+};
 
 export default Intro;

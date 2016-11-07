@@ -5,15 +5,14 @@
     position: relative;
     z-index: z-index(above);
     display: flex;
+    overflow: hidden;
     align-items: center;
     flex-wrap: nowrap;
     justify-content: flex-start;
     width: 100vw;
     height: 100vh;
     padding: 0 vw($page-gutter);
-    overflow: hidden;
     border-right: 8px solid $color-link;
-
 }
 
 .c-cover__headline {

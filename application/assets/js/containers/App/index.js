@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import ReactTransitionGroup from 'react-addons-transition-group';
 import { connect } from 'react-redux';
 
 import {
@@ -11,6 +10,7 @@ import {
 } from '../../base/constants';
 
 import { bindAll } from '../../base/utils';
+import toggleShow from '../../base/toggle-show';
 
 import {
     pagelistScrollUpdateAction,
@@ -131,6 +131,18 @@ const Pages = [
     pagePortfolioTalks
 ];
 
+
+const IntroToggler = toggleShow(Intro, {
+    onLeave: 'componentLeave',
+    displayProp: false
+});
+
+const CoverToggler = toggleShow(Cover, {
+    toggle: 'visible',
+    onEnter: 'componentEnter',
+    onLeave: 'componentLeave'
+});
+
 class App extends Component {
 
     constructor(props) {
@@ -138,8 +150,6 @@ class App extends Component {
 
         bindAll(this, 'onPageListScroll');
     }
-
-
 
     componentDidMount() {
 
@@ -165,8 +175,6 @@ class App extends Component {
             this.props.navigateTo(window.location.hash);
         });
 
-
-
     }
 
     onPageListScroll({offset}) {
@@ -181,12 +189,10 @@ class App extends Component {
         return (
             <div>
                 <Nav className={activeGroup !== 'intro' ? 'is-visible' : ''} />
-                <ReactTransitionGroup
-                    component={Wrapper}
-                >
-                    { activeGroup === 'intro' && <Intro />}
-                    { (activeGroup === 'intro' || activeGroup === 'cover') && <Cover active={activeGroup === 'cover'} />}
-                    { activeGroup === 'pagelist' &&
+                <Wrapper>
+                    <IntroToggler active={activeGroup === 'intro'} />
+                    <CoverToggler active={activeGroup !== 'intro'} visible={activeGroup === 'cover'} />
+                    { /*activeGroup === 'pagelist' &&
                         <PageList
                             active={activeGroup === 'pagelist'}
                             onScrollCallback={this.onPageListScroll}
@@ -194,9 +200,9 @@ class App extends Component {
                         >
                             {Pages}
                         </PageList>}
-                    { activeGroup !== 'intro' && <Pattern />}
+                    { activeGroup !== 'intro' && <Pattern />*/}
 
-                </ReactTransitionGroup>
+                </Wrapper>
 
                 { /* <DevTools /> */ }
             </div>

@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import './_cover.scss';
 
 import { NAV_PATH_JOBS, NAV_PATH_HOME } from '../../base/constants';
-import { createRefs } from '../../base/utils';
+import { createRefs, raf } from '../../base/utils';
 import Table from '../../components/Table';
 import List, { ListItem } from '../../components/List';
 import Avatar from '../../components/Avatar';
@@ -29,10 +29,8 @@ class Cover extends Component {
         createRefs(this, 'root', 'avatar', 'title', 'table', 'footer', 'scrollHint');
     }
 
-    componentWillLeave(callback) {
+    componentLeave(el, callback) {
         const tl = this.tl = new TimelineMax();
-
-        this.root.classList.add('is-leaving');
 
         tl.to([this.avatar, this.scrollHint], 0.2, {
             autoAlpha: 0,
@@ -57,39 +55,38 @@ class Cover extends Component {
         .to(this.root, 0.7, {
             yPercent: -100,
             ease: Power2.easeInOut,
-            onComplete: () => {
-                callback();
-            }
-        });
-
-    }
-
-    componentDidUnMount() {
-        this.tl = null;
-    }
-
-    componentWillEnter(callback) {
-        if (this.tl) {
-            this.root.classList.remove('is-leaving');
-            this.tl.pause(0, true); // Go back to the start (true is to suppress events)
-            this.tl.remove();
-        }
-        TweenMax.fromTo(this.root, 0.8, {
-            yPercent: -100
-        }, {
-            yPercent: 0,
-            ease: Power2.easeOut,
-            clearProps: 'all',
             onComplete: callback
         });
+
+    }
+
+    componentEnter() {
+        if (this.tl) {
+            this.tl.seek(0).kill(); // Go back to the start (true is to suppress events)
+            this.tl = null;
+
+            TweenMax.fromTo(this.root, 0.8, {
+                yPercent: -100
+            }, {
+                yPercent: 0,
+                ease: Power2.easeOut,
+                clearProps: 'all'
+            });
+        } else {
+            this.root.classList.remove('is-active');
+            raf(() => {
+                this.root.classList.add('is-active');
+            })
+        }
+
     }
 
     render() {
 
-        const {active} = this.props;
+        const { visible, display, active } = this.props;
 
         return (
-            <section className={classnames('c-cover', {'is-active': active})} ref={this.rootRef} name={NAV_PATH_HOME}>
+            <section className={classnames('c-cover', {'is-active': active, 'is-leaving': !visible})} ref={this.rootRef} name={NAV_PATH_HOME} style={{display}}>
 
                 <div className="c-cover__pic" ref={this.avatarRef}>
                     <Avatar src={pic} />
@@ -122,11 +119,13 @@ class Cover extends Component {
 }
 
 Cover.propTypes = {
-    active: React.PropTypes.bool
+    active: React.PropTypes.bool,
+    visible: React.PropTypes.bool
 };
 
 Cover.defaultProps = {
-    active: false
+    active: false,
+    visible: false
 };
 
 export default Cover;
