@@ -11,13 +11,12 @@ class Pattern extends Component {
         createRefs(this, 'root');
     }
 
-    componentWillEnter(callback) {
+    componentDidMount() {
         TweenMax.fromTo(this.root, 0.4, {
             autoAlpha: 0
         }, {
             autoAlpha: 1,
-            delay: 1,
-            onComplete: callback
+            delay: 1
         });
     }
 

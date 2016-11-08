@@ -14,15 +14,17 @@ import { Provider } from 'react-redux';
 
 import './base/plugins';
 
+import Router from './router';
 import configureStore from './store';
 
 import App from './containers/App';
 
 const store = configureStore();
+const router = new Router();
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <App router={router} />
     </Provider>,
     document.getElementById('app-root')
 );

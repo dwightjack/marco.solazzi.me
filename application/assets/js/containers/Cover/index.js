@@ -29,7 +29,33 @@ class Cover extends Component {
         createRefs(this, 'root', 'avatar', 'title', 'table', 'footer', 'scrollHint');
     }
 
-    componentLeave(el, callback) {
+    componentDidMount() {
+        if (this.props.active === false) {
+            TweenMax.set(this.root, {autoAlpha: 0});
+        }
+    }
+
+    componentDidUpdate({active, visible}) {
+        const currentActive = this.props.active;
+        const currentVisible = this.props.visible;
+        if (currentActive !== active && currentActive === true) {
+            TweenMax.set(this.root, {autoAlpha: 1});
+            this.root.classList.remove('is-active');
+            raf(() => {
+                this.root.classList.add('is-active');
+            });
+            return;
+        }
+        if (currentVisible !== visible) {
+            if (currentVisible === true) {
+                this.componentEnter();
+            } else {
+                this.componentLeave();
+            }
+        }
+    }
+
+    componentLeave() {
         const tl = this.tl = new TimelineMax();
 
         tl.to([this.avatar, this.scrollHint], 0.2, {
@@ -54,9 +80,9 @@ class Cover extends Component {
         }, '-=0.3')
         .to(this.root, 0.7, {
             yPercent: -100,
-            ease: Power2.easeInOut,
-            onComplete: callback
-        });
+            ease: Power2.easeInOut
+        })
+        .set(this.root, {autoAlpha: 0});
 
     }
 
@@ -72,21 +98,16 @@ class Cover extends Component {
                 ease: Power2.easeOut,
                 clearProps: 'all'
             });
-        } else {
-            this.root.classList.remove('is-active');
-            raf(() => {
-                this.root.classList.add('is-active');
-            })
         }
 
     }
 
     render() {
 
-        const { visible, display, active } = this.props;
+        const { visible, active } = this.props;
 
         return (
-            <section className={classnames('c-cover', {'is-active': active, 'is-leaving': !visible})} ref={this.rootRef} name={NAV_PATH_HOME} style={{display}}>
+            <section className={classnames('c-cover', {'is-active': active, 'is-leaving': !visible})} ref={this.rootRef} name={NAV_PATH_HOME}>
 
                 <div className="c-cover__pic" ref={this.avatarRef}>
                     <Avatar src={pic} />

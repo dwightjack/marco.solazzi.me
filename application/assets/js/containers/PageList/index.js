@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Scrollbar from 'react-smooth-scrollbar';
 import classnames from 'classnames';
 import { TweenMax, Power2 } from 'gsap';
@@ -7,40 +8,60 @@ import { TweenMax, Power2 } from 'gsap';
 import { NAV_PATH_HOME } from '../../base/constants';
 import { createRefs } from '../../base/utils';
 
+import {
+    pagelistScrollUpdateAction
+} from './actions';
+
 import './_pagelist.scss';
 
-class PageList extends Component {
+export class PageList extends Component {
 
     constructor(props) {
         super(props);
         createRefs(this, 'root', 'scrollbar');
     }
 
-    componentDidUpdate({route}) {
+    componentDidMount() {
+        if (this.props.active === false) {
+            TweenMax.set(this.root, {autoAlpha: 0});
+        }
+    }
+
+    componentDidUpdate({route, active}) {
+        const newActive = this.props.active;
+        if (newActive !== active) {
+            if (newActive === true) {
+                this.componentWillEnter();
+            } else {
+                this.componentWillLeave();
+            }
+        }
         if (route !== this.props.route) {
             this.scrollTo(this.props.route);
         }
     }
 
-    componentWillEnter(callback) {
+    componentWillEnter() {
+        TweenMax.killTweensOf(this.root);
+        TweenMax.set(this.root, {autoAlpha: 1});
         TweenMax.fromTo(this.root, 0.8, {
             yPercent: 100
         }, {
             yPercent: 0,
             delay: 1.2,
-            ease: Power2.easeInOut,
-            clearProps: 'all',
-            onComplete: callback
+            ease: Power2.easeInOut
         });
     }
 
-    componentWillLeave(callback) {
+    componentWillLeave() {
         TweenMax.fromTo(this.root, 0.8, {
             yPercent: 0
         }, {
             yPercent: 100,
             ease: Power2.easeOut,
-            onComplete: callback
+            onComplete: () => {
+                TweenMax.set(this.root, {autoAlpha: 0});
+            }
         });
     }
 
@@ -82,8 +103,21 @@ PageList.propTypes = {
 };
 
 PageList.defaultProps = {
-    onScrollCallback: () => {},
     active: false
 };
 
-export default PageList;
+const mapDispatchToProps = (dispatch) => ({
+    onScrollCallback({offset}) {
+        const scrollAmount = offset ? offset.y : 0;
+        dispatch(pagelistScrollUpdateAction(scrollAmount));
+    }
+});
+
+const mapStateToProps = (state) => ({
+    route: state.route
+});
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(PageList);

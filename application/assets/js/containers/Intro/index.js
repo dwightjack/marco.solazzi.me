@@ -16,7 +16,7 @@ class Intro extends Component {
             entering: false
         };
 
-        createRefs(this, 'body');
+        createRefs(this, 'root');
 
     }
 
@@ -27,20 +27,23 @@ class Intro extends Component {
         }, 500);
     }
 
-    componentLeave(el, callback) {
-        TweenMax.to(this.body, 0.35, {
-            xPercent: -5,
-            autoAlpha: 0,
-            onComplete: callback,
-            ease: Power3.easeOut
-        });
+    componentDidUpdate({active}) {
+        const currentActive = this.props.active;
+
+        if (active !== currentActive && currentActive === false) {
+            TweenMax.to(this.root, 0.35, {
+                xPercent: -5,
+                autoAlpha: 0,
+                ease: Power3.easeOut
+            });
+        }
     }
 
     render() {
         const { entering } = this.state;
         return (
-            <header className="c-intro">
-                <div className={classnames('c-intro__body h1', {'is-entering': entering})} ref={this.bodyRef}>
+            <header className="c-intro" ref={this.rootRef}>
+                <div className={classnames('c-intro__body h1', {'is-entering': entering})}>
                     <span className="c-intro__line">Geeks.query(</span>
                     <span className="c-intro__line c-intro__line--pre">&apos;/usr/<mark className="u-type--mark">marco+solazzi</mark>&apos;,</span>
                     <span className="c-intro__line c-intro__line--pre">&apos;job=<mark className="u-type--mark">frontend</mark>&apos;</span>
