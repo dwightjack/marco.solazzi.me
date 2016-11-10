@@ -1,4 +1,4 @@
-import { APP_ACTIVE_GROUP, NAVIGATE_TO, NAV_PATH_HOME } from '../../base/constants';
+import { APP_ACTIVE_GROUP, NAVIGATE_TO } from '../../base/constants';
 
 export const activeGroup = (state = 'intro', {type, payload}) => {
 
@@ -9,7 +9,7 @@ export const activeGroup = (state = 'intro', {type, payload}) => {
     return state;
 };
 
-export const route = (state = NAV_PATH_HOME, {type, payload}) => {
+export const route = (state = '', {type, payload}) => {
 
     if (type === NAVIGATE_TO) {
         return payload;

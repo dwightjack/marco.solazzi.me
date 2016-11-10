@@ -41,6 +41,28 @@
     }
 }
 
+.c-cover__text {
+    position: relative;
+    max-width: 450px;
+    font-size: font-size(20px);
+
+    &::before {
+        position: absolute;
+        top: -0.35em;
+        left: -0.55em;
+        opacity: 0.4;
+        color: $color-link;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 4em;
+        content: "\201c";
+    }
+
+    > * {
+        margin-bottom: 0.8em;
+        line-height: 1.4em;
+    }
+}
+
 .c-cover__pic {
     position: absolute;
     top: 50%;

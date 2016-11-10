@@ -26,6 +26,11 @@ export default class Router {
             e.preventDefault();
             callback(window.location.hash, this.previous);
         });
+        this.current = window.location.hash;
+        if (this.current !== '') {
+            callback(this.current, this.previous);
+        }
+
     }
 
     go(hash) {

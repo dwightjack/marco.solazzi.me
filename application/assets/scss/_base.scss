@@ -241,47 +241,71 @@ abbr[title] {
 a.u-link--mark,
 a:not([class]) {
     position: relative;
+    display: inline-block;
+    padding-right: 0.22em;
+    padding-left: 0.22em;
     color: inherit;
     text-decoration: none;
-    transition: all 0.3s;
+    transition: all 0.27s;
 
 
     &::after {
         position: absolute;
+
+        /*
         top: 0;
-        right: -0.1em;
-        bottom: 0;
-        left: -0.1em;
+        right: 0;
+        bottom: -0.17em;
+        left: 0;
         z-index: z-index(behind) - 1;
         opacity: 0.05;
+        */
+        right: 0;
+        bottom: -0.17em;
+        left: 0;
+        z-index: z-index(behind) - 1;
+        opacity: 0.1;
+        height: 3px;
         background-color: currentColor;
         content: "";
+        pointer-events: none;
+        transition: all 0.1s linear;
     }
 
     &::before {
         position: absolute;
         top: 0;
-        right: -0.1em;
-        bottom: 0;
-        left: -0.1em;
-        z-index: z-index(behind);
-        opacity: 0.8;
+        bottom: -0.17em;
+        left: 0;
+        z-index: z-index(above);
+        opacity: 0;
+        width: 0;
         background-color: $color-link;
         content: "";
-        transform: scaleX(0);
+        transform: scaleX(1);
         transform-origin: 0 0;
-        transition: inherit;
+        pointer-events: none;
+        transition: opacity 0.25s, width 0s ease 0.25s, transform 0s ease 0.25s, transform-origin 0s ease 0.25s;
     }
 
     &:hover {
-        color: $color-light;
+        color: $color-link;
         text-decoration: none;
-        transition-delay: 0.05s;
+        transition-delay: 0.25s;
+        transition-duration: 0;
 
         &::before {
             opacity: 1;
-            transform: scaleX(1);
-            transition-delay: 0s;
+            width: 100%;
+            transform: scaleX(0);
+            transform-origin: right 0;
+            transition: width 0.25s ease, transform-origin 0s ease 0.25s, transform 0.25s ease 0.25s;
+            //transition: transform 0.25s ease, transform-origin 0s ease 0.25s, width 0.25s ease 0.5s;
+        }
+
+        &::after {
+            opacity: 0.3;
+            transition: opacity 0.15s ease 0.15s;
         }
     }
 }

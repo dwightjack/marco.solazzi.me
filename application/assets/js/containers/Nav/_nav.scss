@@ -96,7 +96,7 @@ $nav-anim-out: 150ms;
 
 .c-nav__route {
     position: relative;
-    display: block;
+    display: inline-block;
     opacity: 0.8;
     padding: 1em 1.5em;
     color: $color-light;
@@ -107,7 +107,7 @@ $nav-anim-out: 150ms;
     letter-spacing: 0.05em;
     transition: opacity 150ms linear;
 
-    &::before {
+    /*&::before {
         position: absolute;
         top: 0;
         left: 0;
@@ -120,7 +120,27 @@ $nav-anim-out: 150ms;
         pointer-events: none;
         transform: translateY(-5%);
         transition: all 150ms linear;
+    }*/
+
+    &::before {
+        position: relative;
+        display: inline-block;
+        opacity: 0;
+        margin-left: -0.3em;
+        content: ".";
+        transform: translateX(-0.4em);
+        transition: all 250ms ease-out;
     }
+
+    /*&::after {
+        position: relative;
+        display: inline-block;
+        opacity: 0;
+        content: "()";
+        transform: translateX(0.6em);
+        transition: all 250ms ease-out;
+        display: none;
+    }*/
 
     .is-current > & {
         opacity: 1;
@@ -247,14 +267,20 @@ $nav-total-timing-in: max(
         }
     }
 
+    .is-current > .c-nav__route,
     .c-nav__route:hover {
         opacity: 1;
 
-        &::before {
+        /*&::before {
             opacity: 1;
             transform: translateY(0);
             transition-delay: 100ms;
             transition-duration: 250ms;
+        }*/
+
+        &::before {
+            opacity: 1;
+            transform: translateX(-0.1em);
         }
     }
 }

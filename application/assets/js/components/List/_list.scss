@@ -8,7 +8,7 @@
     padding: 0;
     list-style-type: none;
 
-    &::before {
+    /*&::before {
         position: absolute;
         top: -0.5em;
         left: -0.5em;
@@ -17,15 +17,16 @@
         opacity: 0.4;
         font-family: 'Times New Roman', Times, serif;
         font-size: 4em;
-    }
+    }*/
 
 }
 
 .o-list__item {
     @include font-content;
     margin-bottom: 0.3em;
+    line-height: 1.4em;
 
-    &::last-child {
+    &:last-child {
         margin-bottom: 0;
     }
 

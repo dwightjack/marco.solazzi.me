@@ -6,20 +6,21 @@ import './_cover.scss';
 
 import { NAV_PATH_JOBS, NAV_PATH_HOME } from '../../base/constants';
 import { createRefs, raf } from '../../base/utils';
-import Table from '../../components/Table';
+//import Table from '../../components/Table';
 import List, { ListItem } from '../../components/List';
 import Avatar from '../../components/Avatar';
 import Ico from '../../components/Ico';
 import pic from '../../../images/marco.jpg';
 import social from '../../database/social.json';
 
+/*
 const data = {
     name: 'Marco',
     surname: 'Solazzi',
     birthday: 'October 1st 1979',
     currentLocation: 'Verona (IT)',
     nationality: 'Italian'
-};
+};*/
 
 class Cover extends Component {
 
@@ -115,10 +116,13 @@ class Cover extends Component {
                 <div className="c-cover__body">
 
                     <h2 className="c-cover__headline" ref={this.titleRef}>こんにちわ！</h2>
-                    <article ref={this.tableRef}>
-                        <Table
+                    <article className="c-cover__text" ref={this.tableRef}>
+                        <p>My name is <strong>Marco Solazzi</strong></p>
+                        <p>I am a 37yo <strong>Frontend Web Developer</strong>, technical <strong>writer</strong> and <strong>speaker</strong> from Verona (Italy).</p>
+                        <p>Since 2014 I am co-founder and host of the <strong><a href="http://www.fevr.it" target="_blank" rel="noopener noreferrer">FEVR Frontenders Meetup</a></strong> .</p>
+                        {/*<Table
                             data={data}
-                        />
+                        />*/}
                     </article>
                     <footer ref={this.footerRef}>
                         <List>

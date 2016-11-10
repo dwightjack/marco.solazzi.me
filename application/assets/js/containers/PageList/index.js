@@ -12,6 +12,9 @@ import {
     pagelistScrollUpdateAction
 } from './actions';
 
+import { AnchorIco } from '../../components/Anchor';
+import social from '../../database/social.json';
+
 import './_pagelist.scss';
 
 export class PageList extends Component {
@@ -89,6 +92,11 @@ export class PageList extends Component {
                     onScroll={onScrollCallback}
                 >
                     {children}
+                    <footer className="c-pagelist__footer">
+                        {social.filter((i) => i.type !== 'pencil').map(({type, url, label}) => (
+                            <AnchorIco ico={type} link={url} title={label} key={type} />
+                        ))}
+                    </footer>
                 </Scrollbar>
             </main>
         );
