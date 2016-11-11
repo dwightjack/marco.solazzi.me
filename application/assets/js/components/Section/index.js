@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
-import { bindAll, createRefs, raf } from '../../base/utils';
+import { bindAll, createRefs, raf, caf } from '../../base/utils';
 import Title from '../Title';
 
 import './_section.scss';
@@ -13,6 +13,7 @@ class Section extends PureComponent {
 
         this.offsetTop = 0;
         this.maxScroll = 0;
+        this.rafId = null;
         this.state = {
             inView: false,
             scrollAmount: false,
@@ -39,7 +40,11 @@ class Section extends PureComponent {
 
     componentWillReceiveProps(nextProps) {
         if (this.props.pagelistScroll !== nextProps.pagelistScroll) {
-            raf(this.setTitlePosition);
+            if (this.rafId) {
+                caf(this.rafId);
+                this.rafId = null;
+            }
+            this.rafId = raf(this.setTitlePosition);
         }
     }
 

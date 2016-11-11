@@ -4,7 +4,8 @@
         ["es2015", {"loose": true}]
     ],
     "plugins" : [
-        ["transform-object-rest-spread", "transform-runtime", {"polyfill": false, "regenerator": false }]
+        "transform-object-rest-spread",
+        ["transform-runtime", {"polyfill": false, "regenerator": false }]
     ],
 
     "env": {

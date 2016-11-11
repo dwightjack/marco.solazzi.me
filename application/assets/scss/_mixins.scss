@@ -225,10 +225,14 @@
 
 @mixin responsive-typography($font-min, $font-max, $breakpoint-min, $breakpoint-max) {
     //https://www.smashingmagazine.com/2016/05/fluid-typography/
+
     $font-diff: ($font-max - $font-min);
     $breakpoint-diff: ($breakpoint-max - $breakpoint-min);
     $font-scale: $font-diff / $breakpoint-diff;
     $base-font-size: percentage($font-min / 16px);
+    $base-font-size-em: em($font-min, 16px);
 
-    font-size: calc(#{$base-font-size} + (#{strip-units($font-diff)} * (100vw - #{$breakpoint-min}) / #{strip-units($breakpoint-diff)}));
+    // https://zellwk.com/blog/viewport-based-typography/
+    font-size: calc(#{$base-font-size-em} + (#{strip-units($font-diff)} * (100vw - #{$breakpoint-min}) / #{strip-units($breakpoint-diff)}));
+    //font-size: calc(#{$base-font-size} + (#{strip-units($font-diff)} * (100vw - #{$breakpoint-min}) / #{strip-units($breakpoint-diff)}));
 }

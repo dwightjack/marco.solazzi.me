@@ -6,8 +6,7 @@
  *
  */
 
-import 'scss/app.scss';
-
+import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -18,6 +17,8 @@ import Router from './router';
 import configureStore from './store';
 
 import App from './containers/App';
+
+import '../scss/app.scss';
 
 const store = configureStore();
 const router = new Router();

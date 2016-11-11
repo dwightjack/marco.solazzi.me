@@ -67,9 +67,7 @@
 
             &::after {
                 content: "";
-                animation: intro-dots 2.5s;
-                animation-delay: 2s;
-                animation-iteration-count: 2;
+                animation: 2.5s linear 2s 2 intro-dots;
             }
         }
     }

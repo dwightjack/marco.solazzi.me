@@ -23,5 +23,3 @@ methods.forEach((method) => {
         console[method] = noop;
     }
 });
-
-// Place any jQuery/helper plugins in here.
