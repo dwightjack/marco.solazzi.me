@@ -31,7 +31,7 @@ class Cover extends Component {
     }
 
     componentDidMount() {
-        if (this.props.active === false) {
+        if (this.props.active === false || this.props.visible === false) {
             TweenMax.set(this.root, {autoAlpha: 0});
         }
     }
@@ -91,15 +91,17 @@ class Cover extends Component {
         if (this.tl) {
             this.tl.seek(0).kill(); // Go back to the start (true is to suppress events)
             this.tl = null;
-
-            TweenMax.fromTo(this.root, 0.8, {
-                yPercent: -100
-            }, {
-                yPercent: 0,
-                ease: Power2.easeOut,
-                clearProps: 'all'
-            });
         }
+
+        TweenMax.set(this.root, {autoAlpha: 1});
+
+        TweenMax.fromTo(this.root, 0.8, {
+            yPercent: -100
+        }, {
+            yPercent: 0,
+            ease: Power2.easeOut,
+            clearProps: 'all'
+        });
 
     }
 

@@ -22,9 +22,16 @@ class Intro extends Component {
 
     componentDidMount() {
 
-        setTimeout(() => {
-            this.setState({ entering: true });
-        }, 500);
+        if (this.props.active === true) {
+            setTimeout(() => {
+                this.setState({ entering: true });
+            }, 500);
+        } else {
+            TweenMax.set(this.root, {
+                xPercent: -5,
+                autoAlpha: 0
+            });
+        }
     }
 
     componentDidUpdate({active}) {
@@ -47,7 +54,7 @@ class Intro extends Component {
                     <span className="c-intro__line">Geeks.query(</span>
                     <span className="c-intro__line c-intro__line--pre">&apos;/usr/<mark className="u-type--mark">marco+solazzi</mark>&apos;,</span>
                     <span className="c-intro__line c-intro__line--pre">&apos;job=<mark className="u-type--mark">frontend</mark>&apos;</span>
-                    <span className="c-intro__line">).then((me) =&rsaquo; </span>
+                    <span className="c-intro__line">).then((me) =&rsaquo;<span className="c-intro__dots"></span></span>
                 </div>
             </header>
         );

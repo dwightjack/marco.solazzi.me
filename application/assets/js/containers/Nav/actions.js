@@ -1,7 +1,20 @@
 import { createAction} from 'redux-actions';
 
-import { TOGGLE_NAV, NAVIGATE_TO } from '../../base/constants';
+import {
+    TOGGLE_NAV,
+    NAVIGATE_TO,
+    NAV_PATH_HOME,
+    APP_ACTIVE_GROUP
+} from '../../base/constants';
 
 export const toggleNavAction = createAction(TOGGLE_NAV);
 
-export const navigateToAction = createAction(NAVIGATE_TO);
+export const appActiveGroupAction = createAction(APP_ACTIVE_GROUP);
+
+export const navigateToAction = (hash) => { //eslint-disable-line arrow-body-style
+    return (dispatch) => {
+        const activeGroup = hash === NAV_PATH_HOME ? 'cover' : 'pagelist';
+        dispatch(appActiveGroupAction(activeGroup));
+        dispatch({type: NAVIGATE_TO, payload: hash});
+    };
+};

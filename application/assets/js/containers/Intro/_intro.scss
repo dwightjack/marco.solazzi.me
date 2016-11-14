@@ -13,7 +13,6 @@
     align-items: center;
     flex-wrap: nowrap;
     justify-content: flex-end;
-
 }
 
 .c-intro__body {
@@ -62,14 +61,6 @@
 
     .is-entering & {
         transform: translateX(0);
-
-        &:last-child {
-
-            &::after {
-                content: "";
-                animation: 2.5s linear 2s 2 intro-dots;
-            }
-        }
     }
 }
 
@@ -77,26 +68,33 @@
     left: 0.8em;
 }
 
+.c-intro__dots {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+
+    &::after {
+        position: relative;
+        display: inline-block;
+        content: "...";
+        transform: translateX(-100%);
+
+        .is-entering & {
+            animation: intro-dots 2.5s steps(4) 2;
+            animation-delay: 1.5s;
+        }
+    }
+}
+
 
 @keyframes intro-dots {
 
     0% {
-        content: "";
-    }
-
-    25% {
-        content: ".";
-    }
-
-    50% {
-        content: "..";
-    }
-
-    75% {
-        content: "...";
+        transform: translateX(-100%);
     }
 
     100% {
-        content: "";
+        transform: translateX(33%);
     }
 }

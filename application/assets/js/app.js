@@ -17,11 +17,16 @@ import Router from './router';
 import configureStore from './store';
 
 import App from './containers/App';
+import { NAV_PATH_HOME } from './base/constants';
 
 import '../scss/app.scss';
 
-const store = configureStore();
 const router = new Router();
+const store = configureStore({
+    route: router.current,
+    activeGroup: (router.current === '' ? 'intro' : (router.current === NAV_PATH_HOME ? 'cover' : 'pagelist'))
+});
+
 
 ReactDOM.render(
     <Provider store={store}>

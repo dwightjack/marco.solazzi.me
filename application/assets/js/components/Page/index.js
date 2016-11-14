@@ -1,14 +1,29 @@
-import React from 'react';
+import React, { Component } from 'react';
+
+import { createRefs } from '../../base/utils';
 
 import './_page.scss';
 
-const Page = ({children, id, name}) => (
-    <section className="c-page" id={id} name={name}>
-        <div className="c-page__body">
-            {children}
-        </div>
-    </section>
-);
+class Page extends Component {
+
+    constructor(props) {
+        super(props);
+
+        createRefs(this, 'root');
+    }
+
+    render() {
+        const {children, id, name} = this.props;
+
+        return (
+            <section className="c-page" id={id} name={name} ref={this.rootRef}>
+                <div className="c-page__body">
+                    {children}
+                </div>
+            </section>
+        );
+    }
+}
 
 Page.propTypes = {
     children: React.PropTypes.node,

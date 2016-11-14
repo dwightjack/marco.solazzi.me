@@ -16,34 +16,54 @@ const paths = [
 
 export default class Router {
 
-    constuctor() {
+    constructor() {
         this.current = '';
         this.previous = null;
+        this.setCurrent(window.location.hash);
     }
 
     listen(callback) {
         window.addEventListener('hashchange', (e) => {
             e.preventDefault();
-            callback(window.location.hash, this.previous);
+            if (this.setCurrent(window.location.hash)) {
+                callback(this.current, this.previous);
+            }
         });
-        this.current = window.location.hash;
-        if (this.current !== '') {
-            callback(this.current, this.previous);
-        }
-
     }
 
-    go(hash) {
+    setCurrent(hash) {
+        const normalizedHash = this.checkHash(hash);
+
+        if (normalizedHash === false || normalizedHash === this.current) {
+            return false;
+        }
+
+        this.previous = this.current;
+        this.current = normalizedHash;
+        return true;
+    }
+
+    checkHash(hash) { //eslint-disable-line class-methods-use-this
         if (!(typeof hash === 'string')) {
-            return;
+            return false;
         }
 
         const normalizedHash = hash.trim();
         if (paths.indexOf(hash) === -1) {
+            return false;
+        }
+
+        return normalizedHash;
+    }
+
+    go(hash) {
+
+        const normalizedHash = this.checkHash(hash);
+
+        if (normalizedHash === false) {
             return;
         }
-        this.previous = this.current;
-        this.current = normalizedHash;
+
         window.location.hash = normalizedHash;
     }
 

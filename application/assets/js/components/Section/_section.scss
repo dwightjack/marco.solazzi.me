@@ -9,6 +9,10 @@
     position: relative;
     padding-bottom: rem(120px);
     transform-style: preserve-3d;
+
+    &:last-child {
+        padding-bottom: rem(100px);
+    }
 }
 
 .c-section__title {

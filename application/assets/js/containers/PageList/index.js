@@ -6,7 +6,7 @@ import { TweenMax, Power2 } from 'gsap';
 
 
 import { NAV_PATH_HOME } from '../../base/constants';
-import { createRefs } from '../../base/utils';
+import { createRefs, bindAll } from '../../base/utils';
 
 import {
     pagelistScrollUpdateAction
@@ -22,12 +22,17 @@ export class PageList extends Component {
     constructor(props) {
         super(props);
         createRefs(this, 'root', 'scrollbar');
+        bindAll(this, 'onScroll');
+        this.childRefs = [];
+        this.forcedScrolling = false;
+        this.currentPage = '';
     }
 
     componentDidMount() {
         if (this.props.active === false) {
             TweenMax.set(this.root, {autoAlpha: 0});
         }
+        this.currentPage = this.props.route;
     }
 
     componentDidUpdate({route, active}) {
@@ -42,6 +47,25 @@ export class PageList extends Component {
         if (route !== this.props.route) {
             this.scrollTo(this.props.route);
         }
+        this.currentPage = this.props.route;
+    }
+
+    onScroll(status, scrollbar) {
+        if (this.forcedScrolling === false) {
+            this.childRefs.some((child) => {
+                if (child.root) {
+                    const isVisible = scrollbar.isVisible(child.root);
+                    if (isVisible && this.currentPage !== child.props.name) {
+                        this.props.onPageChange(child.props.name);
+                    }
+                    return isVisible;
+                }
+                return false;
+            });
+        }
+
+        const {y = 0} = status.offset;
+        this.props.onScrollCallback(y);
     }
 
     componentWillEnter() {
@@ -72,26 +96,44 @@ export class PageList extends Component {
         const { scrollbar } = this.scrollbar;
 
         if (route === NAV_PATH_HOME) {
-            scrollbar.setPosition(0, 0, false);
+            scrollbar.setPosition(0, 0, true);
+            this.props.onScrollCallback(0);
         } else {
-            scrollbar.scrollIntoView(document.querySelector(`[name="${route}"]`), {
-                offsetTop: 60
-            });
+            const el = this.root.querySelector(`[name="${route}"]`);
+            if (scrollbar.isVisible(el) === false) {
+                const top = el.getBoundingClientRect().top;
+                this.forcedScrolling = true;
+                scrollbar.scrollTo(0, top + scrollbar.scrollTop, 300, () => {
+                    this.forcedScrolling = false;
+                });
+
+            }
         }
     }
 
     render() {
 
-        const {children, active, onScrollCallback} = this.props;
+        const {children, active} = this.props;
+
+        this.childRefs = [];
+        let idx = -1;
+        const newChildren = React.Children.map(children, (child) => {
+            idx += 1;
+            return React.cloneElement(child, {
+                ref: function compRef(i, component) { //eslint-disable-line react/jsx-no-bind
+                    this.childRefs[i] = component;
+                }.bind(this, idx)
+            });
+        });
 
         return (
             <main className={classnames('c-pagelist', {'is-active': active})} ref={this.rootRef}>
                 <Scrollbar
                     ref={this.scrollbarRef}
                     alwaysShowTracks
-                    onScroll={onScrollCallback}
+                    onScroll={this.onScroll}
                 >
-                    {children}
+                    {newChildren}
                     <footer className="c-pagelist__footer">
                         {social.filter((i) => i.type !== 'pencil').map(({type, url, label}) => (
                             <AnchorIco ico={type} link={url} title={label} key={type} />
@@ -106,6 +148,7 @@ export class PageList extends Component {
 PageList.propTypes = {
     children: React.PropTypes.node,
     onScrollCallback: React.PropTypes.func,
+    onPageChange: React.PropTypes.func,
     active: React.PropTypes.bool,
     route: React.PropTypes.string
 };
@@ -115,8 +158,7 @@ PageList.defaultProps = {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    onScrollCallback({offset}) {
-        const scrollAmount = offset ? offset.y : 0;
+    onScrollCallback(scrollAmount) {
         dispatch(pagelistScrollUpdateAction(scrollAmount));
     }
 });

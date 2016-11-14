@@ -1,7 +1,6 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 
-import {activeNav} from './containers/Nav/reducers';
-import {activeGroup, route} from './containers/App/reducers';
+import { activeNav, activeGroup, route } from './containers/Nav/reducers';
 import { pagelistScroll } from './containers/PageList/reducers';
 
 export default combineReducers({

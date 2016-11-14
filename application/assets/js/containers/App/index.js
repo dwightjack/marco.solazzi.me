@@ -10,7 +10,6 @@ import {
 } from '../../base/constants';
 
 import { bindAll } from '../../base/utils';
-//import toggleShow from '../../base/toggle-show';
 import Router from '../../router';
 
 
@@ -37,7 +36,7 @@ import PageList from '../PageList'; //eslint-disable-line import/no-named-as-def
 import Cover from '../Cover';
 import Intro from '../Intro';
 
-import { navigateToAction } from './actions';
+import { navigateToAction } from '../Nav/actions';
 
 import './_app.scss';
 
@@ -105,11 +104,6 @@ const pagePortfolioWorks = (
                 {works.map((work) => <Table key={work.id} caption="project" data={work} />)}
             </TableList>
         </Section>
-    </Page>
-);
-
-const pagePortfolioTalks = (
-    <Page id="talks" key="talks">
         <Section
             title="portfolio.talks"
             subtitle="Sharing the knowledge"
@@ -125,11 +119,16 @@ const Pages = [
     pageJob,
     pageEducation,
     pageSkills,
-    pagePortfolioWorks,
-    pagePortfolioTalks
+    pagePortfolioWorks
 ];
 
 class App extends Component {
+
+    constructor(props) {
+        super(props);
+
+        bindAll(this, 'onPageChange');
+    }
 
     componentDidMount() {
 
@@ -137,21 +136,33 @@ class App extends Component {
 
         router.listen(this.props.navigateTo);
 
-        setTimeout(() => {
-            router.go(NAV_PATH_HOME);
+        if (router.current === '') {
+            setTimeout(() => {
+                router.go(NAV_PATH_HOME);
+                this.setWheelListener();
+            }, 7500);
+        } else {
+            this.setWheelListener();
+        }
 
-            window.addEventListener('wheel', (e) => {
-                if (e.deltaY > 0 && this.props.activeGroup === 'cover') {
-                    e.preventDefault();
-                    router.go(NAV_PATH_JOBS);
-                } else if (e.deltaY < 0 && this.props.activeGroup === 'pagelist' && this.props.scrollAmount <= 0) {
-                    e.preventDefault();
-                    router.go(NAV_PATH_HOME);
-                }
-            });
+    }
 
-        }, 7500);
+    setWheelListener() {
+        const { router } = this.props;
 
+        window.addEventListener('wheel', (e) => {
+            if (e.deltaY > 0 && this.props.activeGroup === 'cover') {
+                e.preventDefault();
+                router.go(NAV_PATH_JOBS);
+            } else if (e.deltaY < 0 && this.props.activeGroup === 'pagelist' && this.props.scrollAmount <= 0) {
+                e.preventDefault();
+                router.go(NAV_PATH_HOME);
+            }
+        });
+    }
+
+    onPageChange(hash) {
+        this.props.router.go(hash);
     }
 
     render() {
@@ -167,7 +178,7 @@ class App extends Component {
 
                     <Intro active={activeGroup === 'intro'} />
                     <Cover active={activeGroup !== 'intro'} visible={activeGroup === 'cover'} />
-                    <PageList active={activeGroup === 'pagelist'}>
+                    <PageList active={activeGroup === 'pagelist'} onPageChange={this.onPageChange}>
                         {Pages}
                     </PageList>
                     { activeGroup !== 'intro' && <Pattern /> }
