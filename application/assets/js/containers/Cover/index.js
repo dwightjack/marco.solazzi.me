@@ -6,12 +6,10 @@ import './_cover.scss';
 
 import { NAV_PATH_JOBS, NAV_PATH_HOME } from '../../base/constants';
 import { createRefs, raf } from '../../base/utils';
-//import Table from '../../components/Table';
-import List, { ListItem } from '../../components/List';
+import SocialList from '../../components/SocialList';
 import Avatar from '../../components/Avatar';
 import Ico from '../../components/Ico';
 import pic from '../../../images/marco.jpg';
-import social from '../../database/social.json';
 
 /*
 const data = {
@@ -127,13 +125,7 @@ class Cover extends Component {
                         />*/}
                     </article>
                     <footer ref={this.footerRef}>
-                        <List>
-                            {social.map(({type, url, label}) => (
-                                <ListItem key={type}>
-                                    <Ico name={type} /> <a href={url} target="_blank" rel="noopener noreferrer">{label}</a>
-                                </ListItem>
-                            ))}
-                        </List>
+                        <SocialList />
                     </footer>
                 </div>
                 <a href={NAV_PATH_JOBS} className="c-cover__scrollhint" ref={this.scrollHintRef}>

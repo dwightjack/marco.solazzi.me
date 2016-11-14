@@ -23,6 +23,8 @@ import Page from '../../components/Page';
 import DataList from '../../components/DataList';
 import Pattern from '../../components/Pattern';
 import SkillList from '../../components/SkillList';
+import SocialList from '../../components/SocialList';
+
 
 import works from '../../database/portfolio.works.json';
 import talks from '../../database/portfolio.talks.json';
@@ -115,11 +117,23 @@ const pagePortfolioWorks = (
     </Page>
 );
 
+const pageContacts = (
+    <Page id="contacts" key="contacts">
+        <Section
+            title="Want to know more?"
+            prefix=""
+        >
+            <SocialList />
+        </Section>
+    </Page>
+);
+
 const Pages = [
     pageJob,
     pageEducation,
     pageSkills,
-    pagePortfolioWorks
+    pagePortfolioWorks,
+    pageContacts
 ];
 
 class App extends Component {

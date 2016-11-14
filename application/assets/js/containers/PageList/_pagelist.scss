@@ -16,8 +16,7 @@
 }
 
 .c-pagelist__footer {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    padding: 0 0 30px;
+    font-size: font-size(12px);
+    text-align: center;
 }

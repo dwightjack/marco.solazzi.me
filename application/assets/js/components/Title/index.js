@@ -7,8 +7,8 @@ import './_title.scss';
 export const Title = ({className = '', prefix = 'me', title, subtitle}) => (
     <header className={className}>
         <h2 className="o-title">
-            <strong className="o-title__prefix">{prefix}</strong>
-            <span className="o-title__text">.{title}</span>
+            {prefix && <strong className="o-title__prefix">{prefix}</strong>}
+            <span className="o-title__text">{prefix ? `.${title}` : title}</span>
         </h2>
         {subtitle ? <h3 className="o-title o-title--sub">{subtitle}</h3> : ''}
     </header>
