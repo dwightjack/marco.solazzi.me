@@ -7,6 +7,7 @@ import { TweenMax, Power2 } from 'gsap';
 
 import { NAV_PATH_HOME, NAV_PATH_JOBS } from '../../base/constants';
 import { createRefs, bindAll } from '../../base/utils';
+import MediaQuery from '../../components/MediaQuery';
 
 import {
     pagelistScrollUpdateAction
@@ -111,8 +112,10 @@ export class PageList extends Component {
 
     resetScrollbar() {
         const { scrollbar } = this.scrollbar;
-        scrollbar.stop();
-        scrollbar.setPosition(0, 0, true);
+        if (scrollbar) {
+            scrollbar.stop();
+            scrollbar.setPosition(0, 0, true);
+        }
         this.props.onScrollCallback(0);
     }
 
@@ -121,7 +124,7 @@ export class PageList extends Component {
 
         if (route === NAV_PATH_HOME) {
             this.resetScrollbar();
-        } else {
+        } else if (scrollbar) {
             const el = this.root.querySelector(`[name="${route}"]`);
             if (scrollbar.isVisible(el) === false) {
                 const top = el.getBoundingClientRect().top;
@@ -152,18 +155,22 @@ export class PageList extends Component {
             });
         });
 
+        const scrollBarRender = () => <Scrollbar ref={this.scrollbarRef} alwaysShowTracks onScroll={this.onScroll} />;
+
         return (
             <main className={classnames('c-pagelist', {'is-active': active})} ref={this.rootRef}>
-                <Scrollbar
-                    ref={this.scrollbarRef}
-                    alwaysShowTracks
-                    onScroll={this.onScroll}
+                <MediaQuery
+                    breakpoints={{
+                        desktop: scrollBarRender,
+                        wide: scrollBarRender
+                    }}
+                    default={() => <div className="c-pagelist__scroll" ref={this.scrollbarRef} />}
                 >
                     {newChildren}
                     <footer className="c-pagelist__footer">
                         &copy; {new Date().getFullYear()} Marco Solazzi - <a href="#" target="_blank" rel="noopener noreferrer">license</a> <a href="#" target="_blank" rel="noopener noreferrer">source</a>
                     </footer>
-                </Scrollbar>
+                </MediaQuery>
             </main>
         );
     }

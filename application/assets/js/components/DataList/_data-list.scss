@@ -10,16 +10,16 @@
     list-style: none;
 
     @include mq(tablet-portrait) {
+        display: flex;
         width: 90%;
         margin: 0 rem(-20px);
-        display: flex;
         flex-wrap: wrap;
     }
 }
 
 .c-data-list__item {
     margin: 0;
-    padding: 0;
+    padding: 0 rem(10px);
 
     @include mq(tablet-portrait) {
         padding: 0 rem(20px) rem(30px);

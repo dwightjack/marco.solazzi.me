@@ -6,6 +6,7 @@
 
 @import "globals";
 @import "fonts";
+@import "sass-mq/mq";
 
 // Generic
 // ==========================================================================
@@ -214,13 +215,21 @@
 @mixin font-heading() {
     margin-bottom: 0.7em;
     font-family: $font-family-sans;
-    font-size: font-size(22px);
+    font-size: font-size(20px);
     font-weight: font-weight(bold);
+
+    @include mq(tablet-portrait) {
+        font-size: font-size(22px);
+    }
 }
 
 @mixin font-content() {
-    font-size: font-size(18px);
+    font-size: font-size(16px);
     font-weight: font-weight(regular);
+
+    @include mq(tablet-portrait) {
+        font-size: font-size(18px);
+    }
 }
 
 @mixin responsive-typography($font-min, $font-max, $breakpoint-min, $breakpoint-max) {

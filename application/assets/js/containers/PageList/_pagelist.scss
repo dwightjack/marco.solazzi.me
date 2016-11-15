@@ -15,6 +15,12 @@
     }
 }
 
+.c-pagelist__scroll {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100vh;
+}
+
 .c-pagelist__footer {
     padding: 0 0 30px;
     font-size: font-size(12px);

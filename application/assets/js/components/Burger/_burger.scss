@@ -13,6 +13,7 @@ $burger-bar-spacing: 4px;
     display: block;
     height: $burger-bar-height;
     background-color: currentColor;
+    color: lighten($color-link, 30);
     content: "";
     transform-origin: 100% 0;
     transition: all 0.2s ease-out;
@@ -26,9 +27,7 @@ $burger-bar-spacing: 4px;
     border: 0;
     background-color: transparent;
     background-image: none;
-    color: lighten($color-link, 30);
     cursor: pointer;
-    transition: all 0.2s ease-out;
 
     &::before {
         @extend %o-burger-bar;
@@ -40,7 +39,6 @@ $burger-bar-spacing: 4px;
         bottom: 0;
         transform: scaleX(0.7);
     }
-
 }
 
 .o-burger__label {
@@ -53,7 +51,6 @@ $burger-bar-spacing: 4px;
         top: $burger-bar-spacing + $burger-bar-height;
         transform: scaleX(0.85);
     }
-
 }
 
 
@@ -77,13 +74,17 @@ $burger-bar-spacing: 4px;
     .o-burger__label::after {
         transform: scaleX(1);
     }
-
 }
 
-.is-active > .o-burger.is-active {
-
-    color: $color-light;
+.c-nav.is-active > .o-burger.is-active {
     opacity: 0.8;
+    transition-delay: 0s;
+
+    &::before,
+    &::after,
+    .o-burger__label::after {
+        color: $color-light;
+    }
 
     &:hover {
         opacity: 1;
@@ -91,16 +92,16 @@ $burger-bar-spacing: 4px;
 
     &::before {
         transform: translate(0, 17px) rotate(45deg);
-        transition: color 0.2s ease-out 0.15s, transform 0.2s ease-out 1s;
+        transition: color 0.2s ease-out 0.6s, transform 0.2s ease-out 0.6s;
     }
 
     &::after {
         transform: translate(-3px, -14px) rotate(-45deg);
-        transition: color 0.2s ease-out 0.15s, transform 0.2s ease-out 1s;
+        transition: color 0.2s ease-out 0.6s, transform 0.2s ease-out 0.6s;
     }
 
     .o-burger__label::after {
         opacity: 0;
-        transition: color 0.2s ease-out 0.15s, opacity 0.2s ease-out 1s;
+        transition: color 0.2s ease-out 0.6s, opacity 0.2s ease-out 0.6s;
     }
 }

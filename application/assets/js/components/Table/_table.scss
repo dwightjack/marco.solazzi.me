@@ -1,21 +1,30 @@
+@import "globals";
 @import "fonts";
 @import "colors";
 @import "mixins";
+@import "sass-mq/mq";
 
 $c-table-row-indent: 0.3em;
+
+$c-table-indent: 30px;
 
 .c-table {
     position: relative;
     width: 100%;
-    margin-left: -30px;
-    border-left: 30px solid transparent;
+    padding-left: $c-table-indent;
+
+    @include mq(tablet-portrait) {
+        margin-left: $c-table-indent * -1;
+        padding-left: 0;
+        border-left: $c-table-indent solid transparent;
+    }
 }
 
 .c-table__caption {
     @include font-heading;
     padding-left: $c-table-row-indent;
 
-    &:before {
+    &::before {
         display: inline-block;
         margin-left: $c-table-row-indent * -1;
         content: ". ";
@@ -25,13 +34,16 @@ $c-table-row-indent: 0.3em;
 .c-table__bracket {
     position: absolute;
     top: 0;
-    left: auto;
+    left: 0;
     width: 22px;
     height: 100%;
-    margin-left: -30px;
+    opacity: 0.4;
+
+    @include mq(tablet-portrait) {
+        margin-left: $c-table-indent * -1;
+    }
 
     path {
-        opacity: 0.4;
         fill: $color-link;
     }
 }
@@ -49,14 +61,22 @@ $c-table-row-indent: 0.3em;
     }
 
     th {
-        display: inline;
+        display: block;
         font-weight: font-weight(bold);
-        vertical-align: top;
+
+        @include mq(tablet-portrait) {
+            display: inline;
+            vertical-align: top;
+        }
     }
 
     td {
-        display: inline;
-        vertical-align: top;
+        display: block;
+
+        @include mq(tablet-portrait) {
+            display: inline;
+            vertical-align: top;
+        }
     }
 
 
@@ -64,7 +84,6 @@ $c-table-row-indent: 0.3em;
     tr[data-row="title"] {
         padding-top: 0.5em;
     }
-
 }
 
 .c-table__footer {
@@ -83,15 +102,62 @@ $c-table-row-indent: 0.3em;
 
     .c-table__data {
 
-        th:before {
+        th::before {
             display: inline-block;
             margin-left: $c-table-row-indent * -1;
             content: ". ";
         }
 
-        th + td:before {
+        th::after {
+            font-weight: font-weight(regular);
             content: ": ";
         }
     }
+}
+
+
+.o-bracket {
+    display: flex;
+    flex-direction: column;
+
+    > * {
+        position: relative;
+        display: block;
+        overflow: hidden;
+        flex: 0 0 auto;
+    }
+}
+
+.o-bracket__first {
+    height: 35px;
+}
+
+.o-bracket__line {
+    margin-top: -1px;
+    margin-bottom: -1px;
+    left: 5px;
+    width: 8.2px;
+    height: 42px;
+    background-color: $color-link;
+    flex: 1 1 auto;
+}
+
+.o-bracket__mid {
+    height: 60px;
+
+    > * {
+        position: absolute;
+        top: 50%;
+        margin-top: (128px / -2);
+    }
+}
+
+.o-bracket__last {
+     height: 35px;
+
+     > * {
+         position: absolute;
+         bottom: 0;
+     }
 }
 

@@ -330,7 +330,7 @@ a:not([class]) {
     }
 
     body::after {
-        content: "xs";
+        content: "mobile";
         @each $mq-key, $mq-value in $mq-breakpoints {
             @include mq($mq-key) {
                 content: "#{$mq-key}";

@@ -3,12 +3,48 @@
 @import "mixins";
 
 
+
+$nav-timing-in: 250ms;
+$nav-pattern-delay-in: 600ms;
+$nav-items-delay-in: 800ms;
+$nav-items: 5;
+
+$nav-anim-out: 150ms;
+
+/* pattern appearance vs  nav items appearance */
+$nav-total-timing-in: max(
+    ($nav-timing-in + $nav-pattern-delay-in),
+    ($nav-items-delay-in + ($nav-items * 80))
+);
+
 .c-nav {
     position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
     z-index: z-index(above);
+
+    &::after,
+    &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: z-index(behind);
+        visibility: hidden;
+        overflow: hidden;
+        width: 1px;
+        height: 1px;
+    }
+
+    //in timing
+    &::after {
+        content: "#{$nav-total-timing-in}";
+    }
+
+    //out timing
+    &::before {
+        content: "#{$nav-anim-out}";
+    }
 }
 
 .c-nav__burger {
@@ -20,14 +56,12 @@
     transform: translateX(100%);
     transition: all 0.3s ease-out;
 
-    .is-visible & {
+    .c-nav.is-visible & {
         opacity: 1;
         transform: translateX(0);
         transition-delay: 1.7s;
     }
 }
-
-$nav-anim-out: 150ms;
 
 .c-nav__menu {
     position: fixed;
@@ -46,13 +80,11 @@ $nav-anim-out: 150ms;
     align-items: stretch;
     background-color: transparent;
     text-align: center;
-    //transform: translateX(100%);/
     transform-origin: 0 50%;
-    //transition: transform 250ms ease-out;
     animation: $nav-anim-out ease-out menu-leave;
     animation-fill-mode: forwards;
 
-    // the line and the background wit pattern
+    // the line and the background with pattern
     &::after {
         position: absolute;
         top: 50%;
@@ -107,21 +139,6 @@ $nav-anim-out: 150ms;
     letter-spacing: 0.05em;
     transition: opacity 150ms linear;
 
-    /*&::before {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: z-index(behind);
-        opacity: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(black, 0.1);
-        content: "";
-        pointer-events: none;
-        transform: translateY(-5%);
-        transition: all 150ms linear;
-    }*/
-
     &::before {
         position: relative;
         display: inline-block;
@@ -131,16 +148,6 @@ $nav-anim-out: 150ms;
         transform: translateX(-0.4em);
         transition: all 250ms ease-out;
     }
-
-    /*&::after {
-        position: relative;
-        display: inline-block;
-        opacity: 0;
-        content: "()";
-        transform: translateX(0.6em);
-        transition: all 250ms ease-out;
-        display: none;
-    }*/
 
     .is-current > & {
         opacity: 1;
@@ -197,48 +204,13 @@ $nav-anim-out: 150ms;
     }
 }
 
-$nav-timing-in: 250ms;
-$nav-pattern-delay-in: 600ms;
-$nav-items-delay-in: 800ms;
-$nav-items: 5;
-
-/* pattern appearance vs  nav items appearance */
-$nav-total-timing-in: max(
-    ($nav-timing-in + $nav-pattern-delay-in),
-    ($nav-items-delay-in + ($nav-items * 80))
-);
-
-.c-nav {
-
-    &::after,
-    &::before {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: z-index(behind);
-        visibility: hidden;
-        overflow: hidden;
-        width: 1px;
-        height: 1px;
-    }
-
-    //in timing
-    &::after {
-        content: "#{$nav-total-timing-in}";
-    }
-
-    //out timing
-    &::before {
-        content: "#{$nav-anim-out}";
-    }
-}
-
 .c-nav.is-active {
 
     .c-nav__menu {
         animation: $nav-timing-in ease-out menu-enter;
         animation-fill-mode: forwards;
 
+        // the pattern
         &::after {
             animation: $nav-timing-in ease-out menu-enter-pattern;
             animation-fill-mode: forwards;
@@ -270,13 +242,6 @@ $nav-total-timing-in: max(
     .is-current > .c-nav__route,
     .c-nav__route:hover {
         opacity: 1;
-
-        /*&::before {
-            opacity: 1;
-            transform: translateY(0);
-            transition-delay: 100ms;
-            transition-duration: 250ms;
-        }*/
 
         &::before {
             opacity: 1;
