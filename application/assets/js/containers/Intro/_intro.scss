@@ -1,5 +1,7 @@
-@import "mixins";
+@import "globals";
 @import "colors";
+@import "mixins";
+@import "sass-mq/mq";
 
 .c-intro {
     position: absolute;
@@ -12,14 +14,23 @@
     height: 100vh;
     align-items: center;
     flex-wrap: nowrap;
-    justify-content: flex-end;
+    justify-content: center;
+
+    @include mq(tablet-portrait) {
+        justify-content: flex-end;
+    }
 }
 
-.c-intro__body {
-    font-size: font-size(xl);
+.c-intro__body.h1 {
+    font-size: font-size(28px);
     font-weight: font-weight(regular);
-    flex: 0 0 50%;
+    flex: 0 0 auto;
     white-space: pre;
+
+    @include mq(tablet-portrait) {
+        font-size: font-size(xl);
+        flex: 0 0 50%;
+    }
 }
 
 .c-intro__line {

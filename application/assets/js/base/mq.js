@@ -1,5 +1,6 @@
 import debounce from 'lodash/debounce';
 import { noop } from './utils';
+import { BREAKPOINT_CHANGE } from './constants';
 
 let _v = 'mobile';
 
@@ -39,7 +40,19 @@ const mq = {
         }
 
         return bindFn;
+    },
+
+
+    connect(store) {
+        return mq.bind((breakpoint) => {
+            store.dispatch({type: BREAKPOINT_CHANGE, payload: breakpoint});
+        });
     }
 };
 
 export default mq;
+
+
+export const breakpoint = (state = '', {type, payload}) => (
+    type === BREAKPOINT_CHANGE ? payload : state
+);

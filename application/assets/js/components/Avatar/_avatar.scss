@@ -24,13 +24,14 @@
     top: 0;
     left: 0;
     z-index: z-index(behind);
+    opacity: 0.5;
     width: 100%;
     height: 100%;
-    opacity: 0.5;
     fill: $color-link;
-    transition: transform 0.3s ease-out 0s;
     transform: scale(0.95);
+    transition: transform 0.3s ease-out 0s;
 
+    .touchevents &,
     .o-avatar:hover & {
         transform: translate(10%, 0);
         transition-delay: 0.15s;

@@ -5,25 +5,9 @@ import Time from '../Time';
 import { AnchorIco } from '../Anchor';
 
 import './_table.scss';
-import Bracket from 'babel!svg-react!../../../images/bracket-left.svg?name=Bracket';
+//import Bracket from 'babel!svg-react!../../../images/bracket-left.svg?name=Bracket';
 
-
-const BracketComposed = () => (
-    <span className="o-bracket c-table__bracket">
-        <span className="o-bracket__first">
-            <Bracket />
-        </span>
-        <span className="o-bracket__line" />
-        <span className="o-bracket__mid">
-            <Bracket />
-        </span>
-        <span className="o-bracket__line" />
-        <span className="o-bracket__last">
-            <Bracket />
-        </span>
-    </span>
-
-);
+import Bracket from '../Bracket';
 
 let id = 0;
 
@@ -97,7 +81,8 @@ class Table extends PureComponent {
                 {caption ? <h3 className="c-table__caption" id={this._id}>
                     {`${caption}: `}{this.caption}
                 </h3> : null}
-                {styles.indexOf('c-table--brackets') !== -1 ? <BracketComposed /> : null}
+                {/*styles.indexOf('c-table--brackets') !== -1 ? <Bracket className="c-table__bracket" /> : null*/}
+                {styles.indexOf('c-table--brackets') !== -1 ? <div className="c-table__bracket2" /> : null}
                 <table className="c-table__data" aria-labelledby={this._id}>
                     <tbody>
                         {this.buildRows(omit(data, [caption, 'id']))}

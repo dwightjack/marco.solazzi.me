@@ -5,13 +5,13 @@
 
 .c-data-list {
     display: block;
-    margin: 0;
+    width: 90%;
+    margin: 0 auto;
     padding: 0;
     list-style: none;
 
     @include mq(tablet-portrait) {
         display: flex;
-        width: 90%;
         margin: 0 rem(-20px);
         flex-wrap: wrap;
     }
@@ -34,7 +34,7 @@
 
     &::before {
         position: relative;
-        left: -0.5em;
+        left: -0.1em;
         display: inline-block;
         opacity: 0.6;
         width: 1em;
@@ -43,27 +43,36 @@
         text-align: center;
         content: "+";
         transition: all 250ms;
+
+        @include mq(tablet-portrait) {
+            left: -0.5em;
+        }
     }
 }
 
 .c-data-list__ico {
     position: absolute;
     top: 50%;
-    left: -1.5em;
+    left: -1.3em;
     display: inline-block;
     opacity: 0;
     width: 1em;
-    text-align: center;
     color: $color-link;
+    text-align: center;
     content: "+";
     transform: translate(0, -50%) scale(0.2);
     transition: all 150ms ease-out;
+
+    @include mq(tablet-portrait) {
+        left: -1.5em;
+    }
 }
 
 .c-data-list__body {
     @include font-content;
 }
 
+.touchevents .c-data-list__item,
 .c-data-list__item:hover {
 
     .c-data-list__label::before {

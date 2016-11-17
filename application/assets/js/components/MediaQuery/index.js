@@ -1,52 +1,36 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-import mq from '../../base/mq';
-
-export default class MediaQuery extends Component {
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            currentMq: null
-        };
-    }
-
-    componentDidMount() {
-        this.bind = mq.bind((currentMq) => this.setState({currentMq}), true);
-    }
-
-    componentWillUnmount() {
-        if (this.bind) {
-            this.bind.cancel();
-        }
-    }
+export class MediaQuery extends Component {
 
     render() {
-        const { children, breakpoints } = this.props;
-        const { currentMq } = this.state;
-        const el = breakpoints[currentMq] || this.props.default;
+        const { breakpoint, currentBp } = this.props;
 
-        console.log(currentMq);
+        if (typeof this.props.children === 'function') {
+            return this.props.children(currentBp);
+        }
 
-        return React.cloneElement(
-            el(),
-            null,
-            children
-        );
+        if (currentBp === breakpoint) {
+            return this.props.children;
+        }
+
+        return null;
+
     }
 
 }
 
 MediaQuery.propTypes = {
-    breakpoints: React.PropTypes.objectOf(
+    children: React.PropTypes.oneOfType([
+        React.PropTypes.node,
         React.PropTypes.func
-    ),
-    children: React.PropTypes.node,
-    default: React.PropTypes.func
+    ]),
+    breakpoint: React.PropTypes.string,
+    currentBp: React.PropTypes.string
 };
 
-MediaQuery.defaultProps = {
-    breakpoints: {},
-    default: () => 'div'
-};
+const mapStateToProps = ({breakpoint}) => ({currentBp: breakpoint});
+
+export default connect(
+    mapStateToProps
+)(MediaQuery);

@@ -1,10 +1,15 @@
+@import "globals";
 @import "colors";
 @import "mixins";
+@import "sass-mq/mq";
 
 .c-pagelist {
     position: relative;
-    height: 100vh;
     overflow: hidden;
+
+    @include mq(tablet-portrait) {
+        height: 100vh;
+    }
 
     > [data-scrollbar] {
         height: 100vh;
@@ -15,11 +20,13 @@
     }
 }
 
+/*
 .c-pagelist__scroll {
     overflow-x: hidden;
     overflow-y: auto;
     height: 100vh;
 }
+*/
 
 .c-pagelist__footer {
     padding: 0 0 30px;

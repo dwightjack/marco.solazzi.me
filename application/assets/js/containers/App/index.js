@@ -165,10 +165,14 @@ class App extends Component {
         const { router } = this.props;
 
         window.addEventListener('wheel', (e) => {
-            if (e.deltaY > 0 && this.props.activeGroup === 'cover') {
+            const { activeNav, activeGroup, pagelistScroll, breakpoint } = this.props;
+            if (activeNav || (breakpoint !== 'desktop' && breakpoint !== 'wide')) {
+                return;
+            }
+            if (e.deltaY > 0 && activeGroup === 'cover') {
                 e.preventDefault();
                 router.go(NAV_PATH_JOBS);
-            } else if (e.deltaY < 0 && this.props.activeGroup === 'pagelist' && this.props.scrollAmount <= 0) {
+            } else if (e.deltaY < 0 && activeGroup === 'pagelist' && pagelistScroll <= 0) {
                 e.preventDefault();
                 router.go(NAV_PATH_HOME);
             }
@@ -206,15 +210,19 @@ class App extends Component {
 }
 
 App.propTypes = {
-    scrollAmount: React.PropTypes.number,
+    pagelistScroll: React.PropTypes.number,
     activeGroup: React.PropTypes.string,
+    breakpoint: React.PropTypes.string,
     navigateTo: React.PropTypes.func,
+    activeNav: React.PropTypes.bool,
     router: React.PropTypes.instanceOf(Router)
 };
 
-const mapStateToProps = (state) => ({
-    scrollAmount: state.pagelistScroll,
-    activeGroup: state.activeGroup
+const mapStateToProps = ({pagelistScroll, activeGroup, activeNav, breakpoint}) => ({
+    pagelistScroll,
+    activeGroup,
+    activeNav,
+    breakpoint
 });
 
 const mapDispatchToProps = (dispatch) => ({

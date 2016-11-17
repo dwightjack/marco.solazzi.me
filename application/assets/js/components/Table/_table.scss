@@ -30,7 +30,7 @@ $c-table-indent: 30px;
         content: ". ";
     }
 }
-
+/*
 .c-table__bracket {
     position: absolute;
     top: 0;
@@ -45,6 +45,55 @@ $c-table-indent: 30px;
 
     path {
         fill: $color-link;
+    }
+} */
+
+/*
+
+.c-table__bracket.o-bracket {
+    left: $c-table-indent * -2;
+} */
+
+.c-table__bracket2 {
+    position: absolute;
+    top: -10px;
+    bottom: -10px;
+    left: 0px;
+    opacity: 0.5;
+    width: 8px;
+    background-color: $color-link;
+
+    @include mq(tablet-portrait) {
+        left: -20px;
+    }
+
+    &::before,
+    &::after {
+        position: absolute;
+        left: 8px;
+        width: 8px;
+        height: 8px;
+        background-color: inherit;
+        content: "";
+        transform: scaleX(1);
+        transform-origin: 0 0;
+        transition: transform 0.2s ease-out;
+    }
+
+    &::before {
+        top: 0;
+    }
+
+    &::after {
+        bottom: 0;
+    }
+
+    @at-root .c-table:hover .c-table__bracket2 {
+
+        &::before,
+        &::after {
+            transform: scaleX(1);
+        }
     }
 }
 
@@ -88,11 +137,14 @@ $c-table-indent: 30px;
 
 .c-table__footer {
     margin-top: rem(7px);
-    margin-left: 0.5em;
+    margin-right: -0.5em;
+    margin-left: 0;
     font-size: font-size(s);
 
-    > * + * {
-        margin-left: 1em;
+    > * {
+        margin-right: 0.5em;
+        margin-bottom: 0.5em;
+        margin-left: 0.5em;
     }
 }
 
@@ -114,50 +166,3 @@ $c-table-indent: 30px;
         }
     }
 }
-
-
-.o-bracket {
-    display: flex;
-    flex-direction: column;
-
-    > * {
-        position: relative;
-        display: block;
-        overflow: hidden;
-        flex: 0 0 auto;
-    }
-}
-
-.o-bracket__first {
-    height: 35px;
-}
-
-.o-bracket__line {
-    margin-top: -1px;
-    margin-bottom: -1px;
-    left: 5px;
-    width: 8.2px;
-    height: 42px;
-    background-color: $color-link;
-    flex: 1 1 auto;
-}
-
-.o-bracket__mid {
-    height: 60px;
-
-    > * {
-        position: absolute;
-        top: 50%;
-        margin-top: (128px / -2);
-    }
-}
-
-.o-bracket__last {
-     height: 35px;
-
-     > * {
-         position: absolute;
-         bottom: 0;
-     }
-}
-

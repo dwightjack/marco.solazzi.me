@@ -154,22 +154,31 @@ export class PageList extends Component {
                 }.bind(this, idx)
             });
         });
-
-        const scrollBarRender = () => <Scrollbar ref={this.scrollbarRef} alwaysShowTracks onScroll={this.onScroll} />;
+        const footer = (
+            <footer className="c-pagelist__footer">
+                &copy; {new Date().getFullYear()} Marco Solazzi - <a href="#" target="_blank" rel="noopener noreferrer">license</a> <a href="#" target="_blank" rel="noopener noreferrer">source</a>
+            </footer>
+        );
 
         return (
             <main className={classnames('c-pagelist', {'is-active': active})} ref={this.rootRef}>
-                <MediaQuery
-                    breakpoints={{
-                        desktop: scrollBarRender,
-                        wide: scrollBarRender
+                <MediaQuery>
+                    {(breakpoint) => {
+                        if (breakpoint === 'desktop' || breakpoint === 'wide') {
+                            return (
+                                <Scrollbar ref={this.scrollbarRef} alwaysShowTracks onScroll={this.onScroll}>
+                                    {newChildren}
+                                    {footer}
+                                </Scrollbar>
+                            );
+                        }
+                        return (
+                            <div className="c-pagelist__scroll" ref={this.scrollbarRef}>
+                                {newChildren}
+                                {footer}
+                            </div>
+                        );
                     }}
-                    default={() => <div className="c-pagelist__scroll" ref={this.scrollbarRef} />}
-                >
-                    {newChildren}
-                    <footer className="c-pagelist__footer">
-                        &copy; {new Date().getFullYear()} Marco Solazzi - <a href="#" target="_blank" rel="noopener noreferrer">license</a> <a href="#" target="_blank" rel="noopener noreferrer">source</a>
-                    </footer>
                 </MediaQuery>
             </main>
         );

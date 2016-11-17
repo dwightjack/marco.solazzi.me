@@ -124,7 +124,7 @@ class Cover extends Component {
                             data={data}
                         />*/}
                     </article>
-                    <footer ref={this.footerRef}>
+                    <footer className="c-cover__footer" ref={this.footerRef}>
                         <SocialList />
                     </footer>
                 </div>
