@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import mq from '../../base/mq';
+
 export class MediaQuery extends Component {
 
     render() {
         const { breakpoint, currentBp } = this.props;
 
         if (typeof this.props.children === 'function') {
-            return this.props.children(currentBp);
+            return this.props.children(currentBp, mq);
         }
 
         if (currentBp === breakpoint) {

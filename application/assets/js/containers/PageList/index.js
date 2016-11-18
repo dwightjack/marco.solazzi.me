@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Scrollbar from 'react-smooth-scrollbar';
 import classnames from 'classnames';
@@ -15,15 +15,27 @@ import {
 
 import './_pagelist.scss';
 
-export class PageList extends Component {
+
+const Footer = () => (
+    <footer className="c-pagelist__footer">
+        &copy; {new Date().getFullYear()} Marco Solazzi - <a href="#" target="_blank" rel="noopener noreferrer">license</a> <a href="#" target="_blank" rel="noopener noreferrer">source</a>
+    </footer>
+);
+
+export class PageList extends PureComponent {
 
     constructor(props) {
         super(props);
         createRefs(this, 'root', 'scrollbar');
-        bindAll(this, 'onScroll');
-        this.childRefs = [];
+        bindAll(this, 'onScroll', 'mediaQueryCallback');
+        this.pagesRefs = [];
+        this.pages = [];
         this.forcedScrolling = false;
         this.currentPage = '';
+    }
+
+    componentWillMount() {
+        this.updatePagesRefs();
     }
 
     componentDidMount() {
@@ -38,6 +50,13 @@ export class PageList extends Component {
             this.componentWillEnter();
         }
         this.currentPage = route;
+    }
+
+    componentWillUpdate(nextProps) {
+        // In my scenario pages won't really change so... just in case I'm adding something :P
+        if (React.Children.count(this.props.children) !== React.Children.count(nextProps.children)) {
+            this.updatePagesRefs();
+        }
     }
 
     componentDidUpdate({route}) {
@@ -68,7 +87,7 @@ export class PageList extends Component {
     onScroll(status) {
         if (this.forcedScrolling === false) {
             const windowHeight = parseInt(window.innerHeight * 0.25, 10);
-            this.childRefs.some((child) => {
+            this.pagesRefs.some((child) => {
                 if (child.root) {
                     const { bottom } = child.root.getBoundingClientRect();
                     const isVisible = bottom > windowHeight;//scrollbar.isVisible(child.root);
@@ -110,6 +129,19 @@ export class PageList extends Component {
         });
     }
 
+    updatePagesRefs() {
+        this.pagesRefs = [];
+        let idx = -1;
+        this.pages = React.Children.map(this.props.children, (child) => {
+            idx += 1;
+            return React.cloneElement(child, {
+                ref: function compRef(i, component) {
+                    this.pagesRefs[i] = component;
+                }.bind(this, idx)
+            });
+        });
+    }
+
     resetScrollbar() {
         const { scrollbar } = this.scrollbar;
         if (scrollbar) {
@@ -140,45 +172,32 @@ export class PageList extends Component {
         }
     }
 
+    mediaQueryCallback(breakpoint, mq) {
+        if (mq.matchFrom('desktop')) {
+            return (
+                <Scrollbar ref={this.scrollbarRef} alwaysShowTracks onScroll={this.onScroll}>
+                    {this.pages}
+                    <Footer />
+                </Scrollbar>
+            );
+        }
+
+        return (
+            <div className="c-pagelist__scroll" ref={this.scrollbarRef}>
+                {this.pages}
+                <Footer />
+            </div>
+        );
+    }
+
     render() {
 
-        const {children, active} = this.props;
-
-        this.childRefs = [];
-        let idx = -1;
-        const newChildren = React.Children.map(children, (child) => {
-            idx += 1;
-            return React.cloneElement(child, {
-                ref: function compRef(i, component) { //eslint-disable-line react/jsx-no-bind
-                    this.childRefs[i] = component;
-                }.bind(this, idx)
-            });
-        });
-        const footer = (
-            <footer className="c-pagelist__footer">
-                &copy; {new Date().getFullYear()} Marco Solazzi - <a href="#" target="_blank" rel="noopener noreferrer">license</a> <a href="#" target="_blank" rel="noopener noreferrer">source</a>
-            </footer>
-        );
+        const {active} = this.props;
 
         return (
             <main className={classnames('c-pagelist', {'is-active': active})} ref={this.rootRef}>
                 <MediaQuery>
-                    {(breakpoint) => {
-                        if (breakpoint === 'desktop' || breakpoint === 'wide') {
-                            return (
-                                <Scrollbar ref={this.scrollbarRef} alwaysShowTracks onScroll={this.onScroll}>
-                                    {newChildren}
-                                    {footer}
-                                </Scrollbar>
-                            );
-                        }
-                        return (
-                            <div className="c-pagelist__scroll" ref={this.scrollbarRef}>
-                                {newChildren}
-                                {footer}
-                            </div>
-                        );
-                    }}
+                    {this.mediaQueryCallback}
                 </MediaQuery>
             </main>
         );

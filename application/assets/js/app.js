@@ -24,12 +24,12 @@ import '../scss/app.scss';
 
 const router = new Router();
 
-mq.refresh();
+mq.init();
 
 const store = configureStore({
     route: router.current,
     activeGroup: (router.current === '' ? 'intro' : (router.current === NAV_PATH_HOME ? 'cover' : 'pagelist')), //eslint-disable-line no-nested-ternary
-    breakpoint: mq.getValue()
+    breakpoint: mq.current
 });
 
 mq.connect(store);
