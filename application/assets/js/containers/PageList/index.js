@@ -173,6 +173,7 @@ export class PageList extends PureComponent {
     }
 
     mediaQueryCallback(breakpoint, mq) {
+        console.log(mq.matchFrom('desktop'));
         if (mq.matchFrom('desktop')) {
             return (
                 <Scrollbar ref={this.scrollbarRef} alwaysShowTracks onScroll={this.onScroll}>

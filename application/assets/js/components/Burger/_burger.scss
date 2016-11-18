@@ -60,8 +60,8 @@ $burger-bar-spacing: 4px;
 }
 
 
-.o-burger.is-active,
-.o-burger:hover {
+.no-touchevents .o-burger.is-active,
+.no-touchevents .o-burger:hover {
 
     &::before {
         transform: scaleX(1);
@@ -86,6 +86,7 @@ $burger-bar-spacing: 4px;
         color: $color-light;
     }
 
+    .touchevents &,
     &:hover {
         opacity: 1;
     }

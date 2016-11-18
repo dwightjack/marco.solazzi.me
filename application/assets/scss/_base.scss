@@ -225,7 +225,6 @@ button {
         font-size: font-size($font-head-size);
         line-height: $font-lheight-h;
     }
-
 }
 
 p {
@@ -234,12 +233,25 @@ p {
 }
 
 abbr[title] {
-    text-decoration: none;
     border-bottom: 1px dotted currentColor;
+    text-decoration: none;
 }
 
-a.u-link--mark,
-a:not([class]) {
+.touchevents a.u-link--mark,
+.touchevents a:not([class]) {
+    background-image:
+        linear-gradient(
+            to top,
+            rgba($color-text, 0.2) 0,
+            rgba($color-text, 0.2) 3px,
+            transparent 4px
+        );
+    color: inherit;
+    text-decoration: none;
+}
+
+.no-touchevents a.u-link--mark,
+.no-touchevents a:not([class]) {
     position: relative;
     display: inline-block;
     padding-right: 0.22em;
@@ -251,15 +263,6 @@ a:not([class]) {
 
     &::after {
         position: absolute;
-
-        /*
-        top: 0;
-        right: 0;
-        bottom: -0.17em;
-        left: 0;
-        z-index: z-index(behind) - 1;
-        opacity: 0.05;
-        */
         right: 0;
         bottom: -0.17em;
         left: 0;
@@ -282,9 +285,9 @@ a:not([class]) {
         width: 0;
         background-color: $color-link;
         content: "";
+        pointer-events: none;
         transform: scaleX(1);
         transform-origin: 0 0;
-        pointer-events: none;
         transition: opacity 0.25s, width 0s ease 0.25s, transform 0s ease 0.25s, transform-origin 0s ease 0.25s;
     }
 
@@ -300,7 +303,6 @@ a:not([class]) {
             transform: scaleX(0);
             transform-origin: right 0;
             transition: width 0.25s ease, transform-origin 0s ease 0.25s, transform 0.25s ease 0.25s;
-            //transition: transform 0.25s ease, transform-origin 0s ease 0.25s, width 0.25s ease 0.5s;
         }
 
         &::after {

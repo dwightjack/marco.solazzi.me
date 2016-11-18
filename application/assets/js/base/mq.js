@@ -20,7 +20,7 @@ const mq = {
 
     getBreakpointMatrix() {
         const content = global.getComputedStyle(document.body, '::before').content || ''.replace(MATRIX_REGEXP, '');
-        this.matrix = content.split(',').map((bp) => {
+        this.matrix = content.replace(/[{\\/"'}]/g, '').split(',').map((bp) => {
             const [name, val] = bp.split(':');
             return {
                 name,
@@ -51,7 +51,7 @@ const mq = {
             return false;
         }
 
-        return this.matrixLabels.indexOf(label) >= this.matrixLabels.indexOf(this.current);
+        return this.matrixLabels.indexOf(this.current) >= this.matrixLabels.indexOf(label);
     },
 
     matchUntil(label) {
@@ -60,7 +60,7 @@ const mq = {
             console.warn(`breakpoint "${label}" not listed`); // eslint-disable-line no-console
             return false;
         }
-        return this.matrixLabels.indexOf(mq) < this.matrixLabels.indexOf(this.current);
+        return this.matrixLabels.indexOf(this.current) < this.matrixLabels.indexOf(mq);
     },
 
     refresh(cb = noop) {

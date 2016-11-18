@@ -2,6 +2,8 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const _ = require('lodash');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const LiveReloadPlugin = require('webpack-livereload-plugin');
 
 const getModernizrPath = require('../scripts/utils').getModernizrPath;
 const paths = require('./paths');
@@ -36,6 +38,12 @@ const config = _.assign({}, webpackConf, {
         // Tell webpack we want hot reloading
         new webpack.HotModuleReplacementPlugin(),
 
+        new ExtractTextPlugin(paths.css + '/[name].css'),
+
+        new LiveReloadPlugin({
+            ignore: /\.(js|json|js\.map|jpg|gif|png|svg|html)$/
+        }),
+
         new HtmlWebpackPlugin({
             template: paths.toPath('src.root') + '/index.ejs',
             inject: true,
@@ -63,7 +71,10 @@ config.module.loaders = loaders.concat([
     }, {
         test: /\.(scss|css)$/,
         exclude: /(node_modules|vendors)/,
-        loaders: [ 'style', 'css?importLoaders=1&sourceMap', 'resolve-url?sourceMap', 'postcss', 'sass?sourceMap' ]
+        loader: ExtractTextPlugin.extract(
+            'style', // The backup style loader
+            'css?importLoaders=1&sourceMap!resolve-url?sourceMap!postcss!sass?sourceMap'
+        )
     }
 ]);
 

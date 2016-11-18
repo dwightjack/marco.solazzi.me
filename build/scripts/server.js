@@ -65,7 +65,10 @@ if (production) {
                 if (err) {
                     res.sendStatus(404);
                 } else {
-                    res.send(file.toString());
+                    res.send(file.toString().replace(
+                        '</head>',
+                        '<script src="http://' + address + ':35729/livereload.js"></script>\n</head>'
+                    ));
                 }
             });
         });

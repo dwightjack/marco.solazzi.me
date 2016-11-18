@@ -19,7 +19,13 @@
 
 .c-data-list__item {
     margin: 0;
-    padding: 0 rem(10px);
+    padding: 0 rem(10px) rem(30px);
+
+    &:last-child {
+        @include mq($until: tablet-portrait) {
+            padding-bottom: 0;
+        }
+    }
 
     @include mq(tablet-portrait) {
         padding: 0 rem(20px) rem(30px);

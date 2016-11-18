@@ -205,13 +205,19 @@ $nav-total-timing-in: max(
             transition: inherit;
         }
 
-        &:hover {
-            opacity: 1;
 
-            &::after {
-                transform: scale(1.2);
+        .no-touchevents & {
+
+            &:hover {
+                opacity: 1;
+
+                &::after {
+                    transform: scale(1.2);
+                }
             }
         }
+
+
     }
 }
 

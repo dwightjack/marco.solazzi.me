@@ -35,13 +35,13 @@
             content: "";
         }
     }
+}
 
-    &:hover {
+.no-touchevents .o-anchor--cursor:hover {
 
-        .o-anchor__label::before {
-            color: $color-link;
-            animation: 0.7s ease-out infinite blinking-cursor;
-        }
+    .o-anchor__label::before {
+        color: $color-link;
+        animation: 0.7s ease-out infinite blinking-cursor;
     }
 }
 

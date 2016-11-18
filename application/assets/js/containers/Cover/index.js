@@ -118,7 +118,7 @@ class Cover extends Component {
                     <h2 className="c-cover__headline" ref={this.titleRef}>こんにちわ！</h2>
                     <article className="c-cover__text" ref={this.tableRef}>
                         <p>My name is <strong>Marco Solazzi</strong></p>
-                        <p>I am a 37yo <strong>Frontend Web Developer</strong>, technical <strong>writer</strong> and <strong>speaker</strong> from Verona (Italy).</p>
+                        <p>I am a 37yo <strong>Frontend Web Developer</strong>, technical <strong>writer</strong> and <strong>speaker</strong> from Verona (Italy). I speak Italian (of course), English, French and some Japanese.</p>
                         <p>Since 2014 I am co-founder and host of the <strong><a href="http://www.fevr.it" target="_blank" rel="noopener noreferrer">FEVR Frontenders Meetup</a></strong> .</p>
                         {/*<Table
                             data={data}
