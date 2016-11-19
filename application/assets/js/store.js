@@ -12,7 +12,7 @@ export default function configureStore(initialState = {}) {
         )
         );
 
-    if (PRODUCTION === false) {
+    if (__PRODUCTION__ === false) {
 
         if (module.hot) {
             module.hot.accept('./reducers', () =>

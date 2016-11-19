@@ -17,6 +17,7 @@
 }
 
 #contacts {
+    padding-top: 0;
 
     .o-social-list {
         @include mq($until: tablet-portrait) {

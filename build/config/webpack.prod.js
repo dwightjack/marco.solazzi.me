@@ -9,7 +9,7 @@ const paths = require('./paths');
 
 const getModernizrPath = require('../scripts/utils').getModernizrPath;
 
-const config = _.assign({}, webpackConf, {
+const config = _.assign(webpackConf, {
 
     entry: {
         app: [
@@ -26,54 +26,54 @@ const config = _.assign({}, webpackConf, {
 
     devtool: '#source-map',
 
-    plugins: webpackConf.plugins.concat([
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-            children: true,
-            minChunks: 2,
-            async: true
-        }),
-        new webpack.optimize.OccurenceOrderPlugin(true),
-        new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.UglifyJsPlugin({
-            sourceMap: true,
-            compressor: {
-                warnings: false
-            }
-        }),
-        // new webpack.BannerPlugin(
-        //     _.template(options.banners.application)(options),
-        //     {entryOnly: true, raw: true}
-        // ),
-
-        new ExtractTextPlugin(paths.css + '/[name].[contenthash:10].css'),
-
-        new HtmlWebpackPlugin({
-            template: paths.toPath('src.root') + '/index.ejs',
-            filename: paths.toAbsPath('dist.root') + '/index.html',
-            minify: {
-                removeComments: true,
-                collapseWhitespace: false,
-                removeRedundantAttributes: true,
-                useShortDoctype: true,
-                removeEmptyAttributes: false,
-                removeStyleLinkTypeAttributes: true,
-                keepClosingSlash: true,
-                minifyJS: true,
-                minifyCSS: true,
-                minifyURLs: true
-            },
-            modernizr: getModernizrPath(),
-            inject: true
-        })
-    ]),
-
     postcss: function () {
         return [autoprefixer];
     }
 });
 
-config.module.loaders = webpackConf.module.loaders.concat([
+config.plugins.push(
+    new webpack.optimize.CommonsChunkPlugin({
+        name: 'vendor',
+        children: true,
+        minChunks: 2,
+        async: true
+    }),
+    new webpack.optimize.OccurenceOrderPlugin(true),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+        sourceMap: true,
+        compressor: {
+            warnings: false
+        }
+    }),
+    // new webpack.BannerPlugin(
+    //     _.template(options.banners.application)(options),
+    //     {entryOnly: true, raw: true}
+    // ),
+
+    new ExtractTextPlugin(paths.css + '/[name].[contenthash:10].css'),
+
+    new HtmlWebpackPlugin({
+        template: paths.toPath('src.root') + '/index.ejs',
+        filename: paths.toAbsPath('dist.root') + '/index.html',
+        minify: {
+            removeComments: true,
+            collapseWhitespace: false,
+            removeRedundantAttributes: true,
+            useShortDoctype: true,
+            removeEmptyAttributes: false,
+            removeStyleLinkTypeAttributes: true,
+            keepClosingSlash: true,
+            minifyJS: true,
+            minifyCSS: true,
+            minifyURLs: true
+        },
+        modernizr: getModernizrPath(),
+        inject: true
+    })
+);
+
+config.module.loaders.push(
     {
         test: /\.(eot|svg|ttf|woff|woff2)$/,
         include: [paths.toAbsPath('src.assets/fonts')],
@@ -93,7 +93,7 @@ config.module.loaders = webpackConf.module.loaders.concat([
             'css?sourceMap!postcss!resolve-url!sass?sourceMap'
         )
     }
-]);
+);
 
 
 module.exports = config;

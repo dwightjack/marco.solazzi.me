@@ -20,7 +20,7 @@ const loaders = webpackConf.module.loaders.map((loader) => {
 });
 
 
-const config = _.assign({}, webpackConf, {
+const config = _.assign(webpackConf, {
 
     entry: {
         app: [
@@ -41,7 +41,7 @@ const config = _.assign({}, webpackConf, {
         new ExtractTextPlugin(paths.css + '/[name].css'),
 
         new LiveReloadPlugin({
-            ignore: /\.(js|json|js\.map|jpg|gif|png|svg|html)$/
+            ignore: /\.(js|json|map|jpg|gif|png|svg|html)$/
         }),
 
         new HtmlWebpackPlugin({

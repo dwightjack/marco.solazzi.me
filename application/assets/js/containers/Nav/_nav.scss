@@ -76,6 +76,7 @@ $nav-total-timing-in: max(
     left: 0;
     z-index: z-index(above);
     display: flex;
+    opacity: 0;
     overflow: hidden;
     flex-direction: column;
     width: 100%;
@@ -87,9 +88,11 @@ $nav-total-timing-in: max(
     align-items: stretch;
     background-color: transparent;
     text-align: center;
+    transform: translateX(-10%);
     transform-origin: 0 50%;
     animation: $nav-anim-out ease-out menu-leave;
     animation-fill-mode: forwards;
+    transition: opacity $nav-anim-out ease-out;
 
     @include mq(tablet-portrait) {
         padding: 10vh 0 0;
@@ -216,16 +219,18 @@ $nav-total-timing-in: max(
                 }
             }
         }
-
-
     }
 }
 
 .c-nav.is-active {
 
     .c-nav__menu {
-        animation: $nav-timing-in ease-out menu-enter;
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(100%);
+        animation: $nav-timing-in ease-out menu-enter 0.1s;
         animation-fill-mode: forwards;
+        transition: none;
 
         // the pattern
         &::after {
@@ -270,17 +275,14 @@ $nav-total-timing-in: max(
 @keyframes menu-leave {
 
     0% {
-        opacity: 1;
         transform: translateX(0);
     }
 
     99.999% {
-        opacity: 0;
         transform: translateX(-10%);
     }
 
     100% {
-        opacity: 0;
         visibility: hidden;
         transform: translateX(-10%);
     }

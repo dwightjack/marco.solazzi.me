@@ -16,7 +16,7 @@
     ],
 
     "globals": {
-        "PRODUCTION": true
+        "__PRODUCTION__": true
     },
 
     "parser": "babel-eslint",          // https://github.com/babel/babel-eslint

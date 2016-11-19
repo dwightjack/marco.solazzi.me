@@ -18,7 +18,7 @@ import './_pagelist.scss';
 
 const Footer = () => (
     <footer className="c-pagelist__footer">
-        &copy; {new Date().getFullYear()} Marco Solazzi - <a href="#" target="_blank" rel="noopener noreferrer">license</a> <a href="#" target="_blank" rel="noopener noreferrer">source</a>
+        &copy; {new Date().getFullYear()} Marco Solazzi - <a href="https://github.com/dwightjack/marco.solazzi.me" target="_blank" rel="noopener noreferrer">license</a> <a href="https://github.com/dwightjack/marco.solazzi.me" target="_blank" rel="noopener noreferrer">source</a>
     </footer>
 );
 
@@ -32,6 +32,7 @@ export class PageList extends PureComponent {
         this.pages = [];
         this.forcedScrolling = false;
         this.currentPage = '';
+        this.entered = false;
     }
 
     componentWillMount() {
@@ -44,7 +45,7 @@ export class PageList extends PureComponent {
             TweenMax.set(this.root, {autoAlpha: 0});
         } else {
             this.scrollTo(route, {
-                offset: window.innerHeight * -1,
+                offset: -60,
                 duration: 0
             });
             this.componentWillEnter();
@@ -104,7 +105,7 @@ export class PageList extends PureComponent {
         this.props.onScrollCallback(y);
     }
 
-    componentWillEnter(callback) {
+    componentWillEnter() {
         TweenMax.killTweensOf(this.root);
         TweenMax.set(this.root, {autoAlpha: 1});
         TweenMax.fromTo(this.root, 0.8, {
@@ -113,11 +114,14 @@ export class PageList extends PureComponent {
             yPercent: 0,
             delay: 1.2,
             ease: Power2.easeInOut,
-            onComplete: callback
+            onComplete: () => {
+                this.entered = true;
+            }
         });
     }
 
     componentWillLeave() {
+        this.entered = false;
         TweenMax.fromTo(this.root, 0.8, {
             yPercent: 0
         }, {
@@ -173,7 +177,6 @@ export class PageList extends PureComponent {
     }
 
     mediaQueryCallback(breakpoint, mq) {
-        console.log(mq.matchFrom('desktop'));
         if (mq.matchFrom('desktop')) {
             return (
                 <Scrollbar ref={this.scrollbarRef} alwaysShowTracks onScroll={this.onScroll}>
