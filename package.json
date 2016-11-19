@@ -1,15 +1,15 @@
 {
-  "name": "resume",
-  "description": "My Resume",
-  "version": "0.0.1",
+  "name": "marco.solazzi.me",
+  "description": "Marco Solazzi Personal Website",
+  "version": "1.0.0-beta1",
   "license": "MIT",
   "author": {
     "name": "Marco Solazzi"
   },
   "contributors": [],
-  "main": "frontend/assets/javascripts/application.js",
+  "main": "applicatiom/assets/js/app.js",
   "engines": {
-    "node": "^4.0.0"
+    "node": "^6.0.0"
   },
   "scripts": {
     "start": "npm run clean && npm run modernizr && cross-env NODE_ENV=development node ./build/scripts/server.js",
