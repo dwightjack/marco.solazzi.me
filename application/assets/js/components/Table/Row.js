@@ -23,10 +23,10 @@ const Row = ({heading, value}) => {
 
 Row.propTypes = {
     heading: React.PropTypes.string,
-    value: React.PropTypes.oneofType(
+    value: React.PropTypes.oneOfType([
         React.PropTypes.number,
         React.PropTypes.string
-    )
+    ])
 };
 
 export default Row;
