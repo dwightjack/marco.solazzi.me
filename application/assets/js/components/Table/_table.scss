@@ -30,35 +30,12 @@ $c-table-indent: 30px;
         content: ". ";
     }
 }
-/*
+
 .c-table__bracket {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 22px;
-    height: 100%;
-    opacity: 0.4;
-
-    @include mq(tablet-portrait) {
-        margin-left: $c-table-indent * -1;
-    }
-
-    path {
-        fill: $color-link;
-    }
-} */
-
-/*
-
-.c-table__bracket.o-bracket {
-    left: $c-table-indent * -2;
-} */
-
-.c-table__bracket2 {
     position: absolute;
     top: -10px;
     bottom: -10px;
-    left: 0px;
+    left: 0;
     opacity: 0.5;
     width: 8px;
     background-color: $color-link;

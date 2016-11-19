@@ -139,6 +139,7 @@
    ========================================================================== */
 
 @each $font-size-key, $font-size-value in $font-sizes {
+
     .u-type--#{$font-size-key} {
         font-size: rem($font-size-value) !important;
     }
@@ -157,6 +158,7 @@
 }
 
 @each $font-weight-key, $font-weight-value in $font-weights {
+
     .u-weight--#{$font-weight-key} {
         font-weight: $font-weight-value !important;
     }
@@ -164,22 +166,22 @@
 
 .u-type--mark {
     position: relative;
-        display: inline-block;
-        padding: 0 0.2em 0.1em;
-        background-color: transparent;
-        color: $color-light;
-        line-height: 1;
+    display: inline-block;
+    padding: 0 0.2em 0.1em;
+    background-color: transparent;
+    color: $color-light;
+    line-height: 1;
 
-        &::after {
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            z-index: z-index(behind);
-            background-color: $color-link;
-            content: "";
-        }
+    &::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: z-index(behind);
+        background-color: $color-link;
+        content: "";
+    }
 }
 
 
@@ -225,8 +227,8 @@
 }
 
 @each $mq-key, $mq-value in $mq-breakpoints {
-
     @include mq($mq-key) {
+
         .u-hidden--from-#{$mq-key} {
             display: none !important;
             visibility: hidden !important;
@@ -234,6 +236,7 @@
     }
 
     @include mq($until: $mq-key) {
+
         .u-hidden--until-#{$mq-key} {
             display: none !important;
             visibility: hidden !important;

@@ -5,9 +5,9 @@ import classnames from 'classnames';
 import { TweenMax, Power2 } from 'gsap';
 
 
-import { NAV_PATH_HOME, NAV_PATH_JOBS } from '../../base/constants';
+import { NAV_PATH_HOME } from '../../base/constants';
 import { createRefs, bindAll } from '../../base/utils';
-import MediaQuery from '../../components/MediaQuery';
+import { connected as MediaQuery } from '../../components/MediaQuery';
 
 import {
     pagelistScrollUpdateAction
@@ -230,7 +230,7 @@ const mapStateToProps = (state) => ({
     route: state.route
 });
 
-export default connect(
+export const connected = connect(
     mapStateToProps,
     mapDispatchToProps
 )(PageList);

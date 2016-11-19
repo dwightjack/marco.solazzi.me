@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import classNames from 'classnames';
 import { bindAll, createRefs, raf, caf } from '../../base/utils';
 import Title from '../Title';
 

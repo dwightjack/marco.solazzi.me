@@ -1,14 +1,10 @@
 //base styles and mixins
 @import "normalize-css/normalize";
-
 @import "smooth-scrollbar/dist/smooth-scrollbar";
 @import "base";
 
-
-
 //utility come last so they can overwrite stuff...
 @import "utility";
-
 
 //utility styles
 @import "print";

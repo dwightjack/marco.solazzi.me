@@ -4,7 +4,7 @@ import pure from '../../base/pure';
 
 import './_title.scss';
 
-export const Title = ({className = '', prefix = 'me', title, subtitle}) => (
+export const TitleFunctional = ({className = '', prefix = 'me', title, subtitle}) => (
     <header className={className}>
         <h2 className="o-title">
             {prefix && <strong className="o-title__prefix">{prefix}</strong>}
@@ -14,12 +14,11 @@ export const Title = ({className = '', prefix = 'me', title, subtitle}) => (
     </header>
 );
 
-Title.propTypes = {
+TitleFunctional.propTypes = {
     className: React.PropTypes.string,
     prefix: React.PropTypes.string,
     title: React.PropTypes.string.isRequired,
     subtitle: React.PropTypes.string
 };
 
-
-export default pure(Title);
+export default pure(TitleFunctional);

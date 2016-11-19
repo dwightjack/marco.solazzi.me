@@ -1,13 +1,12 @@
 import React, { PureComponent } from 'react';
 import omit from 'lodash/omit';
 import classnames from 'classnames';
-import Time from '../Time';
+
 import { AnchorIco } from '../Anchor';
+import Caption from './Caption';
+import Row from './Row';
 
 import './_table.scss';
-//import Bracket from 'babel!svg-react!../../../images/bracket-left.svg?name=Bracket';
-
-import Bracket from '../Bracket';
 
 let id = 0;
 
@@ -15,36 +14,18 @@ class Table extends PureComponent {
 
     constructor(props) {
         super(props);
-        this._id = `table-${(++id)}`;
-        this.caption = this.renderCaption(props.data, props.caption);
+        id += 1;
+        this._id = `table-${id}`;
     }
 
-    componentWillUpdate({data, caption}) {
-        this.caption = this.renderCaption(data, caption);
+    buildRows(rows) { //eslint-disable-line class-methods-use-this
+
+        return Object.keys(rows).filter((key) => key.indexOf('_') !== 0).map((key) => (
+            <Row key={key} heading={key} value={rows[key]} />
+        ));
     }
 
-    buildRows(rows) {
-
-        return Object.keys(rows).filter((key) => key.indexOf('_') !== 0).map((key) => {
-
-            let value = rows[key];
-
-            if (key === 'to' || key === 'from' || key === 'date') {
-                value = <td><Time dateTime={value} /></td>;
-            } else {
-                value = <td dangerouslySetInnerHTML={{__html: value}} />;
-            }
-
-            return (
-                <tr key={key} data-row={key}>
-                    <th scope="row">{key}</th>
-                    {value}
-                </tr>
-            );
-        });
-    }
-
-    metaTitle(type, title = '') {
+    metaTitle(type, title = '') { //eslint-disable-line class-methods-use-this
 
         switch (type) {
         case 'video':
@@ -58,41 +39,41 @@ class Table extends PureComponent {
         }
     }
 
-    renderCaption(data = {}, caption) {
-
-        const captionData = data[caption] || '';
-        const {_link} = data;
-
-        if (_link) {
-            return <a href={_link} target="_blank" rel="noopener noreferrer">{captionData.toString()}</a>;
-        }
-
-        return captionData.toString();
-    }
-
 
     render() {
         const {caption, data = {}} = this.props;
-        const {_meta = []} = data;
+        const {_meta = [], _link} = data;
         const styles = this.props.styles.map((style) => `c-table--${style}`).join(' ');
+        const rows = this.buildRows(omit(data, [caption, 'id']));
 
         return (
             <article className={classnames('c-table', styles)}>
+
                 {caption ? <h3 className="c-table__caption" id={this._id}>
-                    {`${caption}: `}{this.caption}
+                    {`${caption}: `}<Caption label={data[caption]} link={_link} />
                 </h3> : null}
-                {/*styles.indexOf('c-table--brackets') !== -1 ? <Bracket className="c-table__bracket" /> : null*/}
-                {styles.indexOf('c-table--brackets') !== -1 ? <div className="c-table__bracket2" /> : null}
+
+                {styles.indexOf('c-table--brackets') !== -1 ? <div className="c-table__bracket" /> : null}
+
                 <table className="c-table__data" aria-labelledby={this._id}>
                     <tbody>
-                        {this.buildRows(omit(data, [caption, 'id']))}
+                        {rows}
                     </tbody>
                 </table>
+
                 <footer className="c-table__footer">
                     {_meta.map(({type, link, label}) => (
-                        <AnchorIco className="o-anchor--cursor" link={link} key={link} ico={type} label={label || type} title={this.metaTitle(type, data[caption])} />
+                        <AnchorIco
+                            className="o-anchor--cursor"
+                            link={link}
+                            key={link}
+                            ico={type}
+                            label={label || type}
+                            title={this.metaTitle(type, data[caption])}
+                        />
                     ))}
                 </footer>
+
             </article>
         );
     }
@@ -100,7 +81,7 @@ class Table extends PureComponent {
 
 Table.propTypes = {
     caption: React.PropTypes.string,
-    data: React.PropTypes.object,
+    data: React.PropTypes.object, //eslint-disable-line react/forbid-prop-types
     styles: React.PropTypes.arrayOf(React.PropTypes.string)
 };
 

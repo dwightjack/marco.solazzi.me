@@ -57,6 +57,7 @@ textarea {
 
 html {
     //https://www.smashingmagazine.com/2016/05/fluid-typography/
+
     /*
     $font-min: $font-size-default;
     //$font-min: 14px;
@@ -79,18 +80,18 @@ html {
             $font-max: 20px,
             $breakpoint-min: 1280px,
             $breakpoint-max: 2560px
-        )
+        );
     }
 }
 
 body {
+    overflow: hidden;
     min-width: 320px;
     height: 100vh;
     background: $color-bg;
     color: $color-text;
     font-family: $font-family-base;
     //overflow-x: hidden;
-    overflow: hidden;
     line-height: $font-lheight-default / $font-size-default;
 }
 
@@ -99,14 +100,14 @@ body {
 //Customize the background color to match your design.
 
 ::-moz-selection {
-    color: darken($color-link, 15%);
     background-color: rgba($color-link, 0.2);
+    color: darken($color-link, 15%);
     text-shadow: none;
 }
 
 ::selection {
-    color: darken($color-link, 15%);
     background-color: rgba($color-link, 0.2);
+    color: darken($color-link, 15%);
     text-shadow: none;
 }
 

@@ -33,8 +33,8 @@ import jobs from '../../database/jobs.json';
 import techSkills from '../../database/skills.tech.json';
 import teamSkills from '../../database/skills.team.json';
 
-import Nav from '../Nav'; //eslint-disable-line import/no-named-as-default
-import PageList from '../PageList'; //eslint-disable-line import/no-named-as-default
+import { connected as Nav } from '../Nav';
+import { connected as PageList } from '../PageList';
 import Cover from '../Cover';
 import Intro from '../Intro';
 
@@ -161,6 +161,10 @@ class App extends Component {
 
     }
 
+    onPageChange(hash) {
+        this.props.router.go(hash);
+    }
+
     setWheelListener() {
         const { router } = this.props;
 
@@ -177,10 +181,6 @@ class App extends Component {
                 router.go(NAV_PATH_HOME);
             }
         });
-    }
-
-    onPageChange(hash) {
-        this.props.router.go(hash);
     }
 
     render() {

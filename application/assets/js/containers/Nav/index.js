@@ -161,7 +161,7 @@ const mapDispatchToProps = (dispatch) => ({
     }
 });
 
-export default connect(
+export const connected = connect(
     mapStateToProps,
     mapDispatchToProps
 )(Nav);
