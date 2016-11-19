@@ -1,0 +1,35 @@
+@import "globals";
+@import "colors";
+@import "mixins";
+@import "sass-mq/mq";
+
+.c-pagelist {
+    position: relative;
+    overflow: hidden;
+
+    @include mq(tablet-portrait) {
+        height: 100vh;
+    }
+
+    > [data-scrollbar] {
+        height: 100vh;
+    }
+
+    .c-page:last-child .c-section:last-child {
+        min-height: 100vh;
+    }
+}
+
+/*
+.c-pagelist__scroll {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100vh;
+}
+*/
+
+.c-pagelist__footer {
+    padding: 0 0 30px;
+    font-size: font-size(12px);
+    text-align: center;
+}

@@ -1,0 +1,43 @@
+//fonts by type
+$font-family-sans: "Open Sans", sans-serif;
+$font-family-serif: "Bree Serif", serif;
+$font-family-mono: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+
+//fonts by function
+$font-family-base: $font-family-sans;
+$font-family-h: $font-family-serif;
+$font-family-script: $font-family-serif;
+$font-family-typescript: $font-family-mono;
+
+//font dimensions
+$font-size-default: 16px;
+$font-lheight-default: 20px;
+
+$font-sizes: (
+    xl: 40px,
+    l: 32px,
+    m: $font-size-default,
+    s: 14px,
+    xs: 10px
+);
+
+
+$font-weights: (
+    regular: 400,
+    semibold: 600,
+    bold: 700
+);
+//font dimensions by function
+$font-sizes-headings: (
+    1: 40px,
+    2: 32px,
+    3: $font-size-default,
+    4: $font-size-default,
+    5: $font-size-default,
+    6: $font-size-default
+);
+
+$font-size-h: ceil($font-size-default * 2);
+$font-size-text: $font-size-default;
+
+$font-lheight-h: 1.2;

@@ -15,6 +15,10 @@
         "react"
     ],
 
+    "globals": {
+        "__PRODUCTION__": true
+    },
+
     "parser": "babel-eslint",          // https://github.com/babel/babel-eslint
 
     "parserOptions": {
@@ -39,28 +43,25 @@
         }
     },
 
-    "settings": {
-        "import/ignore": [
-            "node_modules",
-            ".(json|scss)$"
-        ]
-    },
-
     "rules": {
         /**
          * ES6
          */
         "prefer-const": 0,               // http://eslint.org/docs/rules/prefer-const
         "arrow-body-style": [2, "as-needed"],
+        "arrow-parens": [2, "always"],
         "arrow-spacing": [2, {
             "before": true,
             "after": true
         }],
         "object-curly-spacing": 0,
 
-        "import/no-unresolved": [2, { "ignore": ["(png|jpg|gif)$", "s?css$"] }],
+        "import/no-unresolved": [2, { "ignore": ["(png|jpg|gif|svg)[?]*(.*)$", "s?css$"] }],
 
         "react/prefer-stateless-function": 0,
-        "react/jsx-indent": [2, 4]
+        "react/jsx-indent": [2, 4],
+        "react/jsx-filename-extension": 0,
+        "react/jsx-indent-props": [2, 4],
+        "max-len": 0
     }
 }

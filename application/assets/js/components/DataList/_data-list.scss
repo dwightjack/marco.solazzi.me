@@ -1,0 +1,94 @@
+@import "globals";
+@import "colors";
+@import "mixins";
+@import "sass-mq/mq";
+
+.c-data-list {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+
+    @include mq(tablet-portrait) {
+        display: flex;
+        margin: 0 rem(-20px);
+        flex-wrap: wrap;
+    }
+}
+
+.c-data-list__item {
+    margin: 0;
+    padding: 0 rem(10px) rem(30px);
+
+    &:last-child {
+        @include mq($until: tablet-portrait) {
+            padding-bottom: 0;
+        }
+    }
+
+    @include mq(tablet-portrait) {
+        padding: 0 rem(20px) rem(30px);
+        flex: 0 0 47%;
+    }
+}
+
+.c-data-list__label {
+    @include font-heading;
+    position: relative;
+    display: block;
+
+    &::before {
+        position: relative;
+        left: -0.1em;
+        display: inline-block;
+        opacity: 0.6;
+        width: 1em;
+        margin-left: -1em;
+        color: $color-link;
+        text-align: center;
+        content: "+";
+        transition: all 250ms;
+
+        @include mq(tablet-portrait) {
+            left: -0.5em;
+        }
+    }
+}
+
+.c-data-list__ico {
+    position: absolute;
+    top: 50%;
+    left: -1.3em;
+    display: inline-block;
+    opacity: 0;
+    width: 1em;
+    color: $color-link;
+    text-align: center;
+    content: "+";
+    transform: translate(0, -50%) scale(0.2);
+    transition: all 150ms ease-out;
+
+    @include mq(tablet-portrait) {
+        left: -1.5em;
+    }
+}
+
+.c-data-list__body {
+    @include font-content;
+}
+
+.touchevents .c-data-list__item,
+.c-data-list__item:hover {
+
+    .c-data-list__label::before {
+        opacity: 0;
+        transform: scale(1.5);
+    }
+
+    .c-data-list__ico {
+        opacity: 0.6;
+        transform: translate(0, -50%) scale(1);
+        transition-delay: 240ms;
+    }
+}

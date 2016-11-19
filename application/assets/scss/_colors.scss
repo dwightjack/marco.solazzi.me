@@ -1,8 +1,12 @@
-$color-black: #000;
-$color-white: #fff;
-$color-light: $color-white;
-$color-dark: $color-black;
+//colors by name
+$color-dark: #4d4d4d;
+$color-light: #fff;
+$color-dark-red: #a02c2c;
 
-$color-text: $color-black;
-
-//$color-text-selection
+//colors by function
+$color-text: $color-dark; // #d2d2d2
+$color-bg: $color-light; // #1e1e23
+$color-link: $color-dark-red;
+$color-link-hover: lighten($color-dark-red, 20%);
+$color-border: $color-dark;
+$color-text-selection: $color-dark-red;

@@ -1,5 +1,364 @@
-@import 'normalize-css/normalize';
+/* ==========================================================================
+
+   Base Styles
+   ====
+
+
+   Some Basic Styles
+
+   ```
+   ```
+
+   ========================================================================== */
+
+@import "globals";
+@import "colors";
+@import "mixins";
+@import "sass-mq/mq";
+
+
+//Fix IE10 on WP8 visualization issues
+//see http://getbootstrap.com/getting-started/#ie-10-width
+//see http://timkadlec.com/2013/01/windows-phone-8-and-device-width/
+@-webkit-viewport {
+    width: device-width;
+}
+
+@-moz-viewport {
+    width: device-width;
+}
+
+@-ms-viewport {
+    width: device-width;
+}
+
+@-o-viewport {
+    width: device-width;
+}
+
+@viewport {
+    width: device-width;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+html,
+button,
+input,
+select,
+textarea {
+    color: $color-text;
+}
+
+html {
+    //https://www.smashingmagazine.com/2016/05/fluid-typography/
+    /*
+    $font-min: $font-size-default;
+    //$font-min: 14px;
+    //$font-max: 18px;
+    $font-max: 20px;
+    $font-diff: ($font-max - $font-min);
+    //$breakpoint-min: 1024px;
+    $breakpoint-min: 1280px;
+    $breakpoint-max: 2560px;
+    //$breakpoint-max: 1920px;
+    $breakpoint-diff: ($breakpoint-max - $breakpoint-min);
+    $font-scale: $font-diff / $breakpoint-diff;
+    */
+    $base-font-size: percentage($font-size-default / 16px);
+    font-size: $base-font-size;
+
+    @include mq(tablet-portrait) {
+        @include responsive-typography(
+            $font-min: $font-size-default,
+            $font-max: 20px,
+            $breakpoint-min: 1280px,
+            $breakpoint-max: 2560px
+        )
+    }
+}
 
 body {
-    background: limegreen;
+    min-width: 320px;
+    height: 100vh;
+    background: $color-bg;
+    color: $color-text;
+    font-family: $font-family-base;
+    //overflow-x: hidden;
+    overflow: hidden;
+    line-height: $font-lheight-default / $font-size-default;
+}
+
+//Remove text-shadow in selection highlight: h5bp.com/i
+//These selection declarations have to be separate.
+//Customize the background color to match your design.
+
+::-moz-selection {
+    color: darken($color-link, 15%);
+    background-color: rgba($color-link, 0.2);
+    text-shadow: none;
+}
+
+::selection {
+    color: darken($color-link, 15%);
+    background-color: rgba($color-link, 0.2);
+    text-shadow: none;
+}
+
+/*
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: darken($color-link, 10%);
+}
+
+::-webkit-scrollbar-track {
+    background: $color-link;
+}
+*/
+// Remove the gap between images and the bottom of their containers: h5bp.com/i/440
+
+audio,
+canvas,
+iframe,
+svg,
+video,
+img {
+    vertical-align: middle;
+}
+
+// A better looking default horizontal rule
+
+hr {
+    display: block;
+    height: 1px;
+    margin: 1rem 0;
+    padding: 0;
+    border: 0;
+    border-top: 1px solid $color-border;
+}
+
+// Remove default fieldset styles.
+fieldset {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+// Allow only vertical resizing of textareas.
+
+textarea {
+    resize: vertical;
+}
+
+input::-moz-focus-inner {
+    border: 0;
+}
+
+
+/* ==========================================================================
+   ##prevent 300ms delay in FF, Chrome and IE on touch devices
+   ========================================================================== */
+
+a[href],
+button {
+    touch-action: manipulation;
+}
+
+/* ==========================================================================
+   ##Shared Styles
+
+   Shared placeholder
+
+   ```
+   ```
+   ========================================================================== */
+
+//DEPRECATED
+%inline-block {
+    display: inline-block;
+}
+
+//DEPRECATED
+%img-responsive {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+//DEPRECATED
+%clearfix {
+    @include clearfix;
+}
+
+/* ==========================================================================
+   ##Headings and Base
+
+   1 to 6 heading
+
+   ```
+   ```
+   ========================================================================== */
+
+%heading-base {
+    margin: 0 0 0.2em;
+    //color: $color-text
+    font-family: $font-family-h;
+    font-weight: font-weight(regular);
+}
+
+@include classed-headings {
+    @extend %heading-base;
+}
+
+@each $font-head-num, $font-head-size in $font-sizes-headings {
+
+    h#{$font-head-num},
+    .h#{$font-head-num} {
+        font-size: font-size($font-head-size);
+        line-height: $font-lheight-h;
+    }
+}
+
+p {
+    margin: 0 0 0.2em;
+    line-height: $font-lheight-h;
+}
+
+abbr[title] {
+    border-bottom: 1px dotted currentColor;
+    text-decoration: none;
+}
+
+.touchevents a.u-link--mark,
+.touchevents a:not([class]) {
+    background-image:
+        linear-gradient(
+            to top,
+            rgba($color-text, 0.2) 0,
+            rgba($color-text, 0.2) 3px,
+            transparent 4px
+        );
+    color: inherit;
+    text-decoration: none;
+}
+
+.no-touchevents a.u-link--mark,
+.no-touchevents a:not([class]) {
+    position: relative;
+    display: inline-block;
+    padding-right: 0.22em;
+    padding-left: 0.22em;
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.27s;
+
+
+    &::after {
+        position: absolute;
+        right: 0;
+        bottom: -0.17em;
+        left: 0;
+        z-index: z-index(behind) - 1;
+        opacity: 0.1;
+        height: 3px;
+        background-color: currentColor;
+        content: "";
+        pointer-events: none;
+        transition: all 0.1s linear;
+    }
+
+    &::before {
+        position: absolute;
+        top: 0;
+        bottom: -0.17em;
+        left: 0;
+        z-index: z-index(above);
+        opacity: 0;
+        width: 0;
+        background-color: $color-link;
+        content: "";
+        pointer-events: none;
+        transform: scaleX(1);
+        transform-origin: 0 0;
+        transition: opacity 0.25s, width 0s ease 0.25s, transform 0s ease 0.25s, transform-origin 0s ease 0.25s;
+    }
+
+    &:hover {
+        color: $color-link;
+        text-decoration: none;
+        transition-delay: 0.25s;
+        transition-duration: 0;
+
+        &::before {
+            opacity: 1;
+            width: 100%;
+            transform: scaleX(0);
+            transform-origin: right 0;
+            transition: width 0.25s ease, transform-origin 0s ease 0.25s, transform 0.25s ease 0.25s;
+        }
+
+        &::after {
+            opacity: 0.3;
+            transition: opacity 0.15s ease 0.15s;
+        }
+    }
+}
+
+/* ==========================================================================
+   ## CSS to JS Breakpoint Bridge
+   ========================================================================== */
+
+@if $mq-responsive {
+
+    body::after,
+    body::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: z-index(behind) - 2;
+        display: block;
+        visibility: hidden;
+        overflow: hidden;
+        width: 1px;
+        height: 1px;
+    }
+
+    body::after {
+        content: "mobile";
+        @each $mq-key, $mq-value in $mq-breakpoints {
+            @include mq($mq-key) {
+                content: "#{$mq-key}";
+            }
+        }
+    }
+
+
+    body::before {
+        content: "/#{map-to-JSON($mq-breakpoints)}/";
+    }
+
+    //fallback
+    head {
+        font-family: "/#{map-to-JSON($mq-breakpoints)}/";
+    }
+}
+
+/* ==========================================================================
+   ## Layout settings
+   ========================================================================== */
+
+[data-scrollbar].sticky .scrollbar-track {
+    background: $color-link;
+}
+
+[data-scrollbar] .scrollbar-thumb {
+    background: darken($color-link, 10%);
 }

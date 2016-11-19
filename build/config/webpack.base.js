@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const paths = require('./paths');
-
 const srcPath = paths.toAbsPath('src.assets');
 const destPath = paths.toAbsPath('dist.assets');
 
@@ -22,7 +21,7 @@ module.exports = {
     plugins: [
         new webpack.NoErrorsPlugin(),
         new webpack.DefinePlugin({
-            'PRODUCTION': (process.env.NODE_ENV === 'production'),
+            '__PRODUCTION__': (process.env.NODE_ENV === 'production'),
             'process.env': {
                 NODE_ENV: JSON.stringify(process.env.NODE_ENV)
             }
@@ -66,7 +65,10 @@ module.exports = {
 
     resolve: {
         alias: {
-            scss: paths.toAbsPath('src.assets/sass')
+            scss: paths.toAbsPath('src.assets/sass'),
+            vendors: paths.toAbsPath('src.assets/vendors'),
+            images: paths.toAbsPath('src.assets/images'),
+            base: paths.toAbsPath('src.assets/js/base')
         },
         modulesDirectories: ['node_modules', paths.toPath('src.assets/vendors')]
     }

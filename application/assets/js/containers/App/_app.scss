@@ -1,0 +1,28 @@
+@import "globals";
+@import "sass-mq/mq";
+
+.c-pagelist {
+    @include mq($until: tablet-portrait) {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+    }
+
+    @include mq(tablet-portrait) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+    }
+}
+
+#contacts {
+    padding-top: 0;
+
+    .o-social-list {
+        @include mq($until: tablet-portrait) {
+            max-width: 82%;
+            margin: 0 auto;
+        }
+    }
+}

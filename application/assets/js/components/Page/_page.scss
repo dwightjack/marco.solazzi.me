@@ -1,0 +1,15 @@
+@import "globals";
+@import "mixins";
+
+.c-page {
+    //min-height: 100vh;
+    padding-top: rem(40px);
+
+    &:first-child {
+        padding-top: rem(60px);
+    }
+}
+
+.c-page__body {
+    padding: 0 vw($page-gutter);
+}

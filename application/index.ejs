@@ -2,7 +2,7 @@
 <html class="no-js" lang="en">
     <head>
         <meta charset="utf-8">
-        <title><%= htmlWebpackPlugin.options.title %></title>
+        <title>Marco Solazzi - Website</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="format-detection" content="telephone=no">
@@ -10,11 +10,13 @@
         <script src="<%- webpackConfig.output.publicPath %><%- htmlWebpackPlugin.options.modernizr %>"></script>
         <% } %>
 
+        <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Open+Sans:400,600,700" rel="stylesheet" />
+
     </head>
 
     <body>
-
-        <div id="app-root"></div>
+    <%= require('raw!icomoon/symbol-defs.svg') %>
+    <div id="app-root"></div>
 
     </body>
 </html>
