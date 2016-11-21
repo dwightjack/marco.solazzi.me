@@ -10,6 +10,7 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { AppContainer } from 'react-hot-loader';
 
 import './base/plugins';
 
@@ -34,10 +35,29 @@ const store = configureStore({
 
 mq.connect(store);
 
+// @see https://github.com/gaearon/react-hot-boilerplate/pull/61#issuecomment-254467020
 
 ReactDOM.render(
-    <Provider store={store}>
-        <App router={router} />
-    </Provider>,
+    <AppContainer>
+        <Provider store={store}>
+            <App router={router} />
+        </Provider>
+    </AppContainer>,
     document.getElementById('app-root')
 );
+
+if (__PRODUCTION__ === false) {
+    if (module.hot) {
+
+    module.hot.accept('./containers/App', () => {
+        ReactDOM.render(
+            <AppContainer>
+                <Provider store={store}>
+                    <App router={router} />
+                </Provider>
+            </AppContainer>,
+            document.getElementById('app-root')
+        );
+    });
+    }
+}

@@ -1,19 +1,24 @@
 {
+
     "presets": [
         "react",
         ["es2015", {"loose": true}]
-    ],
-    "plugins" : [
-        "transform-object-rest-spread",
-        ["transform-runtime", {"polyfill": false, "regenerator": false }]
     ],
 
     "env": {
         "production": {
             "plugins": [
+                "transform-object-rest-spread",
                 ["transform-runtime", {"polyfill": false, "regenerator": false }],
                 "transform-react-remove-prop-types",
                 "transform-react-constant-elements"
+            ]
+        },
+        "development": {
+            "plugins" : [
+                "transform-object-rest-spread",
+                "react-hot-loader/babel",
+                ["transform-runtime", {"polyfill": false, "regenerator": false }]
             ]
         }
     }
