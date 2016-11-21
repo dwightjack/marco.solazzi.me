@@ -18,7 +18,7 @@ import Router from './router';
 import mq from './base/mq';
 import configureStore from './store';
 
-import App from './containers/App';
+import Root from './containers/Root';
 import { NAV_PATH_HOME } from './base/constants';
 
 import '../scss/app.scss';
@@ -39,9 +39,7 @@ mq.connect(store);
 
 ReactDOM.render(
     <AppContainer>
-        <Provider store={store}>
-            <App router={router} />
-        </Provider>
+        <Root store={store} router={router} />
     </AppContainer>,
     document.getElementById('app-root')
 );
@@ -50,11 +48,10 @@ if (__PRODUCTION__ === false) {
     if (module.hot) {
 
     module.hot.accept('./containers/App', () => {
+        const RootContainer = require('./containers/Root').default;
         ReactDOM.render(
             <AppContainer>
-                <Provider store={store}>
-                    <App router={router} />
-                </Provider>
+                <RootContainer store={store} router={router} />
             </AppContainer>,
             document.getElementById('app-root')
         );
