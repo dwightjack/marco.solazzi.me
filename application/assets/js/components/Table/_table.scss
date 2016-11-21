@@ -79,10 +79,11 @@ $c-table-indent: 30px;
     width: 90%;
     text-align: left;
     vertical-align: top;
+    line-height: 1.35em;
 
     tr {
         display: block;
-        padding-bottom: 0.3em;
+        padding-bottom: 0.2em;
         padding-left: $c-table-row-indent;
     }
 
@@ -109,6 +110,9 @@ $c-table-indent: 30px;
 
     tr[data-row="title"] {
         padding-top: 0.5em;
+    }
+    tr[data-row="description"] {
+        line-height: 1.5em;
     }
 }
 

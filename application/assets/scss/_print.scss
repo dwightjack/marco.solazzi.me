@@ -9,72 +9,74 @@
    ========================================================================== */
 
 @import "fonts";
+@import "colors";
 
-@media print {
 
-    * {
-        background: transparent !important;
-        color: #000 !important;
-        box-shadow: none !important;
-        text-shadow: none !important;
-    }
+* {
+    color: $color-text !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
 
-    a,
-    a:visited {
-        color: #000 !important;
-        text-decoration: underline;
-    }
+a,
+a:visited {
+    color: $color-text !important;
+    text-decoration: none;
+}
 
-    a[href]::after {
-        font-size: $font-size-default;
-        content: " (" attr(href) ")";
-    }
+a[href][target="_blank"] {
+    display: inline;
+    background-image:
+        linear-gradient(
+            to top,
+            rgba($color-text, 0.2) 0,
+            rgba($color-text, 0.2) 3px,
+            transparent 4px
+        );
+    color: $color-text !important;
+    text-decoration: none;
+}
 
-    abbr[title]::after {
-        font-size: $font-size-default;
-        content: " (" attr(title) ")";
-    }
+a[href][target="_blank"]::after {
+    position: static;
+    opacity: 1;
+    background-color: transparent;
+    font-size: 0.8em;
+    content: " (" attr(href) ")";
+}
 
-    // Don't show links for images, or javascript/internal links
-    .ir a::after,
-    a[href^="javascript:"]::after,
-    a[href^="#"]::after {
-        content: "";
-    }
+// Don't show links for images, or javascript/internal links
+.ir a::after,
+a[href^="javascript:"]::after,
+a[href^="#"]::after {
+    content: "";
+}
 
-    pre,
-    blockquote {
-        border: 1px solid #999;
-        page-break-inside: avoid;
-    }
+thead {
+    display: table-header-group;
+}
 
-    thead {
-        display: table-header-group;
-    }
+tr,
+img {
+    page-break-inside: avoid;
+}
 
-    tr,
-    img {
-        page-break-inside: avoid;
-    }
+img {
+    max-width: 100% !important;
+}
 
-    img {
-        max-width: 100% !important;
-    }
+@page {
+    margin: 0.5cm;
+}
 
-    @page {
-        margin: 0.5cm;
-    }
+p,
+h2,
+h3 {
+    widows: 3;
+    orphans: 3;
+}
 
-    p,
-    h2,
-    h3 {
-        color: $color-dark !important;
-        widows: 3;
-        orphans: 3;
-    }
-
-    h2,
-    h3 {
-        page-break-after: avoid;
-    }
+h2,
+h3 {
+    page-break-after: avoid;
 }

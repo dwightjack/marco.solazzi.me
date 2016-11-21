@@ -37,7 +37,7 @@
             {
                 "id": "react",
                 "label": "React 15+ ( + Redux)",
-                "level": 70
+                "level": 80
             },
             {
                 "id": "angular",
@@ -84,7 +84,7 @@
                 "level": 100
             }, {
                 "id": "linting-style",
-                "label": "sass-lint, scss-lint",
+                "label": "stylelint, scss-lint",
                 "level": 100
             }
         ]
@@ -141,11 +141,14 @@
         "ico": "pencil",
         "data": [
             {
-                "id": "editors",
-                "label": "Webstorm, Sublime Text, Atom",
+                "id": "ide",
+                "label": "Webstorm",
                 "level": 100
-            },
-            {
+            }, {
+                "id": "editors",
+                "label": "Sublime Text, Atom, VSCode",
+                "level": 100
+            }, {
                 "id": "software",
                 "label": "Photoshop, Fireworks",
                 "level": 80

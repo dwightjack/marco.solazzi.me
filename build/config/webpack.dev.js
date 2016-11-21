@@ -4,7 +4,6 @@ const autoprefixer = require('autoprefixer');
 const _ = require('lodash');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const LiveReloadPlugin = require('webpack-livereload-plugin');
-
 const getModernizrPath = require('../scripts/utils').getModernizrPath;
 const paths = require('./paths');
 const webpackConf = require('./webpack.base');

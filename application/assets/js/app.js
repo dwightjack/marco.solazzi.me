@@ -47,7 +47,7 @@ ReactDOM.render(
 if (__PRODUCTION__ === false) {
     if (module.hot) {
 
-    module.hot.accept('./containers/App', () => {
+    module.hot.accept('./containers/Root', () => {
         const RootContainer = require('./containers/Root').default;
         ReactDOM.render(
             <AppContainer>

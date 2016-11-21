@@ -58,7 +58,7 @@ config.plugins.push(
         filename: paths.toAbsPath('dist.root') + '/index.html',
         minify: {
             removeComments: true,
-            collapseWhitespace: false,
+            collapseWhitespace: true,
             removeRedundantAttributes: true,
             useShortDoctype: true,
             removeEmptyAttributes: false,

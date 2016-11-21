@@ -1,3 +1,5 @@
+@import "globals";
+@import "sass-mq/mq";
 
 .c-pattern {
     position: fixed;
@@ -6,7 +8,6 @@
     bottom: 0;
     left: 40%;
     z-index: -1;
-
 
     &::before {
         position: absolute;
@@ -24,7 +25,13 @@
             rgba(white, 0) 100%
         ),
             url("../images/circuits-full.svg");
+        background-size: auto, 100%;
         content: '';
+
+
+        @include mq(tablet) {
+            background-size: auto;
+        }
     }
 
     &::after {
@@ -36,12 +43,17 @@
         z-index: -1;
         opacity: 0.1;
         background-image: url("../../../images/circuits.svg");
+        background-size: 100%;
         content: '';
         //animation-name: pattern-pulse;
-        animation-duration: 5s;
-        animation-timing-function: steps(4);
-        animation-iteration-count: infinite;
-        animation-direction: alternate;
+        //animation-duration: 5s;
+        //animation-timing-function: steps(4);
+        //animation-iteration-count: infinite;
+        //animation-direction: alternate;
+
+        @include mq(tablet) {
+            background-size: auto;
+        }
     }
 
     > span {
@@ -53,15 +65,38 @@
         z-index: -2;
         opacity: 0.1;
         background-image: url("../../../images/circuits-2.svg");
+        background-size: 100%;
         content: '';
         //animation-name: pattern-pulse2;
-        animation-duration: 5s;
-        animation-timing-function: steps(2);
-        animation-iteration-count: infinite;
-        animation-direction: alternate;
+        //animation-duration: 5s;
+        //animation-timing-function: steps(2);
+        //animation-iteration-count: infinite;
+        //animation-direction: alternate;
+
+        @include mq(tablet) {
+            background-size: auto;
+        }
     }
 }
 
+@media print {
+
+    .c-pattern {
+        opacity: 0.2 !important;
+
+        &::before {
+            background-size: auto, 50%;
+        }
+
+        &::after,
+        > span {
+            background-size: 50%;
+        }
+    }
+}
+
+
+/*
 @keyframes pattern-pulse {
 
     0% {
@@ -99,3 +134,4 @@
         opacity: 0;
     }
 }
+*/
