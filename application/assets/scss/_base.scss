@@ -234,8 +234,15 @@ p {
 }
 
 abbr[title] {
-    border-bottom: 1px dotted currentColor;
-    text-decoration: none;
+
+    .no-touchevents & {
+        border-bottom: 1px dotted currentColor;
+        text-decoration: none;
+
+        @include mq($media-type: print) {
+            border-bottom: 0;
+        }
+    }
 }
 
 .touchevents a.u-link--mark,

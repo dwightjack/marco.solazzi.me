@@ -18,6 +18,10 @@ $c-table-indent: 30px;
         padding-left: 0;
         border-left: $c-table-indent solid transparent;
     }
+
+    @include mq($media-type: print) {
+        page-break-inside: avoid;
+    }
 }
 
 .c-table__caption {
@@ -64,22 +68,14 @@ $c-table-indent: 30px;
     &::after {
         bottom: 0;
     }
-
-    @at-root .c-table:hover .c-table__bracket2 {
-
-        &::before,
-        &::after {
-            transform: scaleX(1);
-        }
-    }
 }
 
 .c-table__data {
     @include font-content;
     width: 90%;
+    line-height: 1.35em;
     text-align: left;
     vertical-align: top;
-    line-height: 1.35em;
 
     tr {
         display: block;
@@ -87,23 +83,23 @@ $c-table-indent: 30px;
         padding-left: $c-table-row-indent;
     }
 
+    td,
     th {
         display: block;
-        font-weight: font-weight(bold);
 
         @include mq(tablet-portrait) {
+            display: inline;
+            vertical-align: top;
+        }
+
+        @include mq($media-type: print) {
             display: inline;
             vertical-align: top;
         }
     }
 
-    td {
-        display: block;
-
-        @include mq(tablet-portrait) {
-            display: inline;
-            vertical-align: top;
-        }
+    th {
+        font-weight: font-weight(bold);
     }
 
 
@@ -111,6 +107,7 @@ $c-table-indent: 30px;
     tr[data-row="title"] {
         padding-top: 0.5em;
     }
+
     tr[data-row="description"] {
         line-height: 1.5em;
     }
@@ -127,11 +124,29 @@ $c-table-indent: 30px;
         margin-bottom: 0.5em;
         margin-left: 0.5em;
     }
+
+    @include mq($media-type: print) {
+        overflow: hidden;
+
+        > a {
+            float: left;
+            clear: left;
+            border-bottom: 0 !important;
+        }
+    }
 }
 
 
 
 .c-table--brackets {
+
+    @include mq($media-type: print) {
+        top: 10px;
+
+        &:last-child {
+            margin-bottom: 20px;
+        }
+    }
 
     .c-table__data {
 

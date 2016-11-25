@@ -82,15 +82,19 @@
 @media print {
 
     .c-pattern {
-        opacity: 0.2 !important;
+        position: absolute;
+        bottom: auto;
+        left: 0;
+        opacity: 1 !important;
+        height: 29.7cm;
 
         &::before {
-            background-size: auto, 50%;
+            background-size: auto, auto;
         }
 
         &::after,
         > span {
-            background-size: 50%;
+            display: none;
         }
     }
 }

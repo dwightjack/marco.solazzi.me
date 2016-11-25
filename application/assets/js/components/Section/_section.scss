@@ -13,6 +13,13 @@
     &:last-child {
         padding-bottom: rem(100px);
     }
+
+    @media print {
+
+        .c-section__title {
+            orphans: 3;
+        }
+    }
 }
 
 .c-section__title {
@@ -48,5 +55,9 @@
         padding-right: 0;
         padding-left: 33%;
         //transition: transform 0.2s ease-out;
+    }
+
+    @include mq($media-type: print) {
+        transform: none !important;
     }
 }

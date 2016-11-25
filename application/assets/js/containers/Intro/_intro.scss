@@ -19,6 +19,10 @@
     @include mq(tablet-portrait) {
         justify-content: flex-end;
     }
+
+    @include mq($media-type: print) {
+        display: none;
+    }
 }
 
 .c-intro__body.h1 {

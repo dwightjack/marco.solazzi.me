@@ -11,72 +11,89 @@
 @import "fonts";
 @import "colors";
 
+@media print {
 
-* {
-    color: $color-text !important;
-    box-shadow: none !important;
-    text-shadow: none !important;
-}
+    @page {
+        margin: 1cm 0.5cm;
+        size: A4 portrait;
+    }
 
-a,
-a:visited {
-    color: $color-text !important;
-    text-decoration: none;
-}
+    @page :first {
+        margin: 0;
+    }
 
-a[href][target="_blank"] {
-    display: inline;
-    background-image:
-        linear-gradient(
-            to top,
-            rgba($color-text, 0.2) 0,
-            rgba($color-text, 0.2) 3px,
-            transparent 4px
-        );
-    color: $color-text !important;
-    text-decoration: none;
-}
+    @page :last {
+        height: 29.7cm;
+    }
+    @page:last {
+        @bottom-center { content: element(footer) }
+    }
 
-a[href][target="_blank"]::after {
-    position: static;
-    opacity: 1;
-    background-color: transparent;
-    font-size: 0.8em;
-    content: " (" attr(href) ")";
-}
+    * {
+        box-shadow: none !important;
+        text-shadow: none !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
 
-// Don't show links for images, or javascript/internal links
-.ir a::after,
-a[href^="javascript:"]::after,
-a[href^="#"]::after {
-    content: "";
-}
+    body {
+        overflow: auto;
+        height: auto;
+    }
 
-thead {
-    display: table-header-group;
-}
+    a,
+    a:visited {
+        color: $color-text !important;
+        text-decoration: none;
+    }
 
-tr,
-img {
-    page-break-inside: avoid;
-}
+    a[href][target="_blank"] {
+        display: inline;
 
-img {
-    max-width: 100% !important;
-}
+        background-image: none;
+        color: $color-text !important;
+        text-decoration: none;
+    }
 
-@page {
-    margin: 0.5cm;
-}
+    a[href][target="_blank"]::after {
+        position: static;
+        opacity: 1;
+        background-color: transparent;
+        font-size: 0.8em;
+        content: " (" attr(href) ")";
+        border-bottom: 2px solid rgba($color-text, 0.2);
+    }
 
-p,
-h2,
-h3 {
-    widows: 3;
-    orphans: 3;
-}
+    // Don't show links for images, or javascript/internal links
+    .ir a::after,
+    a[href^="javascript:"]::after,
+    a[href^="#"]::after {
+        content: "";
+    }
 
-h2,
-h3 {
-    page-break-after: avoid;
+    thead {
+        display: table-header-group;
+    }
+
+    ul,
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    p,
+    h2,
+    h3 {
+        widows: 3;
+        orphans: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
 }

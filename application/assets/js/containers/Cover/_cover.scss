@@ -20,6 +20,19 @@
         padding-bottom: 0;
         border-right: 8px solid $color-link;
     }
+
+    @include mq($media-type: print) {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        page-break-after: always;
+
+        [style] {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: none !important;
+        }
+    }
 }
 
 .c-cover__headline {
@@ -134,6 +147,12 @@
             height: vw(270px);
             margin-top: vw(270px / -2);
         }
+
+        @include mq($media-type: print) {
+            width: 40vw;
+            height: 40vw;
+            margin-top: 10vw;
+        }
     }
 
     .is-active > & {
@@ -161,6 +180,10 @@
 
     @include mq(tablet-portrait) {
         display: block;
+    }
+
+    @include mq($media-type: print) {
+        display: none;
     }
 
     .is-active & {

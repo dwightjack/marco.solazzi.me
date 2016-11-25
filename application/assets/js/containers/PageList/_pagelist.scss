@@ -11,8 +11,24 @@
         height: 100vh;
     }
 
+    @include mq($media-type: print) {
+        opacity: 1 !important;
+        visibility: visible !important;
+        height: auto !important;
+        transform: none !important;
+    }
+
     > [data-scrollbar] {
         height: 100vh;
+
+        @include mq($media-type: print) {
+            overflow: visible !important;
+            height: auto;
+
+            .scroll-content {
+                transform: none !important;
+            }
+        }
     }
 
     .c-page:last-child .c-section:last-child {
@@ -32,4 +48,8 @@
     padding: 0 0 30px;
     font-size: font-size(12px);
     text-align: center;
+
+    @include mq($media-type: print) {
+        display: none;
+    }
 }

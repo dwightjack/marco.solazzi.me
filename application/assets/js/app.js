@@ -9,7 +9,6 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
 import { AppContainer } from 'react-hot-loader';
 
 import './base/plugins';
@@ -47,14 +46,16 @@ ReactDOM.render(
 if (__PRODUCTION__ === false) {
     if (module.hot) {
 
-    module.hot.accept('./containers/Root', () => {
-        const RootContainer = require('./containers/Root').default;
-        ReactDOM.render(
-            <AppContainer>
-                <RootContainer store={store} router={router} />
-            </AppContainer>,
-            document.getElementById('app-root')
-        );
-    });
+        module.hot.accept('./containers/Root', () => {
+
+            const RootContainer = require('./containers/Root').default; //eslint-disable-line global-require
+
+            ReactDOM.render(
+                <AppContainer>
+                    <RootContainer store={store} router={router} />
+                </AppContainer>,
+                document.getElementById('app-root')
+            );
+        });
     }
 }
