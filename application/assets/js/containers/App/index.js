@@ -13,6 +13,7 @@ import { bindAll } from '../../base/utils';
 import Router from '../../router';
 
 
+import Swipe from '../../components/Swipe';
 import Section from '../../components/Section';
 import TableList from '../../components/TableList';
 import Table from '../../components/Table';
@@ -141,7 +142,7 @@ class App extends Component {
     constructor(props) {
         super(props);
 
-        bindAll(this, 'onPageChange');
+        bindAll(this, 'onPageChange', 'onSwipe');
     }
 
     componentDidMount() {
@@ -171,9 +172,10 @@ class App extends Component {
 
         window.addEventListener('wheel', (e) => {
             const { activeNav, activeGroup, pagelistScroll, breakpoint } = this.props;
-            if (activeNav || (breakpoint !== 'desktop' && breakpoint !== 'wide')) {
+            if (activeNav || breakpoint === 'mobile' || breakpoint === 'tablet') {
                 return;
             }
+
             if (e.deltaY > 0 && activeGroup === 'cover') {
                 e.preventDefault();
                 router.go(NAV_PATH_JOBS);
@@ -184,16 +186,35 @@ class App extends Component {
         });
     }
 
+    onSwipe(direction) {
+        const { activeNav, activeGroup, pagelistScroll, breakpoint, router } = this.props;
+
+
+        if (!Modernizr.touchevents || activeGroup === 'intro') {
+            return;
+        }
+
+        if (activeNav || breakpoint === 'mobile' || breakpoint === 'tablet') {
+            return;
+        }
+
+        if (direction === 'down' && activeGroup === 'cover') {
+            router.go(NAV_PATH_JOBS);
+        } else if (direction === 'up' && activeGroup === 'pagelist' && pagelistScroll <= 0) {
+            router.go(NAV_PATH_HOME);
+        }
+    }
+
     render() {
 
         const { activeGroup, router } = this.props;
 
         return (
-            <div>
+            <Swipe onSwipe={this.onSwipe}>
 
                 <Nav className={activeGroup !== 'intro' ? 'is-visible' : ''} onPageChange={this.onPageChange} />
 
-                <Wrapper onPageChange={this.onPageChange}>
+                <Wrapper onPageChange={this.onPageChange} router={router}>
 
                     <Intro active={activeGroup === 'intro'} />
                     <Cover active={activeGroup !== 'intro'} visible={activeGroup === 'cover'} />
@@ -204,7 +225,7 @@ class App extends Component {
 
                 </Wrapper>
 
-            </div>
+            </Swipe>
         );
     }
 

@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { TimelineMax } from 'gsap';
 
+import Router from '../../router';
 import { createRefs, bindAll, noop } from '../../base/utils';
 
 import './_wrapper.scss';
@@ -12,7 +13,7 @@ export default class Wrapper extends PureComponent {
         super(props);
 
         createRefs(this, 'root');
-        bindAll(this, 'onScroll');
+        bindAll(this, 'onScroll', 'routerListener');
         this.pages = [];
         this.currentPage = '';
 
@@ -31,26 +32,13 @@ export default class Wrapper extends PureComponent {
                 el
             };
         }).reverse();
+
+        this.bindRouter();
     }
 
-    /*componentDidUpdate(prevProps) {
-        if (prevProps.route !== this.props.route) {
-            //get the element...
-            const page = document.querySelector(`[name="${this.props.route}"]`);
-            if (page) {
-                const tl = new TimelineMax();
-
-                tl.to(this.root, 0.3, {
-                    opacity: 0
-                })
-                .add(() => page.scrollIntoView())
-                .to(this.root, 0.3, {
-                    opacity: 1,
-                    delay: 0.2
-                });
-            }
-        }
-    }*/
+    componentDidUpdate() {
+        this.bindRouter();
+    }
 
     onScroll(e) {
         const scrollTop = e.target.scrollTop;
@@ -58,7 +46,7 @@ export default class Wrapper extends PureComponent {
             if (offsetTop < scrollTop) {
                 if (this.currentPage !== route) {
                     this.currentPage = route;
-                    this.props.onPageChange(route);
+                    this.props.onPageChange(route, true);
                 }
                 return true;
             }
@@ -66,12 +54,37 @@ export default class Wrapper extends PureComponent {
         });
     }
 
+    routerListener(nextRoute) {
+        const page = document.querySelector(`[name="${nextRoute}"]`);
+        if (page) {
+            const tl = new TimelineMax();
+
+            tl.to(this.root, 0.3, {
+                opacity: 0
+            })
+            .add(() => page.scrollIntoView())
+            .to(this.root, 0.3, {
+                opacity: 1,
+                delay: 0.2
+            });
+        }
+    }
+
+    bindRouter() {
+        const { router, breakpoint } = this.props;
+        if (breakpoint === 'tablet' || breakpoint === 'mobile') {
+            router.listen(this.routerListener);
+        } else {
+            router.removeListener(this.routerListener);
+        }
+    }
+
     render() {
 
         const { children } = this.props;
 
         return (
-            <div className="o-wrapper" ref={this.rootRef}>
+            <div className="o-wrapper" ref={this.rootRef} onScroll={this.onScroll}>
                 {children}
             </div>
         );
@@ -82,14 +95,16 @@ export default class Wrapper extends PureComponent {
 Wrapper.propTypes = {
     children: React.PropTypes.node,
     route: React.PropTypes.string,
-    onPageChange: React.PropTypes.func
+    breakpoint: React.PropTypes.string,
+    onPageChange: React.PropTypes.func,
+    router: React.PropTypes.instanceOf(Router)
 };
 
 Wrapper.defaultProps = {
     onPageChange: noop
 };
 
-const mapStateToProps = ({route}) => ({route});
+const mapStateToProps = ({route, breakpoint}) => ({route, breakpoint});
 
 export const connected = connect(
     mapStateToProps

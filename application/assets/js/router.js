@@ -33,7 +33,17 @@ export default class Router {
     }
 
     listen(callback) {
-        this._listeners.push(callback);
+        const idx = this._listeners.findIndex((cb) => cb === callback);
+        if (idx === -1) {
+            this._listeners.push(callback);
+        }
+    }
+
+    removeListener(callback) {
+        const idx = this._listeners.findIndex((cb) => cb === callback);
+        if (idx !== -1) {
+            this._listeners.splice(idx, 1);
+        }
     }
 
     setCurrent(hash) {
