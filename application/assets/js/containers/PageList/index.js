@@ -6,6 +6,7 @@ import { TweenMax, Power2 } from 'gsap';
 
 
 import { NAV_PATH_HOME } from '../../base/constants';
+import Router from '../../router';
 import { createRefs, bindAll, shallowEqual, pick } from '../../base/utils';
 import { connected as MediaQuery } from '../../components/MediaQuery';
 import Footer from '../../components/Footer';
@@ -27,9 +28,9 @@ export class PageList extends Component {
         bindAll(this, 'onScroll', 'mediaQueryCallback', 'updatePageOffsets');
         this.pagesRefs = [];
         this.pages = [];
-        this.forcedScrolling = false;
         this.currentPage = '';
         this.entered = false;
+        this.autoScroll = false;
         this.windowHeightOffset = 0;
         this._updateKeys = ['active', 'route'];
     }
@@ -39,7 +40,7 @@ export class PageList extends Component {
     }
 
     componentDidMount() {
-        const { active, route } = this.props;
+        const { active, route, router } = this.props;
         if (active === false) {
             TweenMax.set(this.root, {autoAlpha: 0});
         } else {
@@ -50,6 +51,26 @@ export class PageList extends Component {
             this.componentWillEnter();
         }
         this.currentPage = route;
+
+        router.listen((nextRoute, prevRoute) => {
+            if (nextRoute === '' || nextRoute === NAV_PATH_HOME) {
+                return;
+            }
+
+            this.autoScroll = true;
+
+            if (prevRoute === '' || prevRoute === NAV_PATH_HOME) {
+                this.scrollTo(nextRoute, {
+                    offset: window.innerHeight * -1,
+                    duration: 0
+                });
+                this.componentWillEnter();
+                return;
+            }
+
+            this.scrollTo(nextRoute);
+        });
+
     }
 
     componentWillReceiveProps(nextProps) {
@@ -58,19 +79,21 @@ export class PageList extends Component {
             return;
         }
 
-        if (this.forcedScrolling === false) {
-            this.pagesRefs.some((child) => {
-                if (child.root) {
-                    const { bottom } = child;
-                    const isVisible = bottom > this.windowHeightOffset + this.props.pagelistScroll;
-                    if (isVisible && this.currentPage !== child.props.name) {
-                        this.props.onPageChange(child.props.name);
-                    }
-                    return isVisible;
-                }
-                return false;
-            });
+        if (this.autoScroll === true) {
+            return;
         }
+
+        this.pagesRefs.some((child) => {
+            if (child.root) {
+                const { bottom } = child;
+                const isVisible = bottom > this.windowHeightOffset + this.props.pagelistScroll;
+                if (isVisible && this.currentPage !== child.props.name) {
+                    this.props.onPageChange(child.props.name, true);
+                }
+                return isVisible;
+            }
+            return false;
+        });
     }
 
     shouldComponentUpdate(nextProps) {
@@ -87,26 +110,12 @@ export class PageList extends Component {
         }
     }
 
-    componentDidUpdate({route}) {
-        const newActive = this.props.active;
+    componentDidUpdate() {
+        const { active, route } = this.props;
 
-        this.currentPage = this.props.route;
+        this.currentPage = route;
 
-        if (newActive && route !== this.props.route) {
-
-            if (route === '' || route === NAV_PATH_HOME) {
-                this.scrollTo(this.props.route, {
-                    offset: window.innerHeight * -1,
-                    duration: 0
-                });
-                this.componentWillEnter();
-                return;
-            }
-            this.scrollTo(this.props.route);
-            return;
-        }
-
-        if (newActive === false) {
+        if (active === false) {
             this.componentWillLeave();
         }
 
@@ -194,12 +203,11 @@ export class PageList extends Component {
             const el = this.root.querySelector(`[name="${route}"]`);
             if (scrollbar.isVisible(el) === false) {
                 const top = el.getBoundingClientRect().top;
-                this.forcedScrolling = true;
                 const scrollToY = top + scrollbar.scrollTop + offset;
                 const timing = typeof duration !== 'undefined' ? duration : Math.max(300, parseInt(scrollToY * 0.5, 10));
 
                 scrollbar.scrollTo(0, scrollToY, timing, () => {
-                    this.forcedScrolling = false;
+                    this.autoScroll = false;
                 });
 
             }
@@ -244,7 +252,8 @@ PageList.propTypes = {
     onPageChange: React.PropTypes.func,
     active: React.PropTypes.bool,
     pagelistScroll: React.PropTypes.number,
-    route: React.PropTypes.string
+    route: React.PropTypes.string,
+    router: React.PropTypes.instanceOf(Router)
 };
 
 PageList.defaultProps = {

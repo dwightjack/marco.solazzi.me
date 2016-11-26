@@ -20,15 +20,20 @@ export default class Router {
         this.current = '';
         this.previous = null;
         this.setCurrent(window.location.hash);
-    }
+        this._listeners = [];
 
-    listen(callback) {
         window.addEventListener('hashchange', (e) => {
             e.preventDefault();
             if (this.setCurrent(window.location.hash)) {
-                callback(this.current, this.previous);
+                this._listeners.forEach((callback) => {
+                    callback(this.current, this.previous);
+                });
             }
         });
+    }
+
+    listen(callback) {
+        this._listeners.push(callback);
     }
 
     setCurrent(hash) {
@@ -56,7 +61,7 @@ export default class Router {
         return normalizedHash;
     }
 
-    go(hash) {
+    go(hash, conf = {silent: false}) {
 
         const normalizedHash = this.checkHash(hash);
 
@@ -64,7 +69,12 @@ export default class Router {
             return;
         }
 
-        window.location.hash = normalizedHash;
+        if (conf.silent === false) {
+            window.location.hash = normalizedHash;
+        } else {
+            this.setCurrent(normalizedHash);
+            history.pushState(null, null, normalizedHash);
+        }
     }
 
 }

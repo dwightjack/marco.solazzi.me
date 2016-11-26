@@ -41,16 +41,57 @@
     }
 }
 
-.c-cover__headline {
-    margin-top: 0.5em;
-    font-size: font-size(40px);
-    font-weight: 700;
-    text-align: center;
+
+
+.c-cover__pic {
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transform: translateX(15%);
+    transition: all 0.4s ease-out 0.35s;
+
+
+    @include mq($until: tablet-portrait) {
+
+        .is-active & {
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+    }
 
     @include mq(tablet-portrait) {
-        margin-top: 0;
-        font-size: font-size(45px);
-        text-align: left;
+        position: absolute;
+        top: 50%;
+        left: vw(60px);
+        width: 33 - 4.6875#{vw};
+        flex: 0 0 auto;
+    }
+
+    > .o-avatar {
+        width: 50vw;
+        height: 50vw;
+        margin: 0 auto;
+
+        @include mq(tablet-portrait) {
+            width: vw(270px);
+            height: vw(270px);
+            margin-top: vw(270px / -2);
+        }
+
+        @include mq($media-type: print) {
+            width: 40vw;
+            height: 40vw;
+            margin-top: 10vw;
+        }
+    }
+
+    .is-active > & {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .is-leaving & {
+        transition-delay: 0s;
     }
 }
 
@@ -67,10 +108,12 @@
     > * {
         margin-bottom: rem(60px);
 
-        @include mq($until: tablet-portrait) {
-            opacity: 1 !important;
-            visibility: visible !important;
-            transform: none !important;
+        .is-active & {
+            @include mq($until: tablet-portrait) {
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: none !important;
+            }
         }
 
         &:last-child {
@@ -81,6 +124,19 @@
     .is-active > & {
         opacity: 1;
         transform: translateX(0);
+    }
+}
+
+.c-cover__headline {
+    margin-top: 0.5em;
+    font-size: font-size(40px);
+    font-weight: 700;
+    text-align: center;
+
+    @include mq(tablet-portrait) {
+        margin-top: 0;
+        font-size: font-size(45px);
+        text-align: left;
     }
 }
 
@@ -131,54 +187,6 @@
             max-width: 82%;
             margin: 0 auto;
         }
-    }
-}
-
-.c-cover__pic {
-    position: relative;
-    z-index: 1;
-    opacity: 0;
-    transform: translateX(15%);
-    transition: all 0.4s ease-out 0.35s;
-
-    @include mq($until: tablet-portrait) {
-        opacity: 1 !important;
-        visibility: visible !important;
-    }
-
-    @include mq(tablet-portrait) {
-        position: absolute;
-        top: 50%;
-        left: vw(60px);
-        width: 33 - 4.6875#{vw};
-        flex: 0 0 auto;
-    }
-
-    > .o-avatar {
-        width: 50vw;
-        height: 50vw;
-        margin: 0 auto;
-
-        @include mq(tablet-portrait) {
-            width: vw(270px);
-            height: vw(270px);
-            margin-top: vw(270px / -2);
-        }
-
-        @include mq($media-type: print) {
-            width: 40vw;
-            height: 40vw;
-            margin-top: 10vw;
-        }
-    }
-
-    .is-active > & {
-        opacity: 1;
-        transform: translateX(0);
-    }
-
-    .is-leaving & {
-        transition-delay: 0s;
     }
 }
 

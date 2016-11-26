@@ -33,7 +33,7 @@ export default class Wrapper extends PureComponent {
         }).reverse();
     }
 
-    componentDidUpdate(prevProps) {
+    /*componentDidUpdate(prevProps) {
         if (prevProps.route !== this.props.route) {
             //get the element...
             const page = document.querySelector(`[name="${this.props.route}"]`);
@@ -50,7 +50,7 @@ export default class Wrapper extends PureComponent {
                 });
             }
         }
-    }
+    }*/
 
     onScroll(e) {
         const scrollTop = e.target.scrollTop;
@@ -71,7 +71,7 @@ export default class Wrapper extends PureComponent {
         const { children } = this.props;
 
         return (
-            <div className="o-wrapper" ref={this.rootRef} onScroll={this.onScroll}>
+            <div className="o-wrapper" ref={this.rootRef}>
                 {children}
             </div>
         );

@@ -161,8 +161,9 @@ class App extends Component {
 
     }
 
-    onPageChange(hash) {
-        this.props.router.go(hash, {silent: true});
+    onPageChange(hash, silent = false) {
+        this.props.router.go(hash, {silent});
+        this.props.navigateTo(hash);
     }
 
     setWheelListener() {
@@ -185,18 +186,18 @@ class App extends Component {
 
     render() {
 
-        const { activeGroup } = this.props;
+        const { activeGroup, router } = this.props;
 
         return (
             <div>
 
-                <Nav className={activeGroup !== 'intro' ? 'is-visible' : ''} />
+                <Nav className={activeGroup !== 'intro' ? 'is-visible' : ''} onPageChange={this.onPageChange} />
 
                 <Wrapper onPageChange={this.onPageChange}>
 
                     <Intro active={activeGroup === 'intro'} />
                     <Cover active={activeGroup !== 'intro'} visible={activeGroup === 'cover'} />
-                    <PageList active={activeGroup === 'pagelist'} onPageChange={this.onPageChange}>
+                    <PageList active={activeGroup === 'pagelist'} onPageChange={this.onPageChange} router={router}>
                         {Pages}
                     </PageList>
                     { activeGroup !== 'intro' && <Pattern /> }
