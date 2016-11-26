@@ -62,9 +62,13 @@
     @include mq(tablet-portrait) {
         position: absolute;
         top: 50%;
-        left: vw(60px);
+        left: vw(30px);
         width: 33 - 4.6875#{vw};
         flex: 0 0 auto;
+    }
+
+    @include mq(desktop) {
+        left: vw(60px);
     }
 
     > .o-avatar {

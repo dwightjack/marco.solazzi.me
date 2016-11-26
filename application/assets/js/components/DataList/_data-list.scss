@@ -14,8 +14,13 @@ $data-list-bp: mq-px2em(map-get($mq-breakpoints, tablet-portrait));
 
     @media (min-width: $data-list-bp), print {
         display: flex;
+        width: 100%;
         margin: 0 rem(-20px);
         flex-wrap: wrap;
+    }
+
+    @include mq(desktop) {
+        width: 90%;
     }
 
     @media print {

@@ -8,6 +8,9 @@
     bottom: 0;
     left: 40%;
     z-index: -1;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
 
     &::before {
         position: absolute;

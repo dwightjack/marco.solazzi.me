@@ -30,11 +30,15 @@
         @include boost-performance;
         position: absolute;
         top: rem(10px);
-        left: vw(60px);
+        left: 0;
         max-width: 35%;
         margin-bottom: 0;
         text-align: left;
         white-space: nowrap;
+    }
+
+    @include mq(desktop) {
+        left: vw(60px);
     }
 }
 
