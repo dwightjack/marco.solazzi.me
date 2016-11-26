@@ -76,6 +76,14 @@ html {
 
     @include mq(tablet-portrait) {
         @include responsive-typography(
+            $font-min: 14px,
+            $font-max: $font-size-default,
+            $breakpoint-min: 1024px,
+            $breakpoint-max: 1280px
+        );
+    }
+    @include mq(desktop) {
+        @include responsive-typography(
             $font-min: $font-size-default,
             $font-max: 20px,
             $breakpoint-min: 1280px,
