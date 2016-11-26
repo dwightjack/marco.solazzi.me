@@ -1,6 +1,11 @@
 @import "globals";
 @import "sass-mq/mq";
 
+
+.c-nav:not(.is-visible) + .o-wrapper {
+    overflow: hidden;
+}
+
 .c-pagelist {
     @include mq($until: tablet-portrait) {
         opacity: 1 !important;

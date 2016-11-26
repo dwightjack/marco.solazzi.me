@@ -81,11 +81,18 @@ $c-table-indent: 30px;
         display: block;
         padding-bottom: 0.2em;
         padding-left: $c-table-row-indent;
+        line-height: 1.4em;
+
+        @include mq(tablet-portrait) {
+            padding-bottom: 0.1em;
+            line-height: 1.5em;
+        }
     }
 
     td,
     th {
-        display: block;
+        display: inline;
+        vertical-align: top;
 
         @include mq(tablet-portrait) {
             display: inline;
@@ -106,10 +113,6 @@ $c-table-indent: 30px;
 
     tr[data-row="title"] {
         padding-top: 0.5em;
-    }
-
-    tr[data-row="description"] {
-        line-height: 1.5em;
     }
 }
 

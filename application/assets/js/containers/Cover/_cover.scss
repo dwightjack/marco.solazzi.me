@@ -9,6 +9,12 @@
     width: 100vw;
     padding: rem($page-gutter) vw($page-gutter);
 
+    @include mq($until: tablet-portrait) {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+    }
+
     @include mq(tablet-portrait) {
         display: flex;
         overflow: hidden;
@@ -60,6 +66,12 @@
 
     > * {
         margin-bottom: rem(60px);
+
+        @include mq($until: tablet-portrait) {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: none !important;
+        }
 
         &:last-child {
             margin-bottom: 0;
@@ -128,6 +140,11 @@
     opacity: 0;
     transform: translateX(15%);
     transition: all 0.4s ease-out 0.35s;
+
+    @include mq($until: tablet-portrait) {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
 
     @include mq(tablet-portrait) {
         position: absolute;

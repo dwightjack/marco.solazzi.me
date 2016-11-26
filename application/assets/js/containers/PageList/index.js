@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Scrollbar from 'react-smooth-scrollbar';
 import classnames from 'classnames';
@@ -6,8 +6,9 @@ import { TweenMax, Power2 } from 'gsap';
 
 
 import { NAV_PATH_HOME } from '../../base/constants';
-import { createRefs, bindAll } from '../../base/utils';
+import { createRefs, bindAll, shallowEqual, pick } from '../../base/utils';
 import { connected as MediaQuery } from '../../components/MediaQuery';
+import Footer from '../../components/Footer';
 
 import {
     pagelistScrollUpdateAction
@@ -16,23 +17,21 @@ import {
 import './_pagelist.scss';
 
 
-const Footer = () => (
-    <footer className="c-pagelist__footer">
-        &copy; {new Date().getFullYear()} Marco Solazzi - <a href="https://github.com/dwightjack/marco.solazzi.me" target="_blank" rel="noopener noreferrer">license</a> <a href="https://github.com/dwightjack/marco.solazzi.me" target="_blank" rel="noopener noreferrer">source</a>
-    </footer>
-);
 
-export class PageList extends PureComponent {
+
+export class PageList extends Component {
 
     constructor(props) {
         super(props);
         createRefs(this, 'root', 'scrollbar');
-        bindAll(this, 'onScroll', 'mediaQueryCallback');
+        bindAll(this, 'onScroll', 'mediaQueryCallback', 'updatePageOffsets');
         this.pagesRefs = [];
         this.pages = [];
         this.forcedScrolling = false;
         this.currentPage = '';
         this.entered = false;
+        this.windowHeightOffset = 0;
+        this._updateKeys = ['active', 'route'];
     }
 
     componentWillMount() {
@@ -51,6 +50,34 @@ export class PageList extends PureComponent {
             this.componentWillEnter();
         }
         this.currentPage = route;
+    }
+
+    componentWillReceiveProps(nextProps) {
+
+        if (nextProps.pagelistScroll === this.props.pagelistScroll) {
+            return;
+        }
+
+        if (this.forcedScrolling === false) {
+            this.pagesRefs.some((child) => {
+                if (child.root) {
+                    const { bottom } = child;
+                    const isVisible = bottom > this.windowHeightOffset + this.props.pagelistScroll;
+                    if (isVisible && this.currentPage !== child.props.name) {
+                        this.props.onPageChange(child.props.name);
+                    }
+                    return isVisible;
+                }
+                return false;
+            });
+        }
+    }
+
+    shouldComponentUpdate(nextProps) {
+
+        const uKeys = this._updateKeys;
+
+        return !shallowEqual(pick(nextProps, uKeys), pick(this.props, uKeys));
     }
 
     componentWillUpdate(nextProps) {
@@ -86,23 +113,20 @@ export class PageList extends PureComponent {
     }
 
     onScroll(status) {
-        if (this.forcedScrolling === false) {
-            const windowHeight = parseInt(window.innerHeight * 0.25, 10);
-            this.pagesRefs.some((child) => {
-                if (child.root) {
-                    const { bottom } = child.root.getBoundingClientRect();
-                    const isVisible = bottom > windowHeight;//scrollbar.isVisible(child.root);
-                    if (isVisible && this.currentPage !== child.props.name) {
-                        this.props.onPageChange(child.props.name);
-                    }
-                    return isVisible;
-                }
-                return false;
-            });
-        }
-
         const {y = 0} = status.offset;
         this.props.onScrollCallback(y);
+    }
+
+    updatePageOffsets() {
+        const { scrollbar } = this.scrollbar;
+        const scrollTop = scrollbar ? scrollbar.scrollTop : 0;
+        this.windowHeightOffset = parseInt(window.innerHeight * 0.25, 10);
+        this.pagesRefs.forEach((child) => {
+            if (child.root) {
+                const { bottom } = child.root.getBoundingClientRect();
+                child.bottom = bottom + scrollTop; //eslint-disable-line no-param-reassign
+            }
+        });
     }
 
     componentWillEnter() {
@@ -116,12 +140,18 @@ export class PageList extends PureComponent {
             ease: Power2.easeInOut,
             onComplete: () => {
                 this.entered = true;
+                this.updatePageOffsets();
+                window.addEventListener('resize', this.updatePageOffsets);
+                window.addEventListener('orientationchange', this.updatePageOffsets);
             }
         });
     }
 
     componentWillLeave() {
         this.entered = false;
+        window.removeEventListener('resize', this.updatePageOffsets);
+        window.removeEventListener('orientationchange', this.updatePageOffsets);
+
         TweenMax.fromTo(this.root, 0.8, {
             yPercent: 0
         }, {
@@ -181,7 +211,7 @@ export class PageList extends PureComponent {
             return (
                 <Scrollbar ref={this.scrollbarRef} alwaysShowTracks onScroll={this.onScroll}>
                     {this.pages}
-                    <Footer />
+                    <Footer className="c-pagelist__footer" />
                 </Scrollbar>
             );
         }
@@ -189,7 +219,7 @@ export class PageList extends PureComponent {
         return (
             <div className="c-pagelist__scroll" ref={this.scrollbarRef}>
                 {this.pages}
-                <Footer />
+                <Footer className="c-pagelist__footer" />
             </div>
         );
     }
@@ -213,6 +243,7 @@ PageList.propTypes = {
     onScrollCallback: React.PropTypes.func,
     onPageChange: React.PropTypes.func,
     active: React.PropTypes.bool,
+    pagelistScroll: React.PropTypes.number,
     route: React.PropTypes.string
 };
 
@@ -226,8 +257,9 @@ const mapDispatchToProps = (dispatch) => ({
     }
 });
 
-const mapStateToProps = (state) => ({
-    route: state.route
+const mapStateToProps = ({route, pagelistScroll}) => ({
+    route,
+    pagelistScroll
 });
 
 export const connected = connect(

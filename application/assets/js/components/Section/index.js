@@ -1,40 +1,33 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindAll, createRefs, raf, caf } from '../../base/utils';
+import { TweenMax } from 'gsap';
+import { bindAll, createRefs, raf, caf, shallowEqual, pick } from '../../base/utils';
 import Title from '../Title';
 
 import './_section.scss';
 
-class Section extends PureComponent {
+class Section extends Component {
 
     constructor(props) {
         super(props);
 
         this.offsetTop = 0;
-        this.maxScroll = 0;
         this.rafId = null;
-        this.state = {
-            inView: false,
-            scrollAmount: false,
-            atBottom: false
-        };
-        createRefs(this, 'root');
+
+        this._updateKeys = ['children', 'title', 'subtitle', 'prefix'];
+
+        createRefs(this, 'root', 'body');
         bindAll(this, 'setTitlePosition');
     }
 
     componentDidMount() {
         const root = this.root;
-        this.title = root.querySelector('.c-section__title');
 
-        //wait just nothing for the layout to render
         setTimeout(() => {
-            const offset = parseInt(window.innerHeight * 0.01, 10);
-            const rect = this.title.getBoundingClientRect();
-            this.offsetTop = rect.top - offset - rect.height;
             this.rootOffsetTop = root.offsetTop;
-            this.maxScroll = (root.offsetTop + root.offsetHeight) - rect.height - offset;
             this.setTitlePosition();
         }, 100);
+
     }
 
     componentWillReceiveProps(nextProps) {
@@ -47,32 +40,29 @@ class Section extends PureComponent {
         }
     }
 
+    shouldComponentUpdate(nextProps) {
+
+        const uKeys = this._updateKeys;
+
+        return !shallowEqual(pick(nextProps, uKeys), pick(this.props, uKeys));
+    }
+
     setTitlePosition() {
         const scroll = this.props.pagelistScroll;
-        const scrollDiff = this.offsetTop - scroll;
         const scrollAmount = (this.rootOffsetTop + parseInt(window.innerHeight * 0.2, 10)) - (scroll + (window.innerHeight / 2));
 
-        if (scrollDiff <= 0) {
-            if (scroll < this.maxScroll) {
-                this.setState({inView: true, atBottom: false, scrollAmount});
-            } else {
-                this.setState({inView: false, atBottom: true, scrollAmount});
-            }
-
-        } else {
-            this.setState({inView: false, atBottom: false, scrollAmount});
-        }
+        TweenMax.set(this.body, {
+            y: Math.floor(scrollAmount * 0.1)
+        });
     }
 
     render() {
         const {children, title, subtitle, prefix} = this.props;
-        const {scrollAmount} = this.state;
-        const style = {transform: `translateY(${Math.floor(scrollAmount * 0.1)}px)`};
 
         return (
             <section className="c-section" ref={this.rootRef}>
                 <Title className="c-section__title" prefix={prefix} title={title} subtitle={subtitle} />
-                <div className="c-section__body" style={style}>
+                <div className="c-section__body" ref={this.bodyRef}>
                     {children}
                 </div>
             </section>

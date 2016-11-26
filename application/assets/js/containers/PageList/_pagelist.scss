@@ -4,10 +4,10 @@
 @import "sass-mq/mq";
 
 .c-pagelist {
-    position: relative;
     overflow: hidden;
 
     @include mq(tablet-portrait) {
+        position: relative;
         height: 100vh;
     }
 

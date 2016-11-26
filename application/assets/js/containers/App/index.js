@@ -17,7 +17,7 @@ import Section from '../../components/Section';
 import TableList from '../../components/TableList';
 import Table from '../../components/Table';
 
-import Wrapper from '../../components/Wrapper';
+import {connected as Wrapper} from '../../components/Wrapper';
 
 import Page from '../../components/Page';
 import DataList from '../../components/DataList';
@@ -162,7 +162,7 @@ class App extends Component {
     }
 
     onPageChange(hash) {
-        this.props.router.go(hash);
+        this.props.router.go(hash, {silent: true});
     }
 
     setWheelListener() {
@@ -192,7 +192,7 @@ class App extends Component {
 
                 <Nav className={activeGroup !== 'intro' ? 'is-visible' : ''} />
 
-                <Wrapper>
+                <Wrapper onPageChange={this.onPageChange}>
 
                     <Intro active={activeGroup === 'intro'} />
                     <Cover active={activeGroup !== 'intro'} visible={activeGroup === 'cover'} />
