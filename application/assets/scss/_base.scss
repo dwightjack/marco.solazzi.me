@@ -242,6 +242,7 @@ p {
 }
 
 abbr[title] {
+    border-bottom: 0;
 
     .no-touchevents & {
         border-bottom: 1px dotted currentColor;
@@ -324,6 +325,23 @@ abbr[title] {
         &::after {
             opacity: 0.3;
             transition: opacity 0.15s ease 0.15s;
+        }
+    }
+}
+
+[data-whatinput="keyboard"] a:not([class]) {
+    outline: 2px solid rgba($color-link, 0);
+    outline-offset: 4px;
+
+    &:focus,
+    &:active {
+        color: $color-link;
+        outline-color: rgba($color-link, 0.2);
+        outline-offset: 2px;
+
+        &::before,
+        &::after {
+            opacity: 0;
         }
     }
 }

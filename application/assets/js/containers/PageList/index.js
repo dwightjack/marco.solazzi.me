@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Scrollbar from 'react-smooth-scrollbar';
 import classnames from 'classnames';
 import { TweenMax, Power2 } from 'gsap';
+import whatInput from 'what-input';
 
 
 import { NAV_PATH_HOME } from '../../base/constants';
@@ -25,7 +26,7 @@ export class PageList extends Component {
     constructor(props) {
         super(props);
         createRefs(this, 'root', 'scrollbar');
-        bindAll(this, 'onScroll', 'mediaQueryCallback', 'updatePageOffsets');
+        bindAll(this, 'onScroll', 'mediaQueryCallback', 'updatePageOffsets', 'onFocus');
         this.pagesRefs = [];
         this.pages = [];
         this.currentPage = '';
@@ -119,6 +120,18 @@ export class PageList extends Component {
             this.componentWillLeave();
         }
 
+    }
+
+    onFocus(e) {
+        if (whatInput.ask() === 'keyboard') {
+            const { scrollbar } = this.scrollbar;
+            console.log(e.target, scrollbar.isVisible(e.target));
+            if (scrollbar && scrollbar.isVisible(e.target) === false) {
+                Scrollbar.scrollIntoView(e.target, {
+                    offsetTop: 60
+                });
+            }
+        }
     }
 
     onScroll(status) {
@@ -237,11 +250,11 @@ export class PageList extends Component {
         const {active} = this.props;
 
         return (
-            <main className={classnames('c-pagelist', {'is-active': active})} ref={this.rootRef}>
+            <section className={classnames('c-pagelist', {'is-active': active})} ref={this.rootRef} onFocus={this.onFocus}>
                 <MediaQuery>
                     {this.mediaQueryCallback}
                 </MediaQuery>
-            </main>
+            </section>
         );
     }
 }

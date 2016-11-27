@@ -23,7 +23,7 @@ export class Nav extends PureComponent {
 
     constructor(props) {
         super(props);
-        bindAll(this, 'goTo', 'onBurgerClick');
+        bindAll(this, 'goTo', 'onBurgerClick', 'closeNav');
         createRefs(this, 'root');
 
         this.state = {
@@ -82,6 +82,12 @@ export class Nav extends PureComponent {
         return pseudo;
     }
 
+    closeNav(e) {
+        if (e.key === 'Escape') {
+            this.props.toggleNav(false);
+        }
+    }
+
     navTransition(transition, final) {
         const timeout = this.getTimeout(transition);
 
@@ -115,22 +121,23 @@ export class Nav extends PureComponent {
 
     render() {
 
-        const {active, className, route} = this.props;
+        const { active, className, route } = this.props;
         const { navState } = this.state;
         const navClassName = classNames('c-nav', className, {'is-active': active}, `is-${navState}`);
         const burgerClassName = classNames('c-nav__burger', {'is-active': active});
+        const tabIndex = active ? 0 : -1;
 
         const socialAnchors = social.filter((i) => i.type !== 'pencil').map(({type, url, label}) => (
-            <AnchorIco ico={type} link={url} title={label} key={type} />
+            <AnchorIco ico={type} link={url} title={label} key={type} tabIndex={tabIndex} />
         ));
 
         return (
-            <nav className={navClassName} ref={this.rootRef}>
-                <Burger className={burgerClassName} onClick={this.onBurgerClick} />
-                <ul className="c-nav__menu">
+            <nav className={navClassName} ref={this.rootRef} role="navigation" onKeyUp={this.closeNav}>
+                <Burger className={burgerClassName} onClick={this.onBurgerClick} active={active} controls="nav-menu" />
+                <ul className="c-nav__menu" id="nav-menu">
                     {this.paths.map(({path, label}) => (
                         <li className={classNames('c-nav__item', {'is-current': (route === path)})} key={path}>
-                            <a href={path} onClick={this.goTo} className="c-nav__route">{label}</a>
+                            <a href={path} onClick={this.goTo} className="c-nav__route" tabIndex={tabIndex}>{label}</a>
                         </li>
                     ))}
                 </ul>

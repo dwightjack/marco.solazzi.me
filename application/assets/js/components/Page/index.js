@@ -16,7 +16,7 @@ class Page extends Component {
         const {children, id, name} = this.props;
 
         return (
-            <section className="c-page" id={id} name={name} ref={this.rootRef}>
+            <section className="c-page" id={id} name={name} ref={this.rootRef} tabIndex="-1">
                 <div className="c-page__body">
                     {children}
                 </div>

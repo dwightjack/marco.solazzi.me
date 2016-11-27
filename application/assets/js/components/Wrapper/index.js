@@ -84,9 +84,9 @@ export default class Wrapper extends PureComponent {
         const { children } = this.props;
 
         return (
-            <div className="o-wrapper" ref={this.rootRef} onScroll={this.onScroll}>
+            <main role="main" className="o-wrapper" ref={this.rootRef} onScroll={this.onScroll}>
                 {children}
-            </div>
+            </main>
         );
     }
 

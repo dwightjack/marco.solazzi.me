@@ -54,7 +54,8 @@ class Avatar extends Component {
 
         return (
             <figure className={classnames(className, `o-avatar is-${loadStatus}`)}>
-                <svg viewBox="0 0 890 890">
+                <svg viewBox="0 0 890 890" role="group">
+                    <title>My picture in Japan</title>
                     <g clipPath={`url(#${this.clipId})`}>
                         {image}
                     </g>
@@ -62,7 +63,7 @@ class Avatar extends Component {
                         <path d="M850 425L725.5 725.5 425 850 124.5 725.5 0 425l124.5-300.5L425 0l300.5 124.5z" />
                     </clipPath>
                 </svg>
-                <svg viewBox="0 0 890 890" className="o-avatar__shadow">
+                <svg viewBox="0 0 890 890" className="o-avatar__shadow" aria-hidden="true">
                     <path d="M850 425L725.5 725.5 425 850 124.5 725.5 0 425l124.5-300.5L425 0l300.5 124.5z" />
                 </svg>
             </figure>

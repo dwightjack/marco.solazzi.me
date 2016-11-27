@@ -59,7 +59,7 @@ $burger-bar-spacing: 4px;
     outline: 0;
 }
 
-
+[data-whatinput="keyboard"] .o-burger:focus,
 .no-touchevents .o-burger.is-active,
 .no-touchevents .o-burger:hover {
 
