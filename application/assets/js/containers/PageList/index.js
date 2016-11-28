@@ -20,7 +20,6 @@ import './_pagelist.scss';
 
 
 
-
 export class PageList extends Component {
 
     constructor(props) {
@@ -125,7 +124,6 @@ export class PageList extends Component {
     onFocus(e) {
         if (whatInput.ask() === 'keyboard') {
             const { scrollbar } = this.scrollbar;
-            console.log(e.target, scrollbar.isVisible(e.target));
             if (scrollbar && scrollbar.isVisible(e.target) === false) {
                 Scrollbar.scrollIntoView(e.target, {
                     offsetTop: 60

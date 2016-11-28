@@ -167,25 +167,6 @@ class App extends Component {
         this.props.navigateTo(hash);
     }
 
-    setWheelListener() {
-        const { router } = this.props;
-
-        window.addEventListener('wheel', (e) => {
-            const { activeNav, activeGroup, pagelistScroll, breakpoint } = this.props;
-            if (activeNav || breakpoint === 'mobile' || breakpoint === 'tablet') {
-                return;
-            }
-
-            if (e.deltaY > 0 && activeGroup === 'cover') {
-                e.preventDefault();
-                router.go(NAV_PATH_JOBS);
-            } else if (e.deltaY < 0 && activeGroup === 'pagelist' && pagelistScroll <= 0) {
-                e.preventDefault();
-                router.go(NAV_PATH_HOME);
-            }
-        });
-    }
-
     onSwipe(direction) {
         const { activeNav, activeGroup, pagelistScroll, breakpoint, router } = this.props;
 
@@ -203,6 +184,25 @@ class App extends Component {
         } else if (direction === 'up' && activeGroup === 'pagelist' && pagelistScroll <= 0) {
             router.go(NAV_PATH_HOME);
         }
+    }
+
+    setWheelListener() {
+        const { router } = this.props;
+
+        window.addEventListener('wheel', (e) => {
+            const { activeNav, activeGroup, pagelistScroll, breakpoint } = this.props;
+            if (activeNav || breakpoint === 'mobile' || breakpoint === 'tablet') {
+                return;
+            }
+
+            if (e.deltaY > 0 && activeGroup === 'cover') {
+                e.preventDefault();
+                router.go(NAV_PATH_JOBS);
+            } else if (e.deltaY < 0 && activeGroup === 'pagelist' && pagelistScroll <= 0) {
+                e.preventDefault();
+                router.go(NAV_PATH_HOME);
+            }
+        });
     }
 
     render() {

@@ -4,12 +4,6 @@ import { bindAll } from '../../base/utils';
 
 
 
-var gesuredZone = document.getElementById('gesuredZone');
-
-
-
-
-
 export default class Swipe extends Component {
 
     constructor(props) {
@@ -19,7 +13,6 @@ export default class Swipe extends Component {
 
         this.touchstartY = 0;
         this.touchendY = 0;
-
 
     }
 

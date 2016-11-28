@@ -130,7 +130,7 @@ export class Nav extends PureComponent {
         const socialAnchors = social.filter((i) => i.type !== 'pencil').map(({type, url, label}) => (
             <AnchorIco ico={type} link={url} title={label} key={type} tabIndex={tabIndex} />
         ));
-
+        /* eslint-disable jsx-a11y/no-static-element-interactions */
         return (
             <nav className={navClassName} ref={this.rootRef} role="navigation" onKeyUp={this.closeNav}>
                 <Burger className={burgerClassName} onClick={this.onBurgerClick} active={active} controls="nav-menu" />
@@ -146,6 +146,7 @@ export class Nav extends PureComponent {
                 </footer>
             </nav>
         );
+        /* eslint-enable jsx-a11y/no-static-element-interactions */
     }
 
 }
