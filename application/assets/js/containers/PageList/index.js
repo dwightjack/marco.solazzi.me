@@ -172,6 +172,7 @@ export class PageList extends Component {
         window.removeEventListener('resize', this.updatePageOffsets);
         window.removeEventListener('orientationchange', this.updatePageOffsets);
 
+        TweenMax.killTweensOf(this.root);
         TweenMax.fromTo(this.root, 0.8, {
             yPercent: 0
         }, {
