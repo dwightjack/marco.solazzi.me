@@ -2,20 +2,13 @@
 @import "mixins";
 @import "sass-mq/mq";
 
-
-//@include parallax-init;
-
 .c-section {
     position: relative;
+    z-index: z-index(above);
     padding-bottom: rem(120px);
-    transform-style: preserve-3d;
 
     &:last-child {
         padding-bottom: rem(100px);
-    }
-
-    &[tabindex] {
-        outline: 0;
     }
 
     @media print {

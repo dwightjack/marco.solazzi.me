@@ -60,7 +60,7 @@ class Section extends Component {
         const {children, title, subtitle, prefix} = this.props;
 
         return (
-            <section className="c-section" ref={this.rootRef} tabIndex="0">
+            <section className="c-section" ref={this.rootRef}>
                 <Title className="c-section__title" prefix={prefix} title={title} subtitle={subtitle} />
                 <div className="c-section__body" ref={this.bodyRef}>
                     {children}

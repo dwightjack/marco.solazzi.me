@@ -5,10 +5,9 @@ import classnames from 'classnames';
 import { TweenMax, Power2 } from 'gsap';
 import whatInput from 'what-input';
 
-
 import { NAV_PATH_HOME } from '../../base/constants';
 import Router from '../../router';
-import { createRefs, bindAll, shallowEqual, pick } from '../../base/utils';
+import { createRefs, bindAll, shallowEqual, pick, raf, caf } from '../../base/utils';
 import { connected as MediaQuery } from '../../components/MediaQuery';
 import Footer from '../../components/Footer';
 
@@ -25,7 +24,7 @@ export class PageList extends Component {
     constructor(props) {
         super(props);
         createRefs(this, 'root', 'scrollbar');
-        bindAll(this, 'onScroll', 'mediaQueryCallback', 'updatePageOffsets', 'onFocus');
+        bindAll(this, 'onScroll', 'mediaQueryCallback', 'updatePageOffsets');
         this.pagesRefs = [];
         this.pages = [];
         this.currentPage = '';
@@ -73,11 +72,7 @@ export class PageList extends Component {
 
     }
 
-    componentWillReceiveProps(nextProps) {
-
-        if (nextProps.pagelistScroll === this.props.pagelistScroll) {
-            return;
-        }
+    componentWillReceiveProps() {
 
         if (this.autoScroll === true) {
             return;
@@ -119,18 +114,6 @@ export class PageList extends Component {
             this.componentWillLeave();
         }
 
-    }
-
-    onFocus(e) {
-        if (whatInput.ask() === 'keyboard') {
-            const { scrollbar } = this.scrollbar;
-            const { top } = e.target.getBoundingClientRect();
-            if (scrollbar && (top < 0 || top > window.innerHeight)) {
-                Scrollbar.scrollIntoView(e.target, {
-                    offsetTop: 60
-                });
-            }
-        }
     }
 
     onScroll(status) {
@@ -214,7 +197,7 @@ export class PageList extends Component {
             this.resetScrollbar();
         } else if (scrollbar) {
             const el = this.root.querySelector(`[name="${route}"]`);
-            if (scrollbar.isVisible(el) === false) {
+            if (el && scrollbar.isVisible(el) === false) {
                 const top = el.getBoundingClientRect().top;
                 const scrollToY = top + scrollbar.scrollTop + offset;
                 const timing = typeof duration !== 'undefined' ? duration : Math.max(300, parseInt(scrollToY * 0.5, 10));
@@ -250,7 +233,7 @@ export class PageList extends Component {
         const {active} = this.props;
 
         return (
-            <section className={classnames('c-pagelist', {'is-active': active})} ref={this.rootRef} onFocus={this.onFocus}>
+            <section className={classnames('c-pagelist', {'is-active': active})} ref={this.rootRef}>
                 <MediaQuery>
                     {this.mediaQueryCallback}
                 </MediaQuery>

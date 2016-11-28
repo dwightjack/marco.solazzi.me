@@ -41,17 +41,20 @@ export default class Wrapper extends PureComponent {
     }
 
     onScroll(e) {
-        const scrollTop = e.target.scrollTop;
-        this.pages.some(({offsetTop, route}) => {
-            if (offsetTop < scrollTop) {
-                if (this.currentPage !== route) {
-                    this.currentPage = route;
-                    this.props.onPageChange(route, true);
+        const { breakpoint } = this.props;
+        if (breakpoint === 'tablet' || breakpoint === 'mobile') {
+            const scrollTop = e.target.scrollTop;
+            this.pages.some(({offsetTop, route}) => {
+                if (offsetTop < scrollTop) {
+                    if (this.currentPage !== route) {
+                        this.currentPage = route;
+                        this.props.onPageChange(route, true);
+                    }
+                    return true;
                 }
-                return true;
-            }
-            return false;
-        });
+                return false;
+            });
+        }
     }
 
     routerListener(nextRoute) {

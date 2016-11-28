@@ -83,7 +83,7 @@ export default class Router {
             window.location.hash = normalizedHash;
         } else {
             this.setCurrent(normalizedHash);
-            history.pushState(null, null, normalizedHash);
+            history.replaceState(null, null, normalizedHash);
         }
     }
 

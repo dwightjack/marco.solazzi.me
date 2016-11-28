@@ -232,11 +232,12 @@
     .o-ico {
         transition: transform 0.25s ease-out;
     }
+}
 
-    &:hover {
+.no-touchevents .c-cover__scrollhint:hover,
+[data-whatinput="keyboard"] .c-cover__scrollhint:focus {
 
-        .o-ico {
-            transform: translateY(50%);
-        }
+    .o-ico {
+        transform: translateY(50%);
     }
 }
