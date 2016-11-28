@@ -3,11 +3,10 @@ import { connect } from 'react-redux';
 import Scrollbar from 'react-smooth-scrollbar';
 import classnames from 'classnames';
 import { TweenMax, Power2 } from 'gsap';
-import whatInput from 'what-input';
 
 import { NAV_PATH_HOME } from '../../base/constants';
 import Router from '../../router';
-import { createRefs, bindAll, shallowEqual, pick, raf, caf } from '../../base/utils';
+import { createRefs, bindAll, shallowEqual, pick } from '../../base/utils';
 import { connected as MediaQuery } from '../../components/MediaQuery';
 import Footer from '../../components/Footer';
 
