@@ -124,7 +124,8 @@ export class PageList extends Component {
     onFocus(e) {
         if (whatInput.ask() === 'keyboard') {
             const { scrollbar } = this.scrollbar;
-            if (scrollbar && scrollbar.isVisible(e.target) === false) {
+            const { top } = e.target.getBoundingClientRect();
+            if (scrollbar && (top < 0 || top > window.innerHeight)) {
                 Scrollbar.scrollIntoView(e.target, {
                     offsetTop: 60
                 });
