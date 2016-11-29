@@ -151,14 +151,17 @@ class App extends Component {
 
         router.listen(this.props.navigateTo);
 
-        if (router.current === '') {
-            setTimeout(() => {
-                router.go(NAV_PATH_HOME);
-                this.setWheelListener();
-            }, 7500);
-        } else {
+        //if (router.current === '') {
+        setTimeout(() => {
+            //init here the hashchange listener
+            router.init();
+            //silently update the current route and force listeners to run
+            router.go(window.location.hash === '' ? NAV_PATH_HOME : window.location.hash, {silent: true, force: true});
             this.setWheelListener();
-        }
+        }, 7500);
+        /*} else {
+            this.setWheelListener();
+        }*/
 
     }
 

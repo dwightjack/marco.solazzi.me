@@ -16,12 +16,21 @@ const paths = [
 
 export default class Router {
 
-    constructor() {
+    constructor(options = {}) {
         this.current = '';
         this.previous = null;
-        this.setCurrent(window.location.hash);
-        this._listeners = [];
 
+        this._listeners = [];
+        this.options = Object.assign({init: true, hash: ''}, options);
+
+        if (this.options.init === true) {
+            this.init(this.options.hash);
+        }
+
+    }
+
+    init(hash = '') {
+        this.setCurrent(hash);
         window.addEventListener('hashchange', (e) => {
             e.preventDefault();
             if (this.setCurrent(window.location.hash)) {
@@ -71,7 +80,7 @@ export default class Router {
         return normalizedHash;
     }
 
-    go(hash, conf = {silent: false}) {
+    go(hash, conf = {silent: false, force: false}) {
 
         const normalizedHash = this.checkHash(hash);
 
@@ -84,6 +93,12 @@ export default class Router {
         } else {
             this.setCurrent(normalizedHash);
             history.replaceState(null, null, normalizedHash);
+        }
+        //force listeners
+        if (conf.force === true) {
+            this._listeners.forEach((callback) => {
+                callback(this.current, this.previous);
+            });
         }
     }
 

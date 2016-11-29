@@ -31,7 +31,7 @@ class Cover extends Component {
     componentDidUpdate({active, visible}) {
         const currentActive = this.props.active;
         const currentVisible = this.props.visible;
-        if (currentActive !== active && currentActive === true) {
+        if (currentVisible && currentActive !== active && currentActive === true) {
             TweenMax.set(this.root, {autoAlpha: 1});
             this.root.classList.remove('is-active');
             raf(() => {

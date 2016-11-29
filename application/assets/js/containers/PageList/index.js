@@ -39,15 +39,7 @@ export class PageList extends Component {
 
     componentDidMount() {
         const { active, route, router } = this.props;
-        if (active === false) {
-            TweenMax.set(this.root, {autoAlpha: 0});
-        } else {
-            this.scrollTo(route, {
-                offset: -60,
-                duration: 0
-            });
-            this.componentWillEnter();
-        }
+        TweenMax.set(this.root, {autoAlpha: 0, yPercent: 100});
         this.currentPage = route;
 
         router.listen((nextRoute, prevRoute) => {
@@ -58,10 +50,14 @@ export class PageList extends Component {
             this.autoScroll = true;
 
             if (prevRoute === '' || prevRoute === NAV_PATH_HOME) {
+                //place it at the top
+                TweenMax.set(this.root, {autoAlpha: 0, yPercent: 0});
+                //scroll (if not doing so, the scrollbar calculations will fail)
                 this.scrollTo(nextRoute, {
-                    offset: window.innerHeight * -1,
+                    offset: -60,
                     duration: 0
                 });
+                //enter!
                 this.componentWillEnter();
                 return;
             }
@@ -104,12 +100,12 @@ export class PageList extends Component {
         }
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps) {
         const { active, route } = this.props;
 
         this.currentPage = route;
 
-        if (active === false) {
+        if (prevProps.active !== active && active === false) {
             this.componentWillLeave();
         }
 
@@ -142,12 +138,30 @@ export class PageList extends Component {
             delay: 1.2,
             ease: Power2.easeInOut,
             onComplete: () => {
-                this.entered = true;
-                this.updatePageOffsets();
-                window.addEventListener('resize', this.updatePageOffsets);
-                window.addEventListener('orientationchange', this.updatePageOffsets);
+                this.componentDidEnter();
             }
         });
+    }
+
+    componentWillAppear() {
+        TweenMax.killTweensOf(this.root);
+        TweenMax.fromTo(this.root, 0.5, {
+            autoAlpha: 0
+        }, {
+            autoAlpha: 1,
+            delay: 0.5,
+            ease: Power2.easeInOut,
+            onComplete: () => {
+                this.componentDidEnter();
+            }
+        });
+    }
+
+    componentDidEnter() {
+        this.entered = true;
+        this.updatePageOffsets();
+        window.addEventListener('resize', this.updatePageOffsets);
+        window.addEventListener('orientationchange', this.updatePageOffsets);
     }
 
     componentWillLeave() {
