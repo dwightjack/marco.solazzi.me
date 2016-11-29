@@ -38,7 +38,7 @@ export class PageList extends Component {
     }
 
     componentDidMount() {
-        const { active, route, router } = this.props;
+        const { route, router } = this.props;
         TweenMax.set(this.root, {autoAlpha: 0, yPercent: 100});
         this.currentPage = route;
 
