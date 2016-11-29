@@ -15,7 +15,7 @@
             },
             {
                 "id": "pre-post-processors",
-                "label": "Sass, SCSS, PostCSS",
+                "label": "Sass/SCSS, PostCSS",
                 "level": 100
             },
             {

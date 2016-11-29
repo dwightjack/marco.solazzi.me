@@ -1,5 +1,9 @@
 [
     {
+        "type": "link",
+        "url": "http://marco.solazzi.me",
+        "label": "marco.solazzi.me"
+    }, {
         "type": "twitter",
         "url": "https://twitter.com/dwightjack",
         "label": "@dwightjack"
