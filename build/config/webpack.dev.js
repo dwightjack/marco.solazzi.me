@@ -4,10 +4,9 @@ const autoprefixer = require('autoprefixer');
 const _ = require('lodash');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const LiveReloadPlugin = require('webpack-livereload-plugin');
-const getModernizrPath = require('../scripts/utils').getModernizrPath;
+const getAssetPath = require('../scripts/utils').getAssetPath;
 const paths = require('./paths');
 const webpackConf = require('./webpack.base');
-
 
 /*const loaders = webpackConf.module.loaders.map((loader) => {
     if (loader.loader === 'babel-loader') {
@@ -49,7 +48,7 @@ const config = _.assign(webpackConf, {
             inject: true,
             minify: false,
             filename: paths.toAbsPath('dist.root') + '/index.html',
-            modernizr: getModernizrPath()
+            modernizr: getAssetPath('vendors/modernizr/modernizr.*')
         })
     ]),
 

@@ -7,7 +7,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpackConf = require('./webpack.base');
 const paths = require('./paths');
 
-const getModernizrPath = require('../scripts/utils').getModernizrPath;
+const getAssetPath = require('../scripts/utils').getAssetPath;
 
 const config = _.assign(webpackConf, {
 
@@ -68,7 +68,7 @@ config.plugins.push(
             minifyCSS: true,
             minifyURLs: true
         },
-        modernizr: getModernizrPath(),
+        modernizr: getAssetPath('vendors/modernizr/modernizr.*'),
         inject: true
     })
 );
