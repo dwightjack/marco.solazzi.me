@@ -42,6 +42,7 @@
 @mixin boost-performance ($translate: true) {
     backface-visibility: hidden;
     transform-style: preserve-3d;
+
     @if ($translate) {
         transform: translate3d(0, 0, 0);
         will-change: transform;
@@ -49,26 +50,27 @@
 }
 
 @mixin clearfix {
-    //*zoom: 1;
 
-    &:before,
-    &:after {
+    &::before,
+    &::after {
         display: table;
         content: "";
     }
 
-    &:after {
+    &::after {
         clear: both;
     }
 }
 
 @mixin fit-background-image($image-url, $inline: false, $ratio: 1, $line-height: false) {
+
     @if $line-height {
         line-height: ceil(image-height($image-url) * $ratio);
     } @else {
         width: ceil(image-width($image-url) * $ratio);
         height: ceil(image-height($image-url) * $ratio);
     }
+
     @if $inline {
         background-image: inline-image($image-url);
         background-repeat: no-repeat;
@@ -76,6 +78,7 @@
     } @else {
         background: image-url($image-url) no-repeat 0 0;
     }
+
     @if $ratio != 1 {
         background-size: ceil(image-width($image-url) * $ratio) auto;
     }
@@ -89,6 +92,7 @@
 
 //see https://github.com/tinganho/compass-placeholder
 @mixin placeholder {
+
     &::-webkit-input-placeholder {
         @content;
     }
@@ -107,10 +111,12 @@
 }
 
 @mixin classed-headings($headings...) {
+
     @if length($headings) == 0 {
         $headings: map-keys($font-sizes-headings);
     }
     $selectors: ();
+
     @each $i in $headings {
         $current-heading: nth($headings, $i);
         $selector: unquote("h#{$current-heading}, .h#{$current-heading}");
@@ -127,6 +133,7 @@
 // ==========================================================================
 
 @function em($pixels, $context: $font-size-default) {
+
     @if (unitless($pixels)) {
         $pixels: $pixels * 1px;
     }
@@ -139,15 +146,18 @@
 }
 
 @function rem($pixels) {
+
     @if (unitless($pixels)) {
         $pixels: $pixels * 1px;
     }
+
     @return #{$pixels / $font-size-default}rem;
 }
 
 
 @function font-size($size, $rem: true) {
     $result: $size;
+
     @if map-has-key($font-sizes, $size) {
         $result: map-get($font-sizes, $size);
     }
@@ -155,10 +165,12 @@
     @if $rem == true {
         @return rem($result);
     }
+
     @return $result;
 }
 
 @function font-weight($weight) {
+
     @if map-has-key($font-weights, $weight) {
         @return map-get($font-weights, $weight);
     } @else {
@@ -200,8 +212,10 @@
 //DEPRECATED
 @mixin rem-font-size($font-size, $line-height: $font-lheight-default) {
     font-size: rem($font-size);
+
     @if $line-height != false {
         $lh-unit: unit($line-height);
+
         @if $lh-unit == "" {
             line-height: $line-height;
         } @else {
@@ -210,7 +224,6 @@
     }
     @warn "This mixin is deprecated";
 }
-
 
 @mixin font-heading() {
     margin-bottom: 0.7em;

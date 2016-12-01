@@ -5,8 +5,8 @@ import Ico from '../Ico';
 
 import './_anchor.scss';
 
-export const AnchorIco = ({ico, label = '', title = '', link, className}) => (
-    <a href={link} target="_blank" rel="noopener noreferrer" className={classnames('o-anchor', className)} title={title}>
+export const AnchorIco = ({ico, label = '', title = '', link, className, tabIndex}) => (
+    <a href={link} target="_blank" rel="noopener noreferrer" className={classnames('o-anchor', className)} title={title} tabIndex={tabIndex}>
         <Ico name={ico} className="o-anchor__ico" /> {label && <span className="o-anchor__label">{label}</span>}
     </a>
 );
@@ -16,5 +16,10 @@ AnchorIco.propTypes = {
     link: React.PropTypes.string.isRequired,
     label: React.PropTypes.string,
     title: React.PropTypes.string,
-    className: React.PropTypes.string
+    className: React.PropTypes.string,
+    tabIndex: React.PropTypes.number
+};
+
+AnchorIco.defaultProps = {
+    tabIndex: 0
 };

@@ -2,16 +2,20 @@
 @import "mixins";
 @import "sass-mq/mq";
 
-
-//@include parallax-init;
-
 .c-section {
     position: relative;
+    z-index: z-index(above);
     padding-bottom: rem(120px);
-    transform-style: preserve-3d;
 
     &:last-child {
         padding-bottom: rem(100px);
+    }
+
+    @media print {
+
+        .c-section__title {
+            orphans: 3;
+        }
     }
 }
 
@@ -23,11 +27,15 @@
         @include boost-performance;
         position: absolute;
         top: rem(10px);
-        left: vw(60px);
+        left: 0;
         max-width: 35%;
         margin-bottom: 0;
         text-align: left;
         white-space: nowrap;
+    }
+
+    @include mq(desktop) {
+        left: vw(60px);
     }
 }
 
@@ -48,5 +56,9 @@
         padding-right: 0;
         padding-left: 33%;
         //transition: transform 0.2s ease-out;
+    }
+
+    @include mq($media-type: print) {
+        transform: none !important;
     }
 }

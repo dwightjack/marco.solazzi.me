@@ -90,7 +90,7 @@ export const has = (obj, prop) => hasOwn.call(obj, prop);
  */
 export const pick = (obj, keys) => {
     const result = {};
-    for (let i = 0, l = keys.length; i < l; i++) {
+    for (let i = 0, l = keys.length; i < l; i++) {  //eslint-disable-line no-plusplus
         const key = keys[i];
         if (hasOwn.call(obj, key)) {
             result[key] = obj[key];
@@ -142,7 +142,7 @@ export const shallowEqual = (objA, objB) => {
 
     // Test for A's keys different from B.
     const bHasOwnProperty = Object.prototype.hasOwnProperty.bind(objB);
-    for (let i = 0; i < keysA.length; i++) {
+    for (let i = 0; i < keysA.length; i++) { //eslint-disable-line no-plusplus
         if (!bHasOwnProperty(keysA[i]) || objA[keysA[i]] !== objB[keysA[i]]) {
             return false;
         }

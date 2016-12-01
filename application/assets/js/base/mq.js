@@ -89,7 +89,7 @@ const mq = {
 
         if (immediate === true) {
             this.refresh();
-            cb(this.current);
+            cb(this.current, mq);
         }
 
         return bindFn;

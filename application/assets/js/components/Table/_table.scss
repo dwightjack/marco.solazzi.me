@@ -18,6 +18,11 @@ $c-table-indent: 30px;
         padding-left: 0;
         border-left: $c-table-indent solid transparent;
     }
+
+    @include mq($media-type: print) {
+        position: relative;
+        page-break-inside: avoid;
+    }
 }
 
 .c-table__caption {
@@ -30,35 +35,12 @@ $c-table-indent: 30px;
         content: ". ";
     }
 }
-/*
+
 .c-table__bracket {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 22px;
-    height: 100%;
-    opacity: 0.4;
-
-    @include mq(tablet-portrait) {
-        margin-left: $c-table-indent * -1;
-    }
-
-    path {
-        fill: $color-link;
-    }
-} */
-
-/*
-
-.c-table__bracket.o-bracket {
-    left: $c-table-indent * -2;
-} */
-
-.c-table__bracket2 {
     position: absolute;
     top: -10px;
     bottom: -10px;
-    left: 0px;
+    left: 0;
     opacity: 0.5;
     width: 8px;
     background-color: $color-link;
@@ -87,45 +69,45 @@ $c-table-indent: 30px;
     &::after {
         bottom: 0;
     }
-
-    @at-root .c-table:hover .c-table__bracket2 {
-
-        &::before,
-        &::after {
-            transform: scaleX(1);
-        }
-    }
 }
 
 .c-table__data {
     @include font-content;
     width: 90%;
+    line-height: 1.35em;
     text-align: left;
     vertical-align: top;
 
     tr {
         display: block;
-        padding-bottom: 0.3em;
+        padding-bottom: 0.2em;
         padding-left: $c-table-row-indent;
+        line-height: 1.4em;
+
+        @include mq(tablet-portrait) {
+            padding-bottom: 0.1em;
+            line-height: 1.5em;
+        }
+    }
+
+    td,
+    th {
+        display: inline;
+        vertical-align: top;
+
+        @include mq(tablet-portrait) {
+            display: inline;
+            vertical-align: top;
+        }
+
+        @include mq($media-type: print) {
+            display: inline;
+            vertical-align: top;
+        }
     }
 
     th {
-        display: block;
         font-weight: font-weight(bold);
-
-        @include mq(tablet-portrait) {
-            display: inline;
-            vertical-align: top;
-        }
-    }
-
-    td {
-        display: block;
-
-        @include mq(tablet-portrait) {
-            display: inline;
-            vertical-align: top;
-        }
     }
 
 
@@ -146,11 +128,29 @@ $c-table-indent: 30px;
         margin-bottom: 0.5em;
         margin-left: 0.5em;
     }
+
+    @include mq($media-type: print) {
+        overflow: hidden;
+
+        > a {
+            float: left;
+            clear: left;
+            border-bottom: 0 !important;
+        }
+    }
 }
 
 
 
 .c-table--brackets {
+
+    @include mq($media-type: print) {
+        top: 10px;
+
+        &:last-child {
+            margin-bottom: 20px;
+        }
+    }
 
     .c-table__data {
 

@@ -9,6 +9,12 @@
     width: 100vw;
     padding: rem($page-gutter) vw($page-gutter);
 
+    @include mq($until: tablet-portrait) {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+    }
+
     @include mq(tablet-portrait) {
         display: flex;
         overflow: hidden;
@@ -20,18 +26,76 @@
         padding-bottom: 0;
         border-right: 8px solid $color-link;
     }
+
+    @include mq($media-type: print) {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        page-break-after: always;
+
+        [style] {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: none !important;
+        }
+    }
 }
 
-.c-cover__headline {
-    margin-top: 0.5em;
-    font-size: font-size(40px);
-    font-weight: 700;
-    text-align: center;
+
+
+.c-cover__pic {
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transform: translateX(15%);
+    transition: all 0.4s ease-out 0.35s;
+
+
+    @include mq($until: tablet-portrait) {
+
+        .is-active & {
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+    }
 
     @include mq(tablet-portrait) {
-        margin-top: 0;
-        font-size: font-size(45px);
-        text-align: left;
+        position: absolute;
+        top: 50%;
+        left: vw(30px);
+        width: 33 - 4.6875#{vw};
+        flex: 0 0 auto;
+    }
+
+    @include mq(desktop) {
+        left: vw(60px);
+    }
+
+    > .o-avatar {
+        width: 50vw;
+        height: 50vw;
+        margin: 0 auto;
+
+        @include mq(tablet-portrait) {
+            width: vw(270px);
+            height: vw(270px);
+            margin-top: vw(270px / -2);
+        }
+
+        @include mq($media-type: print) {
+            width: 40vw;
+            height: 40vw;
+            margin-top: 10vw;
+        }
+    }
+
+    .is-active > & {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .is-leaving & {
+        transition-delay: 0s;
     }
 }
 
@@ -48,6 +112,14 @@
     > * {
         margin-bottom: rem(60px);
 
+        .is-active & {
+            @include mq($until: tablet-portrait) {
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: none !important;
+            }
+        }
+
         &:last-child {
             margin-bottom: 0;
         }
@@ -56,6 +128,19 @@
     .is-active > & {
         opacity: 1;
         transform: translateX(0);
+    }
+}
+
+.c-cover__headline {
+    margin-top: 0.5em;
+    font-size: font-size(40px);
+    font-weight: 700;
+    text-align: center;
+
+    @include mq(tablet-portrait) {
+        margin-top: 0;
+        font-size: font-size(45px);
+        text-align: left;
     }
 }
 
@@ -109,43 +194,6 @@
     }
 }
 
-.c-cover__pic {
-    position: relative;
-    z-index: 1;
-    opacity: 0;
-    transform: translateX(15%);
-    transition: all 0.4s ease-out 0.35s;
-
-    @include mq(tablet-portrait) {
-        position: absolute;
-        top: 50%;
-        left: vw(60px);
-        width: 33 - 4.6875#{vw};
-        flex: 0 0 auto;
-    }
-
-    > .o-avatar {
-        width: 50vw;
-        height: 50vw;
-        margin: 0 auto;
-
-        @include mq(tablet-portrait) {
-            width: vw(270px);
-            height: vw(270px);
-            margin-top: vw(270px / -2);
-        }
-    }
-
-    .is-active > & {
-        opacity: 1;
-        transform: translateX(0);
-    }
-
-    .is-leaving & {
-        transition-delay: 0s;
-    }
-}
-
 .c-cover__scrollhint {
     position: absolute;
     bottom: 6vh;
@@ -161,6 +209,10 @@
 
     @include mq(tablet-portrait) {
         display: block;
+    }
+
+    @include mq($media-type: print) {
+        display: none;
     }
 
     .is-active & {
@@ -180,11 +232,12 @@
     .o-ico {
         transition: transform 0.25s ease-out;
     }
+}
 
-    &:hover {
+.no-touchevents .c-cover__scrollhint:hover,
+[data-whatinput="keyboard"] .c-cover__scrollhint:focus {
 
-        .o-ico {
-            transform: translateY(50%);
-        }
+    .o-ico {
+        transform: translateY(50%);
     }
 }

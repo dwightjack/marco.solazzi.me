@@ -3,6 +3,8 @@
 @import "mixins";
 @import "sass-mq/mq";
 
+$data-list-bp: mq-px2em(map-get($mq-breakpoints, tablet-portrait));
+
 .c-data-list {
     display: block;
     width: 90%;
@@ -10,10 +12,19 @@
     padding: 0;
     list-style: none;
 
-    @include mq(tablet-portrait) {
+    @media (min-width: $data-list-bp), print {
         display: flex;
+        width: 100%;
         margin: 0 rem(-20px);
         flex-wrap: wrap;
+    }
+
+    @include mq(desktop) {
+        width: 90%;
+    }
+
+    @media print {
+        width: 100%;
     }
 }
 
@@ -27,9 +38,13 @@
         }
     }
 
-    @include mq(tablet-portrait) {
+    @media (min-width: $data-list-bp), print {
         padding: 0 rem(20px) rem(30px);
         flex: 0 0 47%;
+    }
+
+    @media print {
+        flex-basis: 50%;
     }
 }
 
@@ -80,6 +95,20 @@
 
 .touchevents .c-data-list__item,
 .c-data-list__item:hover {
+
+    .c-data-list__label::before {
+        opacity: 0;
+        transform: scale(1.5);
+    }
+
+    .c-data-list__ico {
+        opacity: 0.6;
+        transform: translate(0, -50%) scale(1);
+        transition-delay: 240ms;
+    }
+}
+
+@media print {
 
     .c-data-list__label::before {
         opacity: 0;

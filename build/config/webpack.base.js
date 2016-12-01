@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+
 const paths = require('./paths');
 const srcPath = paths.toAbsPath('src.assets');
 const destPath = paths.toAbsPath('dist.assets');

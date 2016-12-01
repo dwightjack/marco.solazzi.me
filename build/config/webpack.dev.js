@@ -4,20 +4,18 @@ const autoprefixer = require('autoprefixer');
 const _ = require('lodash');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const LiveReloadPlugin = require('webpack-livereload-plugin');
-
-const getModernizrPath = require('../scripts/utils').getModernizrPath;
+const getAssetPath = require('../scripts/utils').getAssetPath;
 const paths = require('./paths');
 const webpackConf = require('./webpack.base');
 
-
-const loaders = webpackConf.module.loaders.map((loader) => {
+/*const loaders = webpackConf.module.loaders.map((loader) => {
     if (loader.loader === 'babel-loader') {
         delete loader.loader;
         delete loader.query;
         loader.loaders = ['react-hot', 'babel-loader?cacheDirectory=true'];
     }
     return loader;
-});
+});*/
 
 
 const config = _.assign(webpackConf, {
@@ -26,6 +24,7 @@ const config = _.assign(webpackConf, {
         app: [
             'eventsource-polyfill', // Necessary for hot reloading with IE
             'webpack-hot-middleware/client',
+            'react-hot-loader/patch',
             './' + paths.toPath('src.assets/js') + '/app.js'
         ]
     },
@@ -49,7 +48,7 @@ const config = _.assign(webpackConf, {
             inject: true,
             minify: false,
             filename: paths.toAbsPath('dist.root') + '/index.html',
-            modernizr: getModernizrPath()
+            modernizr: getAssetPath('vendors/modernizr/modernizr.*')
         })
     ]),
 
@@ -59,7 +58,7 @@ const config = _.assign(webpackConf, {
 
 });
 
-config.module.loaders = loaders.concat([
+config.module.loaders.push(
     {
         test: /\.(eot|svg|ttf|woff|woff2)$/,
         include: [paths.toAbsPath('src.assets/fonts')],
@@ -76,6 +75,6 @@ config.module.loaders = loaders.concat([
             'css?importLoaders=1&sourceMap!resolve-url?sourceMap!postcss!sass?sourceMap'
         )
     }
-]);
+);
 
 module.exports = config;

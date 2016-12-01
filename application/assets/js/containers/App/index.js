@@ -13,11 +13,12 @@ import { bindAll } from '../../base/utils';
 import Router from '../../router';
 
 
+import Swipe from '../../components/Swipe';
 import Section from '../../components/Section';
 import TableList from '../../components/TableList';
 import Table from '../../components/Table';
 
-import Wrapper from '../../components/Wrapper';
+import {connected as Wrapper} from '../../components/Wrapper';
 
 import Page from '../../components/Page';
 import DataList from '../../components/DataList';
@@ -33,8 +34,8 @@ import jobs from '../../database/jobs.json';
 import techSkills from '../../database/skills.tech.json';
 import teamSkills from '../../database/skills.team.json';
 
-import Nav from '../Nav'; //eslint-disable-line import/no-named-as-default
-import PageList from '../PageList'; //eslint-disable-line import/no-named-as-default
+import { connected as Nav } from '../Nav';
+import { connected as PageList } from '../PageList';
 import Cover from '../Cover';
 import Intro from '../Intro';
 
@@ -141,7 +142,7 @@ class App extends Component {
     constructor(props) {
         super(props);
 
-        bindAll(this, 'onPageChange');
+        bindAll(this, 'onPageChange', 'onSwipe', 'onNavItemClick');
     }
 
     componentDidMount() {
@@ -150,15 +151,46 @@ class App extends Component {
 
         router.listen(this.props.navigateTo);
 
-        if (router.current === '') {
-            setTimeout(() => {
-                router.go(NAV_PATH_HOME);
-                this.setWheelListener();
-            }, 7500);
-        } else {
+        //if (router.current === '') {
+        setTimeout(() => {
+            //init here the hashchange listener
+            router.init();
+            //silently update the current route and force listeners to run
+            router.go(window.location.hash === '' ? NAV_PATH_HOME : window.location.hash, {silent: true, force: true});
             this.setWheelListener();
+        }, 7500);
+        /*} else {
+            this.setWheelListener();
+        }*/
+
+    }
+
+    onNavItemClick(hash) {
+        this.props.router.go(hash);
+    }
+
+    onPageChange(hash, silent = false) {
+        this.props.router.go(hash, {silent});
+        this.props.navigateTo(hash);
+    }
+
+    onSwipe(direction) {
+        const { activeNav, activeGroup, pagelistScroll, breakpoint, router } = this.props;
+
+
+        if (!Modernizr.touchevents || activeGroup === 'intro') {
+            return;
         }
 
+        if (activeNav || breakpoint === 'mobile' || breakpoint === 'tablet') {
+            return;
+        }
+
+        if (direction === 'down' && activeGroup === 'cover') {
+            router.go(NAV_PATH_JOBS);
+        } else if (direction === 'up' && activeGroup === 'pagelist' && pagelistScroll <= 0) {
+            router.go(NAV_PATH_HOME);
+        }
     }
 
     setWheelListener() {
@@ -166,9 +198,10 @@ class App extends Component {
 
         window.addEventListener('wheel', (e) => {
             const { activeNav, activeGroup, pagelistScroll, breakpoint } = this.props;
-            if (activeNav || (breakpoint !== 'desktop' && breakpoint !== 'wide')) {
+            if (activeNav || breakpoint === 'mobile' || breakpoint === 'tablet') {
                 return;
             }
+
             if (e.deltaY > 0 && activeGroup === 'cover') {
                 e.preventDefault();
                 router.go(NAV_PATH_JOBS);
@@ -179,31 +212,27 @@ class App extends Component {
         });
     }
 
-    onPageChange(hash) {
-        this.props.router.go(hash);
-    }
-
     render() {
 
-        const { activeGroup } = this.props;
+        const { activeGroup, router } = this.props;
 
         return (
-            <div>
+            <Swipe onSwipe={this.onSwipe}>
 
-                <Nav className={activeGroup !== 'intro' ? 'is-visible' : ''} />
+                <Nav className={activeGroup !== 'intro' ? 'is-visible' : ''} onNavItemClick={this.onNavItemClick} />
 
-                <Wrapper>
+                <Wrapper onPageChange={this.onPageChange} router={router}>
 
                     <Intro active={activeGroup === 'intro'} />
                     <Cover active={activeGroup !== 'intro'} visible={activeGroup === 'cover'} />
-                    <PageList active={activeGroup === 'pagelist'} onPageChange={this.onPageChange}>
+                    <PageList active={activeGroup === 'pagelist'} onPageChange={this.onPageChange} router={router}>
                         {Pages}
                     </PageList>
                     { activeGroup !== 'intro' && <Pattern /> }
 
                 </Wrapper>
 
-            </div>
+            </Swipe>
         );
     }
 

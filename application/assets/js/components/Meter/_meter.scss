@@ -5,29 +5,6 @@
     position: relative;
     margin-bottom: em(20px);
     transition-delay: inherit;
-
-    //&::after {
-    //    position: absolute;
-    //    top: 3px;
-    //    left: -3px;
-    //    width: 100%;
-    //    height: 100%;
-    //    z-index: z-index(behind);
-    //    content: "";
-    //    border: 4px solid rgba(0, 0, 0, 0.4);
-    //    border-width: 0 0 3px 3px;
-    //    opacity: 0;
-    //    transform: translate(3px, -3px);
-    //    transition: transform 230ms ease-out, opacity 80ms linear;
-    //}
-    //
-    //.c-data-list__item:hover &::after {
-    //    opacity: 1;
-    //    transform: translate(0, 0);
-    //    transition-delay: 1000ms;
-    //}
-
-
 }
 
 .c-meter__label {
@@ -57,7 +34,7 @@
         position: absolute;
         bottom: 0;
         left: 0;
-        z-index: z-index(avove);
+        z-index: z-index(above);
         opacity: 0;
         width: 100%;
         height: 100%;
@@ -72,7 +49,7 @@
         position: absolute;
         bottom: 0;
         left: 0;
-        z-index: z-index(avove);
+        z-index: z-index(above);
         opacity: 0.4;
         height: 100%;
         //background-color: rgba($color-link, 0.6);
@@ -84,10 +61,16 @@
         content: "";
         transform: scaleY(0.2);
         transform-origin: 0 120%;
-        //transition: all 200ms ease-out;
-
         animation: bar-down 0.5s;
         animation-fill-mode: forwards;
+
+        @media print {
+            bottom: -5px;
+            border-bottom: 5px solid rgba($color-link, 0.8);
+            background-image: none;
+            transform: none;
+            animation: none;
+        }
     }
 
     .c-data-list__item:hover & {
@@ -103,11 +86,11 @@
             animation: bar-up 1s;
             animation-fill-mode: forwards;
         }
-
     }
 }
 
 @keyframes bar-up {
+
     0% {
         opacity: 0.4;
         transform: scaleY(0.2);
@@ -136,6 +119,7 @@
 }
 
 @keyframes bar-down {
+
     0% {
         opacity: 1;
         transform: scaleX(1);
@@ -148,6 +132,7 @@
 }
 
 @for $value from 1 through 10 {
+
     .c-meter__bar--#{($value * 10)}::after {
         width: percentage($value / 10);
     }
@@ -169,7 +154,6 @@
     font-size: em(font-size(xs, false));
     transform: translateY(-0.5em);
     transition: all 200ms ease-out;
-
 
     .c-data-list__item:hover & {
         opacity: 1;

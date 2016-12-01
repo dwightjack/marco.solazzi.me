@@ -11,14 +11,7 @@ import Avatar from '../../components/Avatar';
 import Ico from '../../components/Ico';
 import pic from '../../../images/marco.jpg';
 
-/*
-const data = {
-    name: 'Marco',
-    surname: 'Solazzi',
-    birthday: 'October 1st 1979',
-    currentLocation: 'Verona (IT)',
-    nationality: 'Italian'
-};*/
+
 
 class Cover extends Component {
 
@@ -29,7 +22,8 @@ class Cover extends Component {
     }
 
     componentDidMount() {
-        if (this.props.active === false || this.props.visible === false) {
+        const { active, visible } = this.props;
+        if (active === false || visible === false) {
             TweenMax.set(this.root, {autoAlpha: 0});
         }
     }
@@ -37,7 +31,7 @@ class Cover extends Component {
     componentDidUpdate({active, visible}) {
         const currentActive = this.props.active;
         const currentVisible = this.props.visible;
-        if (currentActive !== active && currentActive === true) {
+        if (currentVisible && currentActive !== active && currentActive === true) {
             TweenMax.set(this.root, {autoAlpha: 1});
             this.root.classList.remove('is-active');
             raf(() => {

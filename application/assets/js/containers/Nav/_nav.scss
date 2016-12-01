@@ -326,3 +326,10 @@ $nav-total-timing-in: max(
         height: 100%;
     }
 }
+
+@media print {
+
+    .c-nav {
+        display: none;
+    }
+}

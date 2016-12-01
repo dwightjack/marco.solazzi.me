@@ -7,13 +7,26 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpackConf = require('./webpack.base');
 const paths = require('./paths');
 
-const getModernizrPath = require('../scripts/utils').getModernizrPath;
+const getAssetPath = require('../scripts/utils').getAssetPath;
 
 const config = _.assign(webpackConf, {
 
     entry: {
         app: [
             './' + paths.toPath('src.assets/js') + '/app.js'
+        ],
+        vendor: [
+            'babel-polyfill',
+            'react',
+            'classnames',
+            'gsap',
+            'hoist-non-react-statics',
+            'react-dom',
+            'react-redux',
+            'redux',
+            'redux-actions',
+            'redux-thunk',
+            'what-input'
         ]
     },
 
@@ -34,9 +47,7 @@ const config = _.assign(webpackConf, {
 config.plugins.push(
     new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor',
-        children: true,
-        minChunks: 2,
-        async: true
+        minChunks: Infinity
     }),
     new webpack.optimize.OccurenceOrderPlugin(true),
     new webpack.optimize.DedupePlugin(),
@@ -58,7 +69,7 @@ config.plugins.push(
         filename: paths.toAbsPath('dist.root') + '/index.html',
         minify: {
             removeComments: true,
-            collapseWhitespace: false,
+            collapseWhitespace: true,
             removeRedundantAttributes: true,
             useShortDoctype: true,
             removeEmptyAttributes: false,
@@ -68,7 +79,7 @@ config.plugins.push(
             minifyCSS: true,
             minifyURLs: true
         },
-        modernizr: getModernizrPath(),
+        modernizr: getAssetPath('vendors/modernizr/modernizr.*'),
         inject: true
     })
 );

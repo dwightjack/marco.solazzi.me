@@ -1,6 +1,11 @@
 @import "globals";
 @import "sass-mq/mq";
 
+
+.c-nav:not(.is-visible) + .o-wrapper {
+    overflow: hidden;
+}
+
 .c-pagelist {
     @include mq($until: tablet-portrait) {
         opacity: 1 !important;
@@ -14,6 +19,16 @@
         left: 0;
         width: 100vw;
     }
+
+    @include mq($media-type: print) {
+        position: static;
+    }
+}
+
+#skills .c-section {
+    @include mq($media-type: print) {
+        page-break-inside: avoid;
+    }
 }
 
 #contacts {
@@ -23,6 +38,14 @@
         @include mq($until: tablet-portrait) {
             max-width: 82%;
             margin: 0 auto;
+        }
+    }
+
+    @include mq($media-type: print) {
+        padding-top: 4cm;
+
+        .c-section {
+            padding-bottom: 0;
         }
     }
 }

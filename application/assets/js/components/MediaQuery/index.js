@@ -33,6 +33,6 @@ MediaQuery.propTypes = {
 
 const mapStateToProps = ({breakpoint}) => ({currentBp: breakpoint});
 
-export default connect(
+export const connected = connect(
     mapStateToProps
 )(MediaQuery);

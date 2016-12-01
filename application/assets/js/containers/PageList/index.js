@@ -1,13 +1,14 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Scrollbar from 'react-smooth-scrollbar';
 import classnames from 'classnames';
 import { TweenMax, Power2 } from 'gsap';
 
-
-import { NAV_PATH_HOME, NAV_PATH_JOBS } from '../../base/constants';
-import { createRefs, bindAll } from '../../base/utils';
-import MediaQuery from '../../components/MediaQuery';
+import { NAV_PATH_HOME } from '../../base/constants';
+import Router from '../../router';
+import { createRefs, bindAll, shallowEqual, pick } from '../../base/utils';
+import { connected as MediaQuery } from '../../components/MediaQuery';
+import Footer from '../../components/Footer';
 
 import {
     pagelistScrollUpdateAction
@@ -16,23 +17,20 @@ import {
 import './_pagelist.scss';
 
 
-const Footer = () => (
-    <footer className="c-pagelist__footer">
-        &copy; {new Date().getFullYear()} Marco Solazzi - <a href="https://github.com/dwightjack/marco.solazzi.me" target="_blank" rel="noopener noreferrer">license</a> <a href="https://github.com/dwightjack/marco.solazzi.me" target="_blank" rel="noopener noreferrer">source</a>
-    </footer>
-);
 
-export class PageList extends PureComponent {
+export class PageList extends Component {
 
     constructor(props) {
         super(props);
         createRefs(this, 'root', 'scrollbar');
-        bindAll(this, 'onScroll', 'mediaQueryCallback');
+        bindAll(this, 'onScroll', 'mediaQueryCallback', 'updatePageOffsets');
         this.pagesRefs = [];
         this.pages = [];
-        this.forcedScrolling = false;
         this.currentPage = '';
         this.entered = false;
+        this.autoScroll = false;
+        this.windowHeightOffset = 0;
+        this._updateKeys = ['active', 'route'];
     }
 
     componentWillMount() {
@@ -40,17 +38,57 @@ export class PageList extends PureComponent {
     }
 
     componentDidMount() {
-        const { active, route } = this.props;
-        if (active === false) {
-            TweenMax.set(this.root, {autoAlpha: 0});
-        } else {
-            this.scrollTo(route, {
-                offset: -60,
-                duration: 0
-            });
-            this.componentWillEnter();
-        }
+        const { route, router } = this.props;
+        TweenMax.set(this.root, {autoAlpha: 0, yPercent: 100});
         this.currentPage = route;
+
+        router.listen((nextRoute, prevRoute) => {
+            if (nextRoute === '' || nextRoute === NAV_PATH_HOME) {
+                return;
+            }
+
+            if (prevRoute === '' || prevRoute === NAV_PATH_HOME) {
+                //place it at the top
+                TweenMax.set(this.root, {autoAlpha: 0, yPercent: 0});
+                //scroll (if not doing so, the scrollbar calculations will fail)
+                this.scrollTo(nextRoute, {
+                    offset: -60,
+                    duration: 0
+                });
+                //enter!
+                this.componentWillEnter();
+                return;
+            }
+
+            this.scrollTo(nextRoute);
+        });
+
+    }
+
+    componentWillReceiveProps() {
+
+        if (this.autoScroll === true) {
+            return;
+        }
+
+        this.pagesRefs.some((child) => {
+            if (child.root) {
+                const { bottom } = child;
+                const isVisible = bottom > this.windowHeightOffset + this.props.pagelistScroll;
+                if (isVisible && this.currentPage !== child.props.name) {
+                    this.props.onPageChange(child.props.name, true);
+                }
+                return isVisible;
+            }
+            return false;
+        });
+    }
+
+    shouldComponentUpdate(nextProps) {
+
+        const uKeys = this._updateKeys;
+
+        return !shallowEqual(pick(nextProps, uKeys), pick(this.props, uKeys));
     }
 
     componentWillUpdate(nextProps) {
@@ -60,49 +98,32 @@ export class PageList extends PureComponent {
         }
     }
 
-    componentDidUpdate({route}) {
-        const newActive = this.props.active;
+    componentDidUpdate(prevProps) {
+        const { active, route } = this.props;
 
-        this.currentPage = this.props.route;
+        this.currentPage = route;
 
-        if (newActive && route !== this.props.route) {
-
-            if (route === '' || route === NAV_PATH_HOME) {
-                this.scrollTo(this.props.route, {
-                    offset: window.innerHeight * -1,
-                    duration: 0
-                });
-                this.componentWillEnter();
-                return;
-            }
-            this.scrollTo(this.props.route);
-            return;
-        }
-
-        if (newActive === false) {
+        if (prevProps.active !== active && active === false) {
             this.componentWillLeave();
         }
 
     }
 
     onScroll(status) {
-        if (this.forcedScrolling === false) {
-            const windowHeight = parseInt(window.innerHeight * 0.25, 10);
-            this.pagesRefs.some((child) => {
-                if (child.root) {
-                    const { bottom } = child.root.getBoundingClientRect();
-                    const isVisible = bottom > windowHeight;//scrollbar.isVisible(child.root);
-                    if (isVisible && this.currentPage !== child.props.name) {
-                        this.props.onPageChange(child.props.name);
-                    }
-                    return isVisible;
-                }
-                return false;
-            });
-        }
-
         const {y = 0} = status.offset;
         this.props.onScrollCallback(y);
+    }
+
+    updatePageOffsets() {
+        const { scrollbar } = this.scrollbar;
+        const scrollTop = scrollbar ? scrollbar.scrollTop : 0;
+        this.windowHeightOffset = parseInt(window.innerHeight * 0.25, 10);
+        this.pagesRefs.forEach((child) => {
+            if (child.root) {
+                const { bottom } = child.root.getBoundingClientRect();
+                child.bottom = bottom + scrollTop; //eslint-disable-line no-param-reassign
+            }
+        });
     }
 
     componentWillEnter() {
@@ -115,13 +136,38 @@ export class PageList extends PureComponent {
             delay: 1.2,
             ease: Power2.easeInOut,
             onComplete: () => {
-                this.entered = true;
+                this.componentDidEnter();
             }
         });
     }
 
+    componentWillAppear() {
+        TweenMax.killTweensOf(this.root);
+        TweenMax.fromTo(this.root, 0.5, {
+            autoAlpha: 0
+        }, {
+            autoAlpha: 1,
+            delay: 0.5,
+            ease: Power2.easeInOut,
+            onComplete: () => {
+                this.componentDidEnter();
+            }
+        });
+    }
+
+    componentDidEnter() {
+        this.entered = true;
+        this.updatePageOffsets();
+        window.addEventListener('resize', this.updatePageOffsets);
+        window.addEventListener('orientationchange', this.updatePageOffsets);
+    }
+
     componentWillLeave() {
         this.entered = false;
+        window.removeEventListener('resize', this.updatePageOffsets);
+        window.removeEventListener('orientationchange', this.updatePageOffsets);
+
+        TweenMax.killTweensOf(this.root);
         TweenMax.fromTo(this.root, 0.8, {
             yPercent: 0
         }, {
@@ -162,14 +208,14 @@ export class PageList extends PureComponent {
             this.resetScrollbar();
         } else if (scrollbar) {
             const el = this.root.querySelector(`[name="${route}"]`);
-            if (scrollbar.isVisible(el) === false) {
+            if (el && scrollbar.isVisible(el) === false) {
+                this.autoScroll = true;
                 const top = el.getBoundingClientRect().top;
-                this.forcedScrolling = true;
                 const scrollToY = top + scrollbar.scrollTop + offset;
                 const timing = typeof duration !== 'undefined' ? duration : Math.max(300, parseInt(scrollToY * 0.5, 10));
 
                 scrollbar.scrollTo(0, scrollToY, timing, () => {
-                    this.forcedScrolling = false;
+                    this.autoScroll = false;
                 });
 
             }
@@ -177,11 +223,11 @@ export class PageList extends PureComponent {
     }
 
     mediaQueryCallback(breakpoint, mq) {
-        if (mq.matchFrom('desktop')) {
+        if (mq.matchFrom('tablet-portrait')) {
             return (
                 <Scrollbar ref={this.scrollbarRef} alwaysShowTracks onScroll={this.onScroll}>
                     {this.pages}
-                    <Footer />
+                    <Footer className="c-pagelist__footer" />
                 </Scrollbar>
             );
         }
@@ -189,7 +235,7 @@ export class PageList extends PureComponent {
         return (
             <div className="c-pagelist__scroll" ref={this.scrollbarRef}>
                 {this.pages}
-                <Footer />
+                <Footer className="c-pagelist__footer" />
             </div>
         );
     }
@@ -199,11 +245,11 @@ export class PageList extends PureComponent {
         const {active} = this.props;
 
         return (
-            <main className={classnames('c-pagelist', {'is-active': active})} ref={this.rootRef}>
+            <section className={classnames('c-pagelist', {'is-active': active})} ref={this.rootRef}>
                 <MediaQuery>
                     {this.mediaQueryCallback}
                 </MediaQuery>
-            </main>
+            </section>
         );
     }
 }
@@ -213,7 +259,9 @@ PageList.propTypes = {
     onScrollCallback: React.PropTypes.func,
     onPageChange: React.PropTypes.func,
     active: React.PropTypes.bool,
-    route: React.PropTypes.string
+    pagelistScroll: React.PropTypes.number,
+    route: React.PropTypes.string,
+    router: React.PropTypes.instanceOf(Router)
 };
 
 PageList.defaultProps = {
@@ -226,11 +274,12 @@ const mapDispatchToProps = (dispatch) => ({
     }
 });
 
-const mapStateToProps = (state) => ({
-    route: state.route
+const mapStateToProps = ({route, pagelistScroll}) => ({
+    route,
+    pagelistScroll
 });
 
-export default connect(
+export const connected = connect(
     mapStateToProps,
     mapDispatchToProps
 )(PageList);

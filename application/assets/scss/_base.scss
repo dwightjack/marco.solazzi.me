@@ -57,6 +57,7 @@ textarea {
 
 html {
     //https://www.smashingmagazine.com/2016/05/fluid-typography/
+
     /*
     $font-min: $font-size-default;
     //$font-min: 14px;
@@ -75,22 +76,30 @@ html {
 
     @include mq(tablet-portrait) {
         @include responsive-typography(
+            $font-min: 14px,
+            $font-max: $font-size-default,
+            $breakpoint-min: 1024px,
+            $breakpoint-max: 1280px
+        );
+    }
+    @include mq(desktop) {
+        @include responsive-typography(
             $font-min: $font-size-default,
             $font-max: 20px,
             $breakpoint-min: 1280px,
             $breakpoint-max: 2560px
-        )
+        );
     }
 }
 
 body {
+    overflow: hidden;
     min-width: 320px;
     height: 100vh;
     background: $color-bg;
     color: $color-text;
     font-family: $font-family-base;
     //overflow-x: hidden;
-    overflow: hidden;
     line-height: $font-lheight-default / $font-size-default;
 }
 
@@ -99,14 +108,14 @@ body {
 //Customize the background color to match your design.
 
 ::-moz-selection {
-    color: darken($color-link, 15%);
     background-color: rgba($color-link, 0.2);
+    color: darken($color-link, 15%);
     text-shadow: none;
 }
 
 ::selection {
-    color: darken($color-link, 15%);
     background-color: rgba($color-link, 0.2);
+    color: darken($color-link, 15%);
     text-shadow: none;
 }
 
@@ -233,8 +242,16 @@ p {
 }
 
 abbr[title] {
-    border-bottom: 1px dotted currentColor;
-    text-decoration: none;
+    border-bottom: 0;
+
+    .no-touchevents & {
+        border-bottom: 1px dotted currentColor;
+        text-decoration: none;
+
+        @include mq($media-type: print) {
+            border-bottom: 0;
+        }
+    }
 }
 
 .touchevents a.u-link--mark,
@@ -247,6 +264,7 @@ abbr[title] {
             transparent 4px
         );
     color: inherit;
+    outline: 0;
     text-decoration: none;
 }
 
@@ -257,6 +275,7 @@ abbr[title] {
     padding-right: 0.22em;
     padding-left: 0.22em;
     color: inherit;
+    outline: 0;
     text-decoration: none;
     transition: all 0.27s;
 
@@ -308,6 +327,23 @@ abbr[title] {
         &::after {
             opacity: 0.3;
             transition: opacity 0.15s ease 0.15s;
+        }
+    }
+}
+
+[data-whatinput="keyboard"] a:not([class]) {
+    outline: 2px solid rgba($color-link, 0);
+    outline-offset: 4px;
+    transition: outline-offset 0.2s ease, color 0.2s ease;
+
+    &:focus {
+        color: $color-link;
+        outline-color: rgba($color-link, 0.2);
+        outline-offset: 2px;
+
+        &::before,
+        &::after {
+            opacity: 0;
         }
     }
 }

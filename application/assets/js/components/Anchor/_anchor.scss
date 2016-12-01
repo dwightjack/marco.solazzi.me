@@ -34,6 +34,13 @@
             border-bottom: 2px solid currentColor;
             content: "";
         }
+
+        @media print {
+
+            &::before {
+                display: none;
+            }
+        }
     }
 }
 

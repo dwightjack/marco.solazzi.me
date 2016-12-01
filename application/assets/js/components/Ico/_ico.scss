@@ -6,6 +6,7 @@
 }
 
 .o-ico--pencil {
+
     use {
         transform: scale(0.9);
         transform-origin: 50% 50%;
@@ -20,4 +21,8 @@
 
 .o-ico--linkedin {
     top: -0.05em;
+}
+
+.o-ico--pdf {
+    transform: scale(0.9);
 }

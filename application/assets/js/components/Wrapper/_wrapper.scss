@@ -40,4 +40,10 @@
         overflow-y: hidden;
         transition: all 0.2s ease;
     }
+
+    @include mq($media-type: print) {
+        overflow-x: visible !important;
+        overflow-y: visible !important;
+        height: auto;
+    }
 }

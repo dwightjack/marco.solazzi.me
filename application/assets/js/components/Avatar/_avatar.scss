@@ -1,7 +1,7 @@
 @import "mixins";
 @import "colors";
 
-.o-avatar{ //just when alone...
+.o-avatar { //just when alone...
     position: relative;
     margin: 0;
 }
@@ -33,6 +33,11 @@
 
     .touchevents &,
     .o-avatar:hover & {
+        transform: translate(10%, 0);
+        transition-delay: 0.15s;
+    }
+
+    @media print {
         transform: translate(10%, 0);
         transition-delay: 0.15s;
     }
