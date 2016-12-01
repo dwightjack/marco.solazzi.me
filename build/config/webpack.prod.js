@@ -14,6 +14,19 @@ const config = _.assign(webpackConf, {
     entry: {
         app: [
             './' + paths.toPath('src.assets/js') + '/app.js'
+        ],
+        vendor: [
+            'babel-polyfill',
+            'react',
+            'classnames',
+            'gsap',
+            'hoist-non-react-statics',
+            'react-dom',
+            'react-redux',
+            'redux',
+            'redux-actions',
+            'redux-thunk',
+            'what-input'
         ]
     },
 
@@ -34,9 +47,7 @@ const config = _.assign(webpackConf, {
 config.plugins.push(
     new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor',
-        children: true,
-        minChunks: 2,
-        async: true
+        minChunks: Infinity
     }),
     new webpack.optimize.OccurenceOrderPlugin(true),
     new webpack.optimize.DedupePlugin(),
