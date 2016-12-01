@@ -19,5 +19,9 @@
         "type": "linkedin",
         "url": "https://it.linkedin.com/in/marcosolazzi",
         "label": "in/marcosolazzi"
+    }, {
+        "type": "pdf",
+        "url": "/assets/pdf/Marco Solazzi - Frontend Web Developer - Resume.pdf",
+        "label": "pdf/resume"
     }
 ]

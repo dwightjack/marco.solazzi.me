@@ -6,7 +6,7 @@ import social from '../../database/social.json';
 
 const classes = {
     link: 'u-only-print',
-    donwload: 'u-only-screen'
+    pdf: 'u-only-screen'
 };
 
 const SocialList = () => (

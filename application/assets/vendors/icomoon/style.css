@@ -43,6 +43,10 @@ Single-colored icons can be modified like so:
   width: 0.875em;
 }
 
+.o-ico--pdf {
+  width: 0.8571428571428571em;
+}
+
 .o-ico--award {
   width: 0.9285712447017431em;
 }

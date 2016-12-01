@@ -20,6 +20,7 @@ $c-table-indent: 30px;
     }
 
     @include mq($media-type: print) {
+        position: relative;
         page-break-inside: avoid;
     }
 }

@@ -14,16 +14,13 @@
 @media print {
 
     @page {
-        margin: 1cm 0.5cm;
+        margin: 1.5cm 1cm;
+        padding: 0;
         size: A4 portrait;
     }
 
     @page :first {
         margin: 0;
-    }
-
-    @page :last {
-        height: 29.7cm;
     }
 
     * {

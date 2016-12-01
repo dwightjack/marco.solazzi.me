@@ -43,5 +43,9 @@
 
     @include mq($media-type: print) {
         padding-top: 4cm;
+
+        .c-section {
+            padding-bottom: 0;
+        }
     }
 }

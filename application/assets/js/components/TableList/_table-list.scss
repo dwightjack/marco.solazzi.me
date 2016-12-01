@@ -1,12 +1,22 @@
+@import "globals";
 @import "mixins";
+@import "sass-mq/mq";
 
 $table-list-gutter-v: 50px;
 
 .c-table-list {
     max-width: 700px;
 
+    @include mq(wide) {
+        max-width: 750px;
+    }
+
     > .c-table {
         margin-bottom: rem(70px);
+
+        @media print {
+            margin-bottom: rem(65px);
+        }
 
         &:last-child {
             margin-bottom: 0;
