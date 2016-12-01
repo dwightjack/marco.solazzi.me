@@ -47,8 +47,6 @@ export class PageList extends Component {
                 return;
             }
 
-            this.autoScroll = true;
-
             if (prevRoute === '' || prevRoute === NAV_PATH_HOME) {
                 //place it at the top
                 TweenMax.set(this.root, {autoAlpha: 0, yPercent: 0});
@@ -211,6 +209,7 @@ export class PageList extends Component {
         } else if (scrollbar) {
             const el = this.root.querySelector(`[name="${route}"]`);
             if (el && scrollbar.isVisible(el) === false) {
+                this.autoScroll = true;
                 const top = el.getBoundingClientRect().top;
                 const scrollToY = top + scrollbar.scrollTop + offset;
                 const timing = typeof duration !== 'undefined' ? duration : Math.max(300, parseInt(scrollToY * 0.5, 10));

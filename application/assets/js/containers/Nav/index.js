@@ -112,7 +112,7 @@ export class Nav extends PureComponent {
 
         setTimeout(() => {
 
-            this.props.onPageChange(hash);
+            this.props.onNavItemClick(hash);
 
         }, this.getTimeout('leaving') + 300);
 
@@ -155,7 +155,7 @@ Nav.propTypes = {
     className: React.PropTypes.string,
     active: React.PropTypes.bool,
     route: React.PropTypes.string,
-    onPageChange: React.PropTypes.func,
+    onNavItemClick: React.PropTypes.func,
     toggleNav: React.PropTypes.func //eslint-disable-line react/no-unused-prop-types
 };
 

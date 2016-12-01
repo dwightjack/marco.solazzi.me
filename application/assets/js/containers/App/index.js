@@ -142,7 +142,7 @@ class App extends Component {
     constructor(props) {
         super(props);
 
-        bindAll(this, 'onPageChange', 'onSwipe');
+        bindAll(this, 'onPageChange', 'onSwipe', 'onNavItemClick');
     }
 
     componentDidMount() {
@@ -163,6 +163,10 @@ class App extends Component {
             this.setWheelListener();
         }*/
 
+    }
+
+    onNavItemClick(hash) {
+        this.props.router.go(hash);
     }
 
     onPageChange(hash, silent = false) {
@@ -215,7 +219,7 @@ class App extends Component {
         return (
             <Swipe onSwipe={this.onSwipe}>
 
-                <Nav className={activeGroup !== 'intro' ? 'is-visible' : ''} onPageChange={this.onPageChange} />
+                <Nav className={activeGroup !== 'intro' ? 'is-visible' : ''} onNavItemClick={this.onNavItemClick} />
 
                 <Wrapper onPageChange={this.onPageChange} router={router}>
 
