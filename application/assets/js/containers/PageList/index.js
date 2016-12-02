@@ -223,7 +223,7 @@ export class PageList extends Component {
     }
 
     mediaQueryCallback(breakpoint, mq) {
-        if (mq.matchFrom('tablet-portrait')) {
+        if (mq.matchFrom('tablet-landscape')) {
             return (
                 <Scrollbar ref={this.scrollbarRef} alwaysShowTracks onScroll={this.onScroll}>
                     {this.pages}

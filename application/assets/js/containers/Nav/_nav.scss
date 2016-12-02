@@ -58,7 +58,7 @@ $nav-total-timing-in: max(
     transform: translateX(100%);
     transition: all 0.3s ease-out;
 
-    @include mq(tablet-portrait) {
+    @include mq(tablet-landscape) {
         top: 30px;
         right: 30px;
     }
@@ -94,7 +94,7 @@ $nav-total-timing-in: max(
     animation-fill-mode: forwards;
     transition: opacity $nav-anim-out ease-out;
 
-    @include mq(tablet-portrait) {
+    @include mq(tablet-landscape) {
         padding: 10vh 0 0;
     }
 

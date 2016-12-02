@@ -45,7 +45,7 @@ $title-size: font-size(l, false);
 .o-title--sub {
     margin-top: 0.8em;
 
-    @include mq(tablet-portrait) {
+    @include mq(tablet-landscape) {
         margin-bottom: -1.8em;
     }
 
