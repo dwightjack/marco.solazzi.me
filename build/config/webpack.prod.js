@@ -80,6 +80,7 @@ config.plugins.push(
             minifyURLs: true
         },
         modernizr: getAssetPath('vendors/modernizr/modernizr.*'),
+        analytics: true,
         inject: true
     })
 );
