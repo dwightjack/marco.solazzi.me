@@ -231,7 +231,7 @@
     font-size: font-size(20px);
     font-weight: font-weight(bold);
 
-    @include mq(tablet-portrait) {
+    @include mq(tablet-landscape) {
         font-size: font-size(22px);
     }
 }
@@ -240,7 +240,7 @@
     font-size: font-size(16px);
     font-weight: font-weight(regular);
 
-    @include mq(tablet-portrait) {
+    @include mq(tablet-landscape) {
         font-size: font-size(18px);
     }
 }
@@ -257,4 +257,22 @@
     // https://zellwk.com/blog/viewport-based-typography/
     font-size: calc(#{$base-font-size-em} + (#{strip-units($font-diff)} * (100vw - #{$breakpoint-min}) / #{strip-units($breakpoint-diff)}));
     //font-size: calc(#{$base-font-size} + (#{strip-units($font-diff)} * (100vw - #{$breakpoint-min}) / #{strip-units($breakpoint-diff)}));
+}
+
+
+@mixin a11y-anchor-focus() {
+    outline: 2px solid rgba($color-link, 0);
+    outline-offset: 4px;
+    transition: outline-offset 0.2s ease, color 0.2s ease;
+
+    &:focus {
+        color: $color-link;
+        outline-color: rgba($color-link, 0.2);
+        outline-offset: 2px;
+
+        &::before,
+        &::after {
+            opacity: 0;
+        }
+    }
 }

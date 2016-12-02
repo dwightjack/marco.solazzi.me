@@ -19,6 +19,9 @@ import social from '../../database/social.json';
 
 import './_nav.scss';
 
+const filters = ['linkedin', 'twitter', 'github'];
+const navSocials = social.filter(({type}) => filters.indexOf(type) !== -1);
+
 export class Nav extends PureComponent {
 
     constructor(props) {
@@ -127,7 +130,7 @@ export class Nav extends PureComponent {
         const burgerClassName = classNames('c-nav__burger', {'is-active': active});
         const tabIndex = active ? 0 : -1;
 
-        const socialAnchors = social.filter((i) => i.type !== 'pencil').map(({type, url, label}) => (
+        const socialAnchors = navSocials.map(({type, url, label}) => (
             <AnchorIco ico={type} link={url} title={label} key={type} tabIndex={tabIndex} />
         ));
         /* eslint-disable jsx-a11y/no-static-element-interactions */

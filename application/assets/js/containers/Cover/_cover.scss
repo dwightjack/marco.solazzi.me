@@ -9,13 +9,13 @@
     width: 100vw;
     padding: rem($page-gutter) vw($page-gutter);
 
-    @include mq($until: tablet-portrait) {
+    @include mq($until: tablet-landscape) {
         opacity: 1 !important;
         visibility: visible !important;
         transform: none !important;
     }
 
-    @include mq(tablet-portrait) {
+    @include mq(tablet-landscape) {
         display: flex;
         overflow: hidden;
         align-items: center;
@@ -51,7 +51,7 @@
     transition: all 0.4s ease-out 0.35s;
 
 
-    @include mq($until: tablet-portrait) {
+    @include mq($until: tablet-landscape) {
 
         .is-active & {
             opacity: 1 !important;
@@ -59,7 +59,7 @@
         }
     }
 
-    @include mq(tablet-portrait) {
+    @include mq(tablet-landscape) {
         position: absolute;
         top: 50%;
         left: vw(30px);
@@ -76,7 +76,7 @@
         height: 50vw;
         margin: 0 auto;
 
-        @include mq(tablet-portrait) {
+        @include mq(tablet-landscape) {
             width: vw(270px);
             height: vw(270px);
             margin-top: vw(270px / -2);
@@ -104,7 +104,7 @@
     transform: translateX(7%);
     transition: all 0.4s ease-out 0.35s;
 
-    @include mq(tablet-portrait) {
+    @include mq(tablet-landscape) {
         padding-left: 33%;
         flex: 1 1 auto;
     }
@@ -113,7 +113,7 @@
         margin-bottom: rem(60px);
 
         .is-active & {
-            @include mq($until: tablet-portrait) {
+            @include mq($until: tablet-landscape) {
                 opacity: 1 !important;
                 visibility: visible !important;
                 transform: none !important;
@@ -137,7 +137,7 @@
     font-weight: 700;
     text-align: center;
 
-    @include mq(tablet-portrait) {
+    @include mq(tablet-landscape) {
         margin-top: 0;
         font-size: font-size(45px);
         text-align: left;
@@ -152,7 +152,7 @@
     margin-left: auto;
     font-size: font-size(20px);
 
-    @include mq(tablet-portrait) {
+    @include mq(tablet-landscape) {
         max-width: 450px;
         margin-right: 0;
         margin-left: 0;
@@ -169,7 +169,7 @@
         font-size: 2.5em;
         content: "\201c";
 
-        @include mq(tablet-portrait) {
+        @include mq(tablet-landscape) {
             font-size: 4em;
         }
     }
@@ -181,13 +181,13 @@
 }
 
 .c-cover__footer {
-    @include mq(tablet-portrait) {
+    @include mq(tablet-landscape) {
         max-width: 450px;
     }
 
 
     > .o-social-list {
-        @include mq($until: tablet-portrait) {
+        @include mq($until: tablet-landscape) {
             max-width: 82%;
             margin: 0 auto;
         }
@@ -207,7 +207,7 @@
     transform: translate(-50%, -10%);
     transition: all 0.5s ease-out;
 
-    @include mq(tablet-portrait) {
+    @include mq(tablet-landscape) {
         display: block;
     }
 

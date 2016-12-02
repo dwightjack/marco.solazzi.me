@@ -9,7 +9,7 @@
     overflow-y: scroll;
     height: 100vh;
 
-    @include mq($until: tablet-portrait) {
+    @include mq($until: tablet-landscape) {
         -webkit-overflow-scrolling: touch;
 
         /* &::after {
@@ -35,7 +35,7 @@
         }
     }
 
-    @include mq(tablet-portrait) {
+    @include mq(tablet-landscape) {
         overflow-x: hidden;
         overflow-y: hidden;
         transition: all 0.2s ease;
