@@ -1,7 +1,7 @@
 [
     {
         "id": 4,
-        "title": "Historiae JavaScript (EN)",
+        "title": "Historiae JavaScript",
         "date": "2016-10-27",
         "conf": "Frontenders Verona Meetup",
         "_link": "http://bit.ly/2fXiOiD",
@@ -13,7 +13,7 @@
         ]
     }, {
         "id": 3,
-        "title": "Accessibility tips & tricks for CSS developers (IT)",
+        "title": "Accessibility tips & tricks for CSS developers",
         "date": "2016-03-25",
         "conf": "CSSDay IT 2016",
         "_link": "http://bit.ly/2fQCEZt",
@@ -28,7 +28,7 @@
         ]
     }, {
         "id": 2,
-        "title": "Lean Front-end Development (EN)",
+        "title": "Lean Front-end Development",
         "date": "2015-11-21",
         "conf": "Codemotion Milano 2015",
         "_link": "http://bit.ly/2h00eYO",
@@ -40,7 +40,7 @@
         ]
     }, {
         "id": 1,
-        "title": "CSS workflow for grown-ups (IT)",
+        "title": "CSS workflow for grown-ups",
         "date": "2015-03-27",
         "conf": "CSSDay IT 2015",
         "_link": "https://speakerdeck.com/dwightjack/css-workflow-for-grown-ups",
@@ -55,7 +55,7 @@
         ]
     }, {
         "id": 0,
-        "title": "Automated Front-end Development with Grunt (IT)",
+        "title": "Automated Front-end Development with Grunt",
         "date": "2014-10-27",
         "conf": "Frontenders Verona Meetup",
         "_link": "https://speakerdeck.com/fevr/automated-front-end-development-with-grunt",
