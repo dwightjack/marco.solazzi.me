@@ -7,13 +7,13 @@
 }
 
 .c-pagelist {
-    @include mq($until: tablet-portrait) {
+    @include mq($until: tablet-landscape) {
         opacity: 1 !important;
         visibility: visible !important;
         transform: none !important;
     }
 
-    @include mq(tablet-portrait) {
+    @include mq(tablet-landscape) {
         position: absolute;
         top: 0;
         left: 0;
@@ -34,8 +34,12 @@
 #contacts {
     padding-top: 0;
 
+    @include mq(tablet) {
+        min-height: 20vh;
+    }
+
     .o-social-list {
-        @include mq($until: tablet-portrait) {
+        @include mq($until: tablet-landscape) {
             max-width: 82%;
             margin: 0 auto;
         }

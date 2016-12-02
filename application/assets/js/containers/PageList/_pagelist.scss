@@ -6,7 +6,7 @@
 .c-pagelist {
     overflow: hidden;
 
-    @include mq(tablet-portrait) {
+    @include mq(tablet-landscape) {
         position: relative;
         height: 100vh;
     }

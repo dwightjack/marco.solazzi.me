@@ -16,7 +16,7 @@
     flex-wrap: nowrap;
     justify-content: center;
 
-    @include mq(tablet-portrait) {
+    @include mq(tablet-landscape) {
         justify-content: flex-end;
     }
 
@@ -31,7 +31,7 @@
     flex: 0 0 auto;
     white-space: pre;
 
-    @include mq(tablet-portrait) {
+    @include mq(tablet-landscape) {
         font-size: font-size(xl);
         flex: 0 0 50%;
     }

@@ -3,7 +3,7 @@
 @import "mixins";
 @import "sass-mq/mq";
 
-$data-list-bp: mq-px2em(map-get($mq-breakpoints, tablet-portrait));
+$data-list-bp: mq-px2em(map-get($mq-breakpoints, tablet-landscape));
 
 .c-data-list {
     display: block;
@@ -33,7 +33,7 @@ $data-list-bp: mq-px2em(map-get($mq-breakpoints, tablet-portrait));
     padding: 0 rem(10px) rem(30px);
 
     &:last-child {
-        @include mq($until: tablet-portrait) {
+        @include mq($until: tablet-landscape) {
             padding-bottom: 0;
         }
     }
@@ -65,7 +65,7 @@ $data-list-bp: mq-px2em(map-get($mq-breakpoints, tablet-portrait));
         content: "+";
         transition: all 250ms;
 
-        @include mq(tablet-portrait) {
+        @include mq(tablet-landscape) {
             left: -0.5em;
         }
     }
@@ -84,7 +84,7 @@ $data-list-bp: mq-px2em(map-get($mq-breakpoints, tablet-portrait));
     transform: translate(0, -50%) scale(0.2);
     transition: all 150ms ease-out;
 
-    @include mq(tablet-portrait) {
+    @include mq(tablet-landscape) {
         left: -1.5em;
     }
 }

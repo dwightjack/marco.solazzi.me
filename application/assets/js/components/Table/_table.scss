@@ -13,7 +13,7 @@ $c-table-indent: 30px;
     width: 100%;
     padding-left: $c-table-indent;
 
-    @include mq(tablet-portrait) {
+    @include mq(tablet-landscape) {
         margin-left: $c-table-indent * -1;
         padding-left: 0;
         border-left: $c-table-indent solid transparent;
@@ -45,7 +45,7 @@ $c-table-indent: 30px;
     width: 8px;
     background-color: $color-link;
 
-    @include mq(tablet-portrait) {
+    @include mq(tablet-landscape) {
         left: -20px;
     }
 
@@ -84,7 +84,7 @@ $c-table-indent: 30px;
         padding-left: $c-table-row-indent;
         line-height: 1.4em;
 
-        @include mq(tablet-portrait) {
+        @include mq(tablet-landscape) {
             padding-bottom: 0.1em;
             line-height: 1.5em;
         }
@@ -95,7 +95,7 @@ $c-table-indent: 30px;
         display: inline;
         vertical-align: top;
 
-        @include mq(tablet-portrait) {
+        @include mq(tablet-landscape) {
             display: inline;
             vertical-align: top;
         }

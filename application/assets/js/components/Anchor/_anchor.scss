@@ -5,6 +5,15 @@
     display: inline-block;
     color: currentColor;
     text-decoration: none;
+
+    &:focus,
+    &:active {
+        outline: 0;
+
+        [data-whatinput="keyboard"] & {
+            @include a11y-anchor-focus;
+        }
+    }
 }
 
 .o-anchor__ico {
