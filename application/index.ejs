@@ -17,7 +17,7 @@
         <meta property="og:image" content="http://marco.solazzi.me<%- require('./assets/images/marco.jpg') %>" />
         <meta property="og:url" content="http://marco.solazzi.me/" />
         <% if (htmlWebpackPlugin.options.modernizr) { %>
-        <script src="<%- webpackConfig.output.publicPath %><%- htmlWebpackPlugin.options.modernizr %>"></script>
+        <script src="<%- webpackConfig.output.publicPath %><%- htmlWebpackPlugin.options.modernizr %>" defer="defer"></script>
         <% } %>
 
         <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Open+Sans:400,600,700" rel="stylesheet" />
