@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+const HtmlWebpackPluginDeferScripts = require('../scripts/defer-scripts-plugin');
 const webpackConf = require('./webpack.base');
 const paths = require('./paths');
 
@@ -82,6 +83,9 @@ config.plugins.push(
         modernizr: getAssetPath('vendors/modernizr/modernizr.*'),
         analytics: true,
         inject: true
+    }),
+    new HtmlWebpackPluginDeferScripts({
+        scripts: /(vendor|app)/
     })
 );
 
