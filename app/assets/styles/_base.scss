@@ -98,6 +98,8 @@ body {
     height: 100vh;
     background: $color-bg;
     color: $color-text;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
     font-family: $font-family-base;
     //overflow-x: hidden;
     line-height: $font-lheight-default / $font-size-default;
