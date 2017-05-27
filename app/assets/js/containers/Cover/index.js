@@ -109,7 +109,7 @@ class Cover extends Component {
                 </div>
                 <div className="c-cover__body">
 
-                    <h2 className="c-cover__headline" ref={this.titleRef}>こんにちわ！</h2>
+                    <h2 className="c-cover__headline" ref={this.titleRef}>こんにちは！</h2>
                     <article className="c-cover__text" ref={this.tableRef}>
                         <p>My name is <strong>Marco Solazzi</strong></p>
                         <p>I am a 37yo <strong>Frontend Web Developer</strong>, technical <strong>writer</strong> and <strong>speaker</strong> from Verona (Italy). I speak Italian (of course), English, French and some Japanese.</p>
