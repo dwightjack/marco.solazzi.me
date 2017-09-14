@@ -1,0 +1,72 @@
+[
+    {
+        "id": 4,
+        "title": "Historiae JavaScript",
+        "date": "2016-10-27",
+        "conf": "Frontenders Verona Meetup",
+        "_link": "http://bit.ly/2fXiOiD",
+        "_meta": [
+            {
+                "type": "slides",
+                "link": "http://bit.ly/2fXiOiD"
+            }
+        ]
+    }, {
+        "id": 3,
+        "title": "Accessibility tips & tricks for CSS developers",
+        "date": "2016-03-25",
+        "conf": "CSSDay IT 2016",
+        "_link": "http://bit.ly/2fQCEZt",
+        "_meta": [
+            {
+                "type": "video",
+                "link": "https://vimeo.com/165114097"
+            }, {
+                "type": "slides",
+                "link": "http://bit.ly/2fQCEZt"
+            }
+        ]
+    }, {
+        "id": 2,
+        "title": "Lean Front-end Development",
+        "date": "2015-11-21",
+        "conf": "Codemotion Milano 2015",
+        "_link": "http://bit.ly/2h00eYO",
+        "_meta": [
+            {
+                "type": "slides",
+                "link": "https://speakerdeck.com/fevr/lean-frontend-development-at-codemotion-milano-2015"
+            }
+        ]
+    }, {
+        "id": 1,
+        "title": "CSS workflow for grown-ups",
+        "date": "2015-03-27",
+        "conf": "CSSDay IT 2015",
+        "_link": "https://speakerdeck.com/dwightjack/css-workflow-for-grown-ups",
+        "_meta": [
+            {
+                "type": "video",
+                "link": "https://vimeo.com/127662618"
+            }, {
+                "type": "slides",
+                "link": "https://speakerdeck.com/dwightjack/css-workflow-for-grown-ups"
+            }
+        ]
+    }, {
+        "id": 0,
+        "title": "Automated Front-end Development with Grunt",
+        "date": "2014-10-27",
+        "conf": "Frontenders Verona Meetup",
+        "_link": "https://speakerdeck.com/fevr/automated-front-end-development-with-grunt",
+        "_meta": [
+            {
+                "type": "video",
+                "link": "https://youtu.be/b-HsUQJydhI?t=3m22s"
+            }, {
+                "type": "slides",
+                "link": "https://speakerdeck.com/fevr/automated-front-end-development-with-grunt"
+            }
+        ]
+    }
+]

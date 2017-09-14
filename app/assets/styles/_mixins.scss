@@ -6,6 +6,7 @@
 
 @import "globals";
 @import "fonts";
+@import "sass-mq/mq";
 
 // Generic
 // ==========================================================================
@@ -166,4 +167,56 @@
     margin: -1px;
     padding: 0;
     border: 0;
+}
+
+@mixin font-heading() {
+    margin-bottom: 0.7em;
+    font-family: $font-family-sans;
+    font-size: font-size(20px);
+    font-weight: font-weight(bold);
+
+    @include mq(tablet-landscape) {
+        font-size: font-size(22px);
+    }
+}
+
+@mixin font-content() {
+    font-size: font-size(16px);
+    font-weight: font-weight(regular);
+
+    @include mq(tablet-landscape) {
+        font-size: font-size(18px);
+    }
+}
+
+@mixin responsive-typography($font-min, $font-max, $breakpoint-min, $breakpoint-max) {
+    //https://www.smashingmagazine.com/2016/05/fluid-typography/
+
+    $font-diff: ($font-max - $font-min);
+    $breakpoint-diff: ($breakpoint-max - $breakpoint-min);
+    $font-scale: $font-diff / $breakpoint-diff;
+    $base-font-size: percentage($font-min / 16px);
+    $base-font-size-em: em($font-min, 16px);
+
+    // https://zellwk.com/blog/viewport-based-typography/
+    font-size: calc(#{$base-font-size-em} + (#{strip-units($font-diff)} * (100vw - #{$breakpoint-min}) / #{strip-units($breakpoint-diff)}));
+    //font-size: calc(#{$base-font-size} + (#{strip-units($font-diff)} * (100vw - #{$breakpoint-min}) / #{strip-units($breakpoint-diff)}));
+}
+
+
+@mixin a11y-anchor-focus() {
+    outline: 2px solid rgba($color-link, 0);
+    outline-offset: 4px;
+    transition: outline-offset 0.2s ease, color 0.2s ease;
+
+    &:focus {
+        color: $color-link;
+        outline-color: rgba($color-link, 0.2);
+        outline-offset: 2px;
+
+        &::before,
+        &::after {
+            opacity: 0;
+        }
+    }
 }

@@ -1,0 +1,64 @@
+@import "../../../styles/globals";
+@import "mixins";
+@import "sass-mq/mq";
+
+.root {
+    position: relative;
+    z-index: z-index(above);
+    padding-bottom: rem(120px);
+
+    &:last-child {
+        padding-bottom: rem(100px);
+    }
+
+    @media print {
+
+        .title {
+            orphans: 3;
+        }
+    }
+}
+
+.title {
+    margin-bottom: 2em;
+    text-align: center;
+
+    @include mq(tablet-landscape) {
+        @include boost-performance;
+        position: absolute;
+        top: rem(10px);
+        left: 0;
+        max-width: 35%;
+        margin-bottom: 0;
+        text-align: left;
+        white-space: nowrap;
+    }
+
+    @include mq(desktop) {
+        left: vw(60px);
+    }
+}
+
+.body {
+    display: block;
+    width: 100%;
+
+    @include mq($until: tablet-landscape) {
+        transform: none !important;
+    }
+
+    @include mq(tablet) {
+        padding-right: 7%;
+        padding-left: 10%;
+    }
+
+    @include mq(tablet-landscape) {
+        padding-right: 0;
+        padding-left: 33%;
+        // transition: transform 0.2s ease-out;
+    }
+
+    @include mq($media-type: print) {
+        transform: none !important;
+    }
+}

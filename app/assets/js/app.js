@@ -2,10 +2,11 @@
  * Main Application File
  */
 
-import 'babel-polyfill';
+//import 'babel-polyfill';
+import 'what-input';
 
 import Vue from 'vue';
-import Root from './containers/Root';
+import Root from '@/containers/Root';
 
 Vue.config.productionTip = false;
 

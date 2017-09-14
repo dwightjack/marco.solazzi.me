@@ -23,15 +23,15 @@
    ========================================================================== */
 
 .u-text--left {
-    text-align: left;
+    text-align: left !important;
 }
 
 .u-text--right {
-    text-align: right;
+    text-align: right !important;
 }
 
 .u-text--center {
-    text-align: center;
+    text-align: center !important;
 }
 
 //@see bootstrap
@@ -77,38 +77,38 @@
 }
 
 .u-clear {
-    clear: both;
+    clear: both !important;
 }
 
 .u-centered {
-    float: none;
-    margin-right: auto;
-    margin-left: auto;
+    float: none !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
 }
 
 .u-float,
 .u-float--left {
-    float: left;
+    float: left !important;
 }
 
 .u-float--right {
-    float: right;
+    float: right !important;
 }
 
 //inline children
 .u-inline > * {
-    display: inline-block;
+    display: inline-block !important;
 }
 
 // vertically stacked
 .u-stacked > * {
-    display: block;
+    display: block !important;
 }
 
 // inline
 .u-inline--baseline > * {
-    display: inline-block;
-    vertical-align: baseline;
+    display: inline-block !important;
+    vertical-align: baseline !important;
 }
 
 /* ==========================================================================
@@ -155,6 +155,26 @@
     }
 }
 
+.u-type--mark {
+    position: relative;
+    display: inline-block;
+    padding: 0 0.2em 0.1em;
+    background-color: transparent;
+    color: $color-light;
+    line-height: 1;
+
+    &::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: z-index(behind);
+        background-color: $color-link;
+        content: "";
+    }
+}
+
 
 
 /* ==========================================================================
@@ -172,7 +192,7 @@
 .u-hidden,
 .js .is-jshidden {
     display: none !important;
-    visibility: hidden;
+    visibility: hidden !important;
 }
 
 .u-visuallyhidden {
@@ -194,7 +214,7 @@
 
 //also as global state
 .u-invisible {
-    visibility: hidden;
+    visibility: hidden !important;
 }
 
 @each $mq-key, $mq-value in $mq-breakpoints {
@@ -203,7 +223,7 @@
 
         .u-hidden--from-#{$mq-key} {
             display: none !important;
-            visibility: hidden;
+            visibility: hidden !important;
         }
     }
 
@@ -211,7 +231,21 @@
 
         .u-hidden--until-#{$mq-key} {
             display: none !important;
-            visibility: hidden;
+            visibility: hidden !important;
         }
+    }
+}
+
+@media not print {
+
+    .u-only-print {
+        display: none;
+    }
+}
+
+@media print {
+
+    .u-only-screen {
+        display: none;
     }
 }

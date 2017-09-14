@@ -18,7 +18,6 @@
         "no-commonjs": 0,
         "arrow-body-style": 0,
         "prefer-template": 0,
-
         "import/no-dynamic-require": 0,
         "import/no-unresolved": [2, {"commonjs": true}],
         "import/no-extraneous-dependencies": [2, {"devDependencies": true, "optionalDependencies": true, "peerDependencies": true}]

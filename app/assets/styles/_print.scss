@@ -8,78 +8,81 @@
 
    ========================================================================== */
 
+@import "fonts";
+@import "colors";
+
 @media print {
 
-    *,
-    *::before,
-    *::after,
-    p::first-letter,
-    div::first-letter,
-    blockquote::first-letter,
-    li::first-letter,
-    p::first-line,
-    div::first-line,
-    blockquote::first-line,
-    li::first-line {
-        background: transparent !important;
-        color: #000 !important; /* Black prints faster:
-                                   http://www.sanbeiji.com/archives/953 */
+    @page {
+        margin: 1.5cm 1cm;
+        padding: 0;
+        size: A4 portrait;
+    }
+
+    @page :first {
+        margin: 0;
+    }
+
+    * {
         box-shadow: none !important;
         text-shadow: none !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact; //stylelint-disable-line
+    }
+
+    body {
+        overflow: auto;
+        height: auto;
     }
 
     a,
     a:visited {
-        text-decoration: underline;
+        color: $color-text !important;
+        text-decoration: none;
     }
 
-    a[href]::after {
+    a[href][target="_blank"] {
+        display: inline;
+        background-image: none;
+        color: $color-text !important;
+        text-decoration: none;
+    }
+
+    a[href][target="_blank"]::after {
+        position: static;
+        opacity: 1;
+        border-bottom: 2px solid rgba($color-text, 0.2);
+        background-color: transparent;
+        font-size: 0.8em;
         content: " (" attr(href) ")";
     }
 
-    abbr[title]::after {
-        content: " (" attr(title) ")";
-    }
-
-    /*
-     * Don't show links that are fragment identifiers,
-     * or use the `javascript:` pseudo protocol
-     */
-
-    a[href^="#"]::after,
-    a[href^="javascript:"]::after {
+    // Don't show links for images, or javascript/internal links
+    .ir a::after,
+    a[href^="javascript:"]::after,
+    a[href^="#"]::after {
         content: "";
     }
-
-    pre {
-        white-space: pre-wrap !important;
-    }
-
-    pre,
-    blockquote {
-        border: 1px solid #999;
-        page-break-inside: avoid;
-    }
-
-    /*
-     * Printing Tables:
-     * http://css-discuss.incutio.com/wiki/Printing_Tables
-     */
 
     thead {
         display: table-header-group;
     }
 
+    ul,
     tr,
     img {
         page-break-inside: avoid;
     }
 
+    img {
+        max-width: 100% !important;
+    }
+
     p,
     h2,
     h3 {
-        orphans: 3;
         widows: 3;
+        orphans: 3;
     }
 
     h2,

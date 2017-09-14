@@ -1,11 +1,10 @@
 //colors by name
-$color-light-blue: #0076d6;
-$color-dark: #000;
+$color-dark: #4d4d4d;
 $color-light: #fff;
+$color-dark-red: #a02c2c;
 
 //colors by function
 $color-text: $color-dark;
 $color-bg: $color-light;
-$color-link: $color-light-blue;
-$color-link-hover: lighten($color-light-blue, 20%);
-$color-text-selection: $color-light-blue;
+$color-link: $color-dark-red;
+$color-border: $color-dark;

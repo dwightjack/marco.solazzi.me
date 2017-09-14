@@ -1,0 +1,14 @@
+{
+    "extends": [
+        "../../../.stylelintrc.json"
+    ],
+    "processors": [
+        "stylelint-processor-html"
+    ],
+    "rules": {
+        "no-empty-source": null,
+        "selector-pseudo-class-no-unknown": [true, {
+            "ignorePseudoClasses": ["export"]
+        }]
+    }
+}

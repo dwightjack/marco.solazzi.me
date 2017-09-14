@@ -1,26 +1,20 @@
 <template>
-    <div :class="$style.root">
-        Hello {{ message }}
+    <div>
+        <Jobs />
     </div>
 </template>
 
 <script>
 
+import Jobs from '@/containers/Jobs';
+
 export default {
-    data() {
-        return {
-            message: 'World'
-        };
-    },
-    name: 'Root'
+    components: {
+        Jobs
+    }
 };
 
 </script>
 
 <style module>
-@import "mixins";
-
-.root {
-    font-size: font-size(13px);
-}
 </style>

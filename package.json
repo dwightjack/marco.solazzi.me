@@ -27,12 +27,17 @@
     "lint": "npm run eslint && npm run stylelint"
   },
   "dependencies": {
+    "animejs": "^2.0.2",
     "babel-polyfill": "6.26.0",
     "babel-runtime": "6.26.0",
+    "lodash": "^4.17.4",
     "normalize.css": "7.0.0",
     "sass-mq": "3.3.2",
     "vue": "2.4.3",
-    "vue-router": "2.7.0"
+    "vue-media": "^1.1.1",
+    "vue-router": "2.7.0",
+    "vue-types": "^1.0.2",
+    "what-input": "^5.0.1"
   },
   "devDependencies": {
     "autoprefixer": "7.1.4",

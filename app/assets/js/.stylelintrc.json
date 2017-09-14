@@ -6,6 +6,14 @@
         "stylelint-processor-html"
     ],
     "rules": {
-        "no-empty-source": null
+        "no-empty-source": null,
+        "selector-pseudo-class-no-unknown": [true, {
+            "ignorePseudoClasses": [
+                "export",
+                "import",
+                "global",
+                "local"
+            ]
+        }]
     }
 }

@@ -99,29 +99,28 @@ module.exports = {
                     name: (PRODUCTION ? '[path][name].[hash:10].[ext]' : '[path][name].[ext]'),
                     context: paths.toPath('src.assets')
                 }
-            }
-        , {
-            test: /.vue$/,
-            include: [
-                paths.toAbsPath('src.assets/js')
-            ],
-            loader: 'vue-loader',
-            options: {
-                loaders: {
-                    css: (PRODUCTION ? require('extract-text-webpack-plugin').extract({
-                        fallback: 'vue-style-loader',
-                        use: styleLoaders.loaders
-                    }) : ['vue-style-loader'].concat(styleLoaders.loaders))
-                },
-                cssModules: {
-                    modules: true,
-                    camelCase: true,
-                    importLoaders: 1,
-                    sourceMap: true,
-                    localIdentName: '[name]__[local]---[hash:base64:5]'
+            }, {
+                test: /.vue$/,
+                include: [
+                    paths.toAbsPath('src.assets/js')
+                ],
+                loader: 'vue-loader',
+                options: {
+                    loaders: {
+                        css: (PRODUCTION ? require('extract-text-webpack-plugin').extract({
+                            fallback: 'vue-style-loader',
+                            use: styleLoaders.loaders
+                        }) : ['vue-style-loader'].concat(styleLoaders.loaders))
+                    },
+                    cssModules: {
+                        modules: true,
+                        camelCase: true,
+                        importLoaders: 1,
+                        sourceMap: true,
+                        localIdentName: '[name]__[local]---[hash:base64:5]'
+                    }
                 }
             }
-        }
         ]
     },
     node: {

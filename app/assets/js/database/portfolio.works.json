@@ -1,0 +1,42 @@
+[
+    {
+        "id": "muller",
+        "project": "Müller Italia",
+        "date": "2016-05-07",
+        "stack": "ES2015, GSAP, Gulpjs, Webpack, Sass",
+        "tasks": "JavaScript Architecture, Frontend Ops, CSS",
+        "_link": "http://www.muller.it",
+        "_meta": [
+            {
+                "type": "award",
+                "link": "http://www.awwwards.com/sites/muller",
+                "label": "Awwwards SOTD"
+            }
+        ]
+    }, {
+        "id": "mediaset",
+        "project": "Mediaset Premium Corporate",
+        "date": "2015-07-01",
+        "stack": "jQuery, GSAP, Grunt, Browserify, Sass",
+        "tasks": "Frontend Architecture, HTML, CSS, JavaScript, vue.js",
+        "_link": "http://www.mediasetpremium.it/"
+    }, {
+        "id": "fornasetti",
+        "project": "Fornasetti | History",
+        "date": "2015-05-09",
+        "stack": "jQuery, GSAP, Grunt, Browserify, Sass, SVG",
+        "tasks": "JavaScript Architecture, Audio, Frontend Ops, HTML, CSS",
+        "_link": "http://www.fornasetti.com/history",
+        "_meta": [
+            {
+                "type": "award",
+                "link": "http://www.awwwards.com/sites/fornasetti-history",
+                "label": "Awwwards SOTD"
+            }, {
+                "type": "award",
+                "link": "http://www.cssdesignawards.com/sites/fornasetti-history/26394/",
+                "label": "CSS Design Awards SOTD"
+            }
+        ]
+    }
+]

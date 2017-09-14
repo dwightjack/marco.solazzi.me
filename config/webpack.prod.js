@@ -52,6 +52,7 @@ module.exports = merge.smart(webpackConf, {
             },
             modernizr: paths.assetsPath('vendors/modernizr/modernizr.*'),
             inject: true,
+            analytics: true,
             chunksSortMode: 'dependency'
         }),
         new ScriptExtHtmlWebpackPlugin({

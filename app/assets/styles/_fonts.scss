@@ -1,25 +1,25 @@
 //fonts by type
-$font-family-sans: Arial, Helvetica, FreeSans, "Liberation Sans", sans-serif;
-$font-family-serif: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+$font-family-sans: "Open Sans", sans-serif;
+$font-family-serif: "Bree Serif", serif;
 
 //fonts by function
 $font-family-base: $font-family-sans;
-$font-family-h: $font-family-sans;
+$font-family-h: $font-family-serif;
 
 //font dimensions
 $font-size-default: 16px;
+$font-lheight-default: 20px;
 
 $font-sizes: (
-    xl: ceil($font-size-default * 2),
-    l: ceil($font-size-default * 1.5),
+    xl: 40px,
+    l: 32px,
     m: $font-size-default,
-    s: ceil($font-size-default * 0.8),
-    xs: ceil($font-size-default * 0.5)
+    s: 14px,
+    xs: 10px
 );
 
 
 $font-weights: (
-    light: 300,
     regular: 400,
     semibold: 600,
     bold: 700
@@ -27,10 +27,10 @@ $font-weights: (
 
 //font dimensions by function
 $font-sizes-headings: (
-    1: ceil($font-size-default * 2),
-    2: ceil($font-size-default * 1.5),
-    3: ceil($font-size-default * 1.4),
-    4: ceil($font-size-default * 1.3),
-    5: ceil($font-size-default * 1.2),
-    6: ceil($font-size-default * 1.1)
+    1: 40px,
+    2: 32px,
+    3: $font-size-default,
+    4: $font-size-default,
+    5: $font-size-default,
+    6: $font-size-default
 );

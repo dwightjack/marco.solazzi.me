@@ -1,0 +1,23 @@
+@import "globals";
+@import "mixins";
+@import "sass-mq/mq";
+
+.root {
+    max-width: 700px;
+
+    @include mq(wide) {
+        max-width: 750px;
+    }
+
+    > * {
+        margin-bottom: rem(70px);
+
+        @media print {
+            margin-bottom: rem(65px);
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
