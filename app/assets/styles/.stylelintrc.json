@@ -8,7 +8,12 @@
     "rules": {
         "no-empty-source": null,
         "selector-pseudo-class-no-unknown": [true, {
-            "ignorePseudoClasses": ["export"]
+            "ignorePseudoClasses": [
+                "export",
+                "import",
+                "global",
+                "local"
+            ]
         }]
     }
 }

@@ -16,5 +16,5 @@ export default {
 
 </script>
 
-<style module>
+<style lang="scss" module>
 </style>

@@ -1,0 +1,168 @@
+@import "globals";
+@import "fonts";
+@import "colors";
+@import "mixins";
+@import "sass-mq/mq";
+
+$c-table-row-indent: 0.3em;
+
+$c-table-indent: 30px;
+
+.root {
+    position: relative;
+    width: 100%;
+    padding-left: $c-table-indent;
+
+    @include mq(tablet-landscape) {
+        margin-left: $c-table-indent * -1;
+        padding-left: 0;
+        border-left: $c-table-indent solid transparent;
+    }
+
+    @include mq($media-type: print) {
+        position: relative;
+        page-break-inside: avoid;
+    }
+}
+
+.caption {
+    @include font-heading;
+    padding-left: $c-table-row-indent;
+
+    &::before {
+        display: inline-block;
+        margin-left: $c-table-row-indent * -1;
+        content: ". ";
+    }
+}
+
+.bracket {
+    position: absolute;
+    top: -10px;
+    bottom: -10px;
+    left: 0;
+    opacity: 0.5;
+    width: 8px;
+    background-color: $color-link;
+
+    @include mq(tablet-landscape) {
+        left: -20px;
+    }
+
+    &::before,
+    &::after {
+        position: absolute;
+        left: 8px;
+        width: 8px;
+        height: 8px;
+        background-color: inherit;
+        content: "";
+        transform: scaleX(1);
+        transform-origin: 0 0;
+        transition: transform 0.2s ease-out;
+    }
+
+    &::before {
+        top: 0;
+    }
+
+    &::after {
+        bottom: 0;
+    }
+}
+
+.data {
+    @include font-content;
+    width: 90%;
+    line-height: 1.35em;
+    text-align: left;
+    vertical-align: top;
+
+    tr {
+        display: block;
+        padding-bottom: 0.2em;
+        padding-left: $c-table-row-indent;
+        line-height: 1.4em;
+
+        @include mq(tablet-landscape) {
+            padding-bottom: 0.1em;
+            line-height: 1.5em;
+        }
+    }
+
+    td,
+    th {
+        display: inline;
+        vertical-align: top;
+
+        @include mq(tablet-landscape) {
+            display: inline;
+            vertical-align: top;
+        }
+
+        @include mq($media-type: print) {
+            display: inline;
+            vertical-align: top;
+        }
+    }
+
+    th {
+        font-weight: font-weight(bold);
+    }
+
+
+
+    tr[data-row="title"] {
+        padding-top: 0.5em;
+    }
+}
+
+.footer {
+    margin-top: rem(7px);
+    margin-right: -0.5em;
+    margin-left: 0;
+    font-size: font-size(s);
+
+    > * {
+        margin-right: 0.5em;
+        margin-bottom: 0.5em;
+        margin-left: 0.5em;
+    }
+
+    @include mq($media-type: print) {
+        overflow: hidden;
+
+        > a {
+            float: left;
+            clear: left;
+            border-bottom: 0 !important;
+        }
+    }
+}
+
+
+
+.root--brackets {
+
+    @include mq($media-type: print) {
+        top: 10px;
+
+        &:last-child {
+            margin-bottom: 20px;
+        }
+    }
+
+    .data {
+
+        th::before {
+            display: inline-block;
+            margin-left: $c-table-row-indent * -1;
+            content: ". ";
+        }
+
+        th::after {
+            font-weight: font-weight(regular);
+            content: ": ";
+        }
+    }
+}

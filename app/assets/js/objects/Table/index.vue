@@ -1,15 +1,14 @@
 <template>
-    <article :class="[$styles.root, tableStyles]">
+    <article :class="[$style.root, tableStyles]">
 
-        <h3 v-if="caption" :class="$styles.caption" :id="`table-${id}`">
-            {{ caption }}:&nbsp;
+        <h3 v-if="caption" :class="$style.caption" :id="`table-${id}`">{{ caption }}:
             <a v-if="data._link" :href="data._link" target="_blank" rel="noopener noreferrer">{{ captionLabel }}</a>
             <span v-if="!data._link">{{ captionLabel }}</span>
         </h3>
 
-        <div v-if="hasBrackets" :class="$styles.bracket" />
+        <div v-if="hasBrackets" :class="$style.bracket" />
 
-        <table :class="$styles.data" :aria-labelledby="`table-${id}`">
+        <table :class="$style.data" :aria-labelledby="`table-${id}`">
             <tbody>
                 <tr v-for="(value, heading) in rows" :data-row="heading" :key="heading">
                     <th scope="row">{{ heading }}</th>
@@ -21,9 +20,9 @@
             </tbody>
         </table>
 
-        <footer :class="$styles.footer">
+        <footer :class="$style.footer">
             <Anchor v-for="meta in data._meta"
-                    className="o-anchor--cursor"
+                    :style="cursor"
                     :link="meta.link"
                     :key="meta.link"
                     :ico="meta.type"
@@ -66,7 +65,7 @@ export default {
 
     computed: {
         tableStyles() {
-            this.styles.map((s) => this.$styles[s] || '').join(' ');
+            return this.styles.map((s) => this.$style[`root--${s}`] || '').join(' ');
         },
         captionLabel() {
             return this.data[this.caption];
@@ -105,4 +104,4 @@ export default {
     }
 };
 </script>
-
+<style lang="scss" module src="./table.scss" />

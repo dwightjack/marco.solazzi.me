@@ -1,5 +1,5 @@
 <template>
-    <time :class="$styles.root" :datetime="attr">
+    <time :class="$style.root" :datetime="attr">
         <span>{{ text }}</span>
     </time>
 </template>

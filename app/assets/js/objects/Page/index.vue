@@ -12,8 +12,7 @@ import VueTypes from 'vue-types';
 export default {
     props: {
         id: VueTypes.string,
-        name: VueTypes.string,
-        key: VueTypes.string
+        name: VueTypes.string
     }
 };
 </script>

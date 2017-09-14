@@ -107,7 +107,7 @@ module.exports = {
                 loader: 'vue-loader',
                 options: {
                     loaders: {
-                        css: (PRODUCTION ? require('extract-text-webpack-plugin').extract({
+                        scss: (PRODUCTION ? require('extract-text-webpack-plugin').extract({
                             fallback: 'vue-style-loader',
                             use: styleLoaders.loaders
                         }) : ['vue-style-loader'].concat(styleLoaders.loaders))

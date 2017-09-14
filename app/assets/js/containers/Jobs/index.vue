@@ -1,15 +1,15 @@
 <template>
-    <Page id="job" key="job" :name="pageName">
-        <Section title="jobs.current">
+    <Page id="job" :name="pageName">
+        <PageSection title="jobs.current">
             <TableList>
-                <Table caption="company" :data="current" />
+                <SummaryTable caption="company" :data="current" :styles="['brackets']" />
             </TableList>
-        </Section>
-        <Section title="jobs.previous">
+        </PageSection>
+        <PageSection title="jobs.previous">
             <TableList>
-                <Table v-if="job in prev" :key="job.id" caption="company" :data="job" />
+                <SummaryTable v-for="job in prev" :key="job.id" caption="company" :data="job" :styles="['brackets']" />
             </TableList>
-        </Section>
+        </PageSection>
     </Page>
 </template>
 
@@ -17,7 +17,9 @@
 import jobs from '@/database/jobs.json';
 import { NAV_PATH_JOBS } from '@/shared/constants';
 import Page from '@/objects/Page';
-import Section from '@/components/Section';
+import PageSection from '@/components/Section';
+import TableList from '@/objects/TableList';
+import SummaryTable from '@/objects/Table';
 
 export default {
     data() {
@@ -29,7 +31,9 @@ export default {
     },
     components: {
         Page,
-        Section
+        PageSection,
+        TableList,
+        SummaryTable
     }
 };
 </script>

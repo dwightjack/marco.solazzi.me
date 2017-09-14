@@ -1,6 +1,6 @@
 <template>
-    <section :class="$style">
-        <Title :class="$style.title" :prefix="prefix" :title="title" :subtitle="subtitle" />
+    <section :class="$style.root">
+        <SectionTitle :class="$style.title" :prefix="prefix" :title="title" :subtitle="subtitle" />
         <div :class="$style.body" ref="body">
             <slot />
         </div>
@@ -11,6 +11,7 @@
 import anime from 'animejs';
 import VueTypes from 'vue-types';
 import { caf, raf } from '@/shared/utils';
+import SectionTitle from '@/objects/Title';
 
 export default {
 
@@ -24,7 +25,11 @@ export default {
     props: {
         title: VueTypes.string,
         subtitle: VueTypes.string,
-        prefix: VueTypes.string
+        prefix: String
+    },
+
+    components: {
+        SectionTitle
     },
 
     computed: {

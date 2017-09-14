@@ -3,10 +3,10 @@
         :href="link"
         target="_blank"
         rel="noopener noreferrer"
-        :class="[$styles.root, { [$styles[`root--${style}`]]: style }]"
-        >
-        <Ico v-if="ico" :name="ico" :class="$styles.ico" />
-        <span v-if="label" :class="$styles.label">{{ label }}</span>
+        :class="[$style.root, { [$style[`root--${style}`]]: style }]"
+    >
+        <Ico v-if="ico" :name="ico" :class="$style.ico" />
+        <span v-if="label" :class="$style.label">{{ label }}</span>
     </a>
 </template>
 

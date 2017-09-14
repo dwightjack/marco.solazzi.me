@@ -58,7 +58,7 @@
     }
 
     // Don't show links for images, or javascript/internal links
-    .ir a::after,
+    :global(.ir) a::after,
     a[href^="javascript:"]::after,
     a[href^="#"]::after {
         content: "";
