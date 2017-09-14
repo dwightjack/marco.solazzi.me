@@ -1,0 +1,21 @@
+//global configs
+$rem-to-px-fallback: false !default;
+
+$mq-breakpoints: (
+    mobile: 480px,
+    s-tablet: 768px,
+    l-tablet: 992px,
+    desktop: 1200px
+);
+
+$layers: (
+    behind: -1,
+    below: -1,
+    base: 0,
+    above: 1,
+    modal: 10
+);
+
+//PSD base viewport size
+$viewport-width: 1280px;
+$viewport-height: 720px;

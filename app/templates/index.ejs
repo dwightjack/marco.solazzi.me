@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="format-detection" content="telephone=no" />
+
+        <% if (htmlWebpackPlugin.options.modernizr) { %>
+        <script defer src="<%- webpackConfig.output.publicPath %><%- htmlWebpackPlugin.options.modernizr %>"></script>
+        <% } %>
+    </head>
+
+    <body>
+        <div id="app-root"></div>
+        <%= htmlWebpackPlugin.files.webpackManifest %>
+    </body>
+</html>
