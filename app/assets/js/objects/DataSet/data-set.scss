@@ -1,0 +1,123 @@
+@import "globals";
+@import "colors";
+@import "mixins";
+@import "sass-mq/mq";
+
+$data-list-bp: mq-px2em(map-get($mq-breakpoints, tablet-landscape));
+
+.root {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+
+    @media (min-width: $data-list-bp), print {
+        display: flex;
+        width: 100%;
+        margin: 0 rem(-20px);
+        flex-wrap: wrap;
+    }
+
+    @include mq(desktop) {
+        width: 90%;
+    }
+
+    @media print {
+        width: 100%;
+    }
+}
+
+.item {
+    margin: 0;
+    padding: 0 rem(10px) rem(30px);
+
+    &:last-child {
+        @include mq($until: tablet-landscape) {
+            padding-bottom: 0;
+        }
+    }
+
+    @media (min-width: $data-list-bp), print {
+        padding: 0 rem(20px) rem(30px);
+        flex: 0 0 47%;
+    }
+
+    @media print {
+        flex-basis: 50%;
+    }
+}
+
+.label {
+    @include font-heading;
+    position: relative;
+    display: block;
+
+    &::before {
+        position: relative;
+        left: -0.1em;
+        display: inline-block;
+        opacity: 0.6;
+        width: 1em;
+        margin-left: -1em;
+        color: $color-link;
+        text-align: center;
+        content: "+";
+        transition: all 250ms;
+
+        @include mq(tablet-landscape) {
+            left: -0.5em;
+        }
+    }
+}
+
+.ico.ico {
+    position: absolute;
+    top: 50%;
+    left: -1.3em;
+    display: inline-block;
+    opacity: 0;
+    width: 1em;
+    color: $color-link;
+    text-align: center;
+    content: "+";
+    transform: translate(0, -50%) scale(0.2);
+    transition: all 150ms ease-out;
+
+    @include mq(tablet-landscape) {
+        left: -1.5em;
+    }
+}
+
+.body {
+    @include font-content;
+}
+
+:global(.touchevents) .item,
+.item:hover {
+
+    .label::before {
+        opacity: 0;
+        transform: scale(1.5);
+    }
+
+    .ico {
+        opacity: 0.6;
+        transform: translateY(-50%) scale(1);
+        transition-delay: 240ms;
+    }
+}
+
+@media print {
+
+    .label::before {
+        opacity: 0;
+        transform: scale(1.5);
+    }
+
+    .ico {
+        opacity: 0.6;
+        transform: translate(0, -50%) scale(1);
+        transition-delay: 240ms;
+    }
+}

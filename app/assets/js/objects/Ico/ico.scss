@@ -1,13 +1,7 @@
 :global {
+    @import "../../../vendors/icomoon/style.css";
 
-    @import "icomoon/style.css";
-
-    .o-ico {
-        position: relative;
-        vertical-align: middle;
-    }
-
-    .o-ico--pencil {
+    .ico-pencil {
 
         use {
             transform: scale(0.9);
@@ -15,17 +9,23 @@
         }
     }
 
-    .o-ico--award {
+    .ico-award {
         width: 1.3em;
         height: 1.3em;
         vertical-align: middle;
     }
 
-    .o-ico--linkedin {
+    .ico-linkedin {
         top: -0.05em;
     }
 
-    .o-ico--pdf {
+    .ico-pdf {
         transform: scale(0.9);
     }
 }
+
+.root {
+    position: relative;
+    vertical-align: middle;
+}
+

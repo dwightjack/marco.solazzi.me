@@ -77,7 +77,7 @@
             }, {
                 "id": "e2e-testing",
                 "label": "Nightwatch.js, Protractor",
-                "level": "70"
+                "level": 70
             }, {
                 "id": "linting-js",
                 "label": "eslint, jscs",

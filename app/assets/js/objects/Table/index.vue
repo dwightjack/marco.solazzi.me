@@ -22,7 +22,7 @@
 
         <footer :class="$style.footer">
             <Anchor v-for="meta in data._meta"
-                    :style="cursor"
+                    type="cursor"
                     :link="meta.link"
                     :key="meta.link"
                     :ico="meta.type"

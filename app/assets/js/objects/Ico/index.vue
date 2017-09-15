@@ -1,6 +1,6 @@
 <template>
-    <svg :class="`o-ico o-ico--${name}`">
-        <use v-bind="{'xlink:href':`#o-ico--${name}`}" />
+    <svg :class="[$style.root, `ico-${name}`]">
+        <use v-bind="{'xlink:href':`#ico-${name}`}" />
     </svg>
 </template>
 

@@ -57,7 +57,10 @@
 
     .label::before {
         color: $color-link;
-        animation: 0.7s ease-out infinite blinking-cursor;
+        animation-name: blinking-cursor;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-out;
+        animation-iteration-count: infinite;
     }
 }
 

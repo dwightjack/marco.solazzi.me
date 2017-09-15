@@ -3,7 +3,7 @@
         :href="link"
         target="_blank"
         rel="noopener noreferrer"
-        :class="[$style.root, { [$style[`root--${style}`]]: style }]"
+        :class="[$style.root, { [$style[`root--${type}`]]: type }]"
     >
         <Ico v-if="ico" :name="ico" :class="$style.ico" />
         <span v-if="label" :class="$style.label">{{ label }}</span>
@@ -17,7 +17,7 @@ import Ico from '@/objects/Ico';
 
 export default {
     props: {
-        style: VueTypes.string,
+        type: VueTypes.string,
         link: VueTypes.string,
         ico: VueTypes.string,
         label: VueTypes.string

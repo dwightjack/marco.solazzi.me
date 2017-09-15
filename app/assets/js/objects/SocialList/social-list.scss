@@ -1,0 +1,9 @@
+@import "globals";
+@import "sass-mq/mq";
+
+.root {
+    @include mq($until: tablet-landscape) {
+        max-width: 82%;
+        margin: 0 auto;
+    }
+}

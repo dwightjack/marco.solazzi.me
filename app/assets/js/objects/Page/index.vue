@@ -17,21 +17,4 @@ export default {
 };
 </script>
 
-<style lang="scss" module>
-@import "globals";
-@import "mixins";
-
-.root {
-    padding-top: rem(40px);
-    outline: 0;
-
-    &:first-child {
-        padding-top: rem(60px);
-    }
-}
-
-.body {
-    padding: 0 vw($page-gutter);
-}
-</style>
-
+<style lang="scss" module src="./page.scss" />

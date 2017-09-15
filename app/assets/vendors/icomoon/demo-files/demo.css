@@ -46,10 +46,9 @@ input:focus {
 }
 .glyph {
   font-size: 16px;
-  width: 17em;
   margin-right: 1.5em;
   float: left;
-  overflow: hidden;
+  width: 17em;
 }
 svg {
   color: #000;
@@ -98,9 +97,6 @@ p {
   margin-left: 1em;
   margin-right: 1em;
 }
-.mls {
-  margin-left: .25em;
-}
 .ptl {
   padding-top: 1.5em;
 }
@@ -143,12 +139,15 @@ p {
   font-size: 16px;
 }
 .fs1 {
-  font-size: 32px;
+  font-size: 24px;
 }
 .fs2 {
-  font-size: 28px;
+  font-size: 32px;
 }
 .fs3 {
-  font-size: 24px;
+  font-size: 28px;
+}
+.name {
+  margin-left: .25em;
 }
 

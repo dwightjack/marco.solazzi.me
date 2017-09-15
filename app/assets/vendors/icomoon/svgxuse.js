@@ -1,14 +1,14 @@
 /*!
- * @copyright Copyright (c) 2016 IcoMoon.io
+ * @copyright Copyright (c) 2017 IcoMoon.io
  * @license   Licensed under MIT license
  *            See https://github.com/Keyamoon/svgxuse
- * @version   1.1.23
+ * @version   1.2.6
  */
 /*jslint browser: true */
 /*global XDomainRequest, MutationObserver, window */
 (function () {
-    'use strict';
-    if (window && window.addEventListener) {
+    "use strict";
+    if (typeof window !== "undefined" && window.addEventListener) {
         var cache = Object.create(null); // holds xhr objects to prevent multiple requests
         var checkUseElems;
         var tid; // timeout id
@@ -21,8 +21,8 @@
         };
         var observeChanges = function () {
             var observer;
-            window.addEventListener('resize', debouncedCheck, false);
-            window.addEventListener('orientationchange', debouncedCheck, false);
+            window.addEventListener("resize", debouncedCheck, false);
+            window.addEventListener("orientationchange", debouncedCheck, false);
             if (window.MutationObserver) {
                 observer = new MutationObserver(debouncedCheck);
                 observer.observe(document.documentElement, {
@@ -33,16 +33,16 @@
                 unobserveChanges = function () {
                     try {
                         observer.disconnect();
-                        window.removeEventListener('resize', debouncedCheck, false);
-                        window.removeEventListener('orientationchange', debouncedCheck, false);
+                        window.removeEventListener("resize", debouncedCheck, false);
+                        window.removeEventListener("orientationchange", debouncedCheck, false);
                     } catch (ignore) {}
                 };
             } else {
-                document.documentElement.addEventListener('DOMSubtreeModified', debouncedCheck, false);
+                document.documentElement.addEventListener("DOMSubtreeModified", debouncedCheck, false);
                 unobserveChanges = function () {
-                    document.documentElement.removeEventListener('DOMSubtreeModified', debouncedCheck, false);
-                    window.removeEventListener('resize', debouncedCheck, false);
-                    window.removeEventListener('orientationchange', debouncedCheck, false);
+                    document.documentElement.removeEventListener("DOMSubtreeModified", debouncedCheck, false);
+                    window.removeEventListener("resize", debouncedCheck, false);
+                    window.removeEventListener("orientationchange", debouncedCheck, false);
                 };
             }
         };
@@ -55,10 +55,10 @@
                 if (loc.protocol !== undefined) {
                     a = loc;
                 } else {
-                    a = document.createElement('a');
+                    a = document.createElement("a");
                     a.href = loc;
                 }
-                return a.protocol.replace(/:/g, '') + a.host;
+                return a.protocol.replace(/:/g, "") + a.host;
             }
             var Request;
             var origin;
@@ -67,7 +67,7 @@
                 Request = new XMLHttpRequest();
                 origin = getOrigin(location);
                 origin2 = getOrigin(url);
-                if (Request.withCredentials === undefined && origin2 !== '' && origin2 !== origin) {
+                if (Request.withCredentials === undefined && origin2 !== "" && origin2 !== origin) {
                     Request = XDomainRequest || undefined;
                 } else {
                     Request = XMLHttpRequest;
@@ -75,11 +75,11 @@
             }
             return Request;
         };
-        var xlinkNS = 'http://www.w3.org/1999/xlink';
+        var xlinkNS = "http://www.w3.org/1999/xlink";
         checkUseElems = function () {
             var base;
             var bcr;
-            var fallback = ''; // optional fallback URL in case no base path to SVG file was given and no symbol definition was found.
+            var fallback = ""; // optional fallback URL in case no base path to SVG file was given and no symbol definition was found.
             var hash;
             var href;
             var i;
@@ -100,24 +100,27 @@
             function attrUpdateFunc(spec) {
                 return function () {
                     if (cache[spec.base] !== true) {
-                        spec.useEl.setAttributeNS(xlinkNS, 'xlink:href', '#' + spec.hash);
+                        spec.useEl.setAttributeNS(xlinkNS, "xlink:href", "#" + spec.hash);
+                        if (spec.useEl.hasAttribute("href")) {
+                            spec.useEl.setAttribute("href", "#" + spec.hash);
+                        }
                     }
                 };
             }
             function onloadFunc(xhr) {
                 return function () {
                     var body = document.body;
-                    var x = document.createElement('x');
+                    var x = document.createElement("x");
                     var svg;
                     xhr.onload = null;
                     x.innerHTML = xhr.responseText;
-                    svg = x.getElementsByTagName('svg')[0];
+                    svg = x.getElementsByTagName("svg")[0];
                     if (svg) {
-                        svg.setAttribute('aria-hidden', 'true');
-                        svg.style.position = 'absolute';
+                        svg.setAttribute("aria-hidden", "true");
+                        svg.style.position = "absolute";
                         svg.style.width = 0;
                         svg.style.height = 0;
-                        svg.style.overflow = 'hidden';
+                        svg.style.overflow = "hidden";
                         body.insertBefore(svg, body.firstChild);
                     }
                     observeIfDone();
@@ -132,7 +135,7 @@
             }
             unobserveChanges(); // stop watching for changes to DOM
             // find all use elements
-            uses = document.getElementsByTagName('use');
+            uses = document.getElementsByTagName("use");
             for (i = 0; i < uses.length; i += 1) {
                 try {
                     bcr = uses[i].getBoundingClientRect();
@@ -140,9 +143,11 @@
                     // failed to get bounding rectangle of the use element
                     bcr = false;
                 }
-                href = uses[i].getAttributeNS(xlinkNS, 'href');
+                href = uses[i].getAttribute("href")
+                        || uses[i].getAttributeNS(xlinkNS, "href")
+                        || uses[i].getAttribute("xlink:href");
                 if (href && href.split) {
-                    url = href.split('#');
+                    url = href.split("#");
                 } else {
                     url = ["", ""];
                 }
@@ -155,6 +160,9 @@
                     // use the optional fallback URL if there is no reference to an external SVG
                     if (fallback && !base.length && hash && !document.getElementById(hash)) {
                         base = fallback;
+                    }
+                    if (uses[i].hasAttribute("href")) {
+                        uses[i].setAttributeNS(xlinkNS, "xlink:href", href);
                     }
                     if (base.length) {
                         // schedule updating xlink:href
@@ -175,7 +183,7 @@
                                 xhr.onload = onloadFunc(xhr);
                                 xhr.onerror = onErrorTimeout(xhr);
                                 xhr.ontimeout = onErrorTimeout(xhr);
-                                xhr.open('GET', base);
+                                xhr.open("GET", base);
                                 xhr.send();
                                 inProgressCount += 1;
                             }
@@ -194,22 +202,29 @@
                             cache[base] = true;
                         }
                     } else if (base.length && cache[base]) {
-                        attrUpdateFunc({
+                        setTimeout(attrUpdateFunc({
                             useEl: uses[i],
                             base: base,
                             hash: hash
-                        })();
+                        }), 0);
                     }
                 }
             }
-            uses = '';
+            uses = "";
             inProgressCount += 1;
             observeIfDone();
         };
-        // The load event fires when all resources have finished loading, which allows detecting whether SVG use elements are empty.
-        window.addEventListener('load', function winLoad() {
-            window.removeEventListener('load', winLoad, false); // to prevent memory leaks
+        var winLoad;
+        winLoad = function () {
+            window.removeEventListener("load", winLoad, false); // to prevent memory leaks
             tid = setTimeout(checkUseElems, 0);
-        }, false);
+        };
+        if (document.readyState !== "complete") {
+            // The load event fires when all resources have finished loading, which allows detecting whether SVG use elements are empty.
+            window.addEventListener("load", winLoad, false);
+        } else {
+            // No need to add a listener if the document is already loaded, initialize immediately.
+            winLoad();
+        }
     }
 }());

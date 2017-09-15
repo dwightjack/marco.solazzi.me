@@ -1,0 +1,161 @@
+@import "colors";
+@import "mixins";
+
+.root {
+    position: relative;
+    margin-bottom: em(20px);
+    transition-delay: inherit;
+}
+
+.label {
+    display: block;
+    padding: em(1px) em(16px) em(1px) em(8px);
+    white-space: nowrap;
+    transition: color 250ms ease-out;
+
+    [class*="data-set__item"]:hover & {
+        color: $color-light;
+    }
+}
+
+.bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: z-index(behind);
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    font-weight: font-weight(regular);
+    transition: all 200ms ease-out;
+
+    &::before {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: z-index(above);
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $color-link;
+        content: "";
+        transform: scaleY(0);
+        transform-origin: 0 100%;
+        transition: all 200ms ease-out;
+    }
+
+    &::after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: z-index(above);
+        opacity: 0.4;
+        height: 100%;
+        //background-color: rgba($color-link, 0.6);
+        background-image: linear-gradient(
+            to right,
+            rgba($color-link, 0.8) 0,
+            rgba($color-link, 1) 100%
+        );
+        content: "";
+        transform: scaleY(0.2);
+        transform-origin: 0 120%;
+        animation: bar-down 0.5s;
+        animation-fill-mode: forwards;
+
+        @media print {
+            bottom: -5px;
+            border-bottom: 5px solid rgba($color-link, 0.8);
+            background-image: none;
+            transform: none;
+            animation: none;
+        }
+    }
+
+    [class*="data-set__item"]:hover & {
+
+        &::before {
+            opacity: 0.4;
+            transform: scaleY(1);
+        }
+
+        &::after {
+            animation: bar-up 1s;
+            animation-fill-mode: forwards;
+        }
+    }
+}
+
+@keyframes bar-up {
+
+    0% {
+        opacity: 0.4;
+        transform: scaleY(0.2);
+    }
+
+    50% {
+        opacity: 0;
+        transform: translateY(-2px) scaleY(0.2);
+    }
+
+    50.1% {
+        opacity: 0;
+        transform: scale(0, 1);
+    }
+
+    70% {
+        opacity: 0;
+        //0.1 because of a shitty Edge/IE bug :(
+        transform: scale(0.1, 1);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
+}
+
+@keyframes bar-down {
+
+    0% {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+
+    100% {
+        opacity: 0.4;
+        transform: scaleY(0.2);
+    }
+}
+
+@for $value from 1 through 10 {
+
+    .bar--#{($value * 10)}::after {
+        width: percentage($value / 10);
+    }
+
+    .bar--#{($value * 10)} > .value {
+        right: percentage((10 - $value) / 10);
+    }
+}
+
+.value {
+    position: absolute;
+    top: 100%;
+    opacity: 0;
+    height: 0.7em;
+    margin-top: 2px;
+    margin-right: 1px;
+    padding-right: 5px;
+    border-right: 1px solid currentColor;
+    font-size: em(font-size(xs, false));
+    transform: translateY(-0.5em);
+    transition: all 200ms ease-out;
+
+    [class*="data-set__item"]:hover & {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 500ms;
+    }
+}
