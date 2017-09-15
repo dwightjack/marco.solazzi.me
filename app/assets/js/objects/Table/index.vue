@@ -37,6 +37,7 @@
 <script>
 import VueTypes from 'vue-types';
 import omit from 'lodash/omit';
+import has from 'lodash/has';
 
 import FormattedTime from '@/objects/Time';
 import Anchor from '@/objects/Anchor';
@@ -67,12 +68,15 @@ export default {
         tableStyles() {
             return this.styles.map((s) => this.$style[`root--${s}`] || '').join(' ');
         },
+
         captionLabel() {
-            return this.data[this.caption];
+            return this.caption && has(this.data, this.caption) ? this.data[this.caption] : '';
         },
+
         hasBrackets() {
             return this.styles.indexOf('brackets') !== -1;
         },
+
         rows() {
             const obj = omit(this.data, [this.caption, 'id']);
             return Object.keys(obj).reduce((o, key) => {
@@ -98,10 +102,12 @@ export default {
                 return '';
             }
         },
+
         isDate(heading) {
             return heading === 'to' || heading === 'from' || heading === 'date';
         }
     }
 };
 </script>
+
 <style lang="scss" module src="./table.scss" />

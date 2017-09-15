@@ -1,8 +1,9 @@
 <template>
     <header>
         <h2 :class="$style.root">
-            <strong v-if="prefix" :class="$style.prefix">{{ prefix }}</strong>
-            <span :class="$style.text">{{ prefix ? `.${title}` : title }}</span>
+            <strong v-if="prefix" :class="$style.prefix">
+                {{ prefix }}
+            </strong><span :class="$style.text">{{ prefix ? `.${title}` : title }}</span>
         </h2>
         <h3 v-if="subtitle" :class="$style.rootSub">{{ subtitle }}</h3>
     </header>
@@ -19,4 +20,5 @@ export default {
     }
 };
 </script>
+
 <style lang="scss" module src="./title.scss" />

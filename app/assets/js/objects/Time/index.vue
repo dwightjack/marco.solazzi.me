@@ -1,47 +1,52 @@
 <template>
-    <time :class="$style.root" :datetime="attr">
+    <time :class="$style.root" :datetime="datetime.toISOString()">
         <span>{{ text }}</span>
     </time>
 </template>
 
 <script>
 
+import VueTypes from 'vue-types';
+
+export const DATE_PARSE_REGEXP = /^([0-9]{4})-([0-9]{2})-([0-9]{2})$/;
+export const MONTHS = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+];
+
 export default {
 
-    MONTHS: {
-        m01: 'January',
-        m02: 'February',
-        m03: 'March',
-        m04: 'April',
-        m05: 'May',
-        m06: 'June',
-        m07: 'July',
-        m08: 'August',
-        m09: 'September',
-        m10: 'October',
-        m11: 'November',
-        m12: 'December'
+    props: {
+        value: VueTypes.string
     },
 
-    DATE_PARSE_REGEXP: /^([0-9]{4})-([0-9]{2})-([0-9]{2})$/,
-
-    props: ['value'],
-
     computed: {
-        matches() {
-            return typeof this.value === 'string' ? this.value.match(this.$options.DATE_PARSE_REGEXP) : null;
+
+        datetime() {
+            return new Date(DATE_PARSE_REGEXP.test(this.value) ? this.value : null);
         },
-        attr() {
-            return this.matches ? this.value : Date.now();
+
+        month() {
+            return MONTHS[this.datetime.getMonth()];
         },
+
         text() {
-            return this.matches ? `${this.$options.MONTHS[`m${this.matches[2]}`]} ${this.matches[1]}` : '-';
+            return DATE_PARSE_REGEXP.test(this.value) ? `${this.month} ${this.datetime.getFullYear()}` : '-';
         }
     }
 
 };
 </script>
-
 
 <style lang="scss" module>
 @import "mixins";

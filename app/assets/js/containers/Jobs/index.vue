@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import jobs from '@/database/jobs.json';
+import { mapState } from 'vuex';
 import { NAV_PATH_JOBS } from '@/shared/constants';
 import Page from '@/objects/Page';
 import PageSection from '@/components/Section';
@@ -24,11 +24,15 @@ import SummaryTable from '@/objects/Table';
 export default {
     data() {
         return {
-            pageName: NAV_PATH_JOBS,
-            current: jobs[0],
-            prev: jobs.slice(1)
+            pageName: NAV_PATH_JOBS
         };
     },
+
+    computed: mapState({
+        current: (state) => state.jobs[0],
+        prev: (state) => state.jobs.slice(1)
+    }),
+
     components: {
         Page,
         PageSection,
