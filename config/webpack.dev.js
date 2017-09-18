@@ -16,6 +16,9 @@ module.exports = merge.smart(webpackConf, {
     cache: true,
 
     plugins: [
+        new webpack.NamedModulesPlugin(),
+        new webpack.NamedChunksPlugin(),
+
         new HtmlWebpackPlugin({
             template: paths.toPath('src.root/templates') + '/index.ejs',
             inject: true,

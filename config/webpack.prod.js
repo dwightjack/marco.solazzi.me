@@ -21,6 +21,8 @@ module.exports = merge.smart(webpackConf, {
     },
 
     plugins: [
+        new webpack.HashedModuleIdsPlugin(),
+
         new webpack.optimize.UglifyJsPlugin({
             sourceMap: true,
             compressor: {

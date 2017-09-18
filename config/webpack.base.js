@@ -48,9 +48,6 @@ module.exports = {
             }
         }),
 
-        new webpack.NamedModulesPlugin(),
-        new webpack.NamedChunksPlugin(),
-
         // @see https://github.com/vuejs-templates/webpack/blob/master/template/build/webpack.prod.conf.js#L67
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendors',
