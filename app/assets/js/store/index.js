@@ -9,11 +9,15 @@ import works from '@/database/portfolio.works.json';
 import talks from '@/database/portfolio.talks.json';
 import socials from '@/database/social.json';
 
+import * as mutations from './mutations';
+
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
 
     strict: process.env.NODE_ENV !== 'production',
+
+    mutations,
 
     state: {
         jobs,
@@ -25,7 +29,12 @@ const store = new Vuex.Store({
             _byId: ['tech', 'team'],
             tech: { label: 'Technological stack', list: tech },
             team: { label: 'Teamwork skills and tools', list: team }
-        }
+        },
+
+        activeNav: false,
+        activeGroup: 'intro',
+        route: '',
+        pagelistScroll: 0
     }
 });
 
