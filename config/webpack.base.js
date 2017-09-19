@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const paths = require('./paths');
 
 const PRODUCTION = process.env.NODE_ENV === 'production';
@@ -47,6 +47,11 @@ module.exports = {
                 NODE_ENV: JSON.stringify(process.env.NODE_ENV)
             }
         }),
+
+        new CopyWebpackPlugin([{
+            from: paths.toAbsPath('src.assets/favicons/'),
+            to: paths.toAbsPath('dist.root')
+        }]),
 
         // @see https://github.com/vuejs-templates/webpack/blob/master/template/build/webpack.prod.conf.js#L67
         new webpack.optimize.CommonsChunkPlugin({
