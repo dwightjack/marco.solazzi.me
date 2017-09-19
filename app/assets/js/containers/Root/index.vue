@@ -1,11 +1,11 @@
 <template>
-    <div>
+    <Swipe onSwipe="onSwipe">
         <Jobs />
         <Education />
         <Skills />
         <Portfolio />
         <Contacts />
-    </div>
+    </Swipe>
 </template>
 
 <script>
@@ -15,6 +15,7 @@ import Education from '@/containers/Education';
 import Skills from '@/containers/Skills';
 import Portfolio from '@/containers/Portfolio';
 import Contacts from '@/containers/Contacts';
+import Swipe from '@/components/Swipe';
 
 export default {
     components: {
@@ -22,7 +23,30 @@ export default {
         Skills,
         Education,
         Portfolio,
-        Contacts
+        Contacts,
+        Swipe
+    },
+
+    methods: {
+        onSwipe(direction) {
+            console.log(direction);
+            // const { activeNav, activeGroup, pagelistScroll, breakpoint, router } = this.props;
+
+
+            // if (!Modernizr.touchevents || activeGroup === 'intro') {
+            //     return;
+            // }
+
+            // if (activeNav || breakpoint === 'mobile' || breakpoint === 'tablet') {
+            //     return;
+            // }
+
+            // if (direction === 'down' && activeGroup === 'cover') {
+            //     router.go(NAV_PATH_JOBS);
+            // } else if (direction === 'up' && activeGroup === 'pagelist' && pagelistScroll <= 0) {
+            //     router.go(NAV_PATH_HOME);
+            // }
+        }
     }
 };
 
