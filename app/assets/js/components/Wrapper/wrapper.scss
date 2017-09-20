@@ -1,0 +1,39 @@
+@import "globals";
+@import "colors";
+@import "sass-mq/mq";
+
+.root {
+    position: relative;
+    z-index: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 100vh;
+
+    @include mq($until: tablet-landscape) {
+        -webkit-overflow-scrolling: touch;
+
+        &::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: darken($color-link, 10%);
+        }
+
+        &::-webkit-scrollbar-track {
+            background: $color-link;
+        }
+    }
+
+    @include mq(tablet-landscape) {
+        overflow-x: hidden;
+        overflow-y: hidden;
+        transition: all 0.2s ease;
+    }
+
+    @include mq($media-type: print) {
+        overflow-x: visible !important;
+        overflow-y: visible !important;
+        height: auto;
+    }
+}

@@ -1,5 +1,5 @@
 <template>
-    <div @touchstart="onTouchStart" touchend="this.onTouchEnd">
+    <div @touchstart="onTouchStart" @touchend="onTouchEnd">
         <slot />
     </div>
 </template>

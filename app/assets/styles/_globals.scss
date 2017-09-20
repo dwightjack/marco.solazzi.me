@@ -25,10 +25,10 @@ $page-gutter: 70px;
 
 /* stylelint-disable property-no-unknown */
 :export {
-    mobile: map-get($mq-breakpoints, mobile);
-    tablet: map-get($mq-breakpoints, tablet);
-    tablet-landscape: map-get($mq-breakpoints, tablet-landscape);
-    desktop: map-get($mq-breakpoints, desktop);
-    wide: map-get($mq-breakpoints, wide);
+    mq-mobile: strip-units(map-get($mq-breakpoints, mobile));
+    mq-tablet: strip-units(map-get($mq-breakpoints, tablet));
+    mq-tablet-landscape: strip-units(map-get($mq-breakpoints, tablet-landscape));
+    mq-desktop: strip-units(map-get($mq-breakpoints, desktop));
+    mq-wide: strip-units(map-get($mq-breakpoints, wide));
 }
 /* stylelint-enable property-no-unknown */

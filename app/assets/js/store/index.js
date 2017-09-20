@@ -9,7 +9,13 @@ import works from '@/database/portfolio.works.json';
 import talks from '@/database/portfolio.talks.json';
 import socials from '@/database/social.json';
 
-import * as mutations from './mutations';
+import {
+    GROUP_INTRO,
+    NAV_PATH_JOBS
+} from '@/shared/constants';
+
+import mutations from './mutations';
+import actions from './actions';
 
 Vue.use(Vuex);
 
@@ -18,6 +24,7 @@ const store = new Vuex.Store({
     strict: process.env.NODE_ENV !== 'production',
 
     mutations,
+    actions,
 
     state: {
         jobs,
@@ -32,8 +39,8 @@ const store = new Vuex.Store({
         },
 
         activeNav: false,
-        activeGroup: 'intro',
-        route: '',
+        activeGroup: 'pagelist',
+        route: NAV_PATH_JOBS,
         pagelistScroll: 0
     }
 });

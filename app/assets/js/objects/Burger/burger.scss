@@ -1,0 +1,108 @@
+@import "colors";
+@import "mixins";
+
+$burger-size: 24px;
+$burger-height: 17px;
+$burger-bar-height: 3px;
+$burger-bar-spacing: 4px;
+
+%o-burger-bar {
+    position: absolute;
+    right: 0;
+    left: 0;
+    display: block;
+    height: $burger-bar-height;
+    background-color: currentColor;
+    color: lighten($color-link, 30);
+    content: "";
+    transform-origin: 100% 0;
+    transition: all 0.2s ease-out;
+}
+
+.root {
+    display: block;
+    width: $burger-size;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    background-image: none;
+    cursor: pointer;
+
+    &::before {
+        @extend %o-burger-bar;
+        top: 0;
+    }
+
+    &::after {
+        @extend %o-burger-bar;
+        bottom: 0;
+        transform: scaleX(0.7);
+    }
+}
+
+.label {
+    display: block;
+    height: $burger-height;
+    font-size: 0;
+
+    &::after {
+        @extend %o-burger-bar;
+        top: $burger-bar-spacing + $burger-bar-height;
+        transform: scaleX(0.85);
+    }
+}
+
+
+.root:focus,
+.root:active {
+    outline: 0;
+}
+
+[data-whatinput="keyboard"] .root:focus,
+:global(.no-touchevents) .root.is-active,
+:global(.no-touchevents) .root:hover {
+
+    &::before {
+        transform: scaleX(1);
+    }
+
+    &::after {
+        transform: scaleX(1);
+    }
+
+    .label::after {
+        transform: scaleX(1);
+    }
+}
+
+[class*="is-active"] > .root.is-active {
+    opacity: 0.8;
+    transition-delay: 0s;
+
+    &::before,
+    &::after,
+    .label::after {
+        color: $color-light;
+    }
+
+    :global(.touchevents) &,
+    &:hover {
+        opacity: 1;
+    }
+
+    &::before {
+        transform: translate(0, 17px) rotate(45deg);
+        transition: color 0.2s ease-out 0.6s, transform 0.2s ease-out 0.6s;
+    }
+
+    &::after {
+        transform: translate(-3px, -14px) rotate(-45deg);
+        transition: color 0.2s ease-out 0.6s, transform 0.2s ease-out 0.6s;
+    }
+
+    .label::after {
+        opacity: 0;
+        transition: color 0.2s ease-out 0.6s, opacity 0.2s ease-out 0.6s;
+    }
+}

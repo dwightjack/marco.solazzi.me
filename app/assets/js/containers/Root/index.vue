@@ -1,5 +1,6 @@
 <template>
-    <Swipe onSwipe="onSwipe">
+    <Swipe :onSwipe="onSwipe">
+        <Navigation :paths="routes" />
         <Jobs />
         <Education />
         <Skills />
@@ -15,16 +16,26 @@ import Education from '@/containers/Education';
 import Skills from '@/containers/Skills';
 import Portfolio from '@/containers/Portfolio';
 import Contacts from '@/containers/Contacts';
+import Navigation from '@/containers/Navigation';
 import Swipe from '@/components/Swipe';
+import routes from '@/shared/routes';
 
 export default {
+
+    data() {
+        return {
+            routes
+        };
+    },
+
     components: {
         Jobs,
         Skills,
         Education,
         Portfolio,
         Contacts,
-        Swipe
+        Swipe,
+        Navigation
     },
 
     methods: {

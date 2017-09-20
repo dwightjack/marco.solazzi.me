@@ -13,3 +13,10 @@ export const NAV_PATH_PORTFOLIO = '#!portfolio';
 export const APP_ACTIVE_NAV_MUTATE = 'APP_ACTIVE_NAV_MUTATE';
 export const APP_ACTIVE_GROUP_MUTATE = 'APP_ACTIVE_GROUP_MUTATE';
 export const APP_ROUTE_MUTATE = 'APP_ROUTE_MUTATE';
+
+export const APP_ACTIVE_NAV_ACTION = 'APP_ACTIVE_NAV_ACTION';
+export const APP_NAVIGATE_ACTION = 'APP_NAVIGATE_ACTION';
+
+export const GROUP_INTRO = 'intro';
+export const GROUP_COVER = 'cover';
+export const GROUP_PAGELIST = 'pagelist';

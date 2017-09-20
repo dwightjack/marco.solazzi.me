@@ -21,3 +21,7 @@ export const raf = global.requestAnimationFrame || function requestAnimationFram
 export const caf = global.cancelAnimationFrame || function cancelAnimationFrame(id) {
     return clearTimeout(id);
 };
+
+export const createAction = (mutation) => ({ commit }, payload) => commit(mutation, payload);
+
+export const toInteger = (str) => parseInt(str, 10);
