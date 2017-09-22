@@ -916,7 +916,7 @@ babel-register@^6.26.0:
     mkdirp "^0.5.1"
     source-map-support "^0.4.15"
 
-babel-runtime@6.26.0, babel-runtime@^6.18.0, babel-runtime@^6.22.0, babel-runtime@^6.26.0:
+babel-runtime@6.26.0, babel-runtime@^6.18.0, babel-runtime@^6.22.0, babel-runtime@^6.26.0, babel-runtime@^6.9.2:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
   dependencies:
@@ -6123,6 +6123,12 @@ slash@^1.0.0:
 slice-ansi@0.0.4:
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/slice-ansi/-/slice-ansi-0.0.4.tgz#edbf8903f66f7ce2f8eafd6ceed65e264c831b35"
+
+smooth-scrollbar@^7.4.1:
+  version "7.4.1"
+  resolved "https://registry.yarnpkg.com/smooth-scrollbar/-/smooth-scrollbar-7.4.1.tgz#49de0ec283042362d082aab7e2fad83f341c4e73"
+  dependencies:
+    babel-runtime "^6.9.2"
 
 sntp@1.x.x:
   version "1.0.9"

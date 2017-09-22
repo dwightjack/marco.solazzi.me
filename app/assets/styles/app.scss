@@ -1,7 +1,6 @@
 //base styles and mixins
-
 :global {
-    @import "normalize.css/normalize";
+
     @import "base";
 
     //utility come last so they can overwrite stuff...

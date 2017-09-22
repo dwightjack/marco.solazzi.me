@@ -9,6 +9,11 @@ import Vue from 'vue';
 import Root from '@/containers/Root';
 import store from '@/store';
 
+import mq from '@/shared/mq';
+import breakpoints from 'styles/_mq.scss';
+
+Vue.use(mq, { breakpoints });
+
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */

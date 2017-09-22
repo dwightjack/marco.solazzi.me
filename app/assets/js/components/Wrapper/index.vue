@@ -1,6 +1,7 @@
 <template>
     <main role="main" :class="$style.root" @scroll="onScroll">
         <slot />
+        <slot name="pagelist" />
     </main>
 </template>
 
@@ -23,8 +24,9 @@ export default {
 
         pages() {
             const windowHeightOffset = parseInt(window.innerHeight * 0.25, 10);
+            const { pagelist } = this.$slots;
 
-            return this.$children.map((vm) => ({
+            return pagelist[0].$children.map((vm) => ({
                 offsetTop: vm.$el.offsetTop - windowHeightOffset,
                 route: vm.$el.pageName,
                 el: vm.$el
@@ -42,8 +44,7 @@ export default {
 
     methods: {
         onScroll(e) {
-            const { breakpoint } = this.props;
-            if (breakpoint === 'tablet' || breakpoint === 'mobile') {
+            if (this.$mq.matches('tablet')) {
                 const { scrollTop } = e.target;
                 this.pages.some(({ offsetTop, route }) => {
                     if (offsetTop < scrollTop) {

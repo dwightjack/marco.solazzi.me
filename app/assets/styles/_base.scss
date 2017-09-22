@@ -65,9 +65,11 @@ html {
 }
 
 body {
-    //overflow: hidden;
+    overflow: hidden;
     min-width: 320px;
     height: 100vh;
+    margin: 0;
+    padding: 0;
     background: $color-bg;
     color: $color-text;
     -moz-osx-font-smoothing: grayscale;
@@ -328,9 +330,9 @@ abbr[title] {
    ========================================================================== */
 
 [data-scrollbar].sticky .scrollbar-track {
-    background: $color-link;
+    background: $color-link !important;
 }
 
 [data-scrollbar] .scrollbar-thumb {
-    background: darken($color-link, 10%);
+    background: darken($color-link, 10%) !important;
 }

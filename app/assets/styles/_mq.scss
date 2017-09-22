@@ -1,0 +1,16 @@
+
+$mq-breakpoints: (
+    mobile: 480px,
+    tablet: 768px,
+    tablet-landscape: 1024px,
+    desktop: 1280px,
+    wide: 1600px
+);
+
+/* stylelint-disable property-no-unknown */
+:export {
+    @each $key, $value in $mq-breakpoints {
+        #{$key}: $value / ($value * 0 + 1);
+    }
+}
+/* stylelint-enable property-no-unknown */

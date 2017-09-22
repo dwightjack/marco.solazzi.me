@@ -1,13 +1,8 @@
 //global configs
-$rem-to-px-fallback: false !default;
 
-$mq-breakpoints: (
-    mobile: 480px,
-    tablet: 768px,
-    tablet-landscape: 1024px,
-    desktop: 1280px,
-    wide: 1600px
-);
+@import "mq";
+
+$rem-to-px-fallback: false !default;
 
 $layers: (
     behind: -1,
@@ -22,13 +17,3 @@ $viewport-width: 1280px;
 $viewport-height: 720px;
 
 $page-gutter: 70px;
-
-/* stylelint-disable property-no-unknown */
-:export {
-    mq-mobile: strip-units(map-get($mq-breakpoints, mobile));
-    mq-tablet: strip-units(map-get($mq-breakpoints, tablet));
-    mq-tablet-landscape: strip-units(map-get($mq-breakpoints, tablet-landscape));
-    mq-desktop: strip-units(map-get($mq-breakpoints, desktop));
-    mq-wide: strip-units(map-get($mq-breakpoints, wide));
-}
-/* stylelint-enable property-no-unknown */

@@ -1,11 +1,15 @@
 <template>
     <Swipe :onSwipe="onSwipe">
         <Navigation :paths="routes" />
-        <Jobs />
-        <Education />
-        <Skills />
-        <Portfolio />
-        <Contacts />
+        <Wrapper>
+            <PageList slot="pagelist">
+                <Jobs />
+                <Education />
+                <Skills />
+                <Portfolio />
+                <Contacts />
+            </PageList>
+        </Wrapper>
     </Swipe>
 </template>
 
@@ -18,6 +22,8 @@ import Portfolio from '@/containers/Portfolio';
 import Contacts from '@/containers/Contacts';
 import Navigation from '@/containers/Navigation';
 import Swipe from '@/components/Swipe';
+import Wrapper from '@/components/Wrapper';
+import PageList from '@/components/PageList';
 import routes from '@/shared/routes';
 
 export default {
@@ -35,7 +41,9 @@ export default {
         Portfolio,
         Contacts,
         Swipe,
-        Navigation
+        Navigation,
+        Wrapper,
+        PageList
     },
 
     methods: {
