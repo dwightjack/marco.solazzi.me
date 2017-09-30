@@ -10,7 +10,7 @@ import talks from '@/database/portfolio.talks.json';
 import socials from '@/database/social.json';
 
 import {
-    GROUP_INTRO,
+    GROUP_INTRO, //eslint-disable-line no-unused-vars
     NAV_PATH_JOBS
 } from '@/shared/constants';
 
@@ -39,7 +39,7 @@ const store = new Vuex.Store({
         },
 
         activeNav: false,
-        activeGroup: 'pagelist',
+        activeGroup: 'pagelist', //GROUP_INTRO
         route: NAV_PATH_JOBS,
         pagelistScroll: 0
     }

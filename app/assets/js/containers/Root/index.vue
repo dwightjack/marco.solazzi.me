@@ -48,7 +48,7 @@ export default {
 
     methods: {
         onSwipe(direction) {
-            console.log(direction);
+            console.log(direction); //eslint-disable-line no-console
             // const { activeNav, activeGroup, pagelistScroll, breakpoint, router } = this.props;
 
 
