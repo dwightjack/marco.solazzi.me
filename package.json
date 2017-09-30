@@ -27,19 +27,19 @@
     "lint": "npm run eslint && npm run stylelint"
   },
   "dependencies": {
-    "animejs": "^2.0.2",
+    "animejs": "2.2.0",
     "babel-polyfill": "6.26.0",
     "babel-runtime": "6.26.0",
     "lodash": "^4.17.4",
     "normalize.css": "7.0.0",
     "sass-mq": "3.3.2",
     "smooth-scrollbar": "^7.4.1",
-    "vue": "2.4.3",
+    "vue": "2.4.4",
     "vue-media": "^1.1.1",
     "vue-router": "2.7.0",
     "vue-types": "^1.0.2",
-    "vuex": "^2.4.0",
-    "what-input": "^5.0.1"
+    "vuex": "2.4.1",
+    "what-input": "5.0.2"
   },
   "devDependencies": {
     "autoprefixer": "7.1.4",
@@ -90,9 +90,9 @@
     "stylelint-order": "0.6.0",
     "stylelint-processor-html": "1.0.0",
     "stylelint-scss": "2.1.0",
-    "vue-loader": "13.0.4",
-    "vue-style-loader": "3.0.2",
-    "vue-template-compiler": "2.4.3",
+    "vue-loader": "13.0.5",
+    "vue-style-loader": "3.0.3",
+    "vue-template-compiler": "2.4.4",
     "webpack": "3.5.6",
     "webpack-dev-server": "2.8.1",
     "webpack-merge": "4.1.0"
