@@ -86,7 +86,8 @@ $nav-total-timing-in: max(
     top: 0;
     left: 0;
     z-index: z-index(above);
-    display: flex;
+    display: flex !important;
+    visibility: hidden;
     overflow: hidden;
     flex-direction: column;
     width: 100%;
@@ -98,10 +99,14 @@ $nav-total-timing-in: max(
     align-items: stretch;
     background-color: transparent;
     text-align: center;
+    pointer-events: none;
+    transform: translateX(100%);
     transform-origin: 0 50%;
     //animation: $nav-anim-out ease-out menu-leave;
     //animation-fill-mode: forwards;
     //transition: opacity $nav-anim-out ease-out;
+
+
 
     @include mq(tablet-landscape) {
         padding: 10vh 0 0;
@@ -145,8 +150,8 @@ $nav-total-timing-in: max(
     opacity: 0;
     transform: translateY(0.5em);
     transition: all 150ms ease-out;
-    transition-delay: 200ms;
-    transition-property: opacity, transform;
+    transition-delay: 1200ms;
+    //transition-property: opacity, transform;
 }
 
 .route {
@@ -258,6 +263,8 @@ $nav-total-timing-in: max(
     }
 
     .navigation-leave-active {
+        visibility: visible;
+        pointer-events: auto;
         transition: all ease-out $nav-anim-out;
         transition-property: transform, opacity;
     }
@@ -267,8 +274,9 @@ $nav-total-timing-in: max(
 
     .menu {
         //opacity: 1;
-        //visibility: visible;
-        //transform: translateX(100%);
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateX(0);
         //animation: $nav-timing-in ease-out menu-enter 0.1s;
         //animation-fill-mode: forwards;
         //transition: none;

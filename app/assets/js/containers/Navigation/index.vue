@@ -6,16 +6,16 @@
     >
         <Burger :class="$style.burger" :onClick="toggleNav" :active="activeNav" controls="nav-menu" />
         <transition name="navigation" :duration="{ enter: totalTimingIn, leave: navAnimOut }">
-        <ul v-show="activeNav" :class="$style.menu" id="nav-menu">
-            <li
-                v-for="(path, index) in paths"
-                :key="path.path"
-                :class="[$style.item, { [$style.isCurrent]: (route === path.path)}]"
-                :style="navItemDelay(index)"
-            >
-                <a :href="path.path" @click.prevent="goTo(path)" :class="$style.route" :tabindex="tabIndex">{{ path.label }}</a>
-            </li>
-        </ul>
+            <ul v-show="activeNav" :class="$style.menu" id="nav-menu">
+                <li
+                    v-for="(path, index) in paths"
+                    :key="path.path"
+                    :class="[$style.item, { [$style.isCurrent]: (route === path.path)}]"
+                    :style="navItemDelay(index)"
+                >
+                    <a :href="path.path" @click.prevent="goTo(path)" :class="$style.route" :tabindex="tabIndex">{{ path.label }}</a>
+                </li>
+            </ul>
         </transition>
         <footer v-if="navSocials" :class="$style.footer">
             <Anchor
@@ -109,7 +109,7 @@ export default {
         },
 
         navItemDelay(index) {
-            if (!this.active) {
+            if (!this.activeNav) {
                 return { transitionDelay: '0ms' };
             }
 
