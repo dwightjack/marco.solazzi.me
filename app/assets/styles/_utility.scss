@@ -22,30 +22,33 @@
    ```
    ========================================================================== */
 
-.u-text--left {
-    text-align: left !important;
-}
+:global {
 
-.u-text--right {
-    text-align: right !important;
-}
+    .u-text--left {
+        text-align: left !important;
+    }
 
-.u-text--center {
-    text-align: center !important;
-}
+    .u-text--right {
+        text-align: right !important;
+    }
 
-//@see bootstrap
-.u-text--hide {
-    border: 0;
-    background-color: transparent;
-    color: transparent;
-    font: 0 / 0 a;
-    font-size: 0.1px;
-    text-shadow: none;
-}
+    .u-text--center {
+        text-align: center !important;
+    }
 
-.u-text--ellipsis {
-    @include text-ellipsis;
+    //@see bootstrap
+    .u-text--hide {
+        border: 0;
+        background-color: transparent;
+        color: transparent;
+        font: 0 / 0 a;
+        font-size: 0.1px;
+        text-shadow: none;
+    }
+
+    .u-text--ellipsis {
+        @include text-ellipsis;
+    }
 }
 
 /* ==========================================================================
@@ -72,43 +75,46 @@
    ========================================================================== */
 
 
-.u-clearfix {
-    @include clearfix;
-}
+:global {
 
-.u-clear {
-    clear: both !important;
-}
+    .u-clearfix {
+        @include clearfix;
+    }
 
-.u-centered {
-    float: none !important;
-    margin-right: auto !important;
-    margin-left: auto !important;
-}
+    .u-clear {
+        clear: both !important;
+    }
 
-.u-float,
-.u-float--left {
-    float: left !important;
-}
+    .u-centered {
+        float: none !important;
+        margin-right: auto !important;
+        margin-left: auto !important;
+    }
 
-.u-float--right {
-    float: right !important;
-}
+    .u-float,
+    .u-float--left {
+        float: left !important;
+    }
 
-//inline children
-.u-inline > * {
-    display: inline-block !important;
-}
+    .u-float--right {
+        float: right !important;
+    }
 
-// vertically stacked
-.u-stacked > * {
-    display: block !important;
-}
+    //inline children
+    .u-inline > * {
+        display: inline-block !important;
+    }
 
-// inline
-.u-inline--baseline > * {
-    display: inline-block !important;
-    vertical-align: baseline !important;
+    // vertically stacked
+    .u-stacked > * {
+        display: block !important;
+    }
+
+    // inline
+    .u-inline--baseline > * {
+        display: inline-block !important;
+        vertical-align: baseline !important;
+    }
 }
 
 /* ==========================================================================
@@ -129,53 +135,54 @@
    ```
    ========================================================================== */
 
-@each $font-size-key, $font-size-value in $font-sizes {
+:global {
 
-    .u-type--#{$font-size-key} {
-        font-size: rem($font-size-value) !important;
+    @each $font-size-key, $font-size-value in $font-sizes {
+
+        .u-type--#{$font-size-key} {
+            font-size: rem($font-size-value) !important;
+        }
+    }
+
+    .u-type--default {
+        font-size: rem($font-size-default) !important;
+    }
+
+    .u-type--larger {
+        font-size: 130% !important;
+    }
+
+    .u-type--smaller {
+        font-size: 85% !important;
+    }
+
+    @each $font-weight-key, $font-weight-value in $font-weights {
+
+        .u-weight--#{$font-weight-key} {
+            font-weight: $font-weight-value !important;
+        }
+    }
+
+    .u-type--mark {
+        position: relative;
+        display: inline-block;
+        padding: 0 0.2em 0.1em;
+        background-color: transparent;
+        color: $color-light;
+        line-height: 1;
+
+        &::after {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: z-index(behind);
+            background-color: $color-link;
+            content: "";
+        }
     }
 }
-
-.u-type--default {
-    font-size: rem($font-size-default) !important;
-}
-
-.u-type--larger {
-    font-size: 130% !important;
-}
-
-.u-type--smaller {
-    font-size: 85% !important;
-}
-
-@each $font-weight-key, $font-weight-value in $font-weights {
-
-    .u-weight--#{$font-weight-key} {
-        font-weight: $font-weight-value !important;
-    }
-}
-
-.u-type--mark {
-    position: relative;
-    display: inline-block;
-    padding: 0 0.2em 0.1em;
-    background-color: transparent;
-    color: $color-light;
-    line-height: 1;
-
-    &::after {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: z-index(behind);
-        background-color: $color-link;
-        content: "";
-    }
-}
-
-
 
 /* ==========================================================================
 
@@ -188,64 +195,66 @@
    ```
    ========================================================================== */
 
+:global {
 
-.u-hidden,
-.js .is-jshidden {
-    display: none !important;
-    visibility: hidden !important;
-}
-
-.u-visuallyhidden {
-    @include visually-hidden;
-
-    .focusable {
-
-        &:active,
-        &:focus {
-            position: static;
-            overflow: visible;
-            clip: auto;
-            width: auto;
-            height: auto;
-            margin: 0;
-        }
+    .u-hidden,
+    .js .is-jshidden {
+        display: none !important;
+        visibility: hidden !important;
     }
-}
 
-//also as global state
-.u-invisible {
-    visibility: hidden !important;
-}
+    .u-visuallyhidden {
+        @include visually-hidden;
 
-@each $mq-key, $mq-value in $mq-breakpoints {
+        .focusable {
 
-    @include mq($mq-key) {
-
-        .u-hidden--from-#{$mq-key} {
-            display: none !important;
-            visibility: hidden !important;
+            &:active,
+            &:focus {
+                position: static;
+                overflow: visible;
+                clip: auto;
+                width: auto;
+                height: auto;
+                margin: 0;
+            }
         }
     }
 
-    @include mq($until: $mq-key) {
+    //also as global state
+    .u-invisible {
+        visibility: hidden !important;
+    }
 
-        .u-hidden--until-#{$mq-key} {
-            display: none !important;
-            visibility: hidden !important;
+    @each $mq-key, $mq-value in $mq-breakpoints {
+
+        @include mq($mq-key) {
+
+            .u-hidden--from-#{$mq-key} {
+                display: none !important;
+                visibility: hidden !important;
+            }
+        }
+
+        @include mq($until: $mq-key) {
+
+            .u-hidden--until-#{$mq-key} {
+                display: none !important;
+                visibility: hidden !important;
+            }
         }
     }
-}
 
-@media not print {
+    @media not print {
 
-    .u-only-print {
-        display: none;
+        .u-only-print {
+            display: none;
+        }
     }
-}
 
-@media print {
+    @media print {
 
-    .u-only-screen {
-        display: none;
+        .u-only-screen {
+            display: none;
+        }
     }
 }

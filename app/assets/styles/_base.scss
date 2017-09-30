@@ -181,7 +181,7 @@ button {
 @each $font-head-num, $font-head-size in $font-sizes-headings {
 
     h#{$font-head-num},
-    .h#{$font-head-num} {
+    :global(.h#{$font-head-num}) {
         font-size: font-size($font-head-size);
         line-height: 1.2;
     }
@@ -195,7 +195,7 @@ p {
 abbr[title] {
     border-bottom: 0;
 
-    .no-touchevents & {
+    :global(.no-touchevents) & {
         border-bottom: 1px dotted currentColor;
         text-decoration: none;
 
@@ -205,8 +205,8 @@ abbr[title] {
     }
 }
 
-.touchevents a.u-link--mark,
-.touchevents a:not([class]) {
+:global(.touchevents a.u-link--mark),
+:global(.touchevents) a:not([class]) {
     background-image:
         linear-gradient(
             to top,
@@ -219,8 +219,8 @@ abbr[title] {
     text-decoration: none;
 }
 
-.no-touchevents a.u-link--mark,
-.no-touchevents a:not([class]) {
+:global(.no-touchevents a.u-link--mark),
+:global(.no-touchevents a:not([class])) {
     position: relative;
     display: inline-block;
     padding-right: 0.22em;
@@ -287,52 +287,15 @@ abbr[title] {
 }
 
 /* ==========================================================================
-   ## CSS to JS Breakpoint Bridge
-   ========================================================================== */
-
-@if $mq-responsive {
-
-    body::after,
-    body::before {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: z-index(behind) - 2;
-        display: block;
-        visibility: hidden;
-        overflow: hidden;
-        width: 1px;
-        height: 1px;
-    }
-
-    body::after {
-        content: "mobile";
-        @each $mq-key, $mq-value in $mq-breakpoints {
-            @include mq($mq-key) {
-                content: "#{$mq-key}";
-            }
-        }
-    }
-
-
-    body::before {
-        content: "/#{map-to-JSON($mq-breakpoints)}/";
-    }
-
-    //fallback
-    head {
-        font-family: "/#{map-to-JSON($mq-breakpoints)}/";
-    }
-}
-
-/* ==========================================================================
    ## Layout settings
    ========================================================================== */
+:global {
 
-[data-scrollbar].sticky .scrollbar-track {
-    background: $color-link !important;
-}
+    [data-scrollbar].sticky .scrollbar-track {
+        background: $color-link !important;
+    }
 
-[data-scrollbar] .scrollbar-thumb {
-    background: darken($color-link, 10%) !important;
+    [data-scrollbar] .scrollbar-thumb {
+        background: darken($color-link, 10%) !important;
+    }
 }
