@@ -1,7 +1,7 @@
 <template>
     <section :class="[$style.root, { [$style.isActive]: active }]">
         <SmoothScrollbar
-            @scroll="test"
+            @scroll="onScroll"
             tag="div"
             :options="{ alwaysShowTracks: true }"
             :active="$mq.matches('tabletLandscape')"
@@ -17,6 +17,7 @@
 <script>
 import VueTypes from 'vue-types';
 import SmoothScrollbar from '@/components/SmoothScrollbar';
+import { APP_PAGESCROLL_ACTION } from '@/shared/constants';
 
 export default {
     props: {
@@ -26,8 +27,9 @@ export default {
         SmoothScrollbar
     },
     methods: {
-        test(status) {
-            console.log(status);
+        onScroll({ offset }) {
+            const { y = 0 } = offset;
+            this.$store.dispatch(APP_PAGESCROLL_ACTION, y);
         }
     }
 };

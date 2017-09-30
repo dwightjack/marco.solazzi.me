@@ -1,7 +1,8 @@
 import {
     APP_ACTIVE_NAV_MUTATE,
     APP_ACTIVE_GROUP_MUTATE,
-    APP_ROUTE_MUTATE
+    APP_ROUTE_MUTATE,
+    APP_PAGESCROLL_MUTATE
 } from '@/shared/constants';
 
 /* eslint-disable no-param-reassign */
@@ -17,6 +18,10 @@ export default {
 
     [APP_ROUTE_MUTATE](state, route) {
         state.route = route;
+    },
+
+    [APP_PAGESCROLL_MUTATE](state, pagelistScroll) {
+        state.pagelistScroll = pagelistScroll;
     }
 };
 
