@@ -295,6 +295,10 @@ abbr[title] {
         background: $color-link !important;
     }
 
+    [data-scrollbar].sticky .scrollbar-track-x {
+        display: none !important;
+    }
+
     [data-scrollbar] .scrollbar-thumb {
         background: darken($color-link, 10%) !important;
     }

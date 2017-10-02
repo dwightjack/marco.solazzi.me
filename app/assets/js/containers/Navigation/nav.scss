@@ -8,7 +8,7 @@ $nav-timing-in: 250ms;
 $nav-pattern-delay-in: 600ms;
 $nav-items-delay-in: 800ms;
 $nav-items: 5;
-$nav-item-stagger: 80;
+$nav-item-stagger: 90;
 
 $nav-anim-out: 150ms;
 
@@ -128,7 +128,7 @@ $nav-total-timing-in: max(
                 rgba($color-link, 1) 40%,
                 rgba($color-link, 0.2) 100%
             ),
-            url("../images/circuits-full.svg");
+            url("../../../images/circuits-full.svg");
         background-position: right 0;
         content: "";
     }
@@ -149,9 +149,8 @@ $nav-total-timing-in: max(
 .item {
     opacity: 0;
     transform: translateY(0.5em);
-    transition: all 150ms ease-out;
-    transition-delay: 1200ms;
-    //transition-property: opacity, transform;
+    transition: all 170ms ease-out;
+    transition-property: opacity, transform;
 }
 
 .route {
@@ -304,14 +303,7 @@ $nav-total-timing-in: max(
     .item {
         opacity: 1;
         transform: translateY(0);
-        // transition-delay: $nav-items-delay-in;
-
-        // @for $i from 1 through $nav-items {
-
-        //     &:nth-child(#{$i+1}) {
-        //         transition-delay: $nav-items-delay-in + ($i * $nav-item-stagger);
-        //     }
-        // }
+        will-change: transform;
     }
 
     .is-current > .route,

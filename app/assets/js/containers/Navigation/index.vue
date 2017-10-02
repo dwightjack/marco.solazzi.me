@@ -110,7 +110,7 @@ export default {
 
         navItemDelay(index) {
             if (!this.activeNav) {
-                return { transitionDelay: '0ms' };
+                return null;
             }
 
             return { transitionDelay: `${this.navItemsDelayIn + (index * this.navItemStagger)}ms` };

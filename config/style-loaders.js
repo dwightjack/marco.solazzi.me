@@ -13,9 +13,8 @@ const loaders = [
             localIdentName: '[name]__[local]---[hash:base64:5]'
         }
     },
-    { loader: 'resolve-url-loader', options: { sourceMap: true } },
     { loader: 'postcss-loader', options: { sourceMap: true } },
-    'resolve-url-loader',
+    { loader: 'resolve-url-loader', options: { sourceMap: true } },
     { loader: 'sass-loader',
         options: {
             sourceMap: true,

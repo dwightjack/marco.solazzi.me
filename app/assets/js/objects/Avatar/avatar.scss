@@ -1,0 +1,44 @@
+@import "mixins";
+@import "colors";
+
+.root {
+    position: relative;
+    margin: 0;
+}
+
+.img {
+    transform: scale(1.05);
+    transform-origin: center center;
+    transition: transform 0.2s ease-out 0.2s;
+    will-change: transform;
+
+    .root:hover & {
+        transform: scale(1.05) translate(1.5%, 0);
+        transition-delay: 0s;
+    }
+}
+
+
+.shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: z-index(behind);
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    fill: $color-link;
+    transform: scale(0.95);
+    transition: transform 0.3s ease-out 0s;
+
+    :global(.touchevents) &,
+    .root:hover & {
+        transform: translate(10%, 0);
+        transition-delay: 0.15s;
+    }
+
+    @media print {
+        transform: translate(10%, 0);
+        transition-delay: 0.15s;
+    }
+}

@@ -55,6 +55,7 @@
     @include mq(tablet-landscape) {
         padding-right: 0;
         padding-left: 33%;
+        will-change: transform;
         // transition: transform 0.2s ease-out;
     }
 

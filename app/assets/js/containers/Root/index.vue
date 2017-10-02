@@ -2,6 +2,7 @@
     <Swipe :onSwipe="onSwipe">
         <Navigation :paths="routes" />
         <Wrapper>
+            <Cover />
             <PageList slot="pagelist">
                 <Jobs />
                 <Education />
@@ -9,22 +10,29 @@
                 <Portfolio />
                 <Contacts />
             </PageList>
+            <BgPattern :active="isIntro === false" />
+            </transition>
         </Wrapper>
     </Swipe>
 </template>
 
 <script>
-
+import { mapState } from 'vuex';
 import Jobs from '@/containers/Jobs';
 import Education from '@/containers/Education';
 import Skills from '@/containers/Skills';
 import Portfolio from '@/containers/Portfolio';
 import Contacts from '@/containers/Contacts';
+import Cover from '@/containers/Cover';
 import Navigation from '@/containers/Navigation';
 import Swipe from '@/components/Swipe';
 import Wrapper from '@/components/Wrapper';
 import PageList from '@/components/PageList';
+import BgPattern from '@/objects/BgPattern';
 import routes from '@/shared/routes';
+import {
+    GROUP_INTRO
+} from '@/shared/constants';
 
 export default {
 
@@ -35,6 +43,7 @@ export default {
     },
 
     components: {
+        Cover,
         Jobs,
         Skills,
         Education,
@@ -43,7 +52,17 @@ export default {
         Swipe,
         Navigation,
         Wrapper,
-        PageList
+        PageList,
+        BgPattern
+    },
+
+    computed: {
+
+        ...mapState(['activeGroup']),
+
+        isIntro() {
+            return this.activeGroup === GROUP_INTRO;
+        }
     },
 
     methods: {

@@ -2,7 +2,8 @@ import {
     APP_ACTIVE_NAV_MUTATE,
     APP_ACTIVE_GROUP_MUTATE,
     APP_ROUTE_MUTATE,
-    APP_PAGESCROLL_MUTATE
+    APP_PAGESCROLL_MUTATE,
+    APP_LOADED_MUTATE
 } from '@/shared/constants';
 
 /* eslint-disable no-param-reassign */
@@ -14,6 +15,10 @@ export default {
 
     [APP_ACTIVE_GROUP_MUTATE](state, activeGroup) {
         state.activeGroup = activeGroup;
+    },
+
+    [APP_LOADED_MUTATE](state, isLoaded) {
+        state.isLoaded = isLoaded;
     },
 
     [APP_ROUTE_MUTATE](state, route) {

@@ -38,6 +38,7 @@ const store = new Vuex.Store({
             team: { label: 'Teamwork skills and tools', list: team }
         },
 
+        isLoaded: false,
         activeNav: false,
         activeGroup: 'pagelist', //GROUP_INTRO
         route: NAV_PATH_JOBS,
