@@ -21,6 +21,6 @@ export const APP_NAVIGATE_ACTION = 'APP_NAVIGATE_ACTION';
 export const APP_PAGESCROLL_ACTION = ' APP_PAGESCROLL_ACTION';
 export const APP_LOADED_ACTION = 'APP_LOADED_ACTION';
 
-export const GROUP_INTRO = 'intro';
+export const GROUP_LOADER = 'loader';
 export const GROUP_COVER = 'cover';
 export const GROUP_PAGELIST = 'pagelist';

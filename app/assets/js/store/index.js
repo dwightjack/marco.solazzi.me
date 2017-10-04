@@ -10,12 +10,13 @@ import talks from '@/database/portfolio.talks.json';
 import socials from '@/database/social.json';
 
 import {
-    GROUP_INTRO, //eslint-disable-line no-unused-vars
+    GROUP_COVER,
     NAV_PATH_JOBS
 } from '@/shared/constants';
 
 import mutations from './mutations';
 import actions from './actions';
+import getters from './getters';
 
 Vue.use(Vuex);
 
@@ -25,6 +26,7 @@ const store = new Vuex.Store({
 
     mutations,
     actions,
+    getters,
 
     state: {
         jobs,
@@ -40,7 +42,7 @@ const store = new Vuex.Store({
 
         isLoaded: false,
         activeNav: false,
-        activeGroup: 'pagelist', //GROUP_INTRO
+        activeGroup: GROUP_COVER,
         route: NAV_PATH_JOBS,
         pagelistScroll: 0
     }
