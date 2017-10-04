@@ -12,7 +12,7 @@ import store from '@/store';
 import mq from '@/shared/mq';
 import breakpoints from 'styles/_mq.scss';
 
-Vue.use(mq, { breakpoints });
+Vue.use(mq, { breakpoints, ssr: 'desktop' });
 
 Vue.config.productionTip = false;
 
