@@ -1,6 +1,6 @@
 <template>
     <nav
-        :class="[$style.root, { [$style.isActive]: activeNav, [$style.isVisible]: !isLoading }]"
+        :class="[$style.root, { [$style.isActive]: activeNav, [$style.isVisible]: isLoaded }]"
         role="navigation"
         @keyup.esc="closeNav"
     >
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex';
+import { mapState } from 'vuex';
 import VueTypes from 'vue-types';
 
 import {
@@ -59,9 +59,8 @@ export default {
 
     computed: {
 
-        ...mapState(['route', 'activeNav']),
+        ...mapState(['route', 'activeNav', 'isLoaded']),
 
-        ...mapGetters(['isLoading']),
 
         tabIndex() {
             return this.activeNav ? 0 : -1;

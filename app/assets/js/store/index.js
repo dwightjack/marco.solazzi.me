@@ -9,14 +9,8 @@ import works from '@/database/portfolio.works.json';
 import talks from '@/database/portfolio.talks.json';
 import socials from '@/database/social.json';
 
-import {
-    GROUP_COVER,
-    NAV_PATH_JOBS
-} from '@/shared/constants';
-
 import mutations from './mutations';
 import actions from './actions';
-import getters from './getters';
 
 Vue.use(Vuex);
 
@@ -26,7 +20,6 @@ const store = new Vuex.Store({
 
     mutations,
     actions,
-    getters,
 
     state: {
         jobs,
@@ -42,8 +35,8 @@ const store = new Vuex.Store({
 
         isLoaded: false,
         activeNav: false,
-        activeGroup: GROUP_COVER,
-        route: NAV_PATH_JOBS,
+        activeGroup: '',
+        route: '',
         pagelistScroll: 0
     }
 });
