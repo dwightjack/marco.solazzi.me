@@ -1,7 +1,26 @@
+const noop = () => {};
+
+function serverMatchMedia(breakpoints, key, defaultKey) {
+
+    const matches = key === defaultKey;
+
+    return {
+        media: `(min-width: ${breakpoints[key]}px)`,
+        get matches() {
+            return matches;
+        },
+        addListener: noop,
+        removeListener: noop
+    };
+}
+
+const clientMatchMedia = (breakpoints, key) => global.matchMedia(`(min-width: ${breakpoints[key]}px)`);
+
+
 export default {
     install(Vue, options = {}) {
 
-        const { breakpoints } = options;
+        const { breakpoints, ssr = '' } = options;
 
         if (!breakpoints) {
             throw new Error('You should provide some breakpoints');
@@ -12,14 +31,26 @@ export default {
             .sort((a, b) => parseInt(breakpoints[a], 10) - parseInt(breakpoints[b], 10));
 
         const $mq = new Vue({
+
+            computed: {
+                currentIdx() {
+                    const idx = this.keys.indexOf(this.current);
+                    return idx !== -1 ? idx : null;
+                }
+            },
+
+
             data: {
                 keys,
                 current: ''
             },
 
             created() {
+
+                const matchMedia = this.$isServer ? serverMatchMedia : clientMatchMedia;
+
                 this.queries = this.keys.reduce((queries, key) => {
-                    const mql = global.matchMedia(`(min-width: ${breakpoints[key]}px)`);
+                    const mql = matchMedia(breakpoints, key, ssr);
 
                     mql.addListener(this.computeCurrent);
 
@@ -36,7 +67,13 @@ export default {
 
                 }, {});
 
-                this.computeCurrent();
+                if (this.$isServer) {
+                    this.current = ssr;
+                } else {
+                    this.computeCurrent();
+
+                }
+
 
             },
 
@@ -56,7 +93,17 @@ export default {
 
                 matches(breakpoint) {
                     const { keys } = this; //eslint-disable-line no-shadow
-                    return keys.indexOf(breakpoint) <= keys.indexOf(this.current);
+                    return this.currentIdx !== null ? keys.indexOf(breakpoint) <= this.currentIdx : false;
+                },
+
+                matchesExact(breakpoint) {
+                    const { keys } = this; //eslint-disable-line no-shadow
+                    return this.currentIdx !== null ? keys.indexOf(breakpoint) === this.currentIdx : false;
+                },
+
+                matchesUntil(breakpoint) {
+                    const { keys } = this; //eslint-disable-line no-shadow
+                    return this.currentIdx !== null ? keys.indexOf(breakpoint) > this.currentIdx : false;
                 }
             }
         });
