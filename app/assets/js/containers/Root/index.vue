@@ -1,5 +1,6 @@
 <template>
     <Swipe :onSwipe="onSwipe">
+        <Loader :active="!isLoaded" @loader-end="loadFinish" />
         <Navigation :paths="routes" />
         <Wrapper>
             <Cover />
@@ -10,7 +11,7 @@
                 <Portfolio />
                 <Contacts />
             </PageList>
-            <BgPattern :active="isLoading === false" />
+            <BgPattern :active="isLoaded" />
             </transition>
         </Wrapper>
     </Swipe>
@@ -28,6 +29,7 @@ import Cover from '@/containers/Cover';
 import Navigation from '@/containers/Navigation';
 import PageList from '@/containers/PageList';
 import Swipe from '@/components/Swipe';
+import Loader from '@/components/Loader';
 import Wrapper from '@/components/Wrapper';
 import BgPattern from '@/objects/BgPattern';
 import routes from '@/shared/routes';
@@ -36,12 +38,14 @@ import {
     NAV_PATH_HOME,
     GROUP_COVER,
     GROUP_PAGELIST,
-    APP_NAVIGATE_ACTION
+    APP_NAVIGATE_ACTION,
+    APP_LOADED_ACTION
 } from '@/shared/constants';
 
 export default {
 
     components: {
+        Loader,
         Cover,
         Jobs,
         Skills,
@@ -63,17 +67,18 @@ export default {
 
     computed: {
 
-        ...mapState(['activeGroup']),
-
-        ...mapGetters(['isLoading'])
+        ...mapState(['activeGroup', 'isLoaded'])
     },
 
     mounted() {
-
         this.debouncedListener = debounce(this.setWheelListener, 150);
 
-        this.$nextTick(() => {
-            window.addEventListener('wheel', this.debouncedListener);
+        this.$watch('isLoaded', (isLoaded) => {
+            if (isLoaded === true) {
+                this.$nextTick(() => {
+                    window.addEventListener('wheel', this.debouncedListener);
+                });
+            }
         });
     },
 
@@ -86,8 +91,14 @@ export default {
     methods: {
 
         ...mapActions({
-            routeTo: APP_NAVIGATE_ACTION
+            routeTo: APP_NAVIGATE_ACTION,
+            toggleLoaded: APP_LOADED_ACTION
         }),
+
+        loadFinish() {
+            this.toggleLoaded(true);
+            this.routeTo(NAV_PATH_HOME);
+        },
 
         onSwipe(direction) {
             console.log(direction); //eslint-disable-line no-console

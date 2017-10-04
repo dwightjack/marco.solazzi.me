@@ -167,22 +167,15 @@ button {
    ```
    ========================================================================== */
 
-%heading-base {
-    margin: 0 0 0.2em;
-    //color: $color-text
-    font-family: $font-family-h;
-    font-weight: font-weight(regular);
-}
-
-@include classed-headings {
-    @extend %heading-base;
-}
-
 @each $font-head-num, $font-head-size in $font-sizes-headings {
 
     h#{$font-head-num},
     :global(.h#{$font-head-num}) {
+        margin: 0 0 0.2em;
+        //color: $color-text
+        font-family: $font-family-h;
         font-size: font-size($font-head-size);
+        font-weight: font-weight(regular);
         line-height: 1.2;
     }
 }
