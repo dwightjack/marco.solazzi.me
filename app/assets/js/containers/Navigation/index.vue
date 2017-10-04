@@ -1,6 +1,6 @@
 <template>
     <nav
-        :class="[$style.root, { [$style.isActive]: activeNav, [$style.isVisible]: isVisible }]"
+        :class="[$style.root, { [$style.isActive]: activeNav, [$style.isVisible]: !isLoading }]"
         role="navigation"
         @keyup.esc="closeNav"
     >
@@ -31,19 +31,23 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 import VueTypes from 'vue-types';
 
 import {
     APP_ACTIVE_NAV_ACTION,
-    APP_NAVIGATE_ACTION,
-    GROUP_INTRO
+    APP_NAVIGATE_ACTION
 } from '@/shared/constants';
 import { toInteger } from '@/shared/utils';
 import Burger from '@/objects/Burger';
 import Anchor from '@/objects/Anchor';
 
 export default {
+
+    components: {
+        Burger,
+        Anchor
+    },
 
     props: {
         paths: VueTypes.arrayOf(VueTypes.shape({
@@ -53,14 +57,11 @@ export default {
         socials: VueTypes.arrayOf(VueTypes.string).def(['linkedin', 'twitter', 'github'])
     },
 
-    components: {
-        Burger,
-        Anchor
-    },
-
     computed: {
 
-        ...mapState(['route', 'activeGroup', 'activeNav']),
+        ...mapState(['route', 'activeNav']),
+
+        ...mapGetters(['isLoading']),
 
         tabIndex() {
             return this.activeNav ? 0 : -1;
@@ -69,10 +70,6 @@ export default {
         navSocials() {
             const filters = this.socials;
             return this.$store.state.socials.filter(({ type }) => filters.indexOf(type) !== -1);
-        },
-
-        isVisible() {
-            return this.activeGroup !== GROUP_INTRO;
         },
 
         navItemsDelayIn() {
