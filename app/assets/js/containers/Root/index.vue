@@ -10,14 +10,15 @@
                 <Portfolio />
                 <Contacts />
             </PageList>
-            <BgPattern :active="isIntro === false" />
+            <BgPattern :active="isLoading === false" />
             </transition>
         </Wrapper>
     </Swipe>
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import debounce from 'lodash/debounce';
+import { mapState, mapGetters, mapActions } from 'vuex';
 import Jobs from '@/containers/Jobs';
 import Education from '@/containers/Education';
 import Skills from '@/containers/Skills';
@@ -25,22 +26,20 @@ import Portfolio from '@/containers/Portfolio';
 import Contacts from '@/containers/Contacts';
 import Cover from '@/containers/Cover';
 import Navigation from '@/containers/Navigation';
+import PageList from '@/containers/PageList';
 import Swipe from '@/components/Swipe';
 import Wrapper from '@/components/Wrapper';
-import PageList from '@/components/PageList';
 import BgPattern from '@/objects/BgPattern';
 import routes from '@/shared/routes';
 import {
-    GROUP_INTRO
+    NAV_PATH_JOBS,
+    NAV_PATH_HOME,
+    GROUP_COVER,
+    GROUP_PAGELIST,
+    APP_NAVIGATE_ACTION
 } from '@/shared/constants';
 
 export default {
-
-    data() {
-        return {
-            routes
-        };
-    },
 
     components: {
         Cover,
@@ -56,16 +55,40 @@ export default {
         BgPattern
     },
 
+    data() {
+        return {
+            routes
+        };
+    },
+
     computed: {
 
         ...mapState(['activeGroup']),
 
-        isIntro() {
-            return this.activeGroup === GROUP_INTRO;
+        ...mapGetters(['isLoading'])
+    },
+
+    mounted() {
+
+        this.debouncedListener = debounce(this.setWheelListener, 150);
+
+        this.$nextTick(() => {
+            window.addEventListener('wheel', this.debouncedListener);
+        });
+    },
+
+    beforeDestroy() {
+        if (this.debouncedListener) {
+            window.removeEventListener('wheel', this.debouncedListener);
         }
     },
 
     methods: {
+
+        ...mapActions({
+            routeTo: APP_NAVIGATE_ACTION
+        }),
+
         onSwipe(direction) {
             console.log(direction); //eslint-disable-line no-console
             // const { activeNav, activeGroup, pagelistScroll, breakpoint, router } = this.props;
@@ -84,6 +107,23 @@ export default {
             // } else if (direction === 'up' && activeGroup === 'pagelist' && pagelistScroll <= 0) {
             //     router.go(NAV_PATH_HOME);
             // }
+        },
+
+        setWheelListener(e) {
+            //const { router } = this.props;
+
+            const { activeNav, activeGroup, pagelistScroll } = this.$store.state;
+            if (activeNav || this.$mq.matchesUntil('tablet')) {
+                return;
+            }
+
+            if (e.deltaY > 0 && activeGroup === GROUP_COVER) {
+                e.preventDefault();
+                this.routeTo(NAV_PATH_JOBS);
+            } else if (e.deltaY < 0 && activeGroup === GROUP_PAGELIST && pagelistScroll <= 0) {
+                e.preventDefault();
+                this.routeTo(NAV_PATH_HOME);
+            }
         }
     }
 };
