@@ -1,6 +1,6 @@
 import Scrollbar from 'smooth-scrollbar';
 import VueTypes from 'vue-types';
-import 'style-loader!css-loader!smooth-scrollbar/dist/smooth-scrollbar.css'; //eslint-disable-line import/no-webpack-loader-syntax
+import './smooth-scrollbar.scss';
 
 export default {
 
