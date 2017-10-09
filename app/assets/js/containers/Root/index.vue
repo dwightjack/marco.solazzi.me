@@ -1,6 +1,6 @@
 <template>
     <Swipe :onSwipe="onSwipe">
-        <Loader :active="!isLoaded" @loader-end="loadFinish" />
+        <Loader :active="!isLoaded" @loader-end="loadFinish" :assetLoaded="true" />
         <Navigation :paths="routes" />
         <Wrapper>
             <Cover />

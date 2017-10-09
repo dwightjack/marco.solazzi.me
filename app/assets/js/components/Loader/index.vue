@@ -16,12 +16,12 @@
 
 <script>
 import VueTypes from 'vue-types';
-import anime from 'animejs';
 
 export default {
 
     props: {
-        active: VueTypes.bool.def(false)
+        active: VueTypes.bool.def(false),
+        assetLoaded: VueTypes.bool.def(false)
     },
 
     data() {
@@ -32,38 +32,65 @@ export default {
     },
 
     watch: {
-        entering(v) {
+
+        assetLoaded(v) {
             if (v === true) {
-
-                setTimeout(() => {
-                    this.dots = '.';
-                    let rounds = 0;
-                    const maxRounds = 2;
-
-                    const interval = setInterval(() => {
-                        if (rounds >= maxRounds) {
-                            clearInterval(interval);
-                            this.$emit('loader-end');
-                        } else {
-                            if (this.dots.length === 3) {
-                                this.dots = '';
-                                rounds += 1;
-                                return;
-                            }
-                            this.dots += '.';
-                        }
-
-                    }, 625);
-                }, 1700);
-
+                this.maxRounds = Math.max(this.maxRounds, Math.ceil(this.rounds / 3));
             }
         }
+    },
+
+    created() {
+        this.rounds = 0;
+        this.maxRounds = 2;
     },
 
     mounted() {
         this.$nextTick(() => {
             this.entering = true;
+
+            setTimeout(() => {
+                this.addDot();
+                this.$emit('loader-start');
+                this.interval = setInterval(this.runLoader, 625);
+            }, 1700);
+
         });
+    },
+
+    methods: {
+        addDot() {
+            if (this.dots.length === 3) {
+                this.dots = '';
+                this.rounds += 1;
+                return;
+            }
+
+            this.dots += '.';
+        },
+
+        runLoader() {
+            if (this.rounds >= this.maxRounds) {
+
+                if (this.assetLoaded === false) {
+                    this.maxRounds += 1;
+                    this.addDot();
+                    return;
+                }
+
+                this.stopLoader();
+                this.$emit('loader-end');
+            } else {
+                this.addDot();
+            }
+
+        },
+
+        stopLoader() {
+            if (this.interval) {
+                clearInterval(this.interval);
+            }
+        }
     }
 
 };
