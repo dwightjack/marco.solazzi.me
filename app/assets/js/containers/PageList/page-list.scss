@@ -63,6 +63,7 @@
 
     .pagelist-slide-appear-active {
         transition: opacity 500ms cubic-bezier(0.74, 0.01, 0.29, 0.99) 500ms;
+        will-change: transform, opacity;
     }
 
     .pagelist-slide-enter {
@@ -85,11 +86,13 @@
     .pagelist-slide-enter-active {
         transition: all 800ms cubic-bezier(0.74, 0.01, 0.29, 0.99) 1200ms;
         transition-property: transform, opacity;
+        will-change: transform, opacity;
     }
 
     .pagelist-slide-leave-active {
         visibility: visible;
         transition: all 800ms cubic-bezier(0.74, 0.01, 0.29, 0.99);
         transition-property: transform, opacity;
+        will-change: transform, opacity;
     }
 }
