@@ -12,7 +12,6 @@
                 <Contacts />
             </PageList>
             <BgPattern :active="isLoaded" />
-            </transition>
         </Wrapper>
     </Swipe>
 </template>
