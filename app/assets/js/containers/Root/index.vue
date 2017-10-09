@@ -19,7 +19,7 @@
 
 <script>
 import debounce from 'lodash/debounce';
-import { mapState, mapGetters, mapActions } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 import Jobs from '@/containers/Jobs';
 import Education from '@/containers/Education';
 import Skills from '@/containers/Skills';
