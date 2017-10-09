@@ -58,14 +58,14 @@ export default {
 
     computed: {
 
-        ...mapState(['socials']),
+        ...mapState({
+            socials: (state) => state.data.socials,
+            activeGroup: (state) => state.ui.activeGroup,
+            isAppLoaded: (state) => state.ui.isLoaded
+        }),
 
         active() {
-            return this.$store.state.activeGroup === GROUP_COVER;
-        },
-
-        isAppLoaded() {
-            return this.$store.state.isLoaded;
+            return this.activeGroup === GROUP_COVER;
         }
     },
 

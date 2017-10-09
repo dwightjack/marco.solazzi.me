@@ -22,8 +22,10 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import SmoothScrollbar from '@/components/SmoothScrollbar';
-import { APP_PAGESCROLL_ACTION, GROUP_PAGELIST } from '@/shared/constants';
+import { GROUP_PAGELIST } from '@/shared/constants';
+import { TYPES as UI_ACTIONS } from '@/store/ui.actions';
 
 export default {
 
@@ -33,7 +35,7 @@ export default {
 
     computed: {
         active() {
-            return this.$store.state.activeGroup === GROUP_PAGELIST;
+            return this.$store.state.ui.activeGroup === GROUP_PAGELIST;
         }
     },
 
@@ -42,9 +44,14 @@ export default {
     },
 
     methods: {
+
+        ...mapActions('ui', {
+            updatePagelistscrollAction: UI_ACTIONS.PAGELISTSCROLL_UPDATED
+        }),
+
         onScroll({ offset }) {
             const { y = 0 } = offset;
-            this.$store.dispatch(APP_PAGESCROLL_ACTION, y);
+            this.updatePagelistscrollAction(y);
         }
     }
 };

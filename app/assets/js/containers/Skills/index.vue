@@ -33,8 +33,8 @@ export default {
     },
 
     computed: mapState({
-        ids: ({ skills }) => skills._byId,
-        skills: ({ skills }) => skills
+        ids: (state) => state.data.skills._byId,
+        skills: (state) => state.data.skills
     }),
 
     components: {

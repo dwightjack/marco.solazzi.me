@@ -37,9 +37,8 @@ import {
     NAV_PATH_HOME,
     GROUP_COVER,
     GROUP_PAGELIST,
-    APP_NAVIGATE_ACTION,
-    APP_LOADED_ACTION
 } from '@/shared/constants';
+import { TYPES as UI_ACTIONS } from '@/store/ui.actions';
 
 export default {
 
@@ -65,8 +64,7 @@ export default {
     },
 
     computed: {
-
-        ...mapState(['activeGroup', 'isLoaded'])
+        ...mapState('ui', ['activeGroup', 'isLoaded', 'activeNav', 'pagelistScroll'])
     },
 
     mounted() {
@@ -89,14 +87,14 @@ export default {
 
     methods: {
 
-        ...mapActions({
-            routeTo: APP_NAVIGATE_ACTION,
-            toggleLoaded: APP_LOADED_ACTION
+        ...mapActions('ui', {
+            navigateToAction: UI_ACTIONS.NAVIGATED_TO,
+            toggleAppLoadAction: UI_ACTIONS.APP_LOADED
         }),
 
         loadFinish() {
-            this.toggleLoaded(true);
-            this.routeTo(NAV_PATH_HOME);
+            this.toggleAppLoadAction(true);
+            this.navigateToAction(NAV_PATH_HOME);
         },
 
         onSwipe(direction) {
@@ -122,17 +120,16 @@ export default {
         setWheelListener(e) {
             //const { router } = this.props;
 
-            const { activeNav, activeGroup, pagelistScroll } = this.$store.state;
-            if (activeNav || this.$mq.matchesUntil('tablet')) {
+            if (this.activeNav || this.$mq.matchesUntil('tablet')) {
                 return;
             }
 
-            if (e.deltaY > 0 && activeGroup === GROUP_COVER) {
+            if (e.deltaY > 0 && this.activeGroup === GROUP_COVER) {
                 e.preventDefault();
-                this.routeTo(NAV_PATH_JOBS);
-            } else if (e.deltaY < 0 && activeGroup === GROUP_PAGELIST && pagelistScroll <= 0) {
+                this.navigateToAction(NAV_PATH_JOBS);
+            } else if (e.deltaY < 0 && this.activeGroup === GROUP_PAGELIST && this.pagelistScroll <= 0) {
                 e.preventDefault();
-                this.routeTo(NAV_PATH_HOME);
+                this.navigateToAction(NAV_PATH_HOME);
             }
         }
     }

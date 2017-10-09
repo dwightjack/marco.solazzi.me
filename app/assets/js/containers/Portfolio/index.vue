@@ -35,7 +35,7 @@ export default {
         };
     },
 
-    computed: mapState(['works', 'talks']),
+    computed: mapState('data', ['works', 'talks']),
 
     components: {
         Page,

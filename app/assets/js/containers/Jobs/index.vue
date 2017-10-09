@@ -29,8 +29,8 @@ export default {
     },
 
     computed: mapState({
-        current: (state) => state.jobs[0],
-        prev: (state) => state.jobs.slice(1)
+        current: (state) => state.data.jobs[0],
+        prev: (state) => state.data.jobs.slice(1)
     }),
 
     components: {

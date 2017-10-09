@@ -1,5 +1,5 @@
 <template>
-    <button :class="[$style.root, { [$style.isActive]: active }]" @click.prevent="onClick" :aria-expanded="active">
+    <button :class="[$style.root, { [$style.isActive]: active }]" @click.prevent="onClick()" :aria-expanded="active">
         <span :class="$style.label">Menu</span>
     </button>
 </template>

@@ -7,20 +7,19 @@
 
 <script>
 import VueTypes from 'vue-types';
+import { mapState } from 'vuex';
 
 export default {
-
-    data() {
-        return {
-            currentPage: this.$store.state.route
-        };
-    },
 
     props: {
         onPageChange: VueTypes.func
     },
 
     computed: {
+
+        ...mapState({
+            currentPage: (state) => state.ui.route
+        }),
 
         pages() {
             const windowHeightOffset = parseInt(window.innerHeight * 0.25, 10);

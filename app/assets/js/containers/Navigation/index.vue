@@ -4,7 +4,7 @@
         role="navigation"
         @keyup.esc="closeNav"
     >
-        <Burger :class="$style.burger" :onClick="toggleNav" :active="activeNav" controls="nav-menu" />
+        <Burger :class="$style.burger" :onClick="toggleNavAction" :active="activeNav" controls="nav-menu" />
         <transition name="navigation" :duration="{ enter: totalTimingIn, leave: navAnimOut }">
             <ul v-show="activeNav" :class="$style.menu" id="nav-menu">
                 <li
@@ -31,16 +31,13 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 import VueTypes from 'vue-types';
-
-import {
-    APP_ACTIVE_NAV_ACTION,
-    APP_NAVIGATE_ACTION
-} from '@/shared/constants';
 import { toInteger } from '@/shared/utils';
 import Burger from '@/objects/Burger';
 import Anchor from '@/objects/Anchor';
+
+import { TYPES as UI_ACTIONS } from '@/store/ui.actions';
 
 export default {
 
@@ -59,8 +56,11 @@ export default {
 
     computed: {
 
-        ...mapState(['route', 'activeNav', 'isLoaded']),
+        ...mapState('ui', ['route', 'activeNav', 'isLoaded']),
 
+        ...mapState({
+            rawSocials: (state) => state.data.socials
+        }),
 
         tabIndex() {
             return this.activeNav ? 0 : -1;
@@ -68,7 +68,7 @@ export default {
 
         navSocials() {
             const filters = this.socials;
-            return this.$store.state.socials.filter(({ type }) => filters.indexOf(type) !== -1);
+            return this.rawSocials.filter(({ type }) => filters.indexOf(type) !== -1);
         },
 
         navItemsDelayIn() {
@@ -96,12 +96,13 @@ export default {
 
     methods: {
 
-        closeNav() {
-            this.$store.dispatch(APP_ACTIVE_NAV_ACTION, false);
-        },
+        ...mapActions('ui', {
+            toggleNavAction: UI_ACTIONS.NAV_TOGGLED,
+            navigateAction: UI_ACTIONS.NAVIGATED_TO
+        }),
 
-        toggleNav() {
-            this.$store.dispatch(APP_ACTIVE_NAV_ACTION);
+        closeNav() {
+            this.toggleNavAction(false);
         },
 
         navItemDelay(index) {
@@ -117,7 +118,7 @@ export default {
             this.closeNav();
 
             setTimeout(() => {
-                this.$store.dispatch(APP_NAVIGATE_ACTION, path);
+                this.navigateAction(path);
             }, this.navAnimOut + 300);
 
 

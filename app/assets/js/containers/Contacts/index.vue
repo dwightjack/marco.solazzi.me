@@ -17,7 +17,7 @@ import SocialList from '@/objects/SocialList';
 
 export default {
 
-    computed: mapState(['socials']),
+    computed: mapState('data', ['socials']),
 
     components: {
         Page,

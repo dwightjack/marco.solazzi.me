@@ -49,7 +49,7 @@ export default {
     // },
 
     computed: {
-        ...mapState(['pagelistScroll']),
+        ...mapState('ui', ['pagelistScroll']),
 
         scrollAmount() {
             const amount = (this.rootOffsetTop + parseInt(window.innerHeight * 0.2, 10)) - (this.pagelistScroll + (window.innerHeight / 2));

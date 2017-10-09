@@ -24,7 +24,7 @@ export default {
     },
 
     computed: mapState({
-        items: ({ education }) => education
+        items: (state) => state.data.education
     }),
 
     components: {
