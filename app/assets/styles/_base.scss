@@ -284,11 +284,15 @@ abbr[title] {
    ========================================================================== */
 :global {
 
-    [data-scrollbar].sticky .scrollbar-track {
+    [data-scrollbar] .scrollbar-track {
         background: $color-link !important;
     }
 
-    [data-scrollbar].sticky .scrollbar-track-x {
+    [data-scrollbar] .scrollbar-track-y {
+        opacity: 1 !important;
+    }
+
+    [data-scrollbar] .scrollbar-track-x {
         display: none !important;
     }
 

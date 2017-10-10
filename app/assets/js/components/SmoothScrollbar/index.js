@@ -1,6 +1,5 @@
 import Scrollbar from 'smooth-scrollbar';
 import VueTypes from 'vue-types';
-import './smooth-scrollbar.scss';
 
 export default {
 
@@ -29,13 +28,14 @@ export default {
         if (this.active) {
             this.$nextTick(this.attach);
         }
-
-
     },
 
     methods: {
         attach() {
             const el = this.$el || this.$slots.default[0].elm;
+            if (this.scrollbar) {
+                this.destroy();
+            }
             this.scrollbar = Scrollbar.init(el, this.options);
             this.scrollbar.addListener((status) => this.$emit('scroll', status));
         }
@@ -43,5 +43,6 @@ export default {
 
     destroyed() {
         this.scrollbar.destroy();
+        this.scrollbar = null;
     }
 };
