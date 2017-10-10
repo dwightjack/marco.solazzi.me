@@ -9,6 +9,7 @@
             <SmoothScrollbar
                 @scroll="onScroll"
                 tag="div"
+                ref="smoothScroll"
                 :options="{ alwaysShowTracks: true }"
                 :active="$mq.matches('tabletLandscape')"
             >
@@ -22,7 +23,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 import SmoothScrollbar from '@/components/SmoothScrollbar';
 import { GROUP_PAGELIST } from '@/shared/constants';
 import { TYPES as UI_ACTIONS } from '@/store/ui.actions';
@@ -34,13 +35,28 @@ export default {
     },
 
     computed: {
+
+        ...mapState('ui', ['activeGroup', 'scrollTarget']),
+
         active() {
-            return this.$store.state.ui.activeGroup === GROUP_PAGELIST;
+            return this.activeGroup === GROUP_PAGELIST;
         }
     },
 
     created() {
         this.fullYear = new Date().getFullYear();
+    },
+
+    watch: {
+        scrollTarget(id) {
+            if (id) {
+                const { scrollbar } = this.$refs.smoothScroll;
+                scrollbar.update();
+                this.$nextTick(() => {
+                    scrollbar.scrollIntoView(document.getElementById(id));
+                });
+            }
+        }
     },
 
     methods: {

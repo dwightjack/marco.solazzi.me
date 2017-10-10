@@ -5,9 +5,15 @@
         <Wrapper>
             <Cover />
             <PageList slot="pagelist">
-                <Jobs />
-                <Education />
-                <Skills />
+                <Intersect @enter="pageEnter" :threshold="[0, 0.2]">
+                    <Jobs />
+                </Intersect>
+                <Intersect @enter="pageEnter" :threshold="[0, 0.2]">
+                    <Education />
+                </Intersect>
+                <Intersect @enter="pageEnter" :threshold="[0, 0.2]">
+                    <Skills />
+                </Intersect>
                 <Portfolio />
                 <Contacts />
             </PageList>
@@ -64,7 +70,7 @@ export default {
     },
 
     computed: {
-        ...mapState('ui', ['activeGroup', 'isLoaded', 'activeNav', 'pagelistScroll'])
+        ...mapState('ui', ['activeGroup', 'isLoaded', 'activeNav', 'pagelistScroll', 'route'])
     },
 
     mounted() {
@@ -85,6 +91,15 @@ export default {
         }
     },
 
+    watch: {
+        route(hash) {
+            //side effect!
+            if (!this.$isServer) {
+                global.location.hash = `!${hash}`;
+            }
+        }
+    },
+
     methods: {
 
         ...mapActions('ui', {
@@ -94,7 +109,7 @@ export default {
 
         loadFinish() {
             this.toggleAppLoadAction(true);
-            this.navigateToAction(NAV_PATH_HOME);
+            this.navigateToAction({ hash: NAV_PATH_HOME });
         },
 
         onSwipe(direction) {
@@ -126,11 +141,15 @@ export default {
 
             if (e.deltaY > 0 && this.activeGroup === GROUP_COVER) {
                 e.preventDefault();
-                this.navigateToAction(NAV_PATH_JOBS);
+                this.navigateToAction({ hash: NAV_PATH_JOBS });
             } else if (e.deltaY < 0 && this.activeGroup === GROUP_PAGELIST && this.pagelistScroll <= 0) {
                 e.preventDefault();
-                this.navigateToAction(NAV_PATH_HOME);
+                this.navigateToAction({ hash: NAV_PATH_HOME });
             }
+        },
+
+        pageEnter([entry]) {
+            console.log(entry.target, entry.isIntersecting, entry.intersectionRatio, entry.boundingClientRect.y);
         }
     }
 };
