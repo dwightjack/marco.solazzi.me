@@ -1,5 +1,5 @@
 <template>
-    <Page id="portfolio" :name="pageName">
+    <Page :id="pageName">
         <PageSection
             title="portfolio.works"
             subtitle="Latest agency projects"

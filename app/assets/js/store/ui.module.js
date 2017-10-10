@@ -14,7 +14,8 @@ export default {
         activeNav: false,
         activeGroup: '',
         route: '',
-        pagelistScroll: 0
+        pagelistScroll: 0,
+        scrollTarget: null
     }
 
 };

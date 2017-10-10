@@ -5,6 +5,8 @@ export const TYPES = {
     ACTIVE_GROUP_UPDATED: 'ACTIVE_GROUP_UPDATED',
     ROUTE_UPDATED: 'ROUTE_UPDATED',
     PAGELISTSCROLL_UPDATED: 'PAGELISTSCROLL_UPDATED',
+    PAGELISTSCROLL_REQUESTED: 'PAGELISTSCROLL_REQUESTED',
+    PAGELISTSCROLL_COMPLETED: 'PAGELISTSCROLL_COMPLETED',
     APP_LOADED: 'APP_LOADED'
 };
 
@@ -27,6 +29,14 @@ export const mutations = {
 
     [TYPES.PAGELISTSCROLL_UPDATED](state, pagelistScroll) {
         state.pagelistScroll = pagelistScroll;
+    },
+
+    [TYPES.PAGELISTSCROLL_REQUESTED](state, { hash }) {
+        state.scrollTarget = hash;
+    },
+
+    [TYPES.PAGELISTSCROLL_COMPLETED](state) {
+        state.scrollTarget = null;
     }
 };
 

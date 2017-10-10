@@ -5,7 +5,7 @@
         @enter="onEnter"
         @leave="onLeave"
     >
-        <section v-show="active" :class="[$style.root, { [$style.isAppLoaded]: isAppLoaded }]" :name="pageName">
+        <section v-show="active" :class="[$style.root, { [$style.isAppLoaded]: isAppLoaded }]" :id="pageName">
 
             <div :class="$style.pic" ref="pic">
                 <Avatar :src="picture" :class="$style.avatar" />
@@ -22,7 +22,7 @@
                     <SocialList :items="socials" :class="$style.socialList" />
                 </footer>
             </div>
-            <a :href="NAV_PATH_JOBS" :class="$style.scrollhint" ref="scrollhint">
+            <a :href="`#${NAV_PATH_JOBS}`" @click.prevent="navigateAction({ hash : NAV_PATH_JOBS, force: true })" :class="$style.scrollhint" ref="scrollhint">
                 <div>Get to know me</div>
                 <Ico :class="$style.scrollhintIco" name="chevron-down" />
             </a>
@@ -31,13 +31,14 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 import anime from 'animejs';
 import { NAV_PATH_HOME, NAV_PATH_JOBS, GROUP_COVER } from '@/shared/constants';
 import picture from 'images/marco.jpg';
 import Avatar from '@/objects/Avatar';
 import Ico from '@/objects/Ico';
 import SocialList from '@/objects/SocialList';
+import { TYPES as UI_ACTIONS } from '@/store/ui.actions';
 
 export default {
 
@@ -74,6 +75,11 @@ export default {
     },
 
     methods: {
+
+        ...mapActions('ui', {
+            navigateAction: UI_ACTIONS.NAVIGATED_TO
+        }),
+
         onEnter(el, done) {
 
             const { pic, body, scrollhint } = this.$refs;

@@ -1,5 +1,5 @@
 <template>
-  <section :class="$style.root" :id="id" :name="name" tabIndex="-1">
+  <section :class="$style.root" :id="id" tabIndex="-1">
         <div :class="$style.body">
             <slot />
         </div>
@@ -11,8 +11,7 @@ import VueTypes from 'vue-types';
 
 export default {
     props: {
-        id: VueTypes.string,
-        name: VueTypes.string
+        id: VueTypes.string.isRequired
     }
 };
 </script>

@@ -13,7 +13,7 @@
                     :class="[$style.item, { [$style.isCurrent]: (route === path.path)}]"
                     :style="navItemDelay(index)"
                 >
-                    <a :href="path.path" @click.prevent="goTo(path)" :class="$style.route" :tabindex="tabIndex">{{ path.label }}</a>
+                    <a :href="`#${path.path}`" @click.prevent="goTo(path.path)" :class="$style.route" :tabindex="tabIndex">{{ path.label }}</a>
                 </li>
             </ul>
         </transition>
@@ -113,12 +113,12 @@ export default {
             return { transitionDelay: `${this.navItemsDelayIn + (index * this.navItemStagger)}ms` };
         },
 
-        goTo({ path }) {
+        goTo(hash) {
 
             this.closeNav();
 
             setTimeout(() => {
-                this.navigateAction(path);
+                this.navigateAction({ hash, force: true });
             }, this.navAnimOut + 300);
 
 

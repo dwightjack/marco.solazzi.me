@@ -1,5 +1,5 @@
 <template>
-    <Page id="skills" :name="pageName">
+    <Page :id="pageName">
         <PageSection
             v-for="id in ids"
             :key="id"

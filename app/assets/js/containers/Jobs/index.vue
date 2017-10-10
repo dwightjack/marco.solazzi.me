@@ -1,5 +1,5 @@
 <template>
-    <Page id="job" :name="pageName">
+    <Page :id="pageName">
         <PageSection title="jobs.current">
             <TableList>
                 <SummaryTable caption="company" :data="current" :styles="['brackets']" />

@@ -1,5 +1,5 @@
 <template>
-    <Page id="education" :name="pageName">
+    <Page :id="pageName">
         <PageSection title="education" subtitle="Learning never ends">
             <TableList>
                 <SummaryTable v-for="item in items" :key="item.id" caption="title" :data="item" :styles="['brackets']" />
