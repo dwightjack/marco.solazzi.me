@@ -16,4 +16,21 @@ const store = new Vuex.Store({
 
 });
 
+if (__PRODUCTION__ === false) {
+    if (module.hot) {
+        // accept actions and mutations as hot modules
+        module.hot.accept(['./data.module', './ui.module'], () => {
+            const newData = require('./data.module').default; // eslint-disable-line no-shadow, global-require
+            const newUi = require('./ui.module').default; // eslint-disable-line no-shadow, global-require
+            store.hotUpdate({
+                modules: {
+                    ui: newUi,
+                    data: newData
+                }
+            });
+        });
+    }
+}
+
+
 export default store;
