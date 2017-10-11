@@ -30,6 +30,11 @@ export default {
         }
     },
 
+    destroyed() {
+        this.scrollbar.destroy();
+        this.scrollbar = null;
+    },
+
     methods: {
         attach() {
             const el = this.$el || this.$slots.default[0].elm;
@@ -39,10 +44,5 @@ export default {
             this.scrollbar = Scrollbar.init(el, this.options);
             this.scrollbar.addListener((status) => this.$emit('scroll', status));
         }
-    },
-
-    destroyed() {
-        this.scrollbar.destroy();
-        this.scrollbar = null;
     }
 };
