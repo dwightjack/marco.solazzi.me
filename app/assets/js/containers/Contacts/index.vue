@@ -1,5 +1,5 @@
 <template>
-  <Page id="contacts">
+  <Page id="contacts" :observe="false">
         <PageSection
             title="Want to know more?"
             prefix=""
@@ -11,18 +11,19 @@
 
 <script>
 import { mapState } from 'vuex';
-import Page from '@/objects/Page';
+import Page from '@/components/Page';
 import PageSection from '@/components/Section';
 import SocialList from '@/objects/SocialList';
 
 export default {
 
-    computed: mapState('data', ['socials']),
-
     components: {
         Page,
         PageSection,
         SocialList
-    }
+    },
+
+    computed: mapState('data', ['socials'])
+
 };
 </script>
