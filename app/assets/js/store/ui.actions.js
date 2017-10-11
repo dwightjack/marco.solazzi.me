@@ -11,17 +11,19 @@ export const TYPES = {
     NAV_TOGGLED: 'NAV_TOGGLED_ACTION',
     PAGELISTSCROLL_UPDATED: 'PAGELISTSCROLL_UPDATED_ACTION',
     APP_LOADED: 'APP_LOADED_ACTION',
-    PAGELISTSCROLL_REQUESTED: 'PAGELISTSCROLL_REQUESTED_ACTION'
+    PAGELISTSCROLL_REQUESTED: 'PAGELISTSCROLL_REQUESTED_ACTION',
+    PAGELISTSCROLL_COMPLETED: 'PAGELISTSCROLL_COMPLETED_ACTION',
+    ROUTE_UPDATED: 'ROUTE_UPDATED_ACTION'
 };
 
 
 export const actions = {
     [TYPES.NAV_TOGGLED]: createAction(MUTATIONS_TYPES.NAV_TOGGLED),
-
     [TYPES.PAGELISTSCROLL_UPDATED]: createAction(MUTATIONS_TYPES.PAGELISTSCROLL_UPDATED),
     [TYPES.APP_LOADED]: createAction(MUTATIONS_TYPES.APP_LOADED),
+    [TYPES.ROUTE_UPDATED]: createAction(MUTATIONS_TYPES.ROUTE_UPDATED),
 
-    [TYPES.NAVIGATED_TO]({ commit, dispatch }, { hash, force = false }) {
+    [TYPES.NAVIGATED_TO]({ commit, dispatch }, { hash, force = false, unblock = false }) {
 
         const activeGroup = hash === NAV_PATH_HOME ? GROUP_COVER : GROUP_PAGELIST;
 
@@ -30,17 +32,17 @@ export const actions = {
 
         if (force === true) {
             dispatch(TYPES.PAGELISTSCROLL_REQUESTED, { hash, activeGroup });
+            if (unblock) {
+                setTimeout(() => {
+                    dispatch(TYPES.PAGELISTSCROLL_COMPLETED);
+                }, 0);
+            }
         }
     },
 
-    [TYPES.PAGELISTSCROLL_REQUESTED]({ commit }, { hash }) {
+    [TYPES.PAGELISTSCROLL_REQUESTED]({ commit }, payload) {
+        commit(MUTATIONS_TYPES.PAGELISTSCROLL_REQUESTED, payload);
+    },
 
-        return new Promise((resolve) => {
-            commit(MUTATIONS_TYPES.PAGELISTSCROLL_REQUESTED, { hash });
-            setTimeout(() => {
-                commit(MUTATIONS_TYPES.PAGELISTSCROLL_COMPLETED);
-                resolve(true);
-            }, 0);
-        });
-    }
+    [TYPES.PAGELISTSCROLL_COMPLETED]: createAction(MUTATIONS_TYPES.PAGELISTSCROLL_COMPLETED)
 };
