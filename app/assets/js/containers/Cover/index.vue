@@ -3,6 +3,8 @@
         appear
         :css="false"
         @enter="onEnter"
+        @afterEnter="onAfterEnter"
+        @beforeLeave="onBeforeLeave"
         @leave="onLeave"
     >
         <section v-show="active" :class="[$style.root, { [$style.isAppLoaded]: isAppLoaded }]" :id="pageName">
@@ -22,7 +24,7 @@
                     <SocialList :items="socials" :class="$style.socialList" />
                 </footer>
             </div>
-            <a :href="`#${NAV_PATH_JOBS}`" @click.prevent="navigateAction({ hash : NAV_PATH_JOBS, force: true })" :class="$style.scrollhint" ref="scrollhint">
+            <a :href="`#${NAV_PATH_JOBS}`" @click.prevent="gotoPagelist" :class="$style.scrollhint" ref="scrollhint">
                 <div>Get to know me</div>
                 <Ico :class="$style.scrollhintIco" name="chevron-down" />
             </a>
@@ -32,6 +34,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
+import debounce from 'lodash/debounce';
 import anime from 'animejs';
 import { NAV_PATH_HOME, NAV_PATH_JOBS, GROUP_COVER } from '@/shared/constants';
 import picture from 'images/marco.jpg';
@@ -62,6 +65,7 @@ export default {
         ...mapState({
             socials: (state) => state.data.socials,
             activeGroup: (state) => state.ui.activeGroup,
+            activeNav: (state) => state.ui.activeNav,
             isAppLoaded: (state) => state.ui.isLoaded
         }),
 
@@ -70,15 +74,42 @@ export default {
         }
     },
 
+    created() {
+        this.debouncedWheelListener = debounce(this.wheelListener, 150);
+    },
+
     mounted() {
         this.firstEnter = !this.isAppLoaded;
+    },
+
+    beforeDestroy() {
+        window.removeEventListener('wheel', this.debouncedWheelListener);
     },
 
     methods: {
 
         ...mapActions('ui', {
-            navigateAction: UI_ACTIONS.NAVIGATED_TO
+            navigateToAction: UI_ACTIONS.NAVIGATED_TO
         }),
+
+        gotoPagelist() {
+            this.navigateToAction({ hash: this.NAV_PATH_JOBS, force: true });
+            this.$nextTick(() => {
+                this.$store.dispatch(`ui/${UI_ACTIONS.PAGELISTSCROLL_COMPLETED}`);
+            });
+        },
+
+        wheelListener(e) {
+
+            if (this.activeNav || this.$mq.matchesUntil('tablet')) {
+                return;
+            }
+
+            if (e.deltaY > 0) {
+                e.preventDefault();
+                this.navigateToAction({ hash: NAV_PATH_JOBS, force: true, unblock: true });
+            }
+        },
 
         onEnter(el, done) {
 
@@ -132,6 +163,14 @@ export default {
                 });
 
             }
+        },
+
+        onAfterEnter() {
+            window.addEventListener('wheel', this.debouncedWheelListener);
+        },
+
+        onBeforeLeave() {
+            window.removeEventListener('wheel', this.debouncedWheelListener);
         },
 
         onLeave(el, done) {

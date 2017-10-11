@@ -4,6 +4,8 @@
         name="pagelist-slide"
         appear-class="pagelist-slide-appear"
         appear-active-class="pagelist-slide-appear-active"
+        @afterEnter="onAfterEnter"
+        @beforeLeave="onBeforeLeave"
     >
         <section v-show="active" :class="[$style.root, { [$style.isActive]: active }]">
             <SmoothScrollbar
@@ -24,8 +26,10 @@
 
 <script>
 import { mapActions, mapState } from 'vuex';
+import debounce from 'lodash/debounce';
+
 import SmoothScrollbar from '@/components/SmoothScrollbar';
-import { GROUP_PAGELIST } from '@/shared/constants';
+import { GROUP_PAGELIST, NAV_PATH_HOME } from '@/shared/constants';
 import { TYPES as UI_ACTIONS } from '@/store/ui.actions';
 
 export default {
@@ -36,7 +40,7 @@ export default {
 
     computed: {
 
-        ...mapState('ui', ['activeGroup', 'scrollTarget']),
+        ...mapState('ui', ['activeGroup', 'scrollTarget', 'pagelistScroll']),
 
         active() {
             return this.activeGroup === GROUP_PAGELIST;
@@ -44,7 +48,12 @@ export default {
     },
 
     created() {
+        this.debouncedWheelListener = debounce(this.wheelListener, 50);
         this.fullYear = new Date().getFullYear();
+    },
+
+    beforeDestroy() {
+        window.removeEventListener('wheel', this.debouncedWheelListener);
     },
 
     watch: {
@@ -62,8 +71,31 @@ export default {
     methods: {
 
         ...mapActions('ui', {
-            updatePagelistscrollAction: UI_ACTIONS.PAGELISTSCROLL_UPDATED
+            updatePagelistscrollAction: UI_ACTIONS.PAGELISTSCROLL_UPDATED,
+            navigateToAction: UI_ACTIONS.NAVIGATED_TO
         }),
+
+        onAfterEnter() {
+            window.addEventListener('wheel', this.debouncedWheelListener);
+
+        },
+
+        onBeforeLeave() {
+            window.removeEventListener('wheel', this.debouncedWheelListener);
+        },
+
+        wheelListener(e) {
+
+
+            if (this.activeNav || this.$mq.matchesUntil('tablet')) {
+                return;
+            }
+
+            if (e.deltaY < 0 && this.activeGroup === GROUP_PAGELIST && this.pagelistScroll <= 0) {
+                e.preventDefault();
+                this.navigateToAction({ hash: NAV_PATH_HOME });
+            }
+        },
 
         onScroll({ offset }) {
             const { y = 0 } = offset;
