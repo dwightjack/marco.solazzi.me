@@ -1,5 +1,5 @@
 <template>
-    <Page :id="pageName">
+    <Page :id="id" @enter="updateRoute">
         <PageSection title="jobs.current">
             <TableList>
                 <SummaryTable caption="company" :data="current" :styles="['brackets']" />
@@ -16,15 +16,23 @@
 <script>
 import { mapState } from 'vuex';
 import { NAV_PATH_JOBS } from '@/shared/constants';
-import Page from '@/objects/Page';
+import Page from '@/components/Page';
 import PageSection from '@/components/Section';
 import TableList from '@/objects/TableList';
 import SummaryTable from '@/objects/Table';
+import { TYPES } from '@/store/ui.actions';
 
 export default {
+    components: {
+        Page,
+        PageSection,
+        TableList,
+        SummaryTable
+    },
+
     data() {
         return {
-            pageName: NAV_PATH_JOBS
+            id: NAV_PATH_JOBS
         };
     },
 
@@ -33,11 +41,10 @@ export default {
         prev: (state) => state.data.jobs.slice(1)
     }),
 
-    components: {
-        Page,
-        PageSection,
-        TableList,
-        SummaryTable
+    methods: {
+        updateRoute({ id }) {
+            this.$store.dispatch(`ui/${TYPES.ROUTE_UPDATED}`, id);
+        }
     }
 };
 </script>

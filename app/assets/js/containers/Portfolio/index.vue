@@ -1,5 +1,5 @@
 <template>
-    <Page :id="pageName">
+    <Page :id="id" @enter="updateRoute">
         <PageSection
             title="portfolio.works"
             subtitle="Latest agency projects"
@@ -23,25 +23,33 @@
 <script>
 import { mapState } from 'vuex';
 import { NAV_PATH_PORTFOLIO } from '@/shared/constants';
-import Page from '@/objects/Page';
+import Page from '@/components/Page';
 import PageSection from '@/components/Section';
 import TableList from '@/objects/TableList';
 import SummaryTable from '@/objects/Table';
+import { TYPES } from '@/store/ui.actions';
 
 export default {
-    data() {
-        return {
-            pageName: NAV_PATH_PORTFOLIO
-        };
-    },
-
-    computed: mapState('data', ['works', 'talks']),
 
     components: {
         Page,
         PageSection,
         TableList,
         SummaryTable
+    },
+
+    data() {
+        return {
+            id: NAV_PATH_PORTFOLIO
+        };
+    },
+
+    computed: mapState('data', ['works', 'talks']),
+
+    methods: {
+        updateRoute({ id }) {
+            this.$store.dispatch(`ui/${TYPES.ROUTE_UPDATED}`, id);
+        }
     }
 };
 </script>

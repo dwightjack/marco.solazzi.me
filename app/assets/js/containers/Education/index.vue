@@ -1,5 +1,5 @@
 <template>
-    <Page :id="pageName">
+    <Page :id="id" @enter="updateRoute">
         <PageSection title="education" subtitle="Learning never ends">
             <TableList>
                 <SummaryTable v-for="item in items" :key="item.id" caption="title" :data="item" :styles="['brackets']" />
@@ -11,15 +11,23 @@
 <script>
 import { mapState } from 'vuex';
 import { NAV_PATH_EDUCATION } from '@/shared/constants';
-import Page from '@/objects/Page';
+import Page from '@/components/Page';
 import PageSection from '@/components/Section';
 import TableList from '@/objects/TableList';
 import SummaryTable from '@/objects/Table';
+import { TYPES } from '@/store/ui.actions';
 
 export default {
+    components: {
+        Page,
+        PageSection,
+        TableList,
+        SummaryTable
+    },
+
     data() {
         return {
-            pageName: NAV_PATH_EDUCATION
+            id: NAV_PATH_EDUCATION
         };
     },
 
@@ -27,11 +35,10 @@ export default {
         items: (state) => state.data.education
     }),
 
-    components: {
-        Page,
-        PageSection,
-        TableList,
-        SummaryTable
+    methods: {
+        updateRoute({ id }) {
+            this.$store.dispatch(`ui/${TYPES.ROUTE_UPDATED}`, id);
+        }
     }
 };
 </script>

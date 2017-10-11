@@ -1,5 +1,5 @@
 <template>
-    <Page :id="pageName">
+    <Page :id="id" @enter="updateRoute">
         <PageSection
             v-for="id in ids"
             :key="id"
@@ -19,16 +19,24 @@
 
 import { mapState } from 'vuex';
 import { NAV_PATH_SKILLS } from '@/shared/constants';
-import Page from '@/objects/Page';
+import Page from '@/components/Page';
 import SkillList from '@/objects/SkillList';
 import DataSet from '@/objects/DataSet';
 import PageSection from '@/components/Section';
+import { TYPES } from '@/store/ui.actions';
 
 export default {
 
+    components: {
+        Page,
+        PageSection,
+        SkillList,
+        DataSet
+    },
+
     data() {
         return {
-            pageName: NAV_PATH_SKILLS
+            id: NAV_PATH_SKILLS
         };
     },
 
@@ -37,11 +45,10 @@ export default {
         skills: (state) => state.data.skills
     }),
 
-    components: {
-        Page,
-        PageSection,
-        SkillList,
-        DataSet
+    methods: {
+        updateRoute({ id }) {
+            this.$store.dispatch(`ui/${TYPES.ROUTE_UPDATED}`, id);
+        }
     }
 };
 </script>
