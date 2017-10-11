@@ -5,15 +5,9 @@
         <Wrapper>
             <Cover />
             <PageList slot="pagelist">
-                <Intersect @enter="pageEnter" :threshold="[0, 0.2]">
-                    <Jobs />
-                </Intersect>
-                <Intersect @enter="pageEnter" :threshold="[0, 0.2]">
-                    <Education />
-                </Intersect>
-                <Intersect @enter="pageEnter" :threshold="[0, 0.2]">
-                    <Skills />
-                </Intersect>
+                <Jobs />
+                <Education />
+                <Skills />
                 <Portfolio />
                 <Contacts />
             </PageList>
@@ -73,23 +67,23 @@ export default {
         ...mapState('ui', ['activeGroup', 'isLoaded', 'activeNav', 'pagelistScroll', 'route'])
     },
 
-    mounted() {
-        this.debouncedListener = debounce(this.setWheelListener, 150);
+    // mounted() {
+    //     this.debouncedListener = debounce(this.setWheelListener, 150);
 
-        this.$watch('isLoaded', (isLoaded) => {
-            if (isLoaded === true) {
-                this.$nextTick(() => {
-                    window.addEventListener('wheel', this.debouncedListener);
-                });
-            }
-        });
-    },
+    //     this.$watch('isLoaded', (isLoaded) => {
+    //         if (isLoaded === true) {
+    //             this.$nextTick(() => {
+    //                 window.addEventListener('wheel', this.debouncedListener);
+    //             });
+    //         }
+    //     });
+    // },
 
-    beforeDestroy() {
-        if (this.debouncedListener) {
-            window.removeEventListener('wheel', this.debouncedListener);
-        }
-    },
+    // beforeDestroy() {
+    //     if (this.debouncedListener) {
+    //         window.removeEventListener('wheel', this.debouncedListener);
+    //     }
+    // },
 
     watch: {
         route(hash) {
@@ -130,27 +124,23 @@ export default {
             // } else if (direction === 'up' && activeGroup === 'pagelist' && pagelistScroll <= 0) {
             //     router.go(NAV_PATH_HOME);
             // }
-        },
+        }//,
 
-        setWheelListener(e) {
-            //const { router } = this.props;
+        // setWheelListener(e) {
+        //     //const { router } = this.props;
 
-            if (this.activeNav || this.$mq.matchesUntil('tablet')) {
-                return;
-            }
+        //     if (this.activeNav || this.$mq.matchesUntil('tablet')) {
+        //         return;
+        //     }
 
-            if (e.deltaY > 0 && this.activeGroup === GROUP_COVER) {
-                e.preventDefault();
-                this.navigateToAction({ hash: NAV_PATH_JOBS });
-            } else if (e.deltaY < 0 && this.activeGroup === GROUP_PAGELIST && this.pagelistScroll <= 0) {
-                e.preventDefault();
-                this.navigateToAction({ hash: NAV_PATH_HOME });
-            }
-        },
-
-        pageEnter([entry]) {
-            console.log(entry.target, entry.isIntersecting, entry.intersectionRatio, entry.boundingClientRect.y);
-        }
+        //     if (e.deltaY > 0 && this.activeGroup === GROUP_COVER) {
+        //         e.preventDefault();
+        //         this.navigateToAction({ hash: NAV_PATH_JOBS, force: true, unblock: true });
+        //     } else if (e.deltaY < 0 && this.activeGroup === GROUP_PAGELIST && this.pagelistScroll <= 0) {
+        //         e.preventDefault();
+        //         this.navigateToAction({ hash: NAV_PATH_HOME });
+        //     }
+        // }
     }
 };
 
