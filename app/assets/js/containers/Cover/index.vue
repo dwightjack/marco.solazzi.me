@@ -123,7 +123,6 @@ export default {
                 });
 
                 const timeline = anime.timeline({
-                    complete: done,
                     autoplay: false,
                     easing: 'easeOutSine'
                 });
@@ -133,7 +132,8 @@ export default {
                     opacity: [0, 1],
                     translateX: (elm) => [(elm === pic ? '15%' : '7%'), 0],
                     duration: 400,
-                    delay: 350
+                    delay: 350,
+                    complete: done
                 }).add({
                     targets: scrollhint,
                     opacity: 0.8,
