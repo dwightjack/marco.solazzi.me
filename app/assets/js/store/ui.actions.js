@@ -21,7 +21,12 @@ export const actions = {
     [TYPES.NAV_TOGGLED]: createAction(MUTATIONS_TYPES.NAV_TOGGLED),
     [TYPES.PAGELISTSCROLL_UPDATED]: createAction(MUTATIONS_TYPES.PAGELISTSCROLL_UPDATED),
     [TYPES.APP_LOADED]: createAction(MUTATIONS_TYPES.APP_LOADED),
-    [TYPES.ROUTE_UPDATED]: createAction(MUTATIONS_TYPES.ROUTE_UPDATED),
+
+    [TYPES.ROUTE_UPDATED]({ commit, state }, route) {
+        if (!state.scrollTarget) {
+            commit(MUTATIONS_TYPES.ROUTE_UPDATED, route);
+        }
+    },
 
     [TYPES.NAVIGATED_TO]({ commit, dispatch }, { hash, force = false, unblock = false }) {
 

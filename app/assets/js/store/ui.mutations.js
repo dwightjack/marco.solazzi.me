@@ -24,9 +24,7 @@ export const mutations = {
     },
 
     [TYPES.ROUTE_UPDATED](state, route) {
-        if (!state.scrollTarget) {
-            state.route = route;
-        }
+        state.route = route;
     },
 
     [TYPES.PAGELISTSCROLL_UPDATED](state, pagelistScroll) {
