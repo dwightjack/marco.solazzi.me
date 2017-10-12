@@ -98,7 +98,7 @@ export default {
 
         ...mapActions('ui', {
             toggleNavAction: UI_ACTIONS.NAV_TOGGLED,
-            navigateAction: UI_ACTIONS.NAVIGATED_TO
+            navigateToAction: UI_ACTIONS.NAVIGATED_TO
         }),
 
         closeNav() {
@@ -113,12 +113,12 @@ export default {
             return { transitionDelay: `${this.navItemsDelayIn + (index * this.navItemStagger)}ms` };
         },
 
-        goTo(hash) {
+        goTo(route) {
 
             this.closeNav();
 
             setTimeout(() => {
-                this.navigateAction({ hash, force: true });
+                this.navigateToAction({ route, force: true });
 
                 // setTimeout(() => {
                 //     this.$store.dispatch(`ui/${UI_ACTIONS.PAGELISTSCROLL_COMPLETED}`);

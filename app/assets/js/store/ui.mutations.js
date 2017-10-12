@@ -31,8 +31,8 @@ export const mutations = {
         state.pagelistScroll = pagelistScroll;
     },
 
-    [TYPES.PAGELISTSCROLL_REQUESTED](state, { hash }) {
-        state.scrollTarget = hash;
+    [TYPES.PAGELISTSCROLL_REQUESTED](state, { route }) {
+        state.scrollTarget = route;
     },
 
     [TYPES.PAGELISTSCROLL_COMPLETED](state) {

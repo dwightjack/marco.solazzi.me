@@ -89,13 +89,14 @@ export default {
     methods: {
 
         ...mapActions('ui', {
-            navigateToAction: UI_ACTIONS.NAVIGATED_TO
+            navigateToAction: UI_ACTIONS.NAVIGATED_TO,
+            scrollCompleted: UI_ACTIONS.PAGELISTSCROLL_COMPLETED
         }),
 
         gotoPagelist() {
-            this.navigateToAction({ hash: this.NAV_PATH_JOBS, force: true });
+            this.navigateToAction({ route: NAV_PATH_JOBS, force: true });
             this.$nextTick(() => {
-                this.$store.dispatch(`ui/${UI_ACTIONS.PAGELISTSCROLL_COMPLETED}`);
+                this.scrollCompleted();
             });
         },
 
@@ -107,7 +108,7 @@ export default {
 
             if (e.deltaY > 0) {
                 e.preventDefault();
-                this.navigateToAction({ hash: NAV_PATH_JOBS, force: true, unblock: true });
+                this.gotoPagelist();
             }
         },
 

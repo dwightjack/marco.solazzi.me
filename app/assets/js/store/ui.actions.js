@@ -28,15 +28,15 @@ export const actions = {
         }
     },
 
-    [TYPES.NAVIGATED_TO]({ commit, dispatch }, { hash, force = false, unblock = false }) {
+    [TYPES.NAVIGATED_TO]({ commit, dispatch }, { route, force = false, unblock = false }) {
 
-        const activeGroup = hash === NAV_PATH_HOME ? GROUP_COVER : GROUP_PAGELIST;
+        const activeGroup = route === NAV_PATH_HOME ? GROUP_COVER : GROUP_PAGELIST;
 
         commit(MUTATIONS_TYPES.ACTIVE_GROUP_UPDATED, activeGroup);
-        commit(MUTATIONS_TYPES.ROUTE_UPDATED, hash);
+        commit(MUTATIONS_TYPES.ROUTE_UPDATED, route);
 
         if (force === true) {
-            dispatch(TYPES.PAGELISTSCROLL_REQUESTED, { hash, activeGroup });
+            dispatch(TYPES.PAGELISTSCROLL_REQUESTED, { route, activeGroup });
             if (unblock) {
                 setTimeout(() => {
                     dispatch(TYPES.PAGELISTSCROLL_COMPLETED);

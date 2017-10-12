@@ -129,7 +129,7 @@ export default {
 
             if (e.deltaY < 0 && this.activeGroup === GROUP_PAGELIST && this.pagelistScroll <= 0) {
                 e.preventDefault();
-                this.navigateToAction({ hash: NAV_PATH_HOME });
+                this.navigateToAction({ route: NAV_PATH_HOME });
             }
         },
 
