@@ -32,6 +32,8 @@ import SmoothScrollbar from '@/components/SmoothScrollbar';
 import { GROUP_PAGELIST, NAV_PATH_HOME } from '@/shared/constants';
 import { TYPES as UI_ACTIONS } from '@/store/ui.actions';
 
+const easing = (t) => (t - 1) ** 3 + 1; //eslint-disable-line
+
 export default {
 
     components: {
@@ -62,7 +64,10 @@ export default {
                 const { scrollbar } = this.$refs.smoothScroll;
                 scrollbar.update();
                 this.$nextTick(() => {
-                    scrollbar.scrollIntoView(document.getElementById(id));
+                    //scrollbar.scrollIntoView(document.getElementById(id));
+                    this.scrollTo(id)
+                        .then(this.completeScrollRequest)
+                        .catch(this.completeScrollRequest);
                 });
             }
         }
@@ -72,7 +77,8 @@ export default {
 
         ...mapActions('ui', {
             updatePagelistscrollAction: UI_ACTIONS.PAGELISTSCROLL_UPDATED,
-            navigateToAction: UI_ACTIONS.NAVIGATED_TO
+            navigateToAction: UI_ACTIONS.NAVIGATED_TO,
+            completeScrollRequest: UI_ACTIONS.PAGELISTSCROLL_COMPLETED
         }),
 
         onAfterEnter() {
@@ -82,6 +88,36 @@ export default {
 
         onBeforeLeave() {
             window.removeEventListener('wheel', this.debouncedWheelListener);
+        },
+
+        scrollTo(id) {
+
+            if (typeof id === 'string' && id.length > 0) {
+                const el = document.getElementById(id);
+
+                if (el === undefined) {
+                    return Promise.reject(new TypeError(`Unable to find element with id "${id}"`));
+                }
+
+                const { scrollbar } = this.$refs.smoothScroll;
+                const { offset } = scrollbar;
+                const { top } = el.getBoundingClientRect();
+                const rootTop = this.$el.getBoundingClientRect().top;
+
+                return new Promise((callback) => {
+                    scrollbar.scrollTo(
+                        offset.x,
+                        offset.y + (top - rootTop),
+                        1000,
+                        { easing, callback }
+                    );
+                });
+
+            }
+
+            return Promise.reject(new TypeError(`Invalid element id: ${id}`));
+
+
         },
 
         wheelListener(e) {

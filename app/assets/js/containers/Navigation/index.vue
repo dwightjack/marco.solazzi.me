@@ -120,9 +120,9 @@ export default {
             setTimeout(() => {
                 this.navigateAction({ hash, force: true });
 
-                setTimeout(() => {
-                    this.$store.dispatch(`ui/${UI_ACTIONS.PAGELISTSCROLL_COMPLETED}`);
-                }, 1000);
+                // setTimeout(() => {
+                //     this.$store.dispatch(`ui/${UI_ACTIONS.PAGELISTSCROLL_COMPLETED}`);
+                // }, 1000);
 
             }, this.navAnimOut + 300);
 
