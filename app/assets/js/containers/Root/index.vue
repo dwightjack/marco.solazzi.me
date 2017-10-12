@@ -86,12 +86,22 @@ export default {
     // },
 
     watch: {
-        route(hash) {
+        route(route) {
             //side effect!
             if (!this.$isServer) {
-                global.location.hash = `!${hash}`;
+                global.history.pushState(null, null, `#!${route}`);
             }
         }
+    },
+
+    mounted() {
+        if (!this.$isServer) {
+            global.addEventListener('popstate', this.onPopstate);
+        }
+    },
+
+    beforeDestroy() {
+        global.removeEventListener('popstate', this.onPopstate);
     },
 
     methods: {
@@ -103,7 +113,12 @@ export default {
 
         loadFinish() {
             this.toggleAppLoadAction(true);
-            this.navigateToAction({ hash: NAV_PATH_HOME });
+            this.navigateToAction({ route: NAV_PATH_HOME });
+        },
+
+        onPopstate() {
+            const route = global.location.hash.replace(/#!([a-z-_]+?)$/, '$1');
+            this.navigateToAction({ route, force: true });
         },
 
         onSwipe(direction) {
@@ -135,10 +150,10 @@ export default {
 
         //     if (e.deltaY > 0 && this.activeGroup === GROUP_COVER) {
         //         e.preventDefault();
-        //         this.navigateToAction({ hash: NAV_PATH_JOBS, force: true, unblock: true });
+        //         this.navigateToAction({ route: NAV_PATH_JOBS, force: true, unblock: true });
         //     } else if (e.deltaY < 0 && this.activeGroup === GROUP_PAGELIST && this.pagelistScroll <= 0) {
         //         e.preventDefault();
-        //         this.navigateToAction({ hash: NAV_PATH_HOME });
+        //         this.navigateToAction({ route: NAV_PATH_HOME });
         //     }
         // }
     }
