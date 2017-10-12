@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import debounce from 'lodash/debounce';
+//import debounce from 'lodash/debounce';
 import { mapState, mapActions } from 'vuex';
 import Jobs from '@/containers/Jobs';
 import Education from '@/containers/Education';
@@ -33,10 +33,10 @@ import Wrapper from '@/components/Wrapper';
 import BgPattern from '@/objects/BgPattern';
 import routes from '@/shared/routes';
 import {
-    NAV_PATH_JOBS,
-    NAV_PATH_HOME,
-    GROUP_COVER,
-    GROUP_PAGELIST,
+    //NAV_PATH_JOBS,
+    NAV_PATH_HOME//,
+    //GROUP_COVER,
+    //GROUP_PAGELIST,
 } from '@/shared/constants';
 import { TYPES as UI_ACTIONS } from '@/store/ui.actions';
 
