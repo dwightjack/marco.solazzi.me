@@ -7,7 +7,7 @@
             :subtitle="skills[id].label"
         >
             <DataSet :items="skills[id].list">
-                <template scope="props">
+                <template slot-scope="props">
                     <SkillList :skills="props.data" />
                 </template>
             </DataSet>

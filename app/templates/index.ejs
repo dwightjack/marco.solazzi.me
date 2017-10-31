@@ -19,6 +19,10 @@
         <% if (htmlWebpackPlugin.options.modernizr) { %>
         <script defer src="<%- webpackConfig.output.publicPath %><%- htmlWebpackPlugin.options.modernizr %>"></script>
         <% } %>
+        <% for (var chunk of webpack.chunks) {
+        for (var file of chunk.files) {
+          if (file.match(/\.(js|css)$/)) { %>
+        <link rel="<%= chunk.initial?'preload':'prefetch' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>"><% }}} %>
         <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Open+Sans:400,600,700" rel="stylesheet" />
         <% if (htmlWebpackPlugin.options.analytics) { %>
         <script>

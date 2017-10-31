@@ -53,6 +53,7 @@ Session.vim
 ## Softwares
 #############
 
+.vscode
 nbproject
 .idea
 .externalToolBuilders

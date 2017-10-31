@@ -1,7 +1,1 @@
-/* eslint-disable */
-module.exports = {
-    plugins: [
-        require('autoprefixer')()
-    ]
-};
-/* eslint-enable */
+module.exports = require('umeboshi-config/postcss.config.js');
