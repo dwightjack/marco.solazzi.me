@@ -1,5 +1,6 @@
 import { mutations } from './ui.mutations';
 import { actions } from './ui.actions';
+import { GROUP_LOADER } from '@/shared/constants';
 
 export default {
 
@@ -12,7 +13,7 @@ export default {
     state: {
         isLoaded: false,
         activeNav: false,
-        activeGroup: '',
+        activeGroup: GROUP_LOADER,
         route: '',
         pagelistScroll: 0,
         scrollTarget: null
