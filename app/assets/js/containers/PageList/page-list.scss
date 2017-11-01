@@ -66,33 +66,35 @@
         will-change: transform, opacity;
     }
 
-    .pagelist-slide-enter {
-        transform: translateY(100%);
-    }
+    @include mq(tablet-landscape) {
+        .pagelist-slide-enter {
+            transform: translateY(100%);
+        }
 
 
-    .pagelist-slide-enter-to {
-        transform: translateY(0);
-    }
+        .pagelist-slide-enter-to {
+            transform: translateY(0);
+        }
 
-    .pagelist-slide-leave {
-        transform: translateY(0);
-    }
+        .pagelist-slide-leave {
+            transform: translateY(0);
+        }
 
-    .pagelist-slide-leave-to {
-        transform: translateY(100%);
-    }
+        .pagelist-slide-leave-to {
+            transform: translateY(100%);
+        }
 
-    .pagelist-slide-enter-active {
-        transition: all 800ms cubic-bezier(0.74, 0.01, 0.29, 0.99) 1200ms;
-        transition-property: transform, opacity;
-        will-change: transform, opacity;
-    }
+        .pagelist-slide-enter-active {
+            transition: all 800ms cubic-bezier(0.74, 0.01, 0.29, 0.99) 1200ms;
+            transition-property: transform, opacity;
+            will-change: transform, opacity;
+        }
 
-    .pagelist-slide-leave-active {
-        visibility: visible;
-        transition: all 800ms cubic-bezier(0.74, 0.01, 0.29, 0.99);
-        transition-property: transform, opacity;
-        will-change: transform, opacity;
+        .pagelist-slide-leave-active {
+            visibility: visible;
+            transition: all 800ms cubic-bezier(0.74, 0.01, 0.29, 0.99);
+            transition-property: transform, opacity;
+            will-change: transform, opacity;
+        }
     }
 }
