@@ -7,7 +7,7 @@
         @afterEnter="onAfterEnter"
         @beforeLeave="onBeforeLeave"
     >
-        <section v-show="active" :class="[$style.root, { [$style.isActive]: active }]">
+        <section v-swipe.up="swipeUpHandler" v-show="active" :class="[$style.root, { [$style.isActive]: active }]">
             <SmoothScrollbar
                 @scroll="onScroll"
                 tag="div"
@@ -29,7 +29,7 @@ import { mapActions, mapState } from 'vuex';
 import debounce from 'lodash/debounce';
 
 import SmoothScrollbar from '@/components/SmoothScrollbar';
-import { GROUP_PAGELIST, NAV_PATH_HOME } from '@/shared/constants';
+import { GROUP_PAGELIST, NAV_PATH_HOME, GROUP_LOADER } from '@/shared/constants';
 import { TYPES as UI_ACTIONS } from '@/store/ui.actions';
 
 const easing = (t) => (t - 1) ** 3 + 1; //eslint-disable-line
@@ -45,6 +45,9 @@ export default {
         ...mapState('ui', ['activeGroup', 'scrollTarget', 'pagelistScroll']),
 
         active() {
+            if (this.$mq.matchesUntil('tablet') === true) {
+                return this.activeGroup && this.activeGroup !== GROUP_LOADER;
+            }
             return this.activeGroup === GROUP_PAGELIST;
         }
     },
@@ -129,6 +132,17 @@ export default {
 
             if (e.deltaY < 0 && this.activeGroup === GROUP_PAGELIST && this.pagelistScroll <= 0) {
                 e.preventDefault();
+                this.navigateToAction({ route: NAV_PATH_HOME });
+            }
+        },
+
+        swipeUpHandler() {
+
+            if (this.activeNav || this.$mq.matchesUntil('tablet')) {
+                return;
+            }
+
+            if (this.activeGroup === GROUP_PAGELIST && this.pagelistScroll <= 0) {
                 this.navigateToAction({ route: NAV_PATH_HOME });
             }
         },

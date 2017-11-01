@@ -1,5 +1,5 @@
 <template>
-    <Swipe :onSwipe="onSwipe">
+    <div>
         <Loader :active="!isLoaded" @loader-end="loadFinish" :assetLoaded="true" />
         <Navigation :paths="routes" />
         <Wrapper>
@@ -13,7 +13,7 @@
             </PageList>
             <BgPattern :active="isLoaded" />
         </Wrapper>
-    </Swipe>
+    </div>
 </template>
 
 <script>
@@ -27,7 +27,7 @@ import Contacts from '@/containers/Contacts';
 import Cover from '@/containers/Cover';
 import Navigation from '@/containers/Navigation';
 import PageList from '@/containers/PageList';
-import Swipe from '@/components/Swipe';
+//import Swipe from '@/components/Swipe';
 import Loader from '@/components/Loader';
 import Wrapper from '@/components/Wrapper';
 import BgPattern from '@/objects/BgPattern';
@@ -50,7 +50,7 @@ export default {
         Education,
         Portfolio,
         Contacts,
-        Swipe,
+        //Swipe,
         Navigation,
         Wrapper,
         PageList,
@@ -66,24 +66,6 @@ export default {
     computed: {
         ...mapState('ui', ['activeGroup', 'isLoaded', 'activeNav', 'pagelistScroll', 'route'])
     },
-
-    // mounted() {
-    //     this.debouncedListener = debounce(this.setWheelListener, 150);
-
-    //     this.$watch('isLoaded', (isLoaded) => {
-    //         if (isLoaded === true) {
-    //             this.$nextTick(() => {
-    //                 window.addEventListener('wheel', this.debouncedListener);
-    //             });
-    //         }
-    //     });
-    // },
-
-    // beforeDestroy() {
-    //     if (this.debouncedListener) {
-    //         window.removeEventListener('wheel', this.debouncedListener);
-    //     }
-    // },
 
     watch: {
         route(route) {

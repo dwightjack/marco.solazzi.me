@@ -7,7 +7,7 @@
         @beforeLeave="onBeforeLeave"
         @leave="onLeave"
     >
-        <section v-show="active" :class="[$style.root, { [$style.isAppLoaded]: isAppLoaded }]" :id="pageName">
+        <section v-swipe.down="swipeDownHandler" v-show="active" :class="[$style.root, { [$style.isAppLoaded]: isAppLoaded }]" :id="pageName">
 
             <div :class="$style.pic" ref="pic">
                 <Avatar :src="picture" :class="$style.avatar" />
@@ -98,6 +98,16 @@ export default {
             this.$nextTick(() => {
                 this.scrollCompleted();
             });
+        },
+
+        swipeDownHandler() {
+
+            if (this.activeNav || this.$mq.matchesUntil('tablet')) {
+                return;
+            }
+
+            this.gotoPagelist();
+
         },
 
         wheelListener(e) {

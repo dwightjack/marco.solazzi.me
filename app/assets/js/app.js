@@ -10,9 +10,12 @@ import Root from '@/containers/Root';
 import store from '@/store';
 
 import mq from '@/shared/mq';
+import swipe from '@/directives/swipe';
 import breakpoints from 'styles/_mq.scss';
 
-Vue.use(mq, { breakpoints, ssr: 'desktop' });
+Vue.use(mq, { breakpoints: { none: 0, ...breakpoints }, ssr: 'desktop' });
+
+Vue.directive('swipe', swipe);
 
 Vue.config.productionTip = false;
 
