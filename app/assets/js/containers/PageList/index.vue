@@ -10,15 +10,16 @@
         <section v-swipe.up="swipeUpHandler" v-show="active" :class="[$style.root, { [$style.isActive]: active }]">
             <SmoothScrollbar
                 @scroll="onScroll"
-                tag="div"
                 ref="smoothScroll"
                 :options="{ alwaysShowTracks: true }"
                 :active="$mq.matches('tabletLandscape')"
             >
-                <slot />
-                <footer role="contentinfo" :class="$style.footer">
-                    &copy; {{ fullYear }} Marco Solazzi - <a href="https://github.com/dwightjack/marco.solazzi.me/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">license</a> <a href="https://github.com/dwightjack/marco.solazzi.me" target="_blank" rel="noopener noreferrer">source</a>
-                </footer>
+                <div>
+                    <slot />
+                    <footer role="contentinfo" :class="$style.footer">
+                        &copy; {{ fullYear }} Marco Solazzi - <a href="https://github.com/dwightjack/marco.solazzi.me/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">license</a> <a href="https://github.com/dwightjack/marco.solazzi.me" target="_blank" rel="noopener noreferrer">source</a>
+                    </footer>
+                </div>
             </SmoothScrollbar>
         </section>
     </transition>

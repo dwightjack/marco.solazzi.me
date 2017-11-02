@@ -30,19 +30,26 @@ export default {
         }
     },
 
-    destroyed() {
-        this.scrollbar.destroy();
-        this.scrollbar = null;
+    beforeDestroy() {
+        this.destroy();
     },
 
     methods: {
         attach() {
             const el = this.$el || this.$slots.default[0].elm;
-            if (this.scrollbar) {
-                this.destroy();
-            }
+            this.destroy();
             this.scrollbar = Scrollbar.init(el, this.options);
             this.scrollbar.addListener((status) => this.$emit('scroll', status));
+
+        },
+
+        destroy() {
+            if (this.scrollbar) {
+                const el = this.$el || this.$slots.default[0].elm;
+                this.scrollbar.destroy();
+                this.scrollbar = null;
+                el.removeAttribute('data-scrollbar');
+            }
         }
     }
 };
