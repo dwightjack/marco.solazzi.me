@@ -102,7 +102,7 @@ export default {
         }),
 
         closeNav() {
-            this.toggleNavAction(false);
+            return this.toggleNavAction({ toggle: false, delay: this.navAnimOut + 300 });
         },
 
         navItemDelay(index) {
@@ -114,19 +114,7 @@ export default {
         },
 
         goTo(route) {
-
-            this.closeNav();
-
-            setTimeout(() => {
-                this.navigateToAction({ route, force: true });
-
-                // setTimeout(() => {
-                //     this.$store.dispatch(`ui/${UI_ACTIONS.PAGELISTSCROLL_COMPLETED}`);
-                // }, 1000);
-
-            }, this.navAnimOut + 300);
-
-
+            this.closeNav().then(() => this.navigateToAction({ route, force: true }));
         }
     }
 };
