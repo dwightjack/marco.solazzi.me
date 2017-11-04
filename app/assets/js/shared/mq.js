@@ -14,8 +14,17 @@ function serverMatchMedia(breakpoints, key, defaultKey) {
     };
 }
 
+const toCamelCase = (str) => str.replace(/[-]{1,}(.)/g, (_, l) => l.toUpperCase());
+
 const clientMatchMedia = (breakpoints, key) => global.matchMedia(`(min-width: ${breakpoints[key]}px)`);
 
+const matcher = (ctx, fn) => (breakpoint) => {
+    const { keys } = ctx; //eslint-disable-line no-shadow
+    if (ctx.currentIdx === null) {
+        return false;
+    }
+    return fn(keys.indexOf(toCamelCase(breakpoint)), ctx.currentIdx);
+};
 
 export default {
     install(Vue, options = {}) {
@@ -74,6 +83,9 @@ export default {
 
                 }
 
+                this.matches = matcher(this, (a, b) => a <= b);
+                this.matchesExact = matcher(this, (a, b) => a === b);
+                this.matchesUntil = matcher(this, (a, b) => a > b);
 
             },
 
@@ -89,21 +101,6 @@ export default {
                         }
                     }
                     this.current = '';
-                },
-
-                matches(breakpoint) {
-                    const { keys } = this; //eslint-disable-line no-shadow
-                    return this.currentIdx !== null ? keys.indexOf(breakpoint) <= this.currentIdx : false;
-                },
-
-                matchesExact(breakpoint) {
-                    const { keys } = this; //eslint-disable-line no-shadow
-                    return this.currentIdx !== null ? keys.indexOf(breakpoint) === this.currentIdx : false;
-                },
-
-                matchesUntil(breakpoint) {
-                    const { keys } = this; //eslint-disable-line no-shadow
-                    return this.currentIdx !== null ? keys.indexOf(breakpoint) > this.currentIdx : false;
                 }
             }
         });

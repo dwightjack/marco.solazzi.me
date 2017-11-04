@@ -27,6 +27,7 @@
 <script>
 import { mapActions, mapState } from 'vuex';
 import debounce from 'lodash/debounce';
+import anime from 'animejs';
 
 import SmoothScrollbar from '@/components/SmoothScrollbar';
 import { GROUP_PAGELIST, NAV_PATH_HOME, GROUP_LOADER } from '@/shared/constants';
@@ -42,13 +43,13 @@ export default {
 
     computed: {
 
-        ...mapState('ui', ['activeGroup', 'scrollTarget', 'pagelistScroll']),
+        ...mapState('ui', ['activeGroup', 'forcedScroll', 'pagelistScroll', 'route']),
 
         active() {
-            if (this.$mq.matchesUntil('tablet') === true) {
-                return this.activeGroup && this.activeGroup !== GROUP_LOADER;
+            if (this.$mq.matches('tablet-landscape')) {
+                return this.activeGroup === GROUP_PAGELIST;
             }
-            return this.activeGroup === GROUP_PAGELIST;
+            return this.activeGroup && this.activeGroup !== GROUP_LOADER;
         }
     },
 
@@ -62,13 +63,14 @@ export default {
     },
 
     watch: {
-        scrollTarget(id) {
-            if (id) {
+        forcedScroll(scroll) {
+            if (scroll === true && this.route) {
                 const { scrollbar } = this.$refs.smoothScroll;
-                scrollbar.update();
+                if (scrollbar) {
+                    scrollbar.update();
+                }
                 this.$nextTick(() => {
-                    //scrollbar.scrollIntoView(document.getElementById(id));
-                    this.scrollTo(id)
+                    this.scrollTo(this.route)
                         .then(this.completeScrollRequest)
                         .catch(this.completeScrollRequest);
                 });
@@ -93,7 +95,7 @@ export default {
             window.removeEventListener('wheel', this.debouncedWheelListener);
         },
 
-        scrollTo(id) {
+        scrollTo(id, callback) {
 
             if (typeof id === 'string' && id.length > 0) {
                 const el = document.getElementById(id);
@@ -103,18 +105,39 @@ export default {
                 }
 
                 const { scrollbar } = this.$refs.smoothScroll;
-                const { offset } = scrollbar;
-                const { top } = el.getBoundingClientRect();
-                const rootTop = this.$el.getBoundingClientRect().top;
 
-                return new Promise((callback) => {
+                if (scrollbar) {
+                    const { offset } = scrollbar;
+                    const { top } = el.getBoundingClientRect();
+                    const rootTop = this.$el.getBoundingClientRect().top;
+
                     scrollbar.scrollTo(
                         offset.x,
                         offset.y + (top - rootTop),
                         1000,
                         { easing, callback }
                     );
-                });
+                } else {
+                    const tl = anime.timeline({
+                        targets: this.$el,
+                        autoplay: false,
+                        easing: 'easeOutQuad'
+                    });
+
+                    tl.add([{
+                        opacity: [1, 0],
+                        duration: 300,
+                        complete: () => el.scrollIntoView()
+                    }, {
+                        opacity: [0, 1],
+                        duration: 300,
+                        delay: 200
+                    }]);
+
+                    tl.complete = callback;
+
+                    tl.play();
+                }
 
             }
 
@@ -126,7 +149,7 @@ export default {
         wheelListener(e) {
 
 
-            if (this.activeNav || this.$mq.matchesUntil('tablet')) {
+            if (this.activeNav || this.$mq.matchesUntil('tablet-landscape')) {
                 return;
             }
 
@@ -138,7 +161,7 @@ export default {
 
         swipeUpHandler() {
 
-            if (this.activeNav || this.$mq.matchesUntil('tablet')) {
+            if (this.activeNav || this.$mq.matchesUntil('tablet-landscape')) {
                 return;
             }
 

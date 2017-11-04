@@ -32,11 +32,11 @@ export const mutations = {
     },
 
     [TYPES.PAGELISTSCROLL_REQUESTED](state, { route }) {
-        state.scrollTarget = route;
+        state.forcedScroll = !!route;
     },
 
     [TYPES.PAGELISTSCROLL_COMPLETED](state) {
-        state.scrollTarget = null;
+        state.forcedScroll = false;
     }
 };
 

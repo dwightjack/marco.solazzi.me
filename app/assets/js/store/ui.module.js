@@ -16,7 +16,7 @@ export default {
         activeGroup: GROUP_LOADER,
         route: '',
         pagelistScroll: 0,
-        scrollTarget: null
+        forcedScroll: false
     }
 
 };

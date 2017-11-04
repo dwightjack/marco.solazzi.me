@@ -4,7 +4,7 @@
         <Navigation :paths="routes" />
         <Wrapper>
             <Cover />
-            <PageList slot="pagelist">
+            <PageList>
                 <Jobs />
                 <Education />
                 <Skills />
@@ -71,7 +71,10 @@ export default {
         route(route) {
             //side effect!
             if (!this.$isServer) {
-                global.history.pushState(null, null, `#!${route}`);
+                const nextHash = `#!${route}`;
+                if (global.location.hash !== nextHash) {
+                    global.history.pushState(null, null, nextHash);
+                }
             }
         }
     },
@@ -101,43 +104,7 @@ export default {
         onPopstate() {
             const route = global.location.hash.replace(/#!([a-z-_]+?)$/, '$1');
             this.navigateToAction({ route, force: true });
-        },
-
-        onSwipe(direction) {
-            console.log(direction); //eslint-disable-line no-console
-            // const { activeNav, activeGroup, pagelistScroll, breakpoint, router } = this.props;
-
-
-            // if (!Modernizr.touchevents || activeGroup === 'intro') {
-            //     return;
-            // }
-
-            // if (activeNav || breakpoint === 'mobile' || breakpoint === 'tablet') {
-            //     return;
-            // }
-
-            // if (direction === 'down' && activeGroup === 'cover') {
-            //     router.go(NAV_PATH_JOBS);
-            // } else if (direction === 'up' && activeGroup === 'pagelist' && pagelistScroll <= 0) {
-            //     router.go(NAV_PATH_HOME);
-            // }
-        }//,
-
-        // setWheelListener(e) {
-        //     //const { router } = this.props;
-
-        //     if (this.activeNav || this.$mq.matchesUntil('tablet')) {
-        //         return;
-        //     }
-
-        //     if (e.deltaY > 0 && this.activeGroup === GROUP_COVER) {
-        //         e.preventDefault();
-        //         this.navigateToAction({ route: NAV_PATH_JOBS, force: true, unblock: true });
-        //     } else if (e.deltaY < 0 && this.activeGroup === GROUP_PAGELIST && this.pagelistScroll <= 0) {
-        //         e.preventDefault();
-        //         this.navigateToAction({ route: NAV_PATH_HOME });
-        //     }
-        // }
+        }
     }
 };
 
