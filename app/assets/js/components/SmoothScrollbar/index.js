@@ -43,6 +43,8 @@ export default {
 
         destroy() {
             if (this.scrollbar) {
+                const el = this.$el || this.$slots.default[0].elm;
+                el.removeAttribute('data-scrollbar');
                 this.scrollbar.destroy();
                 this.scrollbar = null;
             }
