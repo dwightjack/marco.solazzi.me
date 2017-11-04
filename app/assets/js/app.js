@@ -11,7 +11,7 @@ import store from '@/store';
 
 import mq from '@/shared/mq';
 import swipe from '@/directives/swipe';
-import breakpoints from 'styles/_mq.scss';
+import breakpoints from 'styles/_breakpoints.scss';
 
 Vue.use(mq, { breakpoints: { none: 0, ...breakpoints }, ssr: 'desktop' });
 

@@ -1,0 +1,10 @@
+
+/* stylelint-disable property-no-unknown */
+@import "mq";
+
+:export {
+    @each $key, $value in $mq-breakpoints {
+        #{$key}: $value / ($value * 0 + 1);
+    }
+}
+/* stylelint-enable property-no-unknown */
