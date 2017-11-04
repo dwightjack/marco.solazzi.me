@@ -7,7 +7,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    z-index: z-index(above);
+    z-index: z-index(loader);
     display: flex;
     overflow: hidden;
     width: 100%;
@@ -23,6 +23,22 @@
     @include mq($media-type: print) {
         display: none;
     }
+
+    &::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        content: "";
+    }
+}
+
+.body {
+    position: relative;
+    z-index: 1;
 }
 
 .body:global(.h1) {
@@ -128,6 +144,11 @@
     .loader-animation-leave-to {
         opacity: 0;
         transform: translateX(-5%);
+
+        &::after {
+            opacity: 0;
+            transform: translateX(-50%);
+        }
     }
 
     .loader-animation-leave-active {
