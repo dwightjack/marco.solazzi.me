@@ -18,22 +18,29 @@ export const TYPES = {
 
 
 export const actions = {
-    [TYPES.NAV_TOGGLED]: createAction(MUTATIONS_TYPES.NAV_TOGGLED),
+    [TYPES.NAV_TOGGLED]({ commit }, { toggle, delay = 0 } = {}) {
+        return new Promise((resolve) => {
+            commit(MUTATIONS_TYPES.NAV_TOGGLED, toggle);
+            setTimeout(() => resolve(toggle), delay);
+        });
+    },
     [TYPES.PAGELISTSCROLL_UPDATED]: createAction(MUTATIONS_TYPES.PAGELISTSCROLL_UPDATED),
     [TYPES.APP_LOADED]: createAction(MUTATIONS_TYPES.APP_LOADED),
 
     [TYPES.ROUTE_UPDATED]({ commit, state }, route) {
-        if (!state.scrollTarget) {
-            commit(MUTATIONS_TYPES.ROUTE_UPDATED, route);
-        }
-    },
-
-    [TYPES.NAVIGATED_TO]({ commit, dispatch }, { route, force = false, unblock = false }) {
-
         const activeGroup = route === NAV_PATH_HOME ? GROUP_COVER : GROUP_PAGELIST;
 
-        commit(MUTATIONS_TYPES.ACTIVE_GROUP_UPDATED, activeGroup);
-        commit(MUTATIONS_TYPES.ROUTE_UPDATED, route);
+        if (state.forcedScroll === false) {
+            commit(MUTATIONS_TYPES.ACTIVE_GROUP_UPDATED, activeGroup);
+            commit(MUTATIONS_TYPES.ROUTE_UPDATED, route);
+        }
+
+        return activeGroup;
+    },
+
+    [TYPES.NAVIGATED_TO]({ dispatch }, { route, force = false, unblock = false }) {
+
+        const activeGroup = dispatch(TYPES.ROUTE_UPDATED, route);
 
         if (force === true) {
             dispatch(TYPES.PAGELISTSCROLL_REQUESTED, { route, activeGroup });
@@ -45,9 +52,7 @@ export const actions = {
         }
     },
 
-    [TYPES.PAGELISTSCROLL_REQUESTED]({ commit }, payload) {
-        commit(MUTATIONS_TYPES.PAGELISTSCROLL_REQUESTED, payload);
-    },
+    [TYPES.PAGELISTSCROLL_REQUESTED]: createAction(MUTATIONS_TYPES.PAGELISTSCROLL_REQUESTED),
 
     [TYPES.PAGELISTSCROLL_COMPLETED]: createAction(MUTATIONS_TYPES.PAGELISTSCROLL_COMPLETED)
 };
