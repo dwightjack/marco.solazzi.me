@@ -11,15 +11,14 @@
             <SmoothScrollbar
                 @scroll="onScroll"
                 ref="smoothScroll"
+                tagName="div"
                 :options="{ alwaysShowTracks: true }"
                 :active="$mq.matches('tabletLandscape')"
             >
-                <div>
-                    <slot />
-                    <footer role="contentinfo" :class="$style.footer">
-                        &copy; {{ fullYear }} Marco Solazzi - <a href="https://github.com/dwightjack/marco.solazzi.me/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">license</a> <a href="https://github.com/dwightjack/marco.solazzi.me" target="_blank" rel="noopener noreferrer">source</a>
-                    </footer>
-                </div>
+                <slot />
+                <footer role="contentinfo" :class="$style.footer">
+                    &copy; {{ fullYear }} Marco Solazzi - <a href="https://github.com/dwightjack/marco.solazzi.me/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">license</a> <a href="https://github.com/dwightjack/marco.solazzi.me" target="_blank" rel="noopener noreferrer">source</a>
+                </footer>
             </SmoothScrollbar>
         </section>
     </transition>

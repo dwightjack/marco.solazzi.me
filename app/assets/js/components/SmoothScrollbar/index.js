@@ -5,22 +5,18 @@ export default {
 
     props: {
         options: VueTypes.object,
-        tag: String,
+        tagName: String,
         active: VueTypes.bool
     },
 
     render(h) {
-        if (this.tag) { return h(this.tag, this.$slots.default); }
+        if (this.tagName) return h(this.tagName, this.$slots.default);
         return this.$slots.default[0];
     },
 
     watch: {
-        active(v) {
-            if (v) {
-                this.$nextTick(this.attach);
-            } else {
-                this.scrollbar && this.scrollbar.destroy(); //eslint-disable-line no-unused-expressions
-            }
+        active(active) {
+            this.$nextTick(active ? this.attach : this.destroy);
         }
     },
 
@@ -36,19 +32,19 @@ export default {
 
     methods: {
         attach() {
-            const el = this.$el || this.$slots.default[0].elm;
-            this.destroy();
-            this.scrollbar = Scrollbar.init(el, this.options);
-            this.scrollbar.addListener((status) => this.$emit('scroll', status));
-
+            if (!this.scrollbar) {
+                const el = this.$el || this.$slots.default[0].elm;
+                this.scrollbar = Scrollbar.init(el, this.options);
+                this.scrollbar.addListener((status) => this.$emit('scroll', status));
+            } else {
+                this.scrollbar.update();
+            }
         },
 
         destroy() {
             if (this.scrollbar) {
-                const el = this.$el || this.$slots.default[0].elm;
                 this.scrollbar.destroy();
                 this.scrollbar = null;
-                el.removeAttribute('data-scrollbar');
             }
         }
     }
