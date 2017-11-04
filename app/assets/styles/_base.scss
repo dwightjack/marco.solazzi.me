@@ -198,8 +198,8 @@ abbr[title] {
     }
 }
 
-:global(.touchevents a.u-link--mark),
-:global(.touchevents) a:not([class]) {
+:global(a.u-link--mark),
+:global(a:not([class])) {
     background-image:
         linear-gradient(
             to top,
@@ -218,6 +218,7 @@ abbr[title] {
     display: inline-block;
     padding-right: 0.22em;
     padding-left: 0.22em;
+    background-image: none;
     color: inherit;
     outline: 0;
     text-decoration: none;
