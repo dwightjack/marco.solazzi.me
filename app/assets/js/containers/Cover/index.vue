@@ -7,8 +7,8 @@
         @beforeLeave="onBeforeLeave"
         @leave="onLeave"
     >
-        <section v-swipe.down="swipeDownHandler" v-show="active" :class="[$style.root, { [$style.isAppLoaded]: isAppLoaded }]" :id="pageName">
-
+        <section v-swipe.down="swipeDownHandler" v-show="active" :class="[$style.root, { [$style.isAppLoaded]: isAppLoaded }]" :id="id">
+            <span ref="top" :class="$style.intersectTop" data-pos="top" />
             <div :class="$style.pic" ref="pic">
                 <Avatar :src="picture" :class="$style.avatar" />
             </div>
@@ -28,6 +28,7 @@
                 <div>Get to know me</div>
                 <Ico :class="$style.scrollhintIco" name="chevron-down" />
             </a>
+            <span ref="bottom" :class="$style.intersectBottom" data-pos="bottom" />
         </section>
         </transition>
 </template>
@@ -36,14 +37,17 @@
 import { mapState, mapActions } from 'vuex';
 import debounce from 'lodash/debounce';
 import anime from 'animejs';
-import { NAV_PATH_HOME, NAV_PATH_JOBS, GROUP_COVER } from '@/shared/constants';
+import { NAV_PATH_HOME, NAV_PATH_JOBS, GROUP_COVER, GROUP_PAGELIST } from '@/shared/constants';
 import picture from 'images/marco.jpg';
 import Avatar from '@/objects/Avatar';
 import Ico from '@/objects/Ico';
 import SocialList from '@/objects/SocialList';
+import observerMixin from '@/shared/observer.mixin';
 import { TYPES as UI_ACTIONS } from '@/store/ui.actions';
 
 export default {
+
+    mixins: [observerMixin],
 
     components: {
         Avatar,
@@ -53,7 +57,7 @@ export default {
 
     data() {
         return {
-            pageName: NAV_PATH_HOME,
+            id: NAV_PATH_HOME,
             NAV_PATH_JOBS,
             picture,
             firstEnter: true
@@ -70,12 +74,19 @@ export default {
         }),
 
         active() {
-            return this.activeGroup === GROUP_COVER;
+            if (this.$mq.matches('tablet-landscape')) {
+                return this.activeGroup === GROUP_COVER;
+            }
+            return this.activeGroup === GROUP_COVER || this.activeGroup === GROUP_PAGELIST;
         }
     },
 
     created() {
         this.debouncedWheelListener = debounce(this.wheelListener, 150);
+
+        this.$on('enter', ({ id }) => {
+            this.$store.dispatch(`ui/${UI_ACTIONS.ROUTE_UPDATED}`, id);
+        });
     },
 
     mounted() {
@@ -101,8 +112,7 @@ export default {
         },
 
         swipeDownHandler() {
-
-            if (this.activeNav || this.$mq.matchesUntil('tablet')) {
+            if (this.activeNav || this.$mq.matchesUntil('tablet-landscape')) {
                 return;
             }
 
@@ -112,7 +122,7 @@ export default {
 
         wheelListener(e) {
 
-            if (this.activeNav || this.$mq.matchesUntil('tablet')) {
+            if (this.activeNav || this.$mq.matchesUntil('tablet-landscape')) {
                 return;
             }
 

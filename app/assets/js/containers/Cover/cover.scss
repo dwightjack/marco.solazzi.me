@@ -241,6 +241,26 @@
     }
 }
 
+.intersect {
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 10px;
+    pointer-events: none;
+}
+
+.intersect--top {
+    composes: intersect;
+    top: 30vh;
+}
+
+.intersect--bottom {
+    composes: intersect;
+    bottom: 10vh;
+}
+
 :global(.no-touchevents) .scrollhint:hover,
 [data-whatinput="keyboard"] .scrollhint:focus {
 
