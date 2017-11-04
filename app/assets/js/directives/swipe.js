@@ -43,6 +43,7 @@ class SwipeEvent {
             this.callback(event);
         }
     }
+
 }
 
 export default {

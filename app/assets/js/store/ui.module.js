@@ -1,6 +1,6 @@
+import { GROUP_LOADER } from '@/shared/constants';
 import { mutations } from './ui.mutations';
 import { actions } from './ui.actions';
-import { GROUP_LOADER } from '@/shared/constants';
 
 export default {
 
