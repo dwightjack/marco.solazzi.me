@@ -70,9 +70,7 @@ export default {
                     scrollbar.update();
                 }
                 this.$nextTick(() => {
-                    this.scrollTo(this.route)
-                        .then(this.completeScrollRequest)
-                        .catch(this.completeScrollRequest);
+                    this.scrollTo(this.route, this.completeScrollRequest);
                 });
             }
         }
@@ -101,7 +99,7 @@ export default {
                 const el = document.getElementById(id);
 
                 if (el === undefined) {
-                    return Promise.reject(new TypeError(`Unable to find element with id "${id}"`));
+                    throw new TypeError(`Unable to find element with id "${id}"`);
                 }
 
                 const { scrollbar } = this.$refs.smoothScroll;
@@ -140,9 +138,6 @@ export default {
                 }
 
             }
-
-            return Promise.reject(new TypeError(`Invalid element id: ${id}`));
-
 
         },
 

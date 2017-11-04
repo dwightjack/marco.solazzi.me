@@ -50,8 +50,8 @@
 .pic {
     position: relative;
     z-index: 1;
-    opacity: 0;
-    transform: translateX(15%);
+    //opacity: 0;
+    //transform: translateX(15%);
     will-change: opacity, transform;
     //transition: all 0.4s ease-out 0.35s;
 
@@ -105,8 +105,8 @@
 }
 
 .body {
-    opacity: 0;
-    transform: translateX(7%);
+    //opacity: 0;
+    //transform: translateX(7%);
     //transition: all 0.4s ease-out 0.35s;
 
     @include mq(tablet-landscape) {

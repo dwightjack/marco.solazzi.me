@@ -30,6 +30,7 @@ export const actions = {
     [TYPES.ROUTE_UPDATED]({ commit, state }, route) {
         const activeGroup = route === NAV_PATH_HOME ? GROUP_COVER : GROUP_PAGELIST;
 
+
         if (state.forcedScroll === false) {
             commit(MUTATIONS_TYPES.ACTIVE_GROUP_UPDATED, activeGroup);
             commit(MUTATIONS_TYPES.ROUTE_UPDATED, route);
@@ -40,10 +41,10 @@ export const actions = {
 
     [TYPES.NAVIGATED_TO]({ dispatch }, { route, force = false, unblock = false }) {
 
-        const activeGroup = dispatch(TYPES.ROUTE_UPDATED, route);
+        dispatch(TYPES.ROUTE_UPDATED, route);
 
         if (force === true) {
-            dispatch(TYPES.PAGELISTSCROLL_REQUESTED, { route, activeGroup });
+            dispatch(TYPES.PAGELISTSCROLL_REQUESTED, { route });
             if (unblock) {
                 setTimeout(() => {
                     dispatch(TYPES.PAGELISTSCROLL_COMPLETED);

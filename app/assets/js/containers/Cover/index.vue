@@ -37,7 +37,7 @@
 import { mapState, mapActions } from 'vuex';
 import debounce from 'lodash/debounce';
 import anime from 'animejs';
-import { NAV_PATH_HOME, NAV_PATH_JOBS, GROUP_COVER, GROUP_PAGELIST } from '@/shared/constants';
+import { NAV_PATH_HOME, NAV_PATH_JOBS, GROUP_COVER, GROUP_PAGELIST, GROUP_LOADER } from '@/shared/constants';
 import picture from 'images/marco.jpg';
 import Avatar from '@/objects/Avatar';
 import Ico from '@/objects/Ico';
@@ -47,13 +47,14 @@ import { TYPES as UI_ACTIONS } from '@/store/ui.actions';
 
 export default {
 
-    mixins: [observerMixin],
 
     components: {
         Avatar,
         Ico,
         SocialList
     },
+
+    mixins: [observerMixin],
 
     data() {
         return {
@@ -81,16 +82,18 @@ export default {
         }
     },
 
+    watch: {
+        activeGroup(val, oldVal) {
+            this.firstEnter = (this.active && oldVal === GROUP_LOADER);
+        }
+    },
+
     created() {
         this.debouncedWheelListener = debounce(this.wheelListener, 150);
 
         this.$on('enter', ({ id }) => {
             this.$store.dispatch(`ui/${UI_ACTIONS.ROUTE_UPDATED}`, id);
         });
-    },
-
-    mounted() {
-        this.firstEnter = !this.isAppLoaded;
     },
 
     beforeDestroy() {
@@ -139,10 +142,6 @@ export default {
 
             if (this.firstEnter === true) {
 
-                this.$nextTick(() => {
-                    this.firstEnter = false;
-                });
-
                 const timeline = anime.timeline({
                     autoplay: false,
                     easing: 'easeOutSine'
@@ -174,11 +173,12 @@ export default {
                 anime({
                     targets: el,
                     opacity: {
-                        value: 1,
+                        value: [0, 1],
                         duration: 0
                     },
-                    translateY: [-100, 0],
+                    translateY: ['-100%', 0],
                     duration: 800,
+                    delay: 50,
                     easing: 'easeInOutCirc',
                     complete: done
                 });

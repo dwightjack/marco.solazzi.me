@@ -59,21 +59,25 @@ export default {
 
     data() {
         return {
-            routes
+            routes,
+            location: (this.$isServer ? { hash: '' } : global.location)
         };
     },
 
     computed: {
-        ...mapState('ui', ['activeGroup', 'isLoaded', 'activeNav', 'pagelistScroll', 'route'])
+        ...mapState('ui', ['activeGroup', 'isLoaded', 'activeNav', 'pagelistScroll', 'route']),
+
+        validRoutes() {
+            return this.routes.map(({ path }) => path);
+        }
     },
 
     watch: {
         route(route) {
             //side effect!
             if (!this.$isServer) {
-                const nextHash = `#!${route}`;
-                if (global.location.hash !== nextHash) {
-                    global.history.pushState(null, null, nextHash);
+                if (this.getCurrentPath() !== route) {
+                    global.history.pushState(null, null, `#!${route}`);
                 }
             }
         }
@@ -96,13 +100,24 @@ export default {
             toggleAppLoadAction: UI_ACTIONS.APP_LOADED
         }),
 
+        getCurrentPath() {
+            return this.location.hash.replace(/#!([a-z-_]+?)$/, '$1');
+        },
+
         loadFinish() {
             this.toggleAppLoadAction(true);
-            this.navigateToAction({ route: NAV_PATH_HOME });
+            const currentPath = this.getCurrentPath();
+            let route = NAV_PATH_HOME;
+
+            if (!this.$isServer && this.validRoutes.includes(currentPath)) {
+                route = currentPath;
+            }
+
+            this.navigateToAction({ route, force: true });
         },
 
         onPopstate() {
-            const route = global.location.hash.replace(/#!([a-z-_]+?)$/, '$1');
+            const route = this.getCurrentPath();
             this.navigateToAction({ route, force: true });
         }
     }
