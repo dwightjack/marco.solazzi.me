@@ -10,7 +10,7 @@
         <section v-swipe.down="swipeDownHandler" v-show="active" :class="[$style.root, { [$style.isAppLoaded]: isAppLoaded }]" :id="id">
             <span ref="top" :class="$style.intersectTop" data-pos="top" />
             <div :class="$style.pic" ref="pic">
-                <Avatar :src="picture" :class="$style.avatar" />
+                <Avatar :class="$style.avatar" />
             </div>
             <div :class="$style.body" ref="body">
 
@@ -39,7 +39,7 @@ import debounce from 'lodash/debounce';
 import anime from 'animejs';
 import { NAV_PATH_HOME, NAV_PATH_JOBS, GROUP_COVER, GROUP_PAGELIST, GROUP_LOADER } from '@/shared/constants';
 import picture from 'images/marco.jpg';
-import Avatar from '@/objects/Avatar';
+import Avatar from '@/objects/Avatar/pixi';
 import Ico from '@/objects/Ico';
 import SocialList from '@/objects/SocialList';
 import observerMixin from '@/shared/observer.mixin';
