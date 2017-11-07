@@ -10,7 +10,7 @@
         <section v-swipe.down="swipeDownHandler" v-show="active" :class="[$style.root, { [$style.isAppLoaded]: isAppLoaded }]" :id="id">
             <span ref="top" :class="$style.intersectTop" data-pos="top" />
             <div :class="$style.pic" ref="pic">
-                <Avatar :class="$style.avatar" />
+                <Avatar :class="$style.avatar" :foreground="marco" :background="animal" />
             </div>
             <div :class="$style.body" ref="body">
 
@@ -38,7 +38,8 @@ import { mapState, mapActions } from 'vuex';
 import debounce from 'lodash/debounce';
 import anime from 'animejs';
 import { NAV_PATH_HOME, NAV_PATH_JOBS, GROUP_COVER, GROUP_PAGELIST, GROUP_LOADER } from '@/shared/constants';
-import picture from 'images/marco.jpg';
+import marco from 'images/marco.jpg';
+import animal from 'images/marco-full.jpg';
 import Avatar from '@/objects/Avatar/pixi';
 import Ico from '@/objects/Ico';
 import SocialList from '@/objects/SocialList';
@@ -60,7 +61,8 @@ export default {
         return {
             id: NAV_PATH_HOME,
             NAV_PATH_JOBS,
-            picture,
+            marco,
+            animal,
             firstEnter: true
         };
     },
