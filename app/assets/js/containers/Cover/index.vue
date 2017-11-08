@@ -7,7 +7,7 @@
         @beforeLeave="onBeforeLeave"
         @leave="onLeave"
     >
-        <section v-swipe.down="swipeDownHandler" v-show="active" :class="[$style.root, { [$style.isAppLoaded]: isAppLoaded }]" :id="id">
+        <section @wheel="wheelListener" v-swipe.down="swipeDownHandler" v-show="active" :class="[$style.root, { [$style.isAppLoaded]: isAppLoaded }]" :id="id">
             <span ref="top" :class="$style.intersectTop" data-pos="top" />
             <div :class="$style.pic" ref="pic">
                 <Avatar :src="picture" :class="$style.avatar" />
@@ -35,7 +35,6 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
-import debounce from 'lodash/debounce';
 import anime from 'animejs';
 import { NAV_PATH_HOME, NAV_PATH_JOBS, GROUP_COVER, GROUP_PAGELIST, GROUP_LOADER } from '@/shared/constants';
 import picture from 'images/marco.jpg';
@@ -61,7 +60,8 @@ export default {
             id: NAV_PATH_HOME,
             NAV_PATH_JOBS,
             picture,
-            firstEnter: true
+            firstEnter: true,
+            canScroll: false
         };
     },
 
@@ -89,15 +89,11 @@ export default {
     },
 
     created() {
-        this.debouncedWheelListener = debounce(this.wheelListener, 150);
+        //this.debouncedWheelListener = debounce(this.wheelListener, 150);
 
         this.$on('enter', ({ id }) => {
             this.$store.dispatch(`ui/${UI_ACTIONS.ROUTE_UPDATED}`, id);
         });
-    },
-
-    beforeDestroy() {
-        window.removeEventListener('wheel', this.debouncedWheelListener);
     },
 
     methods: {
@@ -125,7 +121,7 @@ export default {
 
         wheelListener(e) {
 
-            if (this.activeNav || this.$mq.matchesUntil('tablet-landscape')) {
+            if (this.canScroll === false || this.activeNav || this.$mq.matchesUntil('tablet-landscape')) {
                 return;
             }
 
@@ -187,11 +183,11 @@ export default {
         },
 
         onAfterEnter() {
-            window.addEventListener('wheel', this.debouncedWheelListener);
+            this.canScroll = true;
         },
 
         onBeforeLeave() {
-            window.removeEventListener('wheel', this.debouncedWheelListener);
+            this.canScroll = false;
         },
 
         onLeave(el, done) {
