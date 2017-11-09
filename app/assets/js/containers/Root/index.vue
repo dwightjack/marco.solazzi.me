@@ -109,7 +109,7 @@ export default {
             const currentPath = this.getCurrentPath();
             let route = NAV_PATH_HOME;
 
-            if (!this.$isServer && this.validRoutes.includes(currentPath)) {
+            if (!this.$isServer && this.validRoutes.indexOf(currentPath) !== -1) {
                 route = currentPath;
             }
 

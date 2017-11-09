@@ -7,7 +7,7 @@
         @afterEnter="onAfterEnter"
         @beforeLeave="onBeforeLeave"
     >
-        <section v-swipe.up="swipeUpHandler" v-show="active" :class="[$style.root, { [$style.isActive]: active }]">
+        <section @wheel="wheelListener" v-swipe.up="swipeUpHandler" v-show="active" :class="[$style.root, { [$style.isActive]: active }]">
             <SmoothScrollbar
                 @scroll="onScroll"
                 ref="smoothScroll"
@@ -26,7 +26,6 @@
 
 <script>
 import { mapActions, mapState } from 'vuex';
-import debounce from 'lodash/debounce';
 import anime from 'animejs';
 
 import SmoothScrollbar from '@/components/SmoothScrollbar';
@@ -39,6 +38,12 @@ export default {
 
     components: {
         SmoothScrollbar
+    },
+
+    data() {
+        return {
+            canScroll: false
+        };
     },
 
     computed: {
@@ -54,12 +59,7 @@ export default {
     },
 
     created() {
-        this.debouncedWheelListener = debounce(this.wheelListener, 50);
         this.fullYear = new Date().getFullYear();
-    },
-
-    beforeDestroy() {
-        window.removeEventListener('wheel', this.debouncedWheelListener);
     },
 
     watch: {
@@ -85,12 +85,11 @@ export default {
         }),
 
         onAfterEnter() {
-            window.addEventListener('wheel', this.debouncedWheelListener);
-
+            this.canScroll = true;
         },
 
         onBeforeLeave() {
-            window.removeEventListener('wheel', this.debouncedWheelListener);
+            this.canScroll = false;
         },
 
         scrollTo(id, callback) {
@@ -144,7 +143,7 @@ export default {
         wheelListener(e) {
 
 
-            if (this.activeNav || this.$mq.matchesUntil('tablet-landscape')) {
+            if (this.canScroll === false || this.activeNav || this.$mq.matchesUntil('tablet-landscape')) {
                 return;
             }
 

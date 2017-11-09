@@ -36,11 +36,9 @@
 
 <script>
 import VueTypes from 'vue-types';
-import omit from 'lodash/omit';
-import has from 'lodash/has';
-
 import FormattedTime from '@/objects/Time';
 import Anchor from '@/objects/Anchor';
+import { has } from '@/shared/utils';
 
 let id = 0;
 
@@ -78,10 +76,10 @@ export default {
         },
 
         rows() {
-            const obj = omit(this.data, [this.caption, 'id']);
-            return Object.keys(obj).reduce((o, key) => {
-                if (key.indexOf('_') !== 0) {
-                    o[key] = obj[key]; //eslint-disable-line no-param-reassign
+
+            return Object.keys(this.data).reduce((o, key) => {
+                if (key !== this.caption && key !== 'id' && key.indexOf('_') !== 0) {
+                    o[key] = this.data[key]; //eslint-disable-line no-param-reassign
                 }
                 return o;
             }, {});

@@ -25,3 +25,8 @@ export const caf = global.cancelAnimationFrame || function cancelAnimationFrame(
 export const createAction = (mutation) => ({ commit }, payload) => commit(mutation, payload);
 
 export const toInteger = (str) => parseInt(str, 10);
+
+
+const objProto = Object.prototype;
+const hasOwn = objProto.hasOwnProperty;
+export const has = (obj, key) => hasOwn.call(obj, key);

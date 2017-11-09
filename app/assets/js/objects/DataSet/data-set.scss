@@ -15,7 +15,7 @@ $data-list-bp: mq-px2em(map-get($mq-breakpoints, tablet-landscape));
     @media (min-width: $data-list-bp), print {
         display: flex;
         width: 100%;
-        margin: 0 rem(-20px);
+        margin: 0;
         flex-wrap: wrap;
     }
 
@@ -30,7 +30,7 @@ $data-list-bp: mq-px2em(map-get($mq-breakpoints, tablet-landscape));
 
 .item {
     margin: 0;
-    padding: 0 rem(10px) rem(30px);
+    padding: 0 rem(10px) rem(20px);
 
     &:last-child {
         @include mq($until: tablet-landscape) {
@@ -39,8 +39,17 @@ $data-list-bp: mq-px2em(map-get($mq-breakpoints, tablet-landscape));
     }
 
     @media (min-width: $data-list-bp), print {
-        padding: 0 rem(20px) rem(30px);
-        flex: 0 0 47%;
+        width: 47%;
+        padding: 0 0 rem(30px);
+        flex: 0 0 auto;
+
+        &:nth-child(2n) {
+            padding-left: rem(20px);
+        }
+
+        &:nth-child(2n+1) {
+            padding-right: rem(20px);
+        }
     }
 
     @media print {

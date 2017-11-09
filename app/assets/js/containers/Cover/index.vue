@@ -1,30 +1,29 @@
 <template>
     <transition
         appear
-        :css="false"
-        @enter="onEnter"
+        :name="transitionName"
+        :duration="transitionDuration"
         @afterEnter="onAfterEnter"
         @beforeLeave="onBeforeLeave"
-        @leave="onLeave"
     >
-        <section v-swipe.down="swipeDownHandler" v-show="active" :class="[$style.root, { [$style.isAppLoaded]: isAppLoaded }]" :id="id">
+        <section @wheel="wheelListener" v-swipe.down="swipeDownHandler" v-show="active" :class="[$style.root, { [$style.isAppLoaded]: isAppLoaded }]" :id="id">
             <span ref="top" :class="$style.intersectTop" data-pos="top" />
             <div :class="$style.pic" ref="pic">
                 <Avatar :class="$style.avatar" :foreground="marco" :background="animal" />
             </div>
-            <div :class="$style.body" ref="body">
+            <div :class="$style.body">
 
-                <h2 :class="$style.headline" ref="title">こんにちは！</h2>
-                <article :class="$style.text" ref="table">
+                <h2 :class="$style.headline">こんにちは！</h2>
+                <article :class="$style.text">
                     <p>My name is <strong>Marco Solazzi</strong></p>
                     <p>I am a 37yo <strong>Frontend Web Developer</strong>, technical <strong>writer</strong> and <strong>speaker</strong> from Verona (Italy). I speak Italian (of course), English, French and some Japanese.</p>
                     <p>Since 2014 I am co-founder and host of the <strong><a href="http://www.fevr.it" target="_blank" rel="noopener noreferrer">FEVR Frontenders Meetup</a></strong> .</p>
                 </article>
-                <footer :class="$style.footer" ref="footer">
+                <footer :class="$style.footer">
                     <SocialList :items="socials" :class="$style.socialList" />
                 </footer>
             </div>
-            <a :href="`#${NAV_PATH_JOBS}`" @click.prevent="gotoPagelist" :class="$style.scrollhint" ref="scrollhint">
+            <a :href="`#${NAV_PATH_JOBS}`" @click.prevent="gotoPagelist" :class="$style.scrollhint">
                 <div>Get to know me</div>
                 <Ico :class="$style.scrollhintIco" name="chevron-down" />
             </a>
@@ -35,8 +34,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
-import debounce from 'lodash/debounce';
-import anime from 'animejs';
+//import anime from 'animejs';
 import { NAV_PATH_HOME, NAV_PATH_JOBS, GROUP_COVER, GROUP_PAGELIST, GROUP_LOADER } from '@/shared/constants';
 import marco from 'images/marco.jpg';
 import animal from 'images/marco-full.jpg';
@@ -45,6 +43,7 @@ import Ico from '@/objects/Ico';
 import SocialList from '@/objects/SocialList';
 import observerMixin from '@/shared/observer.mixin';
 import { TYPES as UI_ACTIONS } from '@/store/ui.actions';
+import { toInteger } from '@/shared/utils';
 
 export default {
 
@@ -63,7 +62,8 @@ export default {
             NAV_PATH_JOBS,
             marco,
             animal,
-            firstEnter: true
+            firstEnter: true,
+            canScroll: false
         };
     },
 
@@ -76,11 +76,33 @@ export default {
             isAppLoaded: (state) => state.ui.isLoaded
         }),
 
+        transitionDuration() {
+
+            const { appearEnterTiming, slideEnterTiming, slideLeaveTiming } = this.$style;
+
+            if (this.transitionName === 'appear') {
+                return {
+                    enter: toInteger(appearEnterTiming)
+                };
+            }
+
+            return {
+                enter: toInteger(slideEnterTiming),
+                leave: toInteger(slideLeaveTiming)
+            };
+
+
+        },
+
         active() {
             if (this.$mq.matches('tablet-landscape')) {
                 return this.activeGroup === GROUP_COVER;
             }
             return this.activeGroup === GROUP_COVER || this.activeGroup === GROUP_PAGELIST;
+        },
+
+        transitionName() {
+            return this.firstEnter ? 'appear' : 'slide';
         }
     },
 
@@ -91,15 +113,10 @@ export default {
     },
 
     created() {
-        this.debouncedWheelListener = debounce(this.wheelListener, 150);
 
         this.$on('enter', ({ id }) => {
             this.$store.dispatch(`ui/${UI_ACTIONS.ROUTE_UPDATED}`, id);
         });
-    },
-
-    beforeDestroy() {
-        window.removeEventListener('wheel', this.debouncedWheelListener);
     },
 
     methods: {
@@ -127,7 +144,7 @@ export default {
 
         wheelListener(e) {
 
-            if (this.activeNav || this.$mq.matchesUntil('tablet-landscape')) {
+            if (this.canScroll === false || this.activeNav || this.$mq.matchesUntil('tablet-landscape')) {
                 return;
             }
 
@@ -137,14 +154,14 @@ export default {
             }
         },
 
-        onEnter(el, done) {
+        /*onEnter(el, done) {
 
-            const { pic, body, scrollhint } = this.$refs;
+            //const { pic, body, scrollhint } = this.$refs;
 
 
             if (this.firstEnter === true) {
 
-                const timeline = anime.timeline({
+                /*const timeline = anime.timeline({
                     autoplay: false,
                     easing: 'easeOutSine'
                 });
@@ -163,7 +180,11 @@ export default {
                     translateY: ['-10%', 0],
                     duration: 500,
                     delay: 3250 // 4000 - 350 - 400
-                }).play();
+                }).play();* /
+
+                / *setTimeout(() => {
+                    done();
+                }, this.timings.appearIn);* /
 
             } else {
 
@@ -186,17 +207,17 @@ export default {
                 });
 
             }
-        },
+        },*/
 
         onAfterEnter() {
-            window.addEventListener('wheel', this.debouncedWheelListener);
+            this.canScroll = true;
         },
 
         onBeforeLeave() {
-            window.removeEventListener('wheel', this.debouncedWheelListener);
-        },
+            this.canScroll = false;
+        }//,
 
-        onLeave(el, done) {
+        /*onLeave(el, done) {
 
             const {
                 pic, scrollhint, title, table, footer
@@ -245,7 +266,7 @@ export default {
                     duration: 200
                 }]).play();
             }
-        }
+        }*/
     }
 };
 </script>
