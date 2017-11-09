@@ -1,11 +1,10 @@
 <template>
     <transition
         appear
-        :css="false"
-        @enter="onEnter"
+        :name="transitionName"
+        :duration="transitionDuration"
         @afterEnter="onAfterEnter"
         @beforeLeave="onBeforeLeave"
-        @leave="onLeave"
     >
         <section @wheel="wheelListener" v-swipe.down="swipeDownHandler" v-show="active" :class="[$style.root, { [$style.isAppLoaded]: isAppLoaded }]" :id="id">
             <span ref="top" :class="$style.intersectTop" data-pos="top" />
@@ -35,7 +34,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
-import anime from 'animejs';
+//import anime from 'animejs';
 import { NAV_PATH_HOME, NAV_PATH_JOBS, GROUP_COVER, GROUP_PAGELIST, GROUP_LOADER } from '@/shared/constants';
 import picture from 'images/marco.jpg';
 import Avatar from '@/objects/Avatar';
@@ -43,6 +42,7 @@ import Ico from '@/objects/Ico';
 import SocialList from '@/objects/SocialList';
 import observerMixin from '@/shared/observer.mixin';
 import { TYPES as UI_ACTIONS } from '@/store/ui.actions';
+import { toInteger } from '@/shared/utils';
 
 export default {
 
@@ -74,11 +74,35 @@ export default {
             isAppLoaded: (state) => state.ui.isLoaded
         }),
 
+        transitionDuration() {
+
+            const { appearEnterTiming, slideEnterTiming, slideLeaveTiming } = this.$style;
+
+            if (this.transitionName === 'appear') {
+                return {
+                    enter: toInteger(appearEnterTiming)
+                };
+            }
+
+            console.log(slideLeaveTiming);
+
+            return {
+                enter: toInteger(slideEnterTiming),
+                leave: toInteger(slideLeaveTiming)
+            };
+
+
+        },
+
         active() {
             if (this.$mq.matches('tablet-landscape')) {
                 return this.activeGroup === GROUP_COVER;
             }
             return this.activeGroup === GROUP_COVER || this.activeGroup === GROUP_PAGELIST;
+        },
+
+        transitionName() {
+            return this.firstEnter ? 'appear' : 'slide';
         }
     },
 
@@ -89,7 +113,6 @@ export default {
     },
 
     created() {
-        //this.debouncedWheelListener = debounce(this.wheelListener, 150);
 
         this.$on('enter', ({ id }) => {
             this.$store.dispatch(`ui/${UI_ACTIONS.ROUTE_UPDATED}`, id);
@@ -131,14 +154,14 @@ export default {
             }
         },
 
-        onEnter(el, done) {
+        /*onEnter(el, done) {
 
-            const { pic, body, scrollhint } = this.$refs;
+            //const { pic, body, scrollhint } = this.$refs;
 
 
             if (this.firstEnter === true) {
 
-                const timeline = anime.timeline({
+                /*const timeline = anime.timeline({
                     autoplay: false,
                     easing: 'easeOutSine'
                 });
@@ -157,7 +180,11 @@ export default {
                     translateY: ['-10%', 0],
                     duration: 500,
                     delay: 3250 // 4000 - 350 - 400
-                }).play();
+                }).play();* /
+
+                / *setTimeout(() => {
+                    done();
+                }, this.timings.appearIn);* /
 
             } else {
 
@@ -180,7 +207,7 @@ export default {
                 });
 
             }
-        },
+        },*/
 
         onAfterEnter() {
             this.canScroll = true;
@@ -188,9 +215,9 @@ export default {
 
         onBeforeLeave() {
             this.canScroll = false;
-        },
+        }//,
 
-        onLeave(el, done) {
+        /*onLeave(el, done) {
 
             const {
                 pic, scrollhint, title, table, footer
@@ -239,7 +266,7 @@ export default {
                     duration: 200
                 }]).play();
             }
-        }
+        }*/
     }
 };
 </script>
