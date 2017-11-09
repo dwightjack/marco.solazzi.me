@@ -17,7 +17,7 @@
     "test": "cross-env BABEL_ENV=test jest --config ./node_modules/umeboshi-scripts/jest.loader.js",
     "webpack": "webpack --config ./node_modules/umeboshi-config/webpack/webpack.conf.js --color --hide-modules",
     "webpack:production": "cross-env NODE_ENV=production npm run webpack",
-    "webpack:stats": "cross-env NODE_ENV=production WEBPACK_STATS=true npm run webpack",
+    "webpack:analyze": "cross-env NODE_ENV=production webpack --config ./node_modules/umeboshi-config/webpack/webpack.analyze.js --color --hide-modules",
     "modernizr": "node ./node_modules/umeboshi-scripts/modernizr",
     "modernizr:production": "cross-env NODE_ENV=production npm run modernizr",
     "clean": "rimraf ./public/*",
@@ -56,11 +56,11 @@
     "rimraf": "2.6.2",
     "stylelint": "^8.2.0",
     "stylelint-config-umeboshi-vue": "^0.1.0",
-    "umeboshi-config": "^0.1.0",
-    "umeboshi-config-vue": "^0.1.0",
+    "umeboshi-config": "0.1.10",
+    "umeboshi-config-vue": "0.1.8",
     "umeboshi-scripts": "^0.1.0",
     "webpack": "^3.0.0",
-    "webpack-bundle-analyzer": "2.9.0",
+    "webpack-bundle-analyzer": "2.9.1",
     "yargs": "10.0.3"
   }
 }
