@@ -8,22 +8,22 @@
     >
         <section @wheel="wheelListener" v-swipe.down="swipeDownHandler" v-show="active" :class="[$style.root, { [$style.isAppLoaded]: isAppLoaded }]" :id="id">
             <span ref="top" :class="$style.intersectTop" data-pos="top" />
-            <div :class="$style.pic" ref="pic">
+            <div :class="$style.pic">
                 <Avatar :src="picture" :class="$style.avatar" />
             </div>
-            <div :class="$style.body" ref="body">
+            <div :class="$style.body">
 
-                <h2 :class="$style.headline" ref="title">こんにちは！</h2>
-                <article :class="$style.text" ref="table">
+                <h2 :class="$style.headline">こんにちは！</h2>
+                <article :class="$style.text">
                     <p>My name is <strong>Marco Solazzi</strong></p>
                     <p>I am a 37yo <strong>Frontend Web Developer</strong>, technical <strong>writer</strong> and <strong>speaker</strong> from Verona (Italy). I speak Italian (of course), English, French and some Japanese.</p>
                     <p>Since 2014 I am co-founder and host of the <strong><a href="http://www.fevr.it" target="_blank" rel="noopener noreferrer">FEVR Frontenders Meetup</a></strong> .</p>
                 </article>
-                <footer :class="$style.footer" ref="footer">
+                <footer :class="$style.footer">
                     <SocialList :items="socials" :class="$style.socialList" />
                 </footer>
             </div>
-            <a :href="`#${NAV_PATH_JOBS}`" @click.prevent="gotoPagelist" :class="$style.scrollhint" ref="scrollhint">
+            <a :href="`#${NAV_PATH_JOBS}`" @click.prevent="gotoPagelist" :class="$style.scrollhint">
                 <div>Get to know me</div>
                 <Ico :class="$style.scrollhintIco" name="chevron-down" />
             </a>
