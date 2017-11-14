@@ -30,7 +30,8 @@ import PageList from '@/containers/PageList';
 //import Swipe from '@/components/Swipe';
 import Loader from '@/components/Loader';
 import Wrapper from '@/components/Wrapper';
-import BgPattern from '@/objects/BgPattern';
+import BgPattern from '@/objects/BgPattern/pixi';
+
 import routes from '@/shared/routes';
 import {
     //NAV_PATH_JOBS,
