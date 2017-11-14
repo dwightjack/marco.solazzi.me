@@ -15,9 +15,9 @@
 
 import { Application, extras, Texture, Sprite, Container } from 'pixi.js';
 import anime from 'animejs';
-import patternSVGFull from '!raw-loader!../../../images/circuits-full.svg';
-import patternSVG2 from '!raw-loader!../../../images/circuits-2.svg';
-import patternSVG from '!raw-loader!../../../images/circuits.svg';
+import patternSVGFull from '!raw-loader!../../../images/circuits-full.svg'; //eslint-disable-line
+import patternSVG2 from '!raw-loader!../../../images/circuits-2.svg'; //eslint-disable-line
+import patternSVG from '!raw-loader!../../../images/circuits.svg'; //eslint-disable-line
 
 export default {
     props: {
@@ -128,26 +128,6 @@ export default {
     bottom: 0;
     left: 40%;
     z-index: -1;
-    //transform: translate3d(0, 0, 0);
-    //backface-visibility: hidden;
-    //transform-style: preserve-3d;
-    //transition: opacity 400ms ease;
-
-    /*> span {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: -2;
-        opacity: 0.1;
-        background-image: url("../../../images/circuits-2.svg");
-        background-size: 100%;
-        content: '';
-        @include mq(tablet) {
-            background-size: auto;
-        }
-    }*/
 }
 
 @media print {

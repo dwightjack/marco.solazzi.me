@@ -87,4 +87,5 @@ export default class Octagon {
 
         return points;
     }
+
 }
