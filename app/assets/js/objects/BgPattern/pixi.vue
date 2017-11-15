@@ -15,12 +15,11 @@
 
 import { Application, extras, Texture, Sprite } from 'pixi.js';
 import anime from 'animejs';
-import patternSVGFull from '!raw-loader!../../../images/circuits-full.svg'; //eslint-disable-line
-import patternSVGPartial2 from '!raw-loader!../../../images/circuits-2.svg'; //eslint-disable-line
-import patternSVGPartial from '!raw-loader!../../../images/circuits.svg'; //eslint-disable-line
+import patternSVGFull from '!svg-url-loader?stripdeclarations&encoding=base64!../../../images/circuits-full.svg'; //eslint-disable-line
+import patternSVGPartial2 from '!svg-url-loader?stripdeclarations&encoding=base64!../../../images/circuits-2.svg'; //eslint-disable-line
+import patternSVGPartial from '!svg-url-loader?stripdeclarations&encoding=base64!../../../images/circuits.svg'; //eslint-disable-line
 
-
-const toTexture = (svg) => Texture.fromImage(`data:image/svg+xml;charset=utf8,${svg}`);
+const toTexture = (svg) => Texture.fromImage(svg);
 
 export default {
     props: {
@@ -47,6 +46,7 @@ export default {
         const tiling = this.toTile(patternSVGPartial);
         const tiling2 = this.toTile(patternSVGPartial2);
 
+        tilingFull.alpha = 0.1;
         tiling.alpha = 0;
         tiling2.alpha = 0;
 
@@ -97,7 +97,7 @@ export default {
             direction: 'alternate',
             delay: 2000,
             duration: 5000,
-            alpha: [1, 0.5]
+            alpha: [0.05, 0.02]
         });
 
 

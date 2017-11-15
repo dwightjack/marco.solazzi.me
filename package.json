@@ -57,6 +57,7 @@
     "rimraf": "2.6.2",
     "stylelint": "^8.2.0",
     "stylelint-config-umeboshi-vue": "^0.1.0",
+    "svg-url-loader": "2.3.0",
     "umeboshi-config": "0.1.10",
     "umeboshi-config-vue": "0.1.8",
     "umeboshi-scripts": "^0.1.0",
