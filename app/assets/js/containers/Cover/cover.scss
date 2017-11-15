@@ -108,9 +108,11 @@
     //opacity: 0;
     //transform: translateX(7%);
     //transition: all 0.4s ease-out 0.35s;
+    position: relative;
+    z-index: 1;
 
     @include mq(tablet-landscape) {
-        padding-left: 33%;
+        margin-left: 33%;
         flex: 1 1 auto;
     }
 
