@@ -59,7 +59,7 @@ export default class Octagon {
         if (p.x > thresholdUp || p.x < thresholdDown) {
             //it's lateral
             if (dir === 'x') {
-                return p.x < half ? Octagon.createRange(n, 20, 40) : Octagon.createRange(n, 20, 30);
+                return p.x < half ? Octagon.createRange(n, 20, 40) : Octagon.createRange(n, 15, 25);
             }
             return Octagon.createRange(n, 5, 20);
         }
