@@ -13,7 +13,7 @@
 
 <script>
 
-import { Application, extras, Texture, Sprite, Container } from 'pixi.js';
+import { Application, extras, Texture, Sprite } from 'pixi.js';
 import anime from 'animejs';
 import patternSVGFull from '!raw-loader!../../../images/circuits-full.svg'; //eslint-disable-line
 import patternSVGPartial2 from '!raw-loader!../../../images/circuits-2.svg'; //eslint-disable-line
