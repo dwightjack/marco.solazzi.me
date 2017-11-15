@@ -1,5 +1,5 @@
 <template>
-    <div :class="$style.root" />
+    <div :class="$style.root" v-resize="onResize" />
 </template>
 
 <script>
@@ -13,20 +13,51 @@ const IMAGE_SIZE = 400;
 
 export default {
 
+    data() {
+        return { canvasSize: this.getCanvasSize() };
+    },
+
 
     props: {
         foreground: VueTypes.string.isRequired,
         background: VueTypes.string.isRequired
     },
 
+
+    computed: {
+        imageSize() {
+            if (this.$mq.matches('tablet-landscape')) {
+                return (IMAGE_SIZE * this.canvasSize) / CANVAS_WIDTH;
+            }
+            return this.canvasSize;
+        },
+        containerOffset() {
+            return (this.canvasSize - this.imageSize) / 3;
+        }
+    },
+
+    watch: {
+        canvasSize(value) {
+            const { app } = this;
+            const { _mainContainer } = app;
+
+            app.renderer.resize(value, value);
+            _mainContainer.scale.set(this.imageSize / _mainContainer._realSize);
+            _mainContainer.position.set(this.containerOffset);
+        }
+    },
+
     created() {
 
-        this.app = new Application({
-            width: CANVAS_WIDTH,
-            height: CANVAS_WIDTH,
-            autoResize: true,
-            transparent: true
-        });
+        if (this.$isServer === false) {
+
+            this.app = new Application({
+                autoResize: true,
+                transparent: true,
+                width: this.canvasSize,
+                height: this.canvasSize
+            });
+        }
 
     },
 
@@ -44,6 +75,7 @@ export default {
             const mainContainer = new Container();
             const particles = new Particles(fg.texture.baseTexture, 20, width);
 
+            mainContainer._realSize = width;
             mainContainer.addChild(
                 bgSprite,
                 particles.container,
@@ -52,8 +84,9 @@ export default {
 
             mainContainer.interactive = true;
             mainContainer.mask = mask.shape;
-            mainContainer.scale.set(IMAGE_SIZE / width);
-            mainContainer.position.set((CANVAS_WIDTH - IMAGE_SIZE) / 2);
+            mainContainer.scale.set(this.imageSize / mainContainer._realSize);
+            mainContainer.position.set(this.containerOffset);
+
 
             mainContainer.on('mouseover', () => particles.hide());
             mainContainer.on('mouseout', () => particles.show());
@@ -63,14 +96,16 @@ export default {
             });
             mask.animate();
 
+            app._mainContainer = mainContainer;
+
             app.stage.addChild(mainContainer);
             app.render();
 
             this.$once('beforeDestroy', () => {
                 mask.stop();
+                app.stop();
                 this.$el.removeChild(app.view);
             });
-
 
         });
 
@@ -78,6 +113,24 @@ export default {
     },
 
     methods: {
+
+        onResize() {
+            this.canvasSize = this.getCanvasSize();
+        },
+
+        getCanvasSize() {
+            if (this.$isServer) {
+                return CANVAS_WIDTH;
+            }
+
+            if (this.$mq.matches('tablet-landscape')) {
+                return parseInt((CANVAS_WIDTH * window.innerWidth) / this.$mq.breakpoints.fullhd, 10);
+            }
+
+            return parseInt(window.innerWidth / 2, 10);
+
+
+        },
 
 
         loadResources(obj) {
@@ -95,13 +148,19 @@ export default {
 </script>
 
 <style lang="scss" module>
+@import "globals";
+@import "sass-mq/mq";
 
 $translate: percentage(((600 - 400) / 2) / -600);
 
 .root {
     position: relative;
     z-index: -1;
-    transform: translate($translate, $translate);
+
+
+    @include mq('tablet-landscape') {
+        transform: translate($translate, $translate);
+    }
 }
 
 </style>
