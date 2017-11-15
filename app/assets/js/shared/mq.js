@@ -51,6 +51,7 @@ export default {
 
             data: {
                 keys,
+                breakpoints,
                 current: ''
             },
 
