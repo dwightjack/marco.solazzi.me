@@ -10,7 +10,6 @@
 
 <script>
 import VueTypes from 'vue-types';
-//import anime from 'animejs';
 import { mapState } from 'vuex';
 import SectionTitle from '@/objects/Title';
 
@@ -31,22 +30,6 @@ export default {
     components: {
         SectionTitle
     },
-
-    // TODO: should check performances on the final product
-    // watch: {
-    //     scrollAmount(translateY) {
-
-    //         requestAnimationFrame(() => {
-    //             anime({
-    //                 targets: this.$refs.body,
-    //                 duration: 0,
-    //                 translateY,
-    //                 translateZ: 0
-    //             });
-    //         });
-
-    //     }
-    // },
 
     computed: {
         ...mapState('ui', ['pagelistScroll']),
