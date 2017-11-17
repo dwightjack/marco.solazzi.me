@@ -31,12 +31,19 @@ export default {
         return this.getCanvasSize();
     },
 
+    watch: {
+        active(v) {
+            this.$emit(v ? 'start' : 'stop');
+        }
+    },
+
     mounted() {
 
         const { canvasWidth, canvasHeight } = this;
 
         const app = new Application({
             width: canvasWidth,
+            autoStart: false,
             height: canvasHeight,
             autoResize: true,
             transparent: true
@@ -63,53 +70,69 @@ export default {
 
         app.stage.addChild(...this.tiles);
 
-        anime({
-            targets: tiling,
-            easing: 'easeInOutSine',
-            loop: true,
-            delay: 14000,
-            alpha: [{
-                value: [0, 0.05],
-                duration: 150
-            }, {
-                value: [0.05, 0],
-                duration: 200
-            }, {
-                value: [0.05, 0],
-                duration: 350
-            }]
+        const animations = [
+
+            anime({
+                targets: tiling,
+                easing: 'easeInOutSine',
+                loop: true,
+                autoplay: false,
+                delay: 14000,
+                alpha: [{
+                    value: [0, 0.05],
+                    duration: 150
+                }, {
+                    value: [0.05, 0],
+                    duration: 200
+                }, {
+                    value: [0.05, 0],
+                    duration: 350
+                }]
+            }),
+
+            anime({
+                targets: tiling2,
+                easing: 'easeInOutSine',
+                loop: true,
+                autoplay: false,
+                direction: 'alternate',
+                delay: 2000,
+                duration: 5000,
+                alpha: [0, 0.05]
+            }),
+
+            anime({
+                targets: tilingFull,
+                easing: 'easeInOutSine',
+                loop: true,
+                autoplay: false,
+                direction: 'alternate',
+                delay: 2000,
+                duration: 5000,
+                alpha: [0.05, 0.02]
+            })
+
+        ];
+
+
+        this.$on('start', () => {
+            app.start();
+            animations.forEach((a) => a.play());
         });
 
-        anime({
-            targets: tiling2,
-            easing: 'easeInOutSine',
-            loop: true,
-            direction: 'alternate',
-            delay: 2000,
-            duration: 5000,
-            alpha: [0, 0.05]
+        this.$on('stop', () => {
+            app.stop();
+            animations.forEach((a) => a.pause());
         });
 
-        anime({
-            targets: tilingFull,
-            easing: 'easeInOutSine',
-            loop: true,
-            direction: 'alternate',
-            delay: 2000,
-            duration: 5000,
-            alpha: [0.05, 0.02]
-        });
-
-
-        app.render();
-        this.$el.appendChild(app.view);
 
         this.$once('beforeDestroy', () => {
-            app.stop();
+            this.$emit('stop');
             this.$el.removeChild(app.view);
         });
 
         this.app = app;
+        this.$el.appendChild(app.view);
 
     },
 

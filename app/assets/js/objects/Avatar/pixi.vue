@@ -19,6 +19,7 @@ export default {
 
 
     props: {
+        active: VueTypes.bool,
         foreground: VueTypes.string.isRequired,
         background: VueTypes.string.isRequired
     },
@@ -44,6 +45,10 @@ export default {
             app.renderer.resize(value, value);
             _mainContainer.scale.set(this.imageSize / _mainContainer._realSize);
             _mainContainer.position.set(this.containerOffset);
+        },
+
+        active(v) {
+            this.$emit(v ? 'start' : 'stop');
         }
     },
 
@@ -53,6 +58,7 @@ export default {
 
             this.app = new Application({
                 autoResize: true,
+                autoStart: false,
                 transparent: true,
                 width: this.canvasSize,
                 height: this.canvasSize
@@ -94,16 +100,24 @@ export default {
             app.ticker.add(() => {
                 mask.draw();
             });
-            mask.animate();
 
             app._mainContainer = mainContainer;
 
             app.stage.addChild(mainContainer);
             app.render();
 
-            this.$once('beforeDestroy', () => {
+            this.$on('start', () => {
+                mask.animate();
+                app.start();
+            });
+
+            this.$on('stop', () => {
                 mask.stop();
                 app.stop();
+            })
+
+            this.$once('beforeDestroy', () => {
+                this.$emit('stop');
                 this.$el.removeChild(app.view);
             });
 
@@ -131,7 +145,6 @@ export default {
 
 
         },
-
 
         loadResources(obj) {
             const { app } = this;
