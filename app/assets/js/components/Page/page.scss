@@ -12,6 +12,11 @@
 
 .body {
     padding: 0 vw($page-gutter);
+
+    @media print {
+        padding-right: 0;
+        padding-left: 0;
+    }
 }
 
 .intersect {

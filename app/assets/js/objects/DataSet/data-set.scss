@@ -24,6 +24,8 @@ $data-list-bp: mq-px2em(map-get($mq-breakpoints, tablet-landscape));
     }
 
     @media print {
+        @include clearfix;
+        display: block;
         width: 100%;
     }
 }
@@ -38,7 +40,7 @@ $data-list-bp: mq-px2em(map-get($mq-breakpoints, tablet-landscape));
         }
     }
 
-    @media (min-width: $data-list-bp), print {
+    @media (min-width: $data-list-bp) {
         width: 47%;
         padding: 0 0 rem(30px);
         flex: 0 0 auto;
@@ -53,7 +55,18 @@ $data-list-bp: mq-px2em(map-get($mq-breakpoints, tablet-landscape));
     }
 
     @media print {
-        flex-basis: 50%;
+        float: left;
+        width: 30%;
+        padding: 0 rem(10px) rem(20px) !important;
+
+        &:nth-child(3n) {
+            padding-right: 0 !important;
+        }
+
+        &:nth-child(3n+1) {
+            clear: both;
+            padding-left: 0 !important;
+        }
     }
 }
 
@@ -127,6 +140,5 @@ $data-list-bp: mq-px2em(map-get($mq-breakpoints, tablet-landscape));
     .ico {
         opacity: 0.6;
         transform: translate(0, -50%) scale(1);
-        transition-delay: 240ms;
     }
 }

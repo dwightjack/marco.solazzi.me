@@ -1,11 +1,44 @@
+@import "globals";
 @import "mixins";
 @import "colors";
+@import "sass-mq/mq";
 
 .root {
     position: relative;
+    z-index: -1;
     margin: 0;
+
+    $translate: percentage(((600 - 400) / 2) / -600);
+
+    @include mq('tablet-landscape') {
+        transform: translate($translate, $translate);
+    }
 }
 
+.fallback {
+
+
+    @media not print {
+
+        :global(.canvas) & {
+            @include visually-hidden;
+        }
+    }
+}
+
+
+.canvas {
+
+    :global(.no-canvas) & {
+        display: none;
+    }
+
+    @media print {
+        display: none;
+    }
+}
+
+/*
 .img {
     transform: scale(1.05);
     transform-origin: center center;
@@ -17,8 +50,8 @@
         transition-delay: 0s;
     }
 }
-
-
+*/
+/*
 .shadow {
     position: absolute;
     top: 0;
@@ -42,3 +75,4 @@
         transition-delay: 0.15s;
     }
 }
+*/

@@ -1,5 +1,20 @@
 <template>
-    <div :class="$style.root" v-resize="onResize" />
+    <figure :class="$style.root" v-resize="onResize">
+        <svg viewBox="0 0 890 890" role="group" tabindex="-1" :class="$style.fallback">
+            <title>A picture of myself in Japan</title>
+            <g clip-path="url(#avatar-mask)">
+                <image :class="$style.img" v-bind="{ 'xlink:href': foreground }" x="0" y="0" />
+            </g>
+
+            <clipPath id="avatar-mask" :class="$style.clip">
+                <path d="M850 425L725.5 725.5 425 850 124.5 725.5 0 425l124.5-300.5L425 0l300.5 124.5z" />
+            </clipPath>
+        </svg>
+
+        <!--<svg viewBox="0 0 890 890" :class="$style.shadow" aria-hidden="true">
+            <path d="M850 425L725.5 725.5 425 850 124.5 725.5 0 425l124.5-300.5L425 0l300.5 124.5z" />
+        </svg>-->
+    </figure>
 </template>
 
 <script>
@@ -121,7 +136,14 @@ export default {
                 this.$el.removeChild(app.view);
             });
 
+            if (this.active) {
+                this.$emit('start');
+            }
+
         });
+
+        app.view.setAttribute('aria-hidden', 'true');
+        app.view.className += this.$style.canvas;
 
         this.$el.appendChild(app.view);
     },
@@ -160,21 +182,4 @@ export default {
 };
 </script>
 
-<style lang="scss" module>
-@import "globals";
-@import "sass-mq/mq";
-
-$translate: percentage(((600 - 400) / 2) / -600);
-
-.root {
-    position: relative;
-    z-index: -1;
-
-
-    @include mq('tablet-landscape') {
-        transform: translate($translate, $translate);
-    }
-}
-
-</style>
-
+<style lang="scss" module src="./avatar.scss" />

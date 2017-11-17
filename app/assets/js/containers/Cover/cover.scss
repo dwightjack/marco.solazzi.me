@@ -266,111 +266,116 @@ $slide-enter-timing: 800ms;
 $slide-leave-timing: 700ms;
 $slide-leave-delay: 1550ms;
 
-.root {
 
-    &:global(.appear-enter-active) {
+@media not print {
 
-        .pic,
-        .body {
-            transition: all 400ms ease-out 300ms;
-            transition-property: opacity, transform;
-            will-change: transform, opacity;
+    .root {
+
+        &:global(.appear-enter-active) {
+
+            .pic,
+            .body {
+                transition: all 400ms ease-out 300ms;
+                transition-property: opacity, transform;
+                will-change: transform, opacity;
+            }
+
+            .scrollhint {
+                transition: all 500ms ease-out $appear-enter-timing;
+                transition-property: opacity, transform;
+                will-change: transform, opacity;
+            }
         }
 
-        .scrollhint {
-            transition: all 500ms ease-out $appear-enter-timing;
-            transition-property: opacity, transform;
-            will-change: transform, opacity;
-        }
-    }
+        &:global(.appear-enter) {
 
-    &:global(.appear-enter) {
+            .pic {
+                opacity: 0;
+                transform: translateX(15%);
+            }
 
-        .pic {
-            opacity: 0;
-            transform: translateX(15%);
-        }
+            .body {
+                opacity: 0;
+                transform: translateX(7%);
+            }
 
-        .body {
-            opacity: 0;
-            transform: translateX(7%);
-        }
-
-        .scrollhint {
-            opacity: 0;
-            transform: translate(-50%, -10%);
-        }
-    }
-
-
-    &:global(.slide-enter-active) {
-        transition: transform $slide-enter-timing cubic-bezier(0.8, 0.09, 0.29, 0.97);
-        will-change: transform;
-
-        .body {
-            transition: opacity 150ms ease;
-        }
-    }
-
-    &:global(.slide-enter) {
-        transform: translateY(-120vh);
-
-        .body {
-            opacity: 0;
-        }
-    }
-
-    &:global(.slide-enter-to) {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    &:global(.slide-leave-active) {
-        $easing: cubic-bezier(0.71, 0.13, 0.37, 0.93);
-        transition: transform $slide-leave-timing $easing $slide-leave-delay;
-        will-change: transform;
-
-        .pic,
-        .scrollhint {
-            transition: opacity 300ms $easing;
+            .scrollhint {
+                opacity: 0;
+                transform: translate(-50%, -10%);
+            }
         }
 
-        .headline,
-        .text,
-        .footer {
-            transition: all 500ms $easing 650ms;
-            will-change: transform, opacity;
+
+        &:global(.slide-enter-active) {
+            transition: transform $slide-enter-timing cubic-bezier(0.8, 0.09, 0.29, 0.97);
+            will-change: transform;
+
+            .body {
+                transition: opacity 150ms ease;
+            }
         }
 
-        .text {
-            transition-delay: 850ms;
+        &:global(.slide-enter) {
+            transform: translateY(-120vh);
+
+            .body {
+                opacity: 0;
+            }
         }
 
-        .footer {
-            transition-delay: 1050ms;
-        }
-    }
-
-    &:global(.slide-leave-to) {
-        transform: translateY(-100%);
-
-        .pic,
-        .scrollhint {
-            opacity: 0;
+        &:global(.slide-enter-to) {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .headline {
-            opacity: 0;
-            transform: translateY(-100vh);
+        &:global(.slide-leave-active) {
+            $easing: cubic-bezier(0.71, 0.13, 0.37, 0.93);
+            transition: transform $slide-leave-timing $easing $slide-leave-delay;
+            will-change: transform;
+
+            .pic,
+            .scrollhint {
+                transition: opacity 300ms $easing;
+            }
+
+            .headline,
+            .text,
+            .footer {
+                transition: all 500ms $easing 650ms;
+                will-change: transform, opacity;
+            }
+
+            .text {
+                transition-delay: 850ms;
+            }
+
+            .footer {
+                transition-delay: 1050ms;
+            }
         }
 
-        .text,
-        .footer {
-            opacity: 0;
-            transform: translateY(-100vh);
+        &:global(.slide-leave-to) {
+            transform: translateY(-100%);
+
+            .pic,
+            .scrollhint {
+                opacity: 0;
+            }
+
+            .headline {
+                opacity: 0;
+                transform: translateY(-100vh);
+            }
+
+            .text,
+            .footer {
+                opacity: 0;
+                transform: translateY(-100vh);
+            }
         }
     }
 }
+
 
 /* stylelint-disable property-no-unknown */
 :export {

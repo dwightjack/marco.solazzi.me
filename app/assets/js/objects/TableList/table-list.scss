@@ -9,11 +9,23 @@
         max-width: 750px;
     }
 
+    @media print {
+        @include clearfix;
+        max-width: none;
+    }
+
     > * {
-        margin-bottom: rem(70px);
+        margin-bottom: rem(40px);
 
         @media print {
+            float: left;
+            width: 50%;
             margin-bottom: rem(65px);
+
+            &:nth-child(odd) {
+                clear: both;
+                padding-right: rem(10px);
+            }
         }
 
         &:last-child {

@@ -30,6 +30,10 @@
         print-color-adjust: exact; //stylelint-disable-line
     }
 
+    html {
+        font-size: 8pt !important;
+    }
+
     body {
         overflow: auto;
         height: auto;

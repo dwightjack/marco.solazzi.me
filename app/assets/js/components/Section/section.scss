@@ -12,6 +12,7 @@
     }
 
     @media print {
+        padding-bottom: rem(60px);
 
         .title {
             orphans: 3;
