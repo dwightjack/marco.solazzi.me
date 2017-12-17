@@ -129,7 +129,7 @@ export default {
             this.$on('stop', () => {
                 mask.stop();
                 app.stop();
-            })
+            });
 
             this.$once('beforeDestroy', () => {
                 this.$emit('stop');
