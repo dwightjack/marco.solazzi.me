@@ -12,10 +12,24 @@ export default {
             return;
         }
 
-        el.__resize = value; //eslint-disable-line no-param-reassign
+        let print = false;
 
-        window.addEventListener('resize', value, false);
-        window.addEventListener('orientationchange', value, false);
+        const printMQ = window.matchMedia('print');
+
+        printMQ.addListener(({ matches }) => {
+            print = matches;
+        });
+
+        const resizeHandler = (...args) => {
+            if (print === false) {
+                value(...args);
+            }
+        };
+
+        el.__resize = resizeHandler; //eslint-disable-line no-param-reassign
+
+        window.addEventListener('resize', resizeHandler, false);
+        window.addEventListener('orientationchange', resizeHandler, false);
     },
 
     unbind(el, binding, vnode) {
