@@ -7,7 +7,7 @@
         @afterEnter="onAfterEnter"
         @beforeLeave="onBeforeLeave"
     >
-        <section @wheel="wheelListener" v-swipe.up="swipeUpHandler" v-show="active" :class="[$style.root, { [$style.isActive]: active }]">
+        <section @wheel.passive="wheelListener" v-swipe.up="swipeUpHandler" v-show="active" :class="[$style.root, { [$style.isActive]: active }]">
             <SmoothScrollbar
                 @scroll="onScroll"
                 ref="smoothScroll"
@@ -148,7 +148,6 @@ export default {
             }
 
             if (e.deltaY < 0 && this.activeGroup === GROUP_PAGELIST && this.pagelistScroll <= 0) {
-                e.preventDefault();
                 this.navigateToAction({ route: NAV_PATH_HOME });
             }
         },

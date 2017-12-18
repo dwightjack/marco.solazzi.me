@@ -6,7 +6,7 @@
         @afterEnter="onAfterEnter"
         @beforeLeave="onBeforeLeave"
     >
-        <section @wheel="wheelListener" v-swipe.down="swipeDownHandler" v-show="active" :class="[$style.root, { [$style.isAppLoaded]: isAppLoaded }]" :id="id">
+        <section @wheel.passive="wheelListener" v-swipe.down="swipeDownHandler" v-show="active" :class="[$style.root, { [$style.isAppLoaded]: isAppLoaded }]" :id="id">
             <span ref="top" :class="$style.intersectTop" data-pos="top" />
             <div :class="$style.pic" ref="pic">
                 <Avatar :active="active" :class="$style.avatar" :foreground="marco" :background="animal" />
@@ -149,7 +149,6 @@ export default {
             }
 
             if (e.deltaY > 0) {
-                e.preventDefault();
                 this.gotoPagelist();
             }
         },
