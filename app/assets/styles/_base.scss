@@ -287,6 +287,10 @@ abbr[title] {
 
     [data-scrollbar] .scrollbar-track {
         background: $color-link !important;
+
+        @media print {
+            display: none !important;
+        }
     }
 
     [data-scrollbar] .scrollbar-track-y {

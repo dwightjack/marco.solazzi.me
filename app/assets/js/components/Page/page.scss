@@ -8,6 +8,10 @@
     &:first-child {
         padding-top: rem(60px);
     }
+
+    @media print {
+        padding-top: rem(10px);
+    }
 }
 
 .body {

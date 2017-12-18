@@ -44,11 +44,13 @@ $title-size: font-size(l, false);
 .root--sub {
     composes: root;
     margin-top: 0.8em;
+    font-size: font-size(m);
 
     @include mq(tablet-landscape) {
         margin-bottom: -1.8em;
     }
 
-    //text-align: right;
-    font-size: font-size(m);
+    @media print {
+        margin-bottom: 1em;
+    }
 }

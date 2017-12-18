@@ -32,8 +32,15 @@
     }
 
     @include mq($media-type: print) {
+        position: relative;
         opacity: 1 !important;
         visibility: visible !important;
+        overflow-x: hidden;
+        overflow-y: visible;
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+        border: 0;
         transform: none !important;
         page-break-after: always;
 
@@ -76,6 +83,11 @@
         left: vw(60px);
     }
 
+    @media print {
+        position: static;
+        width: 100%;
+    }
+
     > .avatar {
         width: 50vw;
         height: 50vw;
@@ -91,6 +103,7 @@
             width: 40vw;
             height: 40vw;
             margin-top: 10vw;
+            transform: none !important;
         }
     }
 
@@ -115,6 +128,11 @@
         margin-left: 33%;
         flex: 1 1 auto;
     }
+
+    @media print {
+        margin-left: 0;
+    }
+
 
     > * {
         margin-bottom: rem(60px);

@@ -18,9 +18,10 @@
         margin-bottom: rem(40px);
 
         @media print {
+            @include clearfix;
             float: left;
-            width: 50%;
-            margin-bottom: rem(65px);
+            width: 45%;
+            margin-bottom: rem(20px);
 
             &:nth-child(odd) {
                 clear: both;

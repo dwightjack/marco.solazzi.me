@@ -11,17 +11,22 @@ $c-table-indent: 30px;
 .root {
     position: relative;
     width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
     padding-left: $c-table-indent;
 
     @include mq(tablet-landscape) {
         //margin-left: $c-table-indent * -1;
+        margin-top: -10px;
         padding-left: 0;
         //border-left: $c-table-indent solid transparent;
     }
 
     @include mq($media-type: print) {
         position: relative;
+        top: -2px;
         width: 50%;
+        border-left: $c-table-indent solid transparent;
         page-break-inside: avoid;
     }
 }
@@ -29,6 +34,7 @@ $c-table-indent: 30px;
 .caption {
     @include font-heading;
     padding-left: $c-table-row-indent;
+    page-break-inside: avoid;
 
     &::before {
         display: inline-block;
@@ -39,12 +45,13 @@ $c-table-indent: 30px;
 
 .bracket {
     position: absolute;
-    top: -10px;
-    bottom: -10px;
+    top: 0;
+    bottom: 0;
     left: 0;
     opacity: 0.5;
     width: 8px;
     background-color: $color-link;
+    page-break-inside: avoid;
 
     @include mq(tablet-landscape) {
         left: -20px;
@@ -78,6 +85,7 @@ $c-table-indent: 30px;
     line-height: 1.35em;
     text-align: left;
     vertical-align: top;
+    page-break-inside: avoid;
 
     tr {
         display: block;

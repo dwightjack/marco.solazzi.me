@@ -17,6 +17,12 @@
         .title {
             orphans: 3;
         }
+
+        :global(#contacts) & {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
     }
 }
 
@@ -37,6 +43,13 @@
 
     @include mq(desktop) {
         left: vw(60px);
+    }
+
+    @media print {
+        position: static;
+        max-width: none;
+        margin-bottom: 2em;
+        text-align: center;
     }
 }
 
@@ -62,6 +75,13 @@
     }
 
     @include mq($media-type: print) {
+        padding-right: 0;
+        padding-left: 0;
         transform: none !important;
+
+        :global(#contacts) & {
+            width: auto;
+            white-space: nowrap;
+        }
     }
 }
