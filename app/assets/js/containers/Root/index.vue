@@ -30,7 +30,6 @@ import PageList from '@/containers/PageList';
 //import Swipe from '@/components/Swipe';
 import Loader from '@/components/Loader';
 import Wrapper from '@/components/Wrapper';
-import BgPattern from '@/objects/BgPattern/pixi';
 
 import routes from '@/shared/routes';
 import {
@@ -40,6 +39,9 @@ import {
     //GROUP_PAGELIST,
 } from '@/shared/constants';
 import { TYPES as UI_ACTIONS } from '@/store/ui.actions';
+
+const BgPattern = () => import(/* webpackChunkName: "pixi" */ '@/objects/BgPattern/pixi');
+
 
 export default {
 

@@ -391,6 +391,18 @@ $slide-leave-delay: 1550ms;
                 transform: translateY(-100vh);
             }
         }
+
+        &:global(.async-avatar-enter-active) {
+            transition: opacity 1s;
+        }
+
+        &:global(.async-avatar-enter) {
+            opacity: 0;
+        }
+
+        &:global(.async-avatar-enter-to) {
+            opacity: 1;
+        }
     }
 }
 

@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const { loadConfig } = require('umeboshi-dev-utils');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { argv } = require('yargs');
@@ -15,7 +16,11 @@ baseConfig.plugins.push(
     new CopyWebpackPlugin([{
         from: paths.toAbsPath('src.assets/favicons/'),
         to: paths.toAbsPath('dist.root')
-    }])
+    }]),
+    new webpack.optimize.CommonsChunkPlugin({
+        async: 'vendor-async',
+        chunks: ['avatar', 'bg-pattern']
+    })
 );
 
 if (process.env.WEBPACK_STATS) {
