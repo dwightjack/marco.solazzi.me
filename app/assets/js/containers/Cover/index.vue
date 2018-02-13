@@ -9,7 +9,7 @@
         <section @wheel.passive="wheelListener" v-swipe.down="swipeDownHandler" v-show="active" :class="[$style.root, { [$style.isAppLoaded]: isAppLoaded }]" :id="id">
             <span ref="top" :class="$style.intersectTop" data-pos="top" />
             <div :class="$style.pic" ref="pic">
-                <transition name="async-avatar" appear @onAfterEnter="avatarAfterEnter">
+                <transition name="async-avatar" appear :duration="transitionDuration">
                     <Avatar v-if="active" :active="active" :class="$style.avatar" :foreground="marco" :background="animal" />
                 </transition>
             </div>
@@ -155,10 +155,6 @@ export default {
             if (e.deltaY > 0) {
                 this.gotoPagelist();
             }
-        },
-
-        avatarAfterEnter() {
-            console.log('entered');
         },
 
         /*onEnter(el, done) {
