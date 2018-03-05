@@ -9,7 +9,9 @@
         <section @wheel.passive="wheelListener" v-swipe.down="swipeDownHandler" v-show="active" :class="[$style.root, { [$style.isAppLoaded]: isAppLoaded }]" :id="id">
             <span ref="top" :class="$style.intersectTop" data-pos="top" />
             <div :class="$style.pic" ref="pic">
-                <Avatar :active="active" :class="$style.avatar" :foreground="marco" :background="animal" />
+                <transition name="async-avatar" appear :duration="transitionDuration">
+                    <Avatar v-if="active" :active="active" :class="$style.avatar" :foreground="marco" :background="animal" />
+                </transition>
             </div>
             <div :class="$style.body">
 
@@ -38,12 +40,14 @@ import { mapState, mapActions } from 'vuex';
 import { NAV_PATH_HOME, NAV_PATH_JOBS, GROUP_COVER, GROUP_PAGELIST, GROUP_LOADER } from '@/shared/constants';
 import marco from 'images/marco.jpg';
 import animal from 'images/marco-full.jpg';
-import Avatar from '@/objects/Avatar/pixi';
 import Ico from '@/objects/Ico';
 import SocialList from '@/objects/SocialList';
 import observerMixin from '@/shared/observer.mixin';
 import { TYPES as UI_ACTIONS } from '@/store/ui.actions';
 import { toInteger } from '@/shared/utils';
+
+const Avatar = () => import(/* webpackChunkName: "pixi" */ '@/objects/Avatar/pixi');
+
 
 export default {
 

@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const { loadConfig } = require('umeboshi-dev-utils');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { argv } = require('yargs');
