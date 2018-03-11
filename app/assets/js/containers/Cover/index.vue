@@ -15,7 +15,7 @@
             </div>
             <div :class="$style.body">
 
-                <h2 :class="$style.headline">こんにちは！</h2>
+                <h2 lang="ja" :class="$style.headline">こんにちは！</h2>
                 <article :class="$style.text">
                     <p>My name is <strong>Marco Solazzi</strong></p>
                     <p>I am a 37yo <strong>Frontend Web Developer</strong>, technical <strong>writer</strong> and <strong>speaker</strong> from Verona (Italy). I speak Italian (of course), English, French and some Japanese.</p>
