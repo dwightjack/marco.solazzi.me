@@ -86,7 +86,11 @@ export default {
 
             if (this.transitionName === 'appear') {
                 return {
-                    enter: toInteger(appearEnterTiming)
+                    enter: toInteger(appearEnterTiming),
+                    // BEWARE: dirty hach
+                    // avatar v-if cannot catch the updated transitionName
+                    // and removes the avatar asap
+                    leave: toInteger(slideLeaveTiming)
                 };
             }
 
