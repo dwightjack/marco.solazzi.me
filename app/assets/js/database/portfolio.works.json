@@ -1,5 +1,23 @@
 [
     {
+        "id": "formigari",
+        "project": "Formigari",
+        "date": "2017-08-24",
+        "stack": "ES2015, React, MobX, GSAP, Webpack, CSS-next",
+        "tasks": "JavaScript Architecture, Animations, CSS, SSR",
+        "_link": "http://www.formigari.it/",
+        "_meta": [
+            {
+                "type": "award",
+                "link": "https://www.awwwards.com/sites/formigari",
+                "label": "Awwwards SOTD"
+            }, {
+                "type": "award",
+                "link": "https://www.cssdesignawards.com/sites/formigari/31132/",
+                "label": "CSS Design Awards SOTD"
+            }
+        ]
+    }, {
         "id": "muller",
         "project": "Müller Italia",
         "date": "2016-05-07",
