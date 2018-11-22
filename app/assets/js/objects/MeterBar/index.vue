@@ -1,9 +1,9 @@
 <template>
     <div :class="[$style.root, { [$style.rootHigh]: value > 80}]">
         <span :class="$style.label">{{ label }}</span>
-        <strong :class="[$style.bar, barValueClass]">
+        <b :class="[$style.bar, barValueClass]">
             <span :class="$style.value">{{ value }}%</span>
-        </strong>
+        </b>
     </div>
 </template>
 
