@@ -1,8 +1,15 @@
 [
     {
+        "id": "carrefour",
+        "project": "Carrefour Italia",
+        "date": "2017-08-01",
+        "stack": "Nunjucks, Gulp, jQuery",
+        "tasks": "Design System Development, HTML, CSS, Accessibility",
+        "_link": "https://www.carrefour.it/"
+    }, {
         "id": "formigari",
         "project": "Formigari",
-        "date": "2017-08-24",
+        "date": "2017-05-01",
         "stack": "ES2015, React, MobX, GSAP, Webpack, CSS-next",
         "tasks": "JavaScript Architecture, Animations, CSS, SSR",
         "_link": "http://www.formigari.it/",
