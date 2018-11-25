@@ -20,12 +20,8 @@
         margin-bottom: rem(40px);
 
         @media print {
-            // @include clearfix;
+            width: calc(50% - rem(20px));
             margin-bottom: rem(30px);
-            width: calc(50% - rem(20px))
-            // float: left;
-            // width: 45%;
-            // margin-bottom: rem(20px);
 
             &:nth-child(odd) {
                 padding-right: rem(10px);
