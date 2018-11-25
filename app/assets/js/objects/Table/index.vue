@@ -20,7 +20,7 @@
             </tbody>
         </table>
 
-        <footer :class="$style.footer">
+        <footer v-if="data._meta" :class="$style.footer">
             <Anchor v-for="meta in data._meta"
                     type="cursor"
                     :link="meta.link"

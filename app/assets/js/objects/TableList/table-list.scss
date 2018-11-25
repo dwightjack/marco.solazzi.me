@@ -11,6 +11,8 @@
 
     @media print {
         @include clearfix;
+        display: flex;
+        flex-wrap: wrap;
         max-width: none;
     }
 
@@ -18,13 +20,14 @@
         margin-bottom: rem(40px);
 
         @media print {
-            @include clearfix;
-            float: left;
-            width: 45%;
-            margin-bottom: rem(20px);
+            // @include clearfix;
+            margin-bottom: rem(30px);
+            width: calc(50% - rem(20px))
+            // float: left;
+            // width: 45%;
+            // margin-bottom: rem(20px);
 
             &:nth-child(odd) {
-                clear: both;
                 padding-right: rem(10px);
             }
         }

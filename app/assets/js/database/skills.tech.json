@@ -24,6 +24,11 @@
                 "level": 100
             },
             {
+                "id": "typescript",
+                "label": "Typescript",
+                "level": 70
+            },
+            {
                 "id": "backend",
                 "label": "PHP5.5+",
                 "level": 80
@@ -36,8 +41,8 @@
         "data": [
             {
                 "id": "react",
-                "label": "React 15+ ( + Redux / MobX)",
-                "level": 90
+                "label": "React ( + Redux / MobX)",
+                "level": 100
             },
             {
                 "id": "vue",
@@ -67,7 +72,7 @@
         ]
     },
     {
-        "label": "Code Quality Tools",
+        "label": "Development Tools",
         "ico": "checklist",
         "data": [
             {
@@ -76,15 +81,19 @@
                 "level": 90
             }, {
                 "id": "e2e-testing",
-                "label": "Nightwatch.js, Protractor",
+                "label": "Nightwatch.js, TestCafe",
                 "level": 70
             }, {
                 "id": "linting-js",
-                "label": "eslint, prettier",
+                "label": "eslint, tslint, prettier",
                 "level": 100
             }, {
                 "id": "linting-style",
                 "label": "stylelint, scss-lint",
+                "level": 100
+            }, {
+                "id": "design-system",
+                "label": "Storybook",
                 "level": 100
             }
         ]
@@ -106,7 +115,7 @@
             {
                 "id": "webpack",
                 "label": "Webpack",
-                "level": 80
+                "level": 100
             },
             {
                 "id": "rollup",
@@ -160,7 +169,7 @@
             }, {
                 "id": "vector",
                 "label": "Adobe XD, Sketch",
-                "level": 70
+                "level": 80
             }
         ]
     }

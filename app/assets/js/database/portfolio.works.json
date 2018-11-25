@@ -1,8 +1,15 @@
 [
     {
+        "id": "carrefour",
+        "project": "Carrefour Italia",
+        "date": "2017-08-01",
+        "stack": "Nunjucks, Gulp, jQuery",
+        "tasks": "Design System Development, HTML, CSS, Accessibility",
+        "_link": "https://www.carrefour.it/"
+    }, {
         "id": "formigari",
         "project": "Formigari",
-        "date": "2017-08-24",
+        "date": "2017-05-01",
         "stack": "ES2015, React, MobX, GSAP, Webpack, CSS-next",
         "tasks": "JavaScript Architecture, Animations, CSS, SSR",
         "_link": "http://www.formigari.it/",
@@ -11,10 +18,6 @@
                 "type": "award",
                 "link": "https://www.awwwards.com/sites/formigari",
                 "label": "Awwwards SOTD"
-            }, {
-                "type": "award",
-                "link": "https://www.cssdesignawards.com/sites/formigari/31132/",
-                "label": "CSS Design Awards SOTD"
             }
         ]
     }, {
@@ -38,23 +41,5 @@
         "stack": "jQuery, GSAP, Grunt, Browserify, Sass",
         "tasks": "Frontend Architecture, HTML, CSS, JavaScript, vue.js",
         "_link": "http://www.mediasetpremium.it/"
-    }, {
-        "id": "fornasetti",
-        "project": "Fornasetti | History",
-        "date": "2015-05-09",
-        "stack": "jQuery, GSAP, Grunt, Browserify, Sass, SVG",
-        "tasks": "JavaScript Architecture, Audio, Frontend Ops, HTML, CSS",
-        "_link": "http://www.fornasetti.com/history",
-        "_meta": [
-            {
-                "type": "award",
-                "link": "http://www.awwwards.com/sites/fornasetti-history",
-                "label": "Awwwards SOTD"
-            }, {
-                "type": "award",
-                "link": "http://www.cssdesignawards.com/sites/fornasetti-history/26394/",
-                "label": "CSS Design Awards SOTD"
-            }
-        ]
     }
 ]
