@@ -42,7 +42,7 @@
             {
                 "id": "react",
                 "label": "React ( + Redux / MobX)",
-                "level": 100
+                "level": 90
             },
             {
                 "id": "vue",
@@ -52,7 +52,7 @@
             {
                 "id": "old-school",
                 "label": "Angular 1.x , Backbone.js",
-                "level": 100
+                "level": 90
             },
             {
                 "id": "animation",
@@ -115,7 +115,7 @@
             {
                 "id": "webpack",
                 "label": "Webpack",
-                "level": 100
+                "level": 90
             },
             {
                 "id": "rollup",
@@ -164,7 +164,7 @@
                 "level": 100
             }, {
                 "id": "software",
-                "label": "Photoshop ",
+                "label": "Photoshop",
                 "level": 90
             }, {
                 "id": "vector",
