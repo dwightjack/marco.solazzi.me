@@ -1,9 +1,23 @@
 [
     {
+        "id": "fujitv-view",
+        "project": "Fuji TV - View",
+        "date": "2019-10-01",
+        "stack": "HTML, Sass, WordPress",
+        "tasks": "HTML, CSS, Accessibility, PHP",
+        "_link": "https://www.fujitv-view.jp/"
+    }, {
+        "id": "soup-stock-tokyo",
+        "project": "Soup Stock Tokyo",
+        "date": "2018-06-01",
+        "stack": "Pug, Sass, Storybook, Jest",
+        "tasks": "Frontend Design System, HTML, JS, CSS, Accessibility",
+        "_link": "https://www.soup-stock-tokyo.com/"
+    }, {
         "id": "carrefour",
         "project": "Carrefour Italia",
         "date": "2017-08-01",
-        "stack": "Nunjucks, Gulp, jQuery",
+        "stack": "Nunjucks, Gulpjs, jQuery",
         "tasks": "Design System Development, HTML, CSS, Accessibility",
         "_link": "https://www.carrefour.it/"
     }, {
@@ -34,12 +48,5 @@
                 "label": "Awwwards SOTD"
             }
         ]
-    }, {
-        "id": "mediaset",
-        "project": "Mediaset Premium Corporate",
-        "date": "2015-07-01",
-        "stack": "jQuery, GSAP, Grunt, Browserify, Sass",
-        "tasks": "Frontend Architecture, HTML, CSS, JavaScript, vue.js",
-        "_link": "http://www.mediasetpremium.it/"
     }
 ]
