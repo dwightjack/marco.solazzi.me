@@ -18,7 +18,7 @@
                 <h2 lang="ja" :class="$style.headline">こんにちは！</h2>
                 <article :class="$style.text">
                     <p>My name is <b>Marco Solazzi</b></p>
-                    <p>I am a 40yo <b>Frontend Web Developer</b>, technical <b>writer</b> and <b>speaker</b> from Verona (Italy). Living in Tokyo. I speak Italian (of course), English, French and some Japanese.</p>
+                    <p>I am a 40yo <b>Frontend Developer</b> / <b>UX Engineer</b>, technical <b>writer</b> and <b>speaker</b> from Verona (Italy). Living in Tokyo. I speak Italian (of course), English, French and some Japanese.</p>
                     <p>Since 2014 I am co-founder and host of the <b><a href="http://www.fevr.it" target="_blank" rel="noopener noreferrer">FEVR Frontenders Meetup</a></b> .</p>
                 </article>
                 <footer :class="$style.footer">

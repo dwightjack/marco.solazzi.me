@@ -85,7 +85,7 @@
                 "level": 70
             }, {
                 "id": "linting-js",
-                "label": "eslint, tslint, prettier",
+                "label": "eslint, prettier",
                 "level": 100
             }, {
                 "id": "linting-style",
@@ -134,6 +134,11 @@
                 "level": 100
             },
             {
+                "id": "bem",
+                "label": "Atomic Design / BEM",
+                "level": 100
+            },
+            {
                 "id": "a11y",
                 "label": "Accessibility",
                 "level": 80
@@ -144,9 +149,9 @@
                 "level": 100
             },
             {
-                "id": "styleguide",
-                "label": "Styleguide Driven Development",
-                "level": 100
+                "id": "ds",
+                "label": "Design Systems",
+                "level": 80
             }
         ]
     },
@@ -160,7 +165,7 @@
                 "level": 100
             }, {
                 "id": "editors",
-                "label": "Sublime Text, Atom, VSCode",
+                "label": "VSCode, Sublime Text",
                 "level": 100
             }, {
                 "id": "software",

@@ -3,6 +3,8 @@
 @import "mixins";
 @import "sass-mq/mq";
 
+$cover-max-width: 32rem;
+
 .root {
     position: relative;
     z-index: z-index(above);
@@ -180,7 +182,7 @@
     font-size: font-size(20px);
 
     @include mq(tablet-landscape) {
-        max-width: 450px;
+        max-width: $cover-max-width;
         margin-right: 0;
         margin-left: 0;
         font-size: font-size(20px);
@@ -209,7 +211,7 @@
 
 .footer {
     @include mq(tablet-landscape) {
-        max-width: 450px;
+        max-width: $cover-max-width;
     }
 
 
