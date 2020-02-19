@@ -50,7 +50,7 @@
     "copy-webpack-plugin": "4.2.0",
     "cross-env": "5.1.1",
     "css-loader": "^0.28.7",
-    "eslint": ">= 4.8.0",
+    "eslint": ">= 4.18.2",
     "eslint-config-umeboshi-node": "^0.1.0",
     "eslint-config-umeboshi-vue": "^0.1.0",
     "jest": "^21.0.0",
