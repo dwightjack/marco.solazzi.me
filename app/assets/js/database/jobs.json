@@ -1,9 +1,18 @@
 [
     {
+        "id": 5,
+        "company": "Merpay (Mercari Inc)",
+        "from": "2018-02-17",
+        "to": null,
+        "title": "Senior Frontend Engineer",
+        "description": "Working as Senior Developer",
+        "_link": "https://www.merpay.com/"
+    },
+    {
         "id": 4,
         "company": "Shiftbrain Inc",
         "from": "2018-01-22",
-        "to": null,
+        "to": "2020-02-07",
         "title": "Senior Frontend Developer",
         "description": "Working as Senior Developer @ Standard Design Team",
         "_link": "http://www.shiftbrain.com/"
