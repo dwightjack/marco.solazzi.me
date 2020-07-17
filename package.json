@@ -33,7 +33,7 @@
     "babel-runtime": "6.26.0",
     "core-js": "2.5.1",
     "intersection-observer": "0.4.2",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.19",
     "normalize.css": "7.0.0",
     "pixi.js": "4.6.0",
     "sass-mq": "3.3.2",
