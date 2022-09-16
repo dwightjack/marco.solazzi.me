@@ -10,6 +10,7 @@ specifiers:
   eslint-plugin-astro: 0.19.0
   eslint-plugin-prettier: 4.2.1
   lefthook: 1.1.1
+  modern-normalize: 1.1.0
   postcss-html: 1.5.0
   prettier: 2.7.1
   prettier-plugin-astro: 0.5.4
@@ -23,6 +24,7 @@ specifiers:
 dependencies:
   '@astrojs/vue': 1.0.2_vue@3.2.39
   astro: 1.2.4
+  modern-normalize: 1.1.0
   vue: 3.2.39
 
 devDependencies:
@@ -3435,6 +3437,11 @@ packages:
       is-plain-obj: 1.1.0
       kind-of: 6.0.3
     dev: true
+
+  /modern-normalize/1.1.0:
+    resolution: {integrity: sha512-2lMlY1Yc1+CUy0gw4H95uNN7vjbpoED7NNRSBHE25nWfLBdmMzFCsPshlzbxHz+gYMcBEUN8V4pU16prcdPSgA==}
+    engines: {node: '>=6'}
+    dev: false
 
   /mri/1.2.0:
     resolution: {integrity: sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==}

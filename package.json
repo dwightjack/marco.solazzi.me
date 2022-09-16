@@ -23,6 +23,7 @@
   "dependencies": {
     "@astrojs/vue": "^1.0.2",
     "astro": "^1.2.4",
+    "modern-normalize": "1.1.0",
     "vue": "^3.2.30"
   },
   "devDependencies": {

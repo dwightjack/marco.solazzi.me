@@ -5,5 +5,8 @@
     "stylelint-config-html/astro",
     "stylelint-config-html/vue",
     "stylelint-config-prettier"
-  ]
+  ],
+  "rules": {
+    "selector-class-pattern": null
+  }
 }

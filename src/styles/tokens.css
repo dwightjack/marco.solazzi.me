@@ -1,0 +1,31 @@
+:root {
+  /* Colors */
+  --color-dark: hsl(0deg 0% 30%);
+  --color-dark-a20: hsl(0deg 0% 30% 20%);
+  --color-light: hsl(0deg 0% 100%);
+  --color-red-250: hsl(0deg 56% 25%);
+  --color-red-400: hsl(0deg 57% 40%);
+  --color-red-400-a20: hsl(0deg 57% 40% 20%);
+  --color-text: var(--color-dark);
+  --color-bg: var(--color-light);
+  --color-link: var(--color-red-400);
+  --color-link-bg-hover: var(--color-dark-a20);
+  --color-selection-bg: var(--color-red-400-a20);
+  --color-selection-fg: var(--color-red-250);
+  --color-scrollbar-thumb: var(--color-red-400);
+  --color-border: var(--color-dark);
+
+  /* Fonts */
+  --font-family-sans: "Open Sans", sans-serif;
+  --font-family-serif: "Bree Serif", serif;
+  --font-family-base: var(--font-family-sans);
+  --font-family-h: var(--font-family-serif);
+
+  /* Layers */
+    --layer-behind: -1;
+    --layer-below: -1;
+    --layer-base: 0;
+    --layer-above: 1;
+    --layer-loader: 10;
+    --layer-navigation: 5;
+}
