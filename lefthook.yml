@@ -2,5 +2,5 @@ pre-commit:
   parallel: true
   commands:
     linter:
-      glob: "*.{js,ts,astro}"
+      glob: "*.{mjs,cjs,js,ts,astro}"
       run: pnpm exec eslint {staged_files}

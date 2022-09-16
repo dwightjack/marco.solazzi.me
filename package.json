@@ -7,13 +7,18 @@
   "author": {
     "name": "Marco Solazzi"
   },
+  "engines": {
+    "node": ">=16.17.0",
+    "pnpm": "^7.11.0"
+  },
   "private": true,
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lint": "eslint '**/*.{cjs,mjs,js,ts,astro}'"
   },
   "dependencies": {
     "@astrojs/vue": "^1.0.2",
