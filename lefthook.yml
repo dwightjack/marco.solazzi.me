@@ -4,3 +4,6 @@ pre-commit:
     linter:
       glob: "*.{mjs,cjs,js,ts,astro}"
       run: pnpm exec eslint {staged_files}
+    styles:
+      glob: "*.{css,html,vue,astro}"
+      run: pnpm exec stylelint {staged_files}

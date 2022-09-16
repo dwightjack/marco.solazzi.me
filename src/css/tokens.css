@@ -1,0 +1,12 @@
+:root {
+  /* by name */
+  --color-dark: #4d4d4d;
+  --color-light: #fff;
+  --color-dark-red: #a02c2c;
+
+  /* by function */
+  --color-text: var(--color-dark);
+  --color-bg: var(--color-light);
+  --color-link: var(--color-dark-red);
+  --color-border: var(--color-dark);
+}
