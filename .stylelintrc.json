@@ -7,6 +7,8 @@
     "stylelint-config-prettier"
   ],
   "rules": {
-    "selector-class-pattern": null
+    "selector-class-pattern": null,
+    "declaration-block-no-redundant-longhand-properties": null,
+    "number-max-precision": 10
   }
 }

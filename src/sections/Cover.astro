@@ -1,0 +1,168 @@
+---
+import SocialList from '../components/SocialList.astro';
+import Icon from '../components/Icon.astro';
+import { NAV_PATH_JOBS } from '../shared/constants';
+import socials from '../database/social.json';
+import Avatar from '../components/Avatar.astro';
+import marco from '../assets/images/marco.jpg';
+import marcoFull from '../assets/images/marco-full.jpg';
+---
+
+<section class="c-cover__root">
+  <div class="c-cover__pic">
+    <Avatar foreground={marco} background={marcoFull} />
+  </div>
+  <div class="c-cover__body">
+    <h2 lang="ja" class="c-cover__headline">こんにちは！</h2>
+    <article class="c-cover__text">
+      <p>My name is <b>Marco Solazzi</b></p>
+      <p>
+        I am a {new Date().getFullYear() - 1979}yo <b>Frontend Developer</b> / <b
+          >UX Engineer</b
+        >, technical <b>writer</b> and <b>speaker</b> from Verona (Italy). Living
+        in Tokyo. I speak Italian (of course), English, Japanese and some French.
+      </p>
+      <p>
+        Since 2014 I am co-founder and host of the <b
+          ><a
+            href="http://www.fevr.it"
+            target="_blank"
+            rel="noopener noreferrer">FEVR Frontenders Meetup</a
+          >
+        </b> .
+      </p>
+    </article>
+    <footer class="c-cover__footer">
+      <SocialList items={socials} />
+    </footer>
+  </div>
+  <a href={`#${NAV_PATH_JOBS}`} class="c-cover__scrollhint">
+    <span>Get to know me</span>
+    <span class="c-cover__scrollhint-ico">
+      <Icon name="chevron-down" />
+    </span>
+  </a>
+</section>
+<style>
+  .c-cover__root {
+    padding: var(--space-page-gutter) max(5.46875vw, 1rem);
+  }
+
+  @media (min-width: 64em) {
+    .c-cover__root {
+      display: grid;
+      grid-template-columns: 28vw 36rem 1fr;
+      grid-template-rows: 1fr auto 1fr;
+      grid-template-areas: '. . .' 'pic body .' 'scrollhint scrollhint scrollhint';
+      column-gap: 3rem;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      padding: 0;
+      border-right: 8px solid var(--color-link);
+    }
+  }
+
+  .c-cover__pic {
+    width: 56%;
+    margin-inline: auto;
+  }
+
+  @media (min-width: 64rem) {
+    .c-cover__pic {
+      grid-area: pic;
+      align-self: center;
+      justify-self: end;
+      width: calc(100% - 4.6875vw);
+      margin-inline: 0;
+    }
+  }
+
+  .c-cover__body {
+    grid-area: body;
+    padding-inline: 2rem;
+  }
+
+  .c-cover__body > * + * {
+    margin-top: 3.75rem;
+  }
+
+  .c-cover__headline {
+    margin-top: 0.5em;
+    font-family: inherit;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  @media (min-width: 64rem) {
+    .c-cover__headline {
+      margin-top: 0;
+      font-size: 2.8125rem;
+      text-align: left;
+    }
+  }
+
+  .c-cover__text {
+    position: relative;
+    font-size: 1.25rem;
+  }
+
+  .c-cover__text::before {
+    position: absolute;
+    top: -0.35em;
+    left: -0.55em;
+    opacity: 0.5;
+    color: var(--color-link);
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2.5em;
+    content: '\201c';
+  }
+
+  @media (min-width: 64rem) {
+    .c-cover__text::before {
+      font-size: 4em;
+    }
+  }
+
+  .c-cover__text > * + * {
+    margin-top: 0.8em;
+    line-height: 1.4;
+  }
+
+  .c-cover__scrollhint {
+    grid-area: scrollhint;
+    margin-bottom: 6vh;
+    opacity: 0.8;
+    color: var(--color-text);
+    font-size: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    justify-self: center;
+    align-self: end;
+    text-align: center;
+    text-decoration: none;
+    will-change: transform;
+  }
+
+  @media not all and (min-width: 64rem) {
+    .c-cover__scrollhint {
+      display: none;
+    }
+  }
+
+  .c-cover__scrollhint-ico {
+    transition: transform 0.25s ease-out;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .c-cover__scrollhint:hover .c-cover__scrollhint-ico {
+      transform: translateY(50%);
+    }
+  }
+
+  .c-cover__scrollhint:focus-visible .c-cover__scrollhint-ico {
+    transform: translateY(50%);
+  }
+</style>

@@ -1,0 +1,49 @@
+---
+import Icon from './Icon.astro';
+import Stack from './Stack.astro';
+
+interface Item {
+  type: string;
+  url: string;
+  label: string;
+}
+
+export interface Props {
+  items: Item[];
+}
+
+const { items } = Astro.props;
+---
+
+<Stack as="ul" space={1} class="c-social-list">
+  {
+    items.map((item) => (
+      <li
+        class:list={[
+          'c-social-list__item',
+          {
+            'u-only-print': item.type === 'link',
+            'u-only-screen': item.type === 'pdf',
+          },
+        ]}
+      >
+        <Icon name={item.type} size={1.2} />
+        <a href={item.url} target="_blank" rel="noopener noreferrer">
+          {item.label}
+        </a>
+      </li>
+    ))
+  }
+</Stack>
+
+<style>
+  .c-social-list__item {
+    line-height: 1.4em;
+  }
+
+  @media (min-width: 1024px) {
+    .c-social-list__item {
+      font-size: 1.125rem;
+    }
+  }
+</style>

@@ -1,0 +1,56 @@
+[
+    {
+        "id": 5,
+        "company": "Merpay (Mercari Inc)",
+        "from": "2020-02-17",
+        "to": null,
+        "title": "Senior Frontend Engineer",
+        "description": "Working as Senior Developer",
+        "_link": "https://www.merpay.com/"
+    },
+    {
+        "id": 4,
+        "company": "Shiftbrain Inc",
+        "from": "2018-01-22",
+        "to": "2020-02-07",
+        "title": "Senior Frontend Developer",
+        "description": "Working as Senior Developer @ Standard Design Team",
+        "_link": "http://www.shiftbrain.com/"
+    },
+    {
+        "id": 3,
+        "company": "AQuest Srl",
+        "from": "2014-12-01",
+        "to": "2017-09-01",
+        "title": "Senior Frontend Developer",
+        "description": "Working as Senior Developer, Frontend / <abbr title=\"Developer Experience\">DX</abbr> Ops and Technical Evangelist for <abbr title=\"Single Page Applications\">SPA</abbr>s Architecture.",
+        "_link": "http://www.aquest.it/"
+    },
+    {
+        "id": 2,
+        "company": "Intesys Srl",
+        "from": "2009-12-01",
+        "to": "2014-12-01",
+        "title": "Senior Frontend Developer",
+        "description": "Frontend and PHP Senior Developer, Frontend Advisory Group Leader and WordPress Advisory Group Leader",
+        "_link": "http://www.intesys.it/"
+    },
+    {
+        "id": 1,
+        "company": "HTML.it",
+        "from": "2009-07-04",
+        "to": "2014-09-30",
+        "title": "Freelance JavaScript Columnist",
+        "description": "I wrote guides, tutorials and technical articles about JavaScript",
+        "_link": "http://www.html.it/"
+    },
+    {
+        "id": 0,
+        "company": "Promobit Srl",
+        "from": "2005-07-04",
+        "to": "2009-12-01",
+        "title": "Full Stack Web Developer",
+        "description": "Full Stack Web Developer, System Administrator and Web Development Area Manager",
+        "_link": "http://www.promobit.it/"
+    }
+]

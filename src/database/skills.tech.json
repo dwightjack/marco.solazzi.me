@@ -1,0 +1,181 @@
+[
+    {
+        "label": "Languages",
+        "ico": "code",
+        "data": [
+            {
+                "id": "html5",
+                "label": "HTML5",
+                "level": 100
+            },
+            {
+                "id": "css3",
+                "label": "CSS3",
+                "level": 100
+            },
+            {
+                "id": "pre-post-processors",
+                "label": "Sass/SCSS, PostCSS",
+                "level": 100
+            },
+            {
+                "id": "es2015",
+                "label": "JavaScript (ES2015+)",
+                "level": 100
+            },
+            {
+                "id": "typescript",
+                "label": "Typescript",
+                "level": 70
+            },
+            {
+                "id": "backend",
+                "label": "PHP5.5+",
+                "level": 80
+            }
+        ]
+    },
+    {
+        "label": "JavaScript Libraries",
+        "ico": "extension",
+        "data": [
+            {
+                "id": "react",
+                "label": "React ( + Redux / MobX)",
+                "level": 90
+            },
+            {
+                "id": "vue",
+                "label": "Vue.js",
+                "level": 100
+            },
+            {
+                "id": "old-school",
+                "label": "Angular 1.x , Backbone.js",
+                "level": 90
+            },
+            {
+                "id": "animation",
+                "label": "GSAP, anime.js, velocity.js",
+                "level": 100
+            },
+            {
+                "id": "webgl",
+                "label": "pixi.js",
+                "level": 50
+            },
+            {
+                "id": "dom-libraries",
+                "label": "jQuery 3+",
+                "level": 100
+            }
+        ]
+    },
+    {
+        "label": "Development Tools",
+        "ico": "checklist",
+        "data": [
+            {
+                "id": "unit-testing",
+                "label": "Jest, Karma, Mocha + Chai",
+                "level": 90
+            }, {
+                "id": "e2e-testing",
+                "label": "Nightwatch.js, TestCafe",
+                "level": 70
+            }, {
+                "id": "linting-js",
+                "label": "eslint, prettier",
+                "level": 100
+            }, {
+                "id": "linting-style",
+                "label": "stylelint, scss-lint",
+                "level": 100
+            }, {
+                "id": "design-system",
+                "label": "Storybook",
+                "level": 100
+            }
+        ]
+    },
+    {
+        "label": "Frontend Ops",
+        "ico": "terminal",
+        "data": [
+            {
+                "id": "grunt",
+                "label": "Grunt",
+                "level": 100
+            },
+            {
+                "id": "gulp",
+                "label": "Gulp.js",
+                "level": 100
+            },
+            {
+                "id": "webpack",
+                "label": "Webpack",
+                "level": 90
+            },
+            {
+                "id": "rollup",
+                "label": "Rollup",
+                "level": 100
+            }
+        ]
+    },
+    {
+        "label": "Best Practices",
+        "ico": "heart",
+        "data": [
+            {
+                "id": "progressive",
+                "label": "Progressive Enhancement",
+                "level": 100
+            },
+            {
+                "id": "bem",
+                "label": "Atomic Design / BEM",
+                "level": 100
+            },
+            {
+                "id": "a11y",
+                "label": "Accessibility",
+                "level": 80
+            },
+            {
+                "id": "responsive",
+                "label": "Responsive Design",
+                "level": 100
+            },
+            {
+                "id": "ds",
+                "label": "Design Systems",
+                "level": 80
+            }
+        ]
+    },
+    {
+        "label": "Tools",
+        "ico": "pencil",
+        "data": [
+            {
+                "id": "ide",
+                "label": "Webstorm",
+                "level": 100
+            }, {
+                "id": "editors",
+                "label": "VSCode, Sublime Text",
+                "level": 100
+            }, {
+                "id": "software",
+                "label": "Photoshop",
+                "level": 90
+            }, {
+                "id": "vector",
+                "label": "Adobe XD, Sketch",
+                "level": 80
+            }
+        ]
+    }
+]

@@ -1,0 +1,94 @@
+---
+export interface Props {
+  name: string;
+  size?: number;
+}
+
+const { name, size } = Astro.props;
+---
+
+<svg class:list={['c-icon', `c-icon--${name}`]}>
+  <use xlink:href={`#ico-${name}`}></use>
+</svg>
+
+<style define:vars={{ size }}>
+  .c-icon {
+    vertical-align: middle;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    font-size: calc(var(--size) * 1em);
+    stroke-width: 0;
+    stroke: currentcolor;
+    fill: currentcolor;
+  }
+
+  .c-icon--languages {
+    width: 0.875em;
+  }
+
+  .c-icon--checklist {
+    width: 0.747em;
+  }
+
+  .c-icon--code {
+    width: 0.875em;
+  }
+
+  .c-icon--heart {
+    width: 0.75em;
+  }
+
+  .c-icon--organization {
+    width: 0.875em;
+  }
+
+  .c-icon--pencil {
+    width: 0.875em;
+  }
+
+  .c-icon--terminal {
+    width: 0.875em;
+  }
+
+  .c-icon--pdf {
+    width: 0.8571em;
+    transform: scale(0.9);
+  }
+
+  .c-icon--award {
+    width: 1.3em;
+    height: 1.3em;
+    vertical-align: middle;
+  }
+
+  .c-icon--video {
+    width: 1.0714em;
+  }
+
+  .c-icon--twitter {
+    width: 0.9285em;
+  }
+
+  .c-icon--github {
+    width: 0.8571em;
+  }
+
+  .c-icon--link {
+    width: 0.9285em;
+  }
+
+  .c-icon--linkedin {
+    transform: translateY(-0.05em);
+    width: 0.8571em;
+  }
+
+  .c-icon--slides {
+    width: 0.9999em;
+  }
+
+  .c-icon--pencil use {
+    transform: scale(0.9);
+    transform-origin: 50% 50%;
+  }
+</style>

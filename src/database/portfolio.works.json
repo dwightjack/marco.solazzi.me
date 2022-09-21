@@ -1,0 +1,52 @@
+[
+    {
+        "id": "fujitv-view",
+        "project": "Fuji TV - View",
+        "date": "2019-10-01",
+        "stack": "HTML, Sass, WordPress",
+        "tasks": "HTML, CSS, Accessibility, PHP",
+        "_link": "https://www.fujitv-view.jp/"
+    }, {
+        "id": "soup-stock-tokyo",
+        "project": "Soup Stock Tokyo",
+        "date": "2018-06-01",
+        "stack": "Pug, Sass, Storybook, Jest",
+        "tasks": "Frontend Design System, HTML, JS, CSS, Accessibility",
+        "_link": "https://www.soup-stock-tokyo.com/"
+    }, {
+        "id": "carrefour",
+        "project": "Carrefour Italia",
+        "date": "2017-08-01",
+        "stack": "Nunjucks, Gulpjs, jQuery",
+        "tasks": "Design System Development, HTML, CSS, Accessibility",
+        "_link": "https://www.carrefour.it/"
+    }, {
+        "id": "formigari",
+        "project": "Formigari",
+        "date": "2017-05-01",
+        "stack": "ES2015, React, MobX, GSAP, Webpack, CSS-next",
+        "tasks": "JavaScript Architecture, Animations, CSS, SSR",
+        "_link": "http://www.formigari.it/",
+        "_meta": [
+            {
+                "type": "award",
+                "link": "https://www.awwwards.com/sites/formigari",
+                "label": "Awwwards SOTD"
+            }
+        ]
+    }, {
+        "id": "muller",
+        "project": "Müller Italia",
+        "date": "2016-05-07",
+        "stack": "ES2015, GSAP, Gulpjs, Webpack, Sass",
+        "tasks": "JavaScript Architecture, Frontend Ops, CSS",
+        "_link": "http://www.muller.it",
+        "_meta": [
+            {
+                "type": "award",
+                "link": "http://www.awwwards.com/sites/muller",
+                "label": "Awwwards SOTD"
+            }
+        ]
+    }
+]

@@ -1,0 +1,35 @@
+---
+export interface Props {
+  space?: number;
+  // eslint-disable-next-line no-undef
+  as?: keyof HTMLElementTagNameMap;
+  class?: string;
+  [k: string]: unknown;
+}
+
+const { space, as: Tag = 'div', class: className, ...attrs } = Astro.props;
+---
+
+<Tag
+  class:list={['c-stack', className]}
+  {...attrs}
+  style={space ? `--space: ${space}` : ''}
+  ><slot />
+</Tag>
+<style>
+  .c-stack {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: calc(var(--space, 0) * var(--space-unit));
+  }
+
+  .c-stack > * {
+    margin-block: 0;
+  }
+
+  .c-stack:is(ul, ol) {
+    padding-inline-start: 0;
+    list-style-type: none;
+  }
+</style>
