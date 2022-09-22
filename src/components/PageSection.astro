@@ -21,7 +21,7 @@ const { prefix = 'me', subtitle, title } = Astro.props;
   </div>
 </section>
 <style>
-  @media (min-width: 64rem) {
+  @media (--viewport-tablet-landscape) {
     .c-page-section {
       display: grid;
       grid-template-columns: 28% 1fr;
@@ -29,7 +29,7 @@ const { prefix = 'me', subtitle, title } = Astro.props;
     }
   }
 
-  @media (min-width: 80rem) {
+  @media (--viewport-desktop) {
     .c-page-section {
       padding-inline-start: 2.85vw;
     }
@@ -49,7 +49,7 @@ const { prefix = 'me', subtitle, title } = Astro.props;
     justify-content: center;
   }
 
-  @media (min-width: 64rem) {
+  @media (--viewport-tablet-landscape) {
     .c-page-section__title {
       margin-top: 0.625rem;
       white-space: nowrap;
@@ -84,14 +84,14 @@ const { prefix = 'me', subtitle, title } = Astro.props;
     width: 100%;
   }
 
-  @media (min-width: 48rem) {
+  @media (--viewport-tablet) {
     .c-page-section__body {
       padding-right: 7%;
       padding-left: 10%;
     }
   }
 
-  @media (min-width: 64rem) {
+  @media (--viewport-tablet-landscape) {
     .c-page-section__body {
       padding-right: 0;
       padding-left: 33%;

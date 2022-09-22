@@ -17,8 +17,8 @@
   --color-border: var(--color-dark);
 
   /* Fonts */
-  --font-family-sans: "Open Sans", sans-serif;
-  --font-family-serif: "Bree Serif", serif;
+  --font-family-sans: 'Open Sans', sans-serif;
+  --font-family-serif: 'Bree Serif', serif;
   --font-family-base: var(--font-family-sans);
   --font-family-h: var(--font-family-serif);
   --font-size-default: 1rem;
@@ -39,5 +39,14 @@
   /* Spacing */
   --space-page-gutter-block: 4.375rem;
   --space-page-gutter-inline: clamp(3rem, 5.46875vw + 1rem, 6.375rem);
-  --space-unit: 0.5rem
+  --space-unit: 0.5rem;
+
+  /* Media queries */
+  @custom-media --viewport-mobile (width >= 30em);
+  @custom-media --viewport-tablet (width >= 48em);
+  @custom-media --viewport-tablet-landscape (width >= 64em);
+  @custom-media --viewport-desktop (width >= 80em);
+  @custom-media --viewport-wide (width >= 100em);
+  @custom-media --viewport-fullhd (width >= 120em);
+  @custom-media --viewport-qhd (width >= 160em);
 }

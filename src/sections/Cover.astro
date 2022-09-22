@@ -48,7 +48,7 @@ import marcoFull from '../assets/images/marco-full.jpg';
     padding: var(--space-page-gutter-block) var(--space-page-gutter-inline);
   }
 
-  @media (min-width: 64em) {
+  @media (--viewport-tablet-landscape) {
     .c-cover {
       display: grid;
       grid-template-columns: 28vw 36rem 1fr;
@@ -68,7 +68,7 @@ import marcoFull from '../assets/images/marco-full.jpg';
     margin-inline: auto;
   }
 
-  @media (min-width: 64rem) {
+  @media (--viewport-tablet-landscape) {
     .c-cover__pic {
       grid-area: pic;
       align-self: center;
@@ -94,7 +94,7 @@ import marcoFull from '../assets/images/marco-full.jpg';
     text-align: center;
   }
 
-  @media (min-width: 64rem) {
+  @media (--viewport-tablet-landscape) {
     .c-cover__headline {
       margin-top: 0;
       font-size: 2.8125rem;
@@ -118,7 +118,7 @@ import marcoFull from '../assets/images/marco-full.jpg';
     content: '\201c';
   }
 
-  @media (min-width: 64rem) {
+  @media (--viewport-tablet-landscape) {
     .c-cover__text::before {
       font-size: 4em;
     }
