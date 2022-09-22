@@ -1,0 +1,106 @@
+---
+export interface Props {
+  prefix?: string;
+  title: string;
+  subtitle?: string;
+}
+
+const { prefix = 'me', subtitle, title } = Astro.props;
+---
+
+<section class="c-page-section">
+  <header class="c-page-section__header">
+    <h2 class="c-page-section__title">
+      {prefix && <b class="c-page-section__prefix">{prefix}</b>}
+      <span>{prefix ? `.${title}` : title}</span>
+    </h2>
+    {subtitle && <p class="c-page-section__sub">{subtitle}</p>}
+  </header>
+  <div class="c-page-section__body">
+    <slot />
+  </div>
+</section>
+<style>
+  @media (min-width: 64rem) {
+    .c-page-section {
+      display: grid;
+      grid-template-columns: 28% 1fr;
+      column-gap: 2%;
+    }
+  }
+
+  @media (min-width: 80rem) {
+    .c-page-section {
+      padding-inline-start: 2.85vw;
+    }
+  }
+
+  .c-page-section__header {
+    font-family: var(--font-family-h);
+  }
+
+  .c-page-section__title {
+    margin-top: 0;
+    color: inherit;
+    font-size: var(--font-size-l);
+    font-weight: 400;
+    line-height: 1.5;
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (min-width: 64rem) {
+    .c-page-section__title {
+      margin-top: 0.625rem;
+      white-space: nowrap;
+      justify-content: flex-start;
+    }
+  }
+
+  .c-page-section__prefix {
+    display: inline-block;
+    margin-right: 0.05em;
+    padding-inline: 0.3125em;
+    color: var(--color-light);
+    font-weight: inherit;
+    background: linear-gradient(var(--color-red-400), var(--color-red-400))
+      no-repeat 0 bottom;
+    background-size: 100% 90%;
+  }
+
+  .c-page-section__sub {
+    margin-top: 0.8em;
+    font-size: var(--font-size-m);
+  }
+
+  @media print {
+    .c-page-section__sub {
+      margin-bottom: 1em;
+    }
+  }
+
+  .c-page-section__body {
+    display: block;
+    width: 100%;
+  }
+
+  @media (min-width: 48rem) {
+    .c-page-section__body {
+      padding-right: 7%;
+      padding-left: 10%;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .c-page-section__body {
+      padding-right: 0;
+      padding-left: 33%;
+    }
+  }
+
+  @media print {
+    .c-page-section__body {
+      padding: 0;
+    }
+  }
+</style>

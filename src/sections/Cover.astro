@@ -8,7 +8,7 @@ import marco from '../assets/images/marco.jpg';
 import marcoFull from '../assets/images/marco-full.jpg';
 ---
 
-<section class="c-cover__root">
+<section class="c-cover">
   <div class="c-cover__pic">
     <Avatar foreground={marco} background={marcoFull} />
   </div>
@@ -44,17 +44,17 @@ import marcoFull from '../assets/images/marco-full.jpg';
   </a>
 </section>
 <style>
-  .c-cover__root {
-    padding: var(--space-page-gutter) max(5.46875vw, 1rem);
+  .c-cover {
+    padding: var(--space-page-gutter-block) var(--space-page-gutter-inline);
   }
 
   @media (min-width: 64em) {
-    .c-cover__root {
+    .c-cover {
       display: grid;
       grid-template-columns: 28vw 36rem 1fr;
       grid-template-rows: 1fr auto 1fr;
       grid-template-areas: '. . .' 'pic body .' 'scrollhint scrollhint scrollhint';
-      column-gap: 3rem;
+      column-gap: 5rem;
       align-items: center;
       height: 100vh;
       overflow: hidden;
@@ -80,7 +80,6 @@ import marcoFull from '../assets/images/marco-full.jpg';
 
   .c-cover__body {
     grid-area: body;
-    padding-inline: 2rem;
   }
 
   .c-cover__body > * + * {

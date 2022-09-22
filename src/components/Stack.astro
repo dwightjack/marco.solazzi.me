@@ -18,10 +18,12 @@ const { space, as: Tag = 'div', class: className, ...attrs } = Astro.props;
 </Tag>
 <style>
   .c-stack {
+    --space: 0;
+
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: calc(var(--space, 0) * var(--space-unit));
+    gap: calc(var(--space) * var(--space-unit));
   }
 
   .c-stack > * {

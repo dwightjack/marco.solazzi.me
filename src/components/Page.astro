@@ -1,0 +1,24 @@
+---
+import Stack from './Stack.astro';
+
+export interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+---
+
+<Stack class="c-page" id={id} space={15}>
+  <slot />
+</Stack>
+<style>
+  .c-page {
+    padding-inline: var(--space-page-gutter-inline);
+  }
+
+  /* @media (min-width: 64rem) {
+    .c-page {
+      padding-inline: var(--space-page-gutter);
+    }
+  } */
+</style>

@@ -1,0 +1,24 @@
+---
+import Page from '../components/Page.astro';
+import PageSection from '../components/PageSection.astro';
+import { NAV_PATH_JOBS } from '../shared/constants';
+---
+
+<Page id={NAV_PATH_JOBS}>
+  <PageSection title="jobs.current" subtitle="Learning never ends">
+    <!-- <TableList>
+      <SummaryTable caption="company" :data="current" :styles="['brackets']" />
+    </TableList> -->
+  </PageSection>
+  <!-- <PageSection title="jobs.previous">
+    <TableList>
+      <SummaryTable
+        v-for="job in prev"
+        :key="job.id"
+        caption="company"
+        :data="job"
+        :styles="['brackets']"
+      />
+    </TableList>
+  </PageSection> -->
+</Page>
