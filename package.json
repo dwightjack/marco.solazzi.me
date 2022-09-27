@@ -13,7 +13,7 @@
   },
   "private": true,
   "browserslist": [
-    "defaults"
+    "> 1% and last 3 versions, Firefox ESR, not dead and supports css-grid"
   ],
   "scripts": {
     "dev": "astro dev",

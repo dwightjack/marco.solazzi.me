@@ -1,0 +1,11 @@
+---
+import { toIso, toMonthYear } from '../shared/dateTime';
+
+export interface Props {
+  datetime: string;
+}
+
+const { datetime } = Astro.props;
+---
+
+<time datetime={toIso(datetime)}>{toMonthYear(datetime)}</time>

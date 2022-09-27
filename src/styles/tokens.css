@@ -6,6 +6,7 @@
   --color-red-250: hsl(0deg 56% 25%);
   --color-red-400: hsl(0deg 57% 40%);
   --color-red-400-a20: hsl(0deg 57% 40% / 20%);
+  --color-red-400-a50: hsl(0deg 57% 40% / 50%);
   --color-text: var(--color-dark);
   --color-bg: var(--color-light);
   --color-link: var(--color-red-400);
@@ -40,13 +41,14 @@
   --space-page-gutter-block: 4.375rem;
   --space-page-gutter-inline: clamp(3rem, 5.46875vw + 1rem, 6.375rem);
   --space-unit: 0.5rem;
-
-  /* Media queries */
-  @custom-media --viewport-mobile (width >= 30em);
-  @custom-media --viewport-tablet (width >= 48em);
-  @custom-media --viewport-tablet-landscape (width >= 64em);
-  @custom-media --viewport-desktop (width >= 80em);
-  @custom-media --viewport-wide (width >= 100em);
-  @custom-media --viewport-fullhd (width >= 120em);
-  @custom-media --viewport-qhd (width >= 160em);
 }
+
+/* Media queries */
+@custom-media --viewport-mobile (width >= 30em);
+@custom-media --viewport-tablet (width >= 48em);
+@custom-media --viewport-tablet-landscape (width >= 64em);
+@custom-media --viewport-desktop (width >= 80em);
+@custom-media --viewport-wide (width >= 100em);
+@custom-media --viewport-fullhd (width >= 120em);
+@custom-media --viewport-qhd (width >= 160em);
+@custom-media --pointer-mouse (hover: hover) and (pointer: fine);

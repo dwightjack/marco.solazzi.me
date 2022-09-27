@@ -1,24 +1,35 @@
 ---
+import Datalist from '../components/Datalist.astro';
 import Page from '../components/Page.astro';
 import PageSection from '../components/PageSection.astro';
 import { NAV_PATH_JOBS } from '../shared/constants';
+import jobs from '../database/jobs.json';
+import Stack from '../components/Stack.astro';
+
+const [current, ...previous] = jobs;
 ---
 
 <Page id={NAV_PATH_JOBS}>
-  <PageSection title="jobs.current" subtitle="Learning never ends">
-    <!-- <TableList>
-      <SummaryTable caption="company" :data="current" :styles="['brackets']" />
-    </TableList> -->
+  <PageSection title="jobs.current">
+    <Datalist
+      caption="company"
+      data={current}
+      id="job-current"
+      variants="brackets"
+    />
   </PageSection>
-  <!-- <PageSection title="jobs.previous">
-    <TableList>
-      <SummaryTable
-        v-for="job in prev"
-        :key="job.id"
-        caption="company"
-        :data="job"
-        :styles="['brackets']"
-      />
-    </TableList>
-  </PageSection> -->
+  <PageSection title="jobs.previous">
+    <Stack space={5}>
+      {
+        previous.map((job) => (
+          <Datalist
+            caption="company"
+            data={job}
+            id={`job-previous-${job.id}`}
+            variants="brackets"
+          />
+        ))
+      }
+    </Stack>
+  </PageSection>
 </Page>

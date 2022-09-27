@@ -59,7 +59,6 @@ import marcoFull from '../assets/images/marco-full.jpg';
       height: 100vh;
       overflow: hidden;
       padding: 0;
-      border-right: 8px solid var(--color-link);
     }
   }
 
@@ -145,7 +144,7 @@ import marcoFull from '../assets/images/marco-full.jpg';
     will-change: transform;
   }
 
-  @media not all and (min-width: 64rem) {
+  @media not all and (--viewport-tablet-landscape) {
     .c-cover__scrollhint {
       display: none;
     }
@@ -155,7 +154,7 @@ import marcoFull from '../assets/images/marco-full.jpg';
     transition: transform 0.25s ease-out;
   }
 
-  @media (hover: hover) and (pointer: fine) {
+  @media (--pointer-mouse) {
     .c-cover__scrollhint:hover .c-cover__scrollhint-ico {
       transform: translateY(50%);
     }

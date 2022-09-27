@@ -44,17 +44,8 @@ const { default: iconHTML } = await import(`../assets/images/icons.svg?raw`);
 
   <body>
     <Fragment set:html={iconHTML} />
-    <main class="l-main">
+    <main>
       <slot />
     </main>
-    <style>
-      /* @media not all and (min-width: 64rem) {
-        .l-main {
-          overflow-x: hidden;
-          overflow-y: scroll;
-          height: 100vh;
-        }
-      } */
-    </style>
   </body>
 </html>

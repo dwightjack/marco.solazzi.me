@@ -13,10 +13,11 @@ const { id } = Astro.props;
 </Stack>
 <style>
   .c-page {
+    transform-style: preserve-3d;
     padding-inline: var(--space-page-gutter-inline);
   }
 
-  /* @media (--viewport-tablet-landscape {
+  /* @media (--viewport-tablet-landscape) {
     .c-page {
       padding-inline: var(--space-page-gutter);
     }

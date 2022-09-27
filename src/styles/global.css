@@ -1,5 +1,6 @@
 html {
   font-size: 100%;
+  scroll-behavior: smooth;
 }
 
 @media (--viewport-tablet-landscape) {
@@ -23,9 +24,6 @@ body {
   min-width: 320px;
   margin: 0;
   padding: 0;
-
-  /* height: 100vh;
-  overflow: hidden; */
   background: var(--color-bg);
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;

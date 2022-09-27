@@ -1,0 +1,186 @@
+---
+import DateTime from './DateTime.astro';
+import ExternalAnchor from './ExternalAnchor.astro';
+type Variant = 'brackets';
+export interface Props {
+  variants?: Variant | Variant[];
+  id: string;
+  caption?: string;
+  data: Record<string, any>;
+}
+
+const { id, caption, data = {} } = Astro.props;
+
+const variants = ([] as Variant[])
+  .concat(Astro.props.variants ?? 'brackets')
+  .filter(Boolean);
+const variantsClasses = variants.map((v) => `c-datalist--${v}`);
+const captionLabel = (caption && data[caption]) ?? '';
+
+const rows: [string, any][] = Object.entries(data).filter(([key]) => {
+  return key !== caption && key !== 'id' && !key.startsWith('_');
+});
+
+function isDate(heading: string) {
+  return heading === 'to' || heading === 'from' || heading === 'date';
+}
+
+function metaTitle(type: string, title = '') {
+  switch (type) {
+    case 'video':
+      return `Watch video for: ${title}`;
+
+    case 'slides':
+      return `Slides for: ${title}`;
+
+    default:
+      return '';
+  }
+}
+---
+
+<article class:list={['c-datalist', ...variantsClasses]}>
+  {
+    caption && (
+      <h3 class="c-datalist__caption" id={`table-${id}`}>
+        .{caption}:
+        {data?._link ? (
+          <a
+            href={data._link}
+            target="_blank"
+            rel="external noopener noreferrer"
+          >
+            {captionLabel}
+          </a>
+        ) : (
+          <span>{captionLabel}</span>
+        )}
+      </h3>
+    )
+  }
+
+  <dl class="c-datalist__data" aria-labelledby={`table-${id}`}>
+    {
+      rows.map(([heading, value]) => (
+        <div data-row={heading}>
+          <dt>.{heading}:</dt>
+          <dd>
+            {isDate(heading) && value ? (
+              <DateTime datetime={value} />
+            ) : (
+              <Fragment set:html={value} />
+            )}
+          </dd>
+        </div>
+      ))
+    }
+  </dl>
+  {
+    Array.isArray(data._meta) && (
+      <footer class="c-datalist__footer">
+        {data._meta.map((meta) => (
+          <ExternalAnchor
+            variant="cursor"
+            href={meta.link}
+            icon={meta.type}
+            title={caption && metaTitle(meta.type, data[caption])}
+          >
+            {meta.label || meta.type}
+          </ExternalAnchor>
+        ))}
+      </footer>
+    )
+  }
+</article>
+<style>
+  .c-datalist {
+    position: relative;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 16px;
+    padding-left: 30px;
+    background-clip: padding-box;
+  }
+
+  @media print {
+    .c-datalist {
+      position: relative;
+      top: -2px;
+      width: 50%;
+      border-left: 30px solid transparent;
+      page-break-inside: avoid;
+    }
+  }
+
+  .c-datalist__caption {
+    margin-bottom: 0.7em;
+    font-family: var(--font-family-sans);
+    font-size: 1.25rem;
+    font-weight: 700;
+    page-break-inside: avoid;
+  }
+  @media (--viewport-tablet-landscape) {
+    .c-datalist__caption {
+      font-size: 1.375rem;
+    }
+  }
+
+  .c-datalist__data {
+    font-size: var(--font-size-m);
+  }
+
+  @media (--viewport-tablet-landscape) {
+    .c-datalist__data {
+      font-size: 1.125rem;
+    }
+  }
+
+  .c-datalist__data > * {
+    margin-bottom: 0.2em;
+    margin-left: 0.3em;
+    max-width: 60ch;
+  }
+
+  .c-datalist__data :is(dt, dd) {
+    display: inline;
+    margin-left: 0;
+    line-height: 1.5em;
+  }
+
+  .c-datalist__data dt {
+    font-weight: 700;
+    margin-left: -0.3em;
+  }
+
+  .c-datalist__data [data-row='title'] {
+    margin-top: 0.5em;
+  }
+
+  .c-datalist__footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    padding-left: 0.5em;
+    font-size: var(--font-size-s);
+  }
+
+  .c-datalist--brackets {
+    --gradient: linear-gradient(
+      var(--color-red-400-a50),
+      var(--color-red-400-a50)
+    );
+
+    background-image: var(--gradient), var(--gradient), var(--gradient);
+    background-position: 8px 0, 0 0, 8px bottom;
+    background-repeat: no-repeat;
+    background-size: 8px 8px, 8px 100%, 8px 8px;
+  }
+
+  @media (--viewport-tablet-landscape) {
+    .c-datalist--brackets {
+      border-left: 20px solid transparent;
+      margin-left: -20px;
+    }
+  }
+</style>

@@ -1,5 +1,14 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-env node */
+
+const presetEnv = require('postcss-preset-env');
 module.exports = {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  plugins: [require('postcss-preset-env')({ stage: 2 })],
+  plugins: [
+    presetEnv({
+      stage: 2,
+      features: {
+        'custom-properties': false,
+      },
+    }),
+  ],
 };

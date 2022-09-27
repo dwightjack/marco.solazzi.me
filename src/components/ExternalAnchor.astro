@@ -1,0 +1,80 @@
+---
+import Icon from './Icon.astro';
+
+export interface Props {
+  href: string;
+  variant?: 'cursor';
+  icon?: string;
+  title?: string;
+}
+
+const { href, variant, icon, title = '' } = Astro.props;
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer external"
+  title={`${title} (Opens in another tab)`.trim()}
+  class:list={[
+    'c-external-anchor',
+    { [`c-external-anchor--${variant}`]: variant },
+  ]}
+>
+  {
+    icon && (
+      <span class="c-external-anchor__icon">
+        <Icon name={icon} />
+      </span>
+    )
+  }
+  <span class="c-external-anchor__label"><slot /></span>
+</a>
+<style>
+  .c-external-anchor {
+    color: currentcolor;
+    text-decoration: none;
+  }
+
+  .c-external-anchor__icon {
+    margin-right: 0.2em;
+  }
+
+  @media not print {
+    .c-external-anchor--cursor .c-external-anchor__label::before {
+      display: inline-block;
+      width: 0.5em;
+      margin-right: 0.1em;
+      border-bottom: 2px solid currentcolor;
+      content: '';
+      transform: translateY(0.1em);
+    }
+  }
+  @media (--pointer-mouse) {
+    .c-external-anchor--cursor:hover .c-external-anchor__label::before {
+      color: var(--color-link);
+      animation-name: blinking-cursor;
+      animation-duration: 0.7s;
+      animation-timing-function: ease-out;
+      animation-iteration-count: infinite;
+    }
+  }
+
+  @keyframes blinking-cursor {
+    0% {
+      opacity: 1;
+    }
+
+    30% {
+      opacity: 0;
+    }
+
+    50% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+</style>

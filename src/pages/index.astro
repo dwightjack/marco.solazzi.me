@@ -2,17 +2,16 @@
 import Stack from '../components/Stack.astro';
 import Layout from '../layouts/Layout.astro';
 import Cover from '../sections/Cover.astro';
+import Education from '../sections/Education.astro';
 import Jobs from '../sections/Jobs.astro';
 ---
 
 <Layout>
-  <Stack space={7.5}>
-    <Cover socials={[]} />
-    <Stack space={5} class="l-pages"><Jobs /></Stack>
-  </Stack>
+  <Cover />
+  <Stack space={15} class="l-pages"><Jobs /><Education /></Stack>
 </Layout>
 <style>
   .l-pages {
-    padding-block-end: 6.25rem;
+    padding-block: 6.25rem;
   }
 </style>
