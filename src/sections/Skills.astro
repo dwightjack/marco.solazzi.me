@@ -1,0 +1,18 @@
+---
+import Page from '../components/Page.astro';
+import PageSection from '../components/PageSection.astro';
+import { NAV_PATH_SKILLS } from '../shared/constants';
+import Stack from '../components/Stack.astro';
+import DataSet from '../components/DataSet.astro';
+import techSkills from '../database/skills.tech.json';
+---
+
+<Page id={NAV_PATH_SKILLS}>
+  <PageSection title="skills.tech">
+    {
+      techSkills.map((skill) => (
+        <DataSet label={skill.label} icon={skill.icon} />
+      ))
+    }
+  </PageSection>
+</Page>
