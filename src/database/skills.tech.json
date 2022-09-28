@@ -1,7 +1,7 @@
 [
   {
     "label": "Languages",
-    "icon": "code",
+    "icon": "code-tags",
     "data": [
       {
         "id": "html5",
@@ -73,7 +73,7 @@
   },
   {
     "label": "Development Tools",
-    "icon": "checklist",
+    "icon": "tools",
     "data": [
       {
         "id": "unit-testing",

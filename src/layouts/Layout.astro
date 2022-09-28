@@ -1,4 +1,5 @@
 ---
+import { Sprite } from 'astro-icon';
 import 'modern-normalize/modern-normalize.css';
 import '../styles/tokens.css';
 import '../styles/global.css';
@@ -44,8 +45,10 @@ const { default: iconHTML } = await import(`../assets/images/icons.svg?raw`);
 
   <body>
     <Fragment set:html={iconHTML} />
-    <main>
-      <slot />
-    </main>
+    <Sprite.Provider>
+      <main>
+        <slot />
+      </main>
+    </Sprite.Provider>
   </body>
 </html>

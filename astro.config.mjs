@@ -6,4 +6,9 @@ import vue from '@astrojs/vue';
 export default defineConfig({
   site: 'https://marco.solazzi.me',
   integrations: [vue()],
+  vite: {
+    ssr: {
+      external: ['svgo'],
+    },
+  },
 });

@@ -1,28 +1,34 @@
 ---
+import { Sprite } from 'astro-icon';
 export interface Props {
   name: string;
   size?: number;
 }
 
 const { name, size } = Astro.props;
+const iconName = name.includes(':') ? name : `mdi:${name}`;
 ---
 
-<svg class:list={['c-icon', `c-icon--${name}`]}>
-  <use xlink:href={`#ico-${name}`}></use>
-</svg>
+<Sprite
+  class="c-icon"
+  name={iconName}
+  aria-hidden="true"
+  focusable="false"
+  style={size ? `--size: ${size}` : ''}
+/>
 
-<style define:vars={{ size }}>
+<style>
   .c-icon {
+    --size: 1;
+
     vertical-align: middle;
     display: inline-block;
     width: 1em;
     height: 1em;
     font-size: calc(var(--size) * 1em);
-    stroke-width: 0;
-    stroke: currentcolor;
-    fill: currentcolor;
   }
 
+  /*
   .c-icon--languages {
     width: 0.875em;
   }
@@ -90,5 +96,5 @@ const { name, size } = Astro.props;
   .c-icon--pencil use {
     transform: scale(0.9);
     transform-origin: 50% 50%;
-  }
+  } */
 </style>

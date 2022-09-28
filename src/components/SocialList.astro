@@ -22,12 +22,12 @@ const { items } = Astro.props;
         class:list={[
           'c-social-list__item',
           {
-            'u-only-print': item.type === 'link',
-            'u-only-screen': item.type === 'pdf',
+            'u-only-print': item.type.includes('link'),
+            'u-only-screen': item.type.includes('pdf'),
           },
         ]}
       >
-        <Icon name={item.type} size={1.2} />
+        <Icon name={item.type} size={1.4} />
         <a href={item.url} target="_blank" rel="noopener noreferrer">
           {item.label}
         </a>
