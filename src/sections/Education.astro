@@ -1,5 +1,5 @@
 ---
-import Datalist from '../components/Datalist.astro';
+import Card from '../components/Card.astro';
 import Page from '../components/Page.astro';
 import PageSection from '../components/PageSection.astro';
 import { NAV_PATH_EDUCATION } from '../shared/constants';
@@ -12,7 +12,7 @@ import Stack from '../components/Stack.astro';
     <Stack space={5}>
       {
         education.map((entry) => (
-          <Datalist
+          <Card
             caption="title"
             data={entry}
             id={`job-previous-${entry.id}`}

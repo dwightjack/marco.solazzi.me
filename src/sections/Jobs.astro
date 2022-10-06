@@ -1,5 +1,5 @@
 ---
-import Datalist from '../components/Datalist.astro';
+import Card from '../components/Card.astro';
 import Page from '../components/Page.astro';
 import PageSection from '../components/PageSection.astro';
 import { NAV_PATH_JOBS } from '../shared/constants';
@@ -11,7 +11,7 @@ const [current, ...previous] = jobs;
 
 <Page id={NAV_PATH_JOBS}>
   <PageSection title="jobs.current">
-    <Datalist
+    <Card
       caption="company"
       data={current}
       id="job-current"
@@ -22,7 +22,7 @@ const [current, ...previous] = jobs;
     <Stack space={5}>
       {
         previous.map((job) => (
-          <Datalist
+          <Card
             caption="company"
             data={job}
             id={`job-previous-${job.id}`}
