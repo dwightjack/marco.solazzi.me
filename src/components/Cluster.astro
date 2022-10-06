@@ -58,6 +58,7 @@ function computedSpace(space: Props['space']): Record<string, any> {
   }
 
   .c-cluster[style*='--size'] > :global(*) {
-    flex: 0 0 min(100vw, var(--size) * 1px);
+    flex: 0 0 min(100%, var(--size) * 1px);
+    min-width: 0;
   }
 </style>

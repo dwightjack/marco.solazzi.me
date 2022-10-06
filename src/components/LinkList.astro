@@ -15,21 +15,21 @@ export interface Props {
 const { items } = Astro.props;
 ---
 
-<Stack as="ul" space={1} class="c-social-list">
+<Stack as="ul" space={1} class="c-link-list">
   {
-    items.map((item) => (
+    items.map(({ icon, href, label }) => (
       <li
         class:list={[
-          'c-social-list__item',
+          'c-link-list__item',
           {
-            'u-only-print': item.type.includes('link'),
-            'u-only-screen': item.type.includes('pdf'),
+            'u-only-print': icon.includes('link'),
+            'u-only-screen': icon.includes('pdf'),
           },
         ]}
       >
-        <Icon name={item.type} size={1.4} />
-        <a href={item.url} target="_blank" rel="noopener noreferrer">
-          {item.label}
+        <Icon name={icon} size={1.4} />
+        <a href={href} target="_blank" rel="noopener noreferrer">
+          {label}
         </a>
       </li>
     ))
@@ -37,12 +37,12 @@ const { items } = Astro.props;
 </Stack>
 
 <style>
-  .c-social-list__item {
+  .c-link-list__item {
     line-height: 1.4em;
   }
 
   @media (--viewport-wide) {
-    .c-social-list__item {
+    .c-link-list__item {
       font-size: 1.125rem;
     }
   }

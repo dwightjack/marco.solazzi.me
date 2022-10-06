@@ -11,11 +11,12 @@ import Stack from '../components/Stack.astro';
   <PageSection title="education" subtitle="Learning never ends">
     <Stack space={5}>
       {
-        education.map((entry) => (
+        education.map(({ id, title, ...entry }) => (
           <Card
-            caption="title"
+            titleLabel="title"
+            title={title}
             data={entry}
-            id={`job-previous-${entry.id}`}
+            id={`job-previous-${id}`}
             variants="brackets"
           />
         ))

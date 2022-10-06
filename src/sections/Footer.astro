@@ -1,0 +1,12 @@
+---
+import Page from '../components/Page.astro';
+import PageSection from '../components/PageSection.astro';
+import LinkList from '../components/LinkList.astro';
+import links from '../database/links.json';
+---
+
+<Page id="contacts">
+  <PageSection title="Want to know more?" prefix="">
+    <LinkList items={links} />
+  </PageSection>
+</Page>

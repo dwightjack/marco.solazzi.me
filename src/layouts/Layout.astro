@@ -5,6 +5,7 @@ import '../styles/tokens.css';
 import '../styles/global.css';
 import '../styles/utility.css';
 const socialImageURL = new URL('/marco-og.jpg', Astro.url);
+
 const { default: iconHTML } = await import(`../assets/images/icons.svg?raw`);
 ---
 
@@ -49,6 +50,17 @@ const { default: iconHTML } = await import(`../assets/images/icons.svg?raw`);
       <main>
         <slot />
       </main>
+      <footer class="l-footer">
+        © 2017-{new Date().getFullYear()} Marco Solazzi - <a
+          href="https://github.com/dwightjack/marco.solazzi.me/blob/main/LICENSE.md"
+          target="_blank"
+          rel="noopener noreferrer">license</a
+        >&nbsp<a
+          href="https://github.com/dwightjack/marco.solazzi.me"
+          target="_blank"
+          rel="noopener noreferrer">source</a
+        >
+      </footer>
     </Sprite.Provider>
     <style>
       :global([astro-icon-spritesheet]) {
@@ -57,6 +69,12 @@ const { default: iconHTML } = await import(`../assets/images/icons.svg?raw`);
         width: 0;
         height: 0;
         overflow: hidden;
+      }
+
+      .l-footer {
+        padding-block-end: 1.875rem;
+        font-size: var(--font-size-s);
+        text-align: center;
       }
     </style>
   </body>

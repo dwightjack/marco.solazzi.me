@@ -3,33 +3,41 @@ import Page from '../components/Page.astro';
 import PageSection from '../components/PageSection.astro';
 import { NAV_PATH_SKILLS } from '../shared/constants';
 import InlineList from '../components/InlineList.astro';
-import DataSet from '../components/DataSet.astro';
+import DataGroup from '../components/DataGroup.astro';
 import techSkills from '../database/skills.tech.json';
 import Cluster from '../components/Cluster.astro';
 ---
 
 <Page id={NAV_PATH_SKILLS}>
   <PageSection title="skills.tech">
-    <Cluster space={[3.5, 7.5]} size={370}>
+    <div class="grid">
       {
         techSkills.map(({ label, icon, data: skills }) => (
-          <DataSet label={label} icon={icon}>
+          <DataGroup label={label} icon={icon}>
             <InlineList items={skills} />
-          </DataSet>
+          </DataGroup>
         ))
       }
-    </Cluster>
+    </div>
   </PageSection>
 </Page>
 <style>
   .grid {
+    --size-column: 22rem;
+
     display: flex;
     flex-wrap: wrap;
+
+    /* grid-template-columns: repeat(auto-fill, minmax(370px, 1fr)); */
     column-gap: 1.75rem;
     row-gap: 3.75rem;
+    max-width: calc((var(--size-column) * 3) + 1.75rem);
+    min-width: 0;
   }
 
   .grid > :global(*) {
-    flex: 0 0 min(100vw, 370px);
+    flex-grow: 1;
+    flex-basis: 0;
+    min-width: min(var(--size-column), 100%);
   }
 </style>

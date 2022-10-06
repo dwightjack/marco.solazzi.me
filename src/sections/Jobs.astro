@@ -7,13 +7,18 @@ import jobs from '../database/jobs.json';
 import Stack from '../components/Stack.astro';
 
 const [current, ...previous] = jobs;
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const { href, company: currentCompany, id, ...currentData } = current;
 ---
 
 <Page id={NAV_PATH_JOBS}>
   <PageSection title="jobs.current">
     <Card
-      caption="company"
-      data={current}
+      titleLabel="company"
+      title={currentCompany}
+      href={href}
+      data={currentData}
       id="job-current"
       variants="brackets"
     />
@@ -21,11 +26,13 @@ const [current, ...previous] = jobs;
   <PageSection title="jobs.previous">
     <Stack space={5}>
       {
-        previous.map((job) => (
+        previous.map(({ href, company, id, ...job }) => (
           <Card
-            caption="company"
+            titleLabel="company"
+            title={company}
+            href={href}
             data={job}
-            id={`job-previous-${job.id}`}
+            id={`job-previous-${id}`}
             variants="brackets"
           />
         ))
