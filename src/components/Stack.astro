@@ -24,9 +24,11 @@ const { space, as: Tag = 'div', class: className, ...attrs } = Astro.props;
     flex-direction: column;
     justify-content: flex-start;
     gap: calc(var(--space) * var(--space-unit));
+    margin: unset;
+    padding: unset;
   }
 
-  .c-stack > * {
+  .c-stack > :global(*) {
     margin-block: 0;
   }
 

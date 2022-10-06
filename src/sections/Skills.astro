@@ -2,17 +2,34 @@
 import Page from '../components/Page.astro';
 import PageSection from '../components/PageSection.astro';
 import { NAV_PATH_SKILLS } from '../shared/constants';
-import Stack from '../components/Stack.astro';
+import InlineList from '../components/InlineList.astro';
 import DataSet from '../components/DataSet.astro';
 import techSkills from '../database/skills.tech.json';
+import Cluster from '../components/Cluster.astro';
 ---
 
 <Page id={NAV_PATH_SKILLS}>
   <PageSection title="skills.tech">
-    {
-      techSkills.map((skill) => (
-        <DataSet label={skill.label} icon={skill.icon} />
-      ))
-    }
+    <Cluster space={[3.5, 7.5]} size={370}>
+      {
+        techSkills.map(({ label, icon, data: skills }) => (
+          <DataSet label={label} icon={icon}>
+            <InlineList items={skills} />
+          </DataSet>
+        ))
+      }
+    </Cluster>
   </PageSection>
 </Page>
+<style>
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 1.75rem;
+    row-gap: 3.75rem;
+  }
+
+  .grid > :global(*) {
+    flex: 0 0 min(100vw, 370px);
+  }
+</style>

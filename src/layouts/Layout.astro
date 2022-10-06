@@ -50,5 +50,14 @@ const { default: iconHTML } = await import(`../assets/images/icons.svg?raw`);
         <slot />
       </main>
     </Sprite.Provider>
+    <style>
+      :global([astro-icon-spritesheet]) {
+        display: block !important;
+        position: absolute;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+      }
+    </style>
   </body>
 </html>

@@ -1,0 +1,63 @@
+---
+import { toStyleAttribute } from '../shared/utils';
+export interface Props {
+  space?: number | [number, number];
+  size?: number;
+  // eslint-disable-next-line no-undef
+  as?: keyof HTMLElementTagNameMap;
+  class?: string;
+  [k: string]: unknown;
+}
+
+const { as: Tag = 'div', class: className, size, ...attrs } = Astro.props;
+
+function computedSpace(space: Props['space']): Record<string, any> {
+  if (!space) {
+    return {};
+  }
+  if (typeof space === 'number') {
+    return { '--space': space };
+  }
+  return {
+    '--space-c': space[0],
+    '--space-r': space[1],
+  };
+}
+---
+
+<Tag
+  class:list={['c-cluster', className]}
+  {...attrs}
+  style={toStyleAttribute({
+    ...computedSpace(Astro.props.space),
+    '--size': size,
+  })}
+  ><slot />
+</Tag>
+<style>
+  .c-cluster {
+    --space: 0;
+    --space-c: var(--space);
+    --space-r: var(--space);
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    column-gap: calc(var(--space-c) * var(--space-unit));
+    row-gap: calc(var(--space-r) * var(--space-unit));
+    margin: unset;
+    padding: unset;
+  }
+
+  .c-cluster:is(ul, ol) {
+    list-style-type: none;
+  }
+
+  .c-cluster > :global(*) {
+    margin: 0;
+  }
+
+  .c-cluster[style*='--size'] > :global(*) {
+    flex: 0 0 min(100vw, var(--size) * 1px);
+  }
+</style>

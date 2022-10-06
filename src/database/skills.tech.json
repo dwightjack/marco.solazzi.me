@@ -4,127 +4,165 @@
     "icon": "code-tags",
     "data": [
       {
-        "id": "html5",
+        "id": "html-5",
         "label": "HTML5",
-        "level": 100
+        "icon": "logos:html-5"
       },
       {
         "id": "css3",
         "label": "CSS3",
-        "level": 100
+        "icon": "logos:css-3-official"
       },
       {
-        "id": "pre-post-processors",
-        "label": "Sass/SCSS, PostCSS",
-        "level": 100
+        "id": "sass",
+        "label": "Sass/SCSS",
+        "icon": "logos:sass"
       },
+
       {
         "id": "es2015",
-        "label": "JavaScript (ES2015+)",
-        "level": 100
+        "label": "ES2015+",
+        "icon": "logos:javascript"
       },
       {
         "id": "typescript",
         "label": "Typescript",
-        "level": 70
+        "icon": "logos:typescript-icon"
+      },
+      {
+        "id": "pug",
+        "label": "Pug",
+        "icon": "logos:pug"
       },
       {
         "id": "backend",
         "label": "PHP5.5+",
-        "level": 80
+        "icon": "logos:php"
       }
     ]
   },
   {
-    "label": "JavaScript Libraries",
+    "label": "Frontend Libraries",
     "icon": "extension",
     "data": [
       {
-        "id": "react",
-        "label": "React ( + Redux / MobX)",
-        "level": 90
-      },
-      {
         "id": "vue",
         "label": "Vue.js",
-        "level": 100
+        "icon": "logos:vue"
       },
       {
-        "id": "old-school",
-        "label": "Angular 1.x , Backbone.js",
-        "level": 90
+        "id": "react",
+        "label": "React",
+        "icon": "logos:react"
+      },
+      {
+        "id": "svelte",
+        "label": "Svelte",
+        "icon": "logos:svelte-icon"
+      },
+      {
+        "id": "astro",
+        "label": "Astro",
+        "icon": "logos:astro"
+      },
+      {
+        "id": "tailwind",
+        "label": "Tailwind",
+        "icon": "logos:tailwindcss-icon"
+      },
+      { "id": "windi", "label": "WindiCSS", "icon": "@windi" },
+      {
+        "id": "angular",
+        "label": "Angular 1.x",
+        "icon": "logos:angular-icon"
       },
       {
         "id": "animation",
-        "label": "GSAP, anime.js, velocity.js",
-        "level": 100
+        "label": "GSAP",
+        "icon": "@gsap"
       },
+
       {
-        "id": "webgl",
+        "id": "pixi",
         "label": "pixi.js",
-        "level": 50
-      },
-      {
-        "id": "dom-libraries",
-        "label": "jQuery 3+",
-        "level": 100
+        "icon": "logos:pixijs"
       }
     ]
   },
   {
-    "label": "Development Tools",
+    "label": "Developer Experience",
     "icon": "tools",
     "data": [
       {
-        "id": "unit-testing",
-        "label": "Jest, Karma, Mocha + Chai",
-        "level": 90
+        "id": "jest",
+        "label": "Jest",
+        "icon": "logos:jest"
       },
       {
-        "id": "e2e-testing",
-        "label": "Nightwatch.js, TestCafe",
-        "level": 70
+        "id": "Cypress",
+        "label": "Cypress",
+        "icon": "@cypress"
       },
       {
-        "id": "linting-js",
-        "label": "eslint, prettier",
-        "level": 100
+        "id": "vitest",
+        "label": "Vitest",
+        "icon": "@vitest"
+      },
+      {
+        "id": "chai",
+        "label": "Mocha + Chai",
+        "icon": "logos:chai"
+      },
+      {
+        "id": "eslint",
+        "label": "eslint",
+        "icon": "logos:eslint"
       },
       {
         "id": "linting-style",
-        "label": "stylelint, scss-lint",
-        "level": 100
+        "label": "stylelint",
+        "icon": "logos:stylelint"
       },
       {
         "id": "design-system",
         "label": "Storybook",
-        "level": 100
+        "icon": "logos:storybook-icon"
       }
     ]
   },
   {
-    "label": "Frontend Ops",
+    "label": "Build Tools",
     "icon": "terminal",
     "data": [
       {
-        "id": "grunt",
-        "label": "Grunt",
-        "level": 100
-      },
-      {
-        "id": "gulp",
-        "label": "Gulp.js",
-        "level": 100
+        "id": "vite",
+        "label": "Vite",
+        "icon": "logos:vitejs"
       },
       {
         "id": "webpack",
         "label": "Webpack",
-        "level": 90
+        "icon": "logos:webpack"
       },
       {
         "id": "rollup",
         "label": "Rollup",
-        "level": 100
+        "icon": "logos:rollupjs"
+      },
+      {
+        "id": "esbuild",
+        "label": "esbuild",
+        "icon": "logos:esbuild"
+      },
+      {
+        "id": "turborepo",
+        "label": "turborepo",
+        "icon": "logos:turborepo-icon"
+      },
+      {
+        "id": "gulp",
+        "label": "Gulp.js",
+        "icon": "logos:gulp"
       }
     ]
   },
@@ -135,27 +173,27 @@
       {
         "id": "progressive",
         "label": "Progressive Enhancement",
-        "level": 100
+        "icon": "mdi:escalator-up"
       },
       {
         "id": "bem",
-        "label": "Atomic Design / BEM",
-        "level": 100
+        "label": "Atomic Design",
+        "icon": "@atomic"
       },
       {
         "id": "a11y",
         "label": "Accessibility",
-        "level": 80
+        "icon": "mdi:wheelchair-accessibility"
       },
       {
         "id": "responsive",
         "label": "Responsive Design",
-        "level": 100
+        "icon": "mdi:responsive"
       },
       {
         "id": "ds",
         "label": "Design Systems",
-        "level": 80
+        "icon": "mdi:layers-triple"
       }
     ]
   },
@@ -164,24 +202,24 @@
     "icon": "pencil",
     "data": [
       {
-        "id": "ide",
-        "label": "Webstorm",
-        "level": 100
-      },
-      {
-        "id": "editors",
-        "label": "VSCode, Sublime Text",
-        "level": 100
+        "id": "vscode",
+        "label": "VSCode",
+        "icon": "logos:visual-studio-code"
       },
       {
         "id": "software",
         "label": "Photoshop",
-        "level": 90
+        "icon": "@photoshop"
       },
       {
-        "id": "vector",
-        "label": "Adobe XD, Sketch",
-        "level": 80
+        "id": "figma",
+        "label": "Figma",
+        "icon": "logos:figma"
+      },
+      {
+        "id": "sketch",
+        "label": "Sketch",
+        "icon": "logos:sketch"
       }
     ]
   }

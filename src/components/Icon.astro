@@ -6,7 +6,10 @@ export interface Props {
 }
 
 const { name, size } = Astro.props;
-const iconName = name.includes(':') ? name : `mdi:${name}`;
+const iconName =
+  name.includes(':') || name.startsWith('@')
+    ? name.replace(/^@/, '')
+    : `mdi:${name}`;
 ---
 
 <Sprite

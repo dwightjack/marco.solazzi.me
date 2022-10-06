@@ -9,6 +9,10 @@
   "rules": {
     "selector-class-pattern": null,
     "declaration-block-no-redundant-longhand-properties": null,
-    "number-max-precision": 10
+    "number-max-precision": 10,
+    "selector-pseudo-class-no-unknown": [
+      true,
+      { "ignorePseudoClasses": ["global"] }
+    ]
   }
 }

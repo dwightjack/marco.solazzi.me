@@ -1,0 +1,31 @@
+---
+import Cluster from './Cluster.astro';
+import Icon from './Icon.astro';
+
+interface Item {
+  icon?: string;
+  label: string;
+}
+
+export interface Props {
+  items: Item[];
+}
+
+const { items } = Astro.props;
+---
+
+<Cluster as="ul" space={[5, 4]}>
+  {
+    items.map(({ icon, label }) => (
+      <li class="c-inline-list__item">
+        {icon && <Icon name={icon} size={1.2} />}
+        {label}
+      </li>
+    ))
+  }
+</Cluster>
+<style>
+  .c-inline-list__item {
+    white-space: nowrap;
+  }
+</style>

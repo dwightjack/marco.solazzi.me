@@ -90,6 +90,7 @@ const { label, icon } = Astro.props;
     }
 }
 */
+
   .c-data-set__label {
     display: grid;
     grid-template-columns: 1em 1fr;
@@ -126,8 +127,15 @@ const { label, icon } = Astro.props;
   }
 
   .c-data-set__body {
+    padding: 0.25rem 1.25rem;
     font-size: var(--font-size-m);
     font-weight: 400;
+    background: linear-gradient(
+        var(--color-red-400-a50),
+        var(--color-red-400-a50)
+      )
+      no-repeat 0.63rem center / 2px 0;
+    transition: background-size 850ms cubic-bezier(0.68, 0, 0.21, 0.93) 100ms;
   }
   @media (--viewport-tablet-landscape) {
     .c-data-set__body {
@@ -136,6 +144,10 @@ const { label, icon } = Astro.props;
   }
 
   @media (--pointer-mouse) {
+    .c-data-set:hover .c-data-set__body {
+      background-size: 2px 100%;
+    }
+
     .c-data-set:hover .c-data-set__icon:first-child {
       opacity: 0;
       transform: scale(1.5);
