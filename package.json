@@ -24,11 +24,9 @@
     "lint": "eslint '**/*.{cjs,mjs,js,ts,astro}' && stylelint '**/*.{css,astro}'"
   },
   "dependencies": {
-    "@astrojs/vue": "^1.1.0",
     "astro": "^1.4.4",
     "astro-icon": "0.7.3",
-    "modern-normalize": "1.1.0",
-    "vue": "^3.2.40"
+    "modern-normalize": "1.1.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "5.39.0",
