@@ -1,9 +1,9 @@
-export function toStyleAttribute(input: Record<string, any>) {
-  const style: Record<string, any> = {};
+export function toStyleAttribute(input: Record<string, unknown>) {
+  const style: Record<string, string | number> = {};
   const keys: string[] = [];
 
   for (const [key, value] of Object.entries(input)) {
-    if (value !== undefined) {
+    if (typeof value === 'string' || typeof value === 'number') {
       style[key] = value;
       keys.push(key);
     }
@@ -12,4 +12,20 @@ export function toStyleAttribute(input: Record<string, any>) {
     return undefined;
   }
   return style;
+}
+
+export function computedSpace(
+  space?: number | number[],
+  { prefix = '--' } = {},
+): Record<string, number | undefined> {
+  if (!space) {
+    return {};
+  }
+  if (typeof space === 'number') {
+    return { [`${prefix}space`]: space };
+  }
+  return {
+    [`${prefix}space-c`]: space[0],
+    [`${prefix}space-r`]: space[1],
+  };
 }

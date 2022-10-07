@@ -1,0 +1,89 @@
+---
+import routes from '../shared/routes';
+import Stack from './Stack.astro';
+---
+
+<nav class="c-nav" aria-label="Sections Navigation">
+  <Stack as="ul" space={3} class="c-nav__menu">
+    {
+      routes.map(({ path, label }) => (
+        <li class="c-nav__item">
+          <a href={`#${path}`} class="c-nav__route">
+            {label}
+          </a>
+        </li>
+      ))
+    }
+  </Stack>
+</nav>
+<style>
+  .c-nav {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    padding: 2rem;
+    background-color: var(--color-link);
+    transform: translateX(0);
+    will-change: transform;
+    transition: transform 700ms cubic-bezier(0.85, 0.07, 0.04, 0.99);
+  }
+
+  .c-nav.is-expanded {
+    transform: translateX(-100%);
+  }
+
+  .c-nav__item {
+    margin-left: 0;
+
+    /* opacity: 0; */
+
+    /* transform: translateY(0.5em); */
+    transition: all 170ms ease-out;
+    transition-property: opacity, transform;
+  }
+
+  .c-nav__route {
+    display: block;
+    opacity: 0.8;
+    padding: 0.5rem 1.75rem;
+    color: var(--color-light);
+    font-family: var(--font-family-h);
+    font-size: 18px;
+    text-align: right;
+    text-decoration: none;
+    white-space: nowrap;
+    letter-spacing: 0.05em;
+    transition: opacity 150ms linear;
+  }
+
+  .c-nav__route::before {
+    display: inline-block;
+    opacity: 0;
+    content: '.';
+    transform: translateX(-0.4em);
+    transition: all 250ms ease-out;
+  }
+
+  .c-nav__route:is(.is-current, :hover) {
+    opacity: 1;
+  }
+
+  .c-nav__route:is(.is-current, :hover)::before {
+    opacity: 1;
+    transform: translateX(-0.1em);
+  }
+</style>
+<script>
+  import { menuExpanded } from '../shared/store';
+
+  const navList = document.querySelectorAll('.c-nav');
+
+  menuExpanded.subscribe((expanded) => {
+    for (const nav of navList) {
+      nav.classList.toggle('is-expanded', expanded);
+    }
+  });
+</script>

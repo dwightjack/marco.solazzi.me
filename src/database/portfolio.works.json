@@ -19,7 +19,7 @@
     "id": "carrefour",
     "project": "Carrefour Italia",
     "date": "2017-08-01",
-    "stack": "Nunjucks, Gulpjs, jQuery",
+    "stack": "Nunjucks, gulp, jQuery",
     "tasks": "Design System Development, HTML, CSS, Accessibility",
     "href": "https://www.carrefour.it/"
   },
@@ -27,7 +27,7 @@
     "id": "formigari",
     "project": "Formigari",
     "date": "2017-05-01",
-    "stack": "ES2015, React, MobX, GSAP, Webpack, CSS-next",
+    "stack": "ES2015, React, MobX, GSAP, webpack, CSS-next",
     "tasks": "JavaScript Architecture, Animations, CSS, SSR",
     "href": "http://www.formigari.it/",
     "meta": [
@@ -43,7 +43,7 @@
     "id": "muller",
     "project": "Müller Italia",
     "date": "2016-05-07",
-    "stack": "ES2015, GSAP, Gulpjs, Webpack, Sass",
+    "stack": "ES2015, GSAP, gulp, webpack, Sass",
     "tasks": "JavaScript Architecture, Frontend Ops, CSS",
     "href": "http://www.muller.it",
     "meta": [

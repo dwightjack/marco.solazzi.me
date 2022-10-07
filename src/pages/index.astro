@@ -1,5 +1,4 @@
 ---
-import Stack from '../components/Stack.astro';
 import Layout from '../layouts/Layout.astro';
 import Cover from '../sections/Cover.astro';
 import Education from '../sections/Education.astro';
@@ -10,13 +9,6 @@ import Footer from '../sections/Footer.astro';
 ---
 
 <Layout>
-  <Cover />
-  <Stack space={15} class="l-pages"
-    ><Jobs /><Education /><Skills /><Portfolio /><Footer />
-  </Stack>
-  <style>
-    .l-pages {
-      padding-block: 6.25rem;
-    }
-  </style>
+  <Cover slot="cover" />
+  <Jobs /><Education /><Skills /><Portfolio /><Footer />
 </Layout>

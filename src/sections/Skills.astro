@@ -5,12 +5,12 @@ import { NAV_PATH_SKILLS } from '../shared/constants';
 import InlineList from '../components/InlineList.astro';
 import DataGroup from '../components/DataGroup.astro';
 import techSkills from '../database/skills.tech.json';
-import Cluster from '../components/Cluster.astro';
+import Grid from '../components/Grid.astro';
 ---
 
 <Page id={NAV_PATH_SKILLS}>
   <PageSection title="skills.tech">
-    <div class="grid">
+    <Grid space={[3.5, 7.5]} columnsWidth={23} columnsMax={2}>
       {
         techSkills.map(({ label, icon, data: skills }) => (
           <DataGroup label={label} icon={icon}>
@@ -18,26 +18,6 @@ import Cluster from '../components/Cluster.astro';
           </DataGroup>
         ))
       }
-    </div>
+    </Grid>
   </PageSection>
 </Page>
-<style>
-  .grid {
-    --size-column: 22rem;
-
-    display: flex;
-    flex-wrap: wrap;
-
-    /* grid-template-columns: repeat(auto-fill, minmax(370px, 1fr)); */
-    column-gap: 1.75rem;
-    row-gap: 3.75rem;
-    max-width: calc((var(--size-column) * 3) + 1.75rem);
-    min-width: 0;
-  }
-
-  .grid > :global(*) {
-    flex-grow: 1;
-    flex-basis: 0;
-    min-width: min(var(--size-column), 100%);
-  }
-</style>

@@ -5,6 +5,7 @@
   --color-light: hsl(0deg 0% 100%);
   --color-red-250: hsl(0deg 56% 25%);
   --color-red-400: hsl(0deg 57% 40%);
+  --color-red-700: hsl(0deg 57% 70%);
   --color-red-400-a20: hsl(0deg 57% 40% / 20%);
   --color-red-400-a50: hsl(0deg 57% 40% / 50%);
   --color-text: var(--color-dark);

@@ -26,7 +26,8 @@
   "dependencies": {
     "astro": "^1.4.4",
     "astro-icon": "0.7.3",
-    "modern-normalize": "1.1.0"
+    "modern-normalize": "1.1.0",
+    "nanostores": "0.7.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "5.39.0",

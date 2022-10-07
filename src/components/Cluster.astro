@@ -1,37 +1,19 @@
 ---
-import { toStyleAttribute } from '../shared/utils';
+import { toStyleAttribute, computedSpace } from '../shared/utils';
 export interface Props {
   space?: number | [number, number];
-  size?: number;
   // eslint-disable-next-line no-undef
   as?: keyof HTMLElementTagNameMap;
   class?: string;
   [k: string]: unknown;
 }
 
-const { as: Tag = 'div', class: className, size, ...attrs } = Astro.props;
+const { as: Tag = 'div', class: className, ...attrs } = Astro.props;
 
-function computedSpace(space: Props['space']): Record<string, any> {
-  if (!space) {
-    return {};
-  }
-  if (typeof space === 'number') {
-    return { '--space': space };
-  }
-  return {
-    '--space-c': space[0],
-    '--space-r': space[1],
-  };
-}
+const style = toStyleAttribute(computedSpace(Astro.props.space));
 ---
 
-<Tag
-  class:list={['c-cluster', className]}
-  {...attrs}
-  style={toStyleAttribute({
-    ...computedSpace(Astro.props.space),
-    '--size': size,
-  })}
+<Tag class:list={['c-cluster', className]} {...attrs} style={style}
   ><slot />
 </Tag>
 <style>
@@ -55,10 +37,5 @@ function computedSpace(space: Props['space']): Record<string, any> {
 
   .c-cluster > :global(*) {
     margin: 0;
-  }
-
-  .c-cluster[style*='--size'] > :global(*) {
-    flex: 0 0 min(100%, var(--size) * 1px);
-    min-width: 0;
   }
 </style>

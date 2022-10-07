@@ -4,6 +4,10 @@ import 'modern-normalize/modern-normalize.css';
 import '../styles/tokens.css';
 import '../styles/global.css';
 import '../styles/utility.css';
+import Burger from '../components/Burger.astro';
+import Stack from '../components/Stack.astro';
+import Nav from '../components/Nav.astro';
+
 const socialImageURL = new URL('/marco-og.jpg', Astro.url);
 
 const { default: iconHTML } = await import(`../assets/images/icons.svg?raw`);
@@ -47,8 +51,15 @@ const { default: iconHTML } = await import(`../assets/images/icons.svg?raw`);
   <body>
     <Fragment set:html={iconHTML} />
     <Sprite.Provider>
+      <header class="l-header" id="header">
+        <Burger />
+        <Nav />
+      </header>
       <main>
-        <slot />
+        <slot name="cover" />
+        <Stack space={15} class="l-pages">
+          <slot />
+        </Stack>
       </main>
       <footer class="l-footer">
         © 2017-{new Date().getFullYear()} Marco Solazzi - <a
@@ -71,6 +82,18 @@ const { default: iconHTML } = await import(`../assets/images/icons.svg?raw`);
         overflow: hidden;
       }
 
+      .l-header {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 0;
+        z-index: var(--layer-navigation);
+      }
+
+      .l-pages {
+        padding-block: 6.25rem;
+      }
+
       .l-footer {
         padding-block-end: 1.875rem;
         font-size: var(--font-size-s);
@@ -79,3 +102,28 @@ const { default: iconHTML } = await import(`../assets/images/icons.svg?raw`);
     </style>
   </body>
 </html>
+<script>
+  import { menuExpanded } from '../shared/store';
+
+  const header = document.getElementById('header');
+
+  function hideNav(e: KeyboardEvent | MouseEvent) {
+    if ((e as KeyboardEvent).key === 'Escape') {
+      menuExpanded.set(false);
+      return;
+    }
+    if (header && !header.contains(e.target as Node)) {
+      menuExpanded.set(false);
+    }
+  }
+
+  menuExpanded.subscribe((expanded) => {
+    if (expanded) {
+      document.addEventListener('click', hideNav);
+      document.addEventListener('keyup', hideNav);
+      return;
+    }
+    document.removeEventListener('click', hideNav);
+    document.removeEventListener('keyup', hideNav);
+  });
+</script>

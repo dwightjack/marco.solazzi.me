@@ -1,0 +1,89 @@
+---
+---
+
+<button class="c-burger" aria-expanded="false">
+  <span class="u-visuallyhidden">Menu</span>
+</button>
+<style>
+  .c-burger {
+    --burger-size: 24px;
+    --burger-height: 17px;
+    --burger-bar-height: 3px;
+    --burger-bar-spacing: 4px;
+
+    position: absolute;
+    inset-block-start: 1.75rem;
+    inset-inline-end: 1.75rem;
+    z-index: var(--layer-above);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: var(--burger-size);
+    color: var(--color-red-700);
+    margin: 0;
+    padding: calc((var(--burger-size) - var(--burger-height)) / 2) 0;
+    border: 0;
+    aspect-ratio: 1;
+    background: transparent linear-gradient(to left, currentcolor, currentcolor)
+      no-repeat right 50% / var(--burger-bar-width, 85%)
+      var(--burger-bar-height);
+    cursor: pointer;
+    outline: 0;
+    transition: background-size 0.2s ease-out;
+  }
+
+  .c-burger::after,
+  .c-burger::before {
+    display: block;
+    content: '';
+    width: 100%;
+    height: var(--burger-bar-height);
+    transform-origin: 100% 0;
+    transition: transform 0.2s ease-out;
+    background-color: currentcolor;
+  }
+
+  .c-burger::after {
+    transform: scaleX(var(--burger-bar-width, 70%));
+  }
+
+  .c-burger:focus-visible {
+    --burger-bar-width: 100%;
+  }
+
+  @media (--pointer-mouse) {
+    .c-burger:hover {
+      --burger-bar-width: 100%;
+    }
+  }
+
+  .c-burger[aria-expanded='true'] {
+    color: var(--color-light);
+    background-size: 0 var(--burger-bar-height);
+    transition-duration: 0s;
+  }
+
+  .c-burger[aria-expanded='true']::before {
+    transform: translate(0, 17px) rotate(45deg);
+    transition: color 0.2s ease-out, transform 0.2s ease-out;
+  }
+
+  .c-burger[aria-expanded='true']::after {
+    transform: translate(-3px, -14px) rotate(-45deg);
+    transition: color 0.2s ease-out, transform 0.2s ease-out;
+  }
+</style>
+<script>
+  import { menuExpanded } from '../shared/store';
+
+  const burgerList = document.querySelectorAll('.c-burger');
+
+  for (const burger of burgerList) {
+    menuExpanded.subscribe((expanded) => {
+      burger.setAttribute('aria-expanded', `${expanded}`);
+    });
+    burger.addEventListener('click', () => {
+      menuExpanded.set(!menuExpanded.get());
+    });
+  }
+</script>

@@ -26,7 +26,7 @@
       },
       {
         "id": "typescript",
-        "label": "Typescript",
+        "label": "TypeScript",
         "icon": "logos:typescript-icon"
       },
       {
@@ -67,10 +67,10 @@
       },
       {
         "id": "tailwind",
-        "label": "Tailwind",
+        "label": "Tailwind CSS",
         "icon": "logos:tailwindcss-icon"
       },
-      { "id": "windi", "label": "WindiCSS", "icon": "@windi" },
+      { "id": "windi", "label": "Windi CSS", "icon": "@windi" },
       {
         "id": "angular",
         "label": "Angular 1.x",
@@ -141,7 +141,7 @@
       },
       {
         "id": "webpack",
-        "label": "Webpack",
+        "label": "webpack",
         "icon": "logos:webpack"
       },
       {
@@ -156,12 +156,12 @@
       },
       {
         "id": "turborepo",
-        "label": "turborepo",
+        "label": "Turborepo",
         "icon": "logos:turborepo-icon"
       },
       {
         "id": "gulp",
-        "label": "Gulp.js",
+        "label": "gulp",
         "icon": "logos:gulp"
       }
     ]
@@ -176,7 +176,7 @@
         "icon": "mdi:escalator-up"
       },
       {
-        "id": "bem",
+        "id": "atomic",
         "label": "Atomic Design",
         "icon": "@atomic"
       },
@@ -203,7 +203,7 @@
     "data": [
       {
         "id": "vscode",
-        "label": "VSCode",
+        "label": "VS Code",
         "icon": "logos:visual-studio-code"
       },
       {
