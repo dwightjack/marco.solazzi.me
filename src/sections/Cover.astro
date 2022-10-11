@@ -3,14 +3,13 @@ import LinkList from '../components/LinkList.astro';
 import Icon from '../components/Icon.astro';
 import { NAV_PATH_JOBS, NAV_PATH_HOME } from '../shared/constants';
 import links from '../database/links.json';
-import Avatar from '../components/Avatar.astro';
+import Avatar from '../components/Avatar/Avatar.astro';
 import marco from '../assets/images/marco.jpg';
-import marcoFull from '../assets/images/marco-full.jpg';
 ---
 
 <section class="c-cover" id={NAV_PATH_HOME}>
   <div class="c-cover__pic">
-    <Avatar foreground={marco} background={marcoFull} />
+    <Avatar foreground={marco} />
   </div>
   <div class="c-cover__body">
     <h2 lang="ja" class="c-cover__headline">こんにちは！</h2>

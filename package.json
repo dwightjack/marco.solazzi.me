@@ -24,12 +24,15 @@
     "lint": "eslint '**/*.{cjs,mjs,js,ts,astro}' && stylelint '**/*.{css,astro}'"
   },
   "dependencies": {
+    "animejs": "3.2.1",
     "astro": "^1.4.6",
     "astro-icon": "0.7.3",
     "modern-normalize": "1.1.0",
-    "nanostores": "0.7.0"
+    "nanostores": "0.7.0",
+    "pixi.js": "6.5.5"
   },
   "devDependencies": {
+    "@types/animejs": "3.1.5",
     "@typescript-eslint/eslint-plugin": "5.39.0",
     "@typescript-eslint/parser": "5.39.0",
     "eslint": "8.25.0",

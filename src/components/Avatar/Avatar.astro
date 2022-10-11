@@ -1,0 +1,105 @@
+---
+export interface Props {
+  foreground: string;
+}
+
+const { foreground } = Astro.props;
+---
+
+<figure class="c-avatar" data-fg={foreground}>
+  <svg
+    viewBox="0 0 850 860"
+    role="img"
+    focusable="false"
+    class="c-avatar__static"
+  >
+    <title>A picture of myself in Japan</title>
+    <g clip-path="url(#avatar-mask)">
+      <image xlink:href={foreground} x="0" y="0" />
+    </g>
+
+    <clipPath id="avatar-mask">
+      <path
+        d="M850 425L725.5 725.5 425 850 124.5 725.5 0 425l124.5-300.5L425 0l300.5 124.5z"
+      ></path>
+    </clipPath>
+  </svg>
+</figure>
+<style>
+  .c-avatar {
+    margin: 0;
+    position: relative;
+  }
+
+  .c-avatar > :global(.c-avatar__canvas) {
+    position: absolute;
+    inset: 0;
+  }
+
+  .c-avatar.is-active .c-avatar__static {
+    visibility: hidden;
+  }
+</style>
+<script is:inline>
+  const avatar = document.querySelector('.c-avatar');
+  avatar.classList.add('is-active');
+</script>
+<script>
+  import { Application, Sprite, Container, Loader } from 'pixi.js';
+  import Octagon from './octagon';
+  import { debounce } from '../../shared/utils';
+
+  import anime from 'animejs';
+
+  const avatar = document.querySelector('.c-avatar') as HTMLElement;
+  const CANVAS_WIDTH = 600;
+  const IMAGE_SIZE = 400;
+
+  window.addEventListener('load', () => {
+    const app = new Application({
+      resizeTo: avatar,
+      autoStart: false,
+      backgroundAlpha: 0,
+      width: CANVAS_WIDTH,
+      height: IMAGE_SIZE,
+    });
+
+    const container = new Container();
+
+    Loader.shared
+      .add('avatar', avatar.dataset.fg as string)
+      .load((_, resources) => {
+        const fgSprite = new Sprite(resources['avatar'].texture);
+        const { width, height } = fgSprite;
+        const mask = new Octagon(width);
+        container.addChild(fgSprite, mask.shape);
+
+        container.width = width;
+        container.width = height;
+        container.alpha = 0;
+        container.mask = mask.shape;
+
+        container.scale.set(app.view.width / width);
+
+        app.ticker.add(() => {
+          mask.draw();
+        });
+
+        window.addEventListener(
+          'resize',
+          debounce(() => {
+            container.scale.set(app.view.width / width);
+          }),
+        );
+
+        app.stage.addChild(container);
+        app.view.setAttribute('aria-hidden', 'true');
+        app.view.classList.add('c-avatar__canvas');
+        avatar.appendChild(app.view);
+        app.render();
+        mask.animate();
+        app.start();
+        anime({ targets: container, delay: 1000, alpha: 1, duration: 1500 });
+      });
+  });
+</script>

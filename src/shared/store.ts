@@ -4,5 +4,3 @@ import type { Route } from './routes';
 
 export const menuExpanded = atom(false);
 export const currentRoute = atom<Route>(NAV_PATH_HOME);
-
-currentRoute.subscribe(console.log);
