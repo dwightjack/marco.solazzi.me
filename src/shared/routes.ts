@@ -6,7 +6,7 @@ import {
   NAV_PATH_PORTFOLIO,
 } from './constants';
 
-export default [
+const routes = [
   {
     path: NAV_PATH_HOME,
     label: 'Home',
@@ -27,4 +27,8 @@ export default [
     path: NAV_PATH_PORTFOLIO,
     label: 'Portfolio',
   },
-];
+] as const;
+
+export type Route = typeof routes[number]['path'];
+
+export default routes;

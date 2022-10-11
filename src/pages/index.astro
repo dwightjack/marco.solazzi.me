@@ -13,57 +13,11 @@ import Footer from '../sections/Footer.astro';
   <Jobs /><Education /><Skills /><Portfolio /><Footer />
 </Layout>
 <script>
-  const sections = [...document.querySelectorAll('.c-page')];
+  import ScrollIntercept from '../shared/scrollIntercept';
+  import type { Route } from '../shared/routes';
+  import { currentRoute } from '../shared/store';
 
-  const options = {};
-
-  let prevYPosition = 0;
-  let direction = 'up';
-
-  const getTargetSection = (entry: IntersectionObserverEntry) => {
-    const index = sections.findIndex((section) => section == entry.target);
-
-    if (index >= sections.length - 1) {
-      return entry.target;
-    } else {
-      return sections[index + 1];
-    }
-  };
-
-  const shouldUpdate = (entry: IntersectionObserverEntry) => {
-    if (direction === 'down' && !entry.isIntersecting) {
-      return true;
-    }
-
-    if (direction === 'up' && entry.isIntersecting) {
-      return true;
-    }
-
-    return false;
-  };
-
-  const onIntersect = (entries: IntersectionObserverEntry[]) => {
-    entries.forEach((entry) => {
-      if (window.scrollY > prevYPosition) {
-        direction = 'down';
-      } else {
-        direction = 'up';
-      }
-
-      prevYPosition = window.scrollY;
-
-      const target =
-        direction === 'down' ? getTargetSection(entry) : entry.target;
-
-      if (shouldUpdate(entry)) {
-        console.log(target);
-      }
-    });
-  };
-
-  const observer = new IntersectionObserver(onIntersect, options);
-
-  sections.forEach((section) => {
-    observer.observe(section);
-  });
+  new ScrollIntercept('.c-page, .c-cover', (target: Element) =>
+    currentRoute.set(target.id as Route),
+  );
 </script>

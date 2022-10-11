@@ -77,7 +77,7 @@ import Stack from './Stack.astro';
   }
 </style>
 <script>
-  import { menuExpanded } from '../shared/store';
+  import { menuExpanded, currentRoute } from '../shared/store';
 
   const navList = document.querySelectorAll('.c-nav');
 
@@ -86,4 +86,22 @@ import Stack from './Stack.astro';
       nav.classList.toggle('is-expanded', expanded);
     }
   });
+
+  for (const nav of navList) {
+    const routes = nav.querySelectorAll('.c-nav__route');
+    currentRoute.subscribe((currentRoute) => {
+      if (!currentRoute) {
+        return;
+      }
+      for (const route of routes) {
+        const isCurrent = route.getAttribute('href') === `#${currentRoute}`;
+        if (isCurrent) {
+          route.setAttribute('aria-current', 'true');
+        } else {
+          route.removeAttribute('aria-current');
+        }
+        route.classList.toggle('is-current', isCurrent);
+      }
+    });
+  }
 </script>
