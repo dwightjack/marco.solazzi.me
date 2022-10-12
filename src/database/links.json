@@ -7,7 +7,8 @@
   {
     "icon": "twitter",
     "href": "https://twitter.com/dwightjack",
-    "label": "@dwightjack"
+    "label": "@dwightjack",
+    "description": "My twitter profile"
   },
   {
     "icon": "pencil",
@@ -17,7 +18,8 @@
   {
     "icon": "github",
     "href": "https://github.com/dwightjack",
-    "label": "dwightjack"
+    "label": "dwightjack",
+    "description": "My GitHub profile"
   },
   {
     "icon": "test-tube",
@@ -27,7 +29,8 @@
   {
     "icon": "linkedin",
     "href": "https://it.linkedin.com/in/marcosolazzi",
-    "label": "in/marcosolazzi"
+    "label": "in/marcosolazzi",
+    "description": "My LinkedIn profile"
   },
   {
     "icon": "file-pdf",

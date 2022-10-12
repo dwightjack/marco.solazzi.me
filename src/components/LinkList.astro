@@ -6,6 +6,7 @@ interface Item {
   icon: string;
   href: string;
   label: string;
+  description?: string;
 }
 
 export interface Props {
@@ -17,7 +18,7 @@ const { items } = Astro.props;
 
 <Stack as="ul" space={1} class="c-link-list">
   {
-    items.map(({ icon, href, label }) => (
+    items.map(({ icon, href, label, description }) => (
       <li
         class:list={[
           'c-link-list__item',
@@ -30,6 +31,7 @@ const { items } = Astro.props;
         <Icon name={icon} size={1.4} />
         <a href={href} target="_blank" rel="noopener noreferrer">
           {label}
+          {description && <span class="u-visuallyhidden">{description}</span>}
         </a>
       </li>
     ))

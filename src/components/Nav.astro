@@ -84,6 +84,11 @@ import Stack from './Stack.astro';
   menuExpanded.subscribe((expanded) => {
     for (const nav of navList) {
       nav.classList.toggle('is-expanded', expanded);
+      nav.setAttribute('aria-hidden', `${!expanded}`);
+      const routes = nav.querySelectorAll('.c-nav__route');
+      for (const route of routes) {
+        route.setAttribute('tabindex', expanded ? '0' : '-1');
+      }
     }
   });
 

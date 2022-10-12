@@ -15,7 +15,7 @@ const { href, variant, icon, title = '' } = Astro.props;
   href={href}
   target="_blank"
   rel="noopener noreferrer external"
-  title={`${title} (Opens in another tab)`.trim()}
+  aria-label={`${title} (Opens in another tab)`.trim()}
   class:list={[
     'c-external-anchor',
     { [`c-external-anchor--${variant}`]: variant },

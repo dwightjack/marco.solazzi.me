@@ -24,13 +24,16 @@ function isDate(heading: string) {
   return heading === 'to' || heading === 'from' || heading === 'date';
 }
 
-function metaTitle(type: string) {
-  switch (type) {
+function metaTitle(meta: Record<string, string>) {
+  switch (meta.type) {
     case 'video':
       return `Watch video for: ${title}`;
 
     case 'slides':
       return `Slides for: ${title}`;
+
+    case 'award':
+      return `${meta.label || 'Award'} details for ${title}`;
 
     default:
       return '';
@@ -78,7 +81,7 @@ function metaTitle(type: string) {
             variant="cursor"
             href={meta.link}
             icon={meta.icon || meta.type}
-            title={title && metaTitle(meta.type)}
+            title={title && metaTitle(meta)}
           >
             {meta.label || meta.type}
           </ExternalAnchor>

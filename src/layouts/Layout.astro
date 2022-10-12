@@ -7,6 +7,7 @@ import '../styles/utility.css';
 import Burger from '../components/Burger.astro';
 import Stack from '../components/Stack.astro';
 import Nav from '../components/Nav.astro';
+import Background from '../components/Background.astro';
 
 const socialImageURL = new URL('/marco-og.jpg', Astro.url);
 
@@ -49,6 +50,7 @@ const { default: iconHTML } = await import(`../assets/images/icons.svg?raw`);
   </head>
 
   <body>
+    <Background />
     <Fragment set:html={iconHTML} />
     <Sprite.Provider>
       <header class="l-header" id="header">

@@ -1,0 +1,147 @@
+---
+---
+
+<div class="c-background" aria-hidden="true"></div>
+<style>
+  .c-background {
+    position: fixed;
+    inset: 0;
+
+    /* inset-inline-start: 40%; */
+    display: flex;
+    justify-content: flex-end;
+    align-items: stretch;
+    z-index: var(--layer-behind);
+    background-color: var(--color-bg);
+  }
+
+  .c-background::before {
+    position: absolute;
+    inset: 0;
+    z-index: var(--layer-above);
+    background: radial-gradient(
+        circle at 100% 0,
+        transparent 40%,
+        var(--color-bg) 60%
+      )
+      no-repeat 0 0 / 100vmax;
+    display: block;
+    content: '';
+  }
+
+  .c-background__canvas {
+    position: absolute;
+    inset: 0;
+  }
+</style>
+
+<script>
+  import { Application, TilingSprite, Texture } from 'pixi.js';
+  import anime from 'animejs';
+  import patternSVGFull from '../assets/images/circuits-full.svg?inline';
+  import patternSVGPartial2 from '../assets/images/circuits-2.svg?inline';
+  import patternSVGPartial from '../assets/images/circuits.svg?inline';
+
+  import { debounce } from '../shared/utils';
+
+  const root = document.querySelector('.c-background') as HTMLElement;
+
+  function getCanvasSize() {
+    const size = root.getBoundingClientRect();
+    return {
+      width: Math.round(size.width),
+      height: Math.round(size.height),
+    };
+  }
+
+  function onResize(tiles: TilingSprite[]) {
+    const size = getCanvasSize();
+
+    app.renderer.resize(size.width, size.height);
+    for (const tile of tiles) {
+      Object.assign(tile, size);
+    }
+  }
+
+  const size = getCanvasSize();
+  const app = new Application({
+    ...size,
+    autoStart: false,
+    transparent: true,
+  });
+
+  const tiles = [patternSVGFull, patternSVGPartial, patternSVGPartial2].map(
+    (svg, index) => {
+      const tile = new TilingSprite(Texture.from(svg), size.width, size.height);
+      tile.alpha = index === 0 ? 0.1 : 0;
+      return tile;
+    },
+  );
+
+  app.stage.addChild(...tiles);
+
+  const animations = [
+    anime({
+      targets: tiles[0],
+      easing: 'easeInOutSine',
+      loop: true,
+      autoplay: false,
+      direction: 'alternate',
+      delay: 2000,
+      duration: 5000,
+      alpha: [0.05, 0.02],
+    }),
+    anime({
+      targets: tiles[1],
+      easing: 'easeInOutSine',
+      loop: true,
+      autoplay: false,
+      delay: 14000,
+      alpha: [
+        {
+          value: [0, 0.05],
+          duration: 150,
+        },
+        {
+          value: [0.05, 0],
+          duration: 200,
+        },
+        {
+          value: [0.05, 0],
+          duration: 350,
+        },
+      ],
+    }),
+    anime({
+      targets: tiles[2],
+      easing: 'easeInOutSine',
+      loop: true,
+      autoplay: false,
+      direction: 'alternate',
+      delay: 2000,
+      duration: 5000,
+      alpha: [0, 0.05],
+    }),
+  ];
+
+  app.stage.alpha = 0;
+  app.start();
+  app.view.classList.add('c-background__canvas');
+  app.view.setAttribute('aria-hidden', 'true');
+
+  window.addEventListener(
+    'resize',
+    debounce(() => onResize(tiles)),
+  );
+
+  root.appendChild(app.view);
+  anime({
+    targets: app.stage,
+    alpha: 1,
+    duration: 1000,
+    delay: 1000,
+    complete() {
+      animations.forEach((a) => a.play());
+    },
+  });
+</script>

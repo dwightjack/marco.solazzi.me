@@ -9,26 +9,26 @@ export interface Props {
 const { label, icon } = Astro.props;
 ---
 
-<section class="c-data-set">
-  <h3 class="c-data-set__label">
-    <span class="c-data-set__icon">
+<section class="c-data-group">
+  <h3 class="c-data-group__label">
+    <span class="c-data-group__icon">
       <Icon name="plus" />
     </span>
     {
       icon && (
-        <span class="c-data-set__icon">
+        <span class="c-data-group__icon">
           <Icon name={icon} />
         </span>
       )
     }
     <span>{label}</span>
   </h3>
-  <div class="c-data-set__body">
+  <div class="c-data-group__body">
     <slot />
   </div>
 </section>
 <style>
-  .c-data-set__label {
+  .c-data-group__label {
     display: grid;
     grid-template-columns: 1em 1fr;
     grid-template-rows: auto;
@@ -41,29 +41,29 @@ const { label, icon } = Astro.props;
   }
 
   @media (--viewport-tablet-landscape) {
-    .c-data-set__label {
+    .c-data-group__label {
       font-size: 1.375rem;
     }
   }
 
-  .c-data-set__icon {
+  .c-data-group__icon {
     grid-area: icon;
     text-align: center;
     color: var(--color-link);
   }
 
-  .c-data-set__icon:first-child {
+  .c-data-group__icon:first-child {
     opacity: 0.6;
     transition: all 250ms;
   }
 
-  .c-data-set__icon:nth-child(2) {
+  .c-data-group__icon:nth-child(2) {
     opacity: 0;
     transform: scale(0.2);
     transition: all 150ms ease-out;
   }
 
-  .c-data-set__body {
+  .c-data-group__body {
     padding: 0.25rem 1.25rem;
     font-size: var(--font-size-m);
     font-weight: 400;
@@ -75,22 +75,22 @@ const { label, icon } = Astro.props;
     transition: background-size 850ms cubic-bezier(0.68, 0, 0.21, 0.93) 100ms;
   }
   @media (--viewport-tablet-landscape) {
-    .c-data-set__body {
+    .c-data-group__body {
       font-size: 1.125rem;
     }
   }
 
   @media (--pointer-mouse) {
-    .c-data-set:hover .c-data-set__body {
+    .c-data-group:hover .c-data-group__body {
       background-size: 2px 100%;
     }
 
-    .c-data-set:hover .c-data-set__icon:first-child {
+    .c-data-group:hover .c-data-group__icon:first-child {
       opacity: 0;
       transform: scale(1.5);
     }
 
-    .c-data-set:hover .c-data-set__icon:nth-child(2) {
+    .c-data-group:hover .c-data-group__icon:nth-child(2) {
       opacity: 0.6;
       transform: scale(1);
       transition-delay: 240ms;
@@ -98,12 +98,12 @@ const { label, icon } = Astro.props;
   }
 
   @media not screen and (--pointer-mouse) {
-    .c-data-set .c-data-set__icon:first-child {
+    .c-data-group .c-data-group__icon:first-child {
       opacity: 0;
       transform: scale(1.5);
     }
 
-    .c-data-set .c-data-set__icon:nth-child(2) {
+    .c-data-group .c-data-group__icon:nth-child(2) {
       opacity: 0.6;
       transform: scale(1);
       transition-delay: 240ms;
