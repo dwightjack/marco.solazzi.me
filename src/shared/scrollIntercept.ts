@@ -22,7 +22,6 @@ export default class ScrollIntercept {
 
       const target =
         this.direction === 'down' ? this.getTargetSection(entry) : entry.target;
-
       if (this.shouldUpdate(entry)) {
         this.onUpdate(target);
       }
@@ -40,7 +39,7 @@ export default class ScrollIntercept {
     }
 
     this.observer = new IntersectionObserver(this.onIntersect, {
-      threshold: 0.5,
+      rootMargin: '-40%',
     });
 
     for (const section of this.sections) {

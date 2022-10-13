@@ -3,17 +3,40 @@ import Stack from './Stack.astro';
 
 export interface Props {
   id: string;
+  mark?: string;
 }
 
-const { id } = Astro.props;
+const { id, mark } = Astro.props;
 ---
 
 <Stack class="c-page" id={id} space={15}>
   <slot />
+  {mark && <span class="c-page__mark">{mark}</span>}
 </Stack>
 <style>
   .c-page:is(.c-stack) {
     padding-inline: var(--space-page-gutter-inline);
+  }
+
+  .c-page__mark {
+    position: fixed;
+    inset-block-end: -20vh;
+    inset-inline-start: 20vw;
+    z-index: var(--layer-behind);
+    opacity: 0;
+    transform: translate(1vw);
+    font-size: max(300px, 80vmin);
+    white-space: nowrap;
+    transition: all 750ms ease-out;
+    transition-property: opacity, transform;
+    will-change: opacity, transform;
+  }
+
+  .c-page.is-current .c-page__mark {
+    opacity: 0.05;
+    transform: translateX(0);
+
+    /* transition-delay: 550ms; */
   }
 
   /* @media (--viewport-tablet-landscape) {
@@ -22,3 +45,13 @@ const { id } = Astro.props;
     }
   } */
 </style>
+<script>
+  import { currentRoute } from '../shared/store';
+
+  const pages = document.querySelectorAll('.c-page');
+  currentRoute.subscribe((route) => {
+    for (const page of pages) {
+      page.classList.toggle('is-current', page.id === route);
+    }
+  });
+</script>
