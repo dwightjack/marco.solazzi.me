@@ -51,15 +51,3 @@
 .u-invisible {
   visibility: hidden !important;
 }
-
-@media not print {
-  .u-only-print {
-    display: none;
-  }
-}
-
-@media print {
-  .u-only-screen {
-    display: none;
-  }
-}

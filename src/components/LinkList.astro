@@ -19,15 +19,7 @@ const { items } = Astro.props;
 <Stack as="ul" space={1} class="c-link-list">
   {
     items.map(({ icon, href, label, description }) => (
-      <li
-        class:list={[
-          'c-link-list__item',
-          {
-            'u-only-print': icon.includes('link'),
-            'u-only-screen': icon.includes('pdf'),
-          },
-        ]}
-      >
+      <li class="c-link-list__item">
         <Icon name={icon} size={1.4} />
         <a href={href} target="_blank" rel="noopener noreferrer">
           {label}
