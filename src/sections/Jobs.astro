@@ -20,7 +20,6 @@ const { href, company: currentCompany, id, ...currentData } = current;
       href={href}
       data={currentData}
       id="job-current"
-      variants="brackets"
     />
   </PageSection>
   <PageSection title="jobs.previous">
@@ -33,7 +32,6 @@ const { href, company: currentCompany, id, ...currentData } = current;
             href={href}
             data={job}
             id={`job-previous-${id}`}
-            variants="brackets"
           />
         ))
       }

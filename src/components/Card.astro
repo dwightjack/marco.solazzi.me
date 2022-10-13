@@ -2,9 +2,7 @@
 import Cluster from './Cluster.astro';
 import DateTime from './DateTime.astro';
 import ExternalAnchor from './ExternalAnchor.astro';
-type Variant = 'brackets';
 export interface Props {
-  variants?: Variant | Variant[];
   id: string;
   titleLabel?: string;
   title?: string;
@@ -14,11 +12,6 @@ export interface Props {
 }
 
 const { id, titleLabel, href, title = '', data = {}, meta = [] } = Astro.props;
-
-const variants = ([] as Variant[])
-  .concat(Astro.props.variants ?? 'brackets')
-  .filter(Boolean);
-const variantsClasses = variants.map((v) => `c-card--${v}`);
 
 function isDate(heading: string) {
   return heading === 'to' || heading === 'from' || heading === 'date';
@@ -41,7 +34,7 @@ function metaTitle(meta: Record<string, string>) {
 }
 ---
 
-<article class:list={['c-card', ...variantsClasses]}>
+<article class="c-card">
   {
     titleLabel && (
       <h3 class="c-card__caption" id={`table-${id}`}>
@@ -92,11 +85,37 @@ function metaTitle(meta: Record<string, string>) {
 </article>
 <style>
   .c-card {
-    width: 100%;
-    padding-top: 10px;
-    padding-bottom: 16px;
-    padding-left: 30px;
-    background-clip: padding-box;
+    --gradient: linear-gradient(
+      var(--color-red-400-a50),
+      var(--color-red-400-a50)
+    );
+
+    inline-size: 100%;
+    padding-block: 10px 16px;
+    padding-inline-start: 30px;
+    background-image: var(--gradient), var(--gradient), var(--gradient);
+    background-position: 0 0, 0 8px, 0 bottom;
+    background-repeat: no-repeat;
+    background-size: 16px 8px, 8px calc(100% - 16px), 16px 8px;
+  }
+
+  @media (--pointer-mouse) {
+    .c-card {
+      transition: all 250ms ease-in-out;
+      transition-property: background-position, background-size;
+    }
+
+    .c-card:hover {
+      background-position: 8px 0, 8px 0, 8px bottom;
+      background-size: 8px 0, 8px 100%, 8px 0;
+    }
+  }
+
+  @media (--viewport-tablet-landscape) {
+    .c-card {
+      border-left: 20px solid transparent;
+      margin-left: -20px;
+    }
   }
 
   .c-card__caption {
@@ -106,6 +125,7 @@ function metaTitle(meta: Record<string, string>) {
     font-weight: 700;
     page-break-inside: avoid;
   }
+
   @media (--viewport-tablet-landscape) {
     .c-card__caption {
       font-size: 1.375rem;
@@ -141,24 +161,5 @@ function metaTitle(meta: Record<string, string>) {
 
   .c-card__data [data-row='title'] {
     margin-top: 0.5em;
-  }
-
-  .c-card--brackets {
-    --gradient: linear-gradient(
-      var(--color-red-400-a50),
-      var(--color-red-400-a50)
-    );
-
-    background-image: var(--gradient), var(--gradient), var(--gradient);
-    background-position: 8px 0, 0 0, 8px bottom;
-    background-repeat: no-repeat;
-    background-size: 8px 8px, 8px 100%, 8px 8px;
-  }
-
-  @media (--viewport-tablet-landscape) {
-    .c-card--brackets {
-      border-left: 20px solid transparent;
-      margin-left: -20px;
-    }
   }
 </style>
