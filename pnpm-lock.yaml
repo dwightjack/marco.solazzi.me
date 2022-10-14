@@ -24,6 +24,7 @@ specifiers:
   stylelint-config-html: 1.1.0
   stylelint-config-prettier: 9.0.3
   stylelint-config-standard: 28.0.0
+  stylelint-use-logical: 2.0.0
   typescript: 4.8.4
 
 dependencies:
@@ -52,6 +53,7 @@ devDependencies:
   stylelint-config-html: 1.1.0_xhez2jbrlm5gsznvnryddq5rcu
   stylelint-config-prettier: 9.0.3_stylelint@14.13.0
   stylelint-config-standard: 28.0.0_stylelint@14.13.0
+  stylelint-use-logical: 2.0.0_stylelint@14.13.0
   typescript: 4.8.4
 
 packages:
@@ -5492,6 +5494,15 @@ packages:
     dependencies:
       stylelint: 14.13.0
       stylelint-config-recommended: 9.0.0_stylelint@14.13.0
+    dev: true
+
+  /stylelint-use-logical/2.0.0_stylelint@14.13.0:
+    resolution: {integrity: sha512-4wRXETzWSF3yc9znj28VOZZ+VyVys1jeb6L341tit3KkKuAqib1PkGq5lQK0Xf2NhdoHkEHCaFSJfCL8u6UTOA==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      stylelint: '>= 11 < 15'
+    dependencies:
+      stylelint: 14.13.0
     dev: true
 
   /stylelint/14.13.0:
