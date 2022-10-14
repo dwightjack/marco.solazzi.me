@@ -4,17 +4,18 @@ import Stack from './Stack.astro';
 export interface Props {
   id: string;
   mark?: string;
+  indent?: boolean;
 }
 
-const { id, mark } = Astro.props;
+const { id, mark, indent = true } = Astro.props;
 ---
 
-<Stack class="c-page" id={id} space={15}>
+<Stack class:list={['c-page', { 'c-page--indent': indent }]} id={id} space={15}>
   <slot />
   {mark && <span class="c-page__mark">{mark}</span>}
 </Stack>
 <style>
-  .c-page:is(.c-stack) {
+  .c-page.c-page--indent {
     padding-inline: var(--space-page-gutter-inline);
   }
 
@@ -35,21 +36,14 @@ const { id, mark } = Astro.props;
   .c-page.is-current .c-page__mark {
     transform: translateX(0);
     opacity: 0.05;
-
-    /* transition-delay: 550ms; */
   }
-
-  /* @media (--viewport-tablet-landscape) {
-    .c-page {
-      padding-inline: var(--space-page-gutter);
-    }
-  } */
 </style>
 <script>
   import { currentRoute } from '../shared/store';
 
   const pages = document.querySelectorAll('.c-page');
   currentRoute.subscribe((route) => {
+    console.log(route);
     for (const page of pages) {
       page.classList.toggle('is-current', page.id === route);
     }

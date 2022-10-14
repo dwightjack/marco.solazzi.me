@@ -17,7 +17,7 @@ import Footer from '../sections/Footer.astro';
   import type { Route } from '../shared/routes';
   import { currentRoute } from '../shared/store';
 
-  new ScrollIntercept('.c-page, .c-cover', (target: Element) =>
-    currentRoute.set(target.id as Route),
-  );
+  new ScrollIntercept('.c-page', (target: Element) => {
+    currentRoute.set(target.id as Route);
+  });
 </script>
