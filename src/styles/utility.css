@@ -1,33 +1,13 @@
 .u-text--left {
-  text-align: left !important;
+  text-align: start !important;
 }
 
 .u-text--right {
-  text-align: right !important;
+  text-align: end !important;
 }
 
 .u-text--center {
   text-align: center !important;
-}
-
-.u-type--mark {
-  position: relative;
-  display: inline-block;
-  padding: 0 0.2em 0.1em;
-  background-color: transparent;
-  color: var(--color-light);
-  line-height: 1;
-
-  &::after {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: var(--level-behind);
-    background-color: var(--color-link);
-    content: '';
-  }
 }
 
 .u-hidden,

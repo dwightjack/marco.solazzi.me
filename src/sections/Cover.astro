@@ -90,7 +90,7 @@ import marco from '../assets/images/marco.jpg';
     @media (--viewport-tablet-landscape) {
       margin-block-start: 0;
       font-size: 2.8125rem;
-      text-align: left;
+      text-align: start;
     }
   }
 
@@ -101,8 +101,8 @@ import marco from '../assets/images/marco.jpg';
 
   .c-cover__text::before {
     position: absolute;
-    top: -0.35em;
-    left: -0.55em;
+    inset-block-start: -0.35em;
+    inset-inline-start: -0.55em;
     opacity: 0.5;
     color: var(--color-link);
     font-family: 'Times New Roman', Times, serif;

@@ -19,8 +19,8 @@ import Stack from './Stack.astro';
 <style>
   .c-nav {
     position: absolute;
-    top: 0;
-    left: 100%;
+    inset-block-start: 0;
+    inset-inline-start: 100%;
     display: flex;
     align-items: center;
     height: 100vh;
@@ -52,7 +52,7 @@ import Stack from './Stack.astro';
     color: var(--color-light);
     font-family: var(--font-family-h);
     font-size: 18px;
-    text-align: right;
+    text-align: end;
     text-decoration: none;
     white-space: nowrap;
     letter-spacing: 0.05em;
