@@ -53,21 +53,21 @@ import marco from '../assets/images/marco.jpg';
       grid-template-areas: '. . .' 'pic body .' 'scrollhint scrollhint scrollhint';
       column-gap: 5rem;
       align-items: center;
-      height: 100vh;
+      block-size: 100vh;
       overflow: hidden;
       padding: 0;
     }
   }
 
   .c-cover__pic {
-    width: 56%;
+    inline-size: 56%;
     margin-inline: auto;
 
     @media (--viewport-tablet-landscape) {
       grid-area: pic;
       align-self: center;
       justify-self: end;
-      width: calc(100% - 4.6875vw);
+      inline-size: calc(100% - 4.6875vw);
       margin-inline: 0;
     }
   }

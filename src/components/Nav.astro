@@ -23,7 +23,7 @@ import Stack from './Stack.astro';
     inset-inline-start: 100%;
     display: flex;
     align-items: center;
-    height: 100vh;
+    block-size: 100vh;
     padding: 2rem;
     background-color: var(--color-link);
     transform: translateX(0);
@@ -37,12 +37,6 @@ import Stack from './Stack.astro';
 
   .c-nav__item {
     margin-inline-start: 0;
-
-    /* opacity: 0; */
-
-    /* transform: translateY(0.5em); */
-    transition: all 170ms ease-out;
-    transition-property: opacity, transform;
   }
 
   .c-nav__route {

@@ -34,11 +34,11 @@ const { columnsWidth, columnsMax, space } = Astro.props;
 
     /* column-gap: 1.75rem;
     row-gap: 3.75rem; */
-    min-width: 0;
+    min-inline-size: 0;
   }
 
   .c-grid:where([style*='--columns-max']) {
-    max-width: calc(
+    max-inline-size: calc(
       (var(--size-width-column) * var(--columns-max) * 1rem) + 1.75rem
     );
   }

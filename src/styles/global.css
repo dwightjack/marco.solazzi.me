@@ -16,7 +16,7 @@ html {
 
 body {
   color: var(--color-text);
-  min-width: 320px;
+  min-inline-size: 320px;
   margin: 0;
   padding: 0;
   background: var(--color-bg);
@@ -33,10 +33,10 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 4px;
+  inline-size: 4px;
 
   @media (--viewport-tablet-landscape) {
-    width: 8px;
+    inline-size: 8px;
   }
 }
 
@@ -50,7 +50,7 @@ body {
 
 hr {
   display: block;
-  height: 1px;
+  block-size: 1px;
   margin: 1rem 0;
   padding: 0;
   border: 0;
