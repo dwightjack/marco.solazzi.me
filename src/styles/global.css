@@ -15,14 +15,14 @@ html {
 }
 
 body {
-  color: var(--color-text);
   min-inline-size: 320px;
   margin: 0;
   padding: 0;
   background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-family-base);
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-family: var(--font-family-base);
   line-height: 1.25;
 }
 
@@ -106,19 +106,22 @@ a:focus-visible {
 }
 
 a:is(.u-link--mark, :not([class*='c-'])) {
-  color: inherit;
-  outline: 0;
-  outline-offset: 4px;
-  text-decoration: none;
-  background: linear-gradient(var(--color-link-bg), var(--color-link-bg));
-  background-repeat: no-repeat;
-  background-size: 100% 3px;
-  background-position: 100% bottom;
   padding-block-end: 3px;
   transition: color 150ms;
+  outline: 0;
+  outline-offset: 4px;
+  background: linear-gradient(var(--color-link-bg), var(--color-link-bg));
+  background-repeat: no-repeat;
+  background-position: 100% bottom;
+  background-size: 100% 3px;
+  color: inherit;
+  text-decoration: none;
 
   @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
     padding-inline: 0.22em;
+    transition: background-position 0s, color 150ms;
+    transition-timing-function: cubic-bezier(0.83, 0.29, 0.29, 0.95);
+    transition-delay: 0s;
     background: linear-gradient(
         to right,
         transparent calc(100% / 3),
@@ -134,26 +137,23 @@ a:is(.u-link--mark, :not([class*='c-'])) {
         var(--color-link-bg) calc(calc(100% / 1.5) + 1px)
       );
     background-repeat: no-repeat;
-    background-size: 300% 100%, 300% 3px;
     background-position: 101% 0, 100% bottom;
-    transition: background-position 0s, color 150ms;
-    transition-timing-function: cubic-bezier(0.83, 0.29, 0.29, 0.95);
-    transition-delay: 0s;
+    background-size: 300% 100%, 300% 3px;
   }
 }
 
 a:is(.u-link--mark, :not([class*='c-'])):hover {
-  color: var(--color-link);
-  text-decoration: none;
-  background-position: 0 0, 0 bottom;
   transition-duration: 650ms, 200ms;
   transition-delay: 0s, 150ms;
+  background-position: 0 0, 0 bottom;
+  color: var(--color-link);
+  text-decoration: none;
 
   @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: reduce) {
-    color: var(--color-link);
     background-image: linear-gradient(
       var(--color-link-bg-hover),
       var(--color-link-bg-hover)
     );
+    color: var(--color-link);
   }
 }

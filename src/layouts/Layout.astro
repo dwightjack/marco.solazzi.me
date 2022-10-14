@@ -79,17 +79,17 @@ const { default: iconHTML } = await import(`../assets/images/icons.svg?raw`);
       :global([astro-icon-spritesheet]) {
         display: block !important;
         position: absolute;
-        inline-size: 0;
         block-size: 0;
+        inline-size: 0;
         overflow: hidden;
       }
 
       .l-header {
         position: fixed;
+        z-index: var(--layer-navigation);
+        inline-size: 0;
         inset-block-start: 0;
         inset-inline-end: 0;
-        inline-size: 0;
-        z-index: var(--layer-navigation);
       }
 
       .l-pages {

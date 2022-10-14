@@ -18,17 +18,17 @@ import Stack from './Stack.astro';
 </nav>
 <style>
   .c-nav {
-    position: absolute;
-    inset-block-start: 0;
-    inset-inline-start: 100%;
     display: flex;
+    position: absolute;
     align-items: center;
     block-size: 100vh;
     padding: 2rem;
-    background-color: var(--color-link);
     transform: translateX(0);
-    will-change: transform;
     transition: transform 700ms cubic-bezier(0.85, 0.07, 0.04, 0.99);
+    background-color: var(--color-link);
+    inset-block-start: 0;
+    inset-inline-start: 100%;
+    will-change: transform;
   }
 
   .c-nav.is-expanded {
@@ -41,24 +41,24 @@ import Stack from './Stack.astro';
 
   .c-nav__route {
     display: block;
-    opacity: 0.8;
     padding: 0.5rem 1.75rem;
+    transition: opacity 150ms linear;
+    opacity: 0.8;
     color: var(--color-light);
     font-family: var(--font-family-h);
     font-size: 18px;
+    letter-spacing: 0.05em;
     text-align: end;
     text-decoration: none;
     white-space: nowrap;
-    letter-spacing: 0.05em;
-    transition: opacity 150ms linear;
   }
 
   .c-nav__route::before {
-    display: inline-block;
-    opacity: 0;
     content: '.';
+    display: inline-block;
     transform: translateX(-0.4em);
     transition: all 250ms ease-out;
+    opacity: 0;
   }
 
   .c-nav__route:is(.is-current, :hover) {
@@ -66,8 +66,8 @@ import Stack from './Stack.astro';
   }
 
   .c-nav__route:is(.is-current, :hover)::before {
-    opacity: 1;
     transform: translateX(-0.1em);
+    opacity: 1;
   }
 </style>
 <script>

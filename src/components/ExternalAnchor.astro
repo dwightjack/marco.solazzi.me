@@ -41,21 +41,21 @@ const { href, variant, icon, title = '' } = Astro.props;
   }
 
   .c-external-anchor--cursor .c-external-anchor__label::before {
+    content: '';
     display: inline-block;
     inline-size: 0.5em;
     margin-inline-end: 0.1em;
-    border-block-end: 2px solid currentcolor;
-    content: '';
     transform: translateY(0.1em);
+    border-block-end: 2px solid currentcolor;
   }
 
   @media (--pointer-mouse) {
     .c-external-anchor--cursor:hover .c-external-anchor__label::before {
-      color: var(--color-link);
       animation-name: blinking-cursor;
       animation-duration: 0.7s;
       animation-timing-function: ease-out;
       animation-iteration-count: infinite;
+      color: var(--color-link);
     }
   }
 

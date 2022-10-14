@@ -4,20 +4,19 @@
 <div class="c-background" aria-hidden="true"></div>
 <style>
   .c-background {
-    position: fixed;
-    inset: 0;
-
-    /* inset-inline-start: 40%; */
     display: flex;
-    justify-content: flex-end;
-    align-items: stretch;
+    position: fixed;
     z-index: var(--layer-behind);
+    align-items: stretch;
+    justify-content: flex-end;
     background-color: var(--color-bg);
+    inset: 0;
   }
 
   .c-background::before {
+    content: '';
+    display: block;
     position: absolute;
-    inset: 0;
     z-index: var(--layer-above);
     background: radial-gradient(
         circle at 100% 0,
@@ -25,8 +24,7 @@
         var(--color-bg) 60%
       )
       no-repeat 0 0 / 100vmax;
-    display: block;
-    content: '';
+    inset: 0;
   }
 
   .c-background__canvas {

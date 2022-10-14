@@ -20,21 +20,21 @@ const { id, mark } = Astro.props;
 
   .c-page__mark {
     position: fixed;
-    inset-block-end: -20vh;
-    inset-inline-start: 20vw;
     z-index: var(--layer-behind);
-    opacity: 0;
     transform: translate(1vw);
-    font-size: max(300px, 80vmin);
-    white-space: nowrap;
     transition: all 750ms ease-out;
     transition-property: opacity, transform;
+    opacity: 0;
+    font-size: max(300px, 80vmin);
+    white-space: nowrap;
+    inset-block-end: -20vh;
+    inset-inline-start: 20vw;
     will-change: opacity, transform;
   }
 
   .c-page.is-current .c-page__mark {
-    opacity: 0.05;
     transform: translateX(0);
+    opacity: 0.05;
 
     /* transition-delay: 550ms; */
   }

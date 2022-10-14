@@ -3,6 +3,7 @@
     "stylelint-config-standard",
     "stylelint-config-html/html",
     "stylelint-config-html/astro",
+    "stylelint-config-property-sort-order-smacss",
     "stylelint-config-prettier"
   ],
   "plugins": ["stylelint-use-logical"],

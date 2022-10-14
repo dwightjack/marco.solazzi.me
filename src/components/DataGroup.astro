@@ -30,11 +30,11 @@ const { label, icon } = Astro.props;
 <style>
   .c-data-group__label {
     display: grid;
+    grid-template-areas: 'icon label';
     grid-template-columns: 1em 1fr;
     grid-template-rows: auto;
-    grid-template-areas: 'icon label';
-    column-gap: 0.5rem;
     margin-block-end: 0.7em;
+    column-gap: 0.5rem;
     font-family: var(--font-family-sans);
     font-size: 1.25rem;
     font-weight: 700;
@@ -46,31 +46,31 @@ const { label, icon } = Astro.props;
 
   .c-data-group__icon {
     grid-area: icon;
-    text-align: center;
     color: var(--color-link);
+    text-align: center;
   }
 
   .c-data-group__icon:first-child {
-    opacity: 0.6;
     transition: all 250ms;
+    opacity: 0.6;
   }
 
   .c-data-group__icon:nth-child(2) {
-    opacity: 0;
     transform: scale(0.2);
     transition: all 150ms ease-out;
+    opacity: 0;
   }
 
   .c-data-group__body {
     padding: 0.25rem 1.25rem;
-    font-size: var(--font-size-m);
-    font-weight: 400;
+    transition: background-size 850ms cubic-bezier(0.68, 0, 0.21, 0.93) 100ms;
     background: linear-gradient(
         var(--color-red-400-a50),
         var(--color-red-400-a50)
       )
       no-repeat 0.63rem center / 2px 0;
-    transition: background-size 850ms cubic-bezier(0.68, 0, 0.21, 0.93) 100ms;
+    font-size: var(--font-size-m);
+    font-weight: 400;
 
     @media (--viewport-tablet-landscape) {
       font-size: 1.125rem;
@@ -83,27 +83,27 @@ const { label, icon } = Astro.props;
     }
 
     .c-data-group:hover .c-data-group__icon:first-child {
-      opacity: 0;
       transform: scale(1.5);
+      opacity: 0;
     }
 
     .c-data-group:hover .c-data-group__icon:nth-child(2) {
-      opacity: 0.6;
       transform: scale(1);
       transition-delay: 240ms;
+      opacity: 0.6;
     }
   }
 
   @media not screen and (--pointer-mouse) {
     .c-data-group .c-data-group__icon:first-child {
-      opacity: 0;
       transform: scale(1.5);
+      opacity: 0;
     }
 
     .c-data-group .c-data-group__icon:nth-child(2) {
-      opacity: 0.6;
       transform: scale(1);
       transition-delay: 240ms;
+      opacity: 0.6;
     }
   }
 </style>

@@ -29,12 +29,12 @@ const { columnsWidth, columnsMax, space } = Astro.props;
       auto-fill,
       minmax(min(100%, var(--size-width-column) * 1rem), 1fr)
     );
-    column-gap: calc(var(--space-c) * var(--space-unit));
-    row-gap: calc(var(--space-r) * var(--space-unit));
 
     /* column-gap: 1.75rem;
     row-gap: 3.75rem; */
     min-inline-size: 0;
+    column-gap: calc(var(--space-c) * var(--space-unit));
+    row-gap: calc(var(--space-r) * var(--space-unit));
   }
 
   .c-grid:where([style*='--columns-max']) {
