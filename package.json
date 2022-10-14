@@ -21,7 +21,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "eslint '**/*.{cjs,mjs,js,ts,astro}' && stylelint '**/*.{css,astro}'"
+    "lint": "eslint 'src/**/*.{cjs,mjs,js,ts,astro}' && stylelint 'src/**/*.{css,astro}'"
   },
   "dependencies": {
     "animejs": "3.2.1",
