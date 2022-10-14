@@ -12,6 +12,9 @@
     {
       "files": ["*.astro"],
       "parser": "astro-eslint-parser",
+      "globals": {
+        "astroHTML": true
+      },
 
       // Parse the script in `.astro` as TypeScript by adding the following configuration.
       // It's the setting you need when using TypeScript.

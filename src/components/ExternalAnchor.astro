@@ -1,25 +1,23 @@
 ---
 import Icon from './Icon.astro';
 
-export interface Props {
-  href: string;
+export interface Props extends astroHTML.JSX.AnchorHTMLAttributes {
   variant?: 'cursor';
   icon?: string;
-  title?: string;
 }
 
-const { href, variant, icon, title = '' } = Astro.props;
+const { variant, icon, ...attrs } = Astro.props;
 ---
 
 <a
-  href={href}
   target="_blank"
   rel="noopener noreferrer external"
-  aria-label={`${title} (Opens in another tab)`.trim()}
+  aria-label={`${attrs.title ?? ''} (Opens in another tab)`.trim()}
   class:list={[
     'c-external-anchor',
     { [`c-external-anchor--${variant}`]: variant },
   ]}
+  {...attrs}
 >
   {
     icon && (
