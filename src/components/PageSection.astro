@@ -25,19 +25,15 @@ const { prefix = 'me', subtitle, title } = Astro.props;
     display: flex;
     flex-direction: column;
     gap: 2rem;
-  }
 
-  @media (--viewport-tablet-landscape) {
-    .c-page-section {
+    @media (--viewport-tablet-landscape) {
       display: grid;
       grid-template-columns: 28% 1fr;
       column-gap: 2%;
       align-items: start;
     }
-  }
 
-  @media (--viewport-desktop) {
-    .c-page-section {
+    @media (--viewport-desktop) {
       padding-inline-start: 2.85vw;
     }
   }
@@ -45,10 +41,8 @@ const { prefix = 'me', subtitle, title } = Astro.props;
   .c-page-section__header {
     font-family: var(--font-family-h);
     text-align: center;
-  }
 
-  @media (--viewport-tablet-landscape) {
-    .c-page-section__header {
+    @media (--viewport-tablet-landscape) {
       position: sticky;
       top: 2rem;
       text-align: left;
@@ -62,10 +56,8 @@ const { prefix = 'me', subtitle, title } = Astro.props;
     line-height: 1.5;
     display: flex;
     justify-content: center;
-  }
 
-  @media (--viewport-tablet-landscape) {
-    .c-page-section__title {
+    @media (--viewport-tablet-landscape) {
       white-space: nowrap;
       justify-content: flex-start;
     }
@@ -73,7 +65,7 @@ const { prefix = 'me', subtitle, title } = Astro.props;
 
   .c-page-section__prefix {
     display: inline-block;
-    margin-right: 0.05em;
+    margin-inline-end: 0.05em;
     padding-inline: 0.3125em;
     color: var(--color-light);
     font-weight: inherit;
@@ -83,7 +75,7 @@ const { prefix = 'me', subtitle, title } = Astro.props;
   }
 
   .c-page-section__sub {
-    margin-top: 0.8em;
+    margin-block-start: 0.8em;
     font-size: var(--font-size-m);
   }
 </style>

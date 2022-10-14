@@ -1,21 +1,15 @@
 html {
   font-size: 100%;
   scroll-behavior: smooth;
-  scroll-padding-top: 2rem;
-}
+  scroll-padding-block-start: 2rem;
 
-@media (--viewport-tablet-landscape) {
-  html {
+  @media (--viewport-tablet-landscape) {
     font-size: 87.5%;
   }
-}
-@media (--viewport-desktop) {
-  html {
+  @media (--viewport-desktop) {
     font-size: 100%;
   }
-}
-@media (--viewport-qhd) {
-  html {
+  @media (--viewport-qhd) {
     font-size: 125%;
   }
 }
@@ -40,10 +34,8 @@ body {
 
 ::-webkit-scrollbar {
   width: 4px;
-}
 
-@media (--viewport-tablet-landscape) {
-  ::-webkit-scrollbar {
+  @media (--viewport-tablet-landscape) {
     width: 8px;
   }
 }
@@ -99,8 +91,21 @@ p {
   line-height: 1.2;
 }
 
-a.u-link--mark,
-a:not([class*='c-']) {
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-link-bg-hover);
+  outline-offset: 2px;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: outline-offset 0.2s ease, color 0.2s ease;
+  }
+}
+
+a:focus-visible {
+  color: var(--color-link);
+}
+
+a:is(.u-link--mark, :not([class*='c-'])) {
   color: inherit;
   outline: 0;
   outline-offset: 4px;
@@ -111,12 +116,9 @@ a:not([class*='c-']) {
   background-position: 100% bottom;
   padding-bottom: 3px;
   transition: color 150ms;
-}
 
-@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  a:is(.u-link--mark, :not([class*='c-'])) {
-    padding-right: 0.22em;
-    padding-left: 0.22em;
+  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    padding-inline: 0.22em;
     background: linear-gradient(
         to right,
         transparent calc(100% / 3),
@@ -138,39 +140,20 @@ a:not([class*='c-']) {
     transition-timing-function: cubic-bezier(0.83, 0.29, 0.29, 0.95);
     transition-delay: 0s;
   }
-
-  a:is(.u-link--mark, :not([class*='c-'])):hover {
-    color: var(--color-link);
-    text-decoration: none;
-    background-position: 0 0, 0 bottom;
-    transition-duration: 650ms, 200ms;
-    transition-delay: 0s, 150ms;
-  }
 }
 
-@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: reduce) {
-  a:is(.u-link--mark, :not([class*='c-'])):hover {
+a:is(.u-link--mark, :not([class*='c-'])):hover {
+  color: var(--color-link);
+  text-decoration: none;
+  background-position: 0 0, 0 bottom;
+  transition-duration: 650ms, 200ms;
+  transition-delay: 0s, 150ms;
+
+  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: reduce) {
     color: var(--color-link);
     background-image: linear-gradient(
       var(--color-link-bg-hover),
       var(--color-link-bg-hover)
     );
-  }
-}
-
-a:focus-visible,
-button:focus-visible {
-  outline: 2px solid var(--color-link-bg-hover);
-  outline-offset: 2px;
-}
-
-a:focus-visible {
-  color: var(--color-link);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:focus-visible,
-  button:focus-visible {
-    transition: outline-offset 0.2s ease, color 0.2s ease;
   }
 }

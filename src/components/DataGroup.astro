@@ -34,14 +34,12 @@ const { label, icon } = Astro.props;
     grid-template-rows: auto;
     grid-template-areas: 'icon label';
     column-gap: 0.5rem;
-    margin-bottom: 0.7em;
+    margin-block-end: 0.7em;
     font-family: var(--font-family-sans);
     font-size: 1.25rem;
     font-weight: 700;
-  }
 
-  @media (--viewport-tablet-landscape) {
-    .c-data-group__label {
+    @media (--viewport-tablet-landscape) {
       font-size: 1.375rem;
     }
   }
@@ -73,9 +71,8 @@ const { label, icon } = Astro.props;
       )
       no-repeat 0.63rem center / 2px 0;
     transition: background-size 850ms cubic-bezier(0.68, 0, 0.21, 0.93) 100ms;
-  }
-  @media (--viewport-tablet-landscape) {
-    .c-data-group__body {
+
+    @media (--viewport-tablet-landscape) {
       font-size: 1.125rem;
     }
   }

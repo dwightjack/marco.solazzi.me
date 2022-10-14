@@ -45,10 +45,8 @@ import marco from '../assets/images/marco.jpg';
 <style>
   .c-cover {
     padding: var(--space-page-gutter-block) var(--space-page-gutter-inline);
-  }
 
-  @media (--viewport-tablet-landscape) {
-    .c-cover {
+    @media (--viewport-tablet-landscape) {
       display: grid;
       grid-template-columns: 28vw 36rem 1fr;
       grid-template-rows: 1fr auto 1fr;
@@ -64,10 +62,8 @@ import marco from '../assets/images/marco.jpg';
   .c-cover__pic {
     width: 56%;
     margin-inline: auto;
-  }
 
-  @media (--viewport-tablet-landscape) {
-    .c-cover__pic {
+    @media (--viewport-tablet-landscape) {
       grid-area: pic;
       align-self: center;
       justify-self: end;
@@ -81,20 +77,18 @@ import marco from '../assets/images/marco.jpg';
   }
 
   .c-cover__body > * + * {
-    margin-top: 3.75rem;
+    margin-block-start: 3.75rem;
   }
 
   .c-cover__headline {
-    margin-top: 0.5em;
+    margin-block-start: 0.5em;
     font-family: inherit;
     font-size: 2.5rem;
     font-weight: 700;
     text-align: center;
-  }
 
-  @media (--viewport-tablet-landscape) {
-    .c-cover__headline {
-      margin-top: 0;
+    @media (--viewport-tablet-landscape) {
+      margin-block-start: 0;
       font-size: 2.8125rem;
       text-align: left;
     }
@@ -114,22 +108,20 @@ import marco from '../assets/images/marco.jpg';
     font-family: 'Times New Roman', Times, serif;
     font-size: 2.5em;
     content: '\201c';
-  }
 
-  @media (--viewport-tablet-landscape) {
-    .c-cover__text::before {
+    @media (--viewport-tablet-landscape) {
       font-size: 4em;
     }
   }
 
   .c-cover__text > * + * {
-    margin-top: 0.8em;
+    margin-block-start: 0.8em;
     line-height: 1.4;
   }
 
   .c-cover__scrollhint {
     grid-area: scrollhint;
-    margin-bottom: 6vh;
+    margin-block-end: 6vh;
     opacity: 0.8;
     color: var(--color-text);
     font-size: 0.75rem;
@@ -141,10 +133,8 @@ import marco from '../assets/images/marco.jpg';
     text-align: center;
     text-decoration: none;
     will-change: transform;
-  }
 
-  @media not all and (--viewport-tablet-landscape) {
-    .c-cover__scrollhint {
+    @media not all and (--viewport-tablet-landscape) {
       display: none;
     }
   }

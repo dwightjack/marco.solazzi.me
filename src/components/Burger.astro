@@ -18,7 +18,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: var(--burger-size);
+    inline-size: var(--burger-size);
     color: var(--color-red-700);
     margin: 0;
     padding: calc((var(--burger-size) - var(--burger-height)) / 2) 0;
@@ -30,13 +30,23 @@
     cursor: pointer;
     outline: 0;
     transition: background-size 0.2s ease-out;
+
+    &:focus-visible {
+      --burger-bar-width: 100%;
+    }
+
+    @media (--pointer-mouse) {
+      &:hover {
+        --burger-bar-width: 100%;
+      }
+    }
   }
 
   .c-burger::after,
   .c-burger::before {
     display: block;
     content: '';
-    width: 100%;
+    inline-size: 100%;
     height: var(--burger-bar-height);
     transform-origin: 100% 0;
     transition: transform 0.2s ease-out;
@@ -45,16 +55,6 @@
 
   .c-burger::after {
     transform: scaleX(var(--burger-bar-width, 70%));
-  }
-
-  .c-burger:focus-visible {
-    --burger-bar-width: 100%;
-  }
-
-  @media (--pointer-mouse) {
-    .c-burger:hover {
-      --burger-bar-width: 100%;
-    }
   }
 
   .c-burger[aria-expanded='true'] {
