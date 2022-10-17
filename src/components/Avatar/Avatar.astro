@@ -9,6 +9,8 @@ const { foreground } = Astro.props;
 <figure class="c-avatar" data-fg={foreground}>
   <svg
     viewBox="0 0 850 860"
+    width="850"
+    height="860"
     role="img"
     focusable="false"
     class="c-avatar__static"
@@ -32,6 +34,10 @@ const { foreground } = Astro.props;
   .c-avatar {
     position: relative;
     margin: 0;
+  }
+
+  .c-avatar__static {
+    width: 100%;
   }
 
   .c-avatar > :global(.c-avatar__canvas) {
