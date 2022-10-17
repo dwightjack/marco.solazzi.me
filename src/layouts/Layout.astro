@@ -7,7 +7,6 @@ import '../styles/utility.css';
 import Burger from '../components/Burger.astro';
 import Stack from '../components/Stack.astro';
 import Nav from '../components/Nav.astro';
-import Background from '../components/Background.astro';
 
 const socialImageURL = new URL('/marco-og.jpg', Astro.url);
 ---
@@ -48,29 +47,30 @@ const socialImageURL = new URL('/marco-og.jpg', Astro.url);
   </head>
 
   <body>
-    <Background />
     <Sprite.Provider>
       <header class="l-header" id="header">
         <Burger />
         <Nav />
       </header>
-      <main>
-        <slot name="cover" />
-        <Stack space={15} class="l-pages">
-          <slot />
-        </Stack>
-      </main>
-      <footer class="l-footer">
-        © 2017-{new Date().getFullYear()} Marco Solazzi - <a
-          href="https://github.com/dwightjack/marco.solazzi.me/blob/main/LICENSE.md"
-          target="_blank"
-          rel="noopener noreferrer">license</a
-        >&nbsp<a
-          href="https://github.com/dwightjack/marco.solazzi.me"
-          target="_blank"
-          rel="noopener noreferrer">source</a
-        >
-      </footer>
+      <div class="l-container">
+        <main>
+          <slot name="cover" />
+          <Stack space={15} class="l-pages">
+            <slot />
+          </Stack>
+        </main>
+        <footer class="l-footer">
+          © 2017-{new Date().getFullYear()} Marco Solazzi - <a
+            href="https://github.com/dwightjack/marco.solazzi.me/blob/main/LICENSE.md"
+            target="_blank"
+            rel="noopener noreferrer">license</a
+          >&nbsp<a
+            href="https://github.com/dwightjack/marco.solazzi.me"
+            target="_blank"
+            rel="noopener noreferrer">source</a
+          >
+        </footer>
+      </div>
     </Sprite.Provider>
     <style>
       :global([astro-icon-spritesheet]) {
@@ -80,6 +80,21 @@ const socialImageURL = new URL('/marco-og.jpg', Astro.url);
         inline-size: 0;
         overflow: hidden;
       }
+
+      /* body {
+        background: radial-gradient(
+              circle at 100% 0,
+              transparent 40%,
+              var(--color-bg) 60%
+            )
+            no-repeat 0 0 / 100vw 100vmax,
+          linear-gradient(
+            to bottom,
+            transparent 100vmax,
+            var(--color-bg) 100vmax
+          ),
+          fixed url('../assets/images/circuits-full.svg') repeat 0 0 / 304px;
+      } */
 
       .l-header {
         position: fixed;
