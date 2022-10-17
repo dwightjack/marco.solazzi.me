@@ -36,10 +36,10 @@ const { label, icon } = Astro.props;
     margin-block-end: 0.7em;
     column-gap: 0.5rem;
     font-family: var(--font-family-sans);
-    font-size: var(--font-size-300);
+    font-size: var(--text-heading-font-size);
 
     @media (--viewport-tablet-landscape) {
-      font-size: var(--font-size-400);
+      font-size: var(--text-heading-font-size-mq);
     }
   }
 
@@ -68,11 +68,9 @@ const { label, icon } = Astro.props;
         var(--color-red-400-a50)
       )
       no-repeat 0.63rem center / 2px 0;
-    font-size: var(--font-size-100);
-    font-weight: 400;
 
     @media (--viewport-tablet-landscape) {
-      font-size: var(--font-size-200);
+      font-size: var(--text-body-font-size-x2);
     }
   }
 

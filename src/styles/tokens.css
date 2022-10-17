@@ -43,7 +43,15 @@
 
   /* Public tokens */
   --text-heading-font-size: var(--font-size-300);
-  --text-heading-font-size-x1: var(--font-size-400);
+  --text-heading-font-size-mq: var(--font-size-400);
+  --text-heading-font-size-x2: var(--font-size-800);
+  --text-heading-font-size-x3: var(--font-size-1200);
+  --text-heading-font-size-x3mq: var(--font-size-1400);
+  --text-subheading-font-size: var(--font-size-100);
+  --text-body-font-size: var(--font-size-100);
+  --text-body-font-size-x2: var(--font-size-200);
+  --text-body-font-size-x3: var(--font-size-300);
+  --text-footer-font-size: var(--font-size-80);
 
 
 }
