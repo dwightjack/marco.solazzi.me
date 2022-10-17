@@ -69,7 +69,6 @@ import Page from '../components/Page.astro';
 
     @media (--viewport-tablet-landscape) {
       grid-area: pic;
-      align-self: center;
       justify-self: end;
       inline-size: calc(100% - 4.6875vw);
       margin-inline: 0;
@@ -131,16 +130,12 @@ import Page from '../components/Page.astro';
     margin-block-end: 6vh;
     opacity: 0.8;
     color: var(--color-text);
-    font-size: 0.75rem;
+    font-size: 1rem;
     text-align: center;
     text-decoration: none;
     gap: 1em;
     justify-self: center;
     will-change: transform;
-
-    @media not all and (--viewport-tablet-landscape) {
-      display: none;
-    }
   }
 
   .c-cover__scrollhint-ico {

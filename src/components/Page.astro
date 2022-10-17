@@ -16,7 +16,13 @@ const classes = ['c-page', indent && ' c-page--indent']
 
 <Stack class={classes} id={id} space={15}>
   <slot />
-  {mark && <span class="c-page__mark">{mark}</span>}
+  {
+    mark && (
+      <span class="c-page__mark" aria-hidden="true">
+        {mark}
+      </span>
+    )
+  }
 </Stack>
 <style>
   .c-page.c-page--indent {
@@ -37,6 +43,10 @@ const classes = ['c-page', indent && ' c-page--indent']
     will-change: opacity, transform;
   }
 
+  .c-page:not(.is-dynamic) .c-page__mark {
+    display: none;
+  }
+
   .c-page.is-current .c-page__mark {
     transform: translateX(0);
     opacity: 0.05;
@@ -46,10 +56,15 @@ const classes = ['c-page', indent && ' c-page--indent']
   import { currentRoute } from '../shared/store';
 
   const pages = document.querySelectorAll('.c-page');
+
   currentRoute.subscribe((route) => {
     console.log(route);
     for (const page of pages) {
       page.classList.toggle('is-current', page.id === route);
     }
   });
+
+  for (const page of pages) {
+    page.classList.add('is-dynamic');
+  }
 </script>
