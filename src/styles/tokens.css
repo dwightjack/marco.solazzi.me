@@ -23,25 +23,29 @@
   --font-family-serif: 'Bree Serif', serif;
   --font-family-base: var(--font-family-sans);
   --font-family-h: var(--font-family-serif);
-  --font-size-default: 1rem;
-  --font-size-xl: 2.5rem;
-  --font-size-l: 2rem;
-  --font-size-m: var(--font-size-default);
-  --font-size-s: 0.875rem;
-  --font-size-xs: 0.625rem;
-
-  /* Layers */
-  --layer-behind: -1;
-  --layer-below: -1;
-  --layer-base: 0;
-  --layer-above: 1;
-  --layer-loader: 10;
-  --layer-navigation: 5;
+  --font-size-80: 0.875rem;
+  --font-size-100: 1rem;
+  --font-size-200: 1.125rem;
+  --font-size-300: 1.25rem;
+  --font-size-400: 1.375rem;
+  --font-size-800: 2rem;
+  --font-size-1200: 2.5rem;
+  --font-size-1400: 2.8125rem;
+  --layer-b1: -1;
+  --layer-f0: 0;
+  --layer-f1: 1;
+  --layer-f5: 5;
 
   /* Spacing */
   --space-page-gutter-block: 4.375rem;
   --space-page-gutter-inline: clamp(3rem, 5.46875vw + 1rem, 6.375rem);
   --space-unit: 0.5rem;
+
+  /* Public tokens */
+  --text-heading-font-size: var(--font-size-300);
+  --text-heading-font-size-x1: var(--font-size-400);
+
+
 }
 
 /* Media queries */

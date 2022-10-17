@@ -37,7 +37,7 @@ function metaTitle(meta: Record<string, string>) {
 <article class="c-card">
   {
     titleLabel && (
-      <h3 class="c-card__caption" id={`table-${id}`}>
+      <h3 class="c-card__title" id={`table-${id}`}>
         .{titleLabel}:
         {typeof href === 'string' ? (
           <a href={href} target="_blank" rel="external noopener noreferrer">
@@ -98,11 +98,6 @@ function metaTitle(meta: Record<string, string>) {
     background-position: 0 0, 0 8px, 0 bottom;
     background-size: 16px 8px, 8px calc(100% - 16px), 16px 8px;
 
-    @media (--viewport-tablet-landscape) {
-      border-inline-start: 20px solid transparent;
-      margin-inline-start: -20px;
-    }
-
     @media (--pointer-mouse) {
       transition: all 250ms ease-in-out;
       transition-property: background-position, background-size;
@@ -114,23 +109,20 @@ function metaTitle(meta: Record<string, string>) {
     }
   }
 
-  .c-card__caption {
+  .c-card__title {
     margin-block-end: 0.7em;
-    font-family: var(--font-family-sans);
-    font-size: 1.25rem;
-    font-weight: 700;
-    page-break-inside: avoid;
+    font-size: var(--font-size-300);
 
     @media (--viewport-tablet-landscape) {
-      font-size: 1.375rem;
+      font-size: var(--font-size-400);
     }
   }
 
   .c-card__data {
-    font-size: var(--font-size-m);
+    font-size: var(--font-size-100);
 
     @media (--viewport-tablet-landscape) {
-      font-size: 1.125rem;
+      font-size: var(--font-size-200);
     }
   }
 

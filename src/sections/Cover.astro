@@ -86,20 +86,19 @@ import Page from '../components/Page.astro';
   .c-cover__headline {
     margin-block-start: 0.5em;
     font-family: inherit;
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: var(--font-size-1200);
     text-align: center;
 
     @media (--viewport-tablet-landscape) {
       margin-block-start: 0;
-      font-size: 2.8125rem;
+      font-size: var(--font-size-1400);
       text-align: start;
     }
   }
 
   .c-cover__text {
     position: relative;
-    font-size: 1.25rem;
+    font-size: var(--font-size-300);
   }
 
   .c-cover__text::before {
