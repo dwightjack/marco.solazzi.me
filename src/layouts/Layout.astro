@@ -52,25 +52,23 @@ const socialImageURL = new URL('/marco-og.jpg', Astro.url);
         <Burger />
         <Nav />
       </header>
-      <div class="l-container">
-        <main>
-          <slot name="cover" />
-          <Stack space={15} class="l-pages">
-            <slot />
-          </Stack>
-        </main>
-        <footer class="l-footer">
-          © 2017-{new Date().getFullYear()} Marco Solazzi - <a
-            href="https://github.com/dwightjack/marco.solazzi.me/blob/main/LICENSE.md"
-            target="_blank"
-            rel="noopener noreferrer">license</a
-          >&nbsp<a
-            href="https://github.com/dwightjack/marco.solazzi.me"
-            target="_blank"
-            rel="noopener noreferrer">source</a
-          >
-        </footer>
-      </div>
+      <main>
+        <slot name="cover" />
+        <Stack space={15} class="l-pages">
+          <slot />
+        </Stack>
+      </main>
+      <footer class="l-footer">
+        © 2017-{new Date().getFullYear()} Marco Solazzi - <a
+          href="https://github.com/dwightjack/marco.solazzi.me/blob/main/LICENSE.md"
+          target="_blank"
+          rel="noopener noreferrer">license</a
+        >&nbsp<a
+          href="https://github.com/dwightjack/marco.solazzi.me"
+          target="_blank"
+          rel="noopener noreferrer">source</a
+        >
+      </footer>
     </Sprite.Provider>
     <style>
       :global([astro-icon-spritesheet]) {
