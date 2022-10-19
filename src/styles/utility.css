@@ -1,21 +1,3 @@
-.u-text--left {
-  text-align: start !important;
-}
-
-.u-text--right {
-  text-align: end !important;
-}
-
-.u-text--center {
-  text-align: center !important;
-}
-
-.u-hidden,
-.js .is-jshidden {
-  display: none !important;
-  visibility: hidden !important;
-}
-
 .u-visuallyhidden {
   position: absolute !important;
   block-size: 1px !important;
@@ -26,8 +8,4 @@
   clip: rect(0, 0, 0, 0) !important;
   border: 0 !important;
   white-space: nowrap !important;
-}
-
-.u-invisible {
-  visibility: hidden !important;
 }
