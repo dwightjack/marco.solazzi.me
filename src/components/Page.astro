@@ -32,15 +32,27 @@ const classes = ['c-page', indent && ' c-page--indent']
   .c-page__mark {
     position: fixed;
     z-index: var(--layer-b1);
-    transform: translate(1vw);
     transition: all 750ms ease-out;
     transition-property: opacity, transform;
     opacity: 0;
     font-size: max(300px, 80vmin);
     white-space: nowrap;
-    inset-block-end: -20vh;
-    inset-inline-start: 20vw;
     will-change: opacity, transform;
+
+    @media not screen and (--viewport-tablet) {
+      inset-block-start: -40vw;
+      inset-inline-end: -10vh;
+      writing-mode: vertical-rl;
+    }
+
+    @media (--viewport-tablet) {
+      inset-block-end: -20vh;
+      inset-inline-start: 20vw;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      transform: translate(1vw);
+    }
   }
 
   .c-page:not(.is-dynamic) .c-page__mark {

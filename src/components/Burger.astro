@@ -10,6 +10,11 @@
     --burger-height: 17px;
     --burger-bar-height: 3px;
     --burger-bar-spacing: 4px;
+    --burger-transition-time: 0s;
+
+    @media (prefers-reduced-motion: no-preference) {
+      --burger-transition-time: 200ms;
+    }
 
     display: flex;
     position: absolute;
@@ -19,7 +24,7 @@
     inline-size: var(--burger-size);
     margin: 0;
     padding: calc((var(--burger-size) - var(--burger-height)) / 2) 0;
-    transition: background-size 0.2s ease-out;
+    transition: background-size var(--burger-transition-time) ease-out;
     border: 0;
     outline: 0;
     background: transparent linear-gradient(to left, currentcolor, currentcolor)
@@ -49,7 +54,7 @@
     block-size: var(--burger-bar-height);
     inline-size: 100%;
     transform-origin: 100% 0;
-    transition: transform 0.2s ease-out;
+    transition: transform var(--burger-transition-time) ease-out;
     background-color: currentcolor;
   }
 
@@ -65,12 +70,14 @@
 
   .c-burger[aria-expanded='true']::before {
     transform: translate(0, 17px) rotate(45deg);
-    transition: color 0.2s ease-out, transform 0.2s ease-out;
+    transition: color var(--burger-transition-time) ease-out,
+      transform var(--burger-transition-time) ease-out;
   }
 
   .c-burger[aria-expanded='true']::after {
     transform: translate(-3px, -14px) rotate(-45deg);
-    transition: color 0.2s ease-out, transform 0.2s ease-out;
+    transition: color var(--burger-transition-time) ease-out,
+      transform var(--burger-transition-time) ease-out;
   }
 </style>
 <script>

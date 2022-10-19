@@ -78,7 +78,7 @@ a:focus-visible {
   color: var(--color-link);
 }
 
-a:is(.u-link--mark, :not([class*='c-'])) {
+a:not([class*='c-']) {
   padding-block-end: 3px;
   transition: color 150ms;
   outline: 0;
@@ -90,7 +90,7 @@ a:is(.u-link--mark, :not([class*='c-'])) {
   color: inherit;
   text-decoration: none;
 
-  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  @media (--pointer-mouse) and (prefers-reduced-motion: no-preference) {
     padding-inline: 0.22em;
     transition: background-position 0s, color 150ms;
     transition-timing-function: cubic-bezier(0.83, 0.29, 0.29, 0.95);
@@ -115,14 +115,19 @@ a:is(.u-link--mark, :not([class*='c-'])) {
   }
 }
 
-a:is(.u-link--mark, :not([class*='c-'])):hover {
-  transition-duration: 650ms, 200ms;
-  transition-delay: 0s, 150ms;
-  background-position: 0 0, 0 bottom;
-  color: var(--color-link);
-  text-decoration: none;
+a:not([class*='c-']):hover {
+  @media (--pointer-mouse) {
+    color: var(--color-link);
+    text-decoration: none;
+  }
 
-  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: reduce) {
+  @media (--pointer-mouse) and (prefers-reduced-motion: no-preference) {
+    transition-duration: 650ms, 200ms;
+    transition-delay: 0s, 150ms;
+    background-position: 0 0, 0 bottom;
+  }
+
+  @media (--pointer-mouse) and (prefers-reduced-motion: reduce) {
     background-image: linear-gradient(
       var(--color-link-bg-hover),
       var(--color-link-bg-hover)

@@ -45,24 +45,28 @@ const { label, icon } = Astro.props;
 
   .c-data-group__icon {
     grid-area: icon;
-    color: var(--color-link);
+    color: var(--color-red-400-a50);
     text-align: center;
-  }
 
-  .c-data-group__icon:first-child {
-    transition: all 250ms;
-    opacity: 0.6;
-  }
+    @media (--pointer-mouse) and (prefers-reduced-motion: no-preference) {
+      transition: all 250ms ease-out;
 
-  .c-data-group__icon:nth-child(2) {
-    transform: scale(0.2);
-    transition: all 150ms ease-out;
-    opacity: 0;
+      &:nth-child(2) {
+        transform: scale(0.2);
+        transition-duration: 150ms;
+        opacity: 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce), not screen and (--pointer-mouse) {
+      &:not(:nth-child(2)) {
+        opacity: 0;
+      }
+    }
   }
 
   .c-data-group__body {
     padding: 0.25rem 1.25rem;
-    transition: background-size 850ms cubic-bezier(0.68, 0, 0.21, 0.93) 100ms;
     background: linear-gradient(
         var(--color-red-400-a50),
         var(--color-red-400-a50)
@@ -72,6 +76,10 @@ const { label, icon } = Astro.props;
     @media (--viewport-tablet-landscape) {
       font-size: var(--text-body-font-size-x2);
     }
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: background-size 850ms cubic-bezier(0.68, 0, 0.21, 0.93) 100ms;
+    }
   }
 
   @media (--pointer-mouse) {
@@ -79,28 +87,17 @@ const { label, icon } = Astro.props;
       background-size: 2px 100%;
     }
 
-    .c-data-group:hover .c-data-group__icon:first-child {
-      transform: scale(1.5);
-      opacity: 0;
-    }
+    @media (prefers-reduced-motion: no-preference) {
+      .c-data-group:hover .c-data-group__icon:first-child {
+        transform: scale(1.5);
+        opacity: 0;
+      }
 
-    .c-data-group:hover .c-data-group__icon:nth-child(2) {
-      transform: scale(1);
-      transition-delay: 240ms;
-      opacity: 0.6;
-    }
-  }
-
-  @media not screen and (--pointer-mouse) {
-    .c-data-group .c-data-group__icon:first-child {
-      transform: scale(1.5);
-      opacity: 0;
-    }
-
-    .c-data-group .c-data-group__icon:nth-child(2) {
-      transform: scale(1);
-      transition-delay: 240ms;
-      opacity: 0.6;
+      .c-data-group:hover .c-data-group__icon:nth-child(2) {
+        transform: scale(1);
+        transition-delay: 240ms;
+        opacity: 1;
+      }
     }
   }
 </style>

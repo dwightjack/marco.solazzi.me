@@ -1,22 +1,24 @@
 ---
+import { NAV_PATH_TALKS } from '../shared/constants';
 import Card from '../components/Card.astro';
 import Page from '../components/Page.astro';
 import PageSection from '../components/PageSection.astro';
-import { NAV_PATH_EDUCATION } from '../shared/constants';
-import education from '../database/education.json';
 import Stack from '../components/Stack.astro';
+import talks from '../database/talks.json';
 ---
 
-<Page id={NAV_PATH_EDUCATION} mark="学校">
-  <PageSection title="education" subtitle="Learning never ends">
+<Page id={NAV_PATH_TALKS} mark="発表">
+  <PageSection title="talks" subtitle="Sharing the knowledge">
     <Stack space={5}>
       {
-        education.map(({ id, title, ...entry }) => (
+        talks.map(({ title, id, href, meta, ...entry }) => (
           <Card
             titleLabel="title"
             title={title}
             data={entry}
-            id={`education-${id}`}
+            href={href}
+            meta={meta}
+            id={`portfolio-talks-${id}`}
           />
         ))
       }

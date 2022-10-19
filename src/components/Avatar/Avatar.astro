@@ -55,7 +55,8 @@ const { foreground } = Astro.props;
   avatar.classList.add('is-active');
 </script>
 <script>
-  window.requestIdleCallback(async () => {
+  const callback = window.requestIdleCallback || ((fn) => setTimeout(fn, 0));
+  callback(async () => {
     const { mount } = await import('./animation');
     mount(document.querySelector('.c-avatar') as HTMLElement, 600, 400);
   });

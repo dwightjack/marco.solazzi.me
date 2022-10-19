@@ -24,11 +24,14 @@ import Stack from './Stack.astro';
     block-size: 100vh;
     padding: 2rem;
     transform: translateX(0);
-    transition: transform 700ms cubic-bezier(0.85, 0.07, 0.04, 0.99);
     background-color: var(--color-link);
     inset-block-start: 0;
     inset-inline-start: 100%;
     will-change: transform;
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: transform 700ms cubic-bezier(0.85, 0.07, 0.04, 0.99);
+    }
   }
 
   .c-nav.is-expanded {
@@ -61,13 +64,25 @@ import Stack from './Stack.astro';
     opacity: 0;
   }
 
-  .c-nav__route:is(.is-current, :hover) {
+  .c-nav__route.is-current {
     opacity: 1;
+
+    &::before {
+      transform: translateX(-0.1em);
+      transition-delay: 200ms;
+      opacity: 1;
+    }
   }
 
-  .c-nav__route:is(.is-current, :hover)::before {
-    transform: translateX(-0.1em);
-    opacity: 1;
+  .c-nav__route:hover {
+    @media (--pointer-mouse) {
+      opacity: 1;
+
+      &::before {
+        transform: translateX(-0.1em);
+        opacity: 1;
+      }
+    }
   }
 </style>
 <script>

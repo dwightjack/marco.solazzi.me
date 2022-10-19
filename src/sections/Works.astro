@@ -1,14 +1,13 @@
 ---
+import { NAV_PATH_WORKS } from '../shared/constants';
 import Card from '../components/Card.astro';
 import Page from '../components/Page.astro';
 import PageSection from '../components/PageSection.astro';
-import { NAV_PATH_PORTFOLIO } from '../shared/constants';
-import works from '../database/portfolio.works.json';
-import talks from '../database/portfolio.talks.json';
 import Stack from '../components/Stack.astro';
+import works from '../database/works.json';
 ---
 
-<Page id={NAV_PATH_PORTFOLIO} mark="作品">
+<Page id={NAV_PATH_WORKS} mark="作品">
   <PageSection title="works" subtitle="Latest projects">
     <Stack space={5}>
       {
@@ -20,22 +19,6 @@ import Stack from '../components/Stack.astro';
             href={href}
             meta={meta}
             id={`portfolio-works-${id}`}
-          />
-        ))
-      }
-    </Stack>
-  </PageSection>
-  <PageSection title="talks" subtitle="Sharing the knowledge">
-    <Stack space={5}>
-      {
-        talks.map(({ title, id, href, meta, ...entry }) => (
-          <Card
-            titleLabel="title"
-            title={title}
-            data={entry}
-            href={href}
-            meta={meta}
-            id={`portfolio-talks-${id}`}
           />
         ))
       }
