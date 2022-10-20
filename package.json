@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "animejs": "3.2.1",
-    "astro": "^1.4.6",
+    "astro": "1.5.2",
     "astro-icon": "0.7.3",
     "modern-normalize": "1.1.0",
     "nanostores": "0.7.0",
