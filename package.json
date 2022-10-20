@@ -7,6 +7,7 @@
   "author": {
     "name": "Marco Solazzi"
   },
+  "packageManager": "pnpm@7.11.0",
   "engines": {
     "node": ">=16.17.0",
     "pnpm": "^7.11.0"
