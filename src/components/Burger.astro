@@ -15,21 +15,27 @@
       --burger-transition-time: 200ms;
     }
 
-    display: flex;
+    display: block;
     position: absolute;
     z-index: var(--layer-f1);
-    flex-direction: column;
-    justify-content: space-between;
     inline-size: var(--burger-size);
     margin: 0;
     padding-block: calc((var(--burger-size) - var(--burger-height)) / 2);
     padding-inline: 0;
-    transition: background-size var(--burger-transition-time) ease-out;
+    transition: color var(--burger-transition-time) ease-out,
+      background-size var(--burger-transition-time) ease-out;
     border: 0;
     outline: 0;
-    background: transparent linear-gradient(to left, currentcolor, currentcolor)
-      no-repeat right 50% / var(--burger-bar-width, 85%)
-      var(--burger-size-bar-height);
+    background-color: transparent;
+    background-image: linear-gradient(to left, currentcolor, currentcolor),
+      linear-gradient(to left, currentcolor, currentcolor),
+      linear-gradient(to left, currentcolor, currentcolor);
+    background-repeat: no-repeat;
+    background-position: right 0, right 50%, right bottom;
+    background-origin: content-box;
+    background-size: var(--burger-bar-width, 100%) var(--burger-size-bar-height),
+      var(--burger-bar-width, 85%) var(--burger-size-bar-height),
+      var(--burger-bar-width, 70%) var(--burger-size-bar-height);
     color: var(--interactive-color-background);
     cursor: pointer;
     inset-block-start: 1.75rem;
@@ -47,41 +53,32 @@
     }
   }
 
-  .c-burger::after,
   .c-burger::before {
     content: '';
     display: block;
-    block-size: var(--burger-size-bar-height);
-    inline-size: 100%;
-    transform-origin: 100% 0;
-    transition: transform var(--burger-transition-time) ease-out;
-    background-color: currentcolor;
-  }
-
-  .c-burger::after {
-    transform: scaleX(var(--burger-bar-width, 70%));
-    transform-origin: 100% bottom;
+    width: var(--burger-width);
+    margin-block: calc((var(--burger-height) - var(--burger-size)) / 2);
+    transform: rotate(20deg);
+    transition: all var(--burger-transition-time) ease-out;
+    transition-property: opacity, transform, color;
+    opacity: 0;
+    background: linear-gradient(to right, currentcolor, currentcolor) no-repeat
+        0 50% / 100% var(--burger-size-bar-height),
+      linear-gradient(to top, currentcolor, currentcolor) no-repeat 50% 0 /
+        var(--burger-size-bar-height) 100%;
+    aspect-ratio: 1;
   }
 
   .c-burger[aria-expanded='true'] {
-    transition-duration: 0s;
-    background-size: 0 var(--burger-size-bar-height);
+    --burger-bar-width: 0;
+
     color: var(--interactive-color-background-pressed);
   }
 
   .c-burger[aria-expanded='true']::before {
-    transform: translateY(var(--burger-height)) rotate(45deg);
-    transition: color var(--burger-transition-time) ease-out,
-      transform var(--burger-transition-time) ease-out;
-  }
-
-  .c-burger[aria-expanded='true']::after {
-    transform: translateY(
-        calc(var(--burger-size-bar-height) - var(--burger-height) - 0.2rem)
-      )
-      rotate(-45deg);
-    transition: color var(--burger-transition-time) ease-out,
-      transform var(--burger-transition-time) ease-out;
+    transform: rotate(45deg);
+    transition-delay: 200ms;
+    opacity: 1;
   }
 </style>
 <script>
