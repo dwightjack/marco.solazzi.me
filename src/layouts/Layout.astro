@@ -88,11 +88,11 @@ const socialImageURL = new URL('/marco-og.jpg', Astro.url);
       }
 
       .l-pages {
-        padding-block: 6.25rem;
+        padding-block: calc(var(--space-2) * 6.25);
       }
 
       .l-footer {
-        padding-block-end: 1.875rem;
+        padding-block-end: var(--space-4);
         font-size: var(--text-footer-font-size);
         text-align: center;
       }

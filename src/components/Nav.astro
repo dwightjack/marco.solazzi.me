@@ -22,7 +22,7 @@ import Stack from './Stack.astro';
     position: absolute;
     align-items: center;
     block-size: 100vh;
-    padding: 2rem;
+    padding: var(--space-4);
     transform: translateX(0);
     background-color: var(--navigation-color-background-secondary);
     inset-block-start: 0;
@@ -44,7 +44,8 @@ import Stack from './Stack.astro';
 
   .c-nav__route {
     display: block;
-    padding: 0.5rem 1.75rem;
+    padding-block: var(--space-1);
+    padding-inline: calc(var(--space-2 * 1.75));
     transition: opacity 150ms linear;
     opacity: 0.8;
     color: var(--navigation-color-foreground-secondary);

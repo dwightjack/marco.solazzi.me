@@ -1,7 +1,7 @@
 html {
   font-size: 100%;
   scroll-behavior: smooth;
-  scroll-padding-block-start: 2rem;
+  scroll-padding-block-start: var(--space-4);
 
   @media (--viewport-tablet-landscape) {
     font-size: 87.5%;

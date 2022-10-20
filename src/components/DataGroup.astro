@@ -65,7 +65,8 @@ const { label, icon } = Astro.props;
   }
 
   .c-data-group__body {
-    padding: 0.25rem 1.25rem;
+    padding-block: var(--space-half);
+    padding-inline: calc(var(--space-2) * 1.25);
     background: linear-gradient(
         var(--box-color-border),
         var(--box-color-border)

@@ -22,6 +22,12 @@
   --font-size-1200: 2.5rem;
   --font-size-1400: 2.8125rem;
 
+
+
+
+
+  /** Public tokens */
+
   /* Elevation */
   --layer-b1: -1;
   --layer-f0: 0;
@@ -32,9 +38,14 @@
   --space-page-gutter-block: 4.375rem;
   --space-page-gutter-inline: clamp(3rem, 5.46875vw + 1rem, 6.375rem);
   --space-unit: 0.5rem;
-  --size-unit: 0.5rem;
+  --space-half: 0.25rem;
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
 
-  /** Public tokens */
+  /* Sizing */
+  --size-unit: 0.5rem;
 
   /* Typography */;
   --text-heading-font-family: var(--font-family-serif);
