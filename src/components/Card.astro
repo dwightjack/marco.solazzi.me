@@ -86,13 +86,13 @@ function metaTitle(meta: Record<string, string>) {
 <style>
   .c-card {
     --gradient: linear-gradient(
-      var(--color-red-400-a50),
-      var(--color-red-400-a50)
+      var(--box-color-border),
+      var(--box-color-border)
     );
 
     inline-size: 100%;
-    padding-block: 10px 16px;
-    padding-inline-start: 30px;
+    padding-block: calc(var(--space-unit) * 1.25) calc(var(--space-unit) * 2);
+    padding-inline-start: calc(var(--space-unit) * 3.75);
     background-image: var(--gradient), var(--gradient), var(--gradient);
     background-repeat: no-repeat;
     background-position: 0 0, 0 8px, 0 bottom;

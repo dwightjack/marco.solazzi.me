@@ -39,7 +39,7 @@ const { prefix = 'me', subtitle, title } = Astro.props;
   }
 
   .c-page-section__header {
-    font-family: var(--font-family-h);
+    font-family: var(--text-heading-font-family);
     text-align: center;
 
     @media (--viewport-tablet-landscape) {
@@ -67,10 +67,13 @@ const { prefix = 'me', subtitle, title } = Astro.props;
     display: inline-block;
     margin-inline-end: 0.05em;
     padding-inline: 0.3125em;
-    background: linear-gradient(var(--color-red-400), var(--color-red-400))
+    background: linear-gradient(
+        var(--box-color-background-secondary),
+        var(--box-color-background-secondary)
+      )
       no-repeat 0 bottom;
     background-size: 100% 90%;
-    color: var(--color-light);
+    color: var(--box-color-foreground-secondary);
     font-weight: inherit;
   }
 

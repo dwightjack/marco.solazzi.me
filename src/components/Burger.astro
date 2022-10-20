@@ -6,10 +6,9 @@
 </button>
 <style>
   .c-burger {
-    --burger-size: 24px;
-    --burger-height: 17px;
-    --burger-bar-height: 3px;
-    --burger-bar-spacing: 4px;
+    --burger-size-bar-height: calc(var(--size-unit) * 0.375);
+    --burger-size: calc(var(--size-unit) * 3);
+    --burger-height: calc(var(--burger-size-bar-height) * 5);
     --burger-transition-time: 0s;
 
     @media (prefers-reduced-motion: no-preference) {
@@ -23,14 +22,15 @@
     justify-content: space-between;
     inline-size: var(--burger-size);
     margin: 0;
-    padding: calc((var(--burger-size) - var(--burger-height)) / 2) 0;
+    padding-block: calc((var(--burger-size) - var(--burger-height)) / 2);
+    padding-inline: 0;
     transition: background-size var(--burger-transition-time) ease-out;
     border: 0;
     outline: 0;
     background: transparent linear-gradient(to left, currentcolor, currentcolor)
       no-repeat right 50% / var(--burger-bar-width, 85%)
-      var(--burger-bar-height);
-    color: var(--color-red-700);
+      var(--burger-size-bar-height);
+    color: var(--interactive-color-background);
     cursor: pointer;
     inset-block-start: 1.75rem;
     inset-inline-end: 1.75rem;
@@ -51,7 +51,7 @@
   .c-burger::before {
     content: '';
     display: block;
-    block-size: var(--burger-bar-height);
+    block-size: var(--burger-size-bar-height);
     inline-size: 100%;
     transform-origin: 100% 0;
     transition: transform var(--burger-transition-time) ease-out;
@@ -60,22 +60,26 @@
 
   .c-burger::after {
     transform: scaleX(var(--burger-bar-width, 70%));
+    transform-origin: 100% bottom;
   }
 
   .c-burger[aria-expanded='true'] {
     transition-duration: 0s;
-    background-size: 0 var(--burger-bar-height);
-    color: var(--color-light);
+    background-size: 0 var(--burger-size-bar-height);
+    color: var(--interactive-color-background-pressed);
   }
 
   .c-burger[aria-expanded='true']::before {
-    transform: translate(0, 17px) rotate(45deg);
+    transform: translateY(var(--burger-height)) rotate(45deg);
     transition: color var(--burger-transition-time) ease-out,
       transform var(--burger-transition-time) ease-out;
   }
 
   .c-burger[aria-expanded='true']::after {
-    transform: translate(-3px, -14px) rotate(-45deg);
+    transform: translateY(
+        calc(var(--burger-size-bar-height) - var(--burger-height) - 0.2rem)
+      )
+      rotate(-45deg);
     transition: color var(--burger-transition-time) ease-out,
       transform var(--burger-transition-time) ease-out;
   }
