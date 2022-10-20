@@ -110,5 +110,9 @@
   --interactive-color-background: var(--color-red-700);
   --interactive-color-background-pressed: var(--color-light);
 
+  @media (--theme-dark) {
+    --interactive-color-outline: var(--color-red-800);
+  }
+
 }
 
