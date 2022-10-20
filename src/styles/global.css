@@ -78,7 +78,6 @@ a:focus-visible {
 
 a:not(:focus-visible) {
   outline: 0;
-  color: inherit;
 }
 
 a:not([class*='c-']) {
@@ -89,6 +88,10 @@ a:not([class*='c-']) {
   background-position: 100% bottom;
   background-size: 100% 3px;
   text-decoration: none;
+
+  &:not(:focus-visible) {
+    color: inherit;
+  }
 
   @media (--pointer-mouse) and (prefers-reduced-motion: no-preference) {
     padding-inline: 0.22em;
