@@ -54,13 +54,15 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0 0 0.2em;
+  margin-block: 0 0.2em;
+  margin-inline: 0;
   font-weight: 700;
   line-height: 1.2;
 }
 
 p {
-  margin: 0 0 0.2em;
+  margin-block: 0 0.2em;
+  margin-inline: 0;
   line-height: 1.2;
 }
 

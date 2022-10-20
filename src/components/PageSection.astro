@@ -24,7 +24,7 @@ const { prefix = 'me', subtitle, title } = Astro.props;
   .c-page-section {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: var(--space-4);
 
     @media (--viewport-tablet-landscape) {
       display: grid;
@@ -44,7 +44,7 @@ const { prefix = 'me', subtitle, title } = Astro.props;
 
     @media (--viewport-tablet-landscape) {
       position: sticky;
-      inset-block-start: 2rem;
+      inset-block-start: var(--space-4);
       text-align: start;
     }
   }

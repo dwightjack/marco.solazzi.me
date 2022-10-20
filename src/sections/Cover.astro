@@ -55,17 +55,17 @@ import Page from '../components/Page.astro';
     @media not screen and (--viewport-tablet-landscape) {
       padding-block-start: var(--space-page-gutter-block);
       padding-inline: var(--space-page-gutter-inline);
-      row-gap: 2rem;
+      row-gap: var(--space-4);
     }
 
     @media (--viewport-tablet-landscape) {
       grid-template-areas: '. . .' 'pic body .' 'scrollhint scrollhint scrollhint';
-      grid-template-columns: 28vw 36rem 1fr;
+      grid-template-columns: 28vw 63ch 1fr;
       grid-template-rows: 1fr auto 1fr;
       align-items: center;
       block-size: 100vh;
       overflow: hidden;
-      column-gap: 5rem;
+      column-gap: calc(var(--space-2) * 5);
     }
   }
 
@@ -85,7 +85,7 @@ import Page from '../components/Page.astro';
   }
 
   .c-cover__body > * + * {
-    margin-block-start: 3.75rem;
+    margin-block-start: calc(var(--space-2) * 3.75);
   }
 
   .c-cover__headline {
