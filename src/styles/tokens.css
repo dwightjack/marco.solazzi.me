@@ -23,9 +23,6 @@
   --font-size-1400: 2.8125rem;
 
 
-
-
-
   /** Public tokens */
 
   /* Elevation */
@@ -35,17 +32,14 @@
   --layer-f5: 5;
 
   /* Spacing */
-  --space-page-gutter-block: 4.375rem;
-  --space-page-gutter-inline: clamp(3rem, 5.46875vw + 1rem, 6.375rem);
   --space-unit: 0.5rem;
   --space-half: 0.25rem;
   --space-1: 0.5rem;
   --space-2: 1rem;
   --space-3: 1.5rem;
   --space-4: 2rem;
+  --space-page-gutter-inline: clamp(3rem, 5.46875vw + 1rem, 6.375rem);
 
-  /* Sizing */
-  --size-unit: 0.5rem;
 
   /* Typography */;
   --text-heading-font-family: var(--font-family-serif);
@@ -84,9 +78,6 @@
   --interactive-color-outline: var(--color-red-400-a20);
   --interactive-color-background: var(--color-red-700);
   --interactive-color-background-pressed: var(--color-light);
-
-
-
 
 }
 
