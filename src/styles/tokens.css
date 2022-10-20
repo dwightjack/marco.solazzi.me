@@ -1,13 +1,29 @@
+/* Media queries */
+@custom-media --viewport-mobile (width >= 30em);
+@custom-media --viewport-tablet (width >= 48em);
+@custom-media --viewport-tablet-landscape (width >= 64em);
+@custom-media --viewport-desktop (width >= 80em);
+@custom-media --viewport-wide (width >= 100em);
+@custom-media --viewport-fullhd (width >= 120em);
+@custom-media --viewport-qhd (width >= 160em);
+@custom-media --pointer-mouse (hover: hover) and (pointer: fine);
+@custom-media --theme-dark (prefers-color-scheme: dark);
+
 :root {
   /* Colors */
+  --color-darker: hsl(0deg 0% 22%);
   --color-dark: hsl(0deg 0% 30%);
   --color-dark-a10: hsl(0deg 0% 30% / 10%);
+  --color-light-900: hsl(0deg 0% 90%);
+  --color-light-900-a10: hsl(0deg 0% 90% / 10%);
   --color-light: hsl(0deg 0% 100%);
   --color-red-250: hsl(0deg 56% 25%);
   --color-red-400: hsl(0deg 57% 40%);
   --color-red-700: hsl(0deg 57% 70%);
+  --color-red-800: hsl(0deg 75% 72%);
   --color-red-400-a20: hsl(0deg 57% 40% / 20%);
   --color-red-400-a50: hsl(0deg 57% 40% / 50%);
+  --color-red-500-a50: hsl(0deg 47% 52% / 50%);
 
 
   /* Fonts */
@@ -40,8 +56,11 @@
   --space-4: 2rem;
   --space-page-gutter-inline: clamp(3rem, 5.46875vw + 1rem, 6.375rem);
 
+  /* Size */
+  --size-unit: 0.5rem
 
-  /* Typography */;
+
+    ;
   --text-heading-font-family: var(--font-family-serif);
   --text-heading-font-size: var(--font-size-300);
   --text-heading-font-size-mq: var(--font-size-400);
@@ -67,12 +86,24 @@
   --box-color-scrollbar-track: var(--color-red-400);
   --box-color-border: var(--color-red-400-a50);
 
+  @media (--theme-dark) {
+    --box-color-foreground: var(--color-light-900);
+    --box-color-background: var(--color-darker);
+    --box-color-border: var(--color-red-500-a50);
+  }
+
   /* Navigation */
-  --navigation-color-foreground: var(--color-red-400);
+  --navigation-color-foreground-hover: var(--color-red-400);
   --navigation-color-foreground-secondary: var(--color-light);
   --navigation-color-background-secondary: var(--color-red-400);
   --navigation-color-border: var(--color-dark-a10);
   --navigation-color-border-hover: var(--color-red-400-a20);
+
+
+  @media (--theme-dark) {
+    --navigation-color-border: var(--color-light-900-a10);
+    --navigation-color-foreground-hover: var(--color-red-800);
+  }
 
   /* Generic interactive elements */
   --interactive-color-outline: var(--color-red-400-a20);
@@ -81,12 +112,3 @@
 
 }
 
-/* Media queries */
-@custom-media --viewport-mobile (width >= 30em);
-@custom-media --viewport-tablet (width >= 48em);
-@custom-media --viewport-tablet-landscape (width >= 64em);
-@custom-media --viewport-desktop (width >= 80em);
-@custom-media --viewport-wide (width >= 100em);
-@custom-media --viewport-fullhd (width >= 120em);
-@custom-media --viewport-qhd (width >= 160em);
-@custom-media --pointer-mouse (hover: hover) and (pointer: fine);
