@@ -70,7 +70,6 @@ const classes = ['c-page', indent && ' c-page--indent']
   const pages = document.querySelectorAll('.c-page');
 
   currentRoute.subscribe((route) => {
-    console.log(route);
     for (const page of pages) {
       page.classList.toggle('is-current', page.id === route);
     }
