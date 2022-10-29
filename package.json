@@ -7,7 +7,7 @@
   "author": {
     "name": "Marco Solazzi"
   },
-  "packageManager": "pnpm@7.13.6",
+  "packageManager": "pnpm@7.14.1",
   "engines": {
     "node": ">=16.17.0",
     "pnpm": "^7.11.0"
@@ -26,17 +26,17 @@
   },
   "dependencies": {
     "animejs": "3.2.1",
-    "astro": "1.5.3",
-    "astro-icon": "0.7.3",
+    "astro": "1.6.1",
+    "astro-icon": "0.8.0",
     "modern-normalize": "1.1.0",
     "nanostores": "0.7.0",
     "pixi.js": "6.5.8"
   },
   "devDependencies": {
     "@types/animejs": "3.1.6",
-    "@typescript-eslint/eslint-plugin": "5.40.1",
-    "@typescript-eslint/parser": "5.40.1",
-    "eslint": "8.25.0",
+    "@typescript-eslint/eslint-plugin": "5.41.0",
+    "@typescript-eslint/parser": "5.41.0",
+    "eslint": "8.26.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-astro": "0.20.0",
     "eslint-plugin-prettier": "4.2.1",
@@ -45,7 +45,7 @@
     "postcss-html": "1.5.0",
     "postcss-preset-env": "7.8.2",
     "prettier": "2.7.1",
-    "prettier-plugin-astro": "0.6.0",
+    "prettier-plugin-astro": "0.7.0",
     "stylelint": "14.14.0",
     "stylelint-config-html": "1.1.0",
     "stylelint-config-prettier": "9.0.3",
