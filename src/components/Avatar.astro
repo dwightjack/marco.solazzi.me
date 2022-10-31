@@ -1,0 +1,87 @@
+---
+export interface Props {
+  foreground: string;
+}
+
+const { foreground } = Astro.props;
+---
+
+<img src={foreground} class="c-avatar" alt="" width="850" height="860" />
+<style>
+  .c-avatar {
+    display: block;
+    block-size: auto;
+    inline-size: 100%;
+    pointer-events: none;
+    clip-path: polygon(
+      95% 50%,
+      82% 82%,
+      50% 95%,
+      18% 82%,
+      5% 50%,
+      18% 18%,
+      50% 5%,
+      82% 18%
+    );
+  }
+</style>
+<script>
+  import { clamp, random } from '../shared/utils';
+  type Point = { x: number; y: number };
+
+  const SIZE = 90;
+  const TWO_PI = Math.PI * 2;
+  const angle = TWO_PI / 8;
+  const points = [];
+  const x = SIZE / 2 + 5;
+  const y = SIZE / 2 + 5;
+  const radius = SIZE / 2;
+
+  for (let a = 0; a < TWO_PI; a += angle) {
+    const sx = x + Math.cos(a) * radius;
+    const sy = y + Math.sin(a) * radius;
+    points.push({ x: Math.round(sx), y: Math.round(sy) });
+  }
+
+  function updatePoint(n: number, min: number, max: number) {
+    return clamp(n + random(min, max), 0, 100);
+  }
+
+  function updatePoints(points: Point[]): Point[] {
+    return points.map((point) => {
+      return {
+        x: updatePoint(point.x, -2, 2),
+        y: updatePoint(point.y, -2, 2),
+      };
+    });
+  }
+
+  function toPath(points: Point[]) {
+    return `polygon(${points.map(({ x, y }) => `${x}% ${y}%`).join(' , ')})`;
+  }
+
+  if (
+    window.matchMedia('(prefers-reduced-motion: no-preference)').matches &&
+    typeof document.body.animate === 'function'
+  ) {
+    const keyframes: { clipPath: string; offset: number }[] = [
+      { clipPath: toPath(points), offset: 0 },
+    ];
+    const avatars = document.querySelectorAll('.c-avatar');
+
+    while (keyframes.length !== 10) {
+      keyframes.push({
+        clipPath: toPath(updatePoints(points)),
+        offset: keyframes.length / 10,
+      });
+    }
+    keyframes.push({ clipPath: keyframes[0].clipPath, offset: 1 });
+
+    for (const avatar of avatars) {
+      avatar.animate(keyframes, {
+        duration: 20000,
+        iterations: Infinity,
+      });
+    }
+  }
+</script>

@@ -41,3 +41,11 @@ export function debounce<F extends (...args: Parameters<F>) => ReturnType<F>>(
     timeout = setTimeout(() => func(...args), waitFor);
   };
 }
+
+export function random(min: number, max: number) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+export function clamp(num: number, min: number, max: number) {
+  return Math.min(Math.max(num, min), max);
+}

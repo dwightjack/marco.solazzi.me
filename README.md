@@ -7,7 +7,6 @@
 - [Astro](https://astro.build/)
 - CSS and JS linting with [ESLint](http://eslint.org/) and [Stylelint](https://stylelint.io/)
 - Modern CSS with [postcss-preset-env](https://preset-env.cssdb.org/)
-- WebGL animations with [PixiJS](https://pixijs.com/) and [anime.js](https://animejs.com/)
 
 ## Requirements
 
