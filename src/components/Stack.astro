@@ -1,8 +1,8 @@
 ---
-export interface Props {
+import type { HTMLTag } from 'astro/types';
+export interface Props<T extends HTMLTag> {
   space?: number;
-  // eslint-disable-next-line no-undef
-  as?: keyof HTMLElementTagNameMap;
+  as?: T;
   class?: string;
   [k: string]: unknown;
 }

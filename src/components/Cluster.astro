@@ -1,9 +1,9 @@
 ---
 import { toStyleAttribute, computedSpace } from '../shared/utils';
+import type { HTMLTag } from 'astro/types';
 export interface Props {
   space?: number | [number, number];
-  // eslint-disable-next-line no-undef
-  as?: keyof HTMLElementTagNameMap;
+  as?: HTMLTag;
   class?: string;
   [k: string]: unknown;
 }
