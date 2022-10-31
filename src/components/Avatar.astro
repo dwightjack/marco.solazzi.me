@@ -1,17 +1,18 @@
 ---
-export interface Props {
-  foreground: string;
-}
-
-const { foreground } = Astro.props;
+import marcoFallback from '../assets/images/marco.jpg';
+import marcoAvif from '../assets/images/marco.avif';
+import marcoWebp from '../assets/images/marco.webp';
 ---
 
-<img src={foreground} class="c-avatar" alt="" width="850" height="860" />
+<picture class="c-avatar">
+  <source srcset={marcoAvif} type="image/avif" />
+  <source srcset={marcoWebp} type="image/webp" />
+  <img src={marcoFallback} alt="" width="850" height="860" />
+</picture>
+
 <style>
   .c-avatar {
     display: block;
-    block-size: auto;
-    inline-size: 100%;
     pointer-events: none;
     clip-path: polygon(
       95% 50%,
@@ -23,6 +24,12 @@ const { foreground } = Astro.props;
       50% 5%,
       82% 18%
     );
+  }
+
+  .c-avatar > img {
+    display: block;
+    block-size: auto;
+    inline-size: 100%;
   }
 </style>
 <script>

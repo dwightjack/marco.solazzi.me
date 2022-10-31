@@ -4,14 +4,13 @@ import Icon from '../components/Icon.astro';
 import { NAV_PATH_JOBS, NAV_PATH_HOME } from '../shared/constants';
 import links from '../database/links.json';
 import Avatar from '../components/Avatar.astro';
-import marco from '../assets/images/marco.jpg';
 import Page from '../components/Page.astro';
 ---
 
 <Page id={NAV_PATH_HOME} indent={false} mark="初め">
   <section class="c-cover">
     <div class="c-cover__pic">
-      <Avatar foreground={marco} />
+      <Avatar />
     </div>
     <div class="c-cover__body">
       <h2 lang="ja" class="c-cover__headline">こんにちは！</h2>
