@@ -20,8 +20,9 @@
   --color-dark-a10: hsl(0deg 0% 30% / 10%);
   --color-light-900: hsl(0deg 0% 90%);
   --color-light-900-a10: hsl(0deg 0% 90% / 10%);
+  --color-light-900-a40: hsl(0deg 0% 90% / 40%);
   --color-light: hsl(0deg 0% 100%);
-  --color-brand-hue: var(--color-hue-green);
+  --color-brand-hue: var(--color-hue-red);
   --color-brand-250: hsl(var(--color-brand-hue) 56% 25%);
   --color-brand-400: hsl(var(--color-brand-hue) 57% 40%);
   --color-brand-700: hsl(var(--color-brand-hue) 57% 70%);
@@ -62,10 +63,9 @@
   --space-page-gutter-inline: clamp(3rem, 5.46875vw + 1rem, 6.375rem);
 
   /* Size */
-  --size-unit: 0.5rem
+  --size-unit: 0.5rem;
 
-
-    ;
+  /* Typography */
   --text-heading-font-family: var(--font-family-serif);
   --text-heading-font-size: var(--font-size-300);
   --text-heading-font-size-mq: var(--font-size-400);
@@ -78,7 +78,6 @@
   --text-body-font-size-x2: var(--font-size-200);
   --text-body-font-size-x3: var(--font-size-300);
   --text-footer-font-size: var(--font-size-80);
-
 
   /* Box */
   --box-color-foreground: var(--color-dark);
@@ -98,9 +97,8 @@
   }
 
   /* Navigation */
+  --navigation-color-foreground: var(--color-dark);
   --navigation-color-foreground-hover: var(--color-brand-400);
-  --navigation-color-foreground-secondary: var(--color-light);
-  --navigation-color-background-secondary: var(--color-brand-400);
   --navigation-color-border: var(--color-dark-a10);
   --navigation-color-border-hover: var(--color-brand-400-a20);
 
@@ -110,15 +108,47 @@
     --navigation-color-foreground-hover: var(--color-brand-800);
   }
 
+  /* Actions */
+  --action-color-background: var(--color-brand-700);
+  --action-control-size-inline: max(24px, calc(var(--size-unit) * 3));
+  --action-transition-duration: 0s;
+
+  @media (prefers-reduced-motion: no-preference) {
+    --action-transition-duration: 200ms;
+  }
+
   /* Generic interactive elements */
   --interactive-color-outline: var(--color-brand-400-a20);
-  --interactive-color-background: var(--color-brand-700);
-  --interactive-color-background-pressed: var(--color-light);
+
 
   @media (--theme-dark) {
     --interactive-color-outline: var(--color-brand-800);
   }
 
+  &[data-theme="green"] {
+    --color-brand-hue: var(--color-hue-green);
+  }
 
+  &[data-theme="blue"] {
+    --color-brand-hue: var(--color-hue-blue);
+  }
+
+  &[data-theme="purple"] {
+    --color-brand-hue: var(--color-hue-purple);
+  }
 }
 
+[data-swatch="brand"] {
+  --box-color-foreground: var(--color-light);
+  --box-color-background: var(--color-brand-400);
+  --box-color-selection-background: var(--color-light-900-a40);
+  --box-color-selection-foreground: var(--color-light);
+  --box-color-border: var(--color-light-900-a40);
+  --box-color-foreground-secondary: var(--color-brand-400);
+  --box-color-background-secondary: var(--color-light);
+  --navigation-color-foreground: var(--color-light);
+  --navigation-color-foreground-hover: var(--color-light);
+  --interactive-color-outline: var(--color-light-900-a40);
+  --action-color-background: var(--color-light);
+
+}

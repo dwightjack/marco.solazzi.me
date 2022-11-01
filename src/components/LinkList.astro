@@ -16,7 +16,7 @@ export interface Props {
 const { items } = Astro.props;
 ---
 
-<Stack as="ul" space={1} class="c-link-list">
+<Stack as="ul" space={1}>
   {
     items.map(({ icon, href, label, description }) => (
       <li class="c-link-list__item">

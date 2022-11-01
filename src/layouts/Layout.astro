@@ -5,14 +5,18 @@ import '../styles/tokens.css';
 import '../styles/global.css';
 import '../styles/utility.css';
 import Burger from '../components/Burger.astro';
+import ThemeSwitcher from '../components/ThemeSwitcher.astro';
 import Stack from '../components/Stack.astro';
 import Nav from '../components/Nav.astro';
+import Cluster from '../components/Cluster.astro';
+import { THEME_DEFAULT } from '../shared/constants';
+import Box from '../components/Box.astro';
 
 const socialImageURL = new URL('/marco-og.jpg', Astro.url);
 ---
 
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <title>Marco Solazzi - Frontend Web Developer</title>
@@ -46,13 +50,15 @@ const socialImageURL = new URL('/marco-og.jpg', Astro.url);
       rel="stylesheet"
     />
   </head>
-
   <body>
     <Sprite.Provider>
-      <header class="l-header" id="header">
-        <Burger />
+      <Box as="header" class="l-header" indent={0} id="header">
+        <Cluster class="l-header__controls" space={1.5}>
+          <ThemeSwitcher />
+          <Burger />
+        </Cluster>
         <Nav />
-      </header>
+      </Box>
       <main>
         <slot name="cover" />
         <Stack space={15} class="l-pages">
@@ -71,29 +77,42 @@ const socialImageURL = new URL('/marco-og.jpg', Astro.url);
         >
       </footer>
     </Sprite.Provider>
-    <style>
-      .l-header {
-        position: fixed;
-        z-index: var(--layer-f5);
-        inline-size: 0;
-        inset-block-start: 0;
-        inset-inline-end: 0;
-      }
-
-      .l-pages {
-        padding-block: calc(var(--space-2) * 6.25);
-      }
-
-      .l-footer {
-        padding-block-end: var(--space-4);
-        font-size: var(--text-footer-font-size);
-        text-align: center;
-      }
-    </style>
   </body>
 </html>
+<style>
+  .l-header {
+    position: fixed;
+    z-index: var(--layer-f5);
+    inline-size: 0;
+    inset-block-start: 0;
+    inset-inline-end: 0;
+  }
+
+  .l-header__controls {
+    position: absolute;
+    z-index: var(--layer-f1);
+    inset-block-start: 1.75rem;
+    inset-inline-end: 1.75rem;
+    inline-size: max-content;
+  }
+
+  .l-pages.l-pages {
+    padding-block: calc(var(--space-2) * 6.25);
+  }
+
+  .l-footer {
+    padding-block-end: var(--space-4);
+    font-size: var(--text-footer-font-size);
+    text-align: center;
+  }
+</style>
+<script is:inline define:vars={{ THEME_DEFAULT }}>
+  document.documentElement.dataset.theme =
+    localStorage.getItem('theme') || THEME_DEFAULT;
+</script>
 <script>
-  import { menuExpanded } from '../shared/store';
+  import { THEME_DEFAULT, THEMES } from '../shared/constants';
+  import { menuExpanded, theme } from '../shared/store';
 
   const header = document.getElementById('header');
 
@@ -109,11 +128,23 @@ const socialImageURL = new URL('/marco-og.jpg', Astro.url);
 
   menuExpanded.subscribe((expanded) => {
     if (expanded) {
+      header!.dataset.swatch = 'brand';
       document.addEventListener('click', hideNav);
       document.addEventListener('keyup', hideNav);
       return;
     }
+    delete header!.dataset.swatch;
     document.removeEventListener('click', hideNav);
     document.removeEventListener('keyup', hideNav);
   });
+
+  theme.listen((theme) => {
+    localStorage.setItem('theme', theme);
+    document.documentElement.dataset.theme = theme;
+  });
+
+  theme.set(
+    (document.documentElement.dataset.theme as typeof THEMES[number]) ||
+      THEME_DEFAULT,
+  );
 </script>
