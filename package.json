@@ -7,7 +7,7 @@
   "author": {
     "name": "Marco Solazzi"
   },
-  "packageManager": "pnpm@7.14.2",
+  "packageManager": "pnpm@7.14.1",
   "engines": {
     "node": ">=16.17.0",
     "pnpm": "^7.11.0"
@@ -31,7 +31,6 @@
     "nanostores": "0.7.0"
   },
   "devDependencies": {
-    "@types/animejs": "3.1.6",
     "@typescript-eslint/eslint-plugin": "5.41.0",
     "@typescript-eslint/parser": "5.41.0",
     "eslint": "8.26.0",
