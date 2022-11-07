@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@typescript-eslint/eslint-plugin': 5.42.1
   '@typescript-eslint/parser': 5.42.1
-  astro: 1.6.3
+  astro: 1.6.4
   astro-icon: 0.8.0
   eslint: 8.27.0
   eslint-config-prettier: 8.5.0
@@ -26,7 +26,7 @@ specifiers:
   typescript: 4.8.4
 
 dependencies:
-  astro: 1.6.3
+  astro: 1.6.4
   astro-icon: 0.8.0
   modern-normalize: 1.1.0
   nanostores: 0.7.0
@@ -1103,8 +1103,8 @@ packages:
       svgo: 2.8.0
     dev: false
 
-  /astro/1.6.3:
-    resolution: {integrity: sha512-Om84PLuuF497q1LVMzcr0jI3r0kNoYgdX7W0IVUgVnrNd7ubK11h9zhg/2MHRSui+0vCH3+0hnCnCG6QEd2a2Q==}
+  /astro/1.6.4:
+    resolution: {integrity: sha512-4Yi6fonZK/t8I1BdZ2YaTtSKUSeB8RoikDDssqkiO6j2BAfK4HOhRk70PrrkKyY5gK6VCe/Nao8ABq3GZfxm9g==}
     engines: {node: ^14.18.0 || >=16.12.0, npm: '>=6.14.0'}
     hasBin: true
     dependencies:
