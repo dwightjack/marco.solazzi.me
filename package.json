@@ -31,13 +31,13 @@
     "nanostores": "0.7.0"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "5.41.0",
-    "@typescript-eslint/parser": "5.41.0",
-    "eslint": "8.26.0",
+    "@typescript-eslint/eslint-plugin": "5.42.1",
+    "@typescript-eslint/parser": "5.42.1",
+    "eslint": "8.27.0",
     "eslint-config-prettier": "8.5.0",
-    "eslint-plugin-astro": "0.20.1",
+    "eslint-plugin-astro": "0.21.0",
     "eslint-plugin-prettier": "4.2.1",
-    "lefthook": "1.1.4",
+    "lefthook": "1.2.0",
     "postcss": "8.4.18",
     "postcss-html": "1.5.0",
     "postcss-preset-env": "7.8.2",
