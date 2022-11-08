@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@typescript-eslint/eslint-plugin': 5.42.1
   '@typescript-eslint/parser': 5.42.1
-  astro: 1.6.4
+  astro: 1.6.5
   astro-icon: 0.8.0
   eslint: 8.27.0
   eslint-config-prettier: 8.5.0
@@ -19,14 +19,14 @@ specifiers:
   prettier-plugin-astro: 0.7.0
   stylelint: 14.14.1
   stylelint-config-html: 1.1.0
-  stylelint-config-prettier: 9.0.3
+  stylelint-config-prettier: 9.0.4
   stylelint-config-property-sort-order-smacss: 9.0.0
   stylelint-config-standard: 29.0.0
   stylelint-use-logical: 2.0.0
   typescript: 4.8.4
 
 dependencies:
-  astro: 1.6.4
+  astro: 1.6.5
   astro-icon: 0.8.0
   modern-normalize: 1.1.0
   nanostores: 0.7.0
@@ -46,7 +46,7 @@ devDependencies:
   prettier-plugin-astro: 0.7.0
   stylelint: 14.14.1
   stylelint-config-html: 1.1.0_a4i6jbpfaxelx4fvjhtlgvxx6i
-  stylelint-config-prettier: 9.0.3_stylelint@14.14.1
+  stylelint-config-prettier: 9.0.4_stylelint@14.14.1
   stylelint-config-property-sort-order-smacss: 9.0.0_stylelint@14.14.1
   stylelint-config-standard: 29.0.0_stylelint@14.14.1
   stylelint-use-logical: 2.0.0_stylelint@14.14.1
@@ -1103,8 +1103,8 @@ packages:
       svgo: 2.8.0
     dev: false
 
-  /astro/1.6.4:
-    resolution: {integrity: sha512-4Yi6fonZK/t8I1BdZ2YaTtSKUSeB8RoikDDssqkiO6j2BAfK4HOhRk70PrrkKyY5gK6VCe/Nao8ABq3GZfxm9g==}
+  /astro/1.6.5:
+    resolution: {integrity: sha512-PBjtMJeCRTkvG2ExMpfDUEc7FbwpJ/pxixe7Kt1Z9dfggofGLXnNa5JxzvacuotI1u35wb9nwQ7aI4Uyk5Ellg==}
     engines: {node: ^14.18.0 || >=16.12.0, npm: '>=6.14.0'}
     hasBin: true
     dependencies:
@@ -4981,8 +4981,8 @@ packages:
       stylelint: 14.14.1
     dev: true
 
-  /stylelint-config-prettier/9.0.3_stylelint@14.14.1:
-    resolution: {integrity: sha512-5n9gUDp/n5tTMCq1GLqSpA30w2sqWITSSEiAWQlpxkKGAUbjcemQ0nbkRvRUa0B1LgD3+hCvdL7B1eTxy1QHJg==}
+  /stylelint-config-prettier/9.0.4_stylelint@14.14.1:
+    resolution: {integrity: sha512-38nIGTGpFOiK5LjJ8Ma1yUgpKENxoKSOhbDNSemY7Ep0VsJoXIW9Iq/2hSt699oB9tReynfWicTAoIHiq8Rvbg==}
     engines: {node: '>= 12'}
     hasBin: true
     peerDependencies:
