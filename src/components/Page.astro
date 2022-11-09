@@ -8,13 +8,9 @@ export interface Props {
 }
 
 const { id, mark, indent = true } = Astro.props;
-
-const classes = ['c-page', indent && ' c-page--indent']
-  .filter(Boolean)
-  .join(' ');
 ---
 
-<Stack class={classes} id={id} space={15}>
+<Stack class:list={['c-page', { 'c-page--indent': indent }]} id={id} space={15}>
   <slot />
   {
     mark && (

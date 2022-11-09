@@ -1,0 +1,37 @@
+---
+import Icon from './Icon.astro';
+---
+
+<button type="button" class="c-theme-switcher">
+  <Icon name="mdi:format-paint" size={1} />
+  <span class="u-visuallyhidden">Change the color theme</span>
+</button>
+<style>
+  .c-theme-switcher {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    block-size: var(--action-control-size-inline);
+    padding-block: 0;
+    padding-inline: 0;
+    transition: color var(--action-transition-duration) ease-out;
+    border: 2px solid currentcolor;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--action-color-background);
+    cursor: pointer;
+    aspect-ratio: 1;
+  }
+</style>
+<script>
+  import { THEMES } from '../shared/constants';
+  import { theme } from '../shared/store';
+  const switchers = document.querySelectorAll('.c-theme-switcher');
+  for (const switcher of switchers) {
+    switcher.addEventListener('click', () => {
+      const currentIndex = THEMES.indexOf(theme.get());
+      const nextIdx = currentIndex === THEMES.length - 1 ? 0 : currentIndex + 1;
+      theme.set(THEMES[nextIdx]);
+    });
+  }
+</script>

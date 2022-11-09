@@ -1,10 +1,17 @@
 ---
 import routes from '../shared/routes';
 import Stack from './Stack.astro';
+import Box from './Box.astro';
 ---
 
-<nav class="c-nav" aria-label="Sections Navigation">
-  <Stack as="ul" space={3} class="c-nav__menu">
+<Box
+  as="nav"
+  class="c-nav"
+  indent={4}
+  swatch="brand"
+  aria-label="Sections Navigation"
+>
+  <Stack as="ul" space={3}>
     {
       routes.map(({ path, label }) => (
         <li class="c-nav__item">
@@ -15,16 +22,14 @@ import Stack from './Stack.astro';
       ))
     }
   </Stack>
-</nav>
+</Box>
 <style>
   .c-nav {
     display: flex;
     position: absolute;
     align-items: center;
     block-size: 100vh;
-    padding: var(--space-4);
     transform: translateX(0);
-    background-color: var(--navigation-color-background-secondary);
     inset-block-start: 0;
     inset-inline-start: 100%;
     will-change: transform;
@@ -45,10 +50,10 @@ import Stack from './Stack.astro';
   .c-nav__route {
     display: block;
     padding-block: var(--space-1);
-    padding-inline: calc(var(--space-2 * 1.75));
+    padding-inline: calc(var(--space-2) * 1.75);
     transition: opacity 150ms linear;
     opacity: 0.8;
-    color: var(--navigation-color-foreground-secondary);
+    color: inherit;
     font-family: var(--text-heading-font-family);
     font-size: var(--text-body-font-size-x3);
     letter-spacing: 0.05em;

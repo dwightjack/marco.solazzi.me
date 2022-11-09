@@ -1,5 +1,6 @@
 ---
 import { Sprite } from 'astro-icon';
+import { toStyleVars } from '../shared/utils';
 export interface Props {
   name: string;
   size?: number;
@@ -17,7 +18,7 @@ const iconName =
   name={iconName}
   aria-hidden="true"
   focusable="false"
-  style={size ? `--size: ${size}` : ''}
+  style={toStyleVars({ size })}
 />
 
 <style>
@@ -25,6 +26,7 @@ const iconName =
     --size: 1;
 
     display: inline-block;
+    flex-shrink: 0;
     inline-size: 1em;
     font-size: calc(var(--size) * 1em);
     vertical-align: middle;

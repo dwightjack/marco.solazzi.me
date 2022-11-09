@@ -1,21 +1,27 @@
 ---
-import { toStyleAttribute, computedSpace } from '../shared/utils';
+import type { AstroBuiltinAttributes } from 'astro';
 import type { HTMLTag } from 'astro/types';
-export interface Props {
+import { toStyleAttribute, computedSpace } from '../shared/utils';
+
+export interface Props extends AstroBuiltinAttributes {
   space?: number | [number, number];
   as?: HTMLTag;
   class?: string;
   [k: string]: unknown;
 }
 
-const { as: Tag = 'div', class: className, ...attrs } = Astro.props;
+const {
+  as: Tag = 'div',
+  class: className,
+  'class:list': classList,
+  ...attrs
+} = Astro.props;
 
 const style = toStyleAttribute(computedSpace(Astro.props.space));
+const classNames = (['c-cluster'] as unknown[]).concat(className, classList);
 ---
 
-<Tag class:list={['c-cluster', className]} {...attrs} style={style}
-  ><slot />
-</Tag>
+<Tag class:list={classNames} {...attrs} style={style}><slot /></Tag>
 <style>
   .c-cluster {
     --space: 0;
@@ -25,8 +31,10 @@ const style = toStyleAttribute(computedSpace(Astro.props.space));
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    margin: unset;
-    padding: unset;
+    margin-block: unset;
+    margin-inline: unset;
+    padding-block: unset;
+    padding-inline: unset;
     column-gap: calc(var(--space-c) * var(--space-unit));
     row-gap: calc(var(--space-r) * var(--space-unit));
   }
@@ -36,6 +44,7 @@ const style = toStyleAttribute(computedSpace(Astro.props.space));
   }
 
   .c-cluster > :global(*) {
-    margin: 0;
+    margin-block: 0;
+    margin-inline: 0;
   }
 </style>
