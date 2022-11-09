@@ -1,6 +1,7 @@
 ---
 import type { AstroBuiltinAttributes } from 'astro';
 import type { HTMLTag } from 'astro/types';
+import { toStyleVars } from '../shared/utils';
 
 export interface Props extends AstroBuiltinAttributes {
   space?: number;
@@ -20,7 +21,7 @@ const {
 const classNames = (['c-stack'] as unknown[]).concat(className, classList);
 ---
 
-<Tag class:list={classNames} {...attrs} style={space ? `--space: ${space}` : ''}
+<Tag class:list={classNames} {...attrs} style={toStyleVars({ space })}
   ><slot />
 </Tag>
 <style>

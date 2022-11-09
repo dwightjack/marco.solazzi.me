@@ -14,6 +14,17 @@ export function toStyleAttribute(input: Record<string, unknown>) {
   return style;
 }
 
+export function toStyleVars(input: Record<string, unknown>) {
+  const style: Record<string, unknown> = {};
+
+  for (const [key, value] of Object.entries(input)) {
+    if (value === 0 || !!value) {
+      style[`--${key}`] = value;
+    }
+  }
+  return style;
+}
+
 export function computedSpace(
   space?: number | number[],
   { prefix = '--' } = {},

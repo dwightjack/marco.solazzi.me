@@ -2,6 +2,7 @@
 import type { AstroBuiltinAttributes } from 'astro';
 import type { HTMLTag } from 'astro/types';
 import type { Swatches } from '../shared/types';
+import { toStyleVars } from '../shared/utils';
 
 export interface Props extends AstroBuiltinAttributes {
   indent?: number;
@@ -27,7 +28,7 @@ const classNames = (['c-box'] as unknown[]).concat(className, classList);
   class:list={classNames}
   {...attrs}
   data-swatch={swatch}
-  style={typeof indent === 'number' ? `--indent: ${indent}` : ''}
+  style={toStyleVars({ indent })}
   ><slot />
 </Tag>
 <style>
