@@ -11,7 +11,7 @@ specifiers:
   eslint-plugin-prettier: 4.2.1
   lefthook: 1.2.0
   modern-normalize: 1.1.0
-  nanostores: 0.7.0
+  nanostores: 0.7.1
   postcss: 8.4.19
   postcss-html: 1.5.0
   postcss-preset-env: 7.8.2
@@ -29,7 +29,7 @@ dependencies:
   astro: 1.6.7
   astro-icon: 0.8.0
   modern-normalize: 1.1.0
-  nanostores: 0.7.0
+  nanostores: 0.7.1
 
 devDependencies:
   '@typescript-eslint/eslint-plugin': 5.42.1_2udltptbznfmezdozpdoa2aemq
@@ -3741,8 +3741,8 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
-  /nanostores/0.7.0:
-    resolution: {integrity: sha512-y+ma9MVXuPzXKEXaRYW/iL/xG/HtMwB8fmFcMfUqt5fCNR/na2kDubbZGV4furUMTgmxfySJs0cQjORWhaPDyA==}
+  /nanostores/0.7.1:
+    resolution: {integrity: sha512-7HenoVpZOjRudHCmAVWKloBTk3+Ozw49KuRWq/pNlEIIVS3x9dID+I5z3Rhjxl1muhHwv4dFhpT+0FebT9jvaA==}
     engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
     dev: false
 
