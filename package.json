@@ -28,7 +28,7 @@
     "astro": "1.6.7",
     "astro-icon": "0.8.0",
     "modern-normalize": "1.1.0",
-    "nanostores": "0.7.0"
+    "nanostores": "0.7.1"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "5.42.1",
