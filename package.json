@@ -25,7 +25,7 @@
     "lint": "eslint 'src/**/*.{cjs,mjs,js,ts,astro}' && stylelint 'src/**/*.{css,astro}'"
   },
   "dependencies": {
-    "astro": "1.6.8",
+    "astro": "1.6.9",
     "astro-icon": "0.8.0",
     "modern-normalize": "1.1.0",
     "nanostores": "0.7.1"
