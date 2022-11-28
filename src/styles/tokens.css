@@ -35,6 +35,19 @@
   /* Fonts */
   --font-family-sans: 'Open Sans', sans-serif;
   --font-family-serif: 'Bree Serif', serif;
+
+  /* https://type-scale.com/?size=16&scale=1.200&text=A%20Visual%20Type%20Scale&font=Open%20Sans&fontweight=400&bodyfont=body_font_default&bodyfontweight=400&lineheight=1.75&backgroundcolor=%23ffffff&fontcolor=%23000000&preview=false */
+  --font-size-80: 0.833rem;
+  --font-size-100: 1rem;
+  --font-size-200: 1.125rem;
+  --font-size-300: 1.2rem;
+  --font-size-400: 1.44rem;
+  --font-size-600: 1.728rem;
+  --font-size-800: 2.074rem;
+  --font-size-1200: 2.488rem;
+  --font-size-1400: 2.986rem;
+
+  /*
   --font-size-80: 0.875rem;
   --font-size-100: 1rem;
   --font-size-200: 1.125rem;
@@ -43,7 +56,7 @@
   --font-size-800: 2rem;
   --font-size-1200: 2.5rem;
   --font-size-1400: 2.8125rem;
-
+   */
 
   /** Public tokens */
 

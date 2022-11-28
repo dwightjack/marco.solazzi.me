@@ -14,10 +14,11 @@ const {
   as: Tag = 'div',
   class: className,
   'class:list': classList,
+  space,
   ...attrs
 } = Astro.props;
 
-const style = toStyleAttribute(computedSpace(Astro.props.space));
+const style = toStyleAttribute(computedSpace(space));
 const classNames = (['c-cluster'] as unknown[]).concat(className, classList);
 ---
 

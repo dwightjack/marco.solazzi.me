@@ -118,22 +118,23 @@ function metaTitle(meta: Record<string, string>) {
     }
   }
 
-  @media (--viewport-tablet-landscape) {
-    .c-card__data {
+  .c-card__data {
+    margin-block: var(--space-2);
+
+    @media (--viewport-tablet-landscape) {
       font-size: var(--text-body-font-size-x2);
     }
   }
 
   .c-card__data > * {
     max-inline-size: 60ch;
-    margin-block-end: 0.2em;
     margin-inline-start: 0.3em;
   }
 
   .c-card__data :is(dt, dd) {
     display: inline;
     margin-inline-start: 0;
-    line-height: 1.5em;
+    line-height: 1.5;
   }
 
   .c-card__data dt {
