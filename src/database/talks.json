@@ -1,5 +1,38 @@
 [
   {
+    "id": 6,
+    "title": "Tools and Strategies for Frontend UI Libraries",
+    "date": "2021-07-08",
+    "conf": "Merpay Tech Fest 2022",
+    "href": "https://events.merpay.com/techfest-2022/en/",
+    "meta": [
+      {
+        "icon": "mdi:movie-open",
+        "type": "video",
+        "link": "https://www.youtube.com/watch?v=3NbvIpE_2a0"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Automation Strategies for Baseline Accessibility",
+    "date": "2021-07-08",
+    "conf": "Merpay Frontend Tech Talk",
+    "href": "https://engineering.mercari.com/blog/entry/20211027-4f4045b053/",
+    "meta": [
+      {
+        "icon": "mdi:movie-open",
+        "type": "video",
+        "link": "https://youtu.be/g_ncv-J_lGA?t=2278"
+      },
+      {
+        "icon": "mdi:file-presentation-box",
+        "type": "slides",
+        "link": "https://speakerdeck.com/dwightjack/automation-strategies-for-baseline-accessibility-merpay-tech-talk-2021"
+      }
+    ]
+  },
+  {
     "id": 4,
     "title": "Historiae JavaScript",
     "date": "2016-10-27",
