@@ -9,6 +9,7 @@
       {
         "icon": "mdi:movie-open",
         "type": "video",
+        "lang": "EN",
         "link": "https://www.youtube.com/watch?v=3NbvIpE_2a0"
       },
       {
@@ -28,6 +29,7 @@
       {
         "icon": "mdi:movie-open",
         "type": "video",
+        "lang": "EN",
         "link": "https://youtu.be/g_ncv-J_lGA?t=2278"
       },
       {
@@ -61,6 +63,7 @@
       {
         "icon": "mdi:movie-open",
         "type": "video",
+        "lang": "IT",
         "link": "https://vimeo.com/165114097"
       },
       {
@@ -94,6 +97,7 @@
       {
         "icon": "mdi:movie-open",
         "type": "video",
+        "lang": "IT",
         "link": "https://vimeo.com/127662618"
       },
       {
@@ -113,6 +117,7 @@
       {
         "icon": "mdi:movie-open",
         "type": "video",
+        "lang": "IT",
         "link": "https://youtu.be/b-HsUQJydhI?t=3m22s"
       },
       {

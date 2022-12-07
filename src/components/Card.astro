@@ -77,6 +77,7 @@ function metaTitle(meta: Record<string, string>) {
             title={title && metaTitle(meta)}
           >
             {meta.label || meta.type}
+            {meta.type === 'video' && meta.lang && ` (${meta.lang})`}
           </ExternalAnchor>
         ))}
       </Cluster>
