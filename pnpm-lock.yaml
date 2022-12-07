@@ -3,13 +3,13 @@ lockfileVersion: 5.4
 specifiers:
   '@typescript-eslint/eslint-plugin': 5.42.1
   '@typescript-eslint/parser': 5.42.1
-  astro: 1.6.11
+  astro: 1.6.13
   astro-icon: 0.8.0
   eslint: 8.27.0
   eslint-config-prettier: 8.5.0
   eslint-plugin-astro: 0.21.0
   eslint-plugin-prettier: 4.2.1
-  lefthook: 1.2.2
+  lefthook: 1.2.4
   modern-normalize: 1.1.0
   nanostores: 0.7.1
   postcss: 8.4.19
@@ -26,7 +26,7 @@ specifiers:
   typescript: 4.8.4
 
 dependencies:
-  astro: 1.6.11
+  astro: 1.6.13
   astro-icon: 0.8.0
   modern-normalize: 1.1.0
   nanostores: 0.7.1
@@ -38,7 +38,7 @@ devDependencies:
   eslint-config-prettier: 8.5.0_eslint@8.27.0
   eslint-plugin-astro: 0.21.0_eslint@8.27.0
   eslint-plugin-prettier: 4.2.1_v7o5sx5x3wbs57ifz6wc4f76we
-  lefthook: 1.2.2
+  lefthook: 1.2.4
   postcss: 8.4.19
   postcss-html: 1.5.0
   postcss-preset-env: 7.8.3_postcss@8.4.19
@@ -1103,8 +1103,8 @@ packages:
       svgo: 2.8.0
     dev: false
 
-  /astro/1.6.11:
-    resolution: {integrity: sha512-T0xb0U0FOrqXxl87x4mjpufhf0b47RMPIu8WWK+2ODrRZkPj1sr24alh3Y/PLSyiWSqoGZF7xzQ6hzt0jDCyVQ==}
+  /astro/1.6.13:
+    resolution: {integrity: sha512-26Ip+7iCdHiK4FQokEWNYTcVDkJ76KLwlzUsuzLck8QBiUFQQUm9fs5nITHDI06k1EYfODYPH81xqZavXlC3Hg==}
     engines: {node: ^14.18.0 || >=16.12.0, npm: '>=6.14.0'}
     hasBin: true
     dependencies:
@@ -1132,7 +1132,6 @@ packages:
       deepmerge-ts: 4.2.2
       diff: 5.1.0
       es-module-lexer: 0.10.5
-      esbuild: 0.14.54
       execa: 6.1.0
       fast-glob: 3.2.12
       github-slugger: 1.4.0
@@ -1165,8 +1164,8 @@ packages:
       typescript: 4.8.4
       unist-util-visit: 4.1.1
       vfile: 5.3.5
-      vite: 3.2.4
-      vitefu: 0.2.1_vite@3.2.4
+      vite: 3.2.5
+      vitefu: 0.2.1_vite@3.2.5
       yargs-parser: 21.1.1
       zod: 3.19.1
     transitivePeerDependencies:
@@ -3040,83 +3039,83 @@ packages:
     resolution: {integrity: sha512-5FZRzrZzNTBruuurWpvZnvP9pum+fe0HcK8z/ooo+U+Hmp4vtbyp1/QDsqmufirXy4egGzbaH/y2uCZf+6W5Kg==}
     dev: true
 
-  /lefthook-darwin-arm64/1.2.2:
-    resolution: {integrity: sha512-dRC67p29yCKjI/A50tXKJwxRM1ko0mWzryc3ELHikZOwBjfJxh1MmifGGTLkXdJoaIlzLmtnsH58BMJ9SUiWDQ==}
+  /lefthook-darwin-arm64/1.2.4:
+    resolution: {integrity: sha512-c3pzGWT6YuStgH0BWzlOpghJSiQTDvoXbjOmlolBKbN46KSLwclbVbeSpp2vfAtuQvGP1RIo02aMYngsVjX5DA==}
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
     dev: true
     optional: true
 
-  /lefthook-darwin-x64/1.2.2:
-    resolution: {integrity: sha512-vzEkP7ISTq99rO/awRkFIopjUOBrIYgm2qhpLV2BFU47YCq6972CUx5F4hNHpkrZG3iNbM1RnL0aHrAf8hoP4w==}
+  /lefthook-darwin-x64/1.2.4:
+    resolution: {integrity: sha512-7HrmSd9GR3pe2bKq0She2pvdGLjaB2KKlREDqbREfe+vWrC+WqzeV/xUncKk+8mz6BCHyPq0XfuZqsztluXN5w==}
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
     dev: true
     optional: true
 
-  /lefthook-freebsd-arm64/1.2.2:
-    resolution: {integrity: sha512-m2v7CFIt/DBfG2KpUE693xDHWyP+BNRuVzAMuWXxizwjqLDp8wOPyAWsBvsuG3lj6Al82ESzlAxov8aWMMWXDQ==}
+  /lefthook-freebsd-arm64/1.2.4:
+    resolution: {integrity: sha512-VkUoz3xrW70XJ82y3vAz1vfZOdUCe/8z4W2h3YMIBaR/Ovrt9PwtWHtSWEM5LrTBkgi1BbIP7hZtu7HbMw/siQ==}
     cpu: [arm64]
     os: [freebsd]
     requiresBuild: true
     dev: true
     optional: true
 
-  /lefthook-freebsd-x64/1.2.2:
-    resolution: {integrity: sha512-v7Eat6/fDJyuSfmdjwg2mwR+bKQxwjB8su31tTW5HhDj+JFr6A3p26VHWPrlUEHAcepGsWdpcqCEzKU7IsOblA==}
+  /lefthook-freebsd-x64/1.2.4:
+    resolution: {integrity: sha512-e/ycIWt9WB3T/8KGy1aXY16AbVRGYXI4kw7jDp+GT5Lqile609mA9HCPubm4uPQK5PEtvYTB8R3c19LCDGqyeQ==}
     cpu: [x64]
     os: [freebsd]
     requiresBuild: true
     dev: true
     optional: true
 
-  /lefthook-linux-arm64/1.2.2:
-    resolution: {integrity: sha512-+FfRjzRKtW5J1Rv4EiLNRQRYwNjaaZBm4w5nThh4AMETbv3QC9pu0E+c/bIg/SqDU2Hn585XaTPqFnWamPIVNg==}
+  /lefthook-linux-arm64/1.2.4:
+    resolution: {integrity: sha512-GDpfnt71Tx3+H14RcZr294of+ZTSANZ8v7dp86fATc2odZnvRCi31mGb2b0SjWGTvnsD9fnXcdvhOPsG2/+qIA==}
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /lefthook-linux-x64/1.2.2:
-    resolution: {integrity: sha512-IMen7XttJUgD+Pg4tX9qeknEGCDjtFEXlf8QMQpwjI999V6ZoQ+25msdFmxtZoEGYjVJ/qmfZblK7CaOKqjeIQ==}
+  /lefthook-linux-x64/1.2.4:
+    resolution: {integrity: sha512-wNVsG0oOZVYqK5RIYZgY7aYPCoVaWkx4SGpTQiPrgiVeXRm2AgY/+U7Pv6Nim9KZppQXemNjaA83dA0DvOOufg==}
     cpu: [x64]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /lefthook-windows-arm64/1.2.2:
-    resolution: {integrity: sha512-x/YkDCOnmXnA7pLOm7JyC9mD6KnREUh9H1Y4aVWBdRblr0xV9RHknIIUV96/91d1ny14TSVNTr6tCfDLnvsSOw==}
+  /lefthook-windows-arm64/1.2.4:
+    resolution: {integrity: sha512-t2xdxZQdbEYSlAaCwxJVphwmz1XQI9guGVkTfZEEbBswzNvDAUBr+w2l/ySDvA8fLrIyQI3D2czMQSslhAXqAQ==}
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
     dev: true
     optional: true
 
-  /lefthook-windows-x64/1.2.2:
-    resolution: {integrity: sha512-GEBIynskF6LvYUhmQaLNoPj/LeEhRZGUlRYQQD40tGp69Cp791eU3FEJZ0Rdkru98H2bL9itM5+nxMDlMnZi+g==}
+  /lefthook-windows-x64/1.2.4:
+    resolution: {integrity: sha512-0K2UeSEAdMXDNHF8FSjGS/ZlAhfMDQ8lHSkBnGXF+68W7Uo62X27yDAJHKAMDjmQKh45V7NuDaVj8dq+m0mnwQ==}
     cpu: [x64]
     os: [win32]
     requiresBuild: true
     dev: true
     optional: true
 
-  /lefthook/1.2.2:
-    resolution: {integrity: sha512-jSMBSkwy/2DXAD73Q9Xv8XY9rMKO9KeJNE15UcH7Is7UYTV/+5d7LnFm8pCFSa4fHEDiblL00FG9YC0FKdVwtQ==}
+  /lefthook/1.2.4:
+    resolution: {integrity: sha512-DQOqqub4WmRFDsiTBye5GWy2TIsGdtJmkOrkK3zYBmUWoD7nuHodtMI4+JgrDgHCC1crB8LV/pMSaQOo2dsOHA==}
     hasBin: true
     requiresBuild: true
     optionalDependencies:
-      lefthook-darwin-arm64: 1.2.2
-      lefthook-darwin-x64: 1.2.2
-      lefthook-freebsd-arm64: 1.2.2
-      lefthook-freebsd-x64: 1.2.2
-      lefthook-linux-arm64: 1.2.2
-      lefthook-linux-x64: 1.2.2
-      lefthook-windows-arm64: 1.2.2
-      lefthook-windows-x64: 1.2.2
+      lefthook-darwin-arm64: 1.2.4
+      lefthook-darwin-x64: 1.2.4
+      lefthook-freebsd-arm64: 1.2.4
+      lefthook-freebsd-x64: 1.2.4
+      lefthook-linux-arm64: 1.2.4
+      lefthook-linux-x64: 1.2.4
+      lefthook-windows-arm64: 1.2.4
+      lefthook-windows-x64: 1.2.4
     dev: true
 
   /levn/0.4.1:
@@ -5414,8 +5413,8 @@ packages:
       vfile-message: 3.1.2
     dev: false
 
-  /vite/3.2.4:
-    resolution: {integrity: sha512-Z2X6SRAffOUYTa+sLy3NQ7nlHFU100xwanq1WDwqaiFiCe+25zdxP1TfCS5ojPV2oDDcXudHIoPnI1Z/66B7Yw==}
+  /vite/3.2.5:
+    resolution: {integrity: sha512-4mVEpXpSOgrssFZAOmGIr85wPHKvaDAcXqxVxVRZhljkJOMZi1ibLibzjLHzJvcok8BMguLc7g1W6W/GqZbLdQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -5447,7 +5446,7 @@ packages:
       fsevents: 2.3.2
     dev: false
 
-  /vitefu/0.2.1_vite@3.2.4:
+  /vitefu/0.2.1_vite@3.2.5:
     resolution: {integrity: sha512-clkvXTAeUf+XQKm3bhWUhT4pye+3acm6YCTGaWhxxIvZZ/QjnA3JA8Zud+z/mO5y5XYvJJhevs5Sjkv/FI8nRw==}
     peerDependencies:
       vite: ^3.0.0
@@ -5455,7 +5454,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 3.2.4
+      vite: 3.2.5
     dev: false
 
   /vscode-css-languageservice/6.1.1:
