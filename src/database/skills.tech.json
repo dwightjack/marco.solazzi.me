@@ -42,7 +42,7 @@
     ]
   },
   {
-    "label": "Frontend Libraries",
+    "label": "Libraries and Frameworks",
     "icon": "extension",
     "data": [
       {
@@ -61,6 +61,11 @@
         "icon": "logos:svelte-icon"
       },
       {
+        "id": "nuxt",
+        "label": "Nuxt",
+        "icon": "logos:nuxt-icon"
+      },
+      {
         "id": "astro",
         "label": "Astro",
         "icon": "logos:astro"
@@ -71,11 +76,6 @@
         "icon": "logos:tailwindcss-icon"
       },
       { "id": "windi", "label": "Windi CSS", "icon": "@windi" },
-      {
-        "id": "angular",
-        "label": "Angular 1.x",
-        "icon": "logos:angular-icon"
-      },
       {
         "id": "animation",
         "label": "GSAP",
