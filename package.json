@@ -35,7 +35,7 @@
     "@typescript-eslint/parser": "5.42.1",
     "eslint": "8.27.0",
     "eslint-config-prettier": "8.5.0",
-    "eslint-plugin-astro": "0.21.0",
+    "eslint-plugin-astro": "0.21.1",
     "eslint-plugin-prettier": "4.2.1",
     "lefthook": "1.2.6",
     "postcss": "8.4.20",
