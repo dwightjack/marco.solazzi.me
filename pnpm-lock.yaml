@@ -7,7 +7,7 @@ specifiers:
   astro-icon: 0.8.0
   eslint: 8.27.0
   eslint-config-prettier: 8.5.0
-  eslint-plugin-astro: 0.21.0
+  eslint-plugin-astro: 0.21.1
   eslint-plugin-prettier: 4.2.1
   lefthook: 1.2.6
   modern-normalize: 1.1.0
@@ -36,7 +36,7 @@ devDependencies:
   '@typescript-eslint/parser': 5.42.1_rmayb2veg2btbq6mbmnyivgasy
   eslint: 8.27.0
   eslint-config-prettier: 8.5.0_eslint@8.27.0
-  eslint-plugin-astro: 0.21.0_eslint@8.27.0
+  eslint-plugin-astro: 0.21.1_eslint@8.27.0
   eslint-plugin-prettier: 4.2.1_v7o5sx5x3wbs57ifz6wc4f76we
   lefthook: 1.2.6
   postcss: 8.4.20
@@ -652,7 +652,6 @@ packages:
 
   /@jridgewell/sourcemap-codec/1.4.14:
     resolution: {integrity: sha512-XPSJHWmi394fuUuzDnGz1wiKqWfo1yXecHQMRf2l6hztTO+nPru658AyDngaBe7isIxEkRsPR3FZh+s7iVa4Uw==}
-    dev: false
 
   /@jridgewell/trace-mapping/0.3.16:
     resolution: {integrity: sha512-LCQ+NeThyJ4k1W2d+vIKdxuSt9R3pQSZ4P92m7EakaYuXcVWbHuT5bjNcqLd4Rdgi6xYWYDvBJZJLZSLanjDcA==}
@@ -2165,19 +2164,19 @@ packages:
       eslint: 8.27.0
     dev: true
 
-  /eslint-plugin-astro/0.21.0_eslint@8.27.0:
-    resolution: {integrity: sha512-7pEhTfYT+tlOMOSmQV77TNgCeuFZgqSAqJPTHh6LYlwLqYyBQLURc5RRtlQqCJkufSh4Fan4nsV3LXCT/vjpCA==}
+  /eslint-plugin-astro/0.21.1_eslint@8.27.0:
+    resolution: {integrity: sha512-gzT9R0b/Hl5sks8/WSMTlzu2VC7vdd99MnBYkq61Mk1zBWQ+C9MAuHeTcU72sFmR5XJX56NNURY6H+cN2StRcA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       eslint: '>=7.0.0'
     dependencies:
+      '@jridgewell/sourcemap-codec': 1.4.14
       '@typescript-eslint/types': 5.42.1
       astro-eslint-parser: 0.9.0
       eslint: 8.27.0
       eslint-utils: 3.0.0_eslint@8.27.0
       postcss: 8.4.20
       postcss-selector-parser: 6.0.10
-      sourcemap-codec: 1.4.8
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -4834,10 +4833,6 @@ packages:
     resolution: {integrity: sha512-l3BikUxvPOcn5E74dZiq5BGsTb5yEwhaTSzccU6t4sDOH8NWJCstKO5QT2CvtFoK6F0saL7p9xHAqHOlCPJygA==}
     engines: {node: '>= 8'}
     dev: false
-
-  /sourcemap-codec/1.4.8:
-    resolution: {integrity: sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==}
-    dev: true
 
   /space-separated-tokens/2.0.1:
     resolution: {integrity: sha512-ekwEbFp5aqSPKaqeY1PGrlGQxPNaq+Cnx4+bE2D8sciBQrHpbwoBbawqTN2+6jPs9IdWxxiUcN0K2pkczD3zmw==}
