@@ -22,6 +22,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "test:integration": "playwright test ./tests/integration.test.ts",
+    "test:visual": "percy exec -- playwright test './tests/visual.test.ts' --reporter=dot",
     "lint": "eslint 'src/**/*.{cjs,mjs,js,ts,astro}' && stylelint 'src/**/*.{css,astro}'"
   },
   "dependencies": {
@@ -32,6 +34,9 @@
   },
   "devDependencies": {
     "@csstools/postcss-global-data": "1.0.3",
+    "@percy/cli": "1.21.0",
+    "@percy/playwright": "1.0.4",
+    "@playwright/test": "^1.31.2",
     "@typescript-eslint/eslint-plugin": "5.42.1",
     "@typescript-eslint/parser": "5.42.1",
     "eslint": "8.27.0",
