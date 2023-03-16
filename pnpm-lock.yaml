@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@csstools/postcss-global-data': 1.0.3
   '@typescript-eslint/eslint-plugin': 5.42.1
   '@typescript-eslint/parser': 5.42.1
   astro: 2.0.11
@@ -32,6 +33,7 @@ dependencies:
   nanostores: 0.7.1
 
 devDependencies:
+  '@csstools/postcss-global-data': 1.0.3_postcss@8.4.20
   '@typescript-eslint/eslint-plugin': 5.42.1_2udltptbznfmezdozpdoa2aemq
   '@typescript-eslint/parser': 5.42.1_rmayb2veg2btbq6mbmnyivgasy
   eslint: 8.27.0
@@ -448,6 +450,15 @@ packages:
     dependencies:
       postcss: 8.4.20
       postcss-value-parser: 4.2.0
+    dev: true
+
+  /@csstools/postcss-global-data/1.0.3_postcss@8.4.20:
+    resolution: {integrity: sha512-x2fZOl7RJJtKC9ZfG+1bdrQKeRfP1a3Ff4uF2/fykNUKly8E8Q7lw7oegsEnqenSEDC1xjk6qXJ/fcJkTAdcNg==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      postcss: 8.4.20
     dev: true
 
   /@csstools/postcss-hwb-function/2.1.1_postcss@8.4.20:
