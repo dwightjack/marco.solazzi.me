@@ -127,13 +127,16 @@ const socialImageURL = new URL('/marco-og.jpg', Astro.url);
   }
 
   menuExpanded.subscribe((expanded) => {
+    if (!header) {
+      return;
+    }
     if (expanded) {
-      header!.dataset.swatch = 'brand';
+      header.dataset.swatch = 'brand';
       document.addEventListener('click', hideNav);
       document.addEventListener('keyup', hideNav);
       return;
     }
-    delete header!.dataset.swatch;
+    delete header.dataset.swatch;
     document.removeEventListener('click', hideNav);
     document.removeEventListener('keyup', hideNav);
   });
