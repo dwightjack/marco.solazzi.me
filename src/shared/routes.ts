@@ -34,6 +34,6 @@ const routes = [
   },
 ] as const;
 
-export type Route = typeof routes[number]['path'];
+export type Route = (typeof routes)[number]['path'];
 
 export default routes;
