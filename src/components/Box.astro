@@ -29,7 +29,8 @@ const classNames = (['c-box'] as unknown[]).concat(className, classList);
   {...attrs}
   data-swatch={swatch}
   style={toStyleVars({ indent })}
-  ><slot />
+>
+  <slot />
 </Tag>
 <style>
   .c-box {

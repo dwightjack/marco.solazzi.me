@@ -147,7 +147,7 @@ const socialImageURL = new URL('/marco-og.jpg', Astro.url);
   });
 
   theme.set(
-    (document.documentElement.dataset.theme as typeof THEMES[number]) ||
+    (document.documentElement.dataset.theme as (typeof THEMES)[number]) ||
       THEME_DEFAULT,
   );
 </script>

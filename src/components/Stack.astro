@@ -21,8 +21,8 @@ const {
 const classNames = (['c-stack'] as unknown[]).concat(className, classList);
 ---
 
-<Tag class:list={classNames} {...attrs} style={toStyleVars({ space })}
-  ><slot />
+<Tag class:list={classNames} {...attrs} style={toStyleVars({ space })}>
+  <slot />
 </Tag>
 <style>
   .c-stack {
