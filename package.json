@@ -28,7 +28,7 @@
     "lint:css": "stylelint 'src/**/*.{css,astro}'"
   },
   "dependencies": {
-    "astro": "2.4.3",
+    "astro": "2.4.4",
     "astro-icon": "0.8.0",
     "modern-normalize": "1.1.0",
     "nanostores": "0.8.1"
