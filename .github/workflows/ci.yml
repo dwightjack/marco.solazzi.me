@@ -36,7 +36,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Lint
-        run: pnpm run lint
+        run: pnpm run "/^lint:.*/"
   integration:
     name: Integration and visual regression
     timeout-minutes: 60

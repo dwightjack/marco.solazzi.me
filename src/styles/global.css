@@ -6,9 +6,11 @@ html {
   @media (--viewport-tablet-landscape) {
     font-size: 87.5%;
   }
+
   @media (--viewport-desktop) {
     font-size: 100%;
   }
+
   @media (--viewport-qhd) {
     font-size: 125%;
   }
