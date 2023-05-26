@@ -1,16 +1,13 @@
 ---
-import type { AstroBuiltinAttributes } from 'astro';
-import type { HTMLTag } from 'astro/types';
+import type { HTMLTag, Polymorphic } from 'astro/types';
 import type { Swatches } from '../shared/types';
 import { toStyleVars } from '../shared/utils';
 
-export interface Props extends AstroBuiltinAttributes {
+type Props<Tag extends HTMLTag> = Polymorphic<{
+  as: Tag;
   indent?: number;
   swatch?: Swatches;
-  as?: HTMLTag;
-  class?: string;
-  [k: string]: unknown;
-}
+}>;
 
 const {
   indent,
