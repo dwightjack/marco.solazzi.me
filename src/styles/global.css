@@ -35,21 +35,7 @@ body {
   text-shadow: none;
 }
 
-::-webkit-scrollbar {
-  inline-size: 4px;
 
-  @media (--viewport-tablet-landscape) {
-    inline-size: 8px;
-  }
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--box-color-scrollbar-thumb);
-}
-
-::-webkit-scrollbar-track {
-  background: var(--box-color-scrollbar-track);
-}
 
 h2,
 h3,

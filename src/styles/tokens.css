@@ -99,8 +99,6 @@
   --box-color-background-secondary: var(--color-brand-400);
   --box-color-selection-background: var(--color-brand-400-a20);
   --box-color-selection-foreground: var(--color-brand-250);
-  --box-color-scrollbar-thumb: var(--color-brand-250);
-  --box-color-scrollbar-track: var(--color-brand-400);
   --box-color-border: var(--color-brand-400-a50);
 
   @media (--theme-dark) {
