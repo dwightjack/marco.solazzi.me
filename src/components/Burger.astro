@@ -48,7 +48,7 @@
     display: block;
     inline-size: var(--burger-width);
     margin-block: calc((var(--burger-height) - var(--burger-size)) / 2);
-    transform: rotate(20deg);
+    rotate: 20deg;
     transition: all var(--action-transition-duration) ease-out;
     transition-property: opacity, transform, color;
     opacity: 0;
@@ -64,7 +64,7 @@
   }
 
   .c-burger[aria-expanded='true']::before {
-    transform: rotate(45deg);
+    rotate: 45deg;
     transition-delay: 200ms;
     opacity: 1;
   }
