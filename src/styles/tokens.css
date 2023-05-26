@@ -1,3 +1,5 @@
+@layer reset, base, components, utilities;
+
 /* Media queries */
 @custom-media --viewport-mobile (width >= 30em);
 @custom-media --viewport-tablet (width >= 48em);
@@ -17,19 +19,15 @@
   --color-hue-purple: 325deg;
   --color-darker: hsl(0deg 0% 22%);
   --color-dark: hsl(0deg 0% 30%);
-  --color-dark-a10: hsl(0deg 0% 30% / 10%);
   --color-light-900: hsl(0deg 0% 90%);
-  --color-light-900-a10: hsl(0deg 0% 90% / 10%);
-  --color-light-900-a40: hsl(0deg 0% 90% / 40%);
   --color-light: hsl(0deg 0% 100%);
   --color-brand-hue: var(--color-hue-red);
   --color-brand-250: hsl(var(--color-brand-hue) 56% 25%);
   --color-brand-400: hsl(var(--color-brand-hue) 57% 40%);
+  --color-brand-500: hsl(var(--color-brand-hue) 47% 52%);
   --color-brand-700: hsl(var(--color-brand-hue) 57% 70%);
   --color-brand-800: hsl(var(--color-brand-hue) 75% 72%);
-  --color-brand-400-a20: hsl(var(--color-brand-hue) 57% 40% / 20%);
-  --color-brand-400-a50: hsl(var(--color-brand-hue) 57% 40% / 50%);
-  --color-brand-500-a50: hsl(var(--color-brand-hue) 47% 52% / 50%);
+
 
 
   /* Fonts */
@@ -46,17 +44,6 @@
   --font-size-800: 2.074rem;
   --font-size-1200: 2.488rem;
   --font-size-1400: 2.986rem;
-
-  /*
-  --font-size-80: 0.875rem;
-  --font-size-100: 1rem;
-  --font-size-200: 1.125rem;
-  --font-size-300: 1.25rem;
-  --font-size-400: 1.375rem;
-  --font-size-800: 2rem;
-  --font-size-1200: 2.5rem;
-  --font-size-1400: 2.8125rem;
-   */
 
   /** Public tokens */
 
@@ -97,25 +84,27 @@
   --box-color-background: var(--color-light);
   --box-color-foreground-secondary: var(--color-light);
   --box-color-background-secondary: var(--color-brand-400);
-  --box-color-selection-background: var(--color-brand-400-a20);
+  --box-color-selection-background: color-mix(in srgb, var(--color-brand-400), transparent 80%);
   --box-color-selection-foreground: var(--color-brand-250);
-  --box-color-border: var(--color-brand-400-a50);
+  --box-color-border: color-mix(in srgb, var(--color-brand-400), transparent 50%);
 
   @media (--theme-dark) {
     --box-color-foreground: var(--color-light-900);
     --box-color-background: var(--color-darker);
-    --box-color-border: var(--color-brand-500-a50);
+    --box-color-border: color-mix(in srgb, var(--color-brand-500), transparent 50%);
+    --box-color-selection-background: color-mix(in srgb, var(--color-brand-400), transparent 40%);
+    --box-color-selection-foreground: var(--color-light-900);
   }
 
   /* Navigation */
   --navigation-color-foreground: var(--color-dark);
   --navigation-color-foreground-hover: var(--color-brand-400);
-  --navigation-color-border: var(--color-dark-a10);
-  --navigation-color-border-hover: var(--color-brand-400-a20);
+  --navigation-color-border: color-mix(in srgb, var(--color-dark), transparent 90%);
+  --navigation-color-border-hover: color-mix(in srgb, var(--color-brand-400), transparent 90%);
 
 
   @media (--theme-dark) {
-    --navigation-color-border: var(--color-light-900-a10);
+    --navigation-color-border: color-mix(in srgb, var(--color-light-900), transparent 90%);
     --navigation-color-foreground-hover: var(--color-brand-800);
   }
 
@@ -129,7 +118,7 @@
   }
 
   /* Generic interactive elements */
-  --interactive-color-outline: var(--color-brand-400-a20);
+  --interactive-color-outline: color-mix(in srgb, var(--color-brand-400), transparent 80%);
 
 
   @media (--theme-dark) {
@@ -152,14 +141,14 @@
 [data-swatch="brand"] {
   --box-color-foreground: var(--color-light);
   --box-color-background: var(--color-brand-400);
-  --box-color-selection-background: var(--color-light-900-a40);
+  --box-color-selection-background: color-mix(in srgb, var(--color-light-900), transparent 60%);
   --box-color-selection-foreground: var(--color-light);
-  --box-color-border: var(--color-light-900-a40);
+  --box-color-border: color-mix(in srgb, var(--color-light-900), transparent 60%);
   --box-color-foreground-secondary: var(--color-brand-400);
   --box-color-background-secondary: var(--color-light);
   --navigation-color-foreground: var(--color-light);
   --navigation-color-foreground-hover: var(--color-light);
-  --interactive-color-outline: var(--color-light-900-a40);
+  --interactive-color-outline: color-mix(in srgb, var(--color-light-900), transparent 60%);
   --action-color-background: var(--color-light);
 
 }

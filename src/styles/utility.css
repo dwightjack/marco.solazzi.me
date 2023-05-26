@@ -1,11 +1,14 @@
-.u-visuallyhidden {
-  position: absolute !important;
-  block-size: 1px !important;
-  inline-size: 1px !important;
-  margin: -1px !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-  border: 0 !important;
-  white-space: nowrap !important;
+@layer utilities {
+  .u-visuallyhidden {
+    position: absolute !important;
+    block-size: 1px !important;
+    inline-size: 1px !important;
+    margin: -1px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    border: 0 !important;
+    white-space: nowrap !important;
+  }
+
 }

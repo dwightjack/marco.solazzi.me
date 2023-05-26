@@ -51,7 +51,7 @@ const { label, icon } = Astro.props;
       transition: all 250ms ease-out;
 
       &:nth-child(2) {
-        transform: scale(0.2);
+        scale: 0.2;
         transition-duration: 150ms;
         opacity: 0;
       }
@@ -89,12 +89,12 @@ const { label, icon } = Astro.props;
 
     @media (prefers-reduced-motion: no-preference) {
       .c-data-group:hover .c-data-group__icon:first-child {
-        transform: scale(1.5);
+        scale: 1.5;
         opacity: 0;
       }
 
       .c-data-group:hover .c-data-group__icon:nth-child(2) {
-        transform: scale(1);
+        scale: 1;
         transition-delay: 240ms;
         opacity: 1;
       }
