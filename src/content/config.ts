@@ -11,6 +11,16 @@ const jobCollection = defineCollection({
   }),
 });
 
+const educationCollection = defineCollection({
+  type: 'data',
+  schema: z.object({
+    institute: z.string(),
+    date: z.date(),
+    title: z.string(),
+  }),
+});
+
 export const collections = {
   jobs: jobCollection,
+  education: educationCollection,
 };

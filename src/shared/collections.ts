@@ -24,3 +24,13 @@ export async function getJobs() {
     previous: jobs.filter(({ data }) => !!data.to),
   };
 }
+
+export async function getEducation() {
+  return (await getCollection('education'))
+    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+    .map((entry) => {
+      const { title, ...data } = entry.data;
+
+      return { id: `education-${entry.id}`, title, data };
+    });
+}
