@@ -52,18 +52,22 @@ function metaTitle(meta: Record<string, string>) {
 
   <dl class="c-card__data" aria-labelledby={`table-${id}`}>
     {
-      Object.entries(data).map(([heading, value]) => (
-        <div data-row={heading}>
-          <dt>.{heading}:</dt>
-          <dd>
-            {isDate(heading) && typeof value === 'string' ? (
-              <DateTime datetime={value} />
-            ) : (
-              <Fragment set:html={value} />
-            )}
-          </dd>
-        </div>
-      ))
+      Object.entries(data).map(
+        ([heading, value]) =>
+          value && (
+            <div data-row={heading}>
+              <dt>.{heading}:</dt>
+              <dd>
+                {(isDate(heading) && typeof value === 'string') ||
+                value instanceof Date ? (
+                  <DateTime datetime={value} />
+                ) : (
+                  <Fragment set:html={value} />
+                )}
+              </dd>
+            </div>
+          ),
+      )
     }
   </dl>
   {
