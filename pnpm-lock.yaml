@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   astro:
-    specifier: 2.7.1
-    version: 2.7.1
+    specifier: 2.7.2
+    version: 2.7.2
   astro-icon:
     specifier: 0.8.1
     version: 0.8.1
@@ -122,13 +122,13 @@ packages:
       vscode-uri: 3.0.7
     dev: false
 
-  /@astrojs/markdown-remark@2.2.1(astro@2.7.1):
+  /@astrojs/markdown-remark@2.2.1(astro@2.7.2):
     resolution: {integrity: sha512-VF0HRv4GpC1XEMLnsKf6jth7JSmlt9qpqP0josQgA2eSpCIAC/Et+y94mgdBIZVBYH/yFnMoIxgKVe93xfO2GA==}
     peerDependencies:
       astro: ^2.5.0
     dependencies:
       '@astrojs/prism': 2.1.2
-      astro: 2.7.1
+      astro: 2.7.2
       github-slugger: 1.4.0
       import-meta-resolve: 2.1.0
       rehype-raw: 6.1.1
@@ -1512,7 +1512,7 @@ packages:
       '@typescript-eslint/typescript-estree': 5.60.1(typescript@5.1.6)
       eslint: 8.43.0
       eslint-scope: 5.1.1
-      semver: 7.3.8
+      semver: 7.5.3
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -1668,8 +1668,8 @@ packages:
       svgo: 2.8.0
     dev: false
 
-  /astro@2.7.1:
-    resolution: {integrity: sha512-W7KbiHPIWM9tmjAUza8iQtalbNnpRcbtKgEZ7zc/+vOpuvcmSHxkYVar+VhLf2ZuwBIDjgaF9M8ScQ2B1oobAA==}
+  /astro@2.7.2:
+    resolution: {integrity: sha512-2+vjXeVGU04aecs0mm93Qx9KdeVDw4OTeBIijs2Z+QLoe4RUYZnkqx5gR70VNfnoMdXoPp7+wB+ARcb0+ee/yg==}
     engines: {node: '>=16.12.0', npm: '>=6.14.0'}
     hasBin: true
     peerDependencies:
@@ -1681,7 +1681,7 @@ packages:
       '@astrojs/compiler': 1.5.1
       '@astrojs/internal-helpers': 0.1.1
       '@astrojs/language-server': 1.0.4
-      '@astrojs/markdown-remark': 2.2.1(astro@2.7.1)
+      '@astrojs/markdown-remark': 2.2.1(astro@2.7.2)
       '@astrojs/telemetry': 2.1.1
       '@astrojs/webapi': 2.2.0
       '@babel/core': 7.22.5
