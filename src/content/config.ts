@@ -20,7 +20,64 @@ const educationCollection = defineCollection({
   }),
 });
 
+const skillCollection = defineCollection({
+  type: 'data',
+  schema: z.object({
+    label: z.string(),
+    icon: z.string(),
+    data: z.array(
+      z.object({
+        id: z.string(),
+        label: z.string(),
+        icon: z.string(),
+      }),
+    ),
+  }),
+});
+
+const talkCollection = defineCollection({
+  type: 'data',
+  schema: z.object({
+    title: z.string(),
+    date: z.date(),
+    conf: z.string(),
+    href: z.string().url(),
+    media: z.array(
+      z.object({
+        icon: z.string().optional(),
+        type: z.enum(['video', 'slides', 'award'] as const),
+        lang: z.string().optional(),
+        href: z.string().url(),
+      }),
+    ),
+  }),
+});
+
+const workCollection = defineCollection({
+  type: 'data',
+  schema: z.object({
+    project: z.string(),
+    date: z.date(),
+    stack: z.array(z.string()),
+    tasks: z.array(z.string()),
+    href: z.string().url(),
+    media: z
+      .array(
+        z.object({
+          icon: z.string().optional(),
+          type: z.enum(['video', 'slides', 'award'] as const),
+          href: z.string().url(),
+          label: z.string().optional(),
+        }),
+      )
+      .optional(),
+  }),
+});
+
 export const collections = {
   jobs: jobCollection,
   education: educationCollection,
+  skills: skillCollection,
+  talks: talkCollection,
+  works: workCollection,
 };

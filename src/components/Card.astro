@@ -1,7 +1,5 @@
 ---
-import Cluster from './Cluster.astro';
 import DateTime from './DateTime.astro';
-import ExternalAnchor from './ExternalAnchor.astro';
 export interface Props {
   id: string;
   titleLabel?: string;
@@ -11,27 +9,7 @@ export interface Props {
   meta?: Record<string, string>[];
 }
 
-const { id, titleLabel, href, title = '', data = {}, meta = [] } = Astro.props;
-
-function isDate(heading: string) {
-  return heading === 'to' || heading === 'from' || heading === 'date';
-}
-
-function metaTitle(meta: Record<string, string>) {
-  switch (meta.type) {
-    case 'video':
-      return `Watch video for: ${title}`;
-
-    case 'slides':
-      return `Slides for: ${title}`;
-
-    case 'award':
-      return `${meta.label || 'Award'} details for ${title}`;
-
-    default:
-      return '';
-  }
-}
+const { id, titleLabel, href, title = '', data = {} } = Astro.props;
 ---
 
 <article class="c-card">
@@ -58,8 +36,7 @@ function metaTitle(meta: Record<string, string>) {
             <div data-row={heading}>
               <dt>.{heading}:</dt>
               <dd>
-                {(isDate(heading) && typeof value === 'string') ||
-                value instanceof Date ? (
+                {value instanceof Date ? (
                   <DateTime datetime={value} />
                 ) : (
                   <Fragment set:html={value} />
@@ -70,23 +47,7 @@ function metaTitle(meta: Record<string, string>) {
       )
     }
   </dl>
-  {
-    meta.length > 0 && (
-      <Cluster as="footer" space={1}>
-        {meta.map((meta) => (
-          <ExternalAnchor
-            variant="cursor"
-            href={meta.link}
-            icon={meta.icon || meta.type}
-            title={title && metaTitle(meta)}
-          >
-            {meta.label || meta.type}
-            {meta.type === 'video' && meta.lang && ` (${meta.lang})`}
-          </ExternalAnchor>
-        ))}
-      </Cluster>
-    )
-  }
+  <slot name="footer" />
 </article>
 <style>
   .c-card {

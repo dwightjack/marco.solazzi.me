@@ -1,0 +1,15 @@
+label: Tools
+icon: pencil
+data:
+- id: vscode
+  label: VS Code
+  icon: logos:visual-studio-code
+- id: software
+  label: Photoshop
+  icon: "@photoshop"
+- id: figma
+  label: Figma
+  icon: logos:figma
+- id: sketch
+  label: Sketch
+  icon: logos:sketch

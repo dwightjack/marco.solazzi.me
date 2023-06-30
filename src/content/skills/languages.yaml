@@ -1,0 +1,24 @@
+label: Languages
+icon: code-tags
+data:
+- id: html-5
+  label: HTML5
+  icon: logos:html-5
+- id: css3
+  label: CSS3
+  icon: logos:css-3-official
+- id: sass
+  label: Sass/SCSS
+  icon: logos:sass
+- id: es2015
+  label: ES2015+
+  icon: logos:javascript
+- id: typescript
+  label: TypeScript
+  icon: logos:typescript-icon
+- id: pug
+  label: Pug
+  icon: logos:pug
+- id: backend
+  label: PHP5.5+
+  icon: logos:php
