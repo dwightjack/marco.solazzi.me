@@ -1,0 +1,30 @@
+label: Libraries and Frameworks
+icon: extension
+data:
+- id: vue
+  label: Vue.js
+  icon: logos:vue
+- id: react
+  label: React
+  icon: logos:react
+- id: svelte
+  label: Svelte
+  icon: logos:svelte-icon
+- id: nuxt
+  label: Nuxt
+  icon: logos:nuxt-icon
+- id: astro
+  label: Astro
+  icon: logos:astro
+- id: tailwind
+  label: Tailwind CSS
+  icon: logos:tailwindcss-icon
+- id: windi
+  label: Windi CSS
+  icon: "@windi"
+- id: animation
+  label: GSAP
+  icon: "@gsap"
+- id: pixi
+  label: pixi.js
+  icon: logos:pixijs

@@ -1,0 +1,13 @@
+title: Automation Strategies for Baseline Accessibility
+date: 2021-07-08
+conf: Merpay Frontend Tech Talk
+href: https://engineering.mercari.com/blog/entry/20211027-4f4045b053/
+media:
+  - icon: mdi:movie-open
+    type: video
+    lang: EN
+    href: https://youtu.be/g_ncv-J_lGA?t=2278
+  - icon: mdi:file-presentation-box
+    type: slides
+    href: >-
+      https://speakerdeck.com/dwightjack/automation-strategies-for-baseline-accessibility-merpay-tech-talk-2021

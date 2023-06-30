@@ -1,0 +1,14 @@
+project: Soup Stock Tokyo
+date: 2018-06-01
+stack:
+  - Pug
+  - Sass
+  - Storybook
+  - Jest
+tasks:
+  - Frontend Design System
+  - HTML
+  - JS
+  - CSS
+  - Accessibility
+href: https://www.soup-stock-tokyo.com/

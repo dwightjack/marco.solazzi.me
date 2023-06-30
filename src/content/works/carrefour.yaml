@@ -1,0 +1,12 @@
+project: Carrefour Italia
+date: 2017-08-01
+stack:
+  - Nunjucks
+  - gulp
+  - jQuery
+tasks:
+  - Design System Development
+  - HTML
+  - CSS
+  - Accessibility
+href: https://www.carrefour.it/

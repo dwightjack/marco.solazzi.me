@@ -4,15 +4,17 @@ import PageSection from '../components/PageSection.astro';
 import { NAV_PATH_SKILLS } from '../shared/constants';
 import InlineList from '../components/InlineList.astro';
 import DataGroup from '../components/DataGroup.astro';
-import techSkills from '../database/skills.tech.json';
 import Grid from '../components/Grid.astro';
+import { getSkills } from '../shared/collections';
+
+const skills = await getSkills();
 ---
 
 <Page id={NAV_PATH_SKILLS} mark="技能">
   <PageSection title="skills.tech">
     <Grid space={[3.5, 7.5]} columnsWidth={23} columnsMax={2}>
       {
-        techSkills.map(({ label, icon, data: skills }) => (
+        skills.map(({ label, icon, data: skills }) => (
           <DataGroup label={label} icon={icon}>
             <InlineList items={skills} />
           </DataGroup>

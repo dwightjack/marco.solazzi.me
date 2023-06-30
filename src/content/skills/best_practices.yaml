@@ -1,0 +1,18 @@
+label: Best Practices
+icon: heart
+data:
+- id: progressive
+  label: Progressive Enhancement
+  icon: mdi:escalator-up
+- id: atomic
+  label: Atomic Design
+  icon: "@atomic"
+- id: a11y
+  label: Accessibility
+  icon: mdi:wheelchair-accessibility
+- id: responsive
+  label: Responsive Design
+  icon: mdi:responsive
+- id: ds
+  label: Design Systems
+  icon: mdi:layers-triple

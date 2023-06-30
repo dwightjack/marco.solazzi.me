@@ -7,13 +7,16 @@ export function toDate(dateStr: string) {
   return new Date(dateStr);
 }
 
-export function toMonthYear(dateStr: string) {
+export function toMonthYear(dateStr: string | Date) {
   return new Intl.DateTimeFormat('en', {
     month: 'long',
     year: 'numeric',
-  }).format(toDate(dateStr));
+  }).format(typeof dateStr === 'string' ? toDate(dateStr) : dateStr);
 }
 
-export function toIso(dateStr: string) {
-  return toDate(dateStr).toISOString();
+export function toIso(dateStr: string | Date) {
+  if (typeof dateStr === 'string') {
+    dateStr = toDate(dateStr);
+  }
+  return dateStr.toISOString();
 }

@@ -1,0 +1,12 @@
+project: Fuji TV - View
+date: 2019-10-01
+stack:
+  - HTML
+  - Sass
+  - WordPress
+tasks:
+  - HTML
+  - CSS
+  - Accessibility
+  - PHP
+href: https://www.fujitv-view.jp/

@@ -4,22 +4,38 @@ import Card from '../components/Card.astro';
 import Page from '../components/Page.astro';
 import PageSection from '../components/PageSection.astro';
 import Stack from '../components/Stack.astro';
-import talks from '../database/talks.json';
+import { getTalks } from '../shared/collections';
+import Cluster from '../components/Cluster.astro';
+import MediaLink from '../components/MediaLink.astro';
+
+const talks = await getTalks();
 ---
 
 <Page id={NAV_PATH_TALKS} mark="発表">
   <PageSection title="talks" subtitle="Sharing the knowledge">
     <Stack space={5}>
       {
-        talks.map(({ title, id, href, meta, ...entry }) => (
-          <Card
-            titleLabel="title"
-            title={title}
-            data={entry}
-            href={href}
-            meta={meta}
-            id={`portfolio-talks-${id}`}
-          />
+        talks.map(({ details, media }) => (
+          <Card titleLabel="title" {...details}>
+            {media && (
+              <footer slot="footer">
+                <Cluster
+                  as="ul"
+                  space={1}
+                  aria-label={`Resources related to ${details.title}`}
+                >
+                  {media.map(({ lang, ...props }) => (
+                    <li>
+                      <MediaLink title={details.title} {...props}>
+                        {props.type}
+                        {lang && ` (${lang})`}
+                      </MediaLink>
+                    </li>
+                  ))}
+                </Cluster>
+              </footer>
+            )}
+          </Card>
         ))
       }
     </Stack>

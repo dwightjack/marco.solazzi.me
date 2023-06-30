@@ -1,0 +1,18 @@
+project: "Müller Italia"
+date: 2016-05-07
+stack:
+  - ES2015
+  - GSAP
+  - gulp
+  - webpack
+  - Sass
+tasks:
+  - JavaScript Architecture
+  - Frontend Ops
+  - CSS
+href: http://www.muller.it
+media:
+  - icon: mdi:star
+    type: award
+    href: http://www.awwwards.com/sites/muller
+    label: Awwwards SOTD

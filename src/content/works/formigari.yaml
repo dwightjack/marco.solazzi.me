@@ -1,0 +1,20 @@
+project: Formigari
+date: 2017-05-01
+stack:
+  - ES2015
+  - React
+  - MobX
+  - GSAP
+  - webpack
+  - CSS-next
+tasks:
+  - JavaScript Architecture
+  - Animations
+  - CSS
+  - SSR
+href: http://www.formigari.it/
+media:
+  - icon: mdi:star
+    type: award
+    href: https://www.awwwards.com/sites/formigari
+    label: Awwwards SOTD
