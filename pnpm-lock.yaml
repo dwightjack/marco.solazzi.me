@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   astro:
-    specifier: 2.9.6
-    version: 2.9.6
+    specifier: 2.9.7
+    version: 2.9.7
   astro-icon:
     specifier: 0.8.1
     version: 0.8.1
@@ -50,8 +50,8 @@ devDependencies:
     specifier: 5.0.0
     version: 5.0.0(eslint-config-prettier@8.9.0)(eslint@8.46.0)(prettier@3.0.0)
   lefthook:
-    specifier: 1.4.6
-    version: 1.4.6
+    specifier: 1.4.8
+    version: 1.4.8
   postcss:
     specifier: 8.4.27
     version: 8.4.27
@@ -132,13 +132,13 @@ packages:
       vscode-uri: 3.0.7
     dev: false
 
-  /@astrojs/markdown-remark@2.2.1(astro@2.9.6):
+  /@astrojs/markdown-remark@2.2.1(astro@2.9.7):
     resolution: {integrity: sha512-VF0HRv4GpC1XEMLnsKf6jth7JSmlt9qpqP0josQgA2eSpCIAC/Et+y94mgdBIZVBYH/yFnMoIxgKVe93xfO2GA==}
     peerDependencies:
       astro: ^2.5.0
     dependencies:
       '@astrojs/prism': 2.1.2
-      astro: 2.9.6
+      astro: 2.9.7
       github-slugger: 1.4.0
       import-meta-resolve: 2.1.0
       rehype-raw: 6.1.1
@@ -1374,7 +1374,7 @@ packages:
     engines: {node: '>=14'}
     dependencies:
       '@percy/cli-command': 1.26.2
-      fast-glob: 3.3.0
+      fast-glob: 3.3.1
       image-size: 1.0.2
     transitivePeerDependencies:
       - bufferutil
@@ -1906,8 +1906,8 @@ packages:
       svgo: 2.8.0
     dev: false
 
-  /astro@2.9.6:
-    resolution: {integrity: sha512-yvbZQ6YOWYLejyQ4nAcgZLDYQ34enQJ5/LWlXKtUzXzpsUHB75vJMj+XmEq5Q2eVlZOlQrp0lU+nhSRGaOsOUQ==}
+  /astro@2.9.7:
+    resolution: {integrity: sha512-gEm6SyiF2sh2qn9smPd/Z5yXhSLlsNqM5hsOo2B1ibb5S3BjxE1srmGGW7cUhM0dcxxIwixdevgamS4oxUNa/A==}
     engines: {node: '>=16.12.0', npm: '>=6.14.0'}
     hasBin: true
     peerDependencies:
@@ -1919,7 +1919,7 @@ packages:
       '@astrojs/compiler': 1.6.3
       '@astrojs/internal-helpers': 0.1.1
       '@astrojs/language-server': 1.0.4
-      '@astrojs/markdown-remark': 2.2.1(astro@2.9.6)
+      '@astrojs/markdown-remark': 2.2.1(astro@2.9.7)
       '@astrojs/telemetry': 2.1.1
       '@astrojs/webapi': 2.2.0
       '@babel/core': 7.22.5
@@ -1945,7 +1945,7 @@ packages:
       esbuild: 0.17.19
       estree-walker: 3.0.0
       execa: 6.1.0
-      fast-glob: 3.3.0
+      fast-glob: 3.3.1
       github-slugger: 2.0.0
       gray-matter: 4.0.3
       html-escaper: 3.0.3
@@ -1960,7 +1960,7 @@ packages:
       preferred-pm: 3.0.3
       prompts: 2.4.2
       rehype: 12.0.1
-      semver: 7.5.3
+      semver: 7.5.4
       server-destroy: 1.0.1
       shiki: 0.14.2
       string-width: 5.1.2
@@ -2919,6 +2919,7 @@ packages:
       glob-parent: 5.1.2
       merge2: 1.4.1
       micromatch: 4.0.5
+    dev: true
 
   /fast-glob@3.3.1:
     resolution: {integrity: sha512-kNFPyjhh5cKjrUltxs+wFx+ZkbRaxxmZ+X0ZU31SOsxCEtP9VPgtq2teZw1DebupL5GmDaNQ6yKMMVcM41iqDg==}
@@ -3116,7 +3117,7 @@ packages:
     dependencies:
       array-union: 2.1.0
       dir-glob: 3.0.1
-      fast-glob: 3.3.0
+      fast-glob: 3.3.1
       ignore: 5.2.4
       merge2: 1.4.1
       slash: 3.0.0
@@ -3544,83 +3545,83 @@ packages:
     resolution: {integrity: sha512-uMCj6+hZYDoffuvAJjFAPz56E9uoowFHmTkqRtRq5WyC5Q6Cu/fTZKNQpX/RbzChBYLLl3lo8CjFZBAZXq9qFg==}
     dev: true
 
-  /lefthook-darwin-arm64@1.4.6:
-    resolution: {integrity: sha512-f5ltgViAdXf9QOiDDdXkH7///Agmz8gxS13GDoymqg6rg8XM4cXhGbqmNGjTGRV3J10xiJaeyYTFIkBpjLspTw==}
+  /lefthook-darwin-arm64@1.4.8:
+    resolution: {integrity: sha512-wUaasRq7P1BNAlGwu/vONVHrwlrTwQGEhyn0leciEcnQCUN8aTeEC4hkxHmxisgQVQTdidYkCSWcsaEFn84xzw==}
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
     dev: true
     optional: true
 
-  /lefthook-darwin-x64@1.4.6:
-    resolution: {integrity: sha512-/SRG2vs4L6Fc4xnbpiDl59rJvqJPNjqPwfmyQI1BQ/GiWP6hkZWtBA9OqkBanqCFndUumq6+Ik7EBjNT2OxB/w==}
+  /lefthook-darwin-x64@1.4.8:
+    resolution: {integrity: sha512-uUkQeU08szL4IpKVQSlhzNObZ79YkwmZ3fZDmF+jjP69LMESEVY7Y+cuQI0RG4YOTXHGBqZs3MPUZ7ZygBrhcQ==}
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
     dev: true
     optional: true
 
-  /lefthook-freebsd-arm64@1.4.6:
-    resolution: {integrity: sha512-n9qLbVw1SSOeL0b7hsqqji1BMPm3sNBC5rtJfUU3lyHWNmzZXnaVozgli7GdeGqq5Q3RdZSZqHiNQUF2ly/qYw==}
+  /lefthook-freebsd-arm64@1.4.8:
+    resolution: {integrity: sha512-X4rWxsmxfyMRgfIOqAnk2zrMzlJV0fANEDYNuUYBVbgH8IYAy1cyVQlolgeC8NhFW8VaJ3AztbWpnR1M8zEByA==}
     cpu: [arm64]
     os: [freebsd]
     requiresBuild: true
     dev: true
     optional: true
 
-  /lefthook-freebsd-x64@1.4.6:
-    resolution: {integrity: sha512-GI4NvUbzVI1covKvtIOvFEP88W1uOQivFu2NfEwPq0AWYJhrCY22NnjhDWvSRZ4lk0QGevctxYwjAn+hevrgKg==}
+  /lefthook-freebsd-x64@1.4.8:
+    resolution: {integrity: sha512-ijenlZtEZpbnLFWTZdsIDmVdLzkaTkeEQVjjHEXdo2GBjLmdLYk8hRQiY/7oUxFe/JO1RLuhfIlPkKLtYz1iTQ==}
     cpu: [x64]
     os: [freebsd]
     requiresBuild: true
     dev: true
     optional: true
 
-  /lefthook-linux-arm64@1.4.6:
-    resolution: {integrity: sha512-psoakCaOoD2M7YvRzThLdO4cMZOcaMHrgSwiSC8AA2m5jRmIp8W7wKUCugAU5+BEusNA986ZC5xXmcyV2+34/A==}
+  /lefthook-linux-arm64@1.4.8:
+    resolution: {integrity: sha512-lOsJymblZ8nIpgm2lLfWx33tXtkdamK0lZThbSK4uwZQWFzSjr9qx21qZlJZ/mG8jZ5EY5Twhjqrt131CUXtMw==}
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /lefthook-linux-x64@1.4.6:
-    resolution: {integrity: sha512-WwIDWuandedgd9yRCfDgAp6fq7EnxWglOgGA4IuVdKEFUHUxKJ5poNrbW4Q63AvQ63BQL2k9OLTapjUQMBC+Fw==}
+  /lefthook-linux-x64@1.4.8:
+    resolution: {integrity: sha512-tF/iQFZu9iR++C3UXvpeTQS50CtTdZWmeMJ49uAovu9qe3qpPdKoguorZSFDC2+OGYbd7wbulldpWhvgxarniA==}
     cpu: [x64]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /lefthook-windows-arm64@1.4.6:
-    resolution: {integrity: sha512-LVNRKgGdoHwEZgvLevlep3YFFW6mfRyroVBq59KnHUQS/mc8UT0AqWIkqSxipfDz//3Aai7c6TvGHW+EchRMxg==}
+  /lefthook-windows-arm64@1.4.8:
+    resolution: {integrity: sha512-ykqX5rm5UI6244cF6anf92p+JXNvuA/Ah3bpQKYSA5JoMG2vJmPZ9nIThq5ky/F90jXySBxcdZRdrridtagAbw==}
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
     dev: true
     optional: true
 
-  /lefthook-windows-x64@1.4.6:
-    resolution: {integrity: sha512-jvlNLHN4iPsixmWbWRdFxdQ+MbiM8vAyJCz1MA6+zQ8kEn1mpDdH/CCjrjyj0ypKHME5VXnrlx14dq7XtqQjwg==}
+  /lefthook-windows-x64@1.4.8:
+    resolution: {integrity: sha512-wv8in0vku5eDpjNtri4s02kXbowEa6t/h8pHHUnCedmJJ2ImwwqGQJ1kwDVQL0U3bgdNWCfC2mUxVmtXoLQkBg==}
     cpu: [x64]
     os: [win32]
     requiresBuild: true
     dev: true
     optional: true
 
-  /lefthook@1.4.6:
-    resolution: {integrity: sha512-Zb1Dp5IUzK4fblKKVdlsLEwaCj/Ug7i03fCVmULbYjpKANJyeTrYxONrc5xQA+nouFaR+SicscxAqEmgHCkHog==}
+  /lefthook@1.4.8:
+    resolution: {integrity: sha512-SALO6nIy0aizM3FJdy4cNdUy9qKJyGZo6f8gZdzhBuKLMrwnm9YeMdJmQKeEPZA9E2mDSqdHGJjvMlKrm+04Pg==}
     hasBin: true
     requiresBuild: true
     optionalDependencies:
-      lefthook-darwin-arm64: 1.4.6
-      lefthook-darwin-x64: 1.4.6
-      lefthook-freebsd-arm64: 1.4.6
-      lefthook-freebsd-x64: 1.4.6
-      lefthook-linux-arm64: 1.4.6
-      lefthook-linux-x64: 1.4.6
-      lefthook-windows-arm64: 1.4.6
-      lefthook-windows-x64: 1.4.6
+      lefthook-darwin-arm64: 1.4.8
+      lefthook-darwin-x64: 1.4.8
+      lefthook-freebsd-arm64: 1.4.8
+      lefthook-freebsd-x64: 1.4.8
+      lefthook-linux-arm64: 1.4.8
+      lefthook-linux-x64: 1.4.8
+      lefthook-windows-arm64: 1.4.8
+      lefthook-windows-x64: 1.4.8
     dev: true
 
   /levn@0.4.1:
@@ -4243,7 +4244,7 @@ packages:
     dependencies:
       hosted-git-info: 4.1.0
       is-core-module: 2.11.0
-      semver: 7.5.3
+      semver: 7.5.4
       validate-npm-package-license: 3.0.4
     dev: true
 
@@ -5196,6 +5197,7 @@ packages:
     hasBin: true
     dependencies:
       lru-cache: 6.0.0
+    dev: true
 
   /semver@7.5.4:
     resolution: {integrity: sha512-1bCSESV6Pv+i21Hvpxp3Dx+pSD8lIPt8uVjRrxAUt/nbswYc+tK6Y2btiULjd4+fnq15PX+nqQDC7Oft7WkwcA==}
@@ -5203,7 +5205,6 @@ packages:
     hasBin: true
     dependencies:
       lru-cache: 6.0.0
-    dev: true
 
   /server-destroy@1.0.1:
     resolution: {integrity: sha512-rb+9B5YBIEzYcD6x2VKidaa+cqYBJQKnU4oe4E3ANwRRN56yk/ua1YCJT1n21NTS8w6CcOclAKNP3PhdCXKYtQ==}
