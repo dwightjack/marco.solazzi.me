@@ -61,16 +61,28 @@ const { id, titleLabel, href, title = '', data = {} } = Astro.props;
     padding-inline-start: calc(var(--space-unit) * 3.75);
     background-image: var(--gradient), var(--gradient), var(--gradient);
     background-repeat: no-repeat;
-    background-position: 0 0, 0 8px, 0 bottom;
-    background-size: 16px 8px, 8px calc(100% - 16px), 16px 8px;
+    background-position:
+      0 0,
+      0 8px,
+      0 bottom;
+    background-size:
+      16px 8px,
+      8px calc(100% - 16px),
+      16px 8px;
 
     @media (--pointer-mouse) and (prefers-reduced-motion: no-preference) {
       transition: all 250ms ease-in-out;
       transition-property: background-position, background-size;
 
       &:hover {
-        background-position: 8px 0, 8px 0, 8px bottom;
-        background-size: 8px 0, 8px 100%, 8px 0;
+        background-position:
+          8px 0,
+          8px 0,
+          8px bottom;
+        background-size:
+          8px 0,
+          8px 100%,
+          8px 0;
       }
     }
   }
