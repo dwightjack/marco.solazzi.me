@@ -7,7 +7,7 @@
   "author": {
     "name": "Marco Solazzi"
   },
-  "packageManager": "pnpm@8.6.10",
+  "packageManager": "pnpm@8.6.11",
   "engines": {
     "node": ">=18.15.0",
     "pnpm": "^8.0.0"
@@ -29,7 +29,7 @@
     "lint:css": "stylelint 'src/**/*.{css,astro}'"
   },
   "dependencies": {
-    "astro": "2.9.6",
+    "astro": "2.9.7",
     "astro-icon": "0.8.1",
     "modern-normalize": "2.0.0",
     "nanostores": "0.9.3"
@@ -45,7 +45,7 @@
     "eslint-config-prettier": "8.9.0",
     "eslint-plugin-astro": "0.28.0",
     "eslint-plugin-prettier": "5.0.0",
-    "lefthook": "1.4.6",
+    "lefthook": "1.4.8",
     "postcss": "8.4.27",
     "postcss-html": "1.5.0",
     "postcss-preset-env": "8.5.1",
