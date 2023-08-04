@@ -35,7 +35,7 @@
     "nanostores": "0.9.3"
   },
   "devDependencies": {
-    "@csstools/postcss-global-data": "1.0.3",
+    "@csstools/postcss-global-data": "2.0.1",
     "@percy/cli": "1.26.3",
     "@percy/playwright": "1.0.4",
     "@playwright/test": "^1.33.0",
