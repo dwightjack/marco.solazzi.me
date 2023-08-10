@@ -42,7 +42,7 @@ export async function getSkills() {
     'libraries',
     'dx',
     'build_tools',
-    'best_practices',
+    'architecture',
     'tools',
   ];
 

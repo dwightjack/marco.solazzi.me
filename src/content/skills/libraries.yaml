@@ -15,16 +15,19 @@ data:
   icon: logos:nuxt-icon
 - id: astro
   label: Astro
-  icon: logos:astro
+  icon: logos:astro-icon
+- id: alpine
+  label: Alpine.js
+  icon: logos:alpinejs-icon
 - id: tailwind
   label: Tailwind CSS
   icon: logos:tailwindcss-icon
 - id: unocss
   label: UnoCSS
-  icon: "logos:unocss"
+  icon: logos:unocss
 - id: animation
   label: GSAP
-  icon: "local:gsap"
+  icon: logos:greensock-icon
 - id: Laravel
   label: Laravel
   icon: logos:laravel

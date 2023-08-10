@@ -1,5 +1,5 @@
-label: Best Practices
-icon: heart
+label: Frontend Architecture
+icon: mdi:ruler-square-compass
 data:
 - id: progressive
   label: Progressive Enhancement
@@ -13,6 +13,9 @@ data:
 - id: responsive
   label: Responsive Design
   icon: mdi:responsive
+- id: bem
+  label: BEM
+  icon: logos:bem
 - id: ds
   label: Design Systems
   icon: mdi:layers-triple
