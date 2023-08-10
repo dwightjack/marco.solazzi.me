@@ -6,7 +6,7 @@ export interface Props {
   size?: number;
 }
 
-const { name, size } = Astro.props;
+const { name, size = 1 } = Astro.props;
 const iconName = name.includes(':') ? name : `mdi:${name}`;
 ---
 
@@ -15,7 +15,7 @@ const iconName = name.includes(':') ? name : `mdi:${name}`;
   name={iconName}
   aria-hidden="true"
   focusable="false"
-  style={toStyleVars({ size })}
+  style={size !== 1 ? toStyleVars({ size }) : null}
 />
 
 <style>
