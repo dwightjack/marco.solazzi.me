@@ -52,7 +52,7 @@ const { id, titleLabel, href, title = '', data = {} } = Astro.props;
 <style>
   @layer components {
     .c-card {
-      --gradient: linear-gradient(
+      --card-gradient: linear-gradient(
         var(--box-color-border),
         var(--box-color-border)
       );
@@ -60,7 +60,8 @@ const { id, titleLabel, href, title = '', data = {} } = Astro.props;
       inline-size: 100%;
       padding-block: calc(var(--space-unit) * 1.25) var(--space-2);
       padding-inline-start: calc(var(--space-unit) * 3.75);
-      background-image: var(--gradient), var(--gradient), var(--gradient);
+      background-image: var(--card-gradient), var(--card-gradient),
+        var(--card-gradient);
       background-repeat: no-repeat;
       background-position:
         0 0,

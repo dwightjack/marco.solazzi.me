@@ -32,16 +32,16 @@ const classNames = (['c-box'] as unknown[]).concat(className, classList);
 <style>
   @layer components {
     .c-box {
-      --indent: 0;
+      --box-indent: var(--indent, 0);
 
       margin-block: unset;
       margin-inline: unset;
-      padding-block: calc(var(--indent) * var(--space-unit));
-      padding-inline: calc(var(--indent) * var(--space-unit));
+      padding-block: calc(var(--box-indent) * var(--space-unit));
+      padding-inline: calc(var(--box-indent) * var(--space-unit));
     }
 
     .c-box[data-swatch] {
-      --indent: var(--space-2);
+      --box-indent: max(var(--indent), 4);
 
       background-color: var(--box-color-background);
       color: var(--box-color-foreground);
