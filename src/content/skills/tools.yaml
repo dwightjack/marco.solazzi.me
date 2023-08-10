@@ -6,7 +6,7 @@ data:
   icon: logos:visual-studio-code
 - id: software
   label: Photoshop
-  icon: "@photoshop"
+  icon: "local:photoshop"
 - id: figma
   label: Figma
   icon: logos:figma

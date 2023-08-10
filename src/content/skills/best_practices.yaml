@@ -6,7 +6,7 @@ data:
   icon: mdi:escalator-up
 - id: atomic
   label: Atomic Design
-  icon: "@atomic"
+  icon: "local:atomic"
 - id: a11y
   label: Accessibility
   icon: mdi:wheelchair-accessibility

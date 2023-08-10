@@ -21,43 +21,45 @@ const { id, mark, indent = true } = Astro.props;
   }
 </Stack>
 <style>
-  .c-page.c-page--indent {
-    padding-inline: var(--space-page-gutter-inline);
-  }
-
-  .c-page__mark {
-    position: fixed;
-    z-index: var(--layer-b1);
-    transition: all 750ms ease-out;
-    transition-property: opacity, transform;
-    opacity: 0;
-    font-size: max(300px, 80vmin);
-    white-space: nowrap;
-    will-change: opacity, transform;
-
-    @media not screen and (--viewport-tablet) {
-      inset-block-start: -40vw;
-      inset-inline-end: -10vh;
-      writing-mode: vertical-rl;
+  @layer components {
+    .c-page.c-page--indent {
+      padding-inline: var(--space-page-gutter-inline);
     }
 
-    @media (--viewport-tablet) {
-      inset-block-end: -20vh;
-      inset-inline-start: 20vw;
+    .c-page__mark {
+      position: fixed;
+      z-index: var(--layer-b1);
+      transition: all 750ms ease-out;
+      transition-property: opacity, transform;
+      opacity: 0;
+      font-size: max(300px, 80vmin);
+      white-space: nowrap;
+      will-change: opacity, transform;
+
+      @media not screen and (--viewport-tablet) {
+        inset-block-start: -40vw;
+        inset-inline-end: -10vh;
+        writing-mode: vertical-rl;
+      }
+
+      @media (--viewport-tablet) {
+        inset-block-end: -20vh;
+        inset-inline-start: 20vw;
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        transform: translateX(1vw);
+      }
     }
 
-    @media (prefers-reduced-motion: no-preference) {
-      transform: translateX(1vw);
+    .c-page:not(.is-dynamic) .c-page__mark {
+      display: none;
     }
-  }
 
-  .c-page:not(.is-dynamic) .c-page__mark {
-    display: none;
-  }
-
-  .c-page.is-current .c-page__mark {
-    transform: translateX(0);
-    opacity: 0.05;
+    .c-page.is-current .c-page__mark {
+      transform: translateX(0);
+      opacity: 0.05;
+    }
   }
 </style>
 <script>

@@ -8,14 +8,14 @@ import Page from '../components/Page.astro';
 ---
 
 <Page id={NAV_PATH_HOME} indent={false} mark="初め">
-  <section class="c-cover">
-    <div class="c-cover__pic">
+  <section class="s-cover">
+    <div class="s-cover__pic">
       <Avatar />
     </div>
-    <div class="c-cover__body">
-      <h2 lang="ja" class="c-cover__headline">こんにちは！</h2>
-      <article class="c-cover__text">
-        <svg viewBox="0 0 32 21.1" class="c-cover__quote" aria-hidden="false"
+    <div class="s-cover__body">
+      <h2 lang="ja" class="s-cover__headline">こんにちは！</h2>
+      <article class="s-cover__text">
+        <svg viewBox="0 0 32 21.1" class="s-cover__quote" aria-hidden="false"
           ><path
             d="M10.6 0v1.7C7.7 3.2 4.7 5.2 4 8.6c-.1 1.3-.5 3.2 1 4 1.3 0 2.6-1 4-.6 2.4.5 4 3.1 3.3 5.4-.7 2.7-3.8 4.1-6.3 3.5A8 8 0 0 1 0 13C-.1 7.8 3.5 3 8.2 1l2.4-1zM30 .1v1.6c-2.4 1.5-5.3 3-6.3 6-.4 1.4-.7 3 0 4.3 1 1.4 2.6-.2 4 0 2.5-.2 4.8 2.3 4.2 4.8-.4 2.9-3.6 4.7-6.3 4.2-3.4-.7-6-4-6-7.4a13.2 13.2 0 0 1 8-12.6L30 0z"
           ></path>
@@ -40,13 +40,13 @@ import Page from '../components/Page.astro';
           </b> .
         </p>
       </article>
-      <footer class="c-cover__footer">
+      <footer class="s-cover__footer">
         <LinkList items={links} />
       </footer>
     </div>
-    <a href={`#${NAV_PATH_JOBS}`} class="c-cover__scrollhint">
+    <a href={`#${NAV_PATH_JOBS}`} class="s-cover__scrollhint">
       <span>Get to know me</span>
-      <span class="c-cover__scrollhint-ico">
+      <span class="s-cover__scrollhint-ico">
         <Icon name="chevron-double-down" size={1.5} />
       </span>
     </a>
@@ -54,107 +54,109 @@ import Page from '../components/Page.astro';
 </Page>
 
 <style>
-  .c-cover {
-    display: grid;
-    grid-template-areas: 'pic' 'body' 'scrollhint';
-    grid-template-rows: repeat(3, auto);
+  @layer layout {
+    .s-cover {
+      display: grid;
+      grid-template-areas: 'pic' 'body' 'scrollhint';
+      grid-template-rows: repeat(3, auto);
 
-    @media not screen and (--viewport-tablet-landscape) {
-      padding-block-start: 4.375rem;
-      padding-inline: var(--space-page-gutter-inline);
-      row-gap: var(--space-4);
+      @media not screen and (--viewport-tablet-landscape) {
+        padding-block-start: 4.375rem;
+        padding-inline: var(--space-page-gutter-inline);
+        row-gap: var(--space-4);
+      }
+
+      @media (--viewport-tablet-landscape) {
+        grid-template-areas: '. . .' 'pic body .' 'scrollhint scrollhint scrollhint';
+        grid-template-columns: 28vw 63ch 1fr;
+        grid-template-rows: 1fr auto 1fr;
+        align-items: center;
+        block-size: 100vh;
+        overflow: hidden;
+        column-gap: calc(var(--space-2) * 5);
+      }
     }
 
-    @media (--viewport-tablet-landscape) {
-      grid-template-areas: '. . .' 'pic body .' 'scrollhint scrollhint scrollhint';
-      grid-template-columns: 28vw 63ch 1fr;
-      grid-template-rows: 1fr auto 1fr;
-      align-items: center;
-      block-size: 100vh;
-      overflow: hidden;
-      column-gap: calc(var(--space-2) * 5);
+    .s-cover__pic {
+      grid-area: pic;
+      inline-size: min(440px, calc(100% - 4.6875vw));
+      justify-self: center;
+
+      @media (--viewport-tablet-landscape) {
+        justify-self: end;
+        inline-size: calc(100% - 4.6875vw);
+      }
     }
-  }
 
-  .c-cover__pic {
-    grid-area: pic;
-    inline-size: min(440px, calc(100% - 4.6875vw));
-    justify-self: center;
-
-    @media (--viewport-tablet-landscape) {
-      justify-self: end;
-      inline-size: calc(100% - 4.6875vw);
+    .s-cover__body {
+      grid-area: body;
     }
-  }
 
-  .c-cover__body {
-    grid-area: body;
-  }
-
-  .c-cover__body > * + * {
-    margin-block-start: calc(var(--space-2) * 3.75);
-  }
-
-  .c-cover__headline {
-    font-family: inherit;
-    font-size: var(--text-heading-font-size-x3);
-    text-align: center;
-
-    @media (--viewport-tablet-landscape) {
-      font-size: var(--text-heading-font-size-x3mq);
-      text-align: start;
+    .s-cover__body > * + * {
+      margin-block-start: calc(var(--space-2) * 3.75);
     }
-  }
 
-  .c-cover__text {
-    position: relative;
-    font-size: var(--text-body-font-size-x3);
-  }
+    .s-cover__headline {
+      font-family: inherit;
+      font-size: var(--text-heading-font-size-x3);
+      text-align: center;
 
-  .c-cover__quote {
-    position: absolute;
-    block-size: 1em;
-    fill: var(--box-color-border);
-    font-size: 1em;
-    aspect-ratio: 32 / 21;
-    inset-block-start: -0.1em;
-    inset-inline-end: calc(100% + 0.4em);
-  }
-
-  .c-cover__text > * + * {
-    margin-block-start: 0.8em;
-    line-height: 1.4;
-  }
-
-  .c-cover__scrollhint {
-    display: flex;
-    grid-area: scrollhint;
-    flex-direction: column;
-    align-self: end;
-    opacity: 0.8;
-    color: var(--box-color-foreground);
-    text-align: center;
-    text-decoration: none;
-    gap: 1em;
-    justify-self: center;
-    will-change: transform;
-
-    @media (--viewport-tablet-landscape) {
-      margin-block-end: 6vh;
+      @media (--viewport-tablet-landscape) {
+        font-size: var(--text-heading-font-size-x3mq);
+        text-align: start;
+      }
     }
-  }
 
-  .c-cover__scrollhint-ico {
-    transition: transform 0.25s ease-out;
-  }
+    .s-cover__text {
+      position: relative;
+      font-size: var(--text-body-font-size-x3);
+    }
 
-  @media (--pointer-mouse) {
-    .c-cover__scrollhint:hover .c-cover__scrollhint-ico {
+    .s-cover__quote {
+      position: absolute;
+      block-size: 1em;
+      fill: var(--box-color-border);
+      font-size: 1em;
+      aspect-ratio: 32 / 21;
+      inset-block-start: -0.1em;
+      inset-inline-end: calc(100% + 0.4em);
+    }
+
+    .s-cover__text > * + * {
+      margin-block-start: 0.8em;
+      line-height: 1.4;
+    }
+
+    .s-cover__scrollhint {
+      display: flex;
+      grid-area: scrollhint;
+      flex-direction: column;
+      align-self: end;
+      opacity: 0.8;
+      color: var(--box-color-foreground);
+      text-align: center;
+      text-decoration: none;
+      gap: 1em;
+      justify-self: center;
+      will-change: transform;
+
+      @media (--viewport-tablet-landscape) {
+        margin-block-end: 6vh;
+      }
+    }
+
+    .s-cover__scrollhint-ico {
+      transition: transform 0.25s ease-out;
+    }
+
+    @media (--pointer-mouse) {
+      .s-cover__scrollhint:hover .s-cover__scrollhint-ico {
+        transform: translateY(50%);
+      }
+    }
+
+    .s-cover__scrollhint:focus-visible .s-cover__scrollhint-ico {
       transform: translateY(50%);
     }
-  }
-
-  .c-cover__scrollhint:focus-visible .c-cover__scrollhint-ico {
-    transform: translateY(50%);
   }
 </style>

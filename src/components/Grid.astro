@@ -19,24 +19,26 @@ const { columnsWidth, columnsMax, space } = Astro.props;
     ...computedSpace(space, { prefix: '' }),
   }}
 >
-  .c-grid {
-    --space: 0;
-    --space-c: var(--space);
-    --space-r: var(--space);
+  @layer components {
+    .c-grid {
+      --space: 0;
+      --space-c: var(--space);
+      --space-r: var(--space);
 
-    display: grid;
-    grid-template-columns: repeat(
-      auto-fill,
-      minmax(min(100%, var(--size-width-column) * 1rem), 1fr)
-    );
-    min-inline-size: 0;
-    column-gap: calc(var(--space-c) * var(--space-unit));
-    row-gap: calc(var(--space-r) * var(--space-unit));
-  }
+      display: grid;
+      grid-template-columns: repeat(
+        auto-fill,
+        minmax(min(100%, var(--size-width-column) * 1rem), 1fr)
+      );
+      min-inline-size: 0;
+      column-gap: calc(var(--space-c) * var(--space-unit));
+      row-gap: calc(var(--space-r) * var(--space-unit));
+    }
 
-  .c-grid:where([style*='--columns-max']) {
-    max-inline-size: calc(
-      (var(--size-width-column) * var(--columns-max) * 1rem) + 1.75rem
-    );
+    .c-grid:where([style*='--columns-max']) {
+      max-inline-size: calc(
+        (var(--size-width-column) * var(--columns-max) * 1rem) + 1.75rem
+      );
+    }
   }
 </style>

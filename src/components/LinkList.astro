@@ -31,9 +31,11 @@ const { items } = Astro.props;
 </Stack>
 
 <style>
-  .c-link-list__item {
-    @media (--viewport-wide) {
-      font-size: var(--text-body-font-size-x2);
+  @layer components {
+    .c-link-list__item {
+      @media (--viewport-wide) {
+        font-size: var(--text-body-font-size-x2);
+      }
     }
   }
 </style>

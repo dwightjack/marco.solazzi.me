@@ -7,20 +7,22 @@ import Icon from './Icon.astro';
   <span class="u-visuallyhidden">Change the color theme</span>
 </button>
 <style>
-  .c-theme-switcher {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    block-size: var(--action-control-size-inline);
-    padding-block: 0;
-    padding-inline: 0;
-    transition: color var(--action-transition-duration) ease-out;
-    border: 2px solid currentcolor;
-    border-radius: 50%;
-    background: transparent;
-    color: var(--action-color-background);
-    cursor: pointer;
-    aspect-ratio: 1;
+  @layer components {
+    .c-theme-switcher {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      block-size: var(--action-control-size-inline);
+      padding-block: 0;
+      padding-inline: 0;
+      transition: color var(--action-transition-duration) ease-out;
+      border: 2px solid currentcolor;
+      border-radius: 50%;
+      background: transparent;
+      color: var(--action-color-background);
+      cursor: pointer;
+      aspect-ratio: 1;
+    }
   }
 </style>
 <script>

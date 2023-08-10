@@ -1,4 +1,4 @@
-@layer reset, base, components, utilities;
+@layer reset, base, components, layout, utilities;
 
 /* Media queries */
 @custom-media --viewport-mobile (width >= 30em);

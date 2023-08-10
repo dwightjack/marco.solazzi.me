@@ -30,28 +30,30 @@ const classNames = (['c-box'] as unknown[]).concat(className, classList);
   <slot />
 </Tag>
 <style>
-  .c-box {
-    --indent: 0;
+  @layer components {
+    .c-box {
+      --indent: 0;
 
-    margin-block: unset;
-    margin-inline: unset;
-    padding-block: calc(var(--indent) * var(--space-unit));
-    padding-inline: calc(var(--indent) * var(--space-unit));
-  }
+      margin-block: unset;
+      margin-inline: unset;
+      padding-block: calc(var(--indent) * var(--space-unit));
+      padding-inline: calc(var(--indent) * var(--space-unit));
+    }
 
-  .c-box[data-swatch] {
-    --indent: var(--space-2);
+    .c-box[data-swatch] {
+      --indent: var(--space-2);
 
-    background-color: var(--box-color-background);
-    color: var(--box-color-foreground);
-  }
+      background-color: var(--box-color-background);
+      color: var(--box-color-foreground);
+    }
 
-  .c-box > :global(*) {
-    margin-block: 0;
-  }
+    .c-box > :global(*) {
+      margin-block: 0;
+    }
 
-  .c-box:is(ul, ol) {
-    padding-inline-start: 0;
-    list-style-type: none;
+    .c-box:is(ul, ol) {
+      padding-inline-start: 0;
+      list-style-type: none;
+    }
   }
 </style>

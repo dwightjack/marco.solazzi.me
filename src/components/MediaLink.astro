@@ -23,55 +23,57 @@ const { icon, type, ...attrs } = Astro.props;
   </span>
 </a>
 <style>
-  .c-media-link {
-    display: flex;
-    column-gap: 0.2em;
-    color: currentcolor;
-    text-decoration: none;
-  }
-
-  .c-media-link > *:not(.c-media-link__label) {
-    flex-shrink: 0;
-  }
-
-  .c-media-link__label {
-    flex-grow: 1;
-
-    &::before {
-      content: '';
-      display: inline-block;
-      inline-size: 0.5em;
-      margin-inline-end: 0.1em;
-      transform: translateY(0.1em);
-      border-block-end: 2px solid currentcolor;
-    }
-  }
-
-  @media (--pointer-mouse) {
-    .c-media-link:hover .c-media-link__label::before {
-      animation-name: blinking-cursor;
-      animation-duration: 0.7s;
-      animation-timing-function: ease-out;
-      animation-iteration-count: infinite;
-      color: var(--navigation-color-foreground-hover);
-    }
-  }
-
-  @keyframes blinking-cursor {
-    0% {
-      opacity: 1;
+  @layer components {
+    .c-media-link {
+      display: flex;
+      column-gap: 0.2em;
+      color: currentcolor;
+      text-decoration: none;
     }
 
-    30% {
-      opacity: 0;
+    .c-media-link > *:not(.c-media-link__label) {
+      flex-shrink: 0;
     }
 
-    50% {
-      opacity: 0;
+    .c-media-link__label {
+      flex-grow: 1;
+
+      &::before {
+        content: '';
+        display: inline-block;
+        inline-size: 0.5em;
+        margin-inline-end: 0.1em;
+        transform: translateY(0.1em);
+        border-block-end: 2px solid currentcolor;
+      }
     }
 
-    100% {
-      opacity: 1;
+    @media (--pointer-mouse) {
+      .c-media-link:hover .c-media-link__label::before {
+        animation-name: blinking-cursor;
+        animation-duration: 0.7s;
+        animation-timing-function: ease-out;
+        animation-iteration-count: infinite;
+        color: var(--navigation-color-foreground-hover);
+      }
+    }
+
+    @keyframes blinking-cursor {
+      0% {
+        opacity: 1;
+      }
+
+      30% {
+        opacity: 0;
+      }
+
+      50% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
     }
   }
 </style>

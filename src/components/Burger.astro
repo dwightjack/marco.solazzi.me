@@ -6,74 +6,76 @@
   <span class="u-visuallyhidden">Toggle Menu</span>
 </button>
 <style>
-  .c-burger {
-    --burger-size-bar-height: calc(var(--size-unit) * 0.375);
-    --burger-size: var(--action-control-size-inline);
-    --burger-height: calc(var(--burger-size-bar-height) * 5);
+  @layer components {
+    .c-burger {
+      --burger-size-bar-height: calc(var(--size-unit) * 0.375);
+      --burger-size: var(--action-control-size-inline);
+      --burger-height: calc(var(--burger-size-bar-height) * 5);
 
-    display: block;
-    inline-size: var(--burger-size);
-    margin: 0;
-    padding-block: calc((var(--burger-size) - var(--burger-height)) / 2);
-    padding-inline: 0;
-    transition:
-      color var(--action-transition-duration) ease-out,
-      background-size var(--action-transition-duration) ease-out;
-    border: 0;
-    background-color: transparent;
-    background-image: linear-gradient(to left, currentcolor, currentcolor),
-      linear-gradient(to left, currentcolor, currentcolor),
-      linear-gradient(to left, currentcolor, currentcolor);
-    background-repeat: no-repeat;
-    background-position:
-      right 0,
-      right 50%,
-      right bottom;
-    background-origin: content-box;
-    background-size:
-      var(--burger-bar-width, 100%) var(--burger-size-bar-height),
-      var(--burger-bar-width, 85%) var(--burger-size-bar-height),
-      var(--burger-bar-width, 70%) var(--burger-size-bar-height);
-    color: var(--action-color-background);
-    cursor: pointer;
-    aspect-ratio: 1;
+      display: block;
+      inline-size: var(--burger-size);
+      margin: 0;
+      padding-block: calc((var(--burger-size) - var(--burger-height)) / 2);
+      padding-inline: 0;
+      transition:
+        color var(--action-transition-duration) ease-out,
+        background-size var(--action-transition-duration) ease-out;
+      border: 0;
+      background-color: transparent;
+      background-image: linear-gradient(to left, currentcolor, currentcolor),
+        linear-gradient(to left, currentcolor, currentcolor),
+        linear-gradient(to left, currentcolor, currentcolor);
+      background-repeat: no-repeat;
+      background-position:
+        right 0,
+        right 50%,
+        right bottom;
+      background-origin: content-box;
+      background-size:
+        var(--burger-bar-width, 100%) var(--burger-size-bar-height),
+        var(--burger-bar-width, 85%) var(--burger-size-bar-height),
+        var(--burger-bar-width, 70%) var(--burger-size-bar-height);
+      color: var(--action-color-background);
+      cursor: pointer;
+      aspect-ratio: 1;
 
-    &:focus-visible {
-      --burger-bar-width: 100%;
-    }
-
-    @media (--pointer-mouse) {
-      &:hover {
+      &:focus-visible {
         --burger-bar-width: 100%;
       }
+
+      @media (--pointer-mouse) {
+        &:hover {
+          --burger-bar-width: 100%;
+        }
+      }
     }
-  }
 
-  .c-burger::before {
-    content: '';
-    display: block;
-    inline-size: var(--burger-width);
-    margin-block: calc((var(--burger-height) - var(--burger-size)) / 2);
-    rotate: 20deg;
-    transition: all var(--action-transition-duration) ease-out;
-    transition-property: opacity, transform, color;
-    opacity: 0;
-    background:
-      linear-gradient(to right, currentcolor, currentcolor) no-repeat 0 50% /
-        100% var(--burger-size-bar-height),
-      linear-gradient(to top, currentcolor, currentcolor) no-repeat 50% 0 /
-        var(--burger-size-bar-height) 100%;
-    aspect-ratio: 1;
-  }
+    .c-burger::before {
+      content: '';
+      display: block;
+      inline-size: var(--burger-width);
+      margin-block: calc((var(--burger-height) - var(--burger-size)) / 2);
+      rotate: 20deg;
+      transition: all var(--action-transition-duration) ease-out;
+      transition-property: opacity, transform, color;
+      opacity: 0;
+      background:
+        linear-gradient(to right, currentcolor, currentcolor) no-repeat 0 50% /
+          100% var(--burger-size-bar-height),
+        linear-gradient(to top, currentcolor, currentcolor) no-repeat 50% 0 /
+          var(--burger-size-bar-height) 100%;
+      aspect-ratio: 1;
+    }
 
-  .c-burger[aria-expanded='true'] {
-    --burger-bar-width: 0;
-  }
+    .c-burger[aria-expanded='true'] {
+      --burger-bar-width: 0;
+    }
 
-  .c-burger[aria-expanded='true']::before {
-    rotate: 45deg;
-    transition-delay: 200ms;
-    opacity: 1;
+    .c-burger[aria-expanded='true']::before {
+      rotate: 45deg;
+      transition-delay: 200ms;
+      opacity: 1;
+    }
   }
 </style>
 <script>
