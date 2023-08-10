@@ -50,77 +50,79 @@ const { id, titleLabel, href, title = '', data = {} } = Astro.props;
   <slot name="footer" />
 </article>
 <style>
-  .c-card {
-    --gradient: linear-gradient(
-      var(--box-color-border),
-      var(--box-color-border)
-    );
+  @layer components {
+    .c-card {
+      --gradient: linear-gradient(
+        var(--box-color-border),
+        var(--box-color-border)
+      );
 
-    inline-size: 100%;
-    padding-block: calc(var(--space-unit) * 1.25) var(--space-2);
-    padding-inline-start: calc(var(--space-unit) * 3.75);
-    background-image: var(--gradient), var(--gradient), var(--gradient);
-    background-repeat: no-repeat;
-    background-position:
-      0 0,
-      0 8px,
-      0 bottom;
-    background-size:
-      16px 8px,
-      8px calc(100% - 16px),
-      16px 8px;
+      inline-size: 100%;
+      padding-block: calc(var(--space-unit) * 1.25) var(--space-2);
+      padding-inline-start: calc(var(--space-unit) * 3.75);
+      background-image: var(--gradient), var(--gradient), var(--gradient);
+      background-repeat: no-repeat;
+      background-position:
+        0 0,
+        0 8px,
+        0 bottom;
+      background-size:
+        16px 8px,
+        8px calc(100% - 16px),
+        16px 8px;
 
-    @media (--pointer-mouse) and (prefers-reduced-motion: no-preference) {
-      transition: all 250ms ease-in-out;
-      transition-property: background-position, background-size;
+      @media (--pointer-mouse) and (prefers-reduced-motion: no-preference) {
+        transition: all 250ms ease-in-out;
+        transition-property: background-position, background-size;
 
-      &:hover {
-        background-position:
-          8px 0,
-          8px 0,
-          8px bottom;
-        background-size:
-          8px 0,
-          8px 100%,
-          8px 0;
+        &:hover {
+          background-position:
+            8px 0,
+            8px 0,
+            8px bottom;
+          background-size:
+            8px 0,
+            8px 100%,
+            8px 0;
+        }
       }
     }
-  }
 
-  .c-card__title {
-    font-size: var(--text-heading-font-size);
-    line-height: 1.5;
+    .c-card__title {
+      font-size: var(--text-heading-font-size);
+      line-height: 1.5;
 
-    @media (--viewport-tablet-landscape) {
-      font-size: var(--text-heading-font-size-mq);
+      @media (--viewport-tablet-landscape) {
+        font-size: var(--text-heading-font-size-mq);
+      }
     }
-  }
 
-  .c-card__data {
-    margin-block: var(--space-2);
+    .c-card__data {
+      margin-block: var(--space-2);
 
-    @media (--viewport-tablet-landscape) {
-      font-size: var(--text-body-font-size-x2);
+      @media (--viewport-tablet-landscape) {
+        font-size: var(--text-body-font-size-x2);
+      }
     }
-  }
 
-  .c-card__data > * {
-    max-inline-size: 60ch;
-    margin-inline-start: 0.3em;
-  }
+    .c-card__data > * {
+      max-inline-size: 60ch;
+      margin-inline-start: 0.3em;
+    }
 
-  .c-card__data :is(dt, dd) {
-    display: inline;
-    margin-inline-start: 0;
-    line-height: 1.5;
-  }
+    .c-card__data :is(dt, dd) {
+      display: inline;
+      margin-inline-start: 0;
+      line-height: 1.5;
+    }
 
-  .c-card__data dt {
-    margin-inline-start: -0.3em;
-    font-weight: 700;
-  }
+    .c-card__data dt {
+      margin-inline-start: -0.3em;
+      font-weight: 700;
+    }
 
-  .c-card__data [data-row='title'] {
-    margin-block-start: 0.5em;
+    .c-card__data [data-row='title'] {
+      margin-block-start: 0.5em;
+    }
   }
 </style>

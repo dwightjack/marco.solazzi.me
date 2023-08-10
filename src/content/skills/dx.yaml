@@ -6,10 +6,10 @@ data:
   icon: logos:jest
 - id: Cypress
   label: Cypress
-  icon: "@cypress"
+  icon: "logos:cypress-icon"
 - id: vitest
   label: Vitest
-  icon: "@vitest"
+  icon: "logos:vitest"
 - id: chai
   label: Mocha + Chai
   icon: logos:chai

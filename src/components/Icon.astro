@@ -6,11 +6,8 @@ export interface Props {
   size?: number;
 }
 
-const { name, size } = Astro.props;
-const iconName =
-  name.includes(':') || name.startsWith('@')
-    ? name.replace(/^@/, '')
-    : `mdi:${name}`;
+const { name, size = 1 } = Astro.props;
+const iconName = name.includes(':') ? name : `mdi:${name}`;
 ---
 
 <Sprite
@@ -18,18 +15,20 @@ const iconName =
   name={iconName}
   aria-hidden="true"
   focusable="false"
-  style={toStyleVars({ size })}
+  style={size !== 1 ? toStyleVars({ size }) : null}
 />
 
 <style>
-  .c-icon {
-    --size: 1;
+  @layer components {
+    .c-icon {
+      --size: 1;
 
-    display: inline-block;
-    flex-shrink: 0;
-    inline-size: 1em;
-    font-size: calc(var(--size) * 1em);
-    vertical-align: middle;
-    aspect-ratio: 1;
+      display: inline-block;
+      flex-shrink: 0;
+      inline-size: 1em;
+      font-size: calc(var(--size) * 1em);
+      vertical-align: middle;
+      aspect-ratio: 1;
+    }
   }
 </style>

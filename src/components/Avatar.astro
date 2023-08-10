@@ -11,26 +11,28 @@ import marcoWebp from '../assets/images/marco.webp';
 </picture>
 
 <style>
-  .c-avatar {
-    display: block;
-    pointer-events: none;
-    clip-path: polygon(
-      95% 50%,
-      82% 82%,
-      50% 95%,
-      18% 82%,
-      5% 50%,
-      18% 18%,
-      50% 5%,
-      82% 18%
-    );
-    will-change: clip-path;
-  }
+  @layer components {
+    .c-avatar {
+      display: block;
+      pointer-events: none;
+      clip-path: polygon(
+        95% 50%,
+        82% 82%,
+        50% 95%,
+        18% 82%,
+        5% 50%,
+        18% 18%,
+        50% 5%,
+        82% 18%
+      );
+      will-change: clip-path;
+    }
 
-  .c-avatar > img {
-    display: block;
-    block-size: auto;
-    inline-size: 100%;
+    .c-avatar > img {
+      display: block;
+      block-size: auto;
+      inline-size: 100%;
+    }
   }
 </style>
 <script>

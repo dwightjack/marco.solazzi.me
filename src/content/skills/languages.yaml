@@ -20,5 +20,5 @@ data:
   label: Pug
   icon: logos:pug
 - id: backend
-  label: PHP5.5+
+  label: PHP7+
   icon: logos:php

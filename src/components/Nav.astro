@@ -24,69 +24,71 @@ import Box from './Box.astro';
   </Stack>
 </Box>
 <style>
-  .c-nav {
-    display: flex;
-    position: absolute;
-    align-items: center;
-    block-size: 100vh;
-    transform: translateX(0);
-    inset-block-start: 0;
-    inset-inline-start: 100%;
-    will-change: transform;
+  @layer components {
+    .c-nav {
+      display: flex;
+      position: absolute;
+      align-items: center;
+      block-size: 100dvh;
+      transform: translateX(0);
+      inset-block-start: 0;
+      inset-inline-start: 100%;
+      will-change: transform;
 
-    @media (prefers-reduced-motion: no-preference) {
-      transition: transform 700ms cubic-bezier(0.85, 0.07, 0.04, 0.99);
+      @media (prefers-reduced-motion: no-preference) {
+        transition: transform 700ms cubic-bezier(0.85, 0.07, 0.04, 0.99);
+      }
     }
-  }
 
-  .c-nav.is-expanded {
-    transform: translateX(-100%);
-  }
-
-  .c-nav__item {
-    margin-inline-start: 0;
-  }
-
-  .c-nav__route {
-    display: block;
-    padding-block: var(--space-1);
-    padding-inline: calc(var(--space-2) * 1.75);
-    transition: opacity 150ms linear;
-    opacity: 0.8;
-    color: inherit;
-    font-family: var(--text-heading-font-family);
-    font-size: var(--text-body-font-size-x3);
-    letter-spacing: 0.05em;
-    text-align: end;
-    text-decoration: none;
-    white-space: nowrap;
-  }
-
-  .c-nav__route::before {
-    content: '.';
-    display: inline-block;
-    transform: translateX(-0.4em);
-    transition: all 250ms ease-out;
-    opacity: 0;
-  }
-
-  .c-nav__route.is-current {
-    opacity: 1;
-
-    &::before {
-      transform: translateX(-0.1em);
-      transition-delay: 200ms;
-      opacity: 1;
+    .c-nav.is-expanded {
+      transform: translateX(-100%);
     }
-  }
 
-  .c-nav__route:hover {
-    @media (--pointer-mouse) {
+    .c-nav__item {
+      margin-inline-start: 0;
+    }
+
+    .c-nav__route {
+      display: block;
+      padding-block: var(--space-1);
+      padding-inline: calc(var(--space-2) * 1.75);
+      transition: opacity 150ms linear;
+      opacity: 0.8;
+      color: inherit;
+      font-family: var(--text-heading-font-family);
+      font-size: var(--text-body-font-size-x3);
+      letter-spacing: 0.05em;
+      text-align: end;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .c-nav__route::before {
+      content: '.';
+      display: inline-block;
+      transform: translateX(-0.4em);
+      transition: all 250ms ease-out;
+      opacity: 0;
+    }
+
+    .c-nav__route.is-current {
       opacity: 1;
 
       &::before {
         transform: translateX(-0.1em);
+        transition-delay: 200ms;
         opacity: 1;
+      }
+    }
+
+    .c-nav__route:hover {
+      @media (--pointer-mouse) {
+        opacity: 1;
+
+        &::before {
+          transform: translateX(-0.1em);
+          opacity: 1;
+        }
       }
     }
   }

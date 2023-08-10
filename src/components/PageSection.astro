@@ -21,64 +21,66 @@ const { prefix = 'me', subtitle, title } = Astro.props;
   </div>
 </section>
 <style>
-  .c-page-section {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
+  @layer components {
+    .c-page-section {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
 
-    @media (--viewport-tablet-landscape) {
-      display: grid;
-      grid-template-columns: 28% 1fr;
-      align-items: start;
-      column-gap: 2%;
+      @media (--viewport-tablet-landscape) {
+        display: grid;
+        grid-template-columns: 28% 1fr;
+        align-items: start;
+        column-gap: 2%;
+      }
+
+      @media (--viewport-desktop) {
+        padding-inline-start: 2.85vw;
+      }
     }
 
-    @media (--viewport-desktop) {
-      padding-inline-start: 2.85vw;
+    .c-page-section__header {
+      font-family: var(--text-heading-font-family);
+      text-align: center;
+
+      @media (--viewport-tablet-landscape) {
+        position: sticky;
+        inset-block-start: var(--space-4);
+        text-align: start;
+      }
     }
-  }
 
-  .c-page-section__header {
-    font-family: var(--text-heading-font-family);
-    text-align: center;
+    .c-page-section__title {
+      display: flex;
+      justify-content: center;
+      color: inherit;
+      font-size: var(--text-heading-font-size-x2);
+      font-weight: 400;
+      line-height: 1.5;
 
-    @media (--viewport-tablet-landscape) {
-      position: sticky;
-      inset-block-start: var(--space-4);
-      text-align: start;
+      @media (--viewport-tablet-landscape) {
+        justify-content: flex-start;
+        white-space: nowrap;
+      }
     }
-  }
 
-  .c-page-section__title {
-    display: flex;
-    justify-content: center;
-    color: inherit;
-    font-size: var(--text-heading-font-size-x2);
-    font-weight: 400;
-    line-height: 1.5;
-
-    @media (--viewport-tablet-landscape) {
-      justify-content: flex-start;
-      white-space: nowrap;
+    .c-page-section__prefix {
+      display: inline-block;
+      margin-inline-end: 0.05em;
+      padding-inline: 0.3125em;
+      background: linear-gradient(
+          var(--box-color-background-secondary),
+          var(--box-color-background-secondary)
+        )
+        no-repeat 0 bottom;
+      background-size: 100% 90%;
+      color: var(--box-color-foreground-secondary);
+      font-weight: inherit;
     }
-  }
 
-  .c-page-section__prefix {
-    display: inline-block;
-    margin-inline-end: 0.05em;
-    padding-inline: 0.3125em;
-    background: linear-gradient(
-        var(--box-color-background-secondary),
-        var(--box-color-background-secondary)
-      )
-      no-repeat 0 bottom;
-    background-size: 100% 90%;
-    color: var(--box-color-foreground-secondary);
-    font-weight: inherit;
-  }
-
-  .c-page-section__sub {
-    margin-block-start: 0.5em;
-    font-size: var(--text-subheading-font-size);
+    .c-page-section__sub {
+      margin-block-start: 0.5em;
+      font-size: var(--text-subheading-font-size);
+    }
   }
 </style>

@@ -1,18 +1,21 @@
-label: Best Practices
-icon: heart
+label: Frontend Architecture
+icon: mdi:ruler-square-compass
 data:
 - id: progressive
   label: Progressive Enhancement
   icon: mdi:escalator-up
 - id: atomic
   label: Atomic Design
-  icon: "@atomic"
+  icon: "local:atomic"
 - id: a11y
   label: Accessibility
   icon: mdi:wheelchair-accessibility
 - id: responsive
   label: Responsive Design
   icon: mdi:responsive
+- id: bem
+  label: BEM
+  icon: logos:bem
 - id: ds
   label: Design Systems
   icon: mdi:layers-triple

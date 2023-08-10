@@ -25,7 +25,9 @@ const { items } = Astro.props;
   }
 </Cluster>
 <style>
-  .c-inline-list__item {
-    white-space: nowrap;
+  @layer components {
+    .c-inline-list__item {
+      white-space: nowrap;
+    }
   }
 </style>

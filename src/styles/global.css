@@ -1,4 +1,4 @@
-@import url('../../node_modules/modern-normalize/modern-normalize.css') @layer reset;
+@import url('../../node_modules/modern-normalize/modern-normalize.css') layer(reset);
 
 @layer base {
   html {
@@ -71,7 +71,7 @@
     outline: 0;
   }
 
-  a:not([class*='c-']) {
+  a:not([class*='c-'],[class*='s-']) {
     padding-block-end: 3px;
     transition: color 150ms;
     background: linear-gradient(var(--navigation-color-border), var(--navigation-color-border)) ;
@@ -109,7 +109,7 @@
     }
   }
 
-  a:not([class*='c-']):hover {
+  a:not([class*='c-'],[class*='s-']):hover {
     @media (--pointer-mouse) {
       color: var(--navigation-color-foreground-hover) ;
       text-decoration: none;
