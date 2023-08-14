@@ -8,7 +8,7 @@ type Props<Tag extends HTMLTag> = Polymorphic<{
 }>;
 
 const {
-  space,
+  space = 0,
   as: Tag = 'div',
   class: className,
   'class:list': classList,
@@ -18,18 +18,22 @@ const {
 const classNames = (['c-stack'] as unknown[]).concat(className, classList);
 ---
 
-<Tag class:list={classNames} {...attrs} style={toStyleVars({ space })}>
+<Tag
+  class:list={classNames}
+  {...attrs}
+  style={space !== 0 ? toStyleVars({ space }) : null}
+>
   <slot />
 </Tag>
 <style>
   @layer components {
     .c-stack {
-      --space: 0;
+      --stack-space: var(--space, 0);
 
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      gap: calc(var(--space) * var(--space-unit));
+      gap: calc(var(--stack-space) * var(--space-unit));
       margin-block: unset;
       margin-inline: unset;
       padding-block: unset;

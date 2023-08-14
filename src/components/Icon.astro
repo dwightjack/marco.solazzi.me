@@ -21,12 +21,12 @@ const iconName = name.includes(':') ? name : `mdi:${name}`;
 <style>
   @layer components {
     .c-icon {
-      --size: 1;
+      --icon-size: var(--size, 1);
 
       display: inline-block;
       flex-shrink: 0;
       inline-size: 1em;
-      font-size: calc(var(--size) * 1em);
+      font-size: calc(var(--icon-size) * 1em);
       vertical-align: middle;
       aspect-ratio: 1;
     }

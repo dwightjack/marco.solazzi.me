@@ -21,9 +21,9 @@ const { columnsWidth, columnsMax, space } = Astro.props;
 >
   @layer components {
     .c-grid {
-      --space: 0;
-      --space-c: var(--space);
-      --space-r: var(--space);
+      --grid-space: var(--space, 0);
+      --grid-space-c: var(--space-c, var(--grid-space));
+      --grid-space-r: var(--space-r, var(--grid-space));
 
       display: grid;
       grid-template-columns: repeat(
@@ -31,8 +31,8 @@ const { columnsWidth, columnsMax, space } = Astro.props;
         minmax(min(100%, var(--size-width-column) * 1rem), 1fr)
       );
       min-inline-size: 0;
-      column-gap: calc(var(--space-c) * var(--space-unit));
-      row-gap: calc(var(--space-r) * var(--space-unit));
+      column-gap: calc(var(--grid-space-c) * var(--space-unit));
+      row-gap: calc(var(--grid-space-r) * var(--space-unit));
     }
 
     .c-grid:where([style*='--columns-max']) {
