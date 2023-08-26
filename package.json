@@ -7,7 +7,7 @@
   "author": {
     "name": "Marco Solazzi"
   },
-  "packageManager": "pnpm@8.6.12",
+  "packageManager": "pnpm@8.7.0",
   "engines": {
     "node": ">=18.15.0",
     "pnpm": "^8.0.0"
@@ -39,23 +39,23 @@
     "@percy/cli": "1.26.3",
     "@percy/playwright": "1.0.4",
     "@playwright/test": "^1.33.0",
-    "@typescript-eslint/eslint-plugin": "6.2.1",
-    "@typescript-eslint/parser": "6.2.1",
-    "eslint": "8.46.0",
+    "@typescript-eslint/eslint-plugin": "6.4.1",
+    "@typescript-eslint/parser": "6.4.1",
+    "eslint": "8.48.0",
     "eslint-config-prettier": "9.0.0",
-    "eslint-plugin-astro": "0.28.0",
+    "eslint-plugin-astro": "0.29.0",
     "eslint-plugin-prettier": "5.0.0",
     "lefthook": "1.4.9",
     "postcss": "8.4.28",
     "postcss-html": "1.5.0",
     "postcss-preset-env": "9.1.1",
     "prettier": "3.0.2",
-    "prettier-plugin-astro": "0.11.1",
+    "prettier-plugin-astro": "0.12.0",
     "stylelint": "15.10.3",
     "stylelint-config-html": "1.1.0",
     "stylelint-config-property-sort-order-smacss": "9.1.0",
     "stylelint-config-standard": "34.0.0",
     "stylelint-use-logical": "2.1.0",
-    "typescript": "5.1.6"
+    "typescript": "5.2.2"
   }
 }
