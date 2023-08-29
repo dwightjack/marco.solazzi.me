@@ -29,7 +29,7 @@
     "lint:css": "stylelint 'src/**/*.{css,astro}'"
   },
   "dependencies": {
-    "astro": "2.10.14",
+    "astro": "2.10.15",
     "astro-icon": "0.8.1",
     "modern-normalize": "2.0.0",
     "nanostores": "0.9.3"
@@ -46,7 +46,7 @@
     "eslint-plugin-astro": "0.29.0",
     "eslint-plugin-prettier": "5.0.0",
     "lefthook": "1.4.9",
-    "postcss": "8.4.28",
+    "postcss": "8.4.29",
     "postcss-html": "1.5.0",
     "postcss-preset-env": "9.1.2",
     "prettier": "3.0.3",
