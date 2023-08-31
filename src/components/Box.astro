@@ -13,16 +13,13 @@ const {
   indent,
   as: Tag = 'div',
   class: className,
-  'class:list': classList,
   swatch,
   ...attrs
 } = Astro.props;
-
-const classNames = (['c-box'] as unknown[]).concat(className, classList);
 ---
 
 <Tag
-  class:list={classNames}
+  class:list={['c-box', className]}
   {...attrs}
   data-swatch={swatch}
   style={toStyleVars({ indent })}

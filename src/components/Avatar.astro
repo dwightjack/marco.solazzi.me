@@ -1,13 +1,14 @@
 ---
-import marcoFallback from '../assets/images/marco.jpg';
-import marcoAvif from '../assets/images/marco.avif';
-import marcoWebp from '../assets/images/marco.webp';
+import { getImage, Image } from 'astro:assets';
+import marcoImg from '../assets/images/marco.jpg';
+const marcoAvif = await getImage({ src: marcoImg, format: 'avif' });
+const marcoWebp = await getImage({ src: marcoImg, format: 'webp' });
 ---
 
 <picture class="c-avatar">
-  <source srcset={marcoAvif} type="image/avif" />
-  <source srcset={marcoWebp} type="image/webp" />
-  <img src={marcoFallback} alt="" width="850" height="860" />
+  <source srcset={marcoAvif.src} type="image/avif" />
+  <source srcset={marcoWebp.src} type="image/webp" />
+  <Image src={marcoImg} alt="" />
 </picture>
 
 <style>

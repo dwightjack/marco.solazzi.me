@@ -7,19 +7,11 @@ type Props<Tag extends HTMLTag> = Polymorphic<{
   space?: number;
 }>;
 
-const {
-  space = 0,
-  as: Tag = 'div',
-  class: className,
-  'class:list': classList,
-  ...attrs
-} = Astro.props;
-
-const classNames = (['c-stack'] as unknown[]).concat(className, classList);
+const { space = 0, as: Tag = 'div', class: className, ...attrs } = Astro.props;
 ---
 
 <Tag
-  class:list={classNames}
+  class:list={['c-stack', className]}
   {...attrs}
   style={space !== 0 ? toStyleVars({ space }) : null}
 >
