@@ -7,19 +7,14 @@ type Props<Tag extends HTMLTag> = Polymorphic<{
   space?: number | [number, number];
 }>;
 
-const {
-  as: Tag = 'div',
-  class: className,
-  'class:list': classList,
-  space,
-  ...attrs
-} = Astro.props;
+const { as: Tag = 'div', class: className, space, ...attrs } = Astro.props;
 
 const style = toStyleAttribute(computedSpace(space));
-const classNames = (['c-cluster'] as unknown[]).concat(className, classList);
 ---
 
-<Tag class:list={classNames} {...attrs} style={style}><slot /></Tag>
+<Tag class:list={['c-cluster', className]} {...attrs} style={style}>
+  <slot />
+</Tag>
 <style>
   @layer components {
     .c-cluster {

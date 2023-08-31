@@ -29,18 +29,18 @@
     "lint:css": "stylelint 'src/**/*.{css,astro}'"
   },
   "dependencies": {
-    "astro": "2.10.15",
+    "astro": "3.0.3",
     "astro-icon": "0.8.1",
     "modern-normalize": "2.0.0",
     "nanostores": "0.9.3"
   },
   "devDependencies": {
-    "@csstools/postcss-global-data": "2.0.1",
-    "@percy/cli": "1.26.3",
+    "@csstools/postcss-global-data": "2.1.0",
+    "@percy/cli": "1.27.0",
     "@percy/playwright": "1.0.4",
-    "@playwright/test": "^1.33.0",
-    "@typescript-eslint/eslint-plugin": "6.4.1",
-    "@typescript-eslint/parser": "6.4.1",
+    "@playwright/test": "^1.37.1",
+    "@typescript-eslint/eslint-plugin": "6.5.0",
+    "@typescript-eslint/parser": "6.5.0",
     "eslint": "8.48.0",
     "eslint-config-prettier": "9.0.0",
     "eslint-plugin-astro": "0.29.0",
