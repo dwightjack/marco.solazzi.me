@@ -6,4 +6,4 @@ title: Senior Frontend Developer
 href: http://www.shiftbrain.com/
 ---
 
-Working as Senior Developer @ Standard Design Team
+Senior Developer with the Standard Design Team

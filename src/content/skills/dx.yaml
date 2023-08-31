@@ -7,12 +7,12 @@ data:
 - id: Cypress
   label: Cypress
   icon: "logos:cypress-icon"
+- id: playwright
+  label: Playwright
+  icon: "logos:playwright"
 - id: vitest
   label: Vitest
   icon: "logos:vitest"
-- id: chai
-  label: Mocha + Chai
-  icon: logos:chai
 - id: eslint
   label: eslint
   icon: logos:eslint
