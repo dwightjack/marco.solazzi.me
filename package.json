@@ -45,7 +45,7 @@
     "eslint-config-prettier": "9.0.0",
     "eslint-plugin-astro": "0.29.1",
     "eslint-plugin-prettier": "5.0.1",
-    "lefthook": "1.5.4",
+    "lefthook": "1.5.5",
     "postcss": "8.4.31",
     "postcss-html": "1.5.0",
     "postcss-preset-env": "9.3.0",
