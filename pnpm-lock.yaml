@@ -20,8 +20,8 @@ dependencies:
 
 devDependencies:
   '@csstools/postcss-global-data':
-    specifier: 2.1.0
-    version: 2.1.0(postcss@8.4.32)
+    specifier: 2.1.1
+    version: 2.1.1(postcss@8.4.32)
   '@percy/cli':
     specifier: 1.27.4
     version: 1.27.4
@@ -518,8 +518,8 @@ packages:
       postcss: 8.4.32
     dev: true
 
-  /@csstools/postcss-global-data@2.1.0(postcss@8.4.32):
-    resolution: {integrity: sha512-n8SoAaapXATQ/fI8c0GVM+VNfvpNo6fN/79GGTjqatEG8bZNh72b2r+KKLVMcQHvRKjDlXxzurxnf6L5nsxDGA==}
+  /@csstools/postcss-global-data@2.1.1(postcss@8.4.32):
+    resolution: {integrity: sha512-tihdBLogY2G5jgUSu2jKSEVeOcnWqsz6k7UmPM7+ezhuV9FP5MIyX35Hc/YvqipQLRNsfBj9wRkBvsE7k1GM8A==}
     engines: {node: ^14 || ^16 || >=18}
     peerDependencies:
       postcss: ^8.4
