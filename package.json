@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "@csstools/postcss-global-data": "2.1.1",
-    "@percy/cli": "1.27.4",
+    "@percy/cli": "1.27.6",
     "@percy/playwright": "1.0.4",
     "@playwright/test": "^1.40.0",
     "@typescript-eslint/eslint-plugin": "6.13.2",
