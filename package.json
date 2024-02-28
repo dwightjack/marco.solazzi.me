@@ -51,7 +51,7 @@
     "postcss-preset-env": "9.3.0",
     "prettier": "3.1.1",
     "prettier-plugin-astro": "0.12.2",
-    "stylelint": "15.11.0",
+    "stylelint": "16.2.1",
     "stylelint-config-html": "1.1.0",
     "stylelint-config-property-sort-order-smacss": "10.0.0",
     "stylelint-config-standard": "34.0.0",
