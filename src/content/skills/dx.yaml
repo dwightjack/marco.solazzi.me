@@ -1,24 +1,24 @@
 label: Developer Experience
-icon: tools
+icon: mdi:tools
 data:
-- id: jest
-  label: Jest
-  icon: logos:jest
-- id: Cypress
-  label: Cypress
-  icon: "logos:cypress-icon"
-- id: playwright
-  label: Playwright
-  icon: "logos:playwright"
-- id: vitest
-  label: Vitest
-  icon: "logos:vitest"
-- id: eslint
-  label: eslint
-  icon: logos:eslint
-- id: linting-style
-  label: stylelint
-  icon: logos:stylelint
-- id: design-system
-  label: Storybook
-  icon: logos:storybook-icon
+  - id: jest
+    label: Jest
+    icon: logos:jest
+  - id: Cypress
+    label: Cypress
+    icon: "logos:cypress-icon"
+  - id: playwright
+    label: Playwright
+    icon: "logos:playwright"
+  - id: vitest
+    label: Vitest
+    icon: "logos:vitest"
+  - id: eslint
+    label: eslint
+    icon: logos:eslint
+  - id: linting-style
+    label: stylelint
+    icon: logos:stylelint
+  - id: design-system
+    label: Storybook
+    icon: logos:storybook-icon

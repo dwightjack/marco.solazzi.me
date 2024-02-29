@@ -29,7 +29,7 @@ export default class ScrollIntercept {
   };
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
-  constructor(selector: string, onUpdate = (element: Element) => {}) {
+  constructor(selector: string, onUpdate = (_element: Element) => {}) {
     this.sections = [...document.querySelectorAll(selector)];
     this.onUpdate = onUpdate;
 

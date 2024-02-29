@@ -1,21 +1,21 @@
 label: Build Tools
-icon: terminal
+icon: mdi:terminal
 data:
-- id: vite
-  label: Vite
-  icon: logos:vitejs
-- id: webpack
-  label: webpack
-  icon: logos:webpack
-- id: rollup
-  label: Rollup
-  icon: logos:rollupjs
-- id: esbuild
-  label: esbuild
-  icon: logos:esbuild
-- id: turborepo
-  label: Turborepo
-  icon: logos:turborepo-icon
-- id: gulp
-  label: gulp
-  icon: logos:gulp
+  - id: vite
+    label: Vite
+    icon: logos:vitejs
+  - id: webpack
+    label: webpack
+    icon: logos:webpack
+  - id: rollup
+    label: Rollup
+    icon: logos:rollupjs
+  - id: esbuild
+    label: esbuild
+    icon: logos:esbuild
+  - id: turborepo
+    label: Turborepo
+    icon: logos:turborepo-icon
+  - id: gulp
+    label: gulp
+    icon: logos:gulp

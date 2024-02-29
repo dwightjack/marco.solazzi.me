@@ -1,15 +1,15 @@
 label: Tools
-icon: pencil
+icon: mdi:pencil
 data:
-- id: vscode
-  label: VS Code
-  icon: logos:visual-studio-code
-- id: software
-  label: Photoshop
-  icon: logos:adobe-photoshop
-- id: figma
-  label: Figma
-  icon: logos:figma
-- id: sketch
-  label: Sketch
-  icon: logos:sketch
+  - id: vscode
+    label: VS Code
+    icon: logos:visual-studio-code
+  - id: software
+    label: Photoshop
+    icon: logos:adobe-photoshop
+  - id: figma
+    label: Figma
+    icon: logos:figma
+  - id: sketch
+    label: Sketch
+    icon: logos:sketch
