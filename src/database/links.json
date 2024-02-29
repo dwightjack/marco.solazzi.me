@@ -1,34 +1,34 @@
 [
   {
-    "icon": "twitter",
+    "icon": "mdi:twitter",
     "href": "https://twitter.com/dwightjack",
     "label": "@dwightjack",
     "description": "My twitter profile"
   },
   {
-    "icon": "pencil",
+    "icon": "mdi:pencil",
     "href": "mailto:marco@solazzi.me",
     "label": "marco@solazzi.me"
   },
   {
-    "icon": "github",
+    "icon": "mdi:github",
     "href": "https://github.com/dwightjack",
     "label": "dwightjack",
     "description": "My GitHub profile"
   },
   {
-    "icon": "test-tube",
+    "icon": "mdi:test-tube",
     "href": "https://www.codeful.dev/",
     "label": "personal projects"
   },
   {
-    "icon": "linkedin",
+    "icon": "mdi:linkedin",
     "href": "https://it.linkedin.com/in/marcosolazzi",
     "label": "in/marcosolazzi",
     "description": "My LinkedIn profile"
   },
   {
-    "icon": "file-pdf",
+    "icon": "mdi:file-pdf",
     "href": "https://www.dropbox.com/s/fcskrdr1ttx6fki/marco-solazzi-frontend-developer-resume-202212.pdf?dl=0",
     "label": "pdf/resume"
   }

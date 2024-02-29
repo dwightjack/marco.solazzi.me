@@ -1,5 +1,5 @@
 ---
-import { Sprite } from 'astro-icon';
+import { Icon as AstroIcon } from 'astro-icon/components';
 import { toStyleVars } from '../shared/utils';
 export interface Props {
   name: string;
@@ -7,12 +7,11 @@ export interface Props {
 }
 
 const { name, size = 1 } = Astro.props;
-const iconName = name.includes(':') ? name : `mdi:${name}`;
 ---
 
-<Sprite
+<AstroIcon
   class="c-icon"
-  name={iconName}
+  name={name}
   aria-hidden="true"
   focusable="false"
   style={size !== 1 ? toStyleVars({ size }) : null}

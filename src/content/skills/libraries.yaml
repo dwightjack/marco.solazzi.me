@@ -1,33 +1,33 @@
 label: Libraries and Frameworks
-icon: extension
+icon: mdi:extension
 data:
-- id: vue
-  label: Vue.js
-  icon: logos:vue
-- id: react
-  label: React
-  icon: logos:react
-- id: svelte
-  label: Svelte
-  icon: logos:svelte-icon
-- id: nuxt
-  label: Nuxt
-  icon: logos:nuxt-icon
-- id: astro
-  label: Astro
-  icon: logos:astro-icon
-- id: alpine
-  label: Alpine.js
-  icon: logos:alpinejs-icon
-- id: tailwind
-  label: Tailwind CSS
-  icon: logos:tailwindcss-icon
-- id: unocss
-  label: UnoCSS
-  icon: logos:unocss
-- id: animation
-  label: GSAP
-  icon: logos:greensock-icon
-- id: Laravel
-  label: Laravel
-  icon: logos:laravel
+  - id: vue
+    label: Vue.js
+    icon: logos:vue
+  - id: react
+    label: React
+    icon: logos:react
+  - id: svelte
+    label: Svelte
+    icon: logos:svelte-icon
+  - id: nuxt
+    label: Nuxt
+    icon: logos:nuxt-icon
+  - id: astro
+    label: Astro
+    icon: logos:astro-icon
+  - id: alpine
+    label: Alpine.js
+    icon: logos:alpinejs-icon
+  - id: tailwind
+    label: Tailwind CSS
+    icon: logos:tailwindcss-icon
+  - id: unocss
+    label: UnoCSS
+    icon: logos:unocss
+  - id: animation
+    label: GSAP
+    icon: logos:greensock-icon
+  - id: Laravel
+    label: Laravel
+    icon: logos:laravel
