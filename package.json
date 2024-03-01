@@ -33,14 +33,14 @@
     "@astrojs/check": "^0.5.6",
     "@iconify-json/logos": "1.1.42",
     "@iconify-json/mdi": "1.1.64",
-    "astro": "4.4.6",
+    "astro": "4.4.8",
     "astro-icon": "1.1.0",
     "modern-normalize": "2.0.0",
     "nanostores": "0.10.0"
   },
   "devDependencies": {
     "@csstools/postcss-global-data": "2.1.1",
-    "@percy/cli": "1.28.0",
+    "@percy/cli": "1.28.1",
     "@percy/playwright": "1.0.4",
     "@playwright/test": "^1.42.0",
     "@typescript-eslint/eslint-plugin": "7.1.0",
