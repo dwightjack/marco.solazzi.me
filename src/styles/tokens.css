@@ -13,22 +13,20 @@
 
 :root {
   /* Colors */
-  --color-hue-red: 0deg;
-  --color-hue-green: 160deg;
-  --color-hue-blue: 204deg;
-  --color-hue-purple: 325deg;
-  --color-darker: hsl(0deg 0% 22%);
-  --color-dark: hsl(0deg 0% 30%);
-  --color-light-900: hsl(0deg 0% 90%);
-  --color-light: hsl(0deg 0% 100%);
+  --color-hue-red: 24deg;
+  --color-hue-green: 166deg;
+  --color-hue-blue: 240deg;
+  --color-hue-purple: 348deg;
+  --color-darker: oklch(34.11% 0 0deg);
+  --color-dark: oklch(41.84% 0 0deg);
+  --color-light-900: oklch(92.34% 0 0deg);
+  --color-light: oklch(100% 0 0deg);
   --color-brand-hue: var(--color-hue-red);
-  --color-brand-250: hsl(var(--color-brand-hue) 56% 25%);
-  --color-brand-400: hsl(var(--color-brand-hue) 57% 40%);
-  --color-brand-500: hsl(var(--color-brand-hue) 47% 52%);
-  --color-brand-700: hsl(var(--color-brand-hue) 57% 70%);
-  --color-brand-800: hsl(var(--color-brand-hue) 75% 72%);
-
-
+  --color-brand-250: oklch(34.24% 0.103 var(--color-brand-hue));
+  --color-brand-400: oklch(47.4% 0.153 var(--color-brand-hue));
+  --color-brand-500: oklch(56.65% 0.149 var(--color-brand-hue));
+  --color-brand-700: oklch(71.47% 0.107 var(--color-brand-hue));
+  --color-brand-800: oklch(72.46% 0.132 var(--color-brand-hue));
 
   /* Fonts */
   --font-family-sans: 'Open Sans', sans-serif;
@@ -84,27 +82,54 @@
   --box-color-background: var(--color-light);
   --box-color-foreground-secondary: var(--color-light);
   --box-color-background-secondary: var(--color-brand-400);
-  --box-color-selection-background: color-mix(in srgb, var(--color-brand-400), transparent 80%);
+  --box-color-selection-background: color-mix(
+    in oklch,
+    var(--color-brand-400),
+    transparent 80%
+  );
   --box-color-selection-foreground: var(--color-brand-250);
-  --box-color-border: color-mix(in srgb, var(--color-brand-400), transparent 50%);
+  --box-color-border: color-mix(
+    in oklch,
+    var(--color-brand-400),
+    transparent 50%
+  );
 
   @media (--theme-dark) {
     --box-color-foreground: var(--color-light-900);
     --box-color-background: var(--color-darker);
-    --box-color-border: color-mix(in srgb, var(--color-brand-500), transparent 50%);
-    --box-color-selection-background: color-mix(in srgb, var(--color-brand-400), transparent 40%);
+    --box-color-border: color-mix(
+      in oklch,
+      var(--color-brand-500),
+      transparent 50%
+    );
+    --box-color-selection-background: color-mix(
+      in oklch,
+      var(--color-brand-400),
+      transparent 40%
+    );
     --box-color-selection-foreground: var(--color-light-900);
   }
 
   /* Navigation */
   --navigation-color-foreground: var(--color-dark);
   --navigation-color-foreground-hover: var(--color-brand-400);
-  --navigation-color-border: color-mix(in srgb, var(--color-dark), transparent 90%);
-  --navigation-color-border-hover: color-mix(in srgb, var(--color-brand-400), transparent 90%);
-
+  --navigation-color-border: color-mix(
+    in oklch,
+    var(--color-dark),
+    transparent 90%
+  );
+  --navigation-color-border-hover: color-mix(
+    in oklch,
+    var(--color-brand-400),
+    transparent 90%
+  );
 
   @media (--theme-dark) {
-    --navigation-color-border: color-mix(in srgb, var(--color-light-900), transparent 90%);
+    --navigation-color-border: color-mix(
+      in oklch,
+      var(--color-light-900),
+      transparent 90%
+    );
     --navigation-color-foreground-hover: var(--color-brand-800);
   }
 
@@ -118,37 +143,51 @@
   }
 
   /* Generic interactive elements */
-  --interactive-color-outline: color-mix(in srgb, var(--color-brand-400), transparent 80%);
-
+  --interactive-color-outline: color-mix(
+    in oklch,
+    var(--color-brand-400),
+    transparent 80%
+  );
 
   @media (--theme-dark) {
     --interactive-color-outline: var(--color-brand-800);
   }
 
-  &[data-theme="green"] {
+  &[data-theme='green'] {
     --color-brand-hue: var(--color-hue-green);
   }
 
-  &[data-theme="blue"] {
+  &[data-theme='blue'] {
     --color-brand-hue: var(--color-hue-blue);
   }
 
-  &[data-theme="purple"] {
+  &[data-theme='purple'] {
     --color-brand-hue: var(--color-hue-purple);
   }
 }
 
-[data-swatch="brand"] {
+[data-swatch='brand'] {
   --box-color-foreground: var(--color-light);
   --box-color-background: var(--color-brand-400);
-  --box-color-selection-background: color-mix(in srgb, var(--color-light-900), transparent 60%);
+  --box-color-selection-background: color-mix(
+    in oklch,
+    var(--color-light-900),
+    transparent 60%
+  );
   --box-color-selection-foreground: var(--color-light);
-  --box-color-border: color-mix(in srgb, var(--color-light-900), transparent 60%);
+  --box-color-border: color-mix(
+    in oklch,
+    var(--color-light-900),
+    transparent 60%
+  );
   --box-color-foreground-secondary: var(--color-brand-400);
   --box-color-background-secondary: var(--color-light);
   --navigation-color-foreground: var(--color-light);
   --navigation-color-foreground-hover: var(--color-light);
-  --interactive-color-outline: color-mix(in srgb, var(--color-light-900), transparent 60%);
+  --interactive-color-outline: color-mix(
+    in oklch,
+    var(--color-light-900),
+    transparent 60%
+  );
   --action-color-background: var(--color-light);
-
 }
