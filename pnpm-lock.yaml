@@ -4,11 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-patchedDependencies:
-  stylelint-use-logical@2.1.1:
-    hash: 7sg5bdijcf3s54gymxpup4nndq
-    path: patches/stylelint-use-logical@2.1.1.patch
-
 dependencies:
   '@astrojs/check':
     specifier: ^0.5.6
@@ -97,8 +92,8 @@ devDependencies:
     specifier: 36.0.0
     version: 36.0.0(stylelint@16.3.0)
   stylelint-use-logical:
-    specifier: 2.1.1
-    version: 2.1.1(patch_hash=7sg5bdijcf3s54gymxpup4nndq)(stylelint@16.3.0)
+    specifier: 2.1.2
+    version: 2.1.2(stylelint@16.3.0)
   typescript:
     specifier: 5.4.3
     version: 5.4.3
@@ -6209,15 +6204,14 @@ packages:
       stylelint: 16.3.0(typescript@5.4.3)
     dev: true
 
-  /stylelint-use-logical@2.1.1(patch_hash=7sg5bdijcf3s54gymxpup4nndq)(stylelint@16.3.0):
-    resolution: {integrity: sha512-i/ICWiflgdzkKegNGk0kuOfnoQzMr8Hpuypj1deGoOPx9KDJQj7tNrkRu9XjOPlK6TKLmRcdWDtDWascEt8j+w==}
+  /stylelint-use-logical@2.1.2(stylelint@16.3.0):
+    resolution: {integrity: sha512-4ffvPNk/swH4KS3izExWuzQOuzLmi0gb0uOhvxWJ20vDA5W5xKCjcHHtLoAj1kKvTIX6eGIN5xGtaVin9PD0wg==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       stylelint: '>= 11 < 17'
     dependencies:
       stylelint: 16.3.0(typescript@5.4.3)
     dev: true
-    patched: true
 
   /stylelint@16.3.0(typescript@5.4.3):
     resolution: {integrity: sha512-hqC6xNTbQ5HRGQXfIW4HwXcx09raIFz4W4XFbraeqWqYRVVY/ibYvI0dsu0ORMQY8re2bpDdCAeIa2cm+QJ4Sw==}
