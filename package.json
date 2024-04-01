@@ -7,7 +7,7 @@
   "author": {
     "name": "Marco Solazzi"
   },
-  "packageManager": "pnpm@8.15.5",
+  "packageManager": "pnpm@8.15.6",
   "engines": {
     "node": ">=18.15.0",
     "pnpm": "^8.0.0"
@@ -36,12 +36,12 @@
     "astro": "4.5.12",
     "astro-icon": "1.1.0",
     "modern-normalize": "2.0.0",
-    "nanostores": "0.10.0"
+    "nanostores": "0.10.2"
   },
   "devDependencies": {
     "@csstools/postcss-global-data": "2.1.1",
     "@percy/cli": "1.28.2",
-    "@percy/playwright": "1.0.4",
+    "@percy/playwright": "1.0.5",
     "@playwright/test": "^1.42.0",
     "@typescript-eslint/eslint-plugin": "7.4.0",
     "@typescript-eslint/parser": "7.4.0",
@@ -52,7 +52,7 @@
     "lefthook": "1.6.7",
     "postcss": "8.4.38",
     "postcss-html": "1.6.0",
-    "postcss-preset-env": "9.5.2",
+    "postcss-preset-env": "9.5.3",
     "prettier": "3.2.5",
     "prettier-plugin-astro": "0.13.0",
     "sharp": "0.33.3",
