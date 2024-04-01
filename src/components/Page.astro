@@ -22,6 +22,20 @@ const { id, mark, indent = true } = Astro.props;
 </Stack>
 <style>
   @layer components {
+    @supports (animation-timeline: view()) {
+      .c-page {
+        --visible: 0;
+
+        animation:
+          visible steps(1) both,
+          invisible steps(1) both;
+        animation-timeline: view();
+        animation-range:
+          entry 40% cover 10%,
+          exit 30% contain 0%;
+      }
+    }
+
     .c-page.c-page--indent {
       padding-inline: var(--space-page-gutter-inline);
     }
@@ -30,11 +44,11 @@ const { id, mark, indent = true } = Astro.props;
       position: fixed;
       z-index: var(--layer-b1);
       transition: all 750ms ease-out;
-      transition-property: opacity, transform;
-      opacity: 0;
+      transition-property: opacity, translate;
+      opacity: calc(0.05 * var(--visible, 0));
       font-size: max(300px, 80vmin);
       white-space: nowrap;
-      will-change: opacity, transform;
+      will-change: opacity, translate;
 
       @media not screen and (--viewport-tablet) {
         inset-block-start: -40vw;
@@ -48,32 +62,50 @@ const { id, mark, indent = true } = Astro.props;
       }
 
       @media (prefers-reduced-motion: no-preference) {
-        transform: translateX(1vw);
+        translate: calc(1vw - var(--visible, 0) * 1vw) 0;
       }
     }
 
-    .c-page:not(.is-dynamic) .c-page__mark {
-      display: none;
-    }
-
+    /*
+     .is-current is only added by JS
+      when animation-timeline: view() is not supported
+     */
     .c-page.is-current .c-page__mark {
       transform: translateX(0);
       opacity: 0.05;
+    }
+
+    /**
+      Supports CSS scroll animations timeline via the view() function
+      - or -
+      JS disabled
+    */
+    :not(:has(.c-page.is-current)) > .c-page .c-page__mark {
+      display: none;
+    }
+
+    @keyframes invisible {
+      to {
+        --visible: 0;
+      }
+    }
+
+    @keyframes visible {
+      to {
+        --visible: 1;
+      }
     }
   }
 </style>
 <script>
   import { currentRoute } from '../shared/store';
 
-  const pages = document.querySelectorAll('.c-page');
-
-  currentRoute.subscribe((route) => {
-    for (const page of pages) {
-      page.classList.toggle('is-current', page.id === route);
-    }
-  });
-
-  for (const page of pages) {
-    page.classList.add('is-dynamic');
+  if (CSS.supports('animation-timeline: view()') === false) {
+    const pages = document.querySelectorAll('.c-page');
+    currentRoute.subscribe((route) => {
+      for (const page of pages) {
+        page.classList.toggle('is-current', page.id === route);
+      }
+    });
   }
 </script>
