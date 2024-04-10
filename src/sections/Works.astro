@@ -7,13 +7,31 @@ import Stack from '../components/Stack.astro';
 
 import MediaLink from '../components/MediaLink.astro';
 import Cluster from '../components/Cluster.astro';
-import { getWorks } from '../shared/collections';
+import { getWorks, getPersonalWorks } from '../shared/collections';
 
 const works = await getWorks();
+const personal = await getPersonalWorks();
 ---
 
 <Page id={NAV_PATH_WORKS} mark="作品">
-  <PageSection title="works" subtitle="Latest projects">
+  <PageSection title="works.personal" subtitle="Latest personal projects">
+    <Stack space={5}>
+      {
+        personal.map(({ details, source }) => (
+          <Card titleLabel="project" {...details}>
+            {source && (
+              <footer slot="footer">
+                <MediaLink href={source.href} icon="mdi:github-box">
+                  {source.label}
+                </MediaLink>
+              </footer>
+            )}
+          </Card>
+        ))
+      }
+    </Stack>
+  </PageSection>
+  <PageSection title="works.agency" subtitle="Latest agency projects">
     <Stack space={5}>
       {
         works.map(({ details, media }) => (
@@ -27,9 +45,7 @@ const works = await getWorks();
                 >
                   {media.map(({ label, ...props }) => (
                     <li>
-                      <MediaLink title={details.title} {...props}>
-                        {label}
-                      </MediaLink>
+                      <MediaLink {...props}>{label}</MediaLink>
                     </li>
                   ))}
                 </Cluster>

@@ -6,4 +6,4 @@ title: Senior Frontend Developer
 href: http://www.aquest.it/
 ---
 
-Senior Developer, Frontend / <abbr title="Developer Experience">DX</abbr> Ops and Technical Evangelist for <abbr title="Single Page Applications">SPA</abbr>s Architecture.
+Senior Developer, Frontend / Developer Experience Ops and Technical Evangelist for Single Page Applications Architecture.
