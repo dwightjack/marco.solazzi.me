@@ -8,10 +8,13 @@ export function toDate(dateStr: string) {
 }
 
 export function toMonthYear(dateStr: string | Date) {
-  return new Intl.DateTimeFormat('en', {
+  if (typeof dateStr === 'string') {
+    dateStr = toDate(dateStr);
+  }
+  return dateStr.toLocaleDateString('en', {
     month: 'long',
     year: 'numeric',
-  }).format(typeof dateStr === 'string' ? toDate(dateStr) : dateStr);
+  });
 }
 
 export function toIso(dateStr: string | Date) {
