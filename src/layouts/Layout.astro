@@ -10,6 +10,26 @@ import Cluster from '../components/Cluster.astro';
 import { THEME_DEFAULT } from '../shared/constants';
 import Box from '../components/Box.astro';
 
+import {
+  NAV_PATH_HOME,
+  NAV_PATH_JOBS,
+  NAV_PATH_EDUCATION,
+  NAV_PATH_SKILLS,
+  NAV_PATH_WORKS,
+  NAV_PATH_TALKS,
+} from '../shared/constants';
+
+const pageViews = [
+  NAV_PATH_HOME,
+  NAV_PATH_JOBS,
+  NAV_PATH_EDUCATION,
+  NAV_PATH_SKILLS,
+  NAV_PATH_WORKS,
+  NAV_PATH_TALKS,
+]
+  .map((path) => `--${path}`)
+  .join(',');
+
 const socialImageURL = new URL('/marco-og.jpg', Astro.url);
 ---
 
@@ -48,7 +68,7 @@ const socialImageURL = new URL('/marco-og.jpg', Astro.url);
       rel="stylesheet"
     />
   </head>
-  <body>
+  <body style={{ timelineScope: pageViews }}>
     <Box as="header" class="l-header" id="header">
       <Cluster class="l-header__controls" space={1.5}>
         <ThemeSwitcher />

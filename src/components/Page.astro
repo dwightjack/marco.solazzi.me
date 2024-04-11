@@ -10,7 +10,12 @@ export interface Props {
 const { id, mark, indent = true } = Astro.props;
 ---
 
-<Stack class:list={['c-page', { 'c-page--indent': indent }]} id={id} space={15}>
+<Stack
+  class:list={['c-page', { 'c-page--indent': indent }]}
+  id={id}
+  space={15}
+  style={{ '--view-name': `--${id}` }}
+>
   <slot />
   {
     mark && (
@@ -29,10 +34,11 @@ const { id, mark, indent = true } = Astro.props;
         animation:
           visible steps(1) both,
           invisible steps(1) both;
-        animation-timeline: view();
+        animation-timeline: var(--view-name);
         animation-range:
           entry 40% cover 10%,
           exit 30% contain 0%;
+        view-timeline-name: var(--view-name);
       }
     }
 

@@ -15,7 +15,11 @@ import Box from './Box.astro';
     {
       routes.map(({ path, label }) => (
         <li class="c-nav__item">
-          <a href={`#${path}`} class="c-nav__route">
+          <a
+            href={`#${path}`}
+            class="c-nav__route"
+            style={{ animationTimeline: `--${path}` }}
+          >
             {label}
           </a>
         </li>
@@ -49,11 +53,13 @@ import Box from './Box.astro';
     }
 
     .c-nav__route {
+      --visible: 0;
+
       display: block;
       padding-block: var(--space-1);
       padding-inline: calc(var(--space-2) * 1.75);
       transition: opacity 150ms linear;
-      opacity: 0.8;
+      opacity: max(0.8, var(--visible));
       color: inherit;
       font-family: var(--text-heading-font-family);
       font-size: var(--text-body-font-size-x3);
@@ -66,35 +72,51 @@ import Box from './Box.astro';
     .c-nav__route::before {
       content: '.';
       display: inline-block;
-      transform: translateX(-0.4em);
+      translate: calc(-0.4em + 0.3em * var(--visible)) 0;
       transition: all 250ms ease-out;
-      opacity: 0;
+      opacity: var(--visible);
     }
 
     .c-nav__route.is-current {
-      opacity: 1;
+      --visible: 1;
 
       &::before {
-        transform: translateX(-0.1em);
         transition-delay: 200ms;
-        opacity: 1;
       }
     }
 
     .c-nav__route:hover {
       @media (--pointer-mouse) {
-        opacity: 1;
+        --visible: 1 !important;
+      }
+    }
 
-        &::before {
-          transform: translateX(-0.1em);
-          opacity: 1;
-        }
+    @supports (animation-timeline: view()) {
+      .c-nav__route {
+        animation:
+          visible steps(1) both,
+          invisible steps(1) both;
+        animation-range:
+          entry 40% cover 10%,
+          exit 30% contain 0%;
+      }
+    }
+
+    @keyframes invisible {
+      to {
+        --visible: 0;
+      }
+    }
+
+    @keyframes visible {
+      to {
+        --visible: 1;
       }
     }
   }
 </style>
 <script>
-  import { menuExpanded, currentRoute } from '../shared/store';
+  import { menuExpanded } from '../shared/store';
 
   const navList = document.querySelectorAll<HTMLElement>('.c-nav');
 
@@ -106,21 +128,21 @@ import Box from './Box.astro';
     }
   });
 
-  for (const nav of navList) {
-    const routes = nav.querySelectorAll('.c-nav__route');
-    currentRoute.subscribe((currentRoute) => {
-      if (!currentRoute) {
-        return;
-      }
-      for (const route of routes) {
-        const isCurrent = route.getAttribute('href') === `#${currentRoute}`;
-        if (isCurrent) {
-          route.setAttribute('aria-current', 'true');
-        } else {
-          route.removeAttribute('aria-current');
-        }
-        route.classList.toggle('is-current', isCurrent);
-      }
-    });
-  }
+  // for (const nav of navList) {
+  //   const routes = nav.querySelectorAll('.c-nav__route');
+  //   currentRoute.subscribe((currentRoute) => {
+  //     if (!currentRoute) {
+  //       return;
+  //     }
+  //     for (const route of routes) {
+  //       const isCurrent = route.getAttribute('href') === `#${currentRoute}`;
+  //       if (isCurrent) {
+  //         route.setAttribute('aria-current', 'true');
+  //       } else {
+  //         route.removeAttribute('aria-current');
+  //       }
+  //       route.classList.toggle('is-current', isCurrent);
+  //     }
+  //   });
+  // }
 </script>

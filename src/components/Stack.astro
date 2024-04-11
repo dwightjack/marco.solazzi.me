@@ -8,13 +8,15 @@ type Props<Tag extends HTMLTag> = Polymorphic<{
 }>;
 
 const { space = 0, as: Tag = 'div', class: className, ...attrs } = Astro.props;
+
+const style = attrs.style
+  ? { ...attrs.style, ...toStyleVars({ space }) }
+  : space !== 0
+    ? toStyleVars({ space })
+    : null;
 ---
 
-<Tag
-  class:list={['c-stack', className]}
-  {...attrs}
-  style={space !== 0 ? toStyleVars({ space }) : null}
->
+<Tag class:list={['c-stack', className]} {...attrs} style={style}>
   <slot />
 </Tag>
 <style>
