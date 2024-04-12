@@ -4,7 +4,7 @@ href: https://timer.codeful.dev/
 stack:
   - Preact
   - goober
-  - WMR
+  - Parcel
   - Firebase
 source:
   href: https://github.com/dwightjack/cicumikuji
