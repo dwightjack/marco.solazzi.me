@@ -26,7 +26,7 @@ const talks = await getTalks();
                 >
                   {media.map(({ lang, ...props }) => (
                     <li>
-                      <MediaLink title={details.title} {...props}>
+                      <MediaLink {...props}>
                         {props.type}
                         {lang && ` (${lang})`}
                       </MediaLink>

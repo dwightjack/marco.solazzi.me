@@ -45,7 +45,7 @@ const talkCollection = defineCollection({
     media: z.array(
       z.object({
         icon: z.string().optional(),
-        type: z.enum(['video', 'slides', 'award'] as const),
+        type: z.enum(['video', 'slides'] as const),
         lang: z.string().optional(),
         href: z.string().url(),
       }),
@@ -59,17 +59,31 @@ const workCollection = defineCollection({
     project: z.string(),
     date: z.date(),
     stack: z.array(z.string()),
-    tasks: z.array(z.string()),
-    href: z.string().url(),
+    tasks: z.array(z.string()).optional(),
+    href: z.string().url().optional(),
     media: z
       .array(
         z.object({
           icon: z.string().optional(),
-          type: z.enum(['video', 'slides', 'award'] as const),
           href: z.string().url(),
           label: z.string().optional(),
         }),
       )
+      .optional(),
+  }),
+});
+
+const personalWorksCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    project: z.string(),
+    stack: z.array(z.string()),
+    href: z.string().url().optional(),
+    source: z
+      .object({
+        href: z.string().url(),
+        label: z.string().default('source'),
+      })
       .optional(),
   }),
 });
@@ -80,4 +94,5 @@ export const collections = {
   skills: skillCollection,
   talks: talkCollection,
   works: workCollection,
+  personalWorks: personalWorksCollection,
 };

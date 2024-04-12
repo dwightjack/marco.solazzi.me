@@ -69,12 +69,32 @@ export async function getWorks() {
           data: {
             ...data,
             stack: stack.join(', '),
-            tasks: tasks.join(', '),
+            tasks: tasks?.join(', ') || '',
           },
         },
         media,
       };
     });
+}
+
+export async function getPersonalWorks() {
+  return (await getCollection('personalWorks')).map((entry) => {
+    const { project: title, stack, source, href, ...data } = entry.data;
+
+    return {
+      details: {
+        id: `works-personal-${entry.id}`,
+        title,
+        href,
+        data: {
+          description: entry.body.trim(),
+          ...data,
+          stack: stack.join(', '),
+        },
+      },
+      source,
+    };
+  });
 }
 
 export async function getTalks() {

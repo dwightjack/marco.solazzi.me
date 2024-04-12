@@ -8,7 +8,7 @@ const marcoWebp = await getImage({ src: marcoImg, format: 'webp' });
 <picture class="c-avatar">
   <source srcset={marcoAvif.src} type="image/avif" />
   <source srcset={marcoWebp.src} type="image/webp" />
-  <Image src={marcoImg} alt="" />
+  <Image src={marcoImg} alt="" loading="eager" />
 </picture>
 
 <style>

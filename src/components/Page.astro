@@ -62,26 +62,34 @@ const { id, mark, indent = true } = Astro.props;
       }
 
       @media (prefers-reduced-motion: no-preference) {
+        /*
+          If animation-timeline is supported --visible is toggled between 0 and 1,
+          transitioning the translate between 1vw and 0.
+          In all other cases, fallbacks to a static computed value of 1vw
+        */
         translate: calc(1vw - var(--visible, 0) * 1vw) 0;
       }
     }
 
-    /*
+    /* Does not supports CSS scroll animations timeline via the view() function */
+    @supports not (animation-timeline: view()) {
+      /*
      .is-current is only added by JS
       when animation-timeline: view() is not supported
      */
-    .c-page.is-current .c-page__mark {
-      transform: translateX(0);
-      opacity: 0.05;
-    }
+      .c-page.is-current .c-page__mark {
+        translate: 0 0;
+        opacity: 0.05;
+      }
 
-    /**
-      Supports CSS scroll animations timeline via the view() function
-      - or -
-      JS disabled
-    */
-    :not(:has(.c-page.is-current)) > .c-page .c-page__mark {
-      display: none;
+      /**
+        JS is disabled as well: hide the mark altogether
+      */
+      @media (scripting: none) {
+        .c-page__mark {
+          display: none;
+        }
+      }
     }
 
     @keyframes invisible {
