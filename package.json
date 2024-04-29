@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@csstools/postcss-global-data": "2.1.1",
-    "@percy/cli": "1.28.3",
+    "@percy/cli": "1.28.5",
     "@percy/playwright": "1.0.5",
     "@playwright/test": "^1.42.0",
     "@typescript-eslint/eslint-plugin": "7.4.0",
@@ -52,7 +52,7 @@
     "lefthook": "1.6.10",
     "postcss": "8.4.38",
     "postcss-html": "1.6.0",
-    "postcss-preset-env": "9.5.8",
+    "postcss-preset-env": "9.5.9",
     "prettier": "3.2.5",
     "prettier-plugin-astro": "0.13.0",
     "sharp": "0.33.3",
