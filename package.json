@@ -7,7 +7,7 @@
   "author": {
     "name": "Marco Solazzi"
   },
-  "packageManager": "pnpm@8.15.7",
+  "packageManager": "pnpm@8.15.8",
   "engines": {
     "node": ">=18.15.0",
     "pnpm": "^8.0.0"
@@ -52,7 +52,7 @@
     "lefthook": "1.6.10",
     "postcss": "8.4.38",
     "postcss-html": "1.6.0",
-    "postcss-preset-env": "9.5.9",
+    "postcss-preset-env": "9.5.11",
     "prettier": "3.2.5",
     "prettier-plugin-astro": "0.13.0",
     "sharp": "0.33.3",
