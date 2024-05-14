@@ -1,4 +1,5 @@
-@import url('../../node_modules/modern-normalize/modern-normalize.css') layer(reset);
+@import url('../../node_modules/modern-normalize/modern-normalize.css')
+layer(reset);
 
 @layer base {
   html {
@@ -38,8 +39,6 @@
     text-shadow: none;
   }
 
-
-
   h2,
   h3,
   h4,
@@ -71,10 +70,13 @@
     outline: 0;
   }
 
-  a:not([class*='c-'],[class*='s-']) {
+  a:not([class*='c-'], [class*='s-']) {
     padding-block-end: 3px;
     transition: color 150ms;
-    background: linear-gradient(var(--navigation-color-border), var(--navigation-color-border)) ;
+    background: linear-gradient(
+      var(--navigation-color-border),
+      var(--navigation-color-border)
+    );
     background-repeat: no-repeat;
     background-position: 100% bottom;
     background-size: 100% 3px;
@@ -86,47 +88,55 @@
 
     @media (--pointer-mouse) and (prefers-reduced-motion: no-preference) {
       padding-inline: 0.22em;
-      transition: background-position 0s, color 150ms;
-      transition-timing-function: cubic-bezier(0.83, 0.29, 0.29, 0.95) ;
+      transition:
+        background-position 0s,
+        color 150ms;
+      transition-timing-function: cubic-bezier(0.83, 0.29, 0.29, 0.95);
       transition-delay: 0s;
       background: linear-gradient(
-        to right,
-        transparent calc(100% / 3),
-        var(--navigation-color-foreground-hover) calc((100% / 3) + 1px),
-        var(--navigation-color-foreground-hover) calc(100% / 1.5),
-        transparent calc(calc(100% / 1.5) + 1px)
-      ),
+          to right,
+          transparent calc(100% / 3),
+          var(--navigation-color-foreground-hover) calc((100% / 3) + 1px),
+          var(--navigation-color-foreground-hover) calc(100% / 1.5),
+          transparent calc(calc(100% / 1.5) + 1px)
+        ),
         linear-gradient(
-        to right,
-        var(--navigation-color-border-hover) calc(100% / 3),
-        transparent calc((100% / 3) + 1px),
-        transparent calc(100% / 1.5),
-        var(--navigation-color-border) calc(calc(100% / 1.5) + 1px)
-      );
+          to right,
+          var(--navigation-color-border-hover) calc(100% / 3),
+          transparent calc((100% / 3) + 1px),
+          transparent calc(100% / 1.5),
+          var(--navigation-color-border) calc(calc(100% / 1.5) + 1px)
+        );
       background-repeat: no-repeat;
-      background-position: 101% 0, 100% bottom;
-      background-size: 300% 100%, 300% 3px;
+      background-position:
+        101% 0,
+        100% bottom;
+      background-size:
+        300% 100%,
+        300% 3px;
     }
   }
 
-  a:not([class*='c-'],[class*='s-']):hover {
+  a:not([class*='c-'], [class*='s-']):hover {
     @media (--pointer-mouse) {
-      color: var(--navigation-color-foreground-hover) ;
+      color: var(--navigation-color-foreground-hover);
       text-decoration: none;
     }
 
     @media (--pointer-mouse) and (prefers-reduced-motion: no-preference) {
       transition-duration: 650ms, 200ms;
       transition-delay: 0s, 150ms;
-      background-position: 0 0, 0 bottom;
+      background-position:
+        0 0,
+        0 bottom;
     }
 
     @media (--pointer-mouse) and (prefers-reduced-motion: reduce) {
       background-image: linear-gradient(
         var(--navigation-color-border-hover),
         var(--navigation-color-border-hover)
-      ) ;
-      color: var(--navigation-color-foreground-hover) ;
+      );
+      color: var(--navigation-color-foreground-hover);
     }
   }
 }

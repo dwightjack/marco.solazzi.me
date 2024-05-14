@@ -31,6 +31,7 @@
   /* Fonts */
   --font-family-sans: 'Open Sans', sans-serif;
   --font-family-serif: 'Bree Serif', serif;
+  --font-family-jp: 'Noto Sans JP', 'Open Sans', sans-serif;
 
   /* https://type-scale.com/?size=16&scale=1.200&text=A%20Visual%20Type%20Scale&font=Open%20Sans&fontweight=400&bodyfont=body_font_default&bodyfontweight=400&lineheight=1.75&backgroundcolor=%23ffffff&fontcolor=%23000000&preview=false */
   --font-size-80: 0.833rem;
