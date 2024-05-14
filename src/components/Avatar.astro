@@ -1,17 +1,20 @@
 ---
-import { getImage, Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import marcoImg from '../assets/images/marco.jpg';
-const marcoAvif = await getImage({ src: marcoImg, format: 'avif' });
-const marcoWebp = await getImage({ src: marcoImg, format: 'webp' });
 ---
 
-<picture class="c-avatar">
-  <source srcset={marcoAvif.src} type="image/avif" />
-  <source srcset={marcoWebp.src} type="image/webp" />
-  <Image src={marcoImg} alt="" loading="eager" />
-</picture>
+<Picture
+  src={marcoImg}
+  alt=""
+  formats={['avif', 'webp']}
+  quality={35}
+  loading="eager"
+  pictureAttributes={{
+    class: 'c-avatar',
+  }}
+/>
 
-<style>
+<style is:global>
   @layer components {
     .c-avatar {
       display: block;
