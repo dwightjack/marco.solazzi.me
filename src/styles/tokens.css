@@ -1,4 +1,4 @@
-@layer reset, base, components, layout, utilities;
+@layer tokens, reset, base, components, layout, utilities;
 
 /* Media queries */
 @custom-media --viewport-mobile (width >= 30em);
@@ -11,184 +11,186 @@
 @custom-media --pointer-mouse (hover: hover) and (pointer: fine);
 @custom-media --theme-dark (prefers-color-scheme: dark);
 
-:root {
-  /* Colors */
-  --color-hue-red: 24deg;
-  --color-hue-green: 166deg;
-  --color-hue-blue: 240deg;
-  --color-hue-purple: 348deg;
-  --color-darker: oklch(34.11% 0 0deg);
-  --color-dark: oklch(41.84% 0 0deg);
-  --color-light-900: oklch(92.34% 0 0deg);
-  --color-light: oklch(100% 0 0deg);
-  --color-brand-hue: var(--color-hue-red);
-  --color-brand-250: oklch(34.24% 0.103 var(--color-brand-hue));
-  --color-brand-400: oklch(47.4% 0.153 var(--color-brand-hue));
-  --color-brand-500: oklch(56.65% 0.149 var(--color-brand-hue));
-  --color-brand-700: oklch(71.47% 0.107 var(--color-brand-hue));
-  --color-brand-800: oklch(72.46% 0.132 var(--color-brand-hue));
+@layer tokens {
+  :root {
+    /* Colors */
+    --color-hue-red: 24deg;
+    --color-hue-green: 166deg;
+    --color-hue-blue: 240deg;
+    --color-hue-purple: 348deg;
+    --color-darker: oklch(34.11% 0 0deg);
+    --color-dark: oklch(41.84% 0 0deg);
+    --color-light-900: oklch(92.34% 0 0deg);
+    --color-light: oklch(100% 0 0deg);
+    --color-brand-hue: var(--color-hue-red);
+    --color-brand-250: oklch(34.24% 0.103 var(--color-brand-hue));
+    --color-brand-400: oklch(47.4% 0.153 var(--color-brand-hue));
+    --color-brand-500: oklch(56.65% 0.149 var(--color-brand-hue));
+    --color-brand-700: oklch(71.47% 0.107 var(--color-brand-hue));
+    --color-brand-800: oklch(72.46% 0.132 var(--color-brand-hue));
 
-  /* Fonts */
-  --font-family-sans: 'Open Sans', sans-serif;
-  --font-family-serif: 'Bree Serif', serif;
-  --font-family-jp: 'Noto Sans JP', 'Open Sans', sans-serif;
+    /* Fonts */
+    --font-family-sans: 'Open Sans', sans-serif;
+    --font-family-serif: 'Bree Serif', serif;
+    --font-family-jp: 'Noto Sans JP', 'Open Sans', sans-serif;
 
-  /* https://type-scale.com/?size=16&scale=1.200&text=A%20Visual%20Type%20Scale&font=Open%20Sans&fontweight=400&bodyfont=body_font_default&bodyfontweight=400&lineheight=1.75&backgroundcolor=%23ffffff&fontcolor=%23000000&preview=false */
-  --font-size-80: 0.833rem;
-  --font-size-100: 1rem;
-  --font-size-200: 1.125rem;
-  --font-size-300: 1.2rem;
-  --font-size-400: 1.44rem;
-  --font-size-600: 1.728rem;
-  --font-size-800: 2.074rem;
-  --font-size-1200: 2.488rem;
-  --font-size-1400: 2.986rem;
+    /* https://type-scale.com/?size=16&scale=1.200&text=A%20Visual%20Type%20Scale&font=Open%20Sans&fontweight=400&bodyfont=body_font_default&bodyfontweight=400&lineheight=1.75&backgroundcolor=%23ffffff&fontcolor=%23000000&preview=false */
+    --font-size-80: 0.833rem;
+    --font-size-100: 1rem;
+    --font-size-200: 1.125rem;
+    --font-size-300: 1.2rem;
+    --font-size-400: 1.44rem;
+    --font-size-600: 1.728rem;
+    --font-size-800: 2.074rem;
+    --font-size-1200: 2.488rem;
+    --font-size-1400: 2.986rem;
 
-  /** Public tokens */
+    /** Public tokens */
 
-  /* Elevation */
-  --layer-b1: -1;
-  --layer-f0: 0;
-  --layer-f1: 1;
-  --layer-f5: 5;
+    /* Elevation */
+    --layer-b1: -1;
+    --layer-f0: 0;
+    --layer-f1: 1;
+    --layer-f5: 5;
 
-  /* Spacing */
-  --space-unit: 0.5rem;
-  --space-half: 0.25rem;
-  --space-1: 0.5rem;
-  --space-2: 1rem;
-  --space-3: 1.5rem;
-  --space-4: 2rem;
-  --space-page-gutter-inline: clamp(3rem, 5.46875vw + 1rem, 6.375rem);
+    /* Spacing */
+    --space-unit: 0.5rem;
+    --space-half: 0.25rem;
+    --space-1: 0.5rem;
+    --space-2: 1rem;
+    --space-3: 1.5rem;
+    --space-4: 2rem;
+    --space-page-gutter-inline: clamp(3rem, 5.46875vw + 1rem, 6.375rem);
 
-  /* Size */
-  --size-unit: 0.5rem;
+    /* Size */
+    --size-unit: 0.5rem;
 
-  /* Typography */
-  --text-heading-font-family: var(--font-family-serif);
-  --text-heading-font-size: var(--font-size-300);
-  --text-heading-font-size-mq: var(--font-size-400);
-  --text-heading-font-size-x2: var(--font-size-800);
-  --text-heading-font-size-x3: var(--font-size-1200);
-  --text-heading-font-size-x3mq: var(--font-size-1400);
-  --text-subheading-font-size: var(--font-size-100);
-  --text-body-font-family: var(--font-family-sans);
-  --text-body-font-size: var(--font-size-100);
-  --text-body-font-size-x2: var(--font-size-200);
-  --text-body-font-size-x3: var(--font-size-300);
-  --text-footer-font-size: var(--font-size-80);
+    /* Typography */
+    --text-heading-font-family: var(--font-family-serif);
+    --text-heading-font-size: var(--font-size-300);
+    --text-heading-font-size-mq: var(--font-size-400);
+    --text-heading-font-size-x2: var(--font-size-800);
+    --text-heading-font-size-x3: var(--font-size-1200);
+    --text-heading-font-size-x3mq: var(--font-size-1400);
+    --text-subheading-font-size: var(--font-size-100);
+    --text-body-font-family: var(--font-family-sans);
+    --text-body-font-size: var(--font-size-100);
+    --text-body-font-size-x2: var(--font-size-200);
+    --text-body-font-size-x3: var(--font-size-300);
+    --text-footer-font-size: var(--font-size-80);
 
-  /* Box */
-  --box-color-foreground: var(--color-dark);
-  --box-color-background: var(--color-light);
-  --box-color-foreground-secondary: var(--color-light);
-  --box-color-background-secondary: var(--color-brand-400);
-  --box-color-selection-background: color-mix(
-    in oklch,
-    var(--color-brand-400),
-    transparent 80%
-  );
-  --box-color-selection-foreground: var(--color-brand-250);
-  --box-color-border: color-mix(
-    in oklch,
-    var(--color-brand-400),
-    transparent 50%
-  );
-
-  @media (--theme-dark) {
-    --box-color-foreground: var(--color-light-900);
-    --box-color-background: var(--color-darker);
-    --box-color-border: color-mix(
-      in oklch,
-      var(--color-brand-500),
-      transparent 50%
-    );
+    /* Box */
+    --box-color-foreground: var(--color-dark);
+    --box-color-background: var(--color-light);
+    --box-color-foreground-secondary: var(--color-light);
+    --box-color-background-secondary: var(--color-brand-400);
     --box-color-selection-background: color-mix(
       in oklch,
       var(--color-brand-400),
-      transparent 40%
+      transparent 80%
     );
-    --box-color-selection-foreground: var(--color-light-900);
-  }
+    --box-color-selection-foreground: var(--color-brand-250);
+    --box-color-border: color-mix(
+      in oklch,
+      var(--color-brand-400),
+      transparent 50%
+    );
 
-  /* Navigation */
-  --navigation-color-foreground: var(--color-dark);
-  --navigation-color-foreground-hover: var(--color-brand-400);
-  --navigation-color-border: color-mix(
-    in oklch,
-    var(--color-dark),
-    transparent 90%
-  );
-  --navigation-color-border-hover: color-mix(
-    in oklch,
-    var(--color-brand-400),
-    transparent 90%
-  );
+    @media (--theme-dark) {
+      --box-color-foreground: var(--color-light-900);
+      --box-color-background: var(--color-darker);
+      --box-color-border: color-mix(
+        in oklch,
+        var(--color-brand-500),
+        transparent 50%
+      );
+      --box-color-selection-background: color-mix(
+        in oklch,
+        var(--color-brand-400),
+        transparent 40%
+      );
+      --box-color-selection-foreground: var(--color-light-900);
+    }
 
-  @media (--theme-dark) {
+    /* Navigation */
+    --navigation-color-foreground: var(--color-dark);
+    --navigation-color-foreground-hover: var(--color-brand-400);
     --navigation-color-border: color-mix(
       in oklch,
-      var(--color-light-900),
+      var(--color-dark),
       transparent 90%
     );
-    --navigation-color-foreground-hover: var(--color-brand-800);
+    --navigation-color-border-hover: color-mix(
+      in oklch,
+      var(--color-brand-400),
+      transparent 90%
+    );
+
+    @media (--theme-dark) {
+      --navigation-color-border: color-mix(
+        in oklch,
+        var(--color-light-900),
+        transparent 90%
+      );
+      --navigation-color-foreground-hover: var(--color-brand-800);
+    }
+
+    /* Actions */
+    --action-color-background: var(--color-brand-700);
+    --action-control-size-inline: max(24px, calc(var(--size-unit) * 3));
+    --action-transition-duration: 0s;
+
+    @media (prefers-reduced-motion: no-preference) {
+      --action-transition-duration: 200ms;
+    }
+
+    /* Generic interactive elements */
+    --interactive-color-outline: color-mix(
+      in oklch,
+      var(--color-brand-400),
+      transparent 80%
+    );
+
+    @media (--theme-dark) {
+      --interactive-color-outline: var(--color-brand-800);
+    }
+
+    &[data-theme='green'] {
+      --color-brand-hue: var(--color-hue-green);
+    }
+
+    &[data-theme='blue'] {
+      --color-brand-hue: var(--color-hue-blue);
+    }
+
+    &[data-theme='purple'] {
+      --color-brand-hue: var(--color-hue-purple);
+    }
   }
 
-  /* Actions */
-  --action-color-background: var(--color-brand-700);
-  --action-control-size-inline: max(24px, calc(var(--size-unit) * 3));
-  --action-transition-duration: 0s;
-
-  @media (prefers-reduced-motion: no-preference) {
-    --action-transition-duration: 200ms;
+  [data-swatch='brand'] {
+    --box-color-foreground: var(--color-light);
+    --box-color-background: var(--color-brand-400);
+    --box-color-selection-background: color-mix(
+      in oklch,
+      var(--color-light-900),
+      transparent 60%
+    );
+    --box-color-selection-foreground: var(--color-light);
+    --box-color-border: color-mix(
+      in oklch,
+      var(--color-light-900),
+      transparent 60%
+    );
+    --box-color-foreground-secondary: var(--color-brand-400);
+    --box-color-background-secondary: var(--color-light);
+    --navigation-color-foreground: var(--color-light);
+    --navigation-color-foreground-hover: var(--color-light);
+    --interactive-color-outline: color-mix(
+      in oklch,
+      var(--color-light-900),
+      transparent 60%
+    );
+    --action-color-background: var(--color-light);
   }
-
-  /* Generic interactive elements */
-  --interactive-color-outline: color-mix(
-    in oklch,
-    var(--color-brand-400),
-    transparent 80%
-  );
-
-  @media (--theme-dark) {
-    --interactive-color-outline: var(--color-brand-800);
-  }
-
-  &[data-theme='green'] {
-    --color-brand-hue: var(--color-hue-green);
-  }
-
-  &[data-theme='blue'] {
-    --color-brand-hue: var(--color-hue-blue);
-  }
-
-  &[data-theme='purple'] {
-    --color-brand-hue: var(--color-hue-purple);
-  }
-}
-
-[data-swatch='brand'] {
-  --box-color-foreground: var(--color-light);
-  --box-color-background: var(--color-brand-400);
-  --box-color-selection-background: color-mix(
-    in oklch,
-    var(--color-light-900),
-    transparent 60%
-  );
-  --box-color-selection-foreground: var(--color-light);
-  --box-color-border: color-mix(
-    in oklch,
-    var(--color-light-900),
-    transparent 60%
-  );
-  --box-color-foreground-secondary: var(--color-brand-400);
-  --box-color-background-secondary: var(--color-light);
-  --navigation-color-foreground: var(--color-light);
-  --navigation-color-foreground-hover: var(--color-light);
-  --interactive-color-outline: color-mix(
-    in oklch,
-    var(--color-light-900),
-    transparent 60%
-  );
-  --action-color-background: var(--color-light);
 }
