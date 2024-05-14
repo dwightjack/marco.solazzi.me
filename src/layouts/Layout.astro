@@ -9,6 +9,7 @@ import Nav from '../components/Nav.astro';
 import Cluster from '../components/Cluster.astro';
 import { THEME_DEFAULT } from '../shared/constants';
 import Box from '../components/Box.astro';
+import fonts from '../styles/fonts.css?raw';
 
 const socialImageURL = new URL('/marco-og.jpg', Astro.url);
 ---
@@ -41,12 +42,9 @@ const socialImageURL = new URL('/marco-og.jpg', Astro.url);
     />
     <meta property="og:image" content={socialImageURL} />
     <meta property="og:url" content="http://marco.solazzi.me/" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Open+Sans:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+
+    <style is:inline set:html={fonts}></style>
   </head>
   <body>
     <Box as="header" class="l-header" id="header">
