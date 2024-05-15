@@ -26,7 +26,7 @@
     --color-brand-250: oklch(34.24% 0.103 var(--color-brand-hue));
     --color-brand-400: oklch(47.4% 0.153 var(--color-brand-hue));
     --color-brand-500: oklch(56.65% 0.149 var(--color-brand-hue));
-    --color-brand-700: oklch(71.47% 0.107 var(--color-brand-hue));
+    --color-brand-700: oklch(63.47% 0.107 var(--color-brand-hue));
     --color-brand-800: oklch(72.46% 0.132 var(--color-brand-hue));
 
     /* Fonts */
@@ -118,19 +118,19 @@
     --navigation-color-border: color-mix(
       in oklch,
       var(--color-dark),
-      transparent 90%
+      transparent 85%
     );
     --navigation-color-border-hover: color-mix(
       in oklch,
       var(--color-brand-400),
-      transparent 90%
+      transparent 85%
     );
 
     @media (--theme-dark) {
       --navigation-color-border: color-mix(
         in oklch,
         var(--color-light-900),
-        transparent 90%
+        transparent 60%
       );
       --navigation-color-foreground-hover: var(--color-brand-800);
     }
