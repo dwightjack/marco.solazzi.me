@@ -101,7 +101,6 @@ import Box from './Box.astro';
   menuExpanded.subscribe((expanded) => {
     for (const nav of navList) {
       nav.classList.toggle('is-expanded', expanded);
-      nav.setAttribute('aria-hidden', `${!expanded}`);
       nav.inert = !expanded;
     }
   });
