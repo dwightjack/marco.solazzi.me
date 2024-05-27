@@ -15,12 +15,12 @@ test('side menu toggle', async ({ page }) => {
     includeHidden: true,
   });
 
-  await expect(menu).toHaveAttribute('aria-hidden', 'true');
+  await expect(menu).toHaveAttribute('inert');
   await expect(menu).not.toBeInViewport();
 
   await page.getByRole('button', { name: 'Toggle Menu' }).click();
 
-  await expect(menu).toHaveAttribute('aria-hidden', 'false');
+  await expect(menu).not.toHaveAttribute('inert');
   await expect(menu).toBeInViewport();
 });
 
