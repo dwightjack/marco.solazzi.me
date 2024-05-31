@@ -11,6 +11,12 @@ importers:
       '@astrojs/check':
         specifier: ^0.7.0
         version: 0.7.0(prettier-plugin-astro@0.14.0)(prettier@3.2.5)(typescript@5.4.5)
+      '@fontsource-variable/open-sans':
+        specifier: ^5.0.29
+        version: 5.0.29
+      '@fontsource/bree-serif':
+        specifier: ^5.0.13
+        version: 5.0.13
       '@iconify-json/logos':
         specifier: 1.1.42
         version: 1.1.42
@@ -821,6 +827,12 @@ packages:
   '@eslint/js@8.57.0':
     resolution: {integrity: sha512-Ys+3g2TaW7gADOJzPt83SJtCDhMjndcDMFVQ/Tj9iA1BfJzFKD9mAUXT3OenpuPHbI6P/myECxRJrofUsDx/5g==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+
+  '@fontsource-variable/open-sans@5.0.29':
+    resolution: {integrity: sha512-p8T55iQwhErREcjY997t4ah9JKTyJNSBDDVfvVsWIQRGpA2fcTPk9rLue/Mkrr5/efkehxTSbT8JpTTRaFbM5A==}
+
+  '@fontsource/bree-serif@5.0.13':
+    resolution: {integrity: sha512-V6lmprzxvcQAIZWq+V0X6/nZ/8JJiSRVkdX3JYuNfHA65wJplzy0PUETTePy7LPtkzi+JC5EqtAuUZMmp3LI2g==}
 
   '@humanwhocodes/config-array@0.11.14':
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
@@ -4361,6 +4373,10 @@ snapshots:
       - supports-color
 
   '@eslint/js@8.57.0': {}
+
+  '@fontsource-variable/open-sans@5.0.29': {}
+
+  '@fontsource/bree-serif@5.0.13': {}
 
   '@humanwhocodes/config-array@0.11.14':
     dependencies:
