@@ -1,39 +1,24 @@
-/* latin */
+/* bree-serif-latin-400-normal */
 @font-face {
   font-family: 'Bree Serif';
   font-style: normal;
-  font-weight: 400;
   font-display: swap;
-  src: url('https://fonts.gstatic.com/s/breeserif/v17/4UaHrEJCrhhnVA3DgluA96rp57F2IwM.woff2')
+  font-weight: 400;
+  src: url('../../node_modules/@fontsource/bree-serif/files/bree-serif-latin-400-normal.woff2')
     format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
     U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
     U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* latin */
+/* open-sans-latin-wght-normal */
 @font-face {
-  font-family: 'Open Sans';
-  font-stretch: 100%;
+  font-family: 'Open Sans Variable';
   font-style: normal;
-  font-weight: 400;
-  src: url('https://fonts.gstatic.com/s/opensans/v40/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS-mu0SC55I.woff2')
-    format('woff2');
   font-display: swap;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
-    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-/* latin */
-@font-face {
-  font-family: 'Open Sans';
-  font-stretch: 100%;
-  font-style: normal;
-  font-weight: 700;
-  src: url('https://fonts.gstatic.com/s/opensans/v40/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS-mu0SC55I.woff2')
-    format('woff2');
-  font-display: swap;
+  font-weight: 300 800;
+  src: url('../../node_modules/@fontsource-variable/open-sans/files/open-sans-latin-wght-normal.woff2')
+    format('woff2-variations');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
     U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
     U+2193, U+2212, U+2215, U+FEFF, U+FFFD;

@@ -1,5 +1,5 @@
-@import url('../../node_modules/modern-normalize/modern-normalize.css')
-layer(reset);
+/* stylelint-disable-next-line import-notation */
+@import 'modern-normalize' layer(reset);
 
 @layer base {
   html {
