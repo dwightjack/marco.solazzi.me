@@ -66,9 +66,13 @@ import Box from './Box.astro';
     .c-nav__route::before {
       content: '.';
       display: inline-block;
-      transform: translateX(-0.4em);
+      transform: translateX(-0.1em);
       transition: all 250ms ease-out;
       opacity: 0;
+
+      @media (prefers-reduced-motion: no-preference) {
+        transform: translateX(-0.4em);
+      }
     }
 
     .c-nav__route.is-current {
