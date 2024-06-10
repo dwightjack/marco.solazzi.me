@@ -73,10 +73,12 @@ const { id, titleLabel, href, title = '', data = {} } = Astro.props;
         16px 8px;
 
       @media (--pointer-mouse) and (prefers-reduced-motion: no-preference) {
-        transition: all 500ms var(--easing-out-fast);
+        transition: transform 500ms var(--easing-out-fast);
+        will-change: transform;
 
         &:global(> *) {
           transition: inherit;
+          will-change: transform;
         }
 
         &:hover {
