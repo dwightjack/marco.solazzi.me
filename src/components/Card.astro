@@ -73,18 +73,18 @@ const { id, titleLabel, href, title = '', data = {} } = Astro.props;
         16px 8px;
 
       @media (--pointer-mouse) and (prefers-reduced-motion: no-preference) {
-        transition: all 250ms ease-in-out;
-        transition-property: background-position, background-size;
+        transition: all 500ms var(--easing-out-fast);
+
+        &:global(> *) {
+          transition: inherit;
+        }
 
         &:hover {
-          background-position:
-            8px 0,
-            8px 0,
-            8px bottom;
-          background-size:
-            8px 0,
-            8px 100%,
-            8px 0;
+          transform: translateX(-0.5rem);
+
+          &:global(> *) {
+            transform: translateX(1rem);
+          }
         }
       }
     }
