@@ -52,25 +52,13 @@ const { id, titleLabel, href, title = '', data = {} } = Astro.props;
 <style>
   @layer components {
     .c-card {
-      --card-gradient: linear-gradient(
-        var(--box-color-border),
-        var(--box-color-border)
-      );
-
       inline-size: 100%;
-      padding-block: calc(var(--space-unit) * 1.25) var(--space-2);
-      padding-inline-start: calc(var(--space-unit) * 3.75);
-      background-image: var(--card-gradient), var(--card-gradient),
-        var(--card-gradient);
-      background-repeat: no-repeat;
-      background-position:
-        0 0,
-        0 8px,
-        0 bottom;
-      background-size:
-        16px 8px,
-        8px calc(100% - 16px),
-        16px 8px;
+      padding-block: var(--space-half) var(--space-1);
+      padding-inline-start: calc(var(--space-unit) * 2.75);
+      border: 8px solid var(--box-color-border);
+      mask: linear-gradient(#000, #000),
+        linear-gradient(to right, #000 16px, transparent 0);
+      mask-clip: padding-box, border-box;
 
       @media (--pointer-mouse) and (prefers-reduced-motion: no-preference) {
         transition: transform 500ms var(--easing-out-fast);
