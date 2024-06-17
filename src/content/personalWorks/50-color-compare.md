@@ -1,6 +1,6 @@
 ---
 project: Color compare
-href: https://color-compare.codeful.dev/
+href: https://color.codeful.dev/
 stack:
   - Solid.js
   - Panda CSS

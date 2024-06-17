@@ -1,6 +1,6 @@
 ---
 project: Chikumikuji
-href: https://timer.codeful.dev/
+href: https://cicumikuji.codeful.dev/
 stack:
   - Preact
   - goober
