@@ -119,23 +119,10 @@
     /* Navigation */
     --navigation-color-foreground: var(--color-dark);
     --navigation-color-foreground-hover: var(--color-brand-400);
-    --navigation-color-border: color-mix(
-      in oklch,
-      var(--color-dark),
-      transparent 85%
-    );
-    --navigation-color-border-hover: color-mix(
-      in oklch,
-      var(--color-brand-400),
-      transparent 85%
-    );
+    --navigation-color-underline-alpha: 85%;
 
     @media (--theme-dark) {
-      --navigation-color-border: color-mix(
-        in oklch,
-        var(--color-light-900),
-        transparent 60%
-      );
+      --navigation-color-underline-alpha: 60%;
       --navigation-color-foreground-hover: var(--color-brand-800);
     }
 
@@ -152,7 +139,7 @@
     --interactive-color-outline: color-mix(
       in oklch,
       var(--color-brand-400),
-      transparent 80%
+      transparent 50%
     );
 
     @media (--theme-dark) {
