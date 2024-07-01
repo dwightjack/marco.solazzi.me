@@ -109,6 +109,7 @@ const socialImageURL = new URL('/marco-og.jpg', Astro.url);
     <!-- Cloudflare Web Analytics -->
     <script
       defer
+      is:inline
       src="https://static.cloudflareinsights.com/beacon.min.js"
       data-cf-beacon='{"token": "e823928d086c46c79b455943ff15d296"}'
     ></script><!-- End Cloudflare Web Analytics -->
@@ -146,7 +147,7 @@ const socialImageURL = new URL('/marco-og.jpg', Astro.url);
     localStorage.getItem('theme') || THEME_DEFAULT;
 </script>
 <script>
-  import { THEME_DEFAULT, THEMES } from '../shared/constants';
+  import { THEME_DEFAULT, type Themes } from '../shared/constants';
   import { menuExpanded, theme } from '../shared/store';
 
   const header = document.getElementById('header');
@@ -182,7 +183,6 @@ const socialImageURL = new URL('/marco-og.jpg', Astro.url);
   });
 
   theme.set(
-    (document.documentElement.dataset.theme as (typeof THEMES)[number]) ||
-      THEME_DEFAULT,
+    (document.documentElement.dataset.theme as Themes) || THEME_DEFAULT,
   );
 </script>
