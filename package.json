@@ -7,7 +7,7 @@
   "author": {
     "name": "Marco Solazzi"
   },
-  "packageManager": "pnpm@9.2.0",
+  "packageManager": "pnpm@9.4.0",
   "engines": {
     "node": ">=18.15.0",
     "pnpm": "^9.0.0"
@@ -35,7 +35,7 @@
     "@fontsource/bree-serif": "^5.0.13",
     "@iconify-json/logos": "1.1.43",
     "@iconify-json/mdi": "1.1.66",
-    "astro": "4.10.2",
+    "astro": "4.11.3",
     "astro-icon": "1.1.0",
     "modern-normalize": "2.0.0",
     "nanostores": "0.10.3"
@@ -64,7 +64,7 @@
     "stylelint-config-property-sort-order-smacss": "10.0.0",
     "stylelint-config-standard": "36.0.0",
     "stylelint-use-logical": "2.1.2",
-    "typescript": "5.4.5",
+    "typescript": "5.5.3",
     "typescript-eslint": "8.0.0-alpha.38"
   }
 }
