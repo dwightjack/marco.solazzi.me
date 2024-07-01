@@ -8,3 +8,5 @@ export const NAV_PATH_TALKS = 'talks';
 
 export const THEMES = ['red', 'green', 'purple', 'blue'] as const;
 export const THEME_DEFAULT = 'red';
+
+export type Themes = (typeof THEMES)[number];

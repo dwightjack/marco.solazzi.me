@@ -50,6 +50,7 @@ export async function getSkills() {
 
   for (const item of order) {
     const skill = rawSkills.find(({ id }) => id === item);
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     skill && skills.push(skill.data);
   }
   return skills;
