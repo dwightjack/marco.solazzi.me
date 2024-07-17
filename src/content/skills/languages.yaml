@@ -16,9 +16,6 @@ data:
   - id: typescript
     label: TypeScript
     icon: logos:typescript-icon
-  - id: pug
-    label: Pug
-    icon: logos:pug
   - id: backend
     label: PHP7+
     icon: logos:php

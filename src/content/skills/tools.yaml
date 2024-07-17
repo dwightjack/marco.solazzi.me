@@ -1,9 +1,6 @@
-label: Tools
+label: Design Tools
 icon: mdi:pencil
 data:
-  - id: vscode
-    label: VS Code
-    icon: logos:visual-studio-code
   - id: software
     label: Photoshop
     icon: logos:adobe-photoshop

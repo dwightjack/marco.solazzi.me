@@ -1,15 +1,15 @@
-label: Frontend Architecture
+label: Architecture
 icon: mdi:ruler-square-compass
 data:
   - id: progressive
     label: Progressive Enhancement
     icon: mdi:escalator-up
-  - id: atomic
-    label: Atomic Design
-    icon: "atomic"
   - id: a11y
     label: Accessibility
     icon: mdi:wheelchair-accessibility
+  - id: atomic
+    label: Atomic Design
+    icon: "atomic"
   - id: responsive
     label: Responsive Design
     icon: mdi:responsive
