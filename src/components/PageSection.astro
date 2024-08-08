@@ -22,6 +22,18 @@ const { prefix = 'me', subtitle, title } = Astro.props;
 </section>
 <style>
   @layer components {
+    @keyframes disclose {
+      from {
+        transform: translateY(-4rem);
+        opacity: 0.3;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
     .c-page-section {
       display: flex;
       flex-direction: column;
@@ -36,6 +48,14 @@ const { prefix = 'me', subtitle, title } = Astro.props;
 
       @media (--viewport-desktop) {
         padding-inline-start: 2.85vw;
+      }
+    }
+
+    @supports (animation-timeline: view()) {
+      .c-page-section {
+        animation: disclose both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 60%;
       }
     }
 
