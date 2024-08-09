@@ -22,15 +22,23 @@ const { prefix = 'me', subtitle, title } = Astro.props;
 </section>
 <style>
   @layer components {
-    @keyframes disclose {
+    @keyframes heading-parallax-in {
       from {
-        transform: translateY(-4rem);
-        opacity: 0.3;
+        transform: translateY(7rem);
       }
 
       to {
         transform: translateY(0);
-        opacity: 1;
+      }
+    }
+
+    @keyframes reveal {
+      from {
+        clip-path: inset(45% 0% 0 0%);
+      }
+
+      to {
+        clip-path: inset(0% 0% 0% 0%);
       }
     }
 
@@ -53,9 +61,10 @@ const { prefix = 'me', subtitle, title } = Astro.props;
 
     @supports (animation-timeline: view()) {
       .c-page-section {
-        animation: disclose both;
-        animation-timeline: view();
-        animation-range: entry 0% entry 60%;
+        view-timeline: --pagesection block;
+        animation: linear reveal both;
+        animation-timeline: --pagesection;
+        animation-range: entry 10% entry 35%;
       }
     }
 
@@ -65,8 +74,11 @@ const { prefix = 'me', subtitle, title } = Astro.props;
 
       @media (--viewport-tablet-landscape) {
         position: sticky;
-        inset-block-start: var(--space-4);
+        animation: linear heading-parallax-in both;
+        animation-timeline: --pagesection;
+        animation-range: entry 0% exit 100%;
         text-align: start;
+        inset-block-start: var(--space-4);
       }
     }
 
