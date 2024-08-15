@@ -32,13 +32,29 @@ const { prefix = 'me', subtitle, title } = Astro.props;
       }
     }
 
-    @keyframes reveal {
+    /* @keyframes reveal {
       from {
         clip-path: inset(45% 0% 0 0%);
       }
 
       to {
         clip-path: inset(0% 0% 0% 0%);
+      }
+    } */
+
+    @property --visibility {
+      syntax: '<length>';
+      inherits: false;
+      initial-value: 0;
+    }
+
+    @keyframes reveal {
+      from {
+        --visibility: -30px;
+      }
+
+      to {
+        --visibility: 0px;
       }
     }
 
@@ -61,10 +77,26 @@ const { prefix = 'me', subtitle, title } = Astro.props;
 
     @supports (animation-timeline: view()) {
       .c-page-section {
+        mask:
+          repeating-linear-gradient(
+              -45deg,
+              #000,
+              #000 20px,
+              #0000 20px,
+              #0000 40px
+            )
+            no-repeat var(--visibility) 0,
+          repeating-linear-gradient(
+            -45deg,
+            #0000,
+            #0000 20px,
+            #000 20px,
+            #000 40px
+          );
         view-timeline: --pagesection block;
         animation: linear reveal both;
         animation-timeline: --pagesection;
-        animation-range: entry 10% entry 35%;
+        animation-range: entry 10% entry 55%;
       }
     }
 
