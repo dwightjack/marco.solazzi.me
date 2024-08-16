@@ -32,29 +32,19 @@ const { prefix = 'me', subtitle, title } = Astro.props;
       }
     }
 
-    /* @keyframes reveal {
-      from {
-        clip-path: inset(45% 0% 0 0%);
-      }
-
-      to {
-        clip-path: inset(0% 0% 0% 0%);
-      }
-    } */
-
-    @property --visibility {
-      syntax: '<length>';
+    @property --mask-size {
+      syntax: '<percentage>';
       inherits: false;
-      initial-value: 0;
+      initial-value: 0%;
     }
 
     @keyframes reveal {
       from {
-        --visibility: -30px;
+        --mask-size: 0%;
       }
 
       to {
-        --visibility: 0px;
+        --mask-size: 5%;
       }
     }
 
@@ -73,30 +63,19 @@ const { prefix = 'me', subtitle, title } = Astro.props;
       @media (--viewport-desktop) {
         padding-inline-start: 2.85vw;
       }
-    }
 
-    @supports (animation-timeline: view()) {
-      .c-page-section {
-        mask:
-          repeating-linear-gradient(
-              -45deg,
-              #000,
-              #000 20px,
-              #0000 20px,
-              #0000 40px
-            )
-            no-repeat var(--visibility) 0,
-          repeating-linear-gradient(
-            -45deg,
-            #0000,
-            #0000 20px,
-            #000 20px,
-            #000 40px
+      @media (prefers-reduced-motion: no-preference) {
+        @supports (animation-timeline: view()) {
+          animation: linear reveal both;
+          mask: repeating-linear-gradient(
+            180deg,
+            #000 0 var(--mask-size),
+            #0000 var(--mask-size) 5%
           );
-        view-timeline: --pagesection block;
-        animation: linear reveal both;
-        animation-timeline: --pagesection;
-        animation-range: entry 10% entry 55%;
+          view-timeline: --pagesection block;
+          animation-timeline: --pagesection;
+          animation-range: entry 5% entry 55%;
+        }
       }
     }
 
@@ -106,11 +85,16 @@ const { prefix = 'me', subtitle, title } = Astro.props;
 
       @media (--viewport-tablet-landscape) {
         position: sticky;
-        animation: linear heading-parallax-in both;
-        animation-timeline: --pagesection;
-        animation-range: entry 0% exit 100%;
         text-align: start;
         inset-block-start: var(--space-4);
+      }
+
+      @media (--viewport-tablet-landscape) and (prefers-reduced-motion: no-preference) {
+        @supports (animation-timeline: view()) {
+          animation: linear heading-parallax-in both;
+          animation-timeline: --pagesection;
+          animation-range: entry 0% exit 100%;
+        }
       }
     }
 
