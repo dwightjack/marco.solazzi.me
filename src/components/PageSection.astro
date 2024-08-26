@@ -22,6 +22,32 @@ const { prefix = 'me', subtitle, title } = Astro.props;
 </section>
 <style>
   @layer components {
+    @keyframes heading-parallax-in {
+      from {
+        transform: translateY(7rem);
+      }
+
+      to {
+        transform: translateY(0);
+      }
+    }
+
+    @property --mask-size {
+      syntax: '<percentage>';
+      inherits: false;
+      initial-value: 0%;
+    }
+
+    @keyframes reveal {
+      from {
+        --mask-size: 0%;
+      }
+
+      to {
+        --mask-size: 5%;
+      }
+    }
+
     .c-page-section {
       display: flex;
       flex-direction: column;
@@ -37,6 +63,20 @@ const { prefix = 'me', subtitle, title } = Astro.props;
       @media (--viewport-desktop) {
         padding-inline-start: 2.85vw;
       }
+
+      @media (prefers-reduced-motion: no-preference) {
+        @supports (animation-timeline: view()) {
+          animation: linear reveal both;
+          mask: repeating-linear-gradient(
+            45deg,
+            #000 0 var(--mask-size),
+            #0000 var(--mask-size) 5%
+          );
+          view-timeline: --pagesection block;
+          animation-timeline: --pagesection;
+          animation-range: entry 5% entry 45%;
+        }
+      }
     }
 
     .c-page-section__header {
@@ -45,8 +85,16 @@ const { prefix = 'me', subtitle, title } = Astro.props;
 
       @media (--viewport-tablet-landscape) {
         position: sticky;
-        inset-block-start: var(--space-4);
         text-align: start;
+        inset-block-start: var(--space-4);
+      }
+
+      @media (--viewport-tablet-landscape) and (prefers-reduced-motion: no-preference) {
+        @supports (animation-timeline: view()) {
+          animation: linear heading-parallax-in both;
+          animation-timeline: --pagesection;
+          animation-range: entry 0% exit 100%;
+        }
       }
     }
 
