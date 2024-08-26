@@ -15,7 +15,7 @@ const { id, mark, indent = true } = Astro.props;
   {
     mark && (
       <span class="c-page__mark" aria-hidden="true">
-        {mark}
+        <span>{mark}</span>
       </span>
     )
   }
@@ -69,6 +69,29 @@ const { id, mark, indent = true } = Astro.props;
         */
         translate: calc(1vw - var(--visible, 0) * 1vw) 0;
       }
+    }
+
+    @keyframes move-mark {
+      0% {
+        translate: 0 0;
+      }
+
+      25% {
+        translate: -1.5rem -0.5rem;
+      }
+
+      50% {
+        translate: -3rem 0;
+      }
+
+      75% {
+        translate: -1.5rem 0.5rem;
+      }
+    }
+
+    .c-page__mark > span {
+      display: inline-block;
+      animation: move-mark infinite both 15s linear;
     }
 
     /* Does not supports CSS scroll animations timeline via the view() function */
