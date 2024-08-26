@@ -5,4 +5,4 @@ title: Senior Frontend Engineer
 href: https://www.merpay.com/
 ---
 
-Enabling team member, UI developer, accessibility enthusiast
+Client Architect, UI developer, Product development
