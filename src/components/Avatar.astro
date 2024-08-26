@@ -108,13 +108,15 @@ import marcoImg from '../assets/images/marco.jpg';
         iterations: Infinity,
       });
 
-      avatar.addEventListener('mouseenter', () => {
-        animation.updatePlaybackRate(14);
-      });
+      if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        avatar.addEventListener('mouseenter', () => {
+          animation.updatePlaybackRate(14);
+        });
 
-      avatar.addEventListener('mouseleave', () => {
-        animation.updatePlaybackRate(1);
-      });
+        avatar.addEventListener('mouseleave', () => {
+          animation.updatePlaybackRate(1);
+        });
+      }
     }
   }
 </script>
