@@ -1,5 +1,7 @@
+import type { JSX } from 'astro/jsx-runtime';
+
 export function toStyleAttribute(input: Record<string, unknown>) {
-  const style: Record<string, string | number> = {};
+  const style: JSX.CSSProperties = {};
   const keys: string[] = [];
 
   for (const [key, value] of Object.entries(input)) {
@@ -14,8 +16,10 @@ export function toStyleAttribute(input: Record<string, unknown>) {
   return style;
 }
 
-export function toStyleVars(input: Record<string, unknown>) {
-  const style: Record<string, unknown> = {};
+export function toStyleVars(
+  input: Record<string, string | number | null | undefined>,
+) {
+  const style: JSX.CSSProperties = {};
 
   for (const [key, value] of Object.entries(input)) {
     if (value === 0 || !!value) {
