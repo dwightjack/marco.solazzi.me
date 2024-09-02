@@ -2,7 +2,7 @@
 import type { HTMLTag, Polymorphic } from 'astro/types';
 import { toStyleVars } from '../shared/utils';
 
-type Props<Tag extends HTMLTag> = Polymorphic<{
+type Props<Tag extends HTMLTag = 'div'> = Polymorphic<{
   as: Tag;
   space?: number;
 }>;
