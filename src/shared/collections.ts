@@ -39,10 +39,10 @@ export async function getSkills() {
   const rawSkills = await getCollection('skills');
   const order = [
     'languages',
+    'architecture',
     'libraries',
     'dx',
     'build_tools',
-    'architecture',
     'tools',
   ];
 
