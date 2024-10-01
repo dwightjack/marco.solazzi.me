@@ -37,8 +37,8 @@ importers:
         version: 0.11.3
     devDependencies:
       '@csstools/postcss-global-data':
-        specifier: 2.1.1
-        version: 2.1.1(postcss@8.4.42)
+        specifier: 3.0.0
+        version: 3.0.0(postcss@8.4.42)
       '@eslint/js':
         specifier: ^9.6.0
         version: 9.9.1
@@ -369,9 +369,9 @@ packages:
     peerDependencies:
       postcss: ^8.4
 
-  '@csstools/postcss-global-data@2.1.1':
-    resolution: {integrity: sha512-tihdBLogY2G5jgUSu2jKSEVeOcnWqsz6k7UmPM7+ezhuV9FP5MIyX35Hc/YvqipQLRNsfBj9wRkBvsE7k1GM8A==}
-    engines: {node: ^14 || ^16 || >=18}
+  '@csstools/postcss-global-data@3.0.0':
+    resolution: {integrity: sha512-3dR5+RDhPW1uqPWZUyTBSVn03gGbxzoSyCEpXugy9UMtXeyKjrB84dX3V8eggzooCsX8wcraKehzdouNO+MlsA==}
+    engines: {node: '>=18'}
     peerDependencies:
       postcss: ^8.4
 
@@ -3956,7 +3956,7 @@ snapshots:
       '@csstools/css-tokenizer': 2.4.1
       postcss: 8.4.42
 
-  '@csstools/postcss-global-data@2.1.1(postcss@8.4.42)':
+  '@csstools/postcss-global-data@3.0.0(postcss@8.4.42)':
     dependencies:
       postcss: 8.4.42
 
