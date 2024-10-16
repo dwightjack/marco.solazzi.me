@@ -8,8 +8,12 @@
 <style is:global>
   @layer components {
     .c-text {
-      max-inline-size: 75ch;
-      font-size: var(--font-size-100);
+      max-inline-size: 85ch;
+      font-size: var(--text-body-font-size);
+
+      @media (--viewport-tablet-landscape) {
+        font-size: var(--text-body-font-size-x2);
+      }
 
       p,
       ul,

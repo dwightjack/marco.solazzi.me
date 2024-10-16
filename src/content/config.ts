@@ -94,6 +94,7 @@ const blogCollection = defineCollection({
     title: z.string(),
     isDraft: z.boolean().default(true),
     publishDate: z.date(),
+    mark: z.string().default('記事'),
   }),
 });
 
