@@ -32,19 +32,15 @@ const { prefix = 'me', subtitle, title } = Astro.props;
       }
     }
 
-    @property --mask-size {
-      syntax: '<percentage>';
-      inherits: false;
-      initial-value: 0%;
-    }
-
     @keyframes reveal {
       from {
-        --mask-size: 0%;
+        transform: translateY(-5rem);
+        opacity: 0;
       }
 
       to {
-        --mask-size: 5%;
+        transform: translateY(0);
+        opacity: 1;
       }
     }
 
@@ -67,11 +63,6 @@ const { prefix = 'me', subtitle, title } = Astro.props;
       @media (prefers-reduced-motion: no-preference) {
         @supports (animation-timeline: view()) {
           animation: linear reveal both;
-          mask: repeating-linear-gradient(
-            45deg,
-            #000 0 var(--mask-size),
-            #0000 var(--mask-size) 5%
-          );
           view-timeline: --pagesection block;
           animation-timeline: --pagesection;
           animation-range: entry 5% entry 45%;
