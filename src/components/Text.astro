@@ -5,43 +5,122 @@
 <div class="c-text">
   <slot />
 </div>
-<style>
+<style is:global>
   @layer components {
     .c-text {
+      max-inline-size: 75ch;
       font-size: var(--font-size-100);
 
-      :global(> *) {
+      p,
+      ul,
+      ol,
+      table,
+      hr,
+      blockquote,
+      pre,
+      figure,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
         margin-block: 1.5rem 0;
       }
 
-      :global(h1) {
-        margin-block: 1.5rem 3rem;
-        font-size: var(--text-heading-font-size-x3);
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        font-family: var(--text-heading-font-family);
+        font-weight: normal;
       }
 
-      :global(h2) {
+      h1 {
+        margin-block: 1.5rem;
+        font-size: var(--text-heading-font-size-x3);
+        line-height: 1.4;
+      }
+
+      h2 {
         margin-block: 1.5rem;
         font-size: var(--text-heading-font-size-x2);
       }
 
-      :global(h3) {
+      h3 {
         font-size: var(--text-heading-font-size-xl);
       }
 
-      :global(h4) {
+      h4 {
         font-size: var(--text-heading-font-size-mq);
       }
 
-      :global(h5) {
+      h5 {
         font-size: var(--text-heading-font-size);
       }
 
-      :global(em) {
+      em {
         font-style: italic;
       }
 
-      :global(b) {
-        font-weight: bold;
+      b {
+        font-weight: 700;
+      }
+
+      blockquote {
+        margin-inline-start: 0;
+        padding-inline-start: var(--space-3);
+        border-inline-start: 8px solid var(--box-color-border);
+      }
+
+      pre {
+        padding: var(--space-2);
+      }
+
+      :not(pre) > code {
+        padding: 0.2em;
+        background-color: color-mix(in oklch, currentcolor, transparent 92%);
+      }
+
+      figure {
+        margin-inline: 0;
+      }
+
+      figcaption {
+        font-style: italic;
+      }
+
+      img {
+        display: block;
+        block-size: auto;
+        max-inline-size: 100%;
+      }
+
+      table {
+        inline-size: 100%;
+        border-collapse: collapse;
+        border: 0;
+      }
+
+      th,
+      td {
+        padding-block: var(--space-2);
+        border-width: 0 0 1px;
+        border-style: solid;
+        border-color: color-mix(in oklch, currentcolor, transparent 80%);
+        font-size: inherit;
+        text-align: start;
+      }
+
+      hr {
+        border: 1px solid color-mix(in oklch, currentcolor, transparent 80%);
+      }
+
+      & > header {
+        margin-block-end: 4rem;
+        padding-block-end: var(--space-2);
+        border-block-end: 1px solid
+          color-mix(in oklch, currentcolor, transparent 80%);
       }
     }
   }

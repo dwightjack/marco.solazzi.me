@@ -1,0 +1,45 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Page from '../../components/Page.astro';
+import PageSection from '../../components/PageSection.astro';
+import Text from '../../components/Text.astro';
+
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+  return blogEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const formattedDate = entry.data.publishDate.toLocaleString('en-US', {
+  dateStyle: 'medium',
+  timeZone: 'UTC',
+});
+---
+
+<Layout>
+  <Page id="blog-post"
+    ><PageSection
+      title="blog.post"
+      subtitle="Outgrowing Frontend and the Journey Ahead"
+    >
+      <Text>
+        <header>
+          <h1>{entry.data.title}</h1>
+          <p>
+            Published on <time datetime={entry.data.publishDate.toISOString()}
+              >{formattedDate}</time
+            >.
+          </p>
+        </header>
+        <Content />
+      </Text></PageSection
+    >
+  </Page>
+</Layout>

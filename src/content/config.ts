@@ -88,6 +88,15 @@ const personalWorksCollection = defineCollection({
   }),
 });
 
+const blogCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    isDraft: z.boolean().default(true),
+    publishDate: z.date(),
+  }),
+});
+
 export const collections = {
   jobs: jobCollection,
   education: educationCollection,
@@ -95,4 +104,5 @@ export const collections = {
   talks: talkCollection,
   works: workCollection,
   personalWorks: personalWorksCollection,
+  blog: blogCollection,
 };
