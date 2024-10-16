@@ -73,6 +73,7 @@
     --text-heading-font-family: var(--font-family-serif);
     --text-heading-font-size: var(--font-size-300);
     --text-heading-font-size-mq: var(--font-size-400);
+    --text-heading-font-size-xl: var(--font-size-600);
     --text-heading-font-size-x2: var(--font-size-800);
     --text-heading-font-size-x3: var(--font-size-1200);
     --text-heading-font-size-x3mq: var(--font-size-1400);

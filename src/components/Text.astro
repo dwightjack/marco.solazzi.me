@@ -1,0 +1,48 @@
+---
+
+---
+
+<div class="c-text">
+  <slot />
+</div>
+<style>
+  @layer components {
+    .c-text {
+      font-size: var(--font-size-100);
+
+      :global(> *) {
+        margin-block: 1.5rem 0;
+      }
+
+      :global(h1) {
+        margin-block: 1.5rem 3rem;
+        font-size: var(--text-heading-font-size-x3);
+      }
+
+      :global(h2) {
+        margin-block: 1.5rem;
+        font-size: var(--text-heading-font-size-x2);
+      }
+
+      :global(h3) {
+        font-size: var(--text-heading-font-size-xl);
+      }
+
+      :global(h4) {
+        font-size: var(--text-heading-font-size-mq);
+      }
+
+      :global(h5) {
+        font-size: var(--text-heading-font-size);
+      }
+
+      :global(em) {
+        font-style: italic;
+      }
+
+      :global(b) {
+        font-weight: bold;
+      }
+    }
+  }
+</style>
