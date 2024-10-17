@@ -6,4 +6,12 @@ export default defineConfig({
   site: 'https://marco.solazzi.me',
   compressHTML: false,
   integrations: [icon()],
+  markdown: {
+    shikiConfig: {
+      themes: {
+        light: 'rose-pine-dawn',
+        dark: 'github-dark',
+      },
+    },
+  },
 });

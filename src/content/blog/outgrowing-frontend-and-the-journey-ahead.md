@@ -1,11 +1,12 @@
 ---
 title: Outgrowing Frontend and the Journey Ahead
 publishDate: 2024-10-10
+excerpt: "I'm facing a problem: after many years, I don’t feel comfortable calling myself a frontend developer anymore..."
 ---
 
 On the bookshelf of my childhood room at my parents' house, there's a book titled "Chi sono io" ("Who am I") by [Gianni Rodari](https://en.wikipedia.org/wiki/Gianni_Rodari), a famous Italian author of children's literature. The book tells the journey of a child who begins with a simple question: 'Who am I?' Through a series of imaginative encounters in a fantasy world, the child discovers his many identities and characteristics.
 
-Though I’m no longer a child anymore, that question and the memory of that book popped into my mind recently, as I'm facing a problem: after many years, I don't feel comfortable calling myself a frontend developer anymore. It doesn't fit me, and I hardly find common ground with many members of the frontend community.
+Though I'm no longer a child anymore, that question and the memory of that book popped into my mind recently, as I'm facing a problem: after many years, I don't feel comfortable calling myself a frontend developer anymore. It doesn't fit me, and I hardly find common ground with many members of the frontend community.
 
 I’m not the first to notice this. In 2019 Chris Coyer described it in great detail in [The Great Divide](https://css-tricks.com/the-great-divide/), and many others before and after him wrote about it in a way I cannot probably come close to.
 

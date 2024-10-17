@@ -3,8 +3,8 @@ import Layout from '../../layouts/Layout.astro';
 import Page from '../../components/Page.astro';
 import PageSection from '../../components/PageSection.astro';
 import Text from '../../components/Text.astro';
-
 import { getCollection } from 'astro:content';
+import { NAV_PATH_BLOG } from '../../shared/constants';
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
@@ -17,25 +17,24 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 
-const formattedDate = entry.data.publishDate.toLocaleString('en-US', {
+const { title, publishDate, mark, excerpt } = entry.data;
+
+const formattedDate = publishDate.toLocaleString('en-US', {
   dateStyle: 'medium',
   timeZone: 'UTC',
 });
 ---
 
-<Layout>
-  <Page id="blog-post" mark={entry.data.mark}
-    ><PageSection
-      title="blog.post"
-      subtitle="Outgrowing Frontend and the Journey Ahead"
-    >
+<Layout title={title} description={excerpt}>
+  <Page id={NAV_PATH_BLOG} mark={mark}
+    ><PageSection title="blog.post">
       <Text>
         <header>
-          <h1>{entry.data.title}</h1>
-          <p>
-            Published on <time datetime={entry.data.publishDate.toISOString()}
+          <h1>{title}</h1>
+          <p class="small">
+            Published on <time datetime={publishDate.toISOString()}
               >{formattedDate}</time
-            >.
+            > - <a href={NAV_PATH_BLOG}>Blog Archive</a>
           </p>
         </header>
         <Content />
@@ -43,3 +42,8 @@ const formattedDate = entry.data.publishDate.toLocaleString('en-US', {
     >
   </Page>
 </Layout>
+<script>
+  import { NAV_PATH_BLOG } from '../../shared/constants';
+  import { currentRoute } from '../../shared/store';
+  currentRoute.set(NAV_PATH_BLOG);
+</script>

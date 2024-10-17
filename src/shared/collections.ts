@@ -1,4 +1,5 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
+import { NAV_PATH_BLOG } from './constants';
 
 export async function getJobs() {
   const jobs = (await getCollection('jobs'))
@@ -112,6 +113,29 @@ export async function getTalks() {
           data,
         },
         media,
+      };
+    });
+}
+
+export async function getBlogPosts() {
+  return (await getCollection('blog'))
+    .filter((entry) => entry.data.isDraft === false)
+    .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
+    .map((entry) => {
+      const { title, mark, ...data } = entry.data;
+
+      return {
+        mark,
+        details: {
+          id: `talks-${entry.id}`,
+          title,
+          href: NAV_PATH_BLOG + '/' + entry.slug,
+          data: {
+            date: data.publishDate,
+            ...data,
+            publishDate: null,
+          },
+        },
       };
     });
 }

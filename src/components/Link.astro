@@ -1,0 +1,12 @@
+---
+interface Props {
+  to: string;
+}
+const { to } = Astro.props;
+
+const linkAttr = to.startsWith('http')
+  ? { target: '_blank', rel: 'external noopener noreferrer' }
+  : {};
+---
+
+<a href={to} {...linkAttr}><slot /></a>

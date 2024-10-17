@@ -5,6 +5,7 @@ import {
   NAV_PATH_SKILLS,
   NAV_PATH_WORKS,
   NAV_PATH_TALKS,
+  NAV_PATH_BLOG,
 } from './constants';
 
 const routes = [
@@ -31,6 +32,10 @@ const routes = [
   {
     path: NAV_PATH_TALKS,
     label: 'Talks',
+  },
+  {
+    path: NAV_PATH_BLOG,
+    label: 'Blog',
   },
 ] as const;
 

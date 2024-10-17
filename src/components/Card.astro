@@ -1,12 +1,12 @@
 ---
 import DateTime from './DateTime.astro';
+import Link from './Link.astro';
 export interface Props {
   id: string;
   titleLabel?: string;
   title?: string;
   href?: string;
   data: Record<string, unknown>;
-  meta?: Record<string, string>[];
 }
 
 const { id, titleLabel, href, title = '', data = {} } = Astro.props;
@@ -18,9 +18,7 @@ const { id, titleLabel, href, title = '', data = {} } = Astro.props;
       <h3 class="c-card__title" id={`table-${id}`}>
         .{titleLabel}:
         {typeof href === 'string' ? (
-          <a href={href} target="_blank" rel="external noopener noreferrer">
-            {title}
-          </a>
+          <Link to={href}> {title}</Link>
         ) : (
           <span>{title}</span>
         )}

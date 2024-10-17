@@ -92,9 +92,10 @@ const blogCollection = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
-    isDraft: z.boolean().default(true),
+    isDraft: z.boolean().default(false),
     publishDate: z.date(),
     mark: z.string().default('記事'),
+    excerpt: z.string().optional(),
   }),
 });
 

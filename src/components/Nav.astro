@@ -15,7 +15,7 @@ import Box from './Box.astro';
     {
       routes.map(({ path, label }) => (
         <li class="c-nav__item">
-          <a href={`#${path}`} class="c-nav__route">
+          <a href={path} class="c-nav__route">
             {label}
           </a>
         </li>
@@ -116,7 +116,7 @@ import Box from './Box.astro';
         return;
       }
       for (const route of routes) {
-        const isCurrent = route.getAttribute('href') === `#${currentRoute}`;
+        const isCurrent = route.getAttribute('href') === currentRoute;
         if (isCurrent) {
           route.setAttribute('aria-current', 'true');
         } else {

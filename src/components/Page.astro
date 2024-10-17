@@ -10,7 +10,12 @@ export interface Props {
 const { id, mark, indent = true } = Astro.props;
 ---
 
-<Stack class:list={['c-page', { 'c-page--indent': indent }]} id={id} space={15}>
+<Stack
+  class:list={['c-page', { 'c-page--indent': indent }]}
+  data-path={id}
+  id={id.replace(/^\W+/, '')}
+  space={15}
+>
   <slot />
   {
     mark && (
@@ -109,10 +114,10 @@ const { id, mark, indent = true } = Astro.props;
   import { currentRoute } from '../shared/store';
 
   if (CSS.supports('animation-timeline: view()') === false) {
-    const pages = document.querySelectorAll('.c-page');
+    const pages = document.querySelectorAll<HTMLElement>('.c-page');
     currentRoute.subscribe((route) => {
       for (const page of pages) {
-        page.classList.toggle('is-current', page.id === route);
+        page.classList.toggle('is-current', page.dataset.path === route);
       }
     });
   }
