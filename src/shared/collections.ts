@@ -119,13 +119,19 @@ export async function getTalks() {
 
 export async function getBlogPosts() {
   return (await getCollection('blog'))
-    .filter((entry) => entry.data.isDraft === false)
+    .filter((entry) => {
+      if (import.meta.env.TEST === 'true') {
+        return true;
+      }
+      return import.meta.env.PROD ? entry.data.isDraft !== true : true;
+    })
     .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
     .map((entry) => {
-      const { title, mark, ...data } = entry.data;
+      const { title, mark, isDraft, ...data } = entry.data;
 
       return {
         mark,
+        isDraft,
         details: {
           id: `talks-${entry.id}`,
           title,

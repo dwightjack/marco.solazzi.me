@@ -80,6 +80,7 @@ const { id, titleLabel, href, title = '', data = {} } = Astro.props;
     .c-card__title {
       font-size: var(--text-heading-font-size);
       line-height: 1.5;
+      text-wrap: balance;
 
       @media (--viewport-tablet-landscape) {
         font-size: var(--text-heading-font-size-mq);

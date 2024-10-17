@@ -60,7 +60,7 @@ jobs:
       - name: Install Playwright Browsers
         run: pnpm exec playwright install chromium --with-deps
       - name: Build
-        run: pnpm run build
+        run: PUBLIC_TEST=true pnpm run build
       - name: Run integration tests
         run: pnpm run test:integration
       - name: Run Visual regression tests

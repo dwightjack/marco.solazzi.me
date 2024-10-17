@@ -17,7 +17,7 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 
-const { title, publishDate, mark, excerpt } = entry.data;
+const { title, publishDate, mark, excerpt, isDraft } = entry.data;
 
 const formattedDate = publishDate.toLocaleString('en-US', {
   dateStyle: 'medium',
@@ -32,8 +32,8 @@ const formattedDate = publishDate.toLocaleString('en-US', {
         <header>
           <h1>{title}</h1>
           <p class="small">
-            Published on <time datetime={publishDate.toISOString()}
-              >{formattedDate}</time
+            {isDraft && '(draft) '}Published on <time
+              datetime={publishDate.toISOString()}>{formattedDate}</time
             > - <a href={NAV_PATH_BLOG}>Blog Archive</a>
           </p>
         </header>
