@@ -155,6 +155,10 @@ const {
       inline-size: 0;
       inset-block-start: 0;
       inset-inline-end: 0;
+
+      @media (--viewport-tablet-landscape) {
+        inline-size: auto;
+      }
     }
 
     .l-header__controls {
@@ -164,6 +168,23 @@ const {
       inline-size: max-content;
       inset-block-start: 1.75rem;
       inset-inline-end: 1.75rem;
+
+      @media (--viewport-tablet-landscape) {
+        position: static;
+        padding-block-start: 1.75rem;
+        padding-inline-end: 1.75rem;
+        background-color: color-mix(
+          in oklch,
+          var(--box-color-background),
+          transparent 10%
+        );
+        box-shadow: color-mix(
+            in oklch,
+            var(--box-color-background),
+            transparent 10%
+          )
+          0 0 1.75rem 1.75rem;
+      }
     }
 
     .l-main {

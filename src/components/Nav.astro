@@ -20,7 +20,7 @@ const List = isOffscreen ? Stack : Cluster;
   {...isOffscreen && { swatch: 'brand' }}
   aria-label="Sections Navigation"
 >
-  <List as="ul" space={2} class="c-nav__list">
+  <List as="ul" space={2}>
     {
       routes.map(({ path, label }) => (
         <li class="c-nav__item">
@@ -125,16 +125,6 @@ const List = isOffscreen ? Stack : Cluster;
         display: block;
         color: var(--navigation-color-foreground-secondary);
         font-size: var(--text-body-font-size);
-      }
-
-      .c-nav__list {
-        border-image: linear-gradient(
-            transparent,
-            color-mix(in oklch, var(--box-color-background), transparent 40%)
-              20% 80%,
-            transparent
-          )
-          fill 0/0 / 0.25rem 0.5rem;
       }
     }
   }
