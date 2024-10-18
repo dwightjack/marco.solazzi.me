@@ -11,4 +11,15 @@
     white-space: nowrap !important;
   }
 
+  .u-from-tablet-landscape {
+    @media not screen and (--viewport-tablet-landscape) {
+      display: none;
+    }
+  }
+
+  .u-until-tablet-landscape {
+    @media (--viewport-tablet-landscape) {
+      display: none;
+    }
+  }
 }

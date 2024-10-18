@@ -1,17 +1,26 @@
 ---
 import routes from '../shared/routes';
 import Stack from './Stack.astro';
+import Cluster from './Cluster.astro';
 import Box from './Box.astro';
+
+export interface Props {
+  layout?: 'offscreen' | 'inline';
+}
+
+const { layout = 'offscreen' } = Astro.props;
+const isOffscreen = layout === 'offscreen';
+const List = isOffscreen ? Stack : Cluster;
 ---
 
 <Box
   as="nav"
-  class="c-nav"
-  indent={4}
-  swatch="brand"
+  class:list={['c-nav', 'c-nav--' + layout]}
+  indent={isOffscreen ? 4 : 0}
+  {...isOffscreen && { swatch: 'brand' }}
   aria-label="Sections Navigation"
 >
-  <Stack as="ul" space={2}>
+  <List as="ul" space={2} class="c-nav__list">
     {
       routes.map(({ path, label }) => (
         <li class="c-nav__item">
@@ -21,27 +30,14 @@ import Box from './Box.astro';
         </li>
       ))
     }
-  </Stack>
+  </List>
 </Box>
 <style>
   @layer components {
     .c-nav {
       display: flex;
-      position: absolute;
       align-items: center;
-      block-size: 100dvh;
-      transform: translateX(0);
-      inset-block-start: 0;
-      inset-inline-start: 100%;
-      will-change: transform;
-
-      @media (prefers-reduced-motion: no-preference) {
-        transition: transform 700ms var(--easing-in-out);
-      }
-    }
-
-    .c-nav.is-expanded {
-      transform: translateX(-100%);
+      font-family: var(--text-heading-font-family);
     }
 
     .c-nav__item {
@@ -49,14 +45,6 @@ import Box from './Box.astro';
     }
 
     .c-nav__route {
-      display: block;
-      padding-block: var(--space-1);
-      padding-inline: calc(var(--space-2) * 1.75);
-      transition: opacity 150ms linear;
-      opacity: 0.8;
-      color: inherit;
-      font-family: var(--text-heading-font-family);
-      font-size: var(--text-body-font-size-x3);
       letter-spacing: 0.05em;
       text-align: end;
       text-decoration: none;
@@ -66,33 +54,87 @@ import Box from './Box.astro';
     .c-nav__route::before {
       content: '.';
       display: inline-block;
-      transform: translateX(-0.1em);
+      inline-size: 0.3em;
+      margin-inline-end: -0.3em;
+      transform: translateX(-0.2em);
       transition: all 250ms ease-out;
       opacity: 0;
 
       @media (prefers-reduced-motion: no-preference) {
-        transform: translateX(-0.4em);
+        transform: translateX(-0.6em);
       }
     }
 
-    .c-nav__route.is-current {
-      opacity: 1;
-
-      &::before {
-        transform: translateX(-0.1em);
-        transition-delay: 200ms;
-        opacity: 1;
-      }
-    }
-
-    .c-nav__route:hover {
+    .c-nav__route:hover::before {
       @media (--pointer-mouse) {
+        transform: translateX(-0.2em);
         opacity: 1;
+      }
+    }
 
-        &::before {
-          transform: translateX(-0.1em);
+    .c-nav__route.is-current::before {
+      transform: translateX(-0.2em);
+      transition-delay: 200ms;
+      opacity: 1;
+    }
+
+    .c-nav--offscreen {
+      position: absolute;
+      block-size: 100dvh;
+      transform: translateX(0);
+      inset-block-start: 0;
+      inset-inline-start: 100%;
+      will-change: transform;
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition: transform 700ms var(--easing-in-out);
+      }
+
+      &.is-expanded {
+        transform: translateX(-100%);
+      }
+
+      .c-nav__route {
+        display: block;
+        padding-block: var(--space-1);
+        padding-inline: calc(var(--space-2) * 1.75);
+        transition: opacity 150ms linear;
+        opacity: 0.8;
+        color: inherit;
+        font-size: var(--text-body-font-size-x3);
+      }
+
+      .c-nav__route.is-current {
+        opacity: 1;
+      }
+
+      .c-nav__route:hover {
+        @media (--pointer-mouse) {
           opacity: 1;
         }
+      }
+    }
+
+    .c-nav--inline {
+      margin-inline-end: var(--space-1);
+      letter-spacing: 0.05em;
+      text-align: end;
+
+      /* stylelint-disable-next-line no-descending-specificity */
+      .c-nav__route {
+        display: block;
+        color: var(--navigation-color-foreground-secondary);
+        font-size: var(--text-body-font-size);
+      }
+
+      .c-nav__list {
+        border-image: linear-gradient(
+            transparent,
+            color-mix(in oklch, var(--box-color-background), transparent 40%)
+              20% 80%,
+            transparent
+          )
+          fill 0/0 / 0.25rem 0.5rem;
       }
     }
   }
@@ -104,8 +146,10 @@ import Box from './Box.astro';
 
   menuExpanded.subscribe((expanded) => {
     for (const nav of navList) {
-      nav.classList.toggle('is-expanded', expanded);
-      nav.inert = !expanded;
+      if (nav.classList.contains('c-nav--offscreen')) {
+        nav.classList.toggle('is-expanded', expanded);
+        nav.inert = !expanded;
+      }
     }
   });
 

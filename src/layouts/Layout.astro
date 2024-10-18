@@ -105,10 +105,17 @@ const {
   <body>
     <Box as="header" class="l-header" id="header">
       <Cluster class="l-header__controls" space={1.5}>
+        <div class="u-from-tablet-landscape">
+          <Nav layout="inline" />
+        </div>
         <ThemeSwitcher />
-        <Burger />
+        <div class="u-until-tablet-landscape">
+          <Burger />
+        </div>
       </Cluster>
-      <Nav />
+      <div class="u-until-tablet-landscape">
+        <Nav />
+      </div>
     </Box>
     <main class="l-main" class:list={[{ 'l-main--cover': withCover }]}>
       {withCover && <slot name="cover" />}
@@ -153,9 +160,10 @@ const {
     .l-header__controls {
       position: absolute;
       z-index: var(--layer-f1);
+      align-items: center;
+      inline-size: max-content;
       inset-block-start: 1.75rem;
       inset-inline-end: 1.75rem;
-      inline-size: max-content;
     }
 
     .l-main {
@@ -193,6 +201,16 @@ const {
       menuExpanded.set(false);
     }
   }
+
+  // force close the offscreen navigation
+  // when the viewport is small
+  window
+    .matchMedia('(width >= 64em)')
+    .addEventListener('change', ({ matches }) => {
+      if (matches) {
+        menuExpanded.set(false);
+      }
+    });
 
   menuExpanded.subscribe((expanded) => {
     if (!header) {

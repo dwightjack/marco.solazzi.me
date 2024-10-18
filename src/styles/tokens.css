@@ -120,6 +120,7 @@
     /* Navigation */
     --navigation-color-foreground: var(--color-dark);
     --navigation-color-foreground-hover: var(--color-brand-400);
+    --navigation-color-foreground-secondary: var(--color-brand-500);
     --navigation-color-underline-alpha: 85%;
 
     @media (--theme-dark) {
@@ -128,7 +129,7 @@
     }
 
     /* Actions */
-    --action-color-background: var(--color-brand-700);
+    --action-color-background: var(--navigation-color-foreground-secondary);
     --action-control-size-inline: max(24px, calc(var(--size-unit) * 3));
     --action-transition-duration: 0s;
 
