@@ -38,7 +38,8 @@
     "astro": "4.15.10",
     "astro-icon": "1.1.1",
     "modern-normalize": "2.0.0",
-    "nanostores": "0.11.3"
+    "nanostores": "0.11.3",
+    "rehype-external-links": "^3.0.0"
   },
   "devDependencies": {
     "@csstools/postcss-global-data": "3.0.0",

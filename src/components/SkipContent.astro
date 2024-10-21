@@ -1,0 +1,27 @@
+---
+interface Props {
+  target: string;
+}
+const { target } = Astro.props;
+---
+
+<a class="c-skip-content u-visibleonfocus" href={'#' + target}
+  >Skip to main content</a
+>
+<style>
+  @layer components {
+    .c-skip-content {
+      position: absolute;
+      z-index: var(--layer-f5);
+      padding: var(--space-2);
+      background-color: var(--box-color-background-secondary);
+      color: var(--box-color-foreground-secondary);
+      font-family: var(--text-heading-font-family);
+      font-size: var(--text-body-font-size);
+      text-decoration: none;
+      inset-inline-end: var(--space-1);
+      inset-block-start: var(--space-1);
+      white-space: nowrap;
+    }
+  }
+</style>

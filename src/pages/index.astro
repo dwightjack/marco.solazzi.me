@@ -8,9 +8,11 @@ import Works from '../sections/Works.astro';
 import Talks from '../sections/Talks.astro';
 import Footer from '../sections/Footer.astro';
 import Stack from '../components/Stack.astro';
+import SkipContent from '../components/SkipContent.astro';
 ---
 
 <Layout withCover>
+  <SkipContent slot="header" target="cover" />
   <Fragment slot="cover">
     <h1 class="u-visuallyhidden">Marco Solazzi's Online Portfolio</h1>
     <Cover />
