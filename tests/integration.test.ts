@@ -10,19 +10,30 @@ test.describe('home', () => {
     await expect(page.getByText('こんにちは！')).toHaveAttribute('lang', 'ja');
   });
 
-  test('side menu toggle', async ({ page }) => {
-    const menu = page.getByRole('navigation', {
-      name: 'Sections Navigation',
-      includeHidden: true,
+  test.describe('side menu', () => {
+    test('desktop visibility', async ({ page }) => {
+      const menu = page.getByRole('navigation', {
+        name: 'Sections Navigation',
+      });
+      expect(menu).toHaveClass(/--inline/);
+      expect(menu).toBeVisible();
     });
+    test('mobile side menu toggle', async ({ page }) => {
+      await page.setViewportSize({ width: 640, height: 480 });
+      const toggler = page.getByRole('button', { name: 'Toggle Menu' });
 
-    await expect(menu).toHaveAttribute('inert');
-    await expect(menu).not.toBeInViewport();
+      await toggler.click();
+      const menu = page.getByRole('navigation', {
+        name: 'Sections Navigation',
+      });
+      await expect(menu).not.toHaveAttribute('inert');
+      await expect(menu).toBeInViewport();
 
-    await page.getByRole('button', { name: 'Toggle Menu' }).click();
+      await toggler.click();
 
-    await expect(menu).not.toHaveAttribute('inert');
-    await expect(menu).toBeInViewport();
+      await expect(menu).toHaveAttribute('inert');
+      await expect(menu).not.toBeInViewport();
+    });
   });
 
   test('color theme toggler', async ({ page }) => {
