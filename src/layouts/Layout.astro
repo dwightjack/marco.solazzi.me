@@ -132,6 +132,7 @@ const {
         target="_blank"
         rel="noopener noreferrer">source</a
       >
+      <div class="u-visuallhidden" role="status" id="status"></div>
     </footer>
     <!-- Cloudflare Web Analytics -->
     <script
@@ -252,6 +253,8 @@ const {
   theme.listen((theme) => {
     localStorage.setItem('theme', theme);
     document.documentElement.dataset.theme = theme;
+
+    document.getElementById('status')!.textContent = `Current theme: ${theme}`;
   });
 
   theme.set(
