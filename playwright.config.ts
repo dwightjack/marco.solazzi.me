@@ -57,7 +57,7 @@ export default defineConfig({
     reuseExistingServer: true,
     command: process.env.CI
       ? 'pnpm run preview'
-      : 'PUBLIC_TEST=true pnpm run dev',
+      : 'PUBLIC_PREVIEW=true pnpm run dev',
     port: 4321,
   },
 });
