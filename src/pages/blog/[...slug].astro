@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Page from '../../components/Page.astro';
 import PageSection from '../../components/PageSection.astro';
-import Text from '../../components/Text.astro';
+import Prose from '../../components/Prose.astro';
 import { getCollection } from 'astro:content';
 import { NAV_PATH_BLOG } from '../../shared/constants';
 import SkipContent from '../../components/SkipContent.astro';
@@ -30,7 +30,7 @@ const formattedDate = publishDate.toLocaleString('en-US', {
   <SkipContent slot="header" target="heading" />
   <Page id={NAV_PATH_BLOG} mark={mark}
     ><PageSection title="blog.post">
-      <Text>
+      <Prose>
         <header id="heading">
           <h1>{title}</h1>
           <p class="small">
@@ -40,7 +40,7 @@ const formattedDate = publishDate.toLocaleString('en-US', {
           </p>
         </header>
         <Content />
-      </Text></PageSection
+      </Prose></PageSection
     >
   </Page>
 </Layout>
