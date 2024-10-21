@@ -120,7 +120,7 @@ export async function getTalks() {
 export async function getBlogPosts() {
   return (await getCollection('blog'))
     .filter((entry) => {
-      if (import.meta.env.PREVIEW === 'true') {
+      if (import.meta.env.PUBLIC_PREVIEW === 'true') {
         return true;
       }
       return import.meta.env.PROD ? entry.data.isDraft !== true : true;
