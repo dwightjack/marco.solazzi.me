@@ -24,9 +24,8 @@ const List = isOffscreen ? Stack : Cluster;
     {
       routes.map(({ path, label }) => (
         <li class="c-nav__item">
-          <a href={path} class="c-nav__route">
-            {label}
-          </a>
+          {/* prettier-ignore */}
+          <a href={path} class="c-nav__route">{label}</a>
         </li>
       ))
     }
@@ -52,13 +51,16 @@ const List = isOffscreen ? Stack : Cluster;
     }
 
     .c-nav__route::before {
-      content: '.';
+      content: '';
       display: inline-block;
-      inline-size: 0.3em;
-      margin-inline-end: -0.3em;
+      inline-size: 0.18em;
+      margin-inline-end: 0;
       transform: translateX(-0.2em);
       transition: all 250ms ease-out;
+      border-radius: 1em;
       opacity: 0;
+      background-color: currentcolor;
+      aspect-ratio: 1;
 
       @media (prefers-reduced-motion: no-preference) {
         transform: translateX(-0.6em);
