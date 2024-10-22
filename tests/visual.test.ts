@@ -11,9 +11,13 @@ test.describe('homepage', () => {
     await percySnapshot(page, 'Full Page');
   });
 
-  test('side menu', async ({ page }) => {
-    await page.getByRole('button', { name: 'Toggle Menu' }).click();
-    await page.waitForTimeout(1000);
+  test('mobile side menu', async ({ page }) => {
+    await page.setViewportSize({ width: 640, height: 480 });
+    await page.getByRole('button', { name: 'Toggle Navigation' }).click();
+    const menu = page.getByRole('navigation', {
+      name: 'Sections Navigation',
+    });
+    await menu.waitFor({ state: 'visible' });
     await percySnapshot(page, 'Side Menu');
   });
 });
