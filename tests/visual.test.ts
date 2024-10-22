@@ -13,12 +13,13 @@ test.describe('homepage', () => {
 
   test('mobile side menu', async ({ page }) => {
     await page.setViewportSize({ width: 640, height: 480 });
+    await page.waitForTimeout(500);
     await page.getByRole('button', { name: 'Toggle Navigation' }).click();
     const menu = page.getByRole('navigation', {
       name: 'Sections Navigation',
     });
     await menu.waitFor({ state: 'visible' });
-    await percySnapshot(page, 'Side Menu');
+    await percySnapshot(page, 'Side Menu', { widths: [640] });
   });
 });
 
@@ -29,7 +30,7 @@ test.describe('blog', () => {
     await percySnapshot(page, 'Index Page');
   });
 
-  test('side menu', async ({ page }) => {
+  test('post page', async ({ page }) => {
     await page.goto('/blog/demo', { waitUntil: 'networkidle' });
     await page.evaluate(() => localStorage.clear());
     await percySnapshot(page, 'Blog Post Page');
