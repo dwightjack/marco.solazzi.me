@@ -10,7 +10,7 @@ Though I'm no longer a child, the memory of that book came to mind recently as I
 
 I’m not the first to notice this. In 2019 Chris Coyer described it in great detail in [The Great Divide](https://css-tricks.com/the-great-divide/), and many others before and after him wrote about it in a way I cannot probably come close to.
 
-Job titles may seem random at times, and we could all just be called 'webmasters,' but **they play an important role in defining our work, both for ourselves and for others**.
+Job titles may seem random at times, and we could all just be called 'webmasters', but **they play an important role in defining our work, both for ourselves and for others**.
 
 ## What do we mean with *frontend*
 
@@ -70,15 +70,15 @@ One problem with the change in the meaning of *frontend* is that now the skills 
 
 So, while *client-side-front-end* (or *front-of-the-front-end*, if you prefer) might be good at delimiting my area of expertise, it isn't very nice and probably a bit verbose.  
 
-Many others before me realized this shift and investigated possible new terms to differentiate what are two distinct development roles. There's *UX engineer*, *UI Engineer*, and many are going as far as Elly Loel using [*Web Designers*](https://www.ellyloel.com/blog/front-end-development-s-identity-crisis/) (a concept pitched by [Matthias Ott in 2024 CSS Day](https://www.youtube.com/watch?v=su6WA0kUUJE) as well). Another interesting term that is gaining traction lately is *Design Engineer*, which might seem confusing at first but could be a good start. There is a nice [article by David Luhr](https://luhr.co/blog/2024/02/26/the-origins-of-design-engineering/) that summarizes the story of the term over the years.
+Many others before me realized this shift and investigated possible new terms for the *front-of-the-frontend*  development role. There's *UX engineer*, *UI Engineer*, and many are going as far as Elly Loel using [*Web Designers*](https://www.ellyloel.com/blog/front-end-development-s-identity-crisis/) (a concept pitched by [Matthias Ott in 2024 CSS Day](https://www.youtube.com/watch?v=su6WA0kUUJE) as well). Another interesting term that is gaining traction lately is *Design Engineer*, which might seem confusing at first but could be a good start. There is a nice [article by David Luhr](https://luhr.co/blog/2024/02/26/the-origins-of-design-engineering/) that summarizes the story of the term over the years.
 
 Personally, I have temporarily settled on *UI Engineer* because it highlights my stronger skills and what I like to do: building user interfaces, but *Design Engineer* is probably a broader definition that better describes my career as a bridge between design and engineering teams. 
 
 ## Missed opportunities and potential to unlock
 
-The shift in the definition of *frontend* and the move towards an increasingly engineering-focused perspective has significant consequences for IT companies as well: since they settled on the traditional distinction between design and frontend, they often overlook the importance of what's in between and its importance for the development process.
+The shift in the definition of *frontend* and the move towards an increasingly engineering-focused perspective has significant consequences for IT companies as well: since they settled on the traditional distinction between design and frontend, they often lack what's in between and overlook its importance for the development process.
 
-Many of these companies face a related problem: a disproportionately small number of internal or freelance designers are tasked with handling an **overwhelming amount of design work, often in a near-waterfall process**. Designers create an application, hand it out to the engineers, handle immediate feedback, and then move on, frequently losing track of the project’s later stages. This approach not only leads to designer burnout but excludes them from the product implementation process defying any chance for iterative improvements (because you often discover problems and challenges when you write the code), often leaving them as spectators of how much their vision changes from design to release (thus increasing even more their burnout). Additionally, engineers are left struggling with UX, accessibility, and related areas, even when provided with a design system.
+Many of these companies face a related problem: a disproportionately small number of internal or freelance designers are tasked with handling an **overwhelming amount of design work, often in a near-waterfall process**: Designers create an application, hand it out to the engineers, handle immediate feedback, and then move on, frequently losing track of the project’s later stages. This approach not only leads to designer burnout but excludes them from the product implementation process defying any chance for iterative improvements (because you often discover problems and challenges when you write the code), leaving them as spectators of how much their vision changes from design to release (thus increasing even more their burnout). Additionally, engineers are left struggling with UX, accessibility, and other unfamiliar areas, even when provided with a design system.
 
 ### Unlocking design engineering potential
 
@@ -90,8 +90,7 @@ Design engineers have cross-functional skills (UX, web design, client-side devel
 
 As I was researching this topic during my journey to redefine myself, I found more and more articles and people on the same path. This resounds to me as the slow and constant awakening of a community.
 
-The emergence of Design Engineering as a role isn't just about finding a new job title, it's about recognizing and validating the missing piece between design and engineering that has always existed but hasn't been properly identified. It represents the natural evolution of a role that has been there all along, speaking multiple languages in an industry where design and engineering often feel worlds apart.
-
+The emergence of Design Engineering as a role isn't just about finding a new job title, it's about recognizing and validating the missing piece between design and engineering that has always existed but hasn't been properly identified.
 
 <footer class="small">
 
