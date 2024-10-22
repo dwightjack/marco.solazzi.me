@@ -6,6 +6,8 @@ import Prose from '../../components/Prose.astro';
 import { getCollection } from 'astro:content';
 import { NAV_PATH_BLOG } from '../../shared/constants';
 import SkipContent from '../../components/SkipContent.astro';
+import Stack from '../../components/Stack.astro';
+import Footer from '../../sections/Footer.astro';
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
@@ -28,21 +30,24 @@ const formattedDate = publishDate.toLocaleString('en-US', {
 
 <Layout title={title} description={excerpt}>
   <SkipContent slot="header" target="heading" />
-  <Page id={NAV_PATH_BLOG} mark={mark}
-    ><PageSection title="blog.post">
-      <Prose>
-        <header id="heading">
-          <h1>{title}</h1>
-          <p class="small">
-            {isDraft && '(draft) '}Published on <time
-              datetime={publishDate.toISOString()}>{formattedDate}</time
-            > - <a href={NAV_PATH_BLOG}>Blog Archive</a>
-          </p>
-        </header>
-        <Content />
-      </Prose></PageSection
-    >
-  </Page>
+  <Stack space={15}>
+    <Page id={NAV_PATH_BLOG} mark={mark}
+      ><PageSection title="blog.post">
+        <Prose>
+          <header id="heading">
+            <h1>{title}</h1>
+            <p class="small">
+              {isDraft && '(draft) '}Published on <time
+                datetime={publishDate.toISOString()}>{formattedDate}</time
+              > - <a href={NAV_PATH_BLOG}>Blog Archive</a>
+            </p>
+          </header>
+          <Content />
+        </Prose></PageSection
+      >
+    </Page>
+    <Footer />
+  </Stack>
 </Layout>
 <script>
   import { NAV_PATH_BLOG } from '../../shared/constants';
