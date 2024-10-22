@@ -18,7 +18,7 @@ import SkipContent from '../components/SkipContent.astro';
     <Cover />
   </Fragment>
 
-  <Stack space={15}>
+  <Stack space={15} class="l-pages">
     <Jobs /><Education /><Skills /><Works /><Talks /><Footer />
   </Stack>
 </Layout>
@@ -31,3 +31,8 @@ import SkipContent from '../components/SkipContent.astro';
     currentRoute.set(target.dataset.path as Route);
   });
 </script>
+<style>
+  .l-pages.l-pages {
+    padding-block-start: calc(var(--space-2) * 6.25);
+  }
+</style>
