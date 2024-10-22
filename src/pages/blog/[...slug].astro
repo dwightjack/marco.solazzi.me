@@ -26,9 +26,31 @@ const formattedDate = publishDate.toLocaleString('en-US', {
   dateStyle: 'medium',
   timeZone: 'UTC',
 });
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description: excerpt,
+  keywords: [],
+  url: new URL(Astro.url.pathname, Astro.site),
+  author: {
+    '@type': 'Person',
+    name: 'Marco Solazzi',
+    url: Astro.site,
+  },
+  inLanguage: 'en-US',
+  datePublished: publishDate.toISOString(),
+};
 ---
 
 <Layout title={title} description={excerpt}>
+  <script
+    is:inline
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify(schema)}
+  />
   <SkipContent slot="header" target="heading" />
   <Stack space={15}>
     <Page id={NAV_PATH_BLOG} mark={mark}

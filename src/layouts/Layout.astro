@@ -37,20 +37,19 @@ const {
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
     <link rel="manifest" href="/manifest.json" />
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
-    <link
-      rel="canonical"
-      href={`http://marco.solazzi.me${Astro.url.pathname}`}
-    />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
     <meta name="theme-color" content="#ffffff" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={socialImageURL} />
-    <meta
-      property="og:url"
-      content={`http://marco.solazzi.me${Astro.url.pathname}`}
-    />
+    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Marco Solazzi - UI Web Developer"
+      href={new URL('rss.xml', Astro.site)}
+    />
     <style>
       /* bree-serif-latin-400-normal */
       @font-face {
@@ -101,6 +100,7 @@ const {
         unicode-range: U+3053, U+3093, U+306B, U+3061, U+306F, U+0021;
       }
     </style>
+    <slot name="head" />
   </head>
   <body>
     <Box as="header" class="l-header" id="header">
