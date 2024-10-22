@@ -1,10 +1,16 @@
 ---
+import type { HTMLTag, Polymorphic } from 'astro/types';
 
+type Props<Tag extends HTMLTag = 'div'> = Polymorphic<{
+  as: Tag;
+}>;
+
+const { as: Tag = 'div' } = Astro.props;
 ---
 
-<div class="c-prose">
+<Tag class="c-prose">
   <slot />
-</div>
+</Tag>
 <style is:global>
   @layer components {
     .c-prose {
@@ -75,6 +81,19 @@
         font-size: var(--text-subheading-font-size);
       }
 
+      .small {
+        h2 {
+          margin-block: 1.5rem 0;
+          font-size: var(--text-heading-font-size-mq);
+        }
+
+        h3,
+        h4,
+        h5 {
+          font-size: var(--text-heading-font-size);
+        }
+      }
+
       blockquote {
         margin-inline-start: 0;
         padding-inline-start: var(--space-3);
@@ -133,6 +152,14 @@
         margin-block-end: 4rem;
         padding-block-end: var(--space-2);
         border-block-end: 1px solid
+          color-mix(in oklch, currentcolor, transparent 80%);
+      }
+
+      & > footer {
+        margin-block-start: var(--space-4);
+        padding-block-start: var(--space-2);
+        font-size: var(--text-subheading-font-size);
+        border-block-start: 1px solid
           color-mix(in oklch, currentcolor, transparent 80%);
       }
 

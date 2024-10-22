@@ -6,15 +6,15 @@ excerpt: "I'm facing a problem: after many years, I don’t feel comfortable cal
 
 On the bookshelf of my childhood room at my parents' house, there's a book titled <cite lang="it">Chi sono io</cite> ("Who am I") by [Gianni Rodari](https://en.wikipedia.org/wiki/Gianni_Rodari), a famous Italian author of children's literature. The book tells the journey of a child who begins with a simple question: <q>Who am I?</q> Through a series of imaginative encounters in a fantasy world, the child discovers his many identities and characteristics.
 
-Though I'm no longer a child anymore, that question and the memory of that book popped into my mind recently, as I'm facing a problem: after many years, I don't feel comfortable calling myself a frontend developer anymore. It doesn't fit me, and I hardly find common ground with many members of the frontend community.
+Though I'm no longer a child, the memory of that book came to mind recently as I faced a problem: after many years, I no longer feel comfortable calling myself a frontend developer. It doesn’t seem to fit, and I struggle to connect with many in the frontend community.
 
 I’m not the first to notice this. In 2019 Chris Coyer described it in great detail in [The Great Divide](https://css-tricks.com/the-great-divide/), and many others before and after him wrote about it in a way I cannot probably come close to.
 
-While job titles can sometimes seem arbitrary, and we could theoretically revert to calling everyone a 'webmaster,' **they serve an important purpose in defining our professional identities, both internally and in relation to others**.
+Job titles may seem random at times, and we could all just be called 'webmasters,' but **they play an important role in defining our work, both for ourselves and for others**.
 
 ## What do we mean with *frontend*
 
-As I was thinking of why the word *frontend* is not fitting anymore, I realized that the issue was likely long-standing but only became evident recently: we divided web development into frontend and backend, using them as synonyms of *client-side* and *server-side*. This analogy worked perfectly fine 10 or 15 years ago, but since Single Page Applications and Server Side Rendered meta-frameworks like Next.js became the community standard, the analogy doesn't hold up anymore. If frontend is synonymous with client-side, then why do frontend engineers deal with Server Components and Server Actions?
+As I was thinking of why the word *frontend* no longer fits, I realized the issue has existed for some time but became apparent only recently: we divided web development into frontend and backend, using them as synonyms of *client-side* and *server-side*,  a model that worked 10 or 15 years ago. However, with the rise of Single Page Applications and Server-Side Rendered frameworks like Next.js, the analogy no longer applies. If frontend is synonymous with client-side, then why do frontend engineers deal with Server Components and Server Actions?
 
 If we think about it, the word frontend can be explained as the part of a website or service that presents data to the users and through which users can interact with the system. **This definition doesn't specify whether it's limited to the client-side or includes server-side logic**.
 
@@ -72,16 +72,48 @@ So, while *client-side-front-end* (or *front-of-the-front-end*, if you prefer) m
 
 Many others before me realized this shift and investigated possible new terms to differentiate what are two distinct development roles. There's *UX engineer*, *UI Engineer*, and many are going as far as Elly Loel using [*Web Designers*](https://www.ellyloel.com/blog/front-end-development-s-identity-crisis/) (a concept pitched by [Matthias Ott in 2024 CSS Day](https://www.youtube.com/watch?v=su6WA0kUUJE) as well). Another interesting term that is gaining traction lately is *Design Engineer*, which might seem confusing at first, could be a good start. There is a nice [article by David Luhr](https://luhr.co/blog/2024/02/26/the-origins-of-design-engineering/) that summarizes the story of the term over the years.
 
-Personally, I have temporarily settled on *UI Engineer* because it highlights my stronger skills and what I like to do: building user interfaces, even if *Design Engineer* might be a second-best given my career as a bridge between design and engineering teams. 
+Personally, I have temporarily settled on *UI Engineer* because it highlights my stronger skills and what I like to do: building user interfaces, but *Design Engineer* is probably a broader definition that better describes my career as a bridge between design and engineering teams. 
 
 ## Missed opportunities and potential to unlock
 
-The shift in the definition of *frontend* and the slip towards an increasingly strong engineering perspective has a important consequence for IT companies as well: since they settled on the traditional distinction between design, frontend and backend, they aren't aware of the relevance of design engineers in the development process. 
+The shift in the definition of *frontend* and the move towards an increasingly engineering-focused perspective has significant consequences for IT companies as well: since they settled on the traditional distinction between design and frontend, they often overlook the importance of what's in between and its importance for the development process.
 
-Those same kind of company often also suffers from a related issue: a proportionally small number of internal or freelance designers dealing with an **overwhelming amount of design tasks in an almost waterfall process** where they design an application, hand it out to the engineers, handle immediate feedback, then move on, often forgetting everything else. This issue not only burns designers out, but excludes them from the product implementation process defying any chance for iterative improvements (because you often discover problems and challenges when you write the code), often leaving them as spectators of how much their vision changes from design to release (thus increasing even more their burnout). It also affects engineers who usually struggle with UX, accessibility and similar topics even when provided with a design system.
+Many of these companies face a related problem: a disproportionately small number of internal or freelance designers are tasked with handling an **overwhelming amount of design work, often in a near-waterfall process**. Designers create an application, hand it out to the engineers, handle immediate feedback, and then move on, frequently losing track of the project’s later stages. This approach not only leads to designer burnout, but excludes them from the product implementation process defying any chance for iterative improvements (because you often discover problems and challenges when you write the code), often leaving them as spectators of how much their vision changes from design to release (thus increasing even more their burnout). Additionally, engineers are left struggling with UX, accessibility, and related areas, even when provided with a design system.
 
 ### Unlocking design engineering potential
 
-With designer engineers in the mix, they can influence the design with an engineering perspective and help the engineers in building the UI and iterating with awareness of the original design vision. 
+Design engineers have cross-functional skills (UX, web design, client-side development). They are not generalists; they usually specialize in one or two areas but, due to their role in a production team, they gain a broad understanding of multiple fields. This allows them to help team members from the surrounding areas. In a way, they speak multiple languages in a world where effectively design and engineering are often strangers to each other. This means that they can act as the glue between the design and engineering phases of a traditional project, or they can facilitate the iterations of an agile-like team. 
 
-Since design engineers have cross-functional skills (UX, design, coding) they can also 
+**With design engineers in the mix, they can influence the design with an engineering perspective and help engineers in building the UI and iterating with awareness of the original design vision.**
+
+## Closing remarks
+
+As I was researching this topic during my journey to redefine myself, I found more and more articles and people on the same path. This resounds to me as the slow and constant awakening of a community.
+
+The emergence of Design Engineering as a role isn't just about finding a new job title, it's about recognizing and validating the missing piece between design and engineering that has always existed but hasn't been properly identified. It represents the natural evolution of a role that has been there all along, speaking multiple languages in an industry where design and engineering often feel worlds apart.
+
+
+<footer class="small">
+
+## Related links
+
+- [The Great Divide](https://css-tricks.com/the-great-divide/) (January 2019)
+- [HTML, CSS and our vanishing industry entry points](https://rachelandrew.co.uk/archives/2019/01/30/html-css-and-our-vanishing-industry-entry-points/) (January 2019)
+- [Reluctant Gatekeeping: The Problem with Full Stack](https://medium.com/@Heydon/reluctant-gatekeeping-the-problem-with-full-stack-e9ad836570f6) (February 2019)
+- [Front-of-the-Front-End and Back-of-the-Front-End Web Development](https://bradfrost.com/blog/post/front-of-the-front-end-and-back-of-the-front-end-web-development/) (January 2021)
+- [Development Is Design](https://bradfrost.com/blog/post/development-is-design/) (March 2021)
+- [The Case for Design Engineers](https://blog.jim-nielsen.com/2022/the-case-for-design-engineers/) (March 2022)
+- [Why Your Web Design Sucks](https://heather-buchel.com/blog/2023/10/why-your-web-design-sucks/) (October 2023)
+- [Front-end Development's Identity Crisis](https://www.ellyloel.com/blog/front-end-development-s-identity-crisis/) (November 2023)
+- [Is Front-End Development Having an Identity Crisis?](https://dev.to/assaultoustudios/is-front-end-development-having-an-identitycrisis-2224) (January 2024)
+
+## Design Engineering Resources
+
+- [Tales of a Non-Unicorn: A Story About The Trouble With Job Titles and Descriptions](https://css-tricks.com/tales-of-a-non-unicorn-a-story-about-the-trouble-with-job-titles-and-descriptions/) (September 2019)
+- [Design Engineering - Natalya Shelburne at Beyond Tellerrand](https://beyondtellerrand.com/events/berlin-2019/speakers/natalya-shelburne) (November 2019)
+- [I Think I'm a Design Engineer](https://www.trysmudford.com/blog/i-think-im-a-design-engineer/) (July 2023)
+- [Design Engineering at Vercel](https://vercel.com/blog/design-engineering-at-vercel) (October 2023)
+- [The Origins of Design Engineering](https://luhr.co/blog/2024/02/26/the-origins-of-design-engineering/) (February 2024)
+- [What is Design Engineering? - Matthias Ott at CSS Day 2024 - video](https://www.youtube.com/watch?v=su6WA0kUUJE) (June 2024)
+
+</footer>
