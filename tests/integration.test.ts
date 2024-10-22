@@ -15,12 +15,12 @@ test.describe('home', () => {
       const menu = page.getByRole('navigation', {
         name: 'Sections Navigation',
       });
-      expect(menu).toHaveClass(/--inline/);
-      expect(menu).toBeVisible();
+      await expect(menu).toHaveClass(/--inline/);
+      await expect(menu).toBeVisible();
     });
     test('mobile side menu toggle', async ({ page }) => {
       await page.setViewportSize({ width: 640, height: 480 });
-      const toggler = page.getByRole('button', { name: 'Toggle Menu' });
+      const toggler = page.getByRole('button', { name: 'Toggle Navigation' });
 
       await toggler.click();
       const menu = page.getByRole('navigation', {
@@ -64,7 +64,7 @@ test.describe('blog', () => {
     await page.goto('/blog');
     await page.evaluate(() => localStorage.clear());
     await page.getByText('Demo').click();
-    await page.waitForTimeout(500);
-    expect(page.getByRole('heading', { level: 1 })).toHaveText('Demo');
+    await page.waitForURL(/\/demo/, { waitUntil: 'networkidle' });
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Demo');
   });
 });
