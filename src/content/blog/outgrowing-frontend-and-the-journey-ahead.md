@@ -14,7 +14,7 @@ Job titles may seem random at times, and we could all just be called 'webmasters
 
 ## What do we mean with *frontend*
 
-As I was thinking of why the word *frontend* no longer fits, I realized the issue has existed for some time but became apparent only recently: we divided web development into frontend and backend, using them as synonyms of *client-side* and *server-side*,  a model that worked 10 or 15 years ago. However, with the rise of Single Page Applications and Server-Side Rendered frameworks like Next.js, the analogy no longer applies. If frontend is synonymous with client-side, then why do frontend engineers deal with Server Components and Server Actions?
+As I was thinking of why the word *frontend* no longer fits, I realized the issue has existed for some time but became apparent only recently: We divided web development into frontend and backend, using them as synonyms of *client-side* and *server-side*,  a model that worked 10 or 15 years ago. However, with the rise of Single Page Applications and Server-Side Rendered frameworks like Next.js, the analogy no longer applies. If frontend is synonymous with client-side, then why do frontend engineers deal with Server Components and Server Actions?
 
 If we think about it, the word frontend can be explained as the part of a website or service that presents data to the users and through which users can interact with the system. **This definition doesn't specify whether it's limited to the client-side or includes server-side logic**.
 
@@ -32,7 +32,7 @@ To be honest, whether it's *back-of-the-front-end* or *server-side-front-end*, I
 
 ## A bit of perspective
 
-I know, this discussion might seem irrelevant to many, but as I said, job titles help us define ourselves as professionals and identify our closest community. They are also pretty important when it comes to hiring and company organization strategies.
+I know this discussion might seem irrelevant to many, but as I said, job titles help us define ourselves as professionals and identify our closest community. They are also pretty important when it comes to hiring and company organization strategies.
 
 Let's see how the implications of the shifting meaning of frontend has become more and more relevant over time using my personal career as an example.
 
@@ -70,7 +70,7 @@ One problem with the change in the meaning of *frontend* is that now the skills 
 
 So, while *client-side-front-end* (or *front-of-the-front-end*, if you prefer) might be good at delimiting my area of expertise, it isn't very nice and probably a bit verbose.  
 
-Many others before me realized this shift and investigated possible new terms to differentiate what are two distinct development roles. There's *UX engineer*, *UI Engineer*, and many are going as far as Elly Loel using [*Web Designers*](https://www.ellyloel.com/blog/front-end-development-s-identity-crisis/) (a concept pitched by [Matthias Ott in 2024 CSS Day](https://www.youtube.com/watch?v=su6WA0kUUJE) as well). Another interesting term that is gaining traction lately is *Design Engineer*, which might seem confusing at first, could be a good start. There is a nice [article by David Luhr](https://luhr.co/blog/2024/02/26/the-origins-of-design-engineering/) that summarizes the story of the term over the years.
+Many others before me realized this shift and investigated possible new terms to differentiate what are two distinct development roles. There's *UX engineer*, *UI Engineer*, and many are going as far as Elly Loel using [*Web Designers*](https://www.ellyloel.com/blog/front-end-development-s-identity-crisis/) (a concept pitched by [Matthias Ott in 2024 CSS Day](https://www.youtube.com/watch?v=su6WA0kUUJE) as well). Another interesting term that is gaining traction lately is *Design Engineer*, which might seem confusing at first but could be a good start. There is a nice [article by David Luhr](https://luhr.co/blog/2024/02/26/the-origins-of-design-engineering/) that summarizes the story of the term over the years.
 
 Personally, I have temporarily settled on *UI Engineer* because it highlights my stronger skills and what I like to do: building user interfaces, but *Design Engineer* is probably a broader definition that better describes my career as a bridge between design and engineering teams. 
 
@@ -78,11 +78,11 @@ Personally, I have temporarily settled on *UI Engineer* because it highlights my
 
 The shift in the definition of *frontend* and the move towards an increasingly engineering-focused perspective has significant consequences for IT companies as well: since they settled on the traditional distinction between design and frontend, they often overlook the importance of what's in between and its importance for the development process.
 
-Many of these companies face a related problem: a disproportionately small number of internal or freelance designers are tasked with handling an **overwhelming amount of design work, often in a near-waterfall process**. Designers create an application, hand it out to the engineers, handle immediate feedback, and then move on, frequently losing track of the project’s later stages. This approach not only leads to designer burnout, but excludes them from the product implementation process defying any chance for iterative improvements (because you often discover problems and challenges when you write the code), often leaving them as spectators of how much their vision changes from design to release (thus increasing even more their burnout). Additionally, engineers are left struggling with UX, accessibility, and related areas, even when provided with a design system.
+Many of these companies face a related problem: a disproportionately small number of internal or freelance designers are tasked with handling an **overwhelming amount of design work, often in a near-waterfall process**. Designers create an application, hand it out to the engineers, handle immediate feedback, and then move on, frequently losing track of the project’s later stages. This approach not only leads to designer burnout but excludes them from the product implementation process defying any chance for iterative improvements (because you often discover problems and challenges when you write the code), often leaving them as spectators of how much their vision changes from design to release (thus increasing even more their burnout). Additionally, engineers are left struggling with UX, accessibility, and related areas, even when provided with a design system.
 
 ### Unlocking design engineering potential
 
-Design engineers have cross-functional skills (UX, web design, client-side development). They are not generalists; they usually specialize in one or two areas but, due to their role in a production team, they gain a broad understanding of multiple fields. This allows them to help team members from the surrounding areas. In a way, they speak multiple languages in a world where effectively design and engineering are often strangers to each other. This means that they can act as the glue between the design and engineering phases of a traditional project, or they can facilitate the iterations of an agile-like team. 
+Design engineers have cross-functional skills (UX, web design, client-side development). They are not generalists; they usually specialize in one or two areas, but due to their role in a production team, they gain a broad understanding of multiple fields. This allows them to help team members from the surrounding areas. In a way, they speak multiple languages in a world where effectively design and engineering are often strangers to each other. This means that they can act as the glue between the design and engineering phases of a traditional project, or they can facilitate the iterations of an agile-like team. 
 
 **With design engineers in the mix, they can influence the design with an engineering perspective and help engineers in building the UI and iterating with awareness of the original design vision.**
 
