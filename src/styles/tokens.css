@@ -27,7 +27,7 @@
     --color-brand-400: oklch(47.4% 0.153 var(--color-brand-hue));
     --color-brand-500: oklch(56.65% 0.149 var(--color-brand-hue));
     --color-brand-700: oklch(63.47% 0.107 var(--color-brand-hue));
-    --color-brand-800: oklch(72.46% 0.132 var(--color-brand-hue));
+    --color-brand-800: oklch(78.46% 0.132 var(--color-brand-hue));
 
     /* Fonts */
     --font-family-sans: 'Open Sans Variable', sans-serif;
@@ -104,10 +104,11 @@
     @media (--theme-dark) {
       --box-color-foreground: var(--color-light-900);
       --box-color-background: var(--color-darker);
+      --box-color-background-secondary: var(--color-brand-500);
       --box-color-border: color-mix(
         in oklch,
         var(--color-brand-500),
-        transparent 50%
+        transparent 40%
       );
       --box-color-selection-background: color-mix(
         in oklch,
@@ -126,6 +127,7 @@
     @media (--theme-dark) {
       --navigation-color-underline-alpha: 60%;
       --navigation-color-foreground-hover: var(--color-brand-800);
+      --navigation-color-foreground-secondary: var(--color-brand-800);
     }
 
     /* Actions */
@@ -141,7 +143,7 @@
     --interactive-color-outline: color-mix(
       in oklch,
       var(--color-brand-400),
-      transparent 50%
+      transparent 18%
     );
 
     @media (--theme-dark) {
