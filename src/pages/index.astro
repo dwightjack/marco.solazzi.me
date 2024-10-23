@@ -7,19 +7,32 @@ import Skills from '../sections/Skills.astro';
 import Works from '../sections/Works.astro';
 import Talks from '../sections/Talks.astro';
 import Footer from '../sections/Footer.astro';
+import Stack from '../components/Stack.astro';
+import SkipContent from '../components/SkipContent.astro';
 ---
 
-<Layout>
-  <Cover slot="cover" />
-  <h1 class="u-visuallyhidden">Marco Solazzi's Online Portfolio</h1>
-  <Jobs /><Education /><Skills /><Works /><Talks /><Footer />
+<Layout withCover>
+  <SkipContent slot="header" target="cover" />
+  <Fragment slot="cover">
+    <h1 class="u-visuallyhidden">Marco Solazzi's Online Portfolio</h1>
+    <Cover />
+  </Fragment>
+
+  <Stack space={15} class="l-pages">
+    <Jobs /><Education /><Skills /><Works /><Talks /><Footer />
+  </Stack>
 </Layout>
 <script>
   import ScrollIntercept from '../shared/scrollIntercept';
   import type { Route } from '../shared/routes';
   import { currentRoute } from '../shared/store';
 
-  new ScrollIntercept('.c-page', (target: Element) => {
-    currentRoute.set(target.id as Route);
+  new ScrollIntercept('.c-page', (target: HTMLElement) => {
+    currentRoute.set(target.dataset.path as Route);
   });
 </script>
+<style>
+  .l-pages.l-pages {
+    padding-block-start: calc(var(--space-2) * 6.25);
+  }
+</style>

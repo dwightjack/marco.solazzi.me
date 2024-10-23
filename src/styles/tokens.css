@@ -73,6 +73,7 @@
     --text-heading-font-family: var(--font-family-serif);
     --text-heading-font-size: var(--font-size-300);
     --text-heading-font-size-mq: var(--font-size-400);
+    --text-heading-font-size-xl: var(--font-size-600);
     --text-heading-font-size-x2: var(--font-size-800);
     --text-heading-font-size-x3: var(--font-size-1200);
     --text-heading-font-size-x3mq: var(--font-size-1400);
@@ -119,6 +120,7 @@
     /* Navigation */
     --navigation-color-foreground: var(--color-dark);
     --navigation-color-foreground-hover: var(--color-brand-400);
+    --navigation-color-foreground-secondary: var(--color-brand-500);
     --navigation-color-underline-alpha: 85%;
 
     @media (--theme-dark) {
@@ -127,7 +129,7 @@
     }
 
     /* Actions */
-    --action-color-background: var(--color-brand-700);
+    --action-color-background: var(--navigation-color-foreground-secondary);
     --action-control-size-inline: max(24px, calc(var(--size-unit) * 3));
     --action-transition-duration: 0s;
 

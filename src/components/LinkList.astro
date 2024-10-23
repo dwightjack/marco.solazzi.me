@@ -1,5 +1,6 @@
 ---
 import Icon from './Icon.astro';
+import Link from './Link.astro';
 import Stack from './Stack.astro';
 
 interface Item {
@@ -21,10 +22,10 @@ const { items } = Astro.props;
     items.map(({ icon, href, label, description }) => (
       <li class="c-link-list__item">
         <Icon name={icon} size={1.4} />
-        <a href={href} target="_blank" rel="noopener noreferrer">
+        <Link to={href}>
           {label}
           {description && <span class="u-visuallyhidden">{description}</span>}
-        </a>
+        </Link>
       </li>
     ))
   }

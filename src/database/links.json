@@ -6,7 +6,7 @@
     "description": "My twitter profile"
   },
   {
-    "icon": "mdi:pencil",
+    "icon": "mdi:at",
     "href": "mailto:marco@solazzi.me",
     "label": "marco@solazzi.me"
   },
@@ -15,6 +15,11 @@
     "href": "https://github.com/dwightjack",
     "label": "dwightjack",
     "description": "My GitHub profile"
+  },
+  {
+    "icon": "mdi:pencil",
+    "href": "/blog",
+    "label": "personal blog"
   },
   {
     "icon": "mdi:test-tube",

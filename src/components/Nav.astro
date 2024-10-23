@@ -1,34 +1,87 @@
 ---
 import routes from '../shared/routes';
 import Stack from './Stack.astro';
+import Cluster from './Cluster.astro';
 import Box from './Box.astro';
+
+export interface Props {
+  layout?: 'offscreen' | 'inline';
+}
+
+const { layout = 'offscreen' } = Astro.props;
+const isOffscreen = layout === 'offscreen';
+const List = isOffscreen ? Stack : Cluster;
 ---
 
 <Box
   as="nav"
-  class="c-nav"
-  indent={4}
-  swatch="brand"
+  class:list={['c-nav', 'c-nav--' + layout]}
+  indent={isOffscreen ? 4 : 0}
+  {...isOffscreen && { swatch: 'brand' }}
   aria-label="Sections Navigation"
 >
-  <Stack as="ul" space={2}>
+  <List as="ul" space={2}>
     {
       routes.map(({ path, label }) => (
         <li class="c-nav__item">
-          <a href={`#${path}`} class="c-nav__route">
-            {label}
-          </a>
+          {/* prettier-ignore */}
+          <a href={path} class="c-nav__route">{label}</a>
         </li>
       ))
     }
-  </Stack>
+  </List>
 </Box>
 <style>
   @layer components {
     .c-nav {
       display: flex;
-      position: absolute;
       align-items: center;
+      font-family: var(--text-heading-font-family);
+    }
+
+    .c-nav__item {
+      margin-inline-start: 0;
+    }
+
+    .c-nav__route {
+      letter-spacing: 0.05em;
+      text-align: end;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .c-nav__route::before {
+      content: '';
+      display: inline-block;
+      inline-size: 0.18em;
+      margin-inline-end: 0;
+      transform: translateX(-0.2em);
+      transition: all 250ms ease-out;
+      border-radius: 1em;
+      opacity: 0;
+      background-color: currentcolor;
+      aspect-ratio: 1;
+
+      @media (prefers-reduced-motion: no-preference) {
+        transform: translateX(-0.6em);
+      }
+    }
+
+    .c-nav__route:hover::before {
+      @media (--pointer-mouse) {
+        transform: translateX(-0.2em);
+        opacity: 1;
+      }
+    }
+
+    .c-nav__route.is-current::before {
+      transform: translateX(-0.2em);
+      transition-delay: 200ms;
+      opacity: 1;
+    }
+
+    .c-nav--offscreen {
+      position: absolute;
       block-size: 100dvh;
       transform: translateX(0);
       inset-block-start: 0;
@@ -38,61 +91,42 @@ import Box from './Box.astro';
       @media (prefers-reduced-motion: no-preference) {
         transition: transform 700ms var(--easing-in-out);
       }
-    }
 
-    .c-nav.is-expanded {
-      transform: translateX(-100%);
-    }
-
-    .c-nav__item {
-      margin-inline-start: 0;
-    }
-
-    .c-nav__route {
-      display: block;
-      padding-block: var(--space-1);
-      padding-inline: calc(var(--space-2) * 1.75);
-      transition: opacity 150ms linear;
-      opacity: 0.8;
-      color: inherit;
-      font-family: var(--text-heading-font-family);
-      font-size: var(--text-body-font-size-x3);
-      letter-spacing: 0.05em;
-      text-align: end;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-
-    .c-nav__route::before {
-      content: '.';
-      display: inline-block;
-      transform: translateX(-0.1em);
-      transition: all 250ms ease-out;
-      opacity: 0;
-
-      @media (prefers-reduced-motion: no-preference) {
-        transform: translateX(-0.4em);
+      &.is-expanded {
+        transform: translateX(-100%);
       }
-    }
 
-    .c-nav__route.is-current {
-      opacity: 1;
+      .c-nav__route {
+        display: block;
+        padding-block: var(--space-1);
+        padding-inline: calc(var(--space-2) * 1.75);
+        transition: opacity 150ms linear;
+        opacity: 0.8;
+        color: inherit;
+        font-size: var(--text-body-font-size-x3);
+      }
 
-      &::before {
-        transform: translateX(-0.1em);
-        transition-delay: 200ms;
+      .c-nav__route.is-current {
         opacity: 1;
       }
-    }
 
-    .c-nav__route:hover {
-      @media (--pointer-mouse) {
-        opacity: 1;
-
-        &::before {
-          transform: translateX(-0.1em);
+      .c-nav__route:hover {
+        @media (--pointer-mouse) {
           opacity: 1;
         }
+      }
+    }
+
+    .c-nav--inline {
+      margin-inline-end: var(--space-1);
+      letter-spacing: 0.05em;
+      text-align: end;
+
+      /* stylelint-disable-next-line no-descending-specificity */
+      .c-nav__route {
+        display: block;
+        color: var(--navigation-color-foreground-secondary);
+        font-size: var(--text-body-font-size);
       }
     }
   }
@@ -104,8 +138,10 @@ import Box from './Box.astro';
 
   menuExpanded.subscribe((expanded) => {
     for (const nav of navList) {
-      nav.classList.toggle('is-expanded', expanded);
-      nav.inert = !expanded;
+      if (nav.classList.contains('c-nav--offscreen')) {
+        nav.classList.toggle('is-expanded', expanded);
+        nav.inert = !expanded;
+      }
     }
   });
 
@@ -116,7 +152,7 @@ import Box from './Box.astro';
         return;
       }
       for (const route of routes) {
-        const isCurrent = route.getAttribute('href') === `#${currentRoute}`;
+        const isCurrent = route.getAttribute('href') === currentRoute;
         if (isCurrent) {
           route.setAttribute('aria-current', 'true');
         } else {

@@ -1,5 +1,6 @@
 @layer utilities {
-  .u-visuallyhidden {
+  .u-visuallyhidden,
+  .u-visibleonfocus:not(:focus) {
     position: absolute !important;
     block-size: 1px !important;
     inline-size: 1px !important;
@@ -11,4 +12,15 @@
     white-space: nowrap !important;
   }
 
+  .u-from-tablet-landscape {
+    @media not screen and (--viewport-tablet-landscape) {
+      display: none;
+    }
+  }
+
+  .u-until-tablet-landscape {
+    @media (--viewport-tablet-landscape) {
+      display: none;
+    }
+  }
 }

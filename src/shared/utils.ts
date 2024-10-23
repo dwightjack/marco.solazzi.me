@@ -64,3 +64,5 @@ export function random(min: number, max: number) {
 export function clamp(num: number, min: number, max: number) {
   return Math.min(Math.max(num, min), max);
 }
+
+export const toIdString = (input: string) => input.replace(/^\W+/, '');

@@ -8,14 +8,14 @@ import Page from '../components/Page.astro';
 ---
 
 <Page id={NAV_PATH_HOME} indent={false} mark="初め">
-  <section class="s-cover">
+  <section class="s-cover" id="cover">
     <div class="s-cover__pic">
       <Avatar />
     </div>
     <div class="s-cover__body">
       <h2 lang="ja" class="s-cover__headline">こんにちは！</h2>
       <article class="s-cover__text">
-        <svg viewBox="0 0 32 21.1" class="s-cover__quote" aria-hidden="false"
+        <svg viewBox="0 0 32 21.1" class="s-cover__quote" aria-hidden="true"
           ><path
             d="M10.6 0v1.7C7.7 3.2 4.7 5.2 4 8.6c-.1 1.3-.5 3.2 1 4 1.3 0 2.6-1 4-.6 2.4.5 4 3.1 3.3 5.4-.7 2.7-3.8 4.1-6.3 3.5A8 8 0 0 1 0 13C-.1 7.8 3.5 3 8.2 1l2.4-1zM30 .1v1.6c-2.4 1.5-5.3 3-6.3 6-.4 1.4-.7 3 0 4.3 1 1.4 2.6-.2 4 0 2.5-.2 4.8 2.3 4.2 4.8-.4 2.9-3.6 4.7-6.3 4.2-3.4-.7-6-4-6-7.4a13.2 13.2 0 0 1 8-12.6L30 0z"
           ></path>
@@ -34,7 +34,7 @@ import Page from '../components/Page.astro';
         <LinkList items={links} />
       </footer>
     </div>
-    <a href={`#${NAV_PATH_JOBS}`} class="s-cover__scrollhint">
+    <a href={NAV_PATH_JOBS} class="s-cover__scrollhint">
       <span>Get to know me</span>
       <span class="s-cover__scrollhint-ico">
         <Icon name="mdi:chevron-double-down" size={1.5} />

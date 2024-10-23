@@ -4,11 +4,11 @@ export default class ScrollIntercept {
   prevYPosition = 0;
   direction = 'up';
 
-  sections: Element[] = [];
+  sections: HTMLElement[] = [];
 
   observer!: IntersectionObserver;
 
-  onUpdate!: (target: Element) => void;
+  onUpdate!: (target: HTMLElement) => void;
 
   onIntersect = (entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry) => {
@@ -23,16 +23,16 @@ export default class ScrollIntercept {
       const target =
         this.direction === 'down' ? this.getTargetSection(entry) : entry.target;
       if (this.shouldUpdate(entry)) {
-        this.onUpdate(target);
+        this.onUpdate(target as HTMLElement);
       }
     });
   };
 
   constructor(
     selector: string,
-    onUpdate: (element: Element) => void = () => {},
+    onUpdate: (element: HTMLElement) => void = () => {},
   ) {
-    this.sections = [...document.querySelectorAll(selector)];
+    this.sections = [...document.querySelectorAll<HTMLElement>(selector)];
     this.onUpdate = onUpdate;
 
     if (this.sections.length === 0) {

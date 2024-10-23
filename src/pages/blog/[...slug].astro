@@ -1,0 +1,78 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Page from '../../components/Page.astro';
+import PageSection from '../../components/PageSection.astro';
+import Prose from '../../components/Prose.astro';
+import { getCollection } from 'astro:content';
+import { NAV_PATH_BLOG } from '../../shared/constants';
+import SkipContent from '../../components/SkipContent.astro';
+import Stack from '../../components/Stack.astro';
+import Footer from '../../sections/Footer.astro';
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+  return blogEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const { title, publishDate, mark, excerpt, isDraft } = entry.data;
+
+const formattedDate = publishDate.toLocaleString('en-US', {
+  dateStyle: 'medium',
+  timeZone: 'UTC',
+});
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description: excerpt,
+  keywords: [],
+  url: new URL(Astro.url.pathname, Astro.site),
+  author: {
+    '@type': 'Person',
+    name: 'Marco Solazzi',
+    url: Astro.site,
+  },
+  inLanguage: 'en-US',
+  datePublished: publishDate.toISOString(),
+};
+---
+
+<Layout title={title} description={excerpt}>
+  <script
+    is:inline
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify(schema)}
+  />
+  <SkipContent slot="header" target="heading" />
+  <Stack space={15}>
+    <Page id={NAV_PATH_BLOG} mark={mark}
+      ><PageSection title="blog.post">
+        <Prose as="section">
+          <header id="heading">
+            <h1>{title}</h1>
+            <p class="small">
+              {isDraft && '(draft) '}Published on <time
+                datetime={publishDate.toISOString()}>{formattedDate}</time
+              > - <a href={NAV_PATH_BLOG}>Blog Archive</a>
+            </p>
+          </header>
+          <Content />
+        </Prose></PageSection
+      >
+    </Page>
+    <Footer />
+  </Stack>
+</Layout>
+<script>
+  import { NAV_PATH_BLOG } from '../../shared/constants';
+  import { currentRoute } from '../../shared/store';
+  currentRoute.set(NAV_PATH_BLOG);
+</script>
