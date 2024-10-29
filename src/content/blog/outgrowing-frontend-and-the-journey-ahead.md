@@ -113,6 +113,9 @@ The emergence of Design Engineering as a role isn't just about finding a new job
 - [I Think I'm a Design Engineer](https://www.trysmudford.com/blog/i-think-im-a-design-engineer/) (July 2023)
 - [Design Engineering at Vercel](https://vercel.com/blog/design-engineering-at-vercel) (October 2023)
 - [The Origins of Design Engineering](https://luhr.co/blog/2024/02/26/the-origins-of-design-engineering/) (February 2024)
+- [Design engineering, a working definition](https://sean.voisen.org/blog/design-engineering-working-definition) (April 2024)
 - [What is Design Engineering? - Matthias Ott at CSS Day 2024 - video](https://www.youtube.com/watch?v=su6WA0kUUJE) (June 2024)
+- [Should you pursue a career in design engineering?](https://adobe.design/stories/leading-design/should-you-pursue-a-career-in-design-engineering) (July 2024)
+- [Prototyping the path to Design Engineering](https://slack.design/articles/prototyping-the-path-to-design-engineering/) (October 2024)
 
 </footer>
