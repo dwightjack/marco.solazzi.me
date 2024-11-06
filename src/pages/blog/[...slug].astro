@@ -56,7 +56,7 @@ const schema = {
     <Page id={NAV_PATH_BLOG} mark={mark}
       ><PageSection title="blog.post">
         <Prose as="section">
-          <header id="heading">
+          <header id="heading" tabindex="-1">
             <h1>{title}</h1>
             <p class="small">
               {isDraft && '(draft) '}Published on <time
