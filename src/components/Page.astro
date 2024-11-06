@@ -15,6 +15,7 @@ const { id, mark, indent = true } = Astro.props;
   class:list={['c-page', { 'c-page--indent': indent }]}
   data-path={id}
   id={toIdString(id)}
+  tabindex="-1"
   space={15}
 >
   <slot />
