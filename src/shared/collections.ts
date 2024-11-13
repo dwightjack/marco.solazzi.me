@@ -123,7 +123,13 @@ export async function getBlogPosts() {
       if (import.meta.env.PUBLIC_PREVIEW === 'true') {
         return true;
       }
-      return import.meta.env.PROD ? entry.data.isDraft !== true : true;
+      if (import.meta.env.PROD) {
+        return (
+          entry.data.isDraft !== true &&
+          entry.data.publishDate.getTime() <= Date.now()
+        );
+      }
+      return true;
     })
     .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
     .map((entry) => {
