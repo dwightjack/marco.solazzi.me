@@ -64,16 +64,8 @@ const { as: Tag = 'div' } = Astro.props;
         font-size: var(--text-heading-font-size);
       }
 
-      em {
-        font-style: italic;
-      }
-
-      :where(:not(h1, h2, h3, h4, h5)) em {
-        font-weight: 700;
-      }
-
-      b {
-        font-weight: 700;
+      :is(blockquote, figure) > * {
+        margin-block-start: 0;
       }
 
       small,
@@ -94,12 +86,6 @@ const { as: Tag = 'div' } = Astro.props;
         }
       }
 
-      blockquote {
-        margin-inline-start: 0;
-        padding-inline-start: var(--space-3);
-        border-inline-start: 8px solid var(--box-color-border);
-      }
-
       pre {
         padding: var(--space-2);
         font-size: 0.95em;
@@ -116,7 +102,22 @@ const { as: Tag = 'div' } = Astro.props;
       }
 
       figcaption {
+        padding-block-start: var(--space-1);
+        font-size: 0.9em;
         font-style: italic;
+
+        blockquote + & {
+          margin-inline: var(--space-4);
+        }
+      }
+
+      blockquote,
+      figure.pullquote {
+        margin-inline: var(--space-4);
+        padding-block: var(--space-2);
+        padding-inline-start: var(--space-3);
+        font-size: 1.15em;
+        border-inline-start: 8px solid var(--box-color-border);
       }
 
       img {
@@ -146,6 +147,23 @@ const { as: Tag = 'div' } = Astro.props;
 
       hr {
         border: 1px solid color-mix(in oklch, currentcolor, transparent 80%);
+      }
+
+      em {
+        font-style: italic;
+      }
+
+      :where(:not(h1, h2, h3, h4, h5)) em {
+        font-weight: 700;
+      }
+
+      b {
+        font-weight: 700;
+      }
+
+      dfn {
+        font-style: italic;
+        font-weight: 700;
       }
 
       & > header {
