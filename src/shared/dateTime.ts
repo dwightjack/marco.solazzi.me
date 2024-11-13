@@ -7,7 +7,17 @@ export function toDate(dateStr: string) {
   return new Date(dateStr);
 }
 
-export function toMonthYear(dateStr: string | Date) {
+export function toFormattedDate(dateStr: string | Date, withDay = false) {
+  if (typeof dateStr === 'string') {
+    dateStr = toDate(dateStr);
+  }
+  return dateStr.toLocaleDateString('en', {
+    month: 'long',
+    year: 'numeric',
+    day: withDay ? 'numeric' : undefined,
+  });
+}
+export function toMonthDayYear(dateStr: string | Date) {
   if (typeof dateStr === 'string') {
     dateStr = toDate(dateStr);
   }

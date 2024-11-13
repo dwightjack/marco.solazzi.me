@@ -7,9 +7,17 @@ export interface Props {
   title?: string;
   href?: string;
   data: Record<string, unknown>;
+  dateFormat?: 'short' | 'long';
 }
 
-const { id, titleLabel, href, title = '', data = {} } = Astro.props;
+const {
+  id,
+  titleLabel,
+  href,
+  title = '',
+  dateFormat = 'short',
+  data = {},
+} = Astro.props;
 ---
 
 <article class="c-card">
@@ -35,7 +43,7 @@ const { id, titleLabel, href, title = '', data = {} } = Astro.props;
               <dt>.{heading}:</dt>
               <dd>
                 {value instanceof Date ? (
-                  <DateTime datetime={value} />
+                  <DateTime datetime={value} dateFormat={dateFormat} />
                 ) : (
                   <Fragment set:html={value} />
                 )}
