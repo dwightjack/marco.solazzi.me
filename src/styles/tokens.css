@@ -21,6 +21,7 @@
     --color-darker: oklch(34.11% 0 0deg);
     --color-dark: oklch(41.84% 0 0deg);
     --color-light-900: oklch(92.34% 0 0deg);
+    --color-light-950: oklch(95.81% 0 0deg);
     --color-light: oklch(100% 0 0deg);
     --color-brand-hue: var(--color-hue-red);
     --color-brand-250: oklch(34.24% 0.103 var(--color-brand-hue));
@@ -83,6 +84,14 @@
     --text-body-font-size-x2: var(--font-size-200);
     --text-body-font-size-x3: var(--font-size-300);
     --text-footer-font-size: var(--font-size-80);
+
+    /* Surface */
+    --surface-color-background: linear-gradient(
+      to bottom left,
+      var(--box-color-background) 20%,
+      var(--color-light-950)
+    );
+    --surface-color-foreground: var(--color-dark);
 
     /* Box */
     --box-color-foreground: var(--color-dark);
