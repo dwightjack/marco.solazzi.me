@@ -18,7 +18,8 @@
     --color-hue-green: 166deg;
     --color-hue-blue: 240deg;
     --color-hue-purple: 348deg;
-    --color-darker: oklch(34.11% 0 0deg);
+    --color-dark-300: oklch(34.11% 0 0deg);
+    --color-dark-350: oklch(39.11% 0 0deg);
     --color-dark: oklch(41.84% 0 0deg);
     --color-light-900: oklch(92.34% 0 0deg);
     --color-light-950: oklch(95.81% 0 0deg);
@@ -88,7 +89,7 @@
     /* Surface */
     --surface-color-background: linear-gradient(
       to bottom left,
-      var(--box-color-background) 20%,
+      var(--color-light) 20%,
       var(--color-light-950)
     );
     --surface-color-foreground: var(--color-dark);
@@ -111,8 +112,14 @@
     );
 
     @media (--theme-dark) {
+      --surface-color-background: linear-gradient(
+        to bottom left,
+        var(--color-dark-300) 20%,
+        var(--color-dark-350)
+      );
+      --surface-color-foreground: var(--color-light-900);
       --box-color-foreground: var(--color-light-900);
-      --box-color-background: var(--color-darker);
+      --box-color-background: var(--color-dark-300);
       --box-color-background-secondary: var(--color-brand-500);
       --box-color-border: color-mix(
         in oklch,
