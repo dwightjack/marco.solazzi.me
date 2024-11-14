@@ -18,8 +18,8 @@
     --color-hue-green: 166deg;
     --color-hue-blue: 240deg;
     --color-hue-purple: 348deg;
-    --color-dark-300: oklch(34.11% 0 0deg);
-    --color-dark-350: oklch(39.11% 0 0deg);
+    --color-dark-250: oklch(27.11% 0 0deg);
+    --color-dark-300: oklch(32.11% 0 0deg);
     --color-dark: oklch(41.84% 0 0deg);
     --color-light-900: oklch(92.34% 0 0deg);
     --color-light-950: oklch(95.81% 0 0deg);
@@ -62,7 +62,7 @@
     --space-2: 1rem;
     --space-3: 1.5rem;
     --space-4: 2rem;
-    --space-page-gutter-inline: clamp(3rem, 5.46875vw + 1rem, 6.375rem);
+    --space-page-gutter-inline: clamp(2rem, 1.375rem + 3.125vw, 6.375rem);
 
     /* Size */
     --size-unit: 0.5rem;
@@ -115,7 +115,7 @@
       --surface-color-background: linear-gradient(
         to bottom left,
         var(--color-dark-300) 20%,
-        var(--color-dark-350)
+        var(--color-dark-250)
       );
       --surface-color-foreground: var(--color-light-900);
       --box-color-foreground: var(--color-light-900);
