@@ -5,8 +5,6 @@ isDraft: true
 excerpt: ""
 ---
 
-not-everything-needs-a-component
-
 In the early 2000s, a new term, [*Divitis*](https://en.wiktionary.org/wiki/divitis), was coined to refer to <q>The practice of authoring web-page code with many div elements in place of meaningful semantic HTML elements</q>. This was part of an effort to increase awareness of semantics in HTML within the frame of the [Progressive Enhancement](https://alistapart.com/article/testdriven/) technique.
 
 Fast forward 20 years: I witness a new *syndrome* affecting web developers: *componentitis*. Here is my made-up definition:
@@ -28,7 +26,9 @@ So, first of all, what is a *component*? I think React popularized the term to r
 <figcaption>React documentation - <cite><a href="https://react.dev/learn/your-first-component#:~:text=React%20lets%20you%20combine%20your%20markup%2C%20CSS%2C%20and%20JavaScript%20into%20custom%20%E2%80%9Ccomponents%E2%80%9D%2C%20reusable%20UI%20elements%20for%20your%20app">Your First Component</a></cite></figcaption>
 </figure>
 
-While the concept of reusable UI elements wasn’t new at the time (in CSS, we already had techniques like [OOCSS](https://www.smashingmagazine.com/2011/12/an-introduction-to-object-oriented-css-oocss/), [SMACSS](https://smacss.com/), and [BEM](https://en.bem.info/methodology/quick-start/)), the key difference is its original approach to the separation of markup, style, and interaction. With React components (and all the subsequent UI libraries), it’s possible to [co-locate](https://kentcdodds.com/blog/colocation) everything in a single file within the boundaries of a component. So, using Facebook’s latest CSS library [Stylex](https://stylexjs.com/), you could write:
+While the concept of reusable UI elements wasn’t new at the time (in CSS, we already had techniques like [OOCSS](https://www.smashingmagazine.com/2011/12/an-introduction-to-object-oriented-css-oocss/), [SMACSS](https://smacss.com/), and [BEM](https://en.bem.info/methodology/quick-start/)), the key difference is its original approach to the location of markup, style, and interaction. With React components (and all the subsequent UI libraries), it’s possible to [co-locate](https://kentcdodds.com/blog/colocation) everything in a single file within the boundaries of a component. 
+
+So, using Facebook’s latest CSS library [Stylex](https://stylexjs.com/), you could write:
 
 ```tsx
 import * as stylex from "@stylexjs/stylex";
@@ -58,9 +58,9 @@ export function Toggle() {
 
 ```
 
-You can be a fan or not of writing CSS in object notation (I’m not), but this level of co-location is often a good idea to make a component-based project more maintainable. 
+You can be a fan or not of writing CSS in object notation (I’m not), but this level of co-location is often a good way to make a component-based project more maintainable: everything is within reach and explicitly bound
 
-In libraries like Svelte, the co-location is even more explicit (and the code more concise):
+In libraries like Svelte, the co-location is even more clear (and the code more concise):
 
 ```html
 <script>
@@ -104,7 +104,7 @@ export function Page() {
 
 The above code looks clean and consistent: we use the component interface to describe a page.
 
-But then, let’s look at the possible implementation of `Stack`:
+But then, let’s look at the possible implementation of `Stack`. This component is usually a wrapper to ensure all direct child elements are vertically stacked and evenly spaced: 
 
 ```tsx
 import * as stylex from "@stylexjs/stylex";
@@ -181,11 +181,9 @@ In my opinion, this isn't very readable at first glance. And remember: we are ju
 
 ## Back to the basics
 
-A while back, I was working on an Angular pet project. Being used to thinking of everything in components, I reached out to them to create a wrapper to ensure all direct child elements are vertically stacked and evenly spaced. This kind of wrapper is often defined as `Stack`. 
+A while back, I was working on a pet project in Angular. Being used to thinking of everything in components, I reached out to them to create a `Stack`. It turns out that in Angular polymorphic components are [even more complex to create](https://www.angularspace.com/bringing-polymorphic-functional-components-to-angular-with-signal-inputs-2/). 
 
-It turns out that in Angular polymorphic components are [even more complex to create](https://www.angularspace.com/bringing-polymorphic-functional-components-to-angular-with-signal-inputs-2/). 
-
-This was an epiphany: why spend time and lines of code on complex implementations when the solution was always right in front of me?
+I started to question my implementation design and then I had an epiphany: why spend time and lines of code on complex implementations when the solution had been right in front of me all along?
 
 ```tsx
 <div class="c-stack"> 
@@ -262,7 +260,7 @@ Scoping, in this case, refers to techniques to prevent conflicts with other styl
 
 1. Use something as simple as [CSS Modules](https://github.com/css-modules/css-modules), which is well supported in all major bundlers and frontend frameworks.
 2. Use [cascade layers resets](https://knowler.dev/blog/so-you-want-to-encapsulate-your-styles#using-cascade-layers-to-isolate-our-styles) to prevent external stylesheets from modifying your styles (this is an interesting technique).
-3. Define a namespace like `.my-app-...` for your classes.
+3. Define a specific namespace like `.my-app-...` for your classes.
 
 Here is the result with CSS Modules:
 
@@ -329,7 +327,7 @@ This gives you a developer experience similar to [PandaCSS patterns](https://pan
 
 ### Prevent code duplication and hardcoded values
 
-Some of you might have noticed that, in the last example, I hardcoded the expected values of `spacing`. If one value is removed or added, this might be an issue because we must keep the two files in sync. 
+Some of you might have noticed that, in the last example, I hardcoded the expected values of `spacing` in both the CSS and the utility files. If one value is removed or added, this might be an issue because we must keep the two files in sync. 
 
 If you’re building a library, automated visual regression tests will probably catch this kind of issue. Anyway, if it still bothers you, a solution might be to reach for CSS Modules and either use [typed-css-modules](https://blog.logrocket.com/write-type-safe-css-modules/) or throw a runtime error for unsupported values:
 
@@ -361,7 +359,7 @@ const modifier = styles['s:' + spacing]
 
 ## Alternatives
 
-If you still think a polymorphic component would be better, really cannot deal with plain HTML, or don’t want to write CSS in a separate file (even if I am not sure why), my next suggestion would be to use [PandaCSS](https://panda-css.com/) and create custom patterns or try other alternatives like [vanilla-extract](https://vanilla-extract.style/). In my opinion, they are still an over-engineered CSS metalanguage.
+If you still think a polymorphic component would be better, really can't deal with plain HTML, or don’t want to write CSS in a separate file (though I am not sure why), my next suggestion would be to take a look at [PandaCSS](https://panda-css.com/) and create custom patterns or explore other options like [vanilla-extract](https://vanilla-extract.style/). In my opinion, these tools are an over-engineered CSS metalanguage but still better than a polymorphic component.
 
 Another alternative worth considering is [Tailwind CSS](https://tailwindcss.com/), which has the advantage of being interoperable between languages and frameworks.
 
@@ -404,4 +402,4 @@ As a side note: it's interesting that Tailwind uses the component mental model i
 
 ## Takeaways
 
-The case of Componentitis, beyond its technical aspects, demonstrates the importance of pausing to examine and question our mental models and habits. Like many patterns in software development, components emerged as solutions to real problems, but when we began defaulting to this pattern, it became an invisible source of complexity. *Componentitis* resembles those nutritional deficiencies caused by a restricted diet: the problem isn't with any single food but rather with missing out on everything else.
+The case of *Componentitis*, beyond its technical aspects, demonstrates the importance of pausing to examine and question our mental models and habits. Like many patterns in software development, components emerged as solutions to real problems, but when we began defaulting to this pattern, it became a silent source of complexity. *Componentitis* resembles those nutritional deficiencies caused by a restricted diet: the problem isn't with any single food but rather with missing out on everything else.
