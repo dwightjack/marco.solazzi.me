@@ -14,6 +14,12 @@ const { as: Tag = 'div' } = Astro.props;
 <style is:global>
   @layer components {
     .c-prose {
+      --prose-pullquote-space-gutter-inline: 0;
+
+      @media (--viewport-tablet) {
+        --prose-pullquote-space-gutter-inline: var(--space-4);
+      }
+
       max-inline-size: 80ch;
       font-size: var(--text-body-font-size-x2);
 
@@ -88,14 +94,19 @@ const { as: Tag = 'div' } = Astro.props;
 
       pre {
         padding: var(--space-2);
-        font-size: 0.95em;
+        font-size: 0.8em;
+        white-space: pre-wrap;
         tab-size: 2;
+
+        @media (--viewport-tablet) {
+          font-size: 0.9em;
+        }
       }
 
       :not(pre) > code {
         padding: 0.2em;
         background-color: color-mix(in oklch, currentcolor, transparent 92%);
-        font-size: 0.95em;
+        font-size: 0.9em;
       }
 
       figure {
@@ -108,17 +119,20 @@ const { as: Tag = 'div' } = Astro.props;
         font-style: italic;
 
         blockquote + & {
-          margin-inline: var(--space-4);
+          margin-inline: var(--prose-pullquote-space-gutter-inline);
         }
       }
 
       blockquote,
       figure.pullquote {
-        margin-inline: var(--space-4);
+        margin-inline: var(--prose-pullquote-space-gutter-inline);
         padding-block: var(--space-2);
         padding-inline-start: var(--space-3);
-        font-size: 1.15em;
         border-inline-start: 8px solid var(--box-color-border);
+
+        @media (--viewport-tablet) {
+          font-size: 1.15em;
+        }
       }
 
       img {
@@ -183,7 +197,10 @@ const { as: Tag = 'div' } = Astro.props;
       }
 
       .astro-code {
-        border-inline-start: 8px solid var(--box-color-border);
+        @media not (prefers-color-scheme: dark) {
+          box-shadow: 0 0 5px 1px
+            color-mix(in oklch, currentcolor, transparent 95%);
+        }
       }
 
       @media (prefers-color-scheme: dark) {

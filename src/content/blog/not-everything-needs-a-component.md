@@ -1,8 +1,7 @@
 ---
 title: Not Everything Needs a Component
-publishDate: 2024-11-14
-isDraft: true
-excerpt: ""
+publishDate: 2024-11-20
+excerpt: "Components are a powerful abstraction but sometimes they might become a constraint"
 ---
 
 In the early 2000s, a new term, [*Divitis*](https://en.wiktionary.org/wiki/divitis), was coined to refer to <q>The practice of authoring web-page code with many div elements in place of meaningful semantic HTML elements</q>. This was part of an effort to increase awareness of semantics in HTML within the frame of the [Progressive Enhancement](https://alistapart.com/article/testdriven/) technique.
