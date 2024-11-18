@@ -4,9 +4,9 @@ publishDate: 2024-11-20
 excerpt: "Components are a powerful abstraction but sometimes they might become a constraint"
 ---
 
-In the early 2000s, a new term, [*Divitis*](https://en.wiktionary.org/wiki/divitis), was coined to refer to <q>The practice of authoring web-page code with many div elements in place of meaningful semantic HTML elements</q>. This was part of an effort to increase awareness of semantics in HTML within the frame of the [Progressive Enhancement](https://alistapart.com/article/testdriven/) technique.
+In the early 2000s, a new term, [*Divitis*](https://en.wiktionary.org/wiki/divitis), was coined to refer to <q cite="https://en.wiktionary.org/wiki/divitis">The practice of authoring web-page code with many div elements in place of meaningful semantic HTML elements</q>. This was part of an effort to increase awareness of semantics in HTML within the frame of the [Progressive Enhancement](https://alistapart.com/article/testdriven/) technique.
 
-Fast forward 20 years: I witness a new *syndrome* affecting web developers: *componentitis*. Here is my made-up definition:
+Fast forward 20 years - I witness a new *syndrome* affecting web developers, one I call *componentitis*. Here is my made-up definition:
 
 <figure class="pullquote">
 
@@ -57,7 +57,7 @@ export function Toggle() {
 
 ```
 
-You can be a fan or not of writing CSS in object notation (I’m not), but this level of co-location is often a good way to make a component-based project more maintainable: everything is within reach and explicitly bound
+You can be a fan or not of writing CSS in object notation (I’m not), but this level of co-location is often a good way to make a component-based project more maintainable: everything is within reach and explicitly bound.
 
 In libraries like Svelte, the co-location is even more clear (and the code more concise):
 
@@ -84,18 +84,19 @@ Over time, this pattern has gained so much traction to the point that everything
 
 ```tsx
 export function Page() {
-
-	return (<Layout>
-		<Header nav={<Nav />} />
+	return (
+		<Layout>
+			<Header nav={<Nav />} />
 			<Body>
 				<Stack spacing={2}>
-				  <Item>Item 1</Item>
-				  <Item>Item 2</Item>
-				  <Item>Item 3</Item>
-				</Stack>	
+					<Item>Item 1</Item>
+					<Item>Item 2</Item>
+					<Item>Item 3</Item>
+				</Stack>
 			</Body>
 			<Footer />
-		</Layout>);
+		</Layout>
+	);
 }
 ```
 
@@ -180,7 +181,7 @@ In my opinion, this isn't very readable at first glance. And remember: we are ju
 
 ## Back to the basics
 
-A while back, I was working on a pet project in Angular. Being used to thinking of everything in components, I reached out to them to create a `Stack`. It turns out that in Angular polymorphic components are [even more complex to create](https://www.angularspace.com/bringing-polymorphic-functional-components-to-angular-with-signal-inputs-2/). 
+A while back, I was working on a pet project in Angular. Being used to thinking in components, I reached out to them to create a `Stack`. It turns out that in Angular polymorphic components are [even more complex to create](https://www.angularspace.com/bringing-polymorphic-functional-components-to-angular-with-signal-inputs-2/). 
 
 I started to question my implementation design and then I had an epiphany: why spend time and lines of code on complex implementations when the solution had been right in front of me all along?
 
@@ -202,18 +203,19 @@ Really, that’s the barebone *native* implementation of the `Stack` . Once you 
 
 ```tsx
 export function Page() {
-
-	return (<Layout>
-		<Header nav={<Nav />} />
+	return (
+		<Layout>
+			<Header nav={<Nav />} />
 			<Body>
 				<div className="c-stack" style="--s: 2">
-				  <Item>Item 1</Item>
-				  <Item>Item 2</Item>
-				  <Item>Item 3</Item>
-				</div>	
+					<Item>Item 1</Item>
+					<Item>Item 2</Item>
+					<Item>Item 3</Item>
+				</div>
 			</Body>
 			<Footer />
-		</Layout>);
+		</Layout>
+	);
 }
 ```
 
@@ -228,7 +230,7 @@ The last point is easy to overlook: Not every project uses React, and if you’r
 
 ## Nice features and improvements
 
-From this base, you can iterate to add more features and improve the developer experience. Here are some examples.
+From this base, you can iterate to add more features and improve the developer experience. While some of the following examples target React specifically, they can be easily adapted to other frameworks.
 
 ### Reduce verbosity
 
@@ -289,10 +291,10 @@ import * from './styles/stack.module.css'
 
 The CSS-only solution provides neither typing nor IDE auto-completion. 
 
-Also, if we are not using spacing modifiers, it might feel too verbose to write both a `class` and a `style` attribute instead of a `spacing` prop. In this case, you could leverage JSX and create a utility function:
+Also, if we are not using spacing modifiers, it might feel too verbose to write both a `class` and a `style` attribute instead of a `spacing` prop. Assuming you're using React, you could leverage JSX and create a utility function:
 
 ```tsx
-function stack({ spacing? }: { spacing: number }) {
+function stack({ spacing }: { spacing: number }) {
 	return { 
 		className: 'c-stack', 
 		style: { '--s': spacing } as React.CSSProperties 
@@ -326,7 +328,7 @@ This gives you a developer experience similar to [PandaCSS patterns](https://pan
 
 ### Prevent code duplication and hardcoded values
 
-Some of you might have noticed that, in the last example, I hardcoded the expected values of `spacing` in both the CSS and the utility files. If one value is removed or added, this might be an issue because we must keep the two files in sync. 
+Some of you might have noticed that, in the last example, I hardcoded the expected values of `spacing` in both the CSS and the utility files. If a value is removed or added, this might be an issue because we must keep the two files in sync. 
 
 If you’re building a library, automated visual regression tests will probably catch this kind of issue. Anyway, if it still bothers you, a solution might be to reach for CSS Modules and either use [typed-css-modules](https://blog.logrocket.com/write-type-safe-css-modules/) or throw a runtime error for unsupported values:
 
@@ -350,17 +352,19 @@ import styles from './stack.module.css';
 export function stack({ spacing }: { spacing: number} = {}) {
 const modifier = styles['s:' + spacing]
   if (!modifier) {
-    throw new Error('Spacing not supported ' + spacing)
+    throw new Error('Spacing value not supported: ' + spacing)
   }
   return `${styles.stack} ${modifier}`
 } 
 ```
 
+
+
 ## Alternatives
 
 If you still think a polymorphic component would be better, really can't deal with plain HTML, or don’t want to write CSS in a separate file (though I am not sure why), my next suggestion would be to take a look at [PandaCSS](https://panda-css.com/) and create custom patterns or explore other options like [vanilla-extract](https://vanilla-extract.style/). In my opinion, these tools are an over-engineered CSS metalanguage but still better than a polymorphic component.
 
-Another alternative worth considering is [Tailwind CSS](https://tailwindcss.com/), which has the advantage of being interoperable between languages and frameworks.
+Another alternative worth considering is [Tailwind CSS](https://tailwindcss.com/), which has **the advantage of being interoperable between languages and frameworks**.
 
 Using the default [spacing scale](https://tailwindcss.com/docs/customizing-spacing#default-spacing-scale) defined by Tailwind, we could create a `stack-` plugin like this:
 
