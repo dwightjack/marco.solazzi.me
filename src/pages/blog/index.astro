@@ -19,7 +19,11 @@ const posts = await getBlogPosts();
     <Page id={NAV_PATH_BLOG} mark="記事"
       ><PageSection title="blog">
         <Stack space={5}>
-          {posts.map(({ details }) => <Card titleLabel="title" {...details} />)}
+          {
+            posts.map(({ details }) => (
+              <Card titleLabel="title" {...details} dateFormat="long" />
+            ))
+          }
         </Stack>
       </PageSection>
     </Page>

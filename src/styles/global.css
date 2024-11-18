@@ -24,13 +24,26 @@
     min-inline-size: 320px;
     margin: 0;
     padding: 0;
-    background: var(--box-color-background);
-    color: var(--box-color-foreground);
+    background-color: transparent;
+    color: var(--surface-color-foreground);
     font-family: var(--text-body-font-family);
     font-size: var(--text-body-font-size);
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     line-height: 1.75;
+
+    @media (--theme-dark) {
+      font-weight: 500;
+    }
+
+    &::before {
+      content: '';
+      position: fixed;
+      z-index: -1;
+      block-size: 100vh;
+      inline-size: 100vw;
+      background: var(--surface-color-background);
+    }
   }
 
   ::selection {

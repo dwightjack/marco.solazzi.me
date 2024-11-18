@@ -10,7 +10,7 @@ export default defineConfig({
   markdown: {
     shikiConfig: {
       themes: {
-        light: 'rose-pine-dawn',
+        light: 'github-light',
         dark: 'github-dark',
       },
     },

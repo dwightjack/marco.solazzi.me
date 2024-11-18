@@ -106,10 +106,14 @@ import Page from '../components/Page.astro';
       position: absolute;
       block-size: 1em;
       fill: var(--box-color-border);
-      font-size: 1em;
+      font-size: 0.8em;
       aspect-ratio: 32 / 21;
       inset-block-start: -0.1em;
       inset-inline-end: calc(100% + 0.4em);
+
+      @media (--viewport-tablet) {
+        font-size: 1em;
+      }
     }
 
     .s-cover__text > * + * {

@@ -20,7 +20,7 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 
-const { title, publishDate, mark, excerpt, isDraft } = entry.data;
+const { title, publishDate, excerpt, isDraft } = entry.data;
 
 const formattedDate = publishDate.toLocaleString('en-US', {
   dateStyle: 'medium',
@@ -53,7 +53,7 @@ const schema = {
   />
   <SkipContent slot="header" target="heading" />
   <Stack space={15}>
-    <Page id={NAV_PATH_BLOG} mark={mark}
+    <Page id={NAV_PATH_BLOG}
       ><PageSection title="blog.post">
         <Prose as="section">
           <header id="heading" tabindex="-1">
