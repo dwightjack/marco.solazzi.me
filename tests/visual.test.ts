@@ -23,6 +23,14 @@ test.describe('homepage', () => {
   });
 });
 
+test.describe('404', () => {
+  test('index page', async ({ page }) => {
+    await page.goto('/not-fnd', { waitUntil: 'networkidle' });
+    await page.evaluate(() => localStorage.clear());
+    await percySnapshot(page, '404');
+  });
+});
+
 test.describe('blog', () => {
   test('index page', async ({ page }) => {
     await page.goto('/blog', { waitUntil: 'networkidle' });

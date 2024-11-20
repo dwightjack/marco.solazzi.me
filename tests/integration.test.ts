@@ -68,3 +68,23 @@ test.describe('blog', () => {
     await expect(page.getByRole('heading', { level: 1 })).toHaveText('Demo');
   });
 });
+
+test.describe('404', () => {
+  test('navigate a 404 page', async ({ page }) => {
+    const response = await page.goto('/not-fnd');
+    await page.evaluate(() => localStorage.clear());
+    expect(response?.status()).toBe(404);
+    await expect(
+      page.getByRole('heading', { name: /Not Found/ }),
+    ).toBeVisible();
+    await expect(page.getByText('front page')).toHaveAttribute('href', '/');
+  });
+
+  test('navigate to blog entry', async ({ page }) => {
+    await page.goto('/blog');
+    await page.evaluate(() => localStorage.clear());
+    await page.getByText('Demo').click();
+    await page.waitForURL(/\/demo/, { waitUntil: 'networkidle' });
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Demo');
+  });
+});
