@@ -4,7 +4,6 @@ import PageSection from '../components/PageSection.astro';
 import { NAV_PATH_SKILLS } from '../shared/constants';
 import InlineList from '../components/InlineList.astro';
 import DataGroup from '../components/DataGroup.astro';
-import Grid from '../components/Grid.astro';
 import { getSkills } from '../shared/collections';
 
 const skills = await getSkills();
@@ -12,7 +11,7 @@ const skills = await getSkills();
 
 <Page id={NAV_PATH_SKILLS} mark="技能">
   <PageSection title="skills.tech">
-    <Grid space={[3.5, 7.5]} columnsWidth={23} columnsMax={2}>
+    <div class="s-skills">
       {
         skills.map(({ label, icon, data: skills }) => (
           <DataGroup label={label} icon={icon}>
@@ -20,6 +19,28 @@ const skills = await getSkills();
           </DataGroup>
         ))
       }
-    </Grid>
+    </div>
   </PageSection>
 </Page>
+<style>
+  @layer layout {
+    .s-skills {
+      --max-columns: 2;
+      --max-column-width: 23rem;
+      --column-gap: calc(3 * var(--space-unit));
+      --row-gap: calc(7 * var(--space-unit));
+
+      display: grid;
+      grid-template-columns: repeat(
+        auto-fill,
+        minmax(min(100%, var(--max-column-width)), 1fr)
+      );
+      min-inline-size: 0;
+      max-inline-size: calc(
+        var(--max-column-width) * var(--max-columns) + var(--column-gap)
+      );
+      column-gap: var(--column-gap);
+      row-gap: var(--row-gap);
+    }
+  }
+</style>

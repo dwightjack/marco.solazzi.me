@@ -31,7 +31,9 @@ import SkipContent from '../components/SkipContent.astro';
   });
 </script>
 <style>
-  .l-pages.l-pages {
-    padding-block-start: calc(var(--space-2) * 6.25);
+  @layer layout {
+    .l-pages {
+      padding-block-start: calc(var(--space-2) * 6.25);
+    }
   }
 </style>

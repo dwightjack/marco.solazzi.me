@@ -10,24 +10,21 @@ const { id, mark, indent = true } = Astro.props;
 ---
 
 <div
-  class:list={[
-    'p-stack',
-    'p-stack--away',
-    'c-page',
-    { 'c-page--indent': indent },
-  ]}
   data-path={id}
   id={toIdString(id)}
   tabindex="-1"
+  class:list={['c-page', { 'c-page--indent': indent }]}
 >
-  <slot />
-  {
-    mark && (
-      <span class="c-page__mark" aria-hidden="true">
-        {mark}
-      </span>
-    )
-  }
+  <div class="p-stack p-stack--away">
+    <slot />
+    {
+      mark && (
+        <span class="c-page__mark" aria-hidden="true">
+          {mark}
+        </span>
+      )
+    }
+  </div>
 </div>
 <style>
   @layer components {

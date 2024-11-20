@@ -60,9 +60,7 @@
     --space-half: 0.25rem;
     --space-1: 0.5rem;
     --space-2: 1rem;
-    --space-3: 1.5rem;
     --space-4: 2rem;
-    --space-5: 2.5rem;
     --space-page-gutter-inline: clamp(2rem, 1.375rem + 3.125vw, 6.375rem);
 
     /* Size */
