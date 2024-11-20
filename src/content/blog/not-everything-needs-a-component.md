@@ -54,7 +54,6 @@ export function Toggle() {
 		</button>
 	);
 }
-
 ```
 
 You can be a fan or not of writing CSS in object notation (I’m not), but this level of co-location is often a good way to make a component-based project more maintainable: everything is within reach and explicitly bound.
@@ -185,7 +184,7 @@ A while back, I was working on a pet project in Angular. Being used to thinking 
 
 I started to question my implementation design and then I had an epiphany: why spend time and lines of code on complex implementations when the solution had been right in front of me all along?
 
-```tsx
+```html
 <div class="c-stack"> 
 </div>
 ```
@@ -265,7 +264,7 @@ Scoping, in this case, refers to techniques to prevent conflicts with other styl
 
 Here is the result with CSS Modules:
 
-```css
+```scss
 .stack {
   --s: 0;
   display: flex;
@@ -293,7 +292,7 @@ The CSS-only solution provides neither typing nor IDE auto-completion.
 
 Also, if we are not using spacing modifiers, it might feel too verbose to write both a `class` and a `style` attribute instead of a `spacing` prop. Assuming you're using React, you could leverage JSX and create a utility function:
 
-```tsx
+```ts
 function stack({ spacing }: { spacing: number }) {
 	return { 
 		className: 'c-stack', 
@@ -312,7 +311,7 @@ Note that React TypeScript doesn’t allow unknown CSS properties. I used a type
 
 If you’re using modifiers and still want type safety and/or auto-completion, you can modify the utility function:
 
-```tsx
+```ts
 export function stack({ spacing }: { spacing: 0 | 1 | 2 | 4 | 6 }) {
   return `c-stack s:${spacing}`
 }
@@ -332,7 +331,7 @@ Some of you might have noticed that, in the last example, I hardcoded the expect
 
 If you’re building a library, automated visual regression tests will probably catch this kind of issue. Anyway, if it still bothers you, a solution might be to reach for CSS Modules and either use [typed-css-modules](https://blog.logrocket.com/write-type-safe-css-modules/) or throw a runtime error for unsupported values:
 
-```css
+```scss
 .stack {
   --s: 0;
   display: flex;
@@ -346,7 +345,7 @@ If you’re building a library, automated visual regression tests will probably 
 }
 ```
 
-```tsx
+```ts
 import styles from './stack.module.css';
 
 export function stack({ spacing }: { spacing: number} = {}) {
@@ -368,7 +367,7 @@ Another alternative worth considering is [Tailwind CSS](https://tailwindcss.com/
 
 Using the default [spacing scale](https://tailwindcss.com/docs/customizing-spacing#default-spacing-scale) defined by Tailwind, we could create a `stack-` plugin like this:
 
-```jsx
+```js
 import plugin from 'tailwindcss/plugin'
 
 /** @type {import('tailwindcss').Config} */
