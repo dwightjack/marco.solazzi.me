@@ -1,0 +1,13 @@
+.p-marked {
+  display: inline-block;
+  margin-inline-end: 0.05em;
+  padding-inline: 0.3125em;
+  background: linear-gradient(
+      var(--box-color-background-secondary),
+      var(--box-color-background-secondary)
+    )
+    no-repeat 0 bottom;
+  background-size: 100% 90%;
+  color: var(--box-color-foreground-secondary);
+  font-weight: inherit;
+}
