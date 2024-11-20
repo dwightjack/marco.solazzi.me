@@ -1,0 +1,71 @@
+@layer patterns {
+  .p-cluster {
+    --s: 0;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin-block: unset;
+    margin-inline: unset;
+    padding-block: unset;
+    padding-inline: unset;
+    gap: calc(var(--s) * var(--space-unit));
+
+    &:is(ul, ol) {
+      list-style-type: none;
+    }
+
+    & > * {
+      margin-block: 0;
+      margin-inline: 0;
+    }
+  }
+
+  .p-stack {
+    --s: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: calc(var(--s) * var(--space-unit));
+    margin-block: unset;
+    margin-inline: unset;
+    padding-block: unset;
+    padding-inline: unset;
+
+    &.p-stack--next {
+      --s: 1;
+    }
+
+    &.p-stack--near {
+      --s: 5;
+    }
+
+    &.p-stack--away {
+      --s: 15;
+    }
+
+    & > * {
+      margin-block: 0;
+    }
+
+    &:is(ul, ol) {
+      padding-inline-start: 0;
+      list-style-type: none;
+    }
+  }
+
+  .p-marked {
+    display: inline-block;
+    margin-inline-end: 0.05em;
+    padding-inline: 0.3125em;
+    background: linear-gradient(
+        var(--box-color-background-secondary),
+        var(--box-color-background-secondary)
+      )
+      no-repeat 0 bottom;
+    background-size: 100% 90%;
+    color: var(--box-color-foreground-secondary);
+    font-weight: inherit;
+  }
+}

@@ -7,20 +7,19 @@ import Skills from '../sections/Skills.astro';
 import Works from '../sections/Works.astro';
 import Talks from '../sections/Talks.astro';
 import Footer from '../sections/Footer.astro';
-import Stack from '../components/Stack.astro';
 import SkipContent from '../components/SkipContent.astro';
 ---
 
-<Layout withCover>
+<Layout layout="cover">
   <SkipContent slot="header" target="home" />
   <Fragment slot="cover">
     <h1 class="u-visuallyhidden">Marco Solazzi's Online Portfolio</h1>
     <Cover />
   </Fragment>
 
-  <Stack space={15} class="l-pages">
+  <div class="p-stack p-stack--away l-pages">
     <Jobs /><Education /><Skills /><Works /><Talks /><Footer />
-  </Stack>
+  </div>
 </Layout>
 <script>
   import ScrollIntercept from '../shared/scrollIntercept';

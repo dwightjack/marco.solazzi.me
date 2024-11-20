@@ -1,7 +1,5 @@
 ---
 import { toIdString } from '../shared/utils';
-import Stack from './Stack.astro';
-
 export interface Props {
   id: string;
   mark?: string;
@@ -11,12 +9,16 @@ export interface Props {
 const { id, mark, indent = true } = Astro.props;
 ---
 
-<Stack
-  class:list={['c-page', { 'c-page--indent': indent }]}
+<div
+  class:list={[
+    'p-stack',
+    'p-stack--away',
+    'c-page',
+    { 'c-page--indent': indent },
+  ]}
   data-path={id}
   id={toIdString(id)}
   tabindex="-1"
-  space={15}
 >
   <slot />
   {
@@ -26,7 +28,7 @@ const { id, mark, indent = true } = Astro.props;
       </span>
     )
   }
-</Stack>
+</div>
 <style>
   @layer components {
     @supports (animation-timeline: view()) {

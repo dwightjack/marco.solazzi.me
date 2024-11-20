@@ -3,9 +3,7 @@ import { NAV_PATH_TALKS } from '../shared/constants';
 import Card from '../components/Card.astro';
 import Page from '../components/Page.astro';
 import PageSection from '../components/PageSection.astro';
-import Stack from '../components/Stack.astro';
 import { getTalks } from '../shared/collections';
-import Cluster from '../components/Cluster.astro';
 import MediaLink from '../components/MediaLink.astro';
 
 const talks = await getTalks();
@@ -13,15 +11,15 @@ const talks = await getTalks();
 
 <Page id={NAV_PATH_TALKS} mark="発表">
   <PageSection title="talks" subtitle="Sharing the knowledge">
-    <Stack space={5}>
+    <div class="p-stack p-stack--near">
       {
         talks.map(({ details, media }) => (
           <Card titleLabel="title" {...details}>
             {media && (
               <footer slot="footer">
-                <Cluster
-                  as="ul"
-                  space={1}
+                <ul
+                  class="p-cluster"
+                  style={{ '--s': 1 }}
                   aria-label={`Resources related to ${details.title}`}
                 >
                   {media.map(({ lang, ...props }) => (
@@ -32,12 +30,12 @@ const talks = await getTalks();
                       </MediaLink>
                     </li>
                   ))}
-                </Cluster>
+                </ul>
               </footer>
             )}
           </Card>
         ))
       }
-    </Stack>
+    </div>
   </PageSection>
 </Page>

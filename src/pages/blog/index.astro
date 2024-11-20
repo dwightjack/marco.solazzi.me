@@ -3,7 +3,6 @@ import Layout from '../../layouts/Layout.astro';
 import Page from '../../components/Page.astro';
 import PageSection from '../../components/PageSection.astro';
 import { NAV_PATH_BLOG } from '../../shared/constants';
-import Stack from '../../components/Stack.astro';
 import { getBlogPosts } from '../../shared/collections';
 import Card from '../../components/Card.astro';
 import SkipContent from '../../components/SkipContent.astro';
@@ -15,20 +14,20 @@ const posts = await getBlogPosts();
 
 <Layout title="Marco Solazzi - Latest Blog Posts">
   <SkipContent slot="header" target={toIdString(NAV_PATH_BLOG)} />
-  <Stack space={15}>
+  <div class="p-stack p-stack--away">
     <Page id={NAV_PATH_BLOG} mark="記事"
       ><PageSection title="blog">
-        <Stack space={5}>
+        <div class="p-stack p-stack--near">
           {
             posts.map(({ details }) => (
               <Card titleLabel="title" {...details} dateFormat="long" />
             ))
           }
-        </Stack>
+        </div>
       </PageSection>
     </Page>
     <Footer />
-  </Stack>
+  </div>
 </Layout>
 <script>
   import { NAV_PATH_BLOG } from '../../shared/constants';

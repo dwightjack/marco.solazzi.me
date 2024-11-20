@@ -14,7 +14,7 @@ const { prefix = 'me', as: Tag = 'div', subtitle, title } = Astro.props;
 <Tag class="c-page-section">
   <header class="c-page-section__header">
     <h2 class="c-page-section__title">
-      {prefix && <b class="c-page-section__prefix">{prefix}</b>}
+      {prefix && <b class="p-marked">{prefix}</b>}
       <span>{prefix ? `.${title}` : title}</span>
     </h2>
     {subtitle && <p class="c-page-section__sub">{subtitle}</p>}

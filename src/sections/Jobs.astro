@@ -3,7 +3,6 @@ import Card from '../components/Card.astro';
 import Page from '../components/Page.astro';
 import PageSection from '../components/PageSection.astro';
 import { NAV_PATH_JOBS } from '../shared/constants';
-import Stack from '../components/Stack.astro';
 import { getJobs } from '../shared/collections';
 
 const { current, previous } = await getJobs();
@@ -18,8 +17,8 @@ const { current, previous } = await getJobs();
     )
   }
   <PageSection title="jobs.previous">
-    <Stack space={5}>
+    <div class="p-stack p-stack--near">
       {previous.map((job) => <Card titleLabel="company" {...job} />)}
-    </Stack>
+    </div>
   </PageSection>
 </Page>

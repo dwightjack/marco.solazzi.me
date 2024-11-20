@@ -6,7 +6,6 @@ import Prose from '../../components/Prose.astro';
 import { getCollection } from 'astro:content';
 import { NAV_PATH_BLOG } from '../../shared/constants';
 import SkipContent from '../../components/SkipContent.astro';
-import Stack from '../../components/Stack.astro';
 import Footer from '../../sections/Footer.astro';
 
 export async function getStaticPaths() {
@@ -52,7 +51,7 @@ const schema = {
     set:html={JSON.stringify(schema)}
   />
   <SkipContent slot="header" target="heading" />
-  <Stack space={15}>
+  <div class="p-stack p-stack--away">
     <Page id={NAV_PATH_BLOG}
       ><PageSection title="blog.post">
         <Prose as="section">
@@ -69,7 +68,7 @@ const schema = {
       >
     </Page>
     <Footer />
-  </Stack>
+  </div>
 </Layout>
 <script>
   import { NAV_PATH_BLOG } from '../../shared/constants';

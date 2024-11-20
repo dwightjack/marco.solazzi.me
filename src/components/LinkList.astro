@@ -1,7 +1,6 @@
 ---
 import Icon from './Icon.astro';
 import Link from './Link.astro';
-import Stack from './Stack.astro';
 
 interface Item {
   icon: string;
@@ -17,7 +16,7 @@ export interface Props {
 const { items } = Astro.props;
 ---
 
-<Stack as="ul" space={1}>
+<ul class="p-stack p-stack--next">
   {
     items.map(({ icon, href, label, description }) => (
       <li class="c-link-list__item">
@@ -29,7 +28,7 @@ const { items } = Astro.props;
       </li>
     ))
   }
-</Stack>
+</ul>
 
 <style>
   @layer components {
