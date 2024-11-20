@@ -6,6 +6,7 @@ import {
   NAV_PATH_WORKS,
   NAV_PATH_TALKS,
   NAV_PATH_BLOG,
+  NAV_PATH_404,
 } from './constants';
 
 const routes = [
@@ -39,6 +40,6 @@ const routes = [
   },
 ] as const;
 
-export type Route = (typeof routes)[number]['path'];
+export type Route = (typeof routes)[number]['path'] | typeof NAV_PATH_404;
 
 export default routes;
