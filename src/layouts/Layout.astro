@@ -103,7 +103,10 @@ const {
   <body>
     <Box as="header" class="l-header" id="header">
       <slot name="header" />
-      <div class="p-cluster l-header__controls" style={{ '--s': 1.5 }}>
+      <div
+        class="p-cluster p-cluster--center l-header__controls"
+        style={{ '--s': 1.5 }}
+      >
         <div class="u-from-tablet-landscape">
           <Nav layout="inline" />
         </div>
@@ -164,7 +167,6 @@ const {
     .l-header__controls {
       position: absolute;
       z-index: var(--layer-f1);
-      align-items: center;
       inline-size: max-content;
       inset-block-start: 1.75rem;
       inset-inline-end: 1.75rem;

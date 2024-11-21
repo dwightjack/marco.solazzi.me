@@ -1,5 +1,5 @@
 .p-cluster {
-  --s: 0;
+  --s: 1;
 
   display: flex;
   flex-wrap: wrap;
@@ -12,6 +12,10 @@
 
   &:is(ul, ol) {
     list-style-type: none;
+  }
+
+  &.p-cluster--center {
+    align-items: center;
   }
 
   & > * {
