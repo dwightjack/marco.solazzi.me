@@ -185,12 +185,12 @@ A while back, I was working on a pet project in Angular. Being used to thinking 
 I started to question my implementation design and then I had an epiphany: why spend time and lines of code on complex implementations when the solution had been right in front of me all along?
 
 ```html
-<div class="c-stack"> 
+<div class="stack"> 
 </div>
 ```
 
 ```css
-.c-stack {
+.stack {
   --s: 0;
 	display: flex;
 	flex-direction: column;
@@ -206,7 +206,7 @@ export function Page() {
 		<Layout>
 			<Header nav={<Nav />} />
 			<Body>
-				<div className="c-stack" style="--s: 2">
+				<div className="stack" style="--s: 2">
 					<Item>Item 1</Item>
 					<Item>Item 2</Item>
 					<Item>Item 3</Item>
@@ -231,12 +231,12 @@ The last point is easy to overlook: Not every project uses React, and if you’r
 
 From this base, you can iterate to add more features and improve the developer experience. While some of the following examples target React specifically, they can be easily adapted to other frameworks.
 
-### Reduce verbosity
+### Control spacing
 
-If you find that writing an explicit `style` attribute might be too verbose, you could add some modifiers for the most common spacing values:
+If you're developing a component library you definitely want to define a set of pre-defined spacing variants to make space more consistent. This approach also eliminates the need to explicitly write the style attribute:
 
 ```scss
-.c-stack {
+.stack {
   --s: 0;
   display: flex;
   flex-direction: column;
@@ -249,10 +249,12 @@ If you find that writing an explicit `style` attribute might be too verbose, you
 }
 
 /** Usage:
-<div class="c-stack s:2">
+<div class="stack s:2">
 </div>
 */
 ```
+
+For a bolder approach to spacing, see [Complementary Space](https://complementary.space/) by Donnie D'Amato.
 
 ### Add better scoping
 
@@ -286,16 +288,16 @@ import * from './styles/stack.module.css'
 */
 ```
 
-### Reduce verbosity and type-safety
+### Add type-safety in JavaScript frameworks
 
 The CSS-only solution provides neither typing nor IDE auto-completion. 
 
-Also, if we are not using spacing modifiers, it might feel too verbose to write both a `class` and a `style` attribute instead of a `spacing` prop. Assuming you're using React, you could leverage JSX and create a utility function:
+Also, if we are not using spacing variants, it might feel too verbose to write both a `class` and a `style` attribute instead of a `spacing` prop. Assuming you're using React, you could leverage JSX and create a utility function:
 
 ```ts
 function stack({ spacing }: { spacing: number }) {
 	return { 
-		className: 'c-stack', 
+		className: 'stack', 
 		style: { '--s': spacing } as React.CSSProperties 
 	}
 }
@@ -309,11 +311,11 @@ function stack({ spacing }: { spacing: number }) {
 
 Note that React TypeScript doesn’t allow unknown CSS properties. I used a type assertion for brevity, but you should choose a [more robust solution](https://8hob.io/posts/type-css-variables-react/).
 
-If you’re using modifiers and still want type safety and/or auto-completion, you can modify the utility function:
+If you’re using variants you can modify the utility function to provide a developer experience similar to [PandaCSS patterns](https://panda-css.com/docs/concepts/patterns#stack):
 
 ```ts
 export function stack({ spacing }: { spacing: 0 | 1 | 2 | 4 | 6 }) {
-  return `c-stack s:${spacing}`
+  return `stack s:${spacing}`
 }
 
 /* Usage:
@@ -322,8 +324,6 @@ export function stack({ spacing }: { spacing: 0 | 1 | 2 | 4 | 6 }) {
 </div>	
 */
 ```
-
-This gives you a developer experience similar to [PandaCSS patterns](https://panda-css.com/docs/concepts/patterns#stack). 
 
 ### Prevent code duplication and hardcoded values
 
@@ -356,8 +356,6 @@ const modifier = styles['s:' + spacing]
   return `${styles.stack} ${modifier}`
 } 
 ```
-
-
 
 ## Alternatives
 
