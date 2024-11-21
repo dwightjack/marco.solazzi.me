@@ -1,5 +1,4 @@
 ---
-import Cluster from './Cluster.astro';
 import Icon from './Icon.astro';
 
 interface Item {
@@ -14,7 +13,7 @@ export interface Props {
 const { items } = Astro.props;
 ---
 
-<Cluster as="ul" space={[5, 4]}>
+<ul class="c-inline-list">
   {
     items.map(({ icon, label }) => (
       <li class="c-inline-list__item">
@@ -23,9 +22,20 @@ const { items } = Astro.props;
       </li>
     ))
   }
-</Cluster>
+</ul>
 <style>
   @layer components {
+    .c-inline-list {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      margin-block: 0;
+      padding-inline-start: 0;
+      column-gap: calc(5 * var(--space-unit));
+      list-style-type: none;
+      row-gap: var(--space-4);
+    }
+
     .c-inline-list__item {
       white-space: nowrap;
     }

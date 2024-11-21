@@ -6,6 +6,7 @@ export const NAV_PATH_SKILLS = '/#skills';
 export const NAV_PATH_WORKS = '/#works';
 export const NAV_PATH_TALKS = '/#talks';
 export const NAV_PATH_BLOG = '/blog';
+export const NAV_PATH_404 = '/404';
 
 export const THEMES = ['red', 'green', 'purple', 'blue'] as const;
 export const THEME_DEFAULT = 'red';

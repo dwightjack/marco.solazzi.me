@@ -3,10 +3,7 @@ import { NAV_PATH_WORKS } from '../shared/constants';
 import Card from '../components/Card.astro';
 import Page from '../components/Page.astro';
 import PageSection from '../components/PageSection.astro';
-import Stack from '../components/Stack.astro';
-
 import MediaLink from '../components/MediaLink.astro';
-import Cluster from '../components/Cluster.astro';
 import { getWorks, getPersonalWorks } from '../shared/collections';
 
 const works = await getWorks();
@@ -15,7 +12,7 @@ const personal = await getPersonalWorks();
 
 <Page id={NAV_PATH_WORKS} mark="作品">
   <PageSection title="works.personal" subtitle="Latest personal projects">
-    <Stack space={5}>
+    <div class="p-stack p-stack--near">
       {
         personal.map(({ details, source }) => (
           <Card titleLabel="project" {...details}>
@@ -29,18 +26,17 @@ const personal = await getPersonalWorks();
           </Card>
         ))
       }
-    </Stack>
+    </div>
   </PageSection>
   <PageSection title="works.agency" subtitle="Latest agency projects">
-    <Stack space={5}>
+    <div class="p-stack p-stack--near">
       {
         works.map(({ details, media }) => (
           <Card titleLabel="project" {...details}>
             {media && (
               <footer slot="footer">
-                <Cluster
-                  as="ul"
-                  space={1}
+                <ul
+                  class="p-cluster"
                   aria-label={`Resources related to ${details.title}`}
                 >
                   {media.map(({ label, ...props }) => (
@@ -48,12 +44,12 @@ const personal = await getPersonalWorks();
                       <MediaLink {...props}>{label}</MediaLink>
                     </li>
                   ))}
-                </Cluster>
+                </ul>
               </footer>
             )}
           </Card>
         ))
       }
-    </Stack>
+    </div>
   </PageSection>
 </Page>

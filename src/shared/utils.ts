@@ -1,21 +1,5 @@
 import type { JSX } from 'astro/jsx-runtime';
 
-export function toStyleAttribute(input: Record<string, unknown>) {
-  const style: JSX.CSSProperties = {};
-  const keys: string[] = [];
-
-  for (const [key, value] of Object.entries(input)) {
-    if (typeof value === 'string' || typeof value === 'number') {
-      style[key] = value;
-      keys.push(key);
-    }
-  }
-  if (keys.length === 0) {
-    return undefined;
-  }
-  return style;
-}
-
 export function toStyleVars(
   input: Record<string, string | number | null | undefined>,
 ) {

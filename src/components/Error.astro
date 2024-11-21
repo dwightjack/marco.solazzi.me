@@ -1,0 +1,38 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+export interface Props extends HTMLAttributes<'div'> {
+  code?: number;
+  title: string;
+}
+
+const { code, title, ...attrs } = Astro.props;
+---
+
+<div class="c-error" {...attrs}>
+  <h1 class="c-error__title">
+    {code && <span class="p-marked">{code}</span>}
+    {title}
+  </h1>
+  <slot />
+</div>
+
+<style>
+  @layer components {
+    .c-error {
+      outline: 0;
+      font-size: var(--text-body-font-size-x3);
+      text-align: center;
+      text-wrap: balance;
+    }
+
+    .c-error__title {
+      margin-block: 0 var(--space-4);
+      font-family: var(--font-family-serif);
+      font-size: var(--text-heading-font-size-x3);
+
+      @media (--viewport-tablet-landscape) {
+        font-size: var(--text-heading-font-size-x3mq);
+      }
+    }
+  }
+</style>

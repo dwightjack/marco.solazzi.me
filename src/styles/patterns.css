@@ -1,0 +1,5 @@
+/* stylelint-disable import-notation */
+@import './patterns/prose.css' layer(patterns);
+@import './patterns/stack.css' layer(patterns);
+@import './patterns/cluster.css' layer(patterns);
+@import './patterns/marked.css' layer(patterns);

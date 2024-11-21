@@ -1,0 +1,25 @@
+.p-cluster {
+  --s: 1;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin-block: unset;
+  margin-inline: unset;
+  padding-block: unset;
+  padding-inline: unset;
+  gap: calc(var(--s) * var(--space-unit));
+
+  &:is(ul, ol) {
+    list-style-type: none;
+  }
+
+  &.p-cluster--center {
+    align-items: center;
+  }
+
+  & > * {
+    margin-block: 0;
+    margin-inline: 0;
+  }
+}

@@ -2,10 +2,10 @@
 import '../styles/tokens.css';
 import '../styles/global.css';
 import '../styles/utility.css';
+import '../styles/patterns.css';
 import Burger from '../components/Burger.astro';
 import ThemeSwitcher from '../components/ThemeSwitcher.astro';
 import Nav from '../components/Nav.astro';
-import Cluster from '../components/Cluster.astro';
 import { THEME_DEFAULT } from '../shared/constants';
 import Box from '../components/Box.astro';
 const socialImageURL = new URL('/marco-og.jpg', Astro.url);
@@ -13,13 +13,13 @@ const socialImageURL = new URL('/marco-og.jpg', Astro.url);
 interface Props {
   title?: string;
   description?: string;
-  withCover?: boolean;
+  layout?: 'cover' | 'centered';
 }
 
 const {
   title = 'Marco Solazzi - UI Web Developer',
   description = 'Personal Website of Marco Solazzi - UI Web Developer',
-  withCover = false,
+  layout,
 } = Astro.props;
 ---
 
@@ -103,7 +103,10 @@ const {
   <body>
     <Box as="header" class="l-header" id="header">
       <slot name="header" />
-      <Cluster class="l-header__controls" space={1.5}>
+      <div
+        class="p-cluster p-cluster--center l-header__controls"
+        style={{ '--s': 1.5 }}
+      >
         <div class="u-from-tablet-landscape">
           <Nav layout="inline" />
         </div>
@@ -111,13 +114,13 @@ const {
         <div class="u-until-tablet-landscape">
           <Burger />
         </div>
-      </Cluster>
+      </div>
       <div class="u-until-tablet-landscape">
         <Nav />
       </div>
     </Box>
-    <main class="l-main" class:list={[{ 'l-main--cover': withCover }]}>
-      {withCover && <slot name="cover" />}
+    <main class="l-main" class:list={[layout && 'l-main--' + layout]}>
+      {layout === 'cover' && <slot name="cover" />}
       <slot />
     </main>
     <footer class="l-footer">
@@ -164,7 +167,6 @@ const {
     .l-header__controls {
       position: absolute;
       z-index: var(--layer-f1);
-      align-items: center;
       inline-size: max-content;
       inset-block-start: 1.75rem;
       inset-inline-end: 1.75rem;
@@ -194,6 +196,12 @@ const {
 
     .l-main:not(.l-main--cover) {
       padding-block-start: calc(var(--space-2) * 6.25);
+    }
+
+    .l-main--centered {
+      display: flex;
+      place-items: center;
+      justify-content: center;
     }
 
     .l-footer {

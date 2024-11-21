@@ -1,7 +1,5 @@
 ---
 import routes from '../shared/routes';
-import Stack from './Stack.astro';
-import Cluster from './Cluster.astro';
 import Box from './Box.astro';
 
 export interface Props {
@@ -10,7 +8,6 @@ export interface Props {
 
 const { layout = 'offscreen' } = Astro.props;
 const isOffscreen = layout === 'offscreen';
-const List = isOffscreen ? Stack : Cluster;
 ---
 
 <Box
@@ -20,7 +17,15 @@ const List = isOffscreen ? Stack : Cluster;
   {...isOffscreen && { swatch: 'brand' }}
   aria-label="Sections Navigation"
 >
-  <List as="ul" space={2}>
+  <ul
+    class:list={[
+      {
+        'p-stack': isOffscreen,
+        'p-cluster': !isOffscreen,
+      },
+    ]}
+    style={{ '--s': 2 }}
+  >
     {
       routes.map(({ path, label }) => (
         <li class="c-nav__item">
@@ -29,7 +34,7 @@ const List = isOffscreen ? Stack : Cluster;
         </li>
       ))
     }
-  </List>
+  </ul>
 </Box>
 <style>
   @layer components {

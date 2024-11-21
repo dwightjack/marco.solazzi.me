@@ -2,11 +2,9 @@
 import Layout from '../../layouts/Layout.astro';
 import Page from '../../components/Page.astro';
 import PageSection from '../../components/PageSection.astro';
-import Prose from '../../components/Prose.astro';
 import { getCollection } from 'astro:content';
 import { NAV_PATH_BLOG } from '../../shared/constants';
 import SkipContent from '../../components/SkipContent.astro';
-import Stack from '../../components/Stack.astro';
 import Footer from '../../sections/Footer.astro';
 
 export async function getStaticPaths() {
@@ -52,10 +50,10 @@ const schema = {
     set:html={JSON.stringify(schema)}
   />
   <SkipContent slot="header" target="heading" />
-  <Stack space={15}>
+  <div class="p-stack p-stack--away">
     <Page id={NAV_PATH_BLOG}
       ><PageSection title="blog.post">
-        <Prose as="section">
+        <section class="p-prose">
           <header id="heading" tabindex="-1">
             <h1>{title}</h1>
             <p class="small">
@@ -65,11 +63,11 @@ const schema = {
             </p>
           </header>
           <Content />
-        </Prose></PageSection
+        </section></PageSection
       >
     </Page>
     <Footer />
-  </Stack>
+  </div>
 </Layout>
 <script>
   import { NAV_PATH_BLOG } from '../../shared/constants';

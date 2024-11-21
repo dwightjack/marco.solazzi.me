@@ -3,7 +3,6 @@ import Card from '../components/Card.astro';
 import Page from '../components/Page.astro';
 import PageSection from '../components/PageSection.astro';
 import { NAV_PATH_EDUCATION } from '../shared/constants';
-import Stack from '../components/Stack.astro';
 import { getEducation } from '../shared/collections';
 
 const education = await getEducation();
@@ -11,8 +10,8 @@ const education = await getEducation();
 
 <Page id={NAV_PATH_EDUCATION} mark="学校">
   <PageSection title="education" subtitle="Learning never ends">
-    <Stack space={5}>
+    <div class="p-stack p-stack--near">
       {education.map((entry) => <Card titleLabel="title" {...entry} />)}
-    </Stack>
+    </div>
   </PageSection>
 </Page>
