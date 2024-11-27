@@ -4,10 +4,14 @@ import SkipContent from '../components/SkipContent.astro';
 import Error from '../components/Error.astro';
 ---
 
-<Layout layout="centered">
+<Layout
+  title="Not Found"
+  description="Looks like the page you where looking for does not exist."
+  layout="centered"
+>
   <SkipContent slot="header" target="not-found" />
   <Error code={404} title="Not Found" id="not-found" tabindex="-1">
-    <p>Looks like the page you where looking for does not exists.</p>
+    <p>Looks like the page you where looking for does not exist.</p>
     <p>Please return to the <a href="/">front page</a>.</p>
   </Error>
 </Layout>

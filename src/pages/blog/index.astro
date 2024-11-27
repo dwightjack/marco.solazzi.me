@@ -12,7 +12,10 @@ import Footer from '../../sections/Footer.astro';
 const posts = await getBlogPosts();
 ---
 
-<Layout title="Marco Solazzi - Latest Blog Posts">
+<Layout
+  title="Blog Posts"
+  description="Blog Posts about UX, UI development and Design System"
+>
   <SkipContent slot="header" target={toIdString(NAV_PATH_BLOG)} />
   <div class="p-stack p-stack--away">
     <Page id={NAV_PATH_BLOG} mark="記事"

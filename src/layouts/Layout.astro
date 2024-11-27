@@ -12,12 +12,14 @@ const socialImageURL = new URL('/marco-og.jpg', Astro.url);
 
 interface Props {
   title?: string;
+  suffix?: string;
   description?: string;
   layout?: 'cover' | 'centered';
 }
 
 const {
-  title = 'Marco Solazzi - UI Web Developer',
+  title,
+  suffix = 'Marco Solazzi - UI Web Developer',
   description = 'Personal Website of Marco Solazzi - UI Web Developer',
   layout,
 } = Astro.props;
@@ -27,7 +29,7 @@ const {
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>{title}</title>
+    <title>{[title, suffix].filter(Boolean).join(' | ')}</title>
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="format-detection" content="telephone=no" />
@@ -45,7 +47,7 @@ const {
     <link
       rel="alternate"
       type="application/rss+xml"
-      title="Marco Solazzi - UI Web Developer"
+      title="Latests posts | Marco Solazzi - UI Web Developer"
       href={new URL('feed.xml', Astro.site)}
     />
     <style>
