@@ -38,7 +38,7 @@
     "@iconify-json/mdi": "1.2.1",
     "astro": "4.16.16",
     "astro-icon": "1.1.4",
-    "modern-normalize": "2.0.0",
+    "modern-normalize": "3.0.1",
     "nanostores": "0.11.3",
     "rehype-external-links": "^3.0.0"
   },
