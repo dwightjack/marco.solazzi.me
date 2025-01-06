@@ -7,15 +7,22 @@ export function toDate(dateStr: string) {
   return new Date(dateStr);
 }
 
-export function toFormattedDate(dateStr: string | Date, withDay = false) {
+export function toFormattedDate(
+  dateStr: string | Date,
+  dateFormat: 'short' | 'long' | Intl.DateTimeFormatOptions = 'short',
+) {
   if (typeof dateStr === 'string') {
     dateStr = toDate(dateStr);
   }
-  return dateStr.toLocaleDateString('en', {
-    month: 'long',
-    year: 'numeric',
-    day: withDay ? 'numeric' : undefined,
-  });
+  const options =
+    typeof dateFormat === 'string'
+      ? ({
+          month: 'long',
+          year: 'numeric',
+          day: dateFormat === 'long' ? 'numeric' : undefined,
+        } as const)
+      : dateFormat;
+  return dateStr.toLocaleDateString('en', options);
 }
 export function toMonthDayYear(dateStr: string | Date) {
   if (typeof dateStr === 'string') {

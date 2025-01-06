@@ -3,12 +3,10 @@ import { toIso, toFormattedDate } from '../shared/dateTime';
 
 export interface Props {
   datetime: string | Date;
-  dateFormat?: 'short' | 'long';
+  dateFormat?: 'short' | 'long' | Intl.DateTimeFormatOptions;
 }
 
 const { datetime, dateFormat } = Astro.props;
 ---
 
-<time datetime={toIso(datetime)}
-  >{toFormattedDate(datetime, dateFormat === 'long')}</time
->
+<time datetime={toIso(datetime)}>{toFormattedDate(datetime, dateFormat)}</time>

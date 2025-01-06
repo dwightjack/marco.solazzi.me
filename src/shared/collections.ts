@@ -5,15 +5,14 @@ export async function getJobs() {
   const jobs = (await getCollection('jobs'))
     .sort((a, b) => b.data.from.getTime() - a.data.from.getTime())
     .map(({ data, body, slug }) => {
-      const { href, title, company } = data;
+      const { href, title, company, from, to } = data;
 
       return {
         title: company,
         id: `job-${slug}`,
         href,
+        timeline: [from, to],
         data: {
-          from: data.from,
-          to: data.to,
           title,
           description: body.trim(),
         },
@@ -21,8 +20,8 @@ export async function getJobs() {
     });
 
   return {
-    current: jobs.find(({ data }) => !data.to),
-    previous: jobs.filter(({ data }) => !!data.to),
+    current: jobs.find(({ timeline }) => !timeline[1]),
+    previous: jobs.filter(({ timeline }) => timeline[1]),
   };
 }
 

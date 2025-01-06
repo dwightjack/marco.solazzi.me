@@ -6,8 +6,9 @@ export interface Props {
   titleLabel?: string;
   title?: string;
   href?: string;
+  timeline?: (Date | undefined)[];
   data: Record<string, unknown>;
-  dateFormat?: 'short' | 'long';
+  dateFormat?: 'short' | 'long' | Intl.DateTimeFormatOptions;
 }
 
 const {
@@ -16,11 +17,26 @@ const {
   href,
   title = '',
   dateFormat = 'short',
+  timeline: [from, to] = [],
   data = {},
 } = Astro.props;
 ---
 
 <article class="c-card">
+  {
+    from && (
+      <span class="c-card__timeline">
+        <DateTime datetime={from} dateFormat={dateFormat} />
+      </span>
+    )
+  }
+  {
+    to && (
+      <span class="c-card__timeline">
+        <DateTime datetime={to} dateFormat={dateFormat} />
+      </span>
+    )
+  }
   {
     titleLabel && (
       <h3 class="c-card__title" id={`table-${id}`}>
@@ -58,13 +74,17 @@ const {
 <style>
   @layer components {
     .c-card {
+      position: relative;
       inline-size: 100%;
       padding-block: var(--space-half) var(--space-1);
       padding-inline-start: calc(var(--space-unit) * 2.75);
-      border: 8px solid var(--box-color-border);
-      mask: linear-gradient(#000, #000),
-        linear-gradient(to right, #000 16px, transparent 0);
-      mask-clip: padding-box, border-box;
+      border: 8px solid transparent;
+      background:
+        linear-gradient(90deg, var(--box-color-border) 8px, transparent 0)
+          no-repeat,
+        linear-gradient(180deg, var(--box-color-border) 8px, transparent 0)
+          repeat-y 8px 0 / 8px calc(100% - 8px);
+      background-origin: border-box;
 
       @media (--pointer-mouse) and (prefers-reduced-motion: no-preference) {
         transition: transform 500ms var(--easing-out-fast);
@@ -83,6 +103,23 @@ const {
           }
         }
       }
+    }
+
+    .c-card__timeline {
+      position: absolute;
+      inset-inline-end: calc(100% + 16px);
+      color: var(--color-brand-400);
+      font-weight: bold;
+    }
+
+    .c-card__timeline:first-child {
+      inset-block-start: 100%;
+      transform: translateY(calc(-50% + 4px));
+    }
+
+    .c-card__timeline:not(:first-child) {
+      inset-block-end: 100%;
+      transform: translateY(calc(50% - 4px));
     }
 
     .c-card__title {

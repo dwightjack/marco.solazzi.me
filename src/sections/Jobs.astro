@@ -12,13 +12,25 @@ const { current, previous } = await getJobs();
   {
     current && (
       <PageSection title="jobs.current">
-        <Card titleLabel="company" {...current} />
+        <Card
+          titleLabel="company"
+          {...current}
+          dateFormat={{ year: 'numeric' }}
+        />
       </PageSection>
     )
   }
   <PageSection title="jobs.previous">
     <div class="p-stack p-stack--near">
-      {previous.map((job) => <Card titleLabel="company" {...job} />)}
+      {
+        previous.map((job) => (
+          <Card
+            titleLabel="company"
+            {...job}
+            dateFormat={{ year: 'numeric' }}
+          />
+        ))
+      }
     </div>
   </PageSection>
 </Page>
