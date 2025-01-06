@@ -10,28 +10,28 @@ importers:
     dependencies:
       '@astrojs/check':
         specifier: ^0.9.0
-        version: 0.9.4(prettier-plugin-astro@0.14.1)(prettier@3.4.1)(typescript@5.7.2)
+        version: 0.9.4(prettier-plugin-astro@0.14.1)(prettier@3.4.2)(typescript@5.7.2)
       '@astrojs/rss':
         specifier: ^4.0.9
-        version: 4.0.9
+        version: 4.0.11
       '@fontsource-variable/open-sans':
         specifier: ^5.0.29
-        version: 5.1.0
+        version: 5.1.1
       '@fontsource/bree-serif':
         specifier: ^5.0.13
-        version: 5.1.0
+        version: 5.1.1
       '@iconify-json/logos':
-        specifier: 1.2.3
-        version: 1.2.3
+        specifier: 1.2.4
+        version: 1.2.4
       '@iconify-json/mdi':
-        specifier: 1.2.1
-        version: 1.2.1
+        specifier: 1.2.2
+        version: 1.2.2
       astro:
-        specifier: 4.16.16
-        version: 4.16.16(@types/node@20.11.22)(rollup@4.21.2)(typescript@5.7.2)
+        specifier: 4.16.18
+        version: 4.16.18(@types/node@20.11.22)(rollup@4.21.2)(typescript@5.7.2)
       astro-icon:
-        specifier: 1.1.4
-        version: 1.1.4
+        specifier: 1.1.5
+        version: 1.1.5
       modern-normalize:
         specifier: 3.0.1
         version: 3.0.1
@@ -49,14 +49,14 @@ importers:
         specifier: ^9.6.0
         version: 9.16.0
       '@percy/cli':
-        specifier: 1.30.3
-        version: 1.30.3(typescript@5.7.2)
+        specifier: 1.30.6
+        version: 1.30.6(typescript@5.7.2)
       '@percy/playwright':
         specifier: 1.0.7
-        version: 1.0.7(playwright-core@1.49.0)
+        version: 1.0.7(playwright-core@1.49.1)
       '@playwright/test':
         specifier: ^1.42.0
-        version: 1.49.0
+        version: 1.49.1
       '@types/eslint__js':
         specifier: ^8.42.3
         version: 8.42.3
@@ -74,10 +74,10 @@ importers:
         version: 1.3.1(eslint@9.16.0)(typescript@5.7.2)
       eslint-plugin-prettier:
         specifier: 5.2.1
-        version: 5.2.1(@types/eslint@8.56.10)(eslint-config-prettier@9.1.0(eslint@9.16.0))(eslint@9.16.0)(prettier@3.4.1)
+        version: 5.2.1(@types/eslint@8.56.10)(eslint-config-prettier@9.1.0(eslint@9.16.0))(eslint@9.16.0)(prettier@3.4.2)
       lefthook:
-        specifier: 1.9.0
-        version: 1.9.0
+        specifier: 1.9.3
+        version: 1.9.3
       postcss:
         specifier: 8.4.49
         version: 8.4.49
@@ -88,8 +88,8 @@ importers:
         specifier: 9.6.0
         version: 9.6.0(postcss@8.4.49)
       prettier:
-        specifier: 3.4.1
-        version: 3.4.1
+        specifier: 3.4.2
+        version: 3.4.2
       prettier-plugin-astro:
         specifier: 0.14.1
         version: 0.14.1
@@ -168,8 +168,8 @@ packages:
     resolution: {integrity: sha512-Z9IYjuXSArkAUx3N6xj6+Bnvx8OdUSHA8YoOgyepp3+zJmtVYJIl/I18GozdJVW1p5u/CNpl3Km7/gwTJK85cw==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0}
 
-  '@astrojs/rss@4.0.9':
-    resolution: {integrity: sha512-W1qeLc/WP1vMS5xXa+BnaLU0paeSeGjN8RJVAoBaOIkQuKXjIUA9hvPno89heo73in5i67g40gy70oeeHMqp6A==}
+  '@astrojs/rss@4.0.11':
+    resolution: {integrity: sha512-3e3H8i6kc97KGnn9iaZBJpIkdoQi8MmR5zH5R+dWsfCM44lLTszOqy1OBfGGxDt56mpQkYVtZJWoxMyWuUZBfw==}
 
   '@astrojs/telemetry@3.1.0':
     resolution: {integrity: sha512-/ca/+D8MIKEC8/A9cSaPUqQNZm+Es/ZinRv0ZAzvu2ios7POQSsVD+VOj7/hypWNsNM3T7RpfgNq7H2TU1KEHA==}
@@ -729,11 +729,11 @@ packages:
     resolution: {integrity: sha512-2b/g5hRmpbb1o4GnTZax9N9m0FXzz9OV42ZzI4rDDMDuHUqigAiQCEWChBWCY4ztAGVRjoWT19v0yMmc5/L5kA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@fontsource-variable/open-sans@5.1.0':
-    resolution: {integrity: sha512-NuJdoORzM6qp+bf5j7dyo6MO8rBEEiSw8wiZv9t7sga0RIODgLLbBAMaZMaZiLwNbXcGPxhFcHcuDaQr1xj9kA==}
+  '@fontsource-variable/open-sans@5.1.1':
+    resolution: {integrity: sha512-5YCCAAt6t8b9T1UehgGuD0z1mZ8orrygrWC8PrA7hAIDdyQRZXYmT6A+9qG7hnhFRHR3KTSIcvBodO0EsRxZrA==}
 
-  '@fontsource/bree-serif@5.1.0':
-    resolution: {integrity: sha512-5Gu/SdKw1iQaQhvzH73JUrwtoBXYxTZ2WlsPvO17oUZYpaNk8yUreZl522hLDcyiKZVUUFsN6sXWpJJvepmtSg==}
+  '@fontsource/bree-serif@5.1.1':
+    resolution: {integrity: sha512-PP86EVqqSZFwWaU+5o4J6rNXPrBC/3Yr+hqcVR/xYGxB5RxZVquRaJvqH1Yj6WQVh3PS6wR4dZ3TOkU+ITNeUw==}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -755,11 +755,11 @@ packages:
     resolution: {integrity: sha512-c7hNEllBlenFTHBky65mhq8WD2kbN9Q6gk0bTk8lSBvc554jpXSkST1iePudpt7+A/AQvuHs9EMqjHDXMY1lrA==}
     engines: {node: '>=18.18'}
 
-  '@iconify-json/logos@1.2.3':
-    resolution: {integrity: sha512-JLHS5hgZP1b55EONAWNeqBUuriRfRNKWXK4cqYx0PpVaJfIIMiiMxFfvoQiX/bkE9XgkLhcKmDUqL3LXPdXPwQ==}
+  '@iconify-json/logos@1.2.4':
+    resolution: {integrity: sha512-XC4If5D/hbaZvUkTV8iaZuGlQCyG6CNOlaAaJaGa13V5QMYwYjgtKk3vPP8wz3wtTVNVEVk3LRx1fOJz+YnSMw==}
 
-  '@iconify-json/mdi@1.2.1':
-    resolution: {integrity: sha512-dSkQU78gsZV6Yxnq78+LuX7jzeFC/5NAmz7O3rh558GimGFcwMVY/OtqRowIzjqJBmMmWZft7wkFV4TrwRXjlg==}
+  '@iconify-json/mdi@1.2.2':
+    resolution: {integrity: sha512-84aznJXzfGdbOXGe8xB7E5uNAb7Yo5IABwTgq2X3kczb819qZeS9eL31bTVn7wJdCLK5ieaoUc2GTS3QYIkJ6g==}
 
   '@iconify/tools@4.0.5':
     resolution: {integrity: sha512-l8KoA1lxlN/FFjlMd3vjfD7BtcX/QnFWtlBapILMlJSBgM5zhDYak/ldw/LkKG3258q/0YmXa48sO/QpxX7ptg==}
@@ -908,61 +908,61 @@ packages:
   '@oslojs/encoding@1.1.0':
     resolution: {integrity: sha512-70wQhgYmndg4GCPxPPxPGevRKqTIJ2Nh4OkiMWmDAVYsTQ+Ta7Sq+rPevXyXGdzr30/qZBnyOalCszoMxlyldQ==}
 
-  '@percy/cli-app@1.30.3':
-    resolution: {integrity: sha512-aZE7jGbBFXGJkLj3yf1VfF2mjUAPOB+pZLmnHSpDLenNYcof6RhbyRdkdsSuSz9HQEE6Q3n4Ae20nCEss6LvOQ==}
+  '@percy/cli-app@1.30.6':
+    resolution: {integrity: sha512-IjsWqXcjjXBPErU87Zrvui2k8nogz6trXVUpiGVkPGlFXeGjQXzB95wUECRDqvDTRRrisW1p/XVJi62dUAOX2A==}
     engines: {node: '>=14'}
 
-  '@percy/cli-build@1.30.3':
-    resolution: {integrity: sha512-XLE5PjaQQ+FbBBq1OD8AULqr8lMsl6PO9cvzCIAsnht/4BlimzPpZ3IkTf7XHylpqsvXHJ3T7MoZvci9p/dyPg==}
+  '@percy/cli-build@1.30.6':
+    resolution: {integrity: sha512-8MxuqrjIn2pxuGOVm2V1XkVNrC88a2Xog6qC9omqf69LQfFB5hR1+s40M/MC/9oM8MJFRsNJJ5PUDRHOwgM02Q==}
     engines: {node: '>=14'}
 
-  '@percy/cli-command@1.30.3':
-    resolution: {integrity: sha512-HSvxXZZt3Igum/nyxV/utDu/MQNn6zFHiHLgYxElkCr/cyBVzgCnFbWbCeSNhPAum6fVpgOH4l0NLku+SX35xw==}
-    engines: {node: '>=14'}
-    hasBin: true
-
-  '@percy/cli-config@1.30.3':
-    resolution: {integrity: sha512-D2W+GJFejnXXfm5vyKq5CoLuHP5c2foheJ12dEu9d/IKePhblPLWd53bKZvHzD1LC9nk6DocKa4AAVQ+4JJV0w==}
-    engines: {node: '>=14'}
-
-  '@percy/cli-exec@1.30.3':
-    resolution: {integrity: sha512-Wp3dIbqF3M9f+CkiZcOEZPkCGGKtWytbs4eJ0PcxGFQG6gH9Dv/BeTncCy23zNjvwlgzAxlMvxuoHcVf7RkkpA==}
-    engines: {node: '>=14'}
-
-  '@percy/cli-snapshot@1.30.3':
-    resolution: {integrity: sha512-y2GySH5YQZUbF9yoCPEzDclnJBMDBuUSKnOkauIsHn7fBpi61Dl1BaWv5OJbllGzkJ8yZnMjaJic/ydSBXl3FQ==}
-    engines: {node: '>=14'}
-
-  '@percy/cli-upload@1.30.3':
-    resolution: {integrity: sha512-pQEueqDhBqWAS9z/ZvBrL7RX8Fxev5MY11vlbrrTZI0qLaN7J6Vkqz6j33JcZAAYOP6hHfsBg5iy2qGYDbgk+Q==}
-    engines: {node: '>=14'}
-
-  '@percy/cli@1.30.3':
-    resolution: {integrity: sha512-oKuqacqtIJkA70lMB7Q5UeWGxGEMTGqWcf54vHsKrTgBAoK5sI0IOMhXwtJNYZrvZdZVSrY39VHKU2cQBcxhaA==}
+  '@percy/cli-command@1.30.6':
+    resolution: {integrity: sha512-k+/5GTXcbPfgKV6N7yqqt2E3OwQYJl/+fXQZSy7LAfNMR9X0w26ah2ErznyaCsLTPeDyurAJ7SPIOXHsq28uRA==}
     engines: {node: '>=14'}
     hasBin: true
 
-  '@percy/client@1.30.3':
-    resolution: {integrity: sha512-2gepzFyAGiyFjQ33RTkO7RMfgnnCB5Fo7Cc6lU7WbJB4CyLF9+khl0Cgd48d1flLOZDhFdItGuLiwcnpkvDNcw==}
+  '@percy/cli-config@1.30.6':
+    resolution: {integrity: sha512-hKsadKRizSxe+SuuDItDZV0qd32FNpfUYHhpA1gxkAhAtgZy4d1bINmKgrB6I55cSD1yYZgRGXI1e2+NI5q5ig==}
     engines: {node: '>=14'}
 
-  '@percy/config@1.30.3':
-    resolution: {integrity: sha512-i+k6H1PsKma0b61347sIW9bEY9/qe1xx/yEIc+bE3oEydjfEDp4IDt9ZBhkeRPYpko67QQ9y9kzGT2v8PYkuxw==}
+  '@percy/cli-exec@1.30.6':
+    resolution: {integrity: sha512-N/vdTi5NJWT7AqQt8XgheGgB+vByZtX/WkpG5/a0WsJltOIYJKM0ZZIaUxZsUtXwgustdrEFchlAin/87aasvg==}
     engines: {node: '>=14'}
 
-  '@percy/core@1.30.3':
-    resolution: {integrity: sha512-ty9Hj1Dr0f6FrHdJIU0e7jCnSfDW/iSF6B6X4jC7ovXw9tbEK/0vt/Q7VZaQiDjmo3tU7gl5DAzsqf8gGVgemg==}
+  '@percy/cli-snapshot@1.30.6':
+    resolution: {integrity: sha512-D5qYBLVXBmIYloVfCGfIwYBg3vUXWaTA0dne0aEvIVWBN7QRKncFTHeehGe4CXal9tceFbJyx7yJCu3XXP10hg==}
     engines: {node: '>=14'}
 
-  '@percy/dom@1.30.3':
-    resolution: {integrity: sha512-bqHx66hwpzNihlTe2y9nu8FxHKfBmzKqcrxPa8ItMx8dFglWqEzjA9phrgSeFRs5yjrMUO6MuPtuj5reHrmoqQ==}
-
-  '@percy/env@1.30.3':
-    resolution: {integrity: sha512-42Cx2Z+KJtP+8HOR5rCyQGWT3Swdcz54pXJtBWrmockc/5zLXCqfqG8LN/JHWukNiH2kSiwn1BArWWRbGtqMxw==}
+  '@percy/cli-upload@1.30.6':
+    resolution: {integrity: sha512-5buyO7tljBOeCKARLegoxT8NvtiZs/kIXt63d7BRVTfJKa7rn/2Xw0Y/DVseGixHFryZ6C//osvE50nHifcKYw==}
     engines: {node: '>=14'}
 
-  '@percy/logger@1.30.3':
-    resolution: {integrity: sha512-AR3ygLmaGz0fpo1RoMt99jDpM8SOlSq/4sGFXSLfbbE4QCMGx4FsfuPRFdG2RpXKQnQN9Wjyi2F4woRAxiJNvg==}
+  '@percy/cli@1.30.6':
+    resolution: {integrity: sha512-bR6niEywRPMXe3Koadk9ryQtCYP62LOTVQddi8I6STlOy8iEUsD2GMa8Sw4oU9hvD250Im0zpe5jP08BwrSfnw==}
+    engines: {node: '>=14'}
+    hasBin: true
+
+  '@percy/client@1.30.6':
+    resolution: {integrity: sha512-iHcYK4djy/WA3ZqIVcgOmuOtDeMiGDmJZ0DlDG38HMmAPgXHSThNXNz9bnXb2OSJFxXVRdlAE8DoqFK5FnwNsg==}
+    engines: {node: '>=14'}
+
+  '@percy/config@1.30.6':
+    resolution: {integrity: sha512-qYUu4TVLJgtG/RIwa/AM+d3f1xH4D3uSvCoWUhX4y5rK5QDZ0UqWEvDOD6CJDn8i1xXi4ZY/JB7HKYKUTHeppQ==}
+    engines: {node: '>=14'}
+
+  '@percy/core@1.30.6':
+    resolution: {integrity: sha512-G0ULd3pHz8s4RajxUGTWGx8Ngl+jhOjIPNxOBtKh0ywgAnbvUWNWLKYvs9QinZcoPGfWgwc5+1btbeJxTAVGQg==}
+    engines: {node: '>=14'}
+
+  '@percy/dom@1.30.6':
+    resolution: {integrity: sha512-pMlzYYJfgVdNYbw1iJIQZxXzszL3EmIrbGvvpkred3RciJ4T3/pFlqiLiPS7TTUovMFFgRjTR1gLOH1eeWyM5A==}
+
+  '@percy/env@1.30.6':
+    resolution: {integrity: sha512-GU3ZcyiCUM3KiRmcpa5fpOIkuHBUonvBhNeg1jErZFEZFQDNm238SFnKQFEJIYCX96W5Q9qqXMwjApj7qBpiWg==}
+    engines: {node: '>=14'}
+
+  '@percy/logger@1.30.6':
+    resolution: {integrity: sha512-HDhAIjjqOlpAIqClu+fvuWSA2cvxh3aMHtKN3gRdRMppHCvyyfmVbKd1PoLPV7Z0SQzZkyaBMAjiRXWMPksLig==}
     engines: {node: '>=14'}
 
   '@percy/playwright@1.0.7':
@@ -971,20 +971,20 @@ packages:
     peerDependencies:
       playwright-core: '>=1'
 
-  '@percy/sdk-utils@1.30.3':
-    resolution: {integrity: sha512-mMWeWMKtAaJdx+Wcpi5EEQZfWDFV0aOzT6+tNFL/ze7wskM4NF9RXIt0W86wyOSs25XB+kgY9+TuTc/yrR7Jew==}
+  '@percy/sdk-utils@1.30.6':
+    resolution: {integrity: sha512-LSayDfxAaXJaSv5SIDKMf7EjDl+k4kufYO88YQwc9+9Yr58qqrPFon11x0PvJdA2IDGBo1G6QbvpLUO0Vem2FQ==}
     engines: {node: '>=14'}
 
-  '@percy/webdriver-utils@1.30.3':
-    resolution: {integrity: sha512-v43jZ0+zeR/eo2fbjMfOcTO0qjgDndrB8cKgwLVd+jJZpGj08nQQJOZYZ87Wrd0s4mDv8PFi5h6Dyt+x8KfjRw==}
+  '@percy/webdriver-utils@1.30.6':
+    resolution: {integrity: sha512-B1M9HWP3ZEM5CuDSMUx+68mrrKm9/JjJ0KO/OLztRh+v7TOsgOWpHMHalurwEIfoNf/olduQ4/Vv9TPrTSj72Q==}
     engines: {node: '>=14'}
 
   '@pkgr/core@0.1.1':
     resolution: {integrity: sha512-cq8o4cWH0ibXh9VGi5P20Tu9XF/0fFXl9EUinr9QfTM7a7p0oTA4iJRCQWppXR1Pg8dSM0UCItCkPwsk9qWWYA==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
 
-  '@playwright/test@1.49.0':
-    resolution: {integrity: sha512-DMulbwQURa8rNIQrf94+jPJQ4FmOVdpE5ZppRNvWVjvhC+6sOeo28r8MgIpQRYouXRtt/FCCXU7zn20jnHR4Qw==}
+  '@playwright/test@1.49.1':
+    resolution: {integrity: sha512-Ky+BVzPz8pL6PQxHqNRW1k3mIyv933LML7HktS8uik0bUXNCdPhoS/kLihiO1tMf/egaJb4IutXd7UywvXEW+g==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -1329,11 +1329,11 @@ packages:
     resolution: {integrity: sha512-8hJaCuqxObShWl2wEsnASqh/DbQ2O+S66m0Q3ctJlzBPEQ4pfGwwama3FCjZO3GDLQsjvn1T0v93Vxyu/+5fGw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  astro-icon@1.1.4:
-    resolution: {integrity: sha512-sMLkQaevIQLv38WBzb/RDbsmxhg5+X+KcNmpTi9cE6MLurNWU1MPnlO87d9Vwg4HxTenKpDlYp81A3syXFW/gw==}
+  astro-icon@1.1.5:
+    resolution: {integrity: sha512-CJYS5nWOw9jz4RpGWmzNQY7D0y2ZZacH7atL2K9DeJXJVaz7/5WrxeyIxO8KASk1jCM96Q4LjRx/F3R+InjJrw==}
 
-  astro@4.16.16:
-    resolution: {integrity: sha512-H1CttrV6+JFrDBQx0Mcbq5i5AeLhCbztB786+9wEu3svWL/QPNeCGqF0dgNORAYmP+rODGCPu/y9qKSh87iLuA==}
+  astro@4.16.18:
+    resolution: {integrity: sha512-G7zfwJt9BDHEZwlaLNvjbInIw2hPryyD654314KV/XT34pJU6SfN1S+mWa8RAkALcZNJnJXCJmT3JXLQStD3Lw==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -1847,8 +1847,8 @@ packages:
   fast-uri@3.0.3:
     resolution: {integrity: sha512-aLrHthzCjH5He4Z2H9YZ+v6Ujb9ocRuW6ZzkJQOrTxleEijANq4v1TsaPaVG1PZcuurEzrLcWRyYBYXD5cEiaw==}
 
-  fast-xml-parser@4.5.0:
-    resolution: {integrity: sha512-/PlTQCI96+fZMAOLMZK4CWG1ItCbfZ/0jx7UIJFChPNrx7tcEgerUgWbeieCM9MfHInUDyK8DWYZ+YrywDJuTg==}
+  fast-xml-parser@4.5.1:
+    resolution: {integrity: sha512-y655CeyUQ+jj7KBbYMc4FG01V8ZQqjN+gDYGJ50RtfsUB8iG9AmwmwoAgeKLJdmueKKMrH1RJ7yXHTSoczdv5w==}
     hasBin: true
 
   fastest-levenshtein@1.0.16:
@@ -2007,9 +2007,6 @@ packages:
   has-flag@4.0.0:
     resolution: {integrity: sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==}
     engines: {node: '>=8'}
-
-  hast-util-from-html@2.0.1:
-    resolution: {integrity: sha512-RXQBLMl9kjKVNkJTIO6bZyb2n+cUH8LFaSSzo82jiLT6Tfc+Pt7VQCS+/h3YwG4jaNE2TA2sdJisGWR+aJrp0g==}
 
   hast-util-from-html@2.0.3:
     resolution: {integrity: sha512-CUSRHXyKjzHov8yKsQjGOElXy/3EKpyX56ELnkHH34vDVw1N1XSQ1ZcAvTyAPtGqLTuKP/uxM+aLkSPqF/EtMw==}
@@ -2231,58 +2228,58 @@ packages:
   kolorist@1.8.0:
     resolution: {integrity: sha512-Y+60/zizpJ3HRH8DCss+q95yr6145JXZo46OTpFvDZWLfRCE4qChOyk1b26nMaNpfHHgxagk9dXT5OP0Tfe+dQ==}
 
-  lefthook-darwin-arm64@1.9.0:
-    resolution: {integrity: sha512-pClng2uWTqZ/FBC+YK0O4MlvphtMcw3xnYZYP4mOfM56gkSrMdsoG59AkBWB5zwxQymPiNFyO3H+JJbjvwmueA==}
+  lefthook-darwin-arm64@1.9.3:
+    resolution: {integrity: sha512-6vtZlpf53jQxKLTeAgGGBBpgtI3TI0B1lgC1r+6mxZuMuvdvhWcPzWkNazm4xz+wMvXLeaStLNsmsTvdsHZ5ow==}
     cpu: [arm64]
     os: [darwin]
 
-  lefthook-darwin-x64@1.9.0:
-    resolution: {integrity: sha512-PHQHJZHNadWhFan3Vvy24hMYMecR433t0NHODyBgILaZXOmoeMGcQYNHTmOb+R0148BKA/33l00m1CY14ZPqtw==}
+  lefthook-darwin-x64@1.9.3:
+    resolution: {integrity: sha512-LTdj4m2MvFEQtCVeTFmCDb7QrwWfirdXhQwKrj0qn99fY6Awk5zKwimRvyzynlb2oSCPUw2DSEUd8FiewgJNuw==}
     cpu: [x64]
     os: [darwin]
 
-  lefthook-freebsd-arm64@1.9.0:
-    resolution: {integrity: sha512-yuPJJJ3aDpMihqg1dfS75XgnzUYh+OqSZPmQp49s9RXKAWUCsBiDcirmrseDRbj3WVsatNGQldbV+5F5rNrxqw==}
+  lefthook-freebsd-arm64@1.9.3:
+    resolution: {integrity: sha512-4UZhmiLpGZ6ITyd4VKf1SGYZ+TkiTjr4tyiBhX4M6LGI6A6T7U2bbM4Y59eEYcGtkY8b+TE/g0JOWc25JnLkSw==}
     cpu: [arm64]
     os: [freebsd]
 
-  lefthook-freebsd-x64@1.9.0:
-    resolution: {integrity: sha512-7By8mNLsc+EFJJkmeuC8tmYO8+i9oLBqDSHqnlzSNMK8EF5DV9DTAyNIHIbn0OIcwcCe6xBfwLZimeSkKxMZKg==}
+  lefthook-freebsd-x64@1.9.3:
+    resolution: {integrity: sha512-2IGHR8An85mi0ZRbGHldBw9OabpYVam3fazC1gaPkfiZg1aLdQS4O9aiK/9Ehl5zH6qujXAhkephgrPqF2smGg==}
     cpu: [x64]
     os: [freebsd]
 
-  lefthook-linux-arm64@1.9.0:
-    resolution: {integrity: sha512-MYZD6j+ufryhENqjZe6POD3rT/0LFLfRtK4ddKKEqPGEy5wKpmXjt3ydfqTg6XAFzm6pyQO1zgwPuF40s5r3wQ==}
+  lefthook-linux-arm64@1.9.3:
+    resolution: {integrity: sha512-bx731z+HtKXLQjinq59MRtWjr7gMH3pOzvDbyWxA05SNPTh7gM/jwUCBBF7aLXMFh2qrm8cJcxklONkST+I5ng==}
     cpu: [arm64]
     os: [linux]
 
-  lefthook-linux-x64@1.9.0:
-    resolution: {integrity: sha512-xKh5/Lhjn7oI9AmUhtcArS1Y6RjDcxn0KKXAKURhwwZNFI0HGlusIYAF9U86MDqSPbfvEv+nRpq2i6au6Xp6Aw==}
+  lefthook-linux-x64@1.9.3:
+    resolution: {integrity: sha512-ajkDpabjKsIcJt1QhWW8QUqpWowymw2JuWTRTCQ8rRa7E8AeYiYYLb9HUrOndBUvNKS8WuM+FU7dDdcSsTDDFQ==}
     cpu: [x64]
     os: [linux]
 
-  lefthook-openbsd-arm64@1.9.0:
-    resolution: {integrity: sha512-+3YNG0BVWO3CxBfO5GIDU31EWLZgfPU4M/NDqPekIBf8EUSiToXk9D4MNBAYnjjAfAezV/sdDeLm2Jg4l468UQ==}
+  lefthook-openbsd-arm64@1.9.3:
+    resolution: {integrity: sha512-oqiK9NiaSDUPaCkIrgIFo7nnJFuZlyJQDVuy4agYPSdBVmJAJaigg1avLKvwtJvUMQJDnPTg0T/4rpMGQbty+g==}
     cpu: [arm64]
     os: [openbsd]
 
-  lefthook-openbsd-x64@1.9.0:
-    resolution: {integrity: sha512-7DGR8oAa5N4JJ1s0hpDJMQ7AUAT3bDNcTPCFw2keVlmg29qMdIL4RIEbVau/DZ8GvZhzoOE8ddtgUH07PeUjRw==}
+  lefthook-openbsd-x64@1.9.3:
+    resolution: {integrity: sha512-gs+QXcSRtIXldGJ8KjtZzlhFckvkyahim7QdEKO6xnv95pnnY8TTZ3bYEIq69F/l+43PIMQGUOIrbA7cD0BvVQ==}
     cpu: [x64]
     os: [openbsd]
 
-  lefthook-windows-arm64@1.9.0:
-    resolution: {integrity: sha512-t7LtUL3eDuprxomtuw74KBLXC+Clk1e/L+ofLy4Jw9t0FNPkFDouQv31IQ0HfS5d1aymNKjK/qbm+IOs1XZC6Q==}
+  lefthook-windows-arm64@1.9.3:
+    resolution: {integrity: sha512-l2OUYoPGcIgK934R5WS+y7YRXfn6DWm/otr4N87J/RBAe5SJ+sCHyteJUGL8QoPfNsjtlnDRP7w9zvN7sNcjDg==}
     cpu: [arm64]
     os: [win32]
 
-  lefthook-windows-x64@1.9.0:
-    resolution: {integrity: sha512-q3L6tXUxicqiVbquyUIVuGlZo3fJ2y4HhgjINYVCRR+kdn+yqu5pR7Vre/I+LnWtm6V6CUmoV2rxx1fl/1lP1w==}
+  lefthook-windows-x64@1.9.3:
+    resolution: {integrity: sha512-QyNY7epLimf7w7GzWnX/sYXhPZ05WKtI4dppuPtUE0pjuDY9PgeQFkDkfwdnDfitZ8Ywa1Uo+oiXn588c6+7ow==}
     cpu: [x64]
     os: [win32]
 
-  lefthook@1.9.0:
-    resolution: {integrity: sha512-JF2J4+IEsWpTL2NRWXqUzNu3Nf0pfxMd+Io3kXm6rTQ04jpwh06f37VB5lc5L76kgxpjiBiuFoRlPOAY2je3YA==}
+  lefthook@1.9.3:
+    resolution: {integrity: sha512-3YKc6emZx/w3tQYysqzz0Xi5S8zjPvP7+nyAI4ZO6T5mXUfrn/v5G3yC0J9ysFxnxGGSizdn6yOEfqQzie291g==}
     hasBin: true
 
   levn@0.4.1:
@@ -2705,13 +2702,13 @@ packages:
   pkg-types@1.2.0:
     resolution: {integrity: sha512-+ifYuSSqOQ8CqP4MbZA5hDpb97n3E8SVWdJe+Wms9kj745lmd3b7EZJiqvmLwAlmRfjrI7Hi5z3kdBJ93lFNPA==}
 
-  playwright-core@1.49.0:
-    resolution: {integrity: sha512-R+3KKTQF3npy5GTiKH/T+kdhoJfJojjHESR1YEWhYuEKRVfVaxH3+4+GvXE5xyCngCxhxnykk0Vlah9v8fs3jA==}
+  playwright-core@1.49.1:
+    resolution: {integrity: sha512-BzmpVcs4kE2CH15rWfzpjzVGhWERJfmnXmniSyKeRZUs9Ws65m+RGIi7mjJK/euCegfn3i7jvqWeWyHe9y3Vgg==}
     engines: {node: '>=18'}
     hasBin: true
 
-  playwright@1.49.0:
-    resolution: {integrity: sha512-eKpmys0UFDnfNb3vfsf8Vx2LEOtflgRebl0Im2eQQnYMA4Aqd+Zw8bEOB+7ZKvN76901mRnqdsiOGKxzVTbi7A==}
+  playwright@1.49.1:
+    resolution: {integrity: sha512-VYL8zLoNTBxVOrJBbDuRgDWa3i+mfQgDTrL8Ah9QXZ7ax4Dsj0MSq5bYgytRnDVVe+njoKnfsYkH3HzqVj5UZA==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -2928,8 +2925,8 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
 
-  prettier@3.4.1:
-    resolution: {integrity: sha512-G+YdqtITVZmOJje6QkXQWzl3fSfMxFwm1tjTyo9exhkmWSqC4Yhd1+lug++IlR2mvRVAxEDDWYkQdeSztajqgg==}
+  prettier@3.4.2:
+    resolution: {integrity: sha512-e9MewbtFo+Fevyuxn/4rrcDAaq0IYxPGLvObpQjiZBMAzB9IGmzlnG9RZy3FFas+eBMu2vA0CszMeduow5dIuQ==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -2981,9 +2978,6 @@ packages:
 
   rehype-raw@7.0.0:
     resolution: {integrity: sha512-/aE8hCfKlQeA8LmyeyQvQF3eBiLRGNlfBJEvWH7ivp9sBqs7TNqBL5X3v157rM4IFETqDnIOO+z5M/biZbo9Ww==}
-
-  rehype-stringify@10.0.0:
-    resolution: {integrity: sha512-1TX1i048LooI9QoecrXy7nGFFbFSufxVRAfc6Y9YMRAi56l+oB0zP51mLSV312uRuvVLPV1opSlJmslozR1XHQ==}
 
   rehype-stringify@10.0.1:
     resolution: {integrity: sha512-k9ecfXHmIPuFVI61B9DeLPN0qFHfawM6RsuX48hoqlaKSF61RskNjSm1lI8PhBEM0MRdLxVVm4WmTqJQccH9mA==}
@@ -3653,9 +3647,9 @@ snapshots:
 
   '@antfu/utils@0.7.10': {}
 
-  '@astrojs/check@0.9.4(prettier-plugin-astro@0.14.1)(prettier@3.4.1)(typescript@5.7.2)':
+  '@astrojs/check@0.9.4(prettier-plugin-astro@0.14.1)(prettier@3.4.2)(typescript@5.7.2)':
     dependencies:
-      '@astrojs/language-server': 2.15.4(prettier-plugin-astro@0.14.1)(prettier@3.4.1)(typescript@5.7.2)
+      '@astrojs/language-server': 2.15.4(prettier-plugin-astro@0.14.1)(prettier@3.4.2)(typescript@5.7.2)
       chokidar: 4.0.1
       kleur: 4.1.5
       typescript: 5.7.2
@@ -3670,7 +3664,7 @@ snapshots:
 
   '@astrojs/internal-helpers@0.4.1': {}
 
-  '@astrojs/language-server@2.15.4(prettier-plugin-astro@0.14.1)(prettier@3.4.1)(typescript@5.7.2)':
+  '@astrojs/language-server@2.15.4(prettier-plugin-astro@0.14.1)(prettier@3.4.2)(typescript@5.7.2)':
     dependencies:
       '@astrojs/compiler': 2.10.3
       '@astrojs/yaml2ts': 0.2.2
@@ -3684,14 +3678,14 @@ snapshots:
       volar-service-css: 0.0.62(@volar/language-service@2.4.8)
       volar-service-emmet: 0.0.62(@volar/language-service@2.4.8)
       volar-service-html: 0.0.62(@volar/language-service@2.4.8)
-      volar-service-prettier: 0.0.62(@volar/language-service@2.4.8)(prettier@3.4.1)
+      volar-service-prettier: 0.0.62(@volar/language-service@2.4.8)(prettier@3.4.2)
       volar-service-typescript: 0.0.62(@volar/language-service@2.4.8)
       volar-service-typescript-twoslash-queries: 0.0.62(@volar/language-service@2.4.8)
       volar-service-yaml: 0.0.62(@volar/language-service@2.4.8)
       vscode-html-languageservice: 5.3.1
       vscode-uri: 3.0.8
     optionalDependencies:
-      prettier: 3.4.1
+      prettier: 3.4.2
       prettier-plugin-astro: 0.14.1
     transitivePeerDependencies:
       - typescript
@@ -3723,9 +3717,9 @@ snapshots:
     dependencies:
       prismjs: 1.29.0
 
-  '@astrojs/rss@4.0.9':
+  '@astrojs/rss@4.0.11':
     dependencies:
-      fast-xml-parser: 4.5.0
+      fast-xml-parser: 4.5.1
       kleur: 4.1.5
 
   '@astrojs/telemetry@3.1.0':
@@ -4259,9 +4253,9 @@ snapshots:
     dependencies:
       levn: 0.4.1
 
-  '@fontsource-variable/open-sans@5.1.0': {}
+  '@fontsource-variable/open-sans@5.1.1': {}
 
-  '@fontsource/bree-serif@5.1.0': {}
+  '@fontsource/bree-serif@5.1.1': {}
 
   '@humanfs/core@0.19.1': {}
 
@@ -4276,11 +4270,11 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.1': {}
 
-  '@iconify-json/logos@1.2.3':
+  '@iconify-json/logos@1.2.4':
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/mdi@1.2.1':
+  '@iconify-json/mdi@1.2.2':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -4421,49 +4415,49 @@ snapshots:
 
   '@oslojs/encoding@1.1.0': {}
 
-  '@percy/cli-app@1.30.3(typescript@5.7.2)':
+  '@percy/cli-app@1.30.6(typescript@5.7.2)':
     dependencies:
-      '@percy/cli-command': 1.30.3(typescript@5.7.2)
-      '@percy/cli-exec': 1.30.3(typescript@5.7.2)
+      '@percy/cli-command': 1.30.6(typescript@5.7.2)
+      '@percy/cli-exec': 1.30.6(typescript@5.7.2)
     transitivePeerDependencies:
       - bufferutil
       - supports-color
       - typescript
       - utf-8-validate
 
-  '@percy/cli-build@1.30.3(typescript@5.7.2)':
+  '@percy/cli-build@1.30.6(typescript@5.7.2)':
     dependencies:
-      '@percy/cli-command': 1.30.3(typescript@5.7.2)
+      '@percy/cli-command': 1.30.6(typescript@5.7.2)
     transitivePeerDependencies:
       - bufferutil
       - supports-color
       - typescript
       - utf-8-validate
 
-  '@percy/cli-command@1.30.3(typescript@5.7.2)':
+  '@percy/cli-command@1.30.6(typescript@5.7.2)':
     dependencies:
-      '@percy/config': 1.30.3(typescript@5.7.2)
-      '@percy/core': 1.30.3(typescript@5.7.2)
-      '@percy/logger': 1.30.3
+      '@percy/config': 1.30.6(typescript@5.7.2)
+      '@percy/core': 1.30.6(typescript@5.7.2)
+      '@percy/logger': 1.30.6
     transitivePeerDependencies:
       - bufferutil
       - supports-color
       - typescript
       - utf-8-validate
 
-  '@percy/cli-config@1.30.3(typescript@5.7.2)':
+  '@percy/cli-config@1.30.6(typescript@5.7.2)':
     dependencies:
-      '@percy/cli-command': 1.30.3(typescript@5.7.2)
+      '@percy/cli-command': 1.30.6(typescript@5.7.2)
     transitivePeerDependencies:
       - bufferutil
       - supports-color
       - typescript
       - utf-8-validate
 
-  '@percy/cli-exec@1.30.3(typescript@5.7.2)':
+  '@percy/cli-exec@1.30.6(typescript@5.7.2)':
     dependencies:
-      '@percy/cli-command': 1.30.3(typescript@5.7.2)
-      '@percy/logger': 1.30.3
+      '@percy/cli-command': 1.30.6(typescript@5.7.2)
+      '@percy/logger': 1.30.6
       cross-spawn: 7.0.6
       which: 2.0.2
     transitivePeerDependencies:
@@ -4472,9 +4466,9 @@ snapshots:
       - typescript
       - utf-8-validate
 
-  '@percy/cli-snapshot@1.30.3(typescript@5.7.2)':
+  '@percy/cli-snapshot@1.30.6(typescript@5.7.2)':
     dependencies:
-      '@percy/cli-command': 1.30.3(typescript@5.7.2)
+      '@percy/cli-command': 1.30.6(typescript@5.7.2)
       yaml: 2.6.0
     transitivePeerDependencies:
       - bufferutil
@@ -4482,9 +4476,9 @@ snapshots:
       - typescript
       - utf-8-validate
 
-  '@percy/cli-upload@1.30.3(typescript@5.7.2)':
+  '@percy/cli-upload@1.30.6(typescript@5.7.2)':
     dependencies:
-      '@percy/cli-command': 1.30.3(typescript@5.7.2)
+      '@percy/cli-command': 1.30.6(typescript@5.7.2)
       fast-glob: 3.3.2
       image-size: 1.1.1
     transitivePeerDependencies:
@@ -4493,45 +4487,45 @@ snapshots:
       - typescript
       - utf-8-validate
 
-  '@percy/cli@1.30.3(typescript@5.7.2)':
+  '@percy/cli@1.30.6(typescript@5.7.2)':
     dependencies:
-      '@percy/cli-app': 1.30.3(typescript@5.7.2)
-      '@percy/cli-build': 1.30.3(typescript@5.7.2)
-      '@percy/cli-command': 1.30.3(typescript@5.7.2)
-      '@percy/cli-config': 1.30.3(typescript@5.7.2)
-      '@percy/cli-exec': 1.30.3(typescript@5.7.2)
-      '@percy/cli-snapshot': 1.30.3(typescript@5.7.2)
-      '@percy/cli-upload': 1.30.3(typescript@5.7.2)
-      '@percy/client': 1.30.3
-      '@percy/logger': 1.30.3
+      '@percy/cli-app': 1.30.6(typescript@5.7.2)
+      '@percy/cli-build': 1.30.6(typescript@5.7.2)
+      '@percy/cli-command': 1.30.6(typescript@5.7.2)
+      '@percy/cli-config': 1.30.6(typescript@5.7.2)
+      '@percy/cli-exec': 1.30.6(typescript@5.7.2)
+      '@percy/cli-snapshot': 1.30.6(typescript@5.7.2)
+      '@percy/cli-upload': 1.30.6(typescript@5.7.2)
+      '@percy/client': 1.30.6
+      '@percy/logger': 1.30.6
     transitivePeerDependencies:
       - bufferutil
       - supports-color
       - typescript
       - utf-8-validate
 
-  '@percy/client@1.30.3':
+  '@percy/client@1.30.6':
     dependencies:
-      '@percy/env': 1.30.3
-      '@percy/logger': 1.30.3
+      '@percy/env': 1.30.6
+      '@percy/logger': 1.30.6
       pako: 2.1.0
 
-  '@percy/config@1.30.3(typescript@5.7.2)':
+  '@percy/config@1.30.6(typescript@5.7.2)':
     dependencies:
-      '@percy/logger': 1.30.3
+      '@percy/logger': 1.30.6
       ajv: 8.17.1
       cosmiconfig: 8.3.6(typescript@5.7.2)
       yaml: 2.6.0
     transitivePeerDependencies:
       - typescript
 
-  '@percy/core@1.30.3(typescript@5.7.2)':
+  '@percy/core@1.30.6(typescript@5.7.2)':
     dependencies:
-      '@percy/client': 1.30.3
-      '@percy/config': 1.30.3(typescript@5.7.2)
-      '@percy/dom': 1.30.3
-      '@percy/logger': 1.30.3
-      '@percy/webdriver-utils': 1.30.3(typescript@5.7.2)
+      '@percy/client': 1.30.6
+      '@percy/config': 1.30.6(typescript@5.7.2)
+      '@percy/dom': 1.30.6
+      '@percy/logger': 1.30.6
+      '@percy/webdriver-utils': 1.30.6(typescript@5.7.2)
       content-disposition: 0.5.4
       cross-spawn: 7.0.6
       extract-zip: 2.0.1
@@ -4549,32 +4543,32 @@ snapshots:
       - typescript
       - utf-8-validate
 
-  '@percy/dom@1.30.3': {}
+  '@percy/dom@1.30.6': {}
 
-  '@percy/env@1.30.3':
+  '@percy/env@1.30.6':
     dependencies:
-      '@percy/logger': 1.30.3
+      '@percy/logger': 1.30.6
 
-  '@percy/logger@1.30.3': {}
+  '@percy/logger@1.30.6': {}
 
-  '@percy/playwright@1.0.7(playwright-core@1.49.0)':
+  '@percy/playwright@1.0.7(playwright-core@1.49.1)':
     dependencies:
-      playwright-core: 1.49.0
+      playwright-core: 1.49.1
 
-  '@percy/sdk-utils@1.30.3': {}
+  '@percy/sdk-utils@1.30.6': {}
 
-  '@percy/webdriver-utils@1.30.3(typescript@5.7.2)':
+  '@percy/webdriver-utils@1.30.6(typescript@5.7.2)':
     dependencies:
-      '@percy/config': 1.30.3(typescript@5.7.2)
-      '@percy/sdk-utils': 1.30.3
+      '@percy/config': 1.30.6(typescript@5.7.2)
+      '@percy/sdk-utils': 1.30.6
     transitivePeerDependencies:
       - typescript
 
   '@pkgr/core@0.1.1': {}
 
-  '@playwright/test@1.49.0':
+  '@playwright/test@1.49.1':
     dependencies:
-      playwright: 1.49.0
+      playwright: 1.49.1
 
   '@rollup/pluginutils@5.1.3(rollup@4.21.2)':
     dependencies:
@@ -4963,7 +4957,7 @@ snapshots:
       - supports-color
       - typescript
 
-  astro-icon@1.1.4:
+  astro-icon@1.1.5:
     dependencies:
       '@iconify/tools': 4.0.5
       '@iconify/types': 2.0.0
@@ -4972,7 +4966,7 @@ snapshots:
       - debug
       - supports-color
 
-  astro@4.16.16(@types/node@20.11.22)(rollup@4.21.2)(typescript@5.7.2):
+  astro@4.16.18(@types/node@20.11.22)(rollup@4.21.2)(typescript@5.7.2):
     dependencies:
       '@astrojs/compiler': 2.10.3
       '@astrojs/internal-helpers': 0.4.1
@@ -5463,10 +5457,10 @@ snapshots:
       - supports-color
       - typescript
 
-  eslint-plugin-prettier@5.2.1(@types/eslint@8.56.10)(eslint-config-prettier@9.1.0(eslint@9.16.0))(eslint@9.16.0)(prettier@3.4.1):
+  eslint-plugin-prettier@5.2.1(@types/eslint@8.56.10)(eslint-config-prettier@9.1.0(eslint@9.16.0))(eslint@9.16.0)(prettier@3.4.2):
     dependencies:
       eslint: 9.16.0
-      prettier: 3.4.1
+      prettier: 3.4.2
       prettier-linter-helpers: 1.0.0
       synckit: 0.9.1
     optionalDependencies:
@@ -5583,7 +5577,7 @@ snapshots:
 
   fast-uri@3.0.3: {}
 
-  fast-xml-parser@4.5.0:
+  fast-xml-parser@4.5.1:
     dependencies:
       strnum: 1.0.5
 
@@ -5730,15 +5724,6 @@ snapshots:
       strip-bom-string: 1.0.0
 
   has-flag@4.0.0: {}
-
-  hast-util-from-html@2.0.1:
-    dependencies:
-      '@types/hast': 3.0.4
-      devlop: 1.1.0
-      hast-util-from-parse5: 8.0.1
-      parse5: 7.1.2
-      vfile: 6.0.3
-      vfile-message: 4.0.2
 
   hast-util-from-html@2.0.3:
     dependencies:
@@ -5964,48 +5949,48 @@ snapshots:
 
   kolorist@1.8.0: {}
 
-  lefthook-darwin-arm64@1.9.0:
+  lefthook-darwin-arm64@1.9.3:
     optional: true
 
-  lefthook-darwin-x64@1.9.0:
+  lefthook-darwin-x64@1.9.3:
     optional: true
 
-  lefthook-freebsd-arm64@1.9.0:
+  lefthook-freebsd-arm64@1.9.3:
     optional: true
 
-  lefthook-freebsd-x64@1.9.0:
+  lefthook-freebsd-x64@1.9.3:
     optional: true
 
-  lefthook-linux-arm64@1.9.0:
+  lefthook-linux-arm64@1.9.3:
     optional: true
 
-  lefthook-linux-x64@1.9.0:
+  lefthook-linux-x64@1.9.3:
     optional: true
 
-  lefthook-openbsd-arm64@1.9.0:
+  lefthook-openbsd-arm64@1.9.3:
     optional: true
 
-  lefthook-openbsd-x64@1.9.0:
+  lefthook-openbsd-x64@1.9.3:
     optional: true
 
-  lefthook-windows-arm64@1.9.0:
+  lefthook-windows-arm64@1.9.3:
     optional: true
 
-  lefthook-windows-x64@1.9.0:
+  lefthook-windows-x64@1.9.3:
     optional: true
 
-  lefthook@1.9.0:
+  lefthook@1.9.3:
     optionalDependencies:
-      lefthook-darwin-arm64: 1.9.0
-      lefthook-darwin-x64: 1.9.0
-      lefthook-freebsd-arm64: 1.9.0
-      lefthook-freebsd-x64: 1.9.0
-      lefthook-linux-arm64: 1.9.0
-      lefthook-linux-x64: 1.9.0
-      lefthook-openbsd-arm64: 1.9.0
-      lefthook-openbsd-x64: 1.9.0
-      lefthook-windows-arm64: 1.9.0
-      lefthook-windows-x64: 1.9.0
+      lefthook-darwin-arm64: 1.9.3
+      lefthook-darwin-x64: 1.9.3
+      lefthook-freebsd-arm64: 1.9.3
+      lefthook-freebsd-x64: 1.9.3
+      lefthook-linux-arm64: 1.9.3
+      lefthook-linux-x64: 1.9.3
+      lefthook-openbsd-arm64: 1.9.3
+      lefthook-openbsd-x64: 1.9.3
+      lefthook-windows-arm64: 1.9.3
+      lefthook-windows-x64: 1.9.3
 
   levn@0.4.1:
     dependencies:
@@ -6596,11 +6581,11 @@ snapshots:
       mlly: 1.7.1
       pathe: 1.1.2
 
-  playwright-core@1.49.0: {}
+  playwright-core@1.49.1: {}
 
-  playwright@1.49.0:
+  playwright@1.49.1:
     dependencies:
-      playwright-core: 1.49.0
+      playwright-core: 1.49.1
     optionalDependencies:
       fsevents: 2.3.2
 
@@ -6868,13 +6853,13 @@ snapshots:
   prettier-plugin-astro@0.14.1:
     dependencies:
       '@astrojs/compiler': 2.10.1
-      prettier: 3.4.1
+      prettier: 3.4.2
       sass-formatter: 0.7.9
 
   prettier@2.8.7:
     optional: true
 
-  prettier@3.4.1: {}
+  prettier@3.4.2: {}
 
   prismjs@1.29.0: {}
 
@@ -6924,7 +6909,7 @@ snapshots:
   rehype-parse@9.0.0:
     dependencies:
       '@types/hast': 3.0.4
-      hast-util-from-html: 2.0.1
+      hast-util-from-html: 2.0.3
       unified: 11.0.5
 
   rehype-raw@7.0.0:
@@ -6932,12 +6917,6 @@ snapshots:
       '@types/hast': 3.0.4
       hast-util-raw: 9.0.2
       vfile: 6.0.3
-
-  rehype-stringify@10.0.0:
-    dependencies:
-      '@types/hast': 3.0.4
-      hast-util-to-html: 9.0.3
-      unified: 11.0.5
 
   rehype-stringify@10.0.1:
     dependencies:
@@ -6949,7 +6928,7 @@ snapshots:
     dependencies:
       '@types/hast': 3.0.4
       rehype-parse: 9.0.0
-      rehype-stringify: 10.0.0
+      rehype-stringify: 10.0.1
       unified: 11.0.5
 
   remark-gfm@4.0.0:
@@ -7479,12 +7458,12 @@ snapshots:
     optionalDependencies:
       '@volar/language-service': 2.4.8
 
-  volar-service-prettier@0.0.62(@volar/language-service@2.4.8)(prettier@3.4.1):
+  volar-service-prettier@0.0.62(@volar/language-service@2.4.8)(prettier@3.4.2):
     dependencies:
       vscode-uri: 3.0.8
     optionalDependencies:
       '@volar/language-service': 2.4.8
-      prettier: 3.4.1
+      prettier: 3.4.2
 
   volar-service-typescript-twoslash-queries@0.0.62(@volar/language-service@2.4.8):
     dependencies:
