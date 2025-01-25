@@ -4,9 +4,6 @@ data:
   - id: progressive
     label: Progressive Enhancement
     icon: mdi:escalator-up
-  - id: a11y
-    label: Accessibility
-    icon: mdi:wheelchair-accessibility
   - id: atomic
     label: Atomic Design
     icon: "atomic"
