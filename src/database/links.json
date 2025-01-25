@@ -1,11 +1,5 @@
 [
   {
-    "icon": "mdi:twitter",
-    "href": "https://twitter.com/dwightjack",
-    "label": "@dwightjack",
-    "description": "My twitter profile"
-  },
-  {
     "icon": "mdi:at",
     "href": "mailto:marco@solazzi.me",
     "label": "marco@solazzi.me"
