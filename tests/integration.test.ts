@@ -13,7 +13,7 @@ test.describe('home', () => {
   test.describe('side menu', () => {
     test('desktop visibility', async ({ page }) => {
       const menu = page.getByRole('navigation', {
-        name: 'Sections Navigation',
+        name: 'Sections',
       });
       await expect(menu).toHaveClass(/--inline/);
       await expect(menu).toBeVisible();
@@ -24,7 +24,7 @@ test.describe('home', () => {
 
       await toggler.click();
       const menu = page.getByRole('navigation', {
-        name: 'Sections Navigation',
+        name: 'Sections',
       });
       await expect(menu).not.toHaveAttribute('inert');
       await expect(menu).toBeInViewport();
