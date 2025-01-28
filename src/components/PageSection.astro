@@ -8,7 +8,7 @@ type Props<Tag extends 'section' | 'aside' = 'section'> = Polymorphic<{
   subtitle?: string;
 }>;
 
-const { prefix = 'me', as: Tag = 'div', subtitle, title } = Astro.props;
+const { prefix = 'me', as: Tag = 'section', subtitle, title } = Astro.props;
 ---
 
 <Tag class="c-page-section">
