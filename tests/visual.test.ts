@@ -16,7 +16,7 @@ test.describe('homepage', () => {
     await page.waitForTimeout(500);
     await page.getByRole('button', { name: 'Toggle Navigation' }).click();
     const menu = page.getByRole('navigation', {
-      name: 'Sections Navigation',
+      name: 'Sections',
     });
     await menu.waitFor({ state: 'visible' });
     await percySnapshot(page, 'Side Menu', { widths: [640] });
