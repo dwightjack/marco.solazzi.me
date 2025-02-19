@@ -192,3 +192,4 @@ I am amazed by the variety of implementations and the small variations between t
 
 - Because UI libraries abstract away the final code that you are shipping, you might not know the type of "accessible experience" you are delivering.
 - When you delegate your design choices to someone else, you don't know the impact on your user experience.
+- In this case, the accessibility of libraries has a good baseline, but, as we described, there are many possible implementation and way to make a control "accessible", every implementation comes with caveats, and the support might vary over time. So don't rely blindly on the library and do some research for yourself.
