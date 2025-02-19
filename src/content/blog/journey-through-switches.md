@@ -13,7 +13,9 @@ Some time ago I learned about an interesting HTML pattern by wandering through [
 
 What I didn't know until then is that `button` is a [labelable element](https://html.spec.whatwg.org/multipage/forms.html#category-label) and thus it can be referenced with the `for` attribute of a `label`.
 
-Since this looked like an exotic pattern to me, I did some research and found that the pattern is actually well supported by browsers and most screen readers but not so well supported by voice control software. My initial guess was that, depending on the requirements, there are probably more established patterns out there, like using `id+aria-labbeledby`. Nonetheless, this pattern stuck in my mind.
+Since this looked like an exotic pattern to me, I did some research and found that the pattern is actually well supported by browsers and most screen readers but not so well supported by voice control software. 
+
+My initial guess was that, depending on the requirements, there are probably more established patterns out there, like using `id+aria-labbeledby`. Nonetheless, this pattern stuck in my mind.
 
 ## And then came The Switch
 
@@ -31,7 +33,9 @@ Now, the example above doesn't make much sense, and I didn't encounter it *in th
 <label for="airplane-mode">Airplane Mode</label>
 ```
 
-The markup is very close to my first snippet, with the relevant addition of the `switch` role and the related `aria-checked` attribute. These additions tell assistive technologies that the control is a [switch](https://www.w3.org/TR/wai-aria/#switch). Around the web, you might find the control also called "toggle" or "toggle switch", but this is how it would usually look like:
+The markup is very close to my first snippet, with the relevant addition of the `switch` role and the related `aria-checked` attribute. These additions tell assistive technologies that the control is a [switch](https://www.w3.org/TR/wai-aria/#switch). 
+
+Around the web, you might find the control also called "toggle" or "toggle switch", but this is how it would usually look like:
 
 [https://commons.wikimedia.org/wiki/File:GtkSwitch.png#/media/File:GtkSwitch.png](https://commons.wikimedia.org/wiki/File:GtkSwitch.png#/media/File:GtkSwitch.png)
 
@@ -39,11 +43,21 @@ Since shadcn is based on Radix UI, a pretty established React library with focus
 
 ### Introduction to switches
 
-Before starting the journey, let's try to understand what a *switch* is, because the control itself is also pretty interesting from a User Experience point of view. It clearly is a [Skeuomorphism](https://www.interaction-design.org/literature/topics/skeuomorphism) of physical [toggle switches](https://en.wikipedia.org/wiki/Switch#Toggle_switch) and it was probably popularized by the [iOS interface](https://developer.apple.com/design/human-interface-guidelines/toggles). In many cases, the expected behavior for this control is to immediately have an effect on the system. For example, we expect a switch for airplane mode to immediately turn it on or off without having to press a save button. This is where the application of this UI pattern to the web changes: a switch can both have immediate effect or be part of a submittable form (thus behaving almost like a checkbox). Let's keep this in mind for later.
+Before starting the journey, let's try to understand what a *switch* is, because the control itself is also pretty interesting from a User Experience point of view. 
+
+It clearly is a [Skeuomorphism](https://www.interaction-design.org/literature/topics/skeuomorphism) of physical [toggle switches](https://en.wikipedia.org/wiki/Switch#Toggle_switch) and it was probably popularized by the [iOS interface](https://developer.apple.com/design/human-interface-guidelines/toggles). 
+
+In many cases, the expected behavior for this control is to immediately have an effect on the system. For example, we expect a switch for airplane mode to immediately turn it on or off without having to press a save button. 
+
+This is where the application of this UI pattern to the web changes: a switch can both have immediate effect or be part of a submittable form (thus behaving almost like a checkbox). Let's keep this in mind for later.
 
 ### Web switches
 
-When it comes to the web, there's extensive literature about accessible switches and toggle buttons (for example: [https://www.scottohara.me/note/2019/04/03/switch-script.html](https://www.scottohara.me/note/2019/04/03/switch-script.html), [https://inclusive-components.design/toggle-button/](https://inclusive-components.design/toggle-button/), [https://kittygiraudel.com/2021/04/05/an-accessible-toggle/](https://kittygiraudel.com/2021/04/05/an-accessible-toggle/#button-variant)) and even if their semantics are slightly different, the names are [used interchangeably in design systems](https://component.gallery/components/toggle/). There are two ongoing initiatives for native switch controls: [OpenUI toggle](https://open-ui.org/components/switch.explainer/) and [switch attribute](https://github.com/whatwg/html/pull/9546), the latter one being [already shipped in Safari 17.4](https://webkit.org/blog/15054/an-html-switch-control/). But for now, the closest patterns are:
+When it comes to the web, there's extensive literature about accessible switches and toggle buttons (for example: [https://www.scottohara.me/note/2019/04/03/switch-script.html](https://www.scottohara.me/note/2019/04/03/switch-script.html), [https://inclusive-components.design/toggle-button/](https://inclusive-components.design/toggle-button/), [https://kittygiraudel.com/2021/04/05/an-accessible-toggle/](https://kittygiraudel.com/2021/04/05/an-accessible-toggle/#button-variant)).
+
+Even if their semantics are slightly different, the names are [used interchangeably in design systems](https://component.gallery/components/toggle/). 
+
+There are two ongoing initiatives for native switch controls: [OpenUI toggle](https://open-ui.org/components/switch.explainer/) and [switch attribute](https://github.com/whatwg/html/pull/9546), the latter one being [already shipped in Safari 17.4](https://webkit.org/blog/15054/an-html-switch-control/). But for now, the most effective patterns are:
 
 ```html
 <!-- 1) HTML base is a checkbox -->  
@@ -66,13 +80,21 @@ Airplane mode off switch
 
 Not all screen readers/browser pairs support these patterns though. For example, Narrator in every browser except Edge identifies the switch as `button, off` (probably because Narrator is mostly tailored for Edge users). As always, build with your target audience in mind.
 
-**Interactions** 
+**System architecture** 
 
-From an operative point of view, the first pattern is probably preferable in cases where the switch's state change is part of a submittable form because the checkbox's value is submitted with all other fields (which is a good practice for progressive enhancement and also more relevant with concepts like [React Server Functions](https://react.dev/reference/react-dom/components/form#handle-form-submission-with-a-server-function)). The second pattern is instead more suitable when we want the state change to have an immediate effect since that's an expected behavior of the underlying `button` element.  
+From a system architecture perspective, the first pattern is probably preferable in cases where the switch's state change is part of a submittable form. This is because the checkbox's value is submitted with all other fields (which is a good practice for progressive enhancement).
+
+This approach becomes even more relevant with concepts like [React Server Functions](https://react.dev/reference/react-dom/components/form#handle-form-submission-with-a-server-function).
+
+The second pattern is instead more suitable when we want the state change to have an immediate effect since that's an expected behavior of the underlying `button` element.  
+
+**The "labeled control side effect"**
 
 Another big difference, at least from the user agent point of view, is that in the first example the `label` has an associated [labeled control](https://html.spec.whatwg.org/multipage/forms.html#labeled-control) (the checkbox), while in the second **it's just a caption for the button**.
 
-It might seem a semantic subtlety, but there is a rather interesting side effect: interacting with the label of a labeled control triggers events on the control itself. For example, in most browsers, clicking the label of a checkbox will change the checkbox's state, as if we directly clicked on the control. This is not the case when we associate a label and a control using `aria-labelledby`.
+It might seem a semantic subtlety, but there is a rather interesting side effect: interacting with the label of a labeled control triggers events on the control itself. 
+
+For example, in most browsers, clicking the label of a checkbox will change the checkbox's state, as if we directly clicked on the control. This is not the case when we associate a label and a control using `aria-labelledby`.
 
 So, if we change the second snippet to:
 
@@ -84,11 +106,17 @@ So, if we change the second snippet to:
 
 now clicking on the label triggers the button `click` event (you can test the behavior in [this CodePen](https://codepen.io/marco_solazzi/pen/bNGEgPM)). 
 
-In the context of a form with many inputs, this behavior might contribute to the consistency of the user experience by making the switch feel more *native*. Anyway, as I previously mentioned, some accessibility software might not fully support this pattern. We'll see later how component libraries are trying to solve the problem.
+In the context of a form with many inputs, this behavior might contribute to the consistency of the user experience by making the switch feel more *native*. 
+
+Anyway, as I previously mentioned, some accessibility software might not fully support this pattern. We'll see later how component libraries are trying to solve the problem.
 
 ## Switches in the wild
 
-So, now that we covered the basics, I'd like to see what other popular component libraries are doing for the same component. I will focus on React, Vue, and Angular since they seem to [have the higher market share](https://2024.stateofjs.com/en-US/libraries/front-end-frameworks/) in the JavaScript ecosystem. My choice of library is a mix of [surveys](https://2024.stateofreact.com/en-US/libraries/component-libraries/) and other [sources](https://bestofjs.org/projects?page=1&limit=30&tags=component&sort=monthly-downloads). 
+Now that we've covered the basics of switches and their implementation patterns, let's explore how popular libraries are actually handling this component in practice.
+
+I'd like to see what other popular component libraries are doing for the same component. I will focus on React, Vue, and Angular since they seem to [have the higher market share](https://2024.stateofjs.com/en-US/libraries/front-end-frameworks/) in the JavaScript ecosystem. 
+
+My choice of library is a mix of [surveys](https://2024.stateofreact.com/en-US/libraries/component-libraries/) and other [sources](https://bestofjs.org/projects?page=1&limit=30&tags=component&sort=monthly-downloads). 
 
 ### React Libraries
 
@@ -125,9 +153,13 @@ So, now that we covered the basics, I'd like to see what other popular component
 
 ### Results
 
+After investigating these libraries, some clear patterns emerge in how switches are implemented across the ecosystem.
+
 As I suspected, most of the library authors settled for a more conservative pattern using a `label` and a checkbox with (or without) the `switch` role. 
 
 It might seem that the `label + button` pattern isn't used a lot, but remember that React is the most popular JavaScript library, shadcn and Radix have large adoption, and Headless UI is used in [Tailwind's own premium UI library](https://tailwindui.com/components).
+
+**Accessibility testing results**
 
 As for screen readers, in my quick tests using VoiceOver, NVDA, and Narrator, all these patterns worked as expected, correctly reporting switches or checkboxes and their states.
 
@@ -139,18 +171,24 @@ I also noticed some interesting details:
 
 ### Redundant labelling
 
-Let's expand on that last point. Here is a snippet as reference:
+The redundant labelling pattern deserves a closer look, as it represents an interesting approach to accessibility.
+
+Here is a simplified snippet as reference:
 
 ```html
 <label for="switch" id="switch-label">Airplane mode</label>
 <button id="switch" role="switch" aria-labelledby="switch-label" aria-checked="false"></button>
 ```
 
-Earlier we said that some accessibility software might not properly compute the name of buttons associated with labels with the `for` attribute. Since `aria-*` attributes have precedence in the [computation of accessible names](https://www.stefanjudis.com/today-i-learned/the-order-of-accessible-name-computation-steps/), the `for` attribute becomes superfluous and is then only used to leverage the labeled control trigger side effect (as [reported in this PR](https://github.com/tailwindlabs/headlessui/pull/2265)). Anyway, I couldn't test the accessibility of this pattern, so I can't 100% vouch for it.
+Earlier we said that some accessibility software might not properly compute the name of buttons associated with labels with the `for` attribute, so, since `aria-*` attributes have precedence in the [computation of accessible names](https://www.stefanjudis.com/today-i-learned/the-order-of-accessible-name-computation-steps/), we should have solved those issues. 
+
+The `for` attribute is then only used to leverage the labeled control trigger side effect (as [reported in this PR](https://github.com/tailwindlabs/headlessui/pull/2265)). 
+
+Anyway, I couldn't test the accessibility of this pattern, so I can't 100% vouch for it.
 
 ## Takeaways
 
-I am amazed by the variety of implementations and the small variations between them. There are two important points to remember:
+I am amazed by the variety of implementations and the small variations between them. After this exploration, two important points stand out:
 
 - Because UI libraries abstract away the final code that you are shipping, you might not know the type of "accessible experience" you are delivering.
 - When you delegate your design choices to someone else, you don't know the impact on your user experience.
