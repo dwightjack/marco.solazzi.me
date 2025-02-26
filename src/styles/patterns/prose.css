@@ -22,6 +22,7 @@
   h1,
   h2,
   h3,
+  details,
   h4,
   h5 {
     margin-block: 1.5rem 0;
@@ -96,7 +97,7 @@
     }
   }
 
-  :not(pre) > code {
+  :not(pre) > code, samp {
     padding: 0.2em;
     background-color: color-mix(in oklch, currentcolor, transparent 92%);
     font-size: 0.9em;
@@ -194,6 +195,19 @@
     &:not([align]) {
       text-align: start;
     }
+  }
+
+  details {
+    padding: var(--space-2);
+    background-color: var(--box-color-background);
+
+    &[open] {
+      @media not (prefers-color-scheme: dark) {
+        box-shadow: 0 0 5px 1px color-mix(in oklch, currentcolor, transparent 95%);
+      }
+    }
+
+
   }
 
   /* stylelint-disable-next-line no-descending-specificity */
