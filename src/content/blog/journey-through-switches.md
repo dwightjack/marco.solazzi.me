@@ -10,7 +10,7 @@ excerpt: "A technical exploration of switch implementations across popular UI li
 
 :::
 
-Some time ago I learned about an interesting HTML pattern by wandering through [the spec](https://html.spec.whatwg.org/):
+Some time ago, I learned about an interesting HTML pattern by wandering through [the spec](https://html.spec.whatwg.org/):
 
 ```html
 <label for="btn">Hello World</label>
@@ -50,7 +50,7 @@ Around the web, you might find the control also called <i>toggle</i> or <i>toggl
   <figcaption>Switches &dash; <a href="https://commons.wikimedia.org/wiki/File:GtkSwitch.png">Wikimedia Commons</a> </figcaption>
 </figure>
 
-Since shadcn is based on [Radix UI](https://www.radix-ui.com/primitives), a pretty established React library with focus on accessibility, I decided to embark on a journey to see what other popular libraries were doing and how widespread the *labeled button* pattern was.
+Since shadcn is based on [Radix UI](https://www.radix-ui.com/primitives), a pretty established React library with a focus on accessibility, I decided to embark on a journey to see what other popular libraries were doing and how widespread the *labeled button* pattern was.
 
 ### Introduction to switches
 
@@ -90,7 +90,7 @@ For both patterns, NVDA and VoiceOver and other screen readers would sound like 
 Airplane mode off switch
 ```
 
-Not all screen readers/browser pairs support these patterns though. For example, Narrator in every browser except Edge identifies the switch as `button, off` (probably because Narrator is mostly tailored for Edge users). As always, build with your target audience in mind.
+Not all screen readers/browser pairs support these patterns though. For example, Narrator in every browser except Edge identifies the switch as `button, off` (probably because Narrator is mostly tailored for Edge users): as always, build with your target audience in mind.
 
 #### System architecture
 
@@ -131,7 +131,7 @@ Anyway, as I previously mentioned, some accessibility software might not fully s
 
 Now that we've covered the basics of switches and their implementation patterns, I'd like to see what other popular component libraries are doing for the same component. 
 
-I will focus on React, Vue, and Angular since they seem to [have the higher market share](https://2024.stateofjs.com/en-US/libraries/front-end-frameworks/) in the JavaScript ecosystem. My choice of library is a mix of [surveys](https://2024.stateofreact.com/en-US/libraries/component-libraries/) and other [sources](https://bestofjs.org/projects?page=1&limit=30&tags=component&sort=monthly-downloads). 
+I will focus on React, Vue, and Angular since they seem to [have the highest market share](https://2024.stateofjs.com/en-US/libraries/front-end-frameworks/) in the JavaScript ecosystem. My choice of library is a mix of [surveys](https://2024.stateofreact.com/en-US/libraries/component-libraries/) and other [sources](https://bestofjs.org/projects?page=1&limit=30&tags=component&sort=monthly-downloads). 
 
 ::caption[React Libraries]
 | Library                                                                      | Pattern                                                       |
@@ -167,9 +167,9 @@ I will focus on React, Vue, and Angular since they seem to [have the higher mark
 
 ## Results
 
-After investigating these libraries, a clear result emerges: As I suspected, **most of the library authors chose a more conservative pattern** using a `label` and a checkbox with (or without) the `switch` role. 
+After investigating these libraries, a clear result emerges: as I suspected, **most of the library authors chose a more conservative pattern** using a `label` and a checkbox with (or without) the `switch` role. 
 
-Anyway, even if it might seem that the `label + button` pattern isn't used a lot, we need to remember that React is the most popular JavaScript library, [shadcn and Radix have large adoption](https://npmtrends.com/@headlessui/react-vs-@mui/material-vs-@radix-ui/primitive-vs-react-bootstrap), and Headless UI is used in [Tailwind's own premium UI library](https://tailwindui.com/components). 
+However, even if it might seem that the `label + button` pattern isn't used a lot, we need to remember that React is the most popular JavaScript library, [shadcn and Radix have large adoption](https://npmtrends.com/@headlessui/react-vs-@mui/material-vs-@radix-ui/primitive-vs-react-bootstrap), and Headless UI is used in [Tailwind's own premium UI library](https://tailwindui.com/components). 
 
 So, from a numerical perspective, there may be a significant number of web applications using the *labeled button* pattern.
 
@@ -246,7 +246,7 @@ In my quick tests using VoiceOver, NVDA, and Narrator, all these patterns worked
 </details>
 
 
-I created some rough demo environments grouping most of the libraries I tested. You can check them out at the following links:
+I created some rough demo environments, grouping most of the libraries I tested. You can check them out at the following links:
 
 - [React Libraries](https://stackblitz.com/edit/stackblitz-starters-nia25dtm?file=src%2Fapp%2Fpage.tsx)
 - [Vue Libraries](https://stackblitz.com/edit/vitejs-vite-v3yn29k8?file=src%2FApp.vue)
@@ -256,12 +256,12 @@ I created some rough demo environments grouping most of the libraries I tested. 
 I also noticed some interesting details:
 
 - MUI, Vuetify, and Chakra UI (as well as Ark UI, which is developed under the same org) implementations of the switch are basically <b>just visual</b>: the underlying controls are simply labeled checkboxes. While this makes the accessibility information less consistent with its on-screen appearance, as [MUI documentation states](https://mui.com/material-ui/react-switch/#accessibility), the choice of not using the switch role is conservative, to widen the range of supported devices.
-- React Aria doesn't set the `aria-checked` attribute that [should be required](https://www.w3.org/TR/wai-aria/#switch); anyway, in all my tests, screen readers were able to pick the state from the underlying checkbox.
+- React Aria doesn't set the `aria-checked` attribute that [should be required](https://www.w3.org/TR/wai-aria/#switch); nevertheless, in all my tests, screen readers were able to pick the state from the underlying checkbox.
 - Headless UI and Angular Material use the same implementation as shadcn/ui (the *labeled button*) but with a twist: they introduce a redundancy where the label is referenced in the button via the `aria-labelledby` attribute.
 
 ### Redundant labeling
 
-The redundant labelling pattern from the previous section  deserves a closer look, as it represents an interesting approach to usability and accessibility.
+The redundant labeling pattern from the previous section  deserves a closer look, as it represents an interesting approach to usability and accessibility.
 
 Here is a simplified snippet as reference:
 
@@ -280,8 +280,8 @@ Anyway, I couldn't test the accessibility of this pattern, so **I can't 100% vou
 
 After this long journey through switch implementations, I can summarize my findings in four key insights:
 
-- The *labeled button* pattern, while fascinating to discover in the HTML spec, remains somehow exotic in practice. Anyway, it's usage with a [redundant labeling](#redundant-labeling) could make it a fair alternative to more traditional patterns.
+- The *labeled button* pattern, while fascinating to discover in the HTML spec, remains somehow exotic in practice. However, its usage with a [redundant labeling](#redundant-labeling) could make it a fair alternative to more traditional patterns.
 - Because UI libraries abstract away the HTML implementation, you end up living in a world (that of `<Switches />`, `<Tabs />` and `<Menubar />`) disconnected from the real medium you're writing for: In all the test scenarios you are writing a variation on `<Switch />` but the _real_ markup is hidden away. 
-- When you delegate your design choices to someone else, **you don't know the impact on your user experience**. Small changes in the markup can fundamentally change how users perceive and interact with your interface.
+- When we delegate our design choices to someone else, **we don't know the impact on the user experience**. Small changes in the markup can fundamentally change how users perceive and interact with an interface.
 - The libraries I explored emphasize their accessibility and indeed provide a good baseline, but as we've seen, there are often many possible ways to make a control "accessible" &mdash; each with its own assumptions and caveats. Don't rely blindly on any library; **do some research based on your specific needs**.
 
