@@ -281,7 +281,7 @@ Anyway, I couldn't test the accessibility of this pattern, so **I can't 100% vou
 After this long journey through switch implementations, I can summarize my findings in four key insights:
 
 - The *labeled button* pattern, while fascinating to discover in the HTML spec, remains somehow exotic in practice. Anyway, it's usage with a [redundant labeling](#redundant-labeling) could make it a fair alternative to more traditional patterns.
-- Because UI libraries abstract away the HTML implementation, you end up living in a world (that of `<Switches />`, `<Tabs />` and `<Menubar />`) disconnected from the real medium you're writing for. In all the test scenarios you are writing a variation on `<Switch />` but you the end HTML is hidden away. 
+- Because UI libraries abstract away the HTML implementation, you end up living in a world (that of `<Switches />`, `<Tabs />` and `<Menubar />`) disconnected from the real medium you're writing for: In all the test scenarios you are writing a variation on `<Switch />` but the _real_ markup is hidden away. 
 - When you delegate your design choices to someone else, **you don't know the impact on your user experience**. Small changes in the markup can fundamentally change how users perceive and interact with your interface.
 - The libraries I explored emphasize their accessibility and indeed provide a good baseline, but as we've seen, there are often many possible ways to make a control "accessible" &mdash; each with its own assumptions and caveats. Don't rely blindly on any library; **do some research based on your specific needs**.
 
