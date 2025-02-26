@@ -1,7 +1,7 @@
 ---
 title: A Journey through Switches
 publishDate: 2025-02-25
-excerpt: "Components are a powerful abstraction but sometimes they might become a constraint"
+excerpt: "A technical exploration of switch implementations across popular UI libraries"
 ---
 
 :::warning
