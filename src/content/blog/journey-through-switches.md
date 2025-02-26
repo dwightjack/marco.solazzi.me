@@ -175,7 +175,7 @@ So, from a numerical perspective, there may be a significant number of web appli
 
 ### Accessibility testing results
 
-In my quick tests using VoiceOver, NVDA, and Narrator, all these patterns worked as expected. The screen readers correctly reported switches and checkboxes along with their states, with one exception: NVDA on Firefox reports Element Plus as <samp>blank</samp>. I didn't investigate this issue in depth, but it might be related to how the library hides the native input element (see a [similar topic for PrimeFaces](https://github.com/nvaccess/nvda/discussions/16398)). 
+In my quick tests using VoiceOver (macOS), NVDA, and Narrator, all these patterns worked as expected. The screen readers correctly reported switches and checkboxes along with their states, with one exception: NVDA on Firefox reports Element Plus as <samp>blank</samp>. I didn't investigate this issue in depth, but it might be related to how the library hides the native input element (see a [similar topic for PrimeFaces](https://github.com/nvaccess/nvda/discussions/16398)). 
 
 <details>
   <summary>Tests output log</summary>
