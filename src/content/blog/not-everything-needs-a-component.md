@@ -8,11 +8,11 @@ In the early 2000s, a new term, [*Divitis*](https://en.wiktionary.org/wiki/divit
 
 Fast forward 20 years - I witness a new *syndrome* affecting web developers, one I call *componentitis*. Here is my made-up definition:
 
-<figure class="pullquote">
+:::pullquote
 
 <dfn>Componentitis</dfn>: the practice of creating a component for every aspect of a UI in place of a simpler and more reusable solution.
 
-</figure>
+:::
 
 ## Components
 

@@ -1,8 +1,13 @@
 .p-prose {
   --prose-pullquote-space-gutter-inline: 0;
+  --prose-box-color-background-warning: oklch(97% 0.05 87.31deg);
 
   @media (--viewport-tablet) {
     --prose-pullquote-space-gutter-inline: var(--space-4);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    --prose-box-color-background-warning: oklch(39% 0.07 90.79deg);
   }
 
   max-inline-size: 80ch;
@@ -10,7 +15,6 @@
 
   p,
   :not(li) > :where(ul, ol),
-  table,
   hr,
   blockquote,
   pre,
@@ -18,9 +22,14 @@
   h1,
   h2,
   h3,
+  details,
   h4,
   h5 {
     margin-block: 1.5rem 0;
+
+    &:where(:first-child) {
+      margin-block-start: 0;
+    }
   }
 
   h1,
@@ -88,7 +97,7 @@
     }
   }
 
-  :not(pre) > code {
+  :not(pre) > code, samp {
     padding: 0.2em;
     background-color: color-mix(in oklch, currentcolor, transparent 92%);
     font-size: 0.9em;
@@ -96,6 +105,14 @@
 
   figure {
     margin-inline: 0;
+  }
+
+  figure:has(img) {
+    text-align: center;
+
+    & :where(img,picture) {
+      margin-inline: auto;
+    }
   }
 
   figcaption {
@@ -126,15 +143,50 @@
     max-inline-size: 100%;
   }
 
+  aside {
+    padding: var(--space-2);
+    background-color: var(--box-color-background);
+
+
+    &:not(first-child) {
+      margin-block-start: 1.5rem;
+    }
+
+    &.p-prose__warning {
+      background-color: var(--prose-box-color-background-warning);
+    }
+
+    @media not (prefers-color-scheme: dark) {
+      box-shadow: 0 0 5px 1px color-mix(in oklch, currentcolor, transparent 95%);
+    }
+
+  }
+
   table {
     inline-size: 100%;
+    margin-block: 1.5rem 2.5rem;
     border-collapse: collapse;
     border: 0;
   }
 
-  th,
+  caption {
+    margin-block-end: 1.5rem;
+    font-family: var(--text-heading-font-family);
+    font-size: var(--text-heading-font-size-mq);
+    font-weight: normal;
+    text-align: start;
+  }
+
   td {
     padding-block: var(--space-2);
+  }
+
+  th {
+    padding-block-end: var(--space-2);
+  }
+
+  th,
+  td {
     border-width: 0 0 1px;
     border-style: solid;
     border-color: color-mix(in oklch, currentcolor, transparent 80%);
@@ -144,6 +196,25 @@
       text-align: start;
     }
   }
+
+  details {
+    padding: var(--space-2);
+    background-color: var(--box-color-background);
+
+    &[open] {
+      @media not (prefers-color-scheme: dark) {
+        box-shadow: 0 0 5px 1px color-mix(in oklch, currentcolor, transparent 95%);
+      }
+    }
+
+
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  :where(tbody, tfoot) th {
+    padding-block-start: var(--space-2);
+  }
+
 
   hr {
     border: 1px solid color-mix(in oklch, currentcolor, transparent 80%);
@@ -185,6 +256,10 @@
     @media not (prefers-color-scheme: dark) {
       box-shadow: 0 0 5px 1px color-mix(in oklch, currentcolor, transparent 95%);
     }
+  }
+
+  .cp_embed_wrapper {
+    margin-block-start: 1.5rem;
   }
 
   @media (prefers-color-scheme: dark) {

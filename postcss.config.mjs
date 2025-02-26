@@ -14,6 +14,8 @@ export default {
       features: {
         'custom-properties': false,
         'nesting-rules': true,
+        'gamut-mapping': false,
+        'oklab-function': false,
       },
     }),
   ],
