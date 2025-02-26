@@ -12,6 +12,18 @@
 @custom-media --theme-dark (prefers-color-scheme: dark);
 
 @layer tokens {
+  /* Tokens pattern:
+
+    [[component]-*][category]-[property]-[variant]-[state]
+
+    --color-light-900  [category]-[variant]
+    --box-color-background  [component]-[category]-[property]
+    --box-color-background-hover  [component]-[category]-[property]-[state]
+    --button-icon-color-foreground  [component]-[component]-[category]-[property]
+
+    @see https://blog.damato.design/posts/tokens-as-intents/
+    @see https://medium.com/eightshapes-llc/naming-tokens-in-design-systems-9e86c7444676
+  */
   :root {
     /* Colors */
     --color-hue-red: 24deg;
