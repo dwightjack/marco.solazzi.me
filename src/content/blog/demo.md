@@ -94,6 +94,8 @@ You can create task lists to track tasks:
 
 You can create tables with headers:
 
+::caption[A table caption]
+
 | Column 1 | Column 2 | Column 3 | Column 4 |
 | -------- | -------- | -------- | -------: |
 | Row 1    | Data 1   | Data 2   |   123456 |
