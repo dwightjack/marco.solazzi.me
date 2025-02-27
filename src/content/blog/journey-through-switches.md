@@ -19,7 +19,7 @@ Some time ago, I learned about an interesting HTML pattern by wandering through 
 
 What I didn't know until then is that `button` is a [labelable element](https://html.spec.whatwg.org/multipage/forms.html#category-label) and thus it can be referenced with the `for` attribute of a `label`.
 
-Since this looked like an exotic pattern to me, I did some research and found that the pattern is actually well supported by browsers and most screen readers but not so well supported by voice control software. 
+Since this looked like an exotic pattern to me, I did some research and found that the pattern is actually well supported by browsers and most screen readers but not so well supported by voice control software (even if I couldn't verify it myself). 
 
 My initial guess was that, depending on the requirements, there are probably more established patterns out there, like using `id` and `aria-labelledby`. Nonetheless, this pattern stuck in my mind.
 
@@ -86,9 +86,9 @@ There are two ongoing initiatives for native switch controls: [OpenUI toggle](ht
 
 For both patterns, NVDA and VoiceOver and other screen readers would sound like (you can check it on [CodePen](https://codepen.io/marco_solazzi/full/jENojxL)):
 
-```
-Airplane mode off switch
-```
+<pre>
+<samp>Airplane mode off switch</samp>
+</pre>
 
 Not all screen readers/browser pairs support these patterns though. For example, Narrator in every browser except Edge identifies the switch as `button, off` (probably because Narrator is mostly tailored for Edge users): as always, build with your target audience in mind.
 
