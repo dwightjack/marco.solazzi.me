@@ -80,23 +80,25 @@ export async function getWorks() {
 }
 
 export async function getPersonalWorks() {
-  return (await getCollection('personalWorks')).map((entry) => {
-    const { project: title, stack, source, href, ...data } = entry.data;
+  return (await getCollection('personalWorks'))
+    .sort((a, b) => a.slug.localeCompare(b.slug))
+    .map((entry) => {
+      const { project: title, stack, source, href, ...data } = entry.data;
 
-    return {
-      details: {
-        id: `works-personal-${entry.id}`,
-        title,
-        href,
-        data: {
-          description: entry.body.trim(),
-          ...data,
-          stack: stack.join(', '),
+      return {
+        details: {
+          id: `works-personal-${entry.id}`,
+          title,
+          href,
+          data: {
+            description: entry.body.trim(),
+            ...data,
+            stack: stack.join(', '),
+          },
         },
-      },
-      source,
-    };
-  });
+        source,
+      };
+    });
 }
 
 export async function getTalks() {
