@@ -44,7 +44,7 @@ You can add *italic* or **bold** text:
 You can create links and add images:
 
 - [This is a link to OpenAI](https://www.openai.com)
-- ![Image alt text](https://picsum.photos/200/200 "Image Title")
+- ![Image alt text](../../assets/images/blog/demo.jpg "Image Title")
 
 <figure>
 
