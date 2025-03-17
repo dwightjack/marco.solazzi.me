@@ -90,13 +90,13 @@
       color 150ms,
       background-color 150ms,
       text-decoration-color 150ms;
-    text-decoration: 3px underline
+    text-decoration: 2px underline
       color-mix(
         in oklch,
         currentcolor,
         transparent var(--navigation-color-underline-alpha)
       );
-    text-underline-offset: 4px;
+    text-underline-offset: 3px;
 
     &:not(:focus-visible) {
       color: inherit;
@@ -111,13 +111,9 @@
       background: linear-gradient(
         to right,
         transparent calc(100% / 3),
-        var(--navigation-color-foreground-hover) 0,
-        var(--navigation-color-foreground-hover) calc(100% / 1.5),
+        var(--navigation-color-foreground-secondary) 0 calc(100% / 1.5),
         transparent 0
-      );
-      background-repeat: no-repeat;
-      background-position: 101% 0;
-      background-size: 300% 100%;
+      ) no-repeat 101% 0 / 300% 100%;
     }
   }
 

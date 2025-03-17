@@ -149,10 +149,10 @@
     --navigation-color-foreground: var(--color-dark);
     --navigation-color-foreground-hover: var(--color-brand-400);
     --navigation-color-foreground-secondary: var(--color-brand-500);
-    --navigation-color-underline-alpha: 85%;
+    --navigation-color-underline-alpha: 30%;
 
     @media (--theme-dark) {
-      --navigation-color-underline-alpha: 60%;
+      --navigation-color-underline-alpha: 30%;
       --navigation-color-foreground-hover: var(--color-brand-800);
       --navigation-color-foreground-secondary: var(--color-brand-800);
     }

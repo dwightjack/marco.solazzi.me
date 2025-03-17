@@ -225,6 +225,18 @@
     padding-block-start: var(--space-2);
   }
 
+  a {
+    transition:
+      color 150ms,
+      background-color 150ms,
+      text-decoration-color 150ms;
+    color: var(--navigation-color-foreground-secondary);
+
+    &:hover {
+      background: color-mix(in oklch, currentcolor, transparent 85%);
+    }
+  }
+
 
   hr {
     border: 1px solid color-mix(in oklch, currentcolor, transparent 80%);
