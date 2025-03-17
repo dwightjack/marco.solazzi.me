@@ -1,15 +1,15 @@
 @layer utilities {
   .u-visuallyhidden,
   .u-visibleonfocus:not(:focus) {
-    position: absolute !important;
-    block-size: 1px !important;
-    inline-size: 1px !important;
-    margin: -1px !important;
-    padding: 0 !important;
-    overflow: hidden !important;
-    clip: rect(0, 0, 0, 0) !important;
-    border: 0 !important;
-    white-space: nowrap !important;
+    position: absolute;
+    block-size: 1px;
+    inline-size: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    border: 0;
+    white-space: nowrap;
   }
 
   .u-from-tablet-landscape {
