@@ -3,3 +3,4 @@
 @import './patterns/stack.css' layer(patterns);
 @import './patterns/cluster.css' layer(patterns);
 @import './patterns/marked.css' layer(patterns);
+@import './patterns/scroller.css' layer(patterns);

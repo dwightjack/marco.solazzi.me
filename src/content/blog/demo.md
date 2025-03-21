@@ -102,6 +102,15 @@ You can create tables with headers:
 | Row 2    | Data 3   | Data 4   |      111 |
 
 
+
+::caption[A wide table caption]
+
+| Column 1 | Column 2 | Column 3 | Column 4 | Column 5 | Column 6 | Column 7 | Column 8 |
+| -------- | -------- | -------- | -------: | -------- | -------- | -------- | -------- |
+| Row 1    | Data 1   | Data 2   |   123456 | Data 2   | Data 2   | Data 2   | Data 2   |
+| Row 2    | Data 3   | Data 4   |      111 | Data 4   | Data 4   | Data 4   | Data 4   |
+
+
 ### 10. Pullquotes
 
 :::pullquote

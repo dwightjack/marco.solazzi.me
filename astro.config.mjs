@@ -3,7 +3,10 @@ import icon from 'astro-icon';
 import rehypeExternalLinks from 'rehype-external-links';
 import remarkDirective from 'remark-directive';
 import { remarkContainersPlugin } from './build/remark-plugins.mjs';
-import { rehypeTableCaptionPlugin } from './build/rehype-plugins.mjs';
+import {
+  rehypeTableCaptionPlugin,
+  rehypeTableScrollerPlugin,
+} from './build/rehype-plugins.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -26,6 +29,7 @@ export default defineConfig({
         },
       ],
       rehypeTableCaptionPlugin,
+      rehypeTableScrollerPlugin,
     ],
   },
 });

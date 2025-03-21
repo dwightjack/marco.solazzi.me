@@ -189,10 +189,12 @@
 
   td {
     padding-block: var(--space-2);
+    padding-inline: var(--space-half);
   }
 
   th {
     padding-block-end: var(--space-2);
+    padding-inline: var(--space-half);
   }
 
   th,
@@ -206,6 +208,7 @@
       text-align: start;
     }
   }
+
 
   details {
     padding: var(--space-2);

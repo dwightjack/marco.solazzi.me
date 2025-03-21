@@ -1,0 +1,68 @@
+@keyframes detect-scroll {
+  from, to { --can-scroll: ;}
+}
+
+
+@keyframes reveal {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.p-scroller {
+  display: grid;
+  position: relative;
+  grid-template: [full-start] 'sx body dx' auto [full-end] / [full-start] 1.5rem max-content 1.5rem [full-end];
+  inline-size: 100%;
+  overflow-x: auto;
+  animation: detect-scroll;
+  scroll-timeline: --scroll-timeline x;
+  animation-timeline: --scroll-timeline;
+  animation-fill-mode: none;
+
+  & > * {
+    grid-area: full;
+  }
+
+  & > table > caption {
+    position: sticky;
+  }
+}
+
+
+.p-scroller::before,
+.p-scroller::after {
+  content: "";
+  display: flex;
+  visibility: var(--visibility-if-can-scroll, var(--visibility-if-cant-scroll));
+  position: sticky;
+  inline-size: 1.5rem;
+  animation-name: reveal;
+  inset-block: 0;
+  animation-timeline: --scroll-timeline;
+  animation-fill-mode: both;
+  animation-range: 0 1.5rem;
+
+  --visibility-if-can-scroll: var(--can-scroll) visible;
+  --visibility-if-cant-scroll: hidden;
+}
+
+
+.p-scroller::before {
+  inset-inline-start: 0;
+  grid-area: sx;
+  background: color-mix(in oklch, var(--box-color-background), transparent 10%) conic-gradient(from 45deg, var(--navigation-color-foreground-secondary) 90deg, transparent 0) no-repeat 0 center / 1rem 1rem;
+}
+
+
+.p-scroller::after {
+  inset-inline-end: 0;
+  grid-area: dx;
+  animation-direction: reverse;
+  animation-range: calc(100% - 1.5rem) 100%;
+  background: color-mix(in oklch, var(--box-color-background), transparent 10%) conic-gradient(from 225deg, var(--navigation-color-foreground-secondary) 90deg, transparent 0) no-repeat right center / 1rem 1rem;
+}
