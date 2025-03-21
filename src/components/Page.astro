@@ -62,23 +62,23 @@ const { id, mark, indent = true } = Astro.props;
       will-change: opacity, translate;
 
       @media not screen and (--viewport-tablet) {
-        inset-block-start: -40vw;
-        inset-inline-end: -10vh;
+        inset-block-start: -40vb;
+        inset-inline-end: -10vi;
         writing-mode: vertical-rl;
       }
 
       @media (--viewport-tablet) {
-        inset-block-end: -20vh;
-        inset-inline-start: 20vw;
+        inset-block-end: -20vb;
+        inset-inline-start: 20vi;
       }
 
       @media (prefers-reduced-motion: no-preference) {
         /*
           If animation-timeline is supported --visible is toggled between 0 and 1,
-          transitioning the translate between 1vw and 0.
-          In all other cases, fallbacks to a static computed value of 1vw
+          transitioning the translate between 1vi and 0.
+          In all other cases, fallbacks to a static computed value of 1vi
         */
-        translate: calc(1vw - var(--visible, 0) * 1vw) 0;
+        translate: calc(1vi - var(--visible, 0) * 1vi) 0;
       }
     }
 

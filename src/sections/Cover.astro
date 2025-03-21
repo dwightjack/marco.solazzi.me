@@ -59,10 +59,10 @@ import Page from '../components/Page.astro';
 
       @media (--viewport-tablet-landscape) {
         grid-template-areas: '. . .' 'pic body .' 'scrollhint scrollhint scrollhint';
-        grid-template-columns: 28vw 63ch 1fr;
+        grid-template-columns: 28vi 63ch 1fr;
         grid-template-rows: 1fr auto 1fr;
         align-items: center;
-        block-size: 100vh;
+        block-size: 100vb;
         overflow: hidden;
         column-gap: calc(var(--space-2) * 5);
       }
@@ -70,12 +70,12 @@ import Page from '../components/Page.astro';
 
     .s-cover__pic {
       grid-area: pic;
-      inline-size: min(440px, calc(100% - 4.6875vw));
+      inline-size: min(440px, calc(100% - 4.6875vi));
       justify-self: center;
 
       @media (--viewport-tablet-landscape) {
         justify-self: end;
-        inline-size: calc(100% - 4.6875vw);
+        inline-size: calc(100% - 4.6875vi);
       }
     }
 
@@ -136,7 +136,7 @@ import Page from '../components/Page.astro';
       will-change: transform;
 
       @media (--viewport-tablet-landscape) {
-        margin-block-end: 6vh;
+        margin-block-end: 6vb;
       }
     }
 
