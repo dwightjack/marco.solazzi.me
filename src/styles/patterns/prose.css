@@ -125,7 +125,7 @@
     }
   }
 
-  figcaption {
+  figcaption:last-child {
     padding-block-start: var(--space-1);
     font-size: 0.9em;
     font-style: italic;
@@ -179,12 +179,16 @@
     border: 0;
   }
 
+  figure:has(figcaption + table) > figcaption:first-child,
   caption {
-    margin-block-end: 1.5rem;
     font-family: var(--text-heading-font-family);
     font-size: var(--text-heading-font-size-mq);
     font-weight: normal;
     text-align: start;
+  }
+
+  caption {
+    margin-block-end: 1.5rem;
   }
 
   td {

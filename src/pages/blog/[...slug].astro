@@ -72,5 +72,7 @@ const schema = {
 <script>
   import { NAV_PATH_BLOG } from '../../shared/constants';
   import { currentRoute } from '../../shared/store';
+  import { initialize as tableScroller } from '../../shared/patterns/tableScroller';
   currentRoute.set(NAV_PATH_BLOG);
+  tableScroller();
 </script>

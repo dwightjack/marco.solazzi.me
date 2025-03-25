@@ -1,6 +1,6 @@
 /* stylelint-disable import-notation */
-@import './patterns/prose.css' layer(patterns);
-@import './patterns/stack.css' layer(patterns);
-@import './patterns/cluster.css' layer(patterns);
-@import './patterns/marked.css' layer(patterns);
-@import './patterns/scroller.css' layer(patterns);
+@import './patterns/prose.css' layer(patterns.contents);
+@import './patterns/marked.css' layer(patterns.contents);
+@import './patterns/stack.css' layer(patterns.flow);
+@import './patterns/cluster.css' layer(patterns.flow);
+@import './patterns/table-scroller.css' layer(patterns.flow);

@@ -1,32 +1,50 @@
+// @ts-check
 import { visit } from 'unist-util-visit';
 import { h } from 'hastscript';
 
 /**
- * @import {Plugin} from 'unified'
+ * @import { Plugin } from 'unified'
  */
+/**
+ *
+ * @param {*} node
+ * @param {keyof HTMLElementTagNameMap} name
+ * @param {Record<string, string>} attributes
+ */
+function transformNode(node, name, attributes = {}) {
+  const data = node.data || (node.data = {});
+
+  node.attributes = Object.assign(node.attributes ?? {}, attributes);
+
+  const hast = h(name, node.attributes || {});
+
+  data.hName = hast.tagName;
+  data.hProperties = hast.properties;
+}
+
+let idx = 0;
 
 /** @type {Plugin<{}>} */
 export function remarkContainersPlugin() {
   return function (tree) {
-    visit(tree, function (node) {
-      if (/(text|leaf|container)Directive/.test(node.type) === false) {
-        return;
+    visit(tree, { type: 'containerDirective' }, function (node) {
+      if (node.name === 'pullquote') {
+        return transformNode(node, 'figure', { class: 'pullquote' });
       }
-      let { name, type } = node;
-      if (type === 'containerDirective' && node.name === 'pullquote') {
-        name = 'figure';
-        node.attributes = { class: 'pullquote' };
+      if (/^warn|warning$/.test(node.name)) {
+        return transformNode(node, 'aside', { class: 'p-prose__warning' });
       }
-      if (type === 'containerDirective' && /^warn|warning$/.test(node.name)) {
-        name = 'aside';
-        node.attributes = { class: 'p-prose__warning' };
+      if (node.name === 'table') {
+        const id = `table-caption-${idx++}`;
+        const caption = node.children.at(0);
+        const table = node.children.find((n) => n.type === 'table');
+        if (caption && table) {
+          transformNode(caption, 'figcaption', { id });
+          transformNode(table, 'table', { 'aria-labelledby': id });
+        }
+        return transformNode(node, 'figure', { class: 'p-table-scroller' });
       }
-
-      const data = node.data || (node.data = {});
-      const hast = h(name, node.attributes || {});
-
-      data.hName = hast.tagName;
-      data.hProperties = hast.properties;
+      transformNode(node, node.name);
     });
   };
 }
