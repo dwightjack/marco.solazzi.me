@@ -1,4 +1,4 @@
-// @ts-check
+// @ts-expect-error Node has more properties than the type
 import { visit } from 'unist-util-visit';
 import { h } from 'hastscript';
 
