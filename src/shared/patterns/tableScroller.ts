@@ -42,7 +42,6 @@ export function initialize() {
         getComputedStyle(entry.target, '::before').getPropertyValue(
           'visibility',
         ) === 'visible';
-      console.log(canScroll);
 
       if (canScroll) {
         entry.target.setAttribute('tabindex', '0');
