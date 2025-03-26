@@ -133,7 +133,8 @@ Now that we've covered the basics of switches and their implementation patterns,
 
 I will focus on React, Vue, and Angular since they seem to [have the highest market share](https://2024.stateofjs.com/en-US/libraries/front-end-frameworks/) in the JavaScript ecosystem. My choice of library is a mix of [surveys](https://2024.stateofreact.com/en-US/libraries/component-libraries/) and other [sources](https://bestofjs.org/projects?page=1&limit=30&tags=component&sort=monthly-downloads). 
 
-::caption[React Libraries]
+:::table[React Libraries]
+
 | Library                                                                      | Pattern                                                       |
 | ---------------------------------------------------------------------------- | ------------------------------------------------------------- |
 | [MUI](https://mui.com/material-ui/react-switch/#label)                       | `label > input[type=checkbox]`                                |
@@ -142,7 +143,9 @@ I will focus on React, Vue, and Angular since they seem to [have the highest mar
 | [Chakra UI](https://chakra-ui.com/docs/components/switch)                    | `label > input[type=checkbox] `                               |
 | [React Aria](https://react-spectrum.adobe.com/react-aria/Switch.html)        | `label > input[type=checkbox][role=switch]` (no aria-checked) |
 
-::caption[Vue Libraries]
+:::
+
+:::table[Vue Libraries]
 
 | Library                                                            | Pattern                                          |
 | ------------------------------------------------------------------ | ------------------------------------------------ |
@@ -150,20 +153,25 @@ I will focus on React, Vue, and Angular since they seem to [have the highest mar
 | [Element Plus](https://element-plus.org/en-US/component/form.html) | `label[for] + input[type=checkbox][role=switch]` |
 | [Radix Vue](https://www.radix-vue.com/components/switch.html)      | `label[for] + button[role=switch][aria-label]`   |
 
-::caption[Angular Libraries]
+:::
+
+:::table[Angular Libraries]
 
 | Library                                                                                      | Pattern                                             |
 | -------------------------------------------------------------------------------------------- | --------------------------------------------------- |
 | [Angular Material](https://material.angular.io/components/slide-toggle/overview)             | `label[for] + button[role=switch][aria-labelledby]` |
 | [Nebular](https://akveo.github.io/nebular/docs/components/toggle/examples#nbtogglecomponent) | `label > input[type=checkbox][role=switch]`         |
+:::
 
-::caption[Multi-framework Libraries]
+:::table[Multi-framework Libraries]
 
 | Library                                                                      | Pattern                                               |
 | ---------------------------------------------------------------------------- | ----------------------------------------------------- |
 | [Bootstrap](https://getbootstrap.com/docs/5.3/forms/checks-radios/#switches) | `label[for] + input[type=checkbox][role=switch]`      |
 | [Prime(NG,React,Vue)](https://www.primefaces.org/)                           | `label[for] + input[type=checkbox][role=switch]`      |
 | [Ark UI](https://ark-ui.com/react/docs/components/switch)                    | `label[for] +  input[type=checkbox][aria-labelledby]` |
+
+:::
 
 ## Results
 

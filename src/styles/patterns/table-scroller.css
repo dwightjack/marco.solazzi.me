@@ -1,0 +1,88 @@
+@keyframes detect-scroll {
+  from, to { --can-scroll: ;}
+}
+
+
+@keyframes reveal-start {
+  0% {
+    --reveal-start: 0;
+  }
+
+  100% {
+    --reveal-start: 1;
+  }
+}
+
+@keyframes reveal-end {
+  0% {
+    --reveal-end: 1;
+  }
+
+  100% {
+    --reveal-end: 0;
+  }
+}
+
+.p-table-scroller {
+  --can-scroll: initial;
+
+  display: grid;
+  position: relative;
+  grid-template-areas: 'caption caption caption' 'sx center dx';
+  grid-template-columns: 1.25rem max-content 1.25rem;
+  grid-template-rows: repeat(2, auto);
+  row-gap: 1.5rem;
+  inline-size: 100%;
+  margin-block-end: 2.5rem;
+  overflow-x: auto;
+  container-type: inline-size;
+
+  @supports (animation-timeline: --table-scroller-timeline) {
+    animation: detect-scroll, reveal-start, reveal-end;
+    scroll-timeline: --table-scroller-timeline x;
+    animation-timeline: --table-scroller-timeline;
+    animation-fill-mode: none, both, both;
+    animation-range: normal, 0 1.25rem, calc(100% - 1.25rem) 100%;
+  }
+
+  & > figcaption {
+    position: sticky;
+    grid-area: caption;
+    inset-inline-start: 0;
+    justify-self: start;
+    max-inline-size: 99cqi;
+  }
+
+  & > table {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    margin-block: 0;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    visibility: var(--visibility-if-can-scroll, var(--visibility-if-cant-scroll));
+    position: sticky;
+    transition: opacity 150ms linear;
+    background: color-mix(in oklch, var(--surface-color-foreground), transparent 85%) conic-gradient(from 45deg, var(--navigation-color-foreground-secondary) 90deg, transparent 0) no-repeat 0 center / 0.75rem 0.75rem;
+
+    --visibility-if-can-scroll: var(--can-scroll) visible;
+    --visibility-if-cant-scroll: hidden;
+  }
+
+  &::before {
+    grid-area: sx;
+    opacity: var(--reveal-start);
+    inset-inline-start: 0;
+  }
+
+
+  &::after {
+    grid-area: dx;
+    transform: scaleX(-1) translateX(-1px);
+    opacity: var(--reveal-end);
+    inset-inline-end: 0;
+  }
+
+}
