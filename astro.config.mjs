@@ -3,6 +3,7 @@ import icon from 'astro-icon';
 import rehypeExternalLinks from 'rehype-external-links';
 import remarkDirective from 'remark-directive';
 import { remarkContainersPlugin } from './build/remark-plugins.mjs';
+import { rehypeFavicons } from './build/rehype-plugins.mjs';
 import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
@@ -25,6 +26,7 @@ export default defineConfig({
           rel: ['noopener', 'noreferrer'],
         },
       ],
+      rehypeFavicons,
     ],
   },
 });

@@ -1,5 +1,6 @@
 {
   "eslint.validate": ["javascript", "astro", "typescript"],
+  "eslint.format.enable": true,
   "[js]": {
     "editor.formatOnSave": false,
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
