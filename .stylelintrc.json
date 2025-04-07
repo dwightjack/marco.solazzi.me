@@ -14,6 +14,7 @@
       true,
       { "ignorePseudoClasses": ["global"] }
     ],
+    "layer-name-pattern": null,
     "csstools/use-logical": "always",
     "no-empty-source": null
   }
