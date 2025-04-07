@@ -39,6 +39,7 @@
   h5 {
     font-family: var(--text-heading-font-family);
     font-weight: normal;
+    text-wrap: balance;
   }
 
   h1 {
