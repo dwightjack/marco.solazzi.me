@@ -297,4 +297,8 @@
       text-decoration: var(--shiki-dark-text-decoration) !important;
     }
   }
+
+  a[href^="https://"][data-icon] {
+
+  }
 }
