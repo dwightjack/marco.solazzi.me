@@ -8,7 +8,7 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://marco.solazzi.me',
-  compressHTML: false,
+  compressHTML: true,
   integrations: [icon(), sitemap()],
   markdown: {
     shikiConfig: {
