@@ -1,6 +1,8 @@
 .p-prose {
   --prose-pullquote-space-gutter-inline: 0;
   --prose-box-color-background-warning: oklch(97% 0.05 87.31deg);
+  --prose-navigation-color-background-hover: transparent;
+
 
   @media (--viewport-tablet) {
     --prose-pullquote-space-gutter-inline: var(--space-4);
@@ -236,12 +238,15 @@
   a {
     transition:
       color 150ms,
-      background-color 150ms,
+      border-image 150ms,
       text-decoration-color 150ms;
+    background: transparent;
     color: var(--navigation-color-foreground-secondary);
+    box-decoration-break: clone;
+    border-image: conic-gradient(var(--prose-navigation-color-background-hover) 0 0) fill 0//0.2em 0.2em;
 
     &:hover {
-      background: color-mix(in oklch, currentcolor, transparent 85%);
+      --prose-navigation-color-background-hover: color-mix(in oklch, currentcolor, transparent 85%);
     }
   }
 
