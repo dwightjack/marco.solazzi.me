@@ -2,22 +2,24 @@
   from, to { --can-scroll: ;}
 }
 
-
-@keyframes reveal-start {
+/**
+@see https://css-tricks.com/modern-scroll-shadows-using-scroll-driven-animations/
+*/
+@keyframes scroll-reveal {
   0% {
     --reveal-start: 0;
   }
 
-  100% {
+  5%, 100% {
     --reveal-start: 1;
   }
-}
 
-@keyframes reveal-end {
-  0% {
+  /* stylelint-disable-next-line keyframe-block-no-duplicate-selectors */
+  0%, 95% {
     --reveal-end: 1;
   }
 
+  /* stylelint-disable-next-line keyframe-block-no-duplicate-selectors */
   100% {
     --reveal-end: 0;
   }
@@ -38,11 +40,9 @@
   container-type: inline-size;
 
   @supports (animation-timeline: --table-scroller-timeline) {
-    animation: detect-scroll, reveal-start, reveal-end;
+    animation: detect-scroll, scroll-reveal;
     scroll-timeline: --table-scroller-timeline x;
     animation-timeline: --table-scroller-timeline;
-    animation-fill-mode: none, both, both;
-    animation-range: normal, 0 1.25rem, calc(100% - 1.25rem) 100%;
   }
 
   & > figcaption {
