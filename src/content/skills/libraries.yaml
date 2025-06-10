@@ -28,6 +28,3 @@ data:
   - id: animation
     label: GSAP
     icon: logos:greensock-icon
-  - id: Laravel
-    label: Laravel
-    icon: logos:laravel

@@ -16,6 +16,3 @@ data:
   - id: typescript
     label: TypeScript
     icon: logos:typescript-icon
-  - id: backend
-    label: PHP7+
-    icon: logos:php

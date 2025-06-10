@@ -1,0 +1,15 @@
+label: Learn in Progress
+icon: mdi:book-open-page-variant
+data:
+  - id: nextjs
+    label: Next.js
+    icon: logos:nextjs-icon
+  - id: php
+    label: PHP8
+    icon: logos:php
+  - id: Laravel
+    label: Laravel
+    icon: logos:laravel
+  - id: qwik
+    label: Qwik
+    icon: logos:qwik-icon
