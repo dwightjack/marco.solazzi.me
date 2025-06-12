@@ -45,6 +45,7 @@ export async function getSkills() {
     'dx',
     'build_tools',
     'tools',
+    'backlog',
   ];
 
   const skills: CollectionEntry<'skills'>['data'][] = [];
