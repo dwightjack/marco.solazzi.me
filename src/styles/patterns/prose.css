@@ -73,7 +73,7 @@
 
   small,
   .small {
-    font-size: var(--text-subheading-font-size);
+    font-size: var(--text-heading-font-size-sub);
   }
 
   .small {
@@ -282,7 +282,7 @@
   & > footer {
     margin-block-start: var(--space-4);
     padding-block-start: var(--space-2);
-    font-size: var(--text-subheading-font-size);
+    font-size: var(--text-heading-font-size-sub);
     border-block-start: 1px solid
       color-mix(in oklch, currentcolor, transparent 80%);
   }

@@ -90,7 +90,7 @@
     --text-heading-font-size-x2: var(--font-size-800);
     --text-heading-font-size-x3: var(--font-size-1200);
     --text-heading-font-size-x3mq: var(--font-size-1400);
-    --text-subheading-font-size: var(--font-size-100);
+    --text-heading-font-size-sub: var(--font-size-100);
     --text-body-font-family: var(--font-family-sans);
     --text-body-font-size: var(--font-size-100);
     --text-body-font-size-x2: var(--font-size-200);
