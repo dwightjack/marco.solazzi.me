@@ -7,5 +7,4 @@ stack:
 tasks:
   - HTML
   - CSS
-  - Accessibility
   - PHP
