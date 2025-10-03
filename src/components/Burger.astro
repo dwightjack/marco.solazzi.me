@@ -13,6 +13,7 @@
       --burger-height: calc(var(--burger-size-bar-height) * 5);
 
       display: block;
+      block-size: var(--burger-width);
       inline-size: var(--burger-size);
       margin: 0;
       padding-block: calc((var(--burger-size) - var(--burger-height)) / 2);
@@ -31,14 +32,13 @@
         right 0,
         right 50%,
         right bottom;
-      background-origin: content-box;
       background-size:
         var(--burger-bar-width, 100%) var(--burger-size-bar-height),
         var(--burger-bar-width, 85%) var(--burger-size-bar-height),
         var(--burger-bar-width, 70%) var(--burger-size-bar-height);
       color: var(--action-color-background);
       cursor: pointer;
-      aspect-ratio: 1;
+      background-origin: content-box;
 
       &:focus-visible {
         --burger-bar-width: 100%;
@@ -56,15 +56,16 @@
       display: block;
       inline-size: var(--burger-width);
       margin-block: calc((var(--burger-height) - var(--burger-size)) / 2);
-      rotate: 20deg;
       transition: all var(--action-transition-duration) ease-out;
-      transition-property: opacity, transform, color;
+      transition-property: opacity, scale, color;
       opacity: 0;
       background:
         linear-gradient(to right, currentcolor, currentcolor) no-repeat 0 50% /
           100% var(--burger-size-bar-height),
         linear-gradient(to top, currentcolor, currentcolor) no-repeat 50% 0 /
           var(--burger-size-bar-height) 100%;
+      scale: 0;
+      rotate: 45deg;
       aspect-ratio: 1;
     }
 
@@ -73,7 +74,7 @@
     }
 
     .c-burger[aria-expanded='true']::before {
-      rotate: 45deg;
+      scale: 1;
       transition-delay: var(--action-transition-duration);
       opacity: 1;
     }
