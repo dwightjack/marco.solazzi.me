@@ -44,9 +44,10 @@
     --color-brand-800: oklch(78.46% 0.132 var(--color-brand-hue));
 
     /* Fonts */
-    --font-family-sans: 'Open Sans Variable', sans-serif;
+
+    --font-family-sans: 'Noto Sans Variable', sans-serif;
     --font-family-serif: 'Bree Serif', serif;
-    --font-family-jp: 'Noto Sans JP', 'Open Sans Variable', sans-serif;
+    --font-family-jp: 'Noto Sans JP', 'Noto Sans Variable', sans-serif;
 
     /* https://type-scale.com/?size=16&scale=1.200&text=A%20Visual%20Type%20Scale&font=Open%20Sans&fontweight=400&bodyfont=body_font_default&bodyfontweight=400&lineheight=1.75&backgroundcolor=%23ffffff&fontcolor=%23000000&preview=false */
     --font-size-80: 0.833rem;

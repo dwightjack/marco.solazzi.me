@@ -44,14 +44,13 @@ const {
     <meta property="og:description" content={description} />
     <meta property="og:image" content={socialImageURL} />
     <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="alternate"
       type="application/rss+xml"
       title="Latests posts | Marco Solazzi - UI Web Developer"
       href={new URL('feed.xml', Astro.site)}
     />
-    <style>
+    <style is:inline>
       /* bree-serif-latin-400-normal */
       @font-face {
         font-family: 'Bree Serif';
@@ -66,42 +65,42 @@ const {
           U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
       }
 
-      /* open-sans-latin-wght-normal */
+      /* noto-sans-latin-wght-normal */
       @font-face {
-        font-family: 'Open Sans Variable';
+        font-family: 'Noto Sans Variable';
         font-style: normal;
         font-display: swap;
         font-weight: 300 800;
-        src: url('@fontsource-variable/open-sans/files/open-sans-latin-wght-normal.woff2')
+        src: url('@fontsource-variable/noto-sans/files/noto-sans-latin-wght-normal.woff2')
           format('woff2-variations');
         unicode-range:
           U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
-          U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
-          U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+          U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+          U+2212, U+2215, U+FEFF, U+FFFD;
       }
 
-      /* open-sans-latin-wght-italic */
+      /* noto-sans-latin-wght-italic */
       @font-face {
-        font-family: 'Open Sans Variable';
+        font-family: 'Noto Sans Variable';
         font-style: italic;
         font-display: swap;
         font-weight: 300 800;
-        src: url('@fontsource-variable/open-sans/files/open-sans-latin-wght-italic.woff2')
+        src: url('@fontsource-variable/noto-sans/files/noto-sans-latin-wght-italic.woff2')
           format('woff2-variations');
         unicode-range:
           U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
-          U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
-          U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+          U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+          U+2212, U+2215, U+FEFF, U+FFFD;
       }
 
       @font-face {
         font-family: 'Noto Sans JP';
         font-style: normal;
-        font-weight: 700;
         font-display: swap;
-        src: url('https://fonts.gstatic.com/s/notosansjp/v52/-F6jfjtqLzI2JPCgQBnw7HFyzSD-AsregP8VFPYk757Y0rw_qMHVdbR2L8Y9QTJ1LwkRmR5GprQAe69m.119.woff2')
+        font-weight: 700;
+        src: url('@fontsource/noto-sans-jp/files/noto-sans-jp-japanese-700-normal.woff2')
           format('woff2');
-        unicode-range: U+3053, U+3093, U+306B, U+3061, U+306F, U+0021;
+        unicode-range: U+3053, U+3093, U+306B, U+3061, U+306F, U+FF01;
       }
     </style>
     <slot name="head" />

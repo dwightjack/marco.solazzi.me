@@ -17,11 +17,14 @@ importers:
       '@astrojs/sitemap':
         specifier: ^3.3.0
         version: 3.4.2
-      '@fontsource-variable/open-sans':
-        specifier: ^5.0.29
-        version: 5.2.7
+      '@fontsource-variable/noto-sans':
+        specifier: 5.2.10
+        version: 5.2.10
       '@fontsource/bree-serif':
-        specifier: ^5.0.13
+        specifier: 5.0.13
+        version: 5.0.13
+      '@fontsource/noto-sans-jp':
+        specifier: 5.2.8
         version: 5.2.8
       '@iconify-json/logos':
         specifier: 1.2.9
@@ -700,11 +703,14 @@ packages:
     resolution: {integrity: sha512-Z5kJ+wU3oA7MMIqVR9tyZRtjYPr4OC004Q4Rw7pgOKUOKkJfZ3O24nz3WYfGRpMDNmcOi3TwQOmgm7B7Tpii0w==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@fontsource-variable/open-sans@5.2.7':
-    resolution: {integrity: sha512-wzCLm2STuekK9Fz58DiuBnk4GgJpvvVtAU85a4b06ACNG/UsVjQcCvkUd6R/ETlHfsaykCUZamLRvSXg4KtWuA==}
+  '@fontsource-variable/noto-sans@5.2.10':
+    resolution: {integrity: sha512-wyFgKkFu7jki5kEL8qv7avjQ8rxHX0J/nhLWvbR9T0hOH1HRKZEvb9EW9lMjZfWHHfEzKkYf5J+NadwgCS7TXA==}
 
-  '@fontsource/bree-serif@5.2.8':
-    resolution: {integrity: sha512-bf1wIMsF3ex8n6k8pQ7WU7qGF8LS/kfTLCUuCQoW3r7JZLhgy1qp3PF3ld45FNJYKM3bOPrrkyLPfl5hmbQANQ==}
+  '@fontsource/bree-serif@5.0.13':
+    resolution: {integrity: sha512-V6lmprzxvcQAIZWq+V0X6/nZ/8JJiSRVkdX3JYuNfHA65wJplzy0PUETTePy7LPtkzi+JC5EqtAuUZMmp3LI2g==}
+
+  '@fontsource/noto-sans-jp@5.2.8':
+    resolution: {integrity: sha512-ngWXPtSV3XH8ZmNX9hnfeQ+x/3mCoaAOA3BVDcyS5jQdh4FYqKjf/S9tEUEYDPwGa2pULJVXTO2+oFg42gWvSw==}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -4516,9 +4522,11 @@ snapshots:
       '@eslint/core': 0.15.2
       levn: 0.4.1
 
-  '@fontsource-variable/open-sans@5.2.7': {}
+  '@fontsource-variable/noto-sans@5.2.10': {}
 
-  '@fontsource/bree-serif@5.2.8': {}
+  '@fontsource/bree-serif@5.0.13': {}
+
+  '@fontsource/noto-sans-jp@5.2.8': {}
 
   '@humanfs/core@0.19.1': {}
 
