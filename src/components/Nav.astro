@@ -1,12 +1,13 @@
 ---
-import routes from '../shared/routes';
+import routes, { type Route } from '../shared/routes';
 import Box from './Box.astro';
 
 export interface Props {
   layout?: 'offscreen' | 'inline';
+  current?: Route;
 }
 
-const { layout = 'offscreen' } = Astro.props;
+const { layout = 'offscreen', current } = Astro.props;
 const isOffscreen = layout === 'offscreen';
 ---
 
@@ -30,7 +31,7 @@ const isOffscreen = layout === 'offscreen';
       routes.map(({ path, label }) => (
         <li class="c-nav__item">
           {/* prettier-ignore */}
-          <a href={path} class="c-nav__route">{label}</a>
+          <a href={path} class="c-nav__route" class:list={{'is-current': current === path}}>{label}</a>
         </li>
       ))
     }
@@ -43,6 +44,7 @@ const isOffscreen = layout === 'offscreen';
       align-items: center;
       font-family: var(--text-heading-font-family);
       font-weight: 400;
+      scroll-target-group: auto;
     }
 
     .c-nav__item {
@@ -80,7 +82,8 @@ const isOffscreen = layout === 'offscreen';
       }
     }
 
-    .c-nav__route.is-current::before {
+    /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+    .c-nav__route:is(:target-current, .is-current)::before {
       transform: translateX(-0.2em);
       transition-delay: 200ms;
       opacity: 1;
@@ -112,7 +115,8 @@ const isOffscreen = layout === 'offscreen';
         font-size: var(--text-body-font-size-x3);
       }
 
-      .c-nav__route.is-current {
+      /* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+      .c-nav__route:is(:target-current, .is-current) {
         opacity: 1;
       }
 
@@ -151,21 +155,23 @@ const isOffscreen = layout === 'offscreen';
     }
   });
 
-  for (const nav of navList) {
-    const routes = nav.querySelectorAll('.c-nav__route');
-    currentRoute.subscribe((currentRoute) => {
-      if (!currentRoute) {
-        return;
-      }
-      for (const route of routes) {
-        const isCurrent = route.getAttribute('href') === currentRoute;
-        if (isCurrent) {
-          route.setAttribute('aria-current', 'true');
-        } else {
-          route.removeAttribute('aria-current');
+  if (!CSS.supports('scroll-target-group: auto')) {
+    for (const nav of navList) {
+      const routes = nav.querySelectorAll('.c-nav__route');
+      currentRoute.subscribe((currentRoute) => {
+        if (!currentRoute) {
+          return;
         }
-        route.classList.toggle('is-current', isCurrent);
-      }
-    });
+        for (const route of routes) {
+          const isCurrent = route.getAttribute('href') === currentRoute;
+          if (isCurrent) {
+            route.setAttribute('aria-current', 'true');
+          } else {
+            route.removeAttribute('aria-current');
+          }
+          route.classList.toggle('is-current', isCurrent);
+        }
+      });
+    }
   }
 </script>

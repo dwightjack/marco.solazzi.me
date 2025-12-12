@@ -8,12 +8,14 @@ import ThemeSwitcher from '../components/ThemeSwitcher.astro';
 import Nav from '../components/Nav.astro';
 import { THEME_DEFAULT } from '../shared/constants';
 import Box from '../components/Box.astro';
+import type { Route } from '../shared/routes';
 const socialImageURL = new URL('/marco-og.jpg', Astro.url);
 
 interface Props {
   title?: string;
   suffix?: string;
   description?: string;
+  currentNav?: Route;
   layout?: 'cover' | 'centered';
 }
 
@@ -22,6 +24,7 @@ const {
   suffix = 'Marco Solazzi - UI Web Developer',
   description = 'Personal Website of Marco Solazzi - UI Web Developer',
   layout,
+  currentNav,
 } = Astro.props;
 ---
 
@@ -60,7 +63,7 @@ const {
         style={{ '--s': 1.5 }}
       >
         <div class="u-from-tablet-landscape">
-          <Nav layout="inline" />
+          <Nav layout="inline" current={currentNav} />
         </div>
         <ThemeSwitcher />
         <div class="u-until-tablet-landscape">
@@ -68,7 +71,7 @@ const {
         </div>
       </div>
       <div class="u-until-tablet-landscape">
-        <Nav />
+        <Nav current={currentNav} />
       </div>
     </Box>
     <main class="l-main" class:list={[layout && 'l-main--' + layout]}>

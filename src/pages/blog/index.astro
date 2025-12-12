@@ -8,12 +8,12 @@ import Card from '../../components/Card.astro';
 import SkipContent from '../../components/SkipContent.astro';
 import { toIdString } from '../../shared/utils';
 import Footer from '../../sections/Footer.astro';
-
 const posts = await getBlogPosts();
 ---
 
 <Layout
   title="Blog Posts"
+  currentNav={NAV_PATH_BLOG}
   description="Blog Posts about UX, UI development and Design System"
 >
   <SkipContent slot="header" target={toIdString(NAV_PATH_BLOG)} />
