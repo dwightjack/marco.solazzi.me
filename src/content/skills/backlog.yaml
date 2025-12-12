@@ -4,6 +4,9 @@ data:
   - id: nextjs
     label: Next.js
     icon: logos:nextjs-icon
+  - id: go
+    label: Go
+    icon: logos:go
   - id: php
     label: PHP8
     icon: logos:php

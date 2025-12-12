@@ -9,7 +9,7 @@ const education = await getEducation();
 ---
 
 <Page id={NAV_PATH_EDUCATION} mark="学校">
-  <PageSection title="education" subtitle="Learning never ends">
+  <PageSection title="education" subtitle="You never stop learning">
     <div class="p-stack p-stack--near">
       {education.map((entry) => <Card titleLabel="title" {...entry} />)}
     </div>
