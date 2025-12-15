@@ -44,6 +44,10 @@ const { id, mark, indent = true } = Astro.props;
 
     .c-page {
       outline: 0;
+
+      @media (--viewport-tablet-landscape) {
+        scroll-margin-block-start: calc(var(--space-2) * 4);
+      }
     }
 
     .c-page.c-page--indent {
