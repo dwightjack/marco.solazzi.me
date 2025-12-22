@@ -54,14 +54,14 @@ const schema = {
     <Page id={NAV_PATH_BLOG}
       ><PageSection title="blog.post">
         <section class="p-prose">
-          <header id="heading" tabindex="-1">
+          <hgroup id="heading" tabindex="-1" aria-label="Post heading">
             <h1>{title}</h1>
             <p class="small">
               {isDraft && '(draft) '}Published on <time
                 datetime={publishDate.toISOString()}>{formattedDate}</time
               > - <a href={NAV_PATH_BLOG}>Blog Archive</a>
             </p>
-          </header>
+          </hgroup>
           <Content />
         </section></PageSection
       >

@@ -272,7 +272,7 @@
     font-weight: 700;
   }
 
-  & > header {
+  & > hgroup {
     margin-block-end: 4rem;
     padding-block-end: var(--space-2);
     border-block-end: 1px solid
