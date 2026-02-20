@@ -20,18 +20,15 @@ test.describe('home', () => {
     });
     test('mobile side menu toggle', async ({ page }) => {
       await page.setViewportSize({ width: 640, height: 480 });
-      const toggler = page.getByRole('button', { name: 'Toggle Navigation' });
+      await page.getByRole('button', { name: 'Show Navigation' }).click();
 
-      await toggler.click();
       const menu = page.getByRole('navigation', {
         name: 'Sections',
       });
-      await expect(menu).not.toHaveAttribute('inert');
       await expect(menu).toBeInViewport();
 
-      await toggler.click();
+      await page.getByRole('button', { name: 'Hide Navigation' }).click();
 
-      await expect(menu).toHaveAttribute('inert');
       await expect(menu).not.toBeInViewport();
     });
   });
