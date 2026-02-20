@@ -26,6 +26,8 @@ const {
   layout,
   currentNav,
 } = Astro.props;
+
+const isProd = import.meta.env.PROD;
 ---
 
 <!doctype html>
@@ -92,12 +94,16 @@ const {
       <div class="u-visuallyhidden" role="status" id="status"></div>
     </footer>
     <!-- Cloudflare Web Analytics -->
-    <script
-      defer
-      is:inline
-      src="https://static.cloudflareinsights.com/beacon.min.js"
-      data-cf-beacon='{"token": "e823928d086c46c79b455943ff15d296"}'
-    ></script><!-- End Cloudflare Web Analytics -->
+    {
+      isProd && (
+        <script
+          defer
+          is:inline
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "e823928d086c46c79b455943ff15d296"}'
+        />
+      )
+    }<!-- End Cloudflare Web Analytics -->
   </body>
 </html>
 <style>
