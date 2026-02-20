@@ -14,7 +14,7 @@ test.describe('homepage', () => {
   test('mobile side menu', async ({ page }) => {
     await page.setViewportSize({ width: 640, height: 480 });
     await page.waitForTimeout(500);
-    await page.getByRole('button', { name: 'Toggle Navigation' }).click();
+    await page.getByRole('button', { name: 'Show Navigation' }).click();
     const menu = page.getByRole('navigation', {
       name: 'Sections',
     });
