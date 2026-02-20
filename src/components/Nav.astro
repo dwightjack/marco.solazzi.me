@@ -1,13 +1,15 @@
 ---
+import type { HTMLAttributes } from 'astro/types';
 import routes, { type Route } from '../shared/routes';
 import Box from './Box.astro';
+import Burger from './Burger.astro';
 
-export interface Props {
+export interface Props extends HTMLAttributes<'nav'> {
   layout?: 'offscreen' | 'inline';
   current?: Route;
 }
 
-const { layout = 'offscreen', current } = Astro.props;
+const { layout = 'offscreen', current, ...attrs } = Astro.props;
 const isOffscreen = layout === 'offscreen';
 ---
 
@@ -15,11 +17,27 @@ const isOffscreen = layout === 'offscreen';
   as="nav"
   class:list={['c-nav', 'c-nav--' + layout]}
   indent={isOffscreen ? 4 : 0}
-  {...isOffscreen && { swatch: 'brand' }}
+  {...isOffscreen && { swatch: 'brand', popover: 'auto' }}
   aria-label="Sections"
+  {...attrs}
 >
+  {
+    isOffscreen && (
+      <span class="c-nav__burger">
+        <Burger
+          expanded={true}
+          popovertarget={attrs.id}
+          popovertargetaction="hide"
+          autofocus
+        >
+          Hide navigation
+        </Burger>
+      </span>
+    )
+  }
   <ul
     class:list={[
+      'c-nav__routes',
       {
         'p-stack': isOffscreen,
         'p-cluster': !isOffscreen,
@@ -40,8 +58,7 @@ const isOffscreen = layout === 'offscreen';
 <style>
   @layer components {
     .c-nav {
-      display: flex;
-      align-items: center;
+      border: 0;
       font-family: var(--text-heading-font-family);
       font-weight: 400;
       scroll-target-group: auto;
@@ -90,7 +107,10 @@ const isOffscreen = layout === 'offscreen';
     }
 
     .c-nav--offscreen {
+      display: grid;
       position: fixed;
+      grid-template: 1fr / 1fr;
+      grid-template-areas: 'nav';
       block-size: 100dvb;
       transform: translateX(0);
       inset-block-start: 0;
@@ -98,11 +118,33 @@ const isOffscreen = layout === 'offscreen';
       will-change: transform;
 
       @media (prefers-reduced-motion: no-preference) {
-        transition: transform 700ms var(--easing-in-out);
+        transition-behavior: allow-discrete;
+        transition-property: transform, display, overlay;
+        transition-duration: 700ms;
+        transition-timing-function: var(--easing-in-out);
       }
 
-      &.is-expanded {
+      &:not(:popover-open) {
+        display: none;
+      }
+
+      &:popover-open {
         transform: translateX(-100%);
+
+        @starting-style {
+          transform: translateX(0);
+        }
+      }
+
+      .c-nav__burger {
+        grid-area: nav;
+        align-self: start;
+        justify-self: end;
+      }
+
+      .c-nav__routes {
+        grid-area: nav;
+        align-self: center;
       }
 
       .c-nav__route {
@@ -128,6 +170,8 @@ const isOffscreen = layout === 'offscreen';
     }
 
     .c-nav--inline {
+      display: flex;
+      align-items: center;
       margin-inline-end: var(--space-1);
       letter-spacing: 0.05em;
       text-align: end;
@@ -142,36 +186,32 @@ const isOffscreen = layout === 'offscreen';
   }
 </style>
 <script>
-  import { menuExpanded, currentRoute } from '../shared/store';
+  import { currentRoute } from '../shared/store';
+
+  const hasScrollTargetGroup = CSS.supports('scroll-target-group: auto');
 
   const navList = document.querySelectorAll<HTMLElement>('.c-nav');
-
-  menuExpanded.subscribe((expanded) => {
-    for (const nav of navList) {
-      if (nav.classList.contains('c-nav--offscreen')) {
-        nav.classList.toggle('is-expanded', expanded);
-        nav.inert = !expanded;
+  for (const nav of navList) {
+    const isOffscreen = nav.classList.contains('c-nav--offscreen');
+    const routes = nav.querySelectorAll('.c-nav__route');
+    currentRoute.subscribe((currentRoute) => {
+      if (!currentRoute) {
+        return;
       }
-    }
-  });
-
-  if (!CSS.supports('scroll-target-group: auto')) {
-    for (const nav of navList) {
-      const routes = nav.querySelectorAll('.c-nav__route');
-      currentRoute.subscribe((currentRoute) => {
-        if (!currentRoute) {
-          return;
+      if (isOffscreen) {
+        nav.hidePopover();
+      }
+      for (const route of routes) {
+        const isCurrent = route.getAttribute('href') === currentRoute;
+        if (isCurrent) {
+          route.setAttribute('aria-current', 'true');
+        } else {
+          route.removeAttribute('aria-current');
         }
-        for (const route of routes) {
-          const isCurrent = route.getAttribute('href') === currentRoute;
-          if (isCurrent) {
-            route.setAttribute('aria-current', 'true');
-          } else {
-            route.removeAttribute('aria-current');
-          }
+        if (!hasScrollTargetGroup) {
           route.classList.toggle('is-current', isCurrent);
         }
-      });
-    }
+      }
+    });
   }
 </script>

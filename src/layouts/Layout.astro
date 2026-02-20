@@ -67,11 +67,13 @@ const {
         </div>
         <ThemeSwitcher />
         <div class="u-until-tablet-landscape">
-          <Burger />
+          <Burger popovertarget="mobile-nav" popovertargetaction="show"
+            >Open navigation</Burger
+          >
         </div>
       </div>
       <div class="u-until-tablet-landscape">
-        <Nav current={currentNav} />
+        <Nav current={currentNav} id="mobile-nav" />
       </div>
     </Box>
     <main class="l-main" class:list={[layout && 'l-main--' + layout]}>
@@ -141,6 +143,14 @@ const {
           )
           0 0 1.75rem 1.75rem;
       }
+
+      transition: opacity 200ms linear;
+
+      @media not (--viewport-tablet-landscape) {
+        :has(#mobile-nav:popover-open) & {
+          opacity: 0;
+        }
+      }
     }
 
     .l-main {
@@ -171,44 +181,7 @@ const {
 </script>
 <script>
   import { THEME_DEFAULT, type Themes } from '../shared/constants';
-  import { menuExpanded, theme } from '../shared/store';
-
-  const header = document.getElementById('header');
-
-  function hideNav(e: KeyboardEvent | MouseEvent) {
-    if ((e as KeyboardEvent).key === 'Escape') {
-      menuExpanded.set(false);
-      return;
-    }
-    if (header && !header.contains(e.target as Node)) {
-      menuExpanded.set(false);
-    }
-  }
-
-  // force close the offscreen navigation
-  // when the viewport is small
-  window
-    .matchMedia('(width >= 64em)')
-    .addEventListener('change', ({ matches }) => {
-      if (matches) {
-        menuExpanded.set(false);
-      }
-    });
-
-  menuExpanded.subscribe((expanded) => {
-    if (!header) {
-      return;
-    }
-    if (expanded) {
-      header.dataset.swatch = 'brand';
-      document.addEventListener('click', hideNav);
-      document.addEventListener('keyup', hideNav);
-      return;
-    }
-    delete header.dataset.swatch;
-    document.removeEventListener('click', hideNav);
-    document.removeEventListener('keyup', hideNav);
-  });
+  import { theme } from '../shared/store';
 
   theme.listen((theme) => {
     localStorage.setItem('theme', theme);
