@@ -4,7 +4,7 @@ href: https://cicumikuji.codeful.dev/
 stack:
   - Preact
   - goober
-  - Parcel
+  - Rsbuild
   - Firebase
 source:
   href: https://github.com/dwightjack/cicumikuji

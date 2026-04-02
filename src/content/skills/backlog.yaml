@@ -1,9 +1,9 @@
 label: Learn in Progress
 icon: mdi:book-open-page-variant
 data:
-  - id: nextjs
-    label: Next.js
-    icon: logos:nextjs-icon
+  - id: angular
+    label: Angular
+    icon: logos:angular-icon
   - id: go
     label: Go
     icon: logos:go

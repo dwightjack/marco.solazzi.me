@@ -5,7 +5,7 @@ stack:
   - Vue
   - Nuxt
   - Vitest
-  - microbundle
+  - unbuild
 source:
   href: https://github.com/dwightjack/vue-types
 ---

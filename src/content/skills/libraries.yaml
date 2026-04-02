@@ -13,6 +13,9 @@ data:
   - id: nuxt
     label: Nuxt
     icon: logos:nuxt-icon
+  - id: nextjs
+    label: Next.js
+    icon: logos:nextjs-icon
   - id: astro
     label: Astro
     icon: logos:astro-icon
