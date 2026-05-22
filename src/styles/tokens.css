@@ -25,6 +25,16 @@
     @see https://medium.com/eightshapes-llc/naming-tokens-in-design-systems-9e86c7444676
   */
   :root {
+    color-scheme: light dark;
+
+    @media (prefers-color-scheme: light) {
+      color-scheme: light;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      color-scheme: dark;
+    }
+
     /* Colors */
     --color-hue-red: 24deg;
     --color-hue-green: 166deg;
@@ -99,64 +109,61 @@
     --text-footer-font-size: var(--font-size-80);
 
     /* Surface */
-    --surface-color-background: linear-gradient(
-      to bottom left,
-      var(--color-light) 20%,
-      var(--color-light-950)
-    );
-    --surface-color-foreground: var(--color-dark);
-
-    /* Box */
-    --box-color-foreground: var(--color-dark);
-    --box-color-background: var(--color-light);
-    --box-color-foreground-secondary: var(--color-light);
-    --box-color-background-secondary: var(--color-brand-400);
-    --box-color-selection-background: color-mix(
-      in oklch,
-      var(--color-brand-400),
-      transparent 80%
-    );
-    --box-color-selection-foreground: var(--color-brand-250);
-    --box-color-border: color-mix(
-      in oklch,
-      var(--color-brand-400),
-      transparent 50%
-    );
-
-    @media (--theme-dark) {
-      --surface-color-background: linear-gradient(
+    --surface-color-background: light-dark(
+      linear-gradient(
+        to bottom left,
+        var(--color-light) 20%,
+        var(--color-light-950)
+      ),
+      linear-gradient(
         to bottom left,
         var(--color-dark-300) 20%,
         var(--color-dark-250)
-      );
-      --surface-color-foreground: var(--color-light-900);
-      --box-color-foreground: var(--color-light-900);
-      --box-color-background: var(--color-dark-300);
-      --box-color-background-secondary: var(--color-brand-500);
-      --box-color-border: color-mix(
-        in oklch,
-        var(--color-brand-500),
-        transparent 40%
-      );
-      --box-color-selection-background: color-mix(
-        in oklch,
-        var(--color-brand-400),
-        transparent 40%
-      );
-      --box-color-selection-foreground: var(--color-light-900);
-    }
+      )
+    );
+    --surface-color-foreground: light-dark(
+      var(--color-dark),
+      var(--color-light-900)
+    );
+
+    /* Box */
+    --box-color-foreground: light-dark(
+      var(--color-dark),
+      var(--color-light-900)
+    );
+    --box-color-background: light-dark(
+      var(--color-light),
+      var(--color-dark-300)
+    );
+    --box-color-foreground-secondary: var(--color-light);
+    --box-color-background-secondary: light-dark(
+      var(--color-brand-400),
+      var(--color-brand-500)
+    );
+    --box-color-selection-background: light-dark(
+      color-mix(in oklch, var(--color-brand-400), transparent 80%),
+      color-mix(in oklch, var(--color-brand-400), transparent 40%)
+    );
+    --box-color-selection-foreground: light-dark(
+      var(--color-brand-250),
+      var(--color-light-900)
+    );
+    --box-color-border: light-dark(
+      color-mix(in oklch, var(--color-brand-400), transparent 50%),
+      color-mix(in oklch, var(--color-brand-500), transparent 40%)
+    );
 
     /* Navigation */
     --navigation-color-foreground: var(--color-dark);
-    --navigation-color-foreground-hover: var(--color-brand-400);
-    --navigation-color-foreground-secondary: var(--color-brand-500);
+    --navigation-color-foreground-hover: light-dark(
+      var(--color-brand-400),
+      var(--color-brand-800)
+    );
+    --navigation-color-foreground-secondary: light-dark(
+      var(--color-brand-500),
+      var(--color-brand-800)
+    );
     --navigation-color-underline-alpha: 30%;
-
-    @media (--theme-dark) {
-      --navigation-color-underline-alpha: 30%;
-      --navigation-color-foreground-hover: var(--color-brand-800);
-      --navigation-color-foreground-secondary: var(--color-brand-800);
-    }
 
     /* Actions */
     --action-color-background: var(--navigation-color-foreground-secondary);
@@ -168,15 +175,10 @@
     }
 
     /* Generic interactive elements */
-    --interactive-color-outline: color-mix(
-      in oklch,
-      var(--color-brand-400),
-      transparent 18%
+    --interactive-color-outline: light-dark(
+      color-mix(in oklch, var(--color-brand-400), transparent 18%),
+      var(--color-brand-800)
     );
-
-    @media (--theme-dark) {
-      --interactive-color-outline: var(--color-brand-800);
-    }
 
     &[data-theme='green'] {
       --color-brand-hue: var(--color-hue-green);
