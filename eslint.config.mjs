@@ -1,14 +1,15 @@
 // @ts-check
 import eslint from '@eslint/js';
-import { configs, config } from 'typescript-eslint';
+import { defineConfig } from 'eslint/config';
+import ts from 'typescript-eslint';
 import astro from 'eslint-plugin-astro';
 import prettier from 'eslint-plugin-prettier/recommended';
 
-export default config(
+export default defineConfig(
   eslint.configs.recommended,
-  ...configs.recommended,
+  ts.configs.recommended,
   prettier,
-  ...astro.configs.recommended,
+  astro.configs.recommended,
   {
     ignores: ['src/env.d.ts'],
   },

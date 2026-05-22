@@ -1,15 +1,13 @@
 .p-prose {
   --prose-pullquote-space-gutter-inline: 0;
-  --prose-box-color-background-warning: oklch(97% 0.05 87.31deg);
+  --prose-box-color-background-warning: light-dark(
+    oklch(97% 0.05 87.31deg),
+    oklch(39% 0.07 90.79deg)
+  );
   --prose-navigation-color-background-hover: transparent;
-
 
   @media (--viewport-tablet) {
     --prose-pullquote-space-gutter-inline: var(--space-4);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    --prose-box-color-background-warning: oklch(39% 0.07 90.79deg);
   }
 
   max-inline-size: 80ch;
@@ -91,15 +89,10 @@
 
   pre {
     padding: var(--space-2);
-    background-color: var(--color-light);
+    background-color: light-dark(var(--color-light), #24292e);
     font-size: 0.8em;
     white-space: pre-wrap;
     tab-size: 2;
-
-    @media (prefers-color-scheme: dark) {
-      background-color: #24292e;
-    }
-
 
     @media (--viewport-tablet) {
       font-size: 0.9em;
@@ -123,7 +116,7 @@
   figure:has(img) {
     text-align: center;
 
-    & :where(img,picture) {
+    & :where(img, picture) {
       margin-inline: auto;
     }
   }
@@ -160,7 +153,6 @@
     padding: var(--space-2);
     background-color: var(--box-color-background);
 
-
     &:not(first-child) {
       margin-block-start: 1.5rem;
     }
@@ -172,7 +164,6 @@
     @media not (prefers-color-scheme: dark) {
       box-shadow: 0 0 5px 1px color-mix(in oklch, currentcolor, transparent 95%);
     }
-
   }
 
   table {
@@ -216,18 +207,16 @@
     }
   }
 
-
   details {
     padding: var(--space-2);
     background-color: var(--box-color-background);
 
     &[open] {
       @media not (prefers-color-scheme: dark) {
-        box-shadow: 0 0 5px 1px color-mix(in oklch, currentcolor, transparent 95%);
+        box-shadow: 0 0 5px 1px
+          color-mix(in oklch, currentcolor, transparent 95%);
       }
     }
-
-
   }
 
   /* stylelint-disable-next-line no-descending-specificity */
@@ -243,13 +232,18 @@
     background: transparent;
     color: var(--navigation-color-foreground-secondary);
     box-decoration-break: clone;
+
+    /* prettier-ignore */
     border-image: conic-gradient(var(--prose-navigation-color-background-hover) 0 0) fill 0//0.2em 0.2em;
 
     &:hover {
-      --prose-navigation-color-background-hover: color-mix(in oklch, currentcolor, transparent 85%);
+      --prose-navigation-color-background-hover: color-mix(
+        in oklch,
+        currentcolor,
+        transparent 85%
+      );
     }
   }
-
 
   hr {
     border: 1px solid color-mix(in oklch, currentcolor, transparent 80%);

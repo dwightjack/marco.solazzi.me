@@ -1,9 +1,17 @@
 pre-commit:
   parallel: true
-  commands:
-    linter:
+  jobs:
+    - name: js
       glob: "*.{mjs,cjs,js,ts,astro}"
       run: pnpm exec eslint {staged_files}
-    styles:
+    - name: styles
       glob: "*.{css,html,astro}"
-      run: pnpm exec stylelint {staged_files}
+      group:
+        parallel: false
+        piped: true
+        jobs:
+          - name: stylelint
+            run: pnpm exec stylelint {staged_files}
+          - name: prettier
+            run: pnpm exec prettier --ignore-unknown --write {staged_files}
+            stage_fixed: true
