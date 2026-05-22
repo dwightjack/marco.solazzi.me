@@ -26,7 +26,7 @@
     "test:integration": "playwright test ./tests/integration.test.ts",
     "test:visual": "percy exec -- playwright test './tests/visual.test.ts' --reporter=dot",
     "lint:js": "eslint 'src/**/*.{cjs,mjs,js,ts,astro}'",
-    "lint:css": "stylelint 'src/**/*.{css,astro}'",
+    "lint:css": "stylelint 'src/**/*.{css,astro}' && prettier --check 'src/**/*.{css,astro}'",
     "lint:check": "astro check"
   },
   "dependencies": {
