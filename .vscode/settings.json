@@ -1,10 +1,10 @@
 {
   "eslint.validate": ["javascript", "astro", "typescript"],
-  "[js]": {
+  "[javascript]": {
     "editor.formatOnSave": false,
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
-  "[ts]": {
+  "[typescript]": {
     "editor.formatOnSave": false,
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
@@ -17,5 +17,6 @@
     "source.fixAll.stylelint": "explicit"
   },
   "stylelint.validate": ["css", "postcss", "html", "astro"],
-  "js/ts.implicitProjectConfig.checkJs": true
+  "js/ts.implicitProjectConfig.checkJs": true,
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

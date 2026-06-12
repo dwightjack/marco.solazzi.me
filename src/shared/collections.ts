@@ -4,18 +4,18 @@ import { NAV_PATH_BLOG } from './constants';
 export async function getJobs() {
   const jobs = (await getCollection('jobs'))
     .sort((a, b) => b.data.from.getTime() - a.data.from.getTime())
-    .map(({ data, body, slug }) => {
+    .map(({ data, body, id }) => {
       const { href, title, company } = data;
 
       return {
         title: company,
-        id: `job-${slug}`,
+        id: `job-${id}`,
         href,
         data: {
           from: data.from,
           to: data.to,
           title,
-          description: body.trim(),
+          description: body?.trim(),
         },
       };
     });
@@ -82,7 +82,7 @@ export async function getWorks() {
 
 export async function getPersonalWorks() {
   return (await getCollection('personalWorks'))
-    .sort((a, b) => a.slug.localeCompare(b.slug))
+    .sort((a, b) => a.id.localeCompare(b.id))
     .map((entry) => {
       const { project: title, stack, source, href, ...data } = entry.data;
 
@@ -92,7 +92,7 @@ export async function getPersonalWorks() {
           title,
           href,
           data: {
-            description: entry.body.trim(),
+            description: entry.body?.trim(),
             ...data,
             stack: stack.join(', '),
           },
@@ -144,7 +144,7 @@ export async function getBlogPosts() {
         details: {
           id: `talks-${entry.id}`,
           title,
-          href: NAV_PATH_BLOG + '/' + entry.slug,
+          href: NAV_PATH_BLOG + '/' + entry.id,
           data: {
             date: data.publishDate,
             ...data,

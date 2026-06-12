@@ -10,13 +10,7 @@ export default {
   plugins: [
     postcssGlobalData({ files: [resolve(__dirname, 'src/styles/tokens.css')] }),
     presetEnv({
-      stage: 2,
-      features: {
-        'custom-properties': false,
-        'nesting-rules': true,
-        'gamut-mapping': false,
-        'oklab-function': false,
-      },
+      browsers: 'baseline 2024',
     }),
   ],
 };
