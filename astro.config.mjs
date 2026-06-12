@@ -1,7 +1,10 @@
 import { defineConfig } from 'astro/config';
 import icon from 'astro-icon';
 import remarkDirective from 'remark-directive';
-import { remarkContainersPlugin } from './build/remark-plugins.mjs';
+import {
+  remarkContainersPlugin,
+  rehypeExternalLinks,
+} from './build/markdown-plugins.mjs';
 import sitemap from '@astrojs/sitemap';
 import { unified } from '@astrojs/markdown-remark';
 
@@ -12,6 +15,7 @@ export default defineConfig({
   integrations: [icon(), sitemap()],
   markdown: {
     processor: unified({
+      rehypePlugins: [rehypeExternalLinks],
       remarkPlugins: [remarkDirective, remarkContainersPlugin],
     }),
     shikiConfig: {

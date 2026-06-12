@@ -69,3 +69,18 @@ export function remarkContainersPlugin() {
     });
   };
 }
+
+/** @type {Plugin<{}>} */
+export function rehypeExternalLinks() {
+  return (tree) => {
+    visit(tree, 'element', (node) => {
+      if (
+        node.tagName === 'a' &&
+        /^https?:\/\//.test(node.properties?.href || '')
+      ) {
+        node.properties.target = '_blank';
+        node.properties.rel = ['external', 'noopener', 'noreferrer'];
+      }
+    });
+  };
+}
