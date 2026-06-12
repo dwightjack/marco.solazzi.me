@@ -2,23 +2,23 @@
 import Layout from '../../layouts/Layout.astro';
 import Page from '../../components/Page.astro';
 import PageSection from '../../components/PageSection.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import { NAV_PATH_BLOG } from '../../shared/constants';
 import SkipContent from '../../components/SkipContent.astro';
 import Footer from '../../sections/Footer.astro';
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
-  return blogEntries.map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry },
+  return blogEntries.map((post) => ({
+    params: { id: post.id },
+    props: { post },
   }));
 }
 
-const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { post } = Astro.props;
+const { Content } = await render(post);
 
-const { title, publishDate, excerpt, isDraft } = entry.data;
+const { title, publishDate, excerpt, isDraft } = post.data;
 
 const formattedDate = publishDate.toLocaleString('en-US', {
   dateStyle: 'medium',

@@ -1,27 +1,29 @@
-import { z, defineCollection } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { z } from 'astro/zod';
+import { glob } from 'astro/loaders';
 
-const jobCollection = defineCollection({
-  type: 'content',
+const jobs = defineCollection({
+  loader: glob({ base: './src/content/jobs', pattern: '*.md' }),
   schema: z.object({
     company: z.string(),
-    from: z.date(),
-    to: z.date().optional(),
+    from: z.coerce.date(),
+    to: z.coerce.date().optional(),
     title: z.string(),
-    href: z.string().url(),
+    href: z.url(),
   }),
 });
 
-const educationCollection = defineCollection({
-  type: 'data',
+const education = defineCollection({
+  loader: glob({ base: './src/content/education', pattern: '*.yaml' }),
   schema: z.object({
     institute: z.string(),
-    date: z.date(),
+    date: z.coerce.date(),
     title: z.string(),
   }),
 });
 
-const skillCollection = defineCollection({
-  type: 'data',
+const skills = defineCollection({
+  loader: glob({ base: './src/content/skills', pattern: '*.yaml' }),
   schema: z.object({
     label: z.string(),
     icon: z.string(),
@@ -35,37 +37,37 @@ const skillCollection = defineCollection({
   }),
 });
 
-const talkCollection = defineCollection({
-  type: 'data',
+const talks = defineCollection({
+  loader: glob({ base: './src/content/talks', pattern: '*.yaml' }),
   schema: z.object({
     title: z.string(),
-    date: z.date(),
+    date: z.coerce.date(),
     conf: z.string(),
-    href: z.string().url(),
+    href: z.url(),
     media: z.array(
       z.object({
         icon: z.string().optional(),
         type: z.enum(['video', 'slides'] as const),
         lang: z.string().optional(),
-        href: z.string().url(),
+        href: z.url(),
       }),
     ),
   }),
 });
 
-const workCollection = defineCollection({
-  type: 'data',
+const works = defineCollection({
+  loader: glob({ base: './src/content/works', pattern: '*.yaml' }),
   schema: z.object({
     project: z.string(),
-    date: z.date(),
+    date: z.coerce.date(),
     stack: z.array(z.string()),
     tasks: z.array(z.string()).optional(),
-    href: z.string().url().optional(),
+    href: z.url().optional(),
     media: z
       .array(
         z.object({
           icon: z.string().optional(),
-          href: z.string().url(),
+          href: z.url(),
           label: z.string().optional(),
         }),
       )
@@ -73,38 +75,38 @@ const workCollection = defineCollection({
   }),
 });
 
-const personalWorksCollection = defineCollection({
-  type: 'content',
+const personalWorks = defineCollection({
+  loader: glob({ base: './src/content/personalWorks', pattern: '*.md' }),
   schema: z.object({
     project: z.string(),
     stack: z.array(z.string()),
-    href: z.string().url().optional(),
+    href: z.url().optional(),
     source: z
       .object({
-        href: z.string().url(),
+        href: z.url(),
         label: z.string().default('source'),
       })
       .optional(),
   }),
 });
 
-const blogCollection = defineCollection({
-  type: 'content',
+const blog = defineCollection({
+  loader: glob({ base: './src/content/blog', pattern: '*.md' }),
   schema: z.object({
     title: z.string(),
     isDraft: z.boolean().default(false),
-    publishDate: z.date(),
+    publishDate: z.coerce.date(),
     mark: z.string().default('記事'),
     excerpt: z.string().optional(),
   }),
 });
 
 export const collections = {
-  jobs: jobCollection,
-  education: educationCollection,
-  skills: skillCollection,
-  talks: talkCollection,
-  works: workCollection,
-  personalWorks: personalWorksCollection,
-  blog: blogCollection,
+  jobs,
+  education,
+  skills,
+  talks,
+  works,
+  personalWorks,
+  blog,
 };
