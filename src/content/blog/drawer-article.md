@@ -40,7 +40,7 @@ Some design decisions I made to keep the experiment simple:
 
 ## Technical implementation
 
-Notable Web APIs I used:
+Notable Web APIs I used (some of them might not be supported in all major browser at the time of writing):
 
 - [HTML invoker](https://developer.mozilla.org/en-US/docs/Web/API/Invoker_Commands_API) (`commandfor` and `command="show-modal"`): opens the dialog without JavaScript
 - [`closedby="any"`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog#closedby): closes on backdrop click
@@ -62,9 +62,17 @@ On release, `lostpointercapture` fires and we release the explicit capture:
 
 ```js
 anchor.addEventListener('lostpointercapture', (e) => {
-  // ...
   anchor.releasePointerCapture(e.pointerId);
-  // ...
+});
+```
+
+### The pointer release phase
+
+Previously, I mentioned that the drawer closes when dragged down more than 50% of its height. Initially, I implement the calculations in the `lostpointercapture` event handler, but I soon realized that in Safari, `event.clientY` is always `0`. A safer solution was to use `pointerup` instead.
+
+```js
+anchor.addEventListener('pointerup', (e) => {
+  // e.clientY is !== 0 here
 });
 ```
 
@@ -74,14 +82,13 @@ One last detail: when opening or closing normally, the drawer uses a 300ms trans
 
 ```css
 #drawer[data-drag] {
-  transition-duration: 75ms;
-  transition-timing-function: linear;
+  transition-duration: 0ms;
 }
 ```
 
 ## Experiment results
 
-Overall, I'm satisfied with the outcome of the experiment.
+Overall, I'm satisfied with the outcome of this quick experiment experiment.
 
 From a broader point of view, I think that `dialog`, `popover` and [custom selects](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Customizable_select) are a good alternative to a custom implementation, with a smaller bundle size and a better userland code experience.
 
