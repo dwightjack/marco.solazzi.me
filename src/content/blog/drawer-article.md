@@ -24,7 +24,7 @@ Finally, [invoker commands](https://caniuse.com/wf-invoker-commands) let you ope
 
 ## The drawer
 
-Here's the [drawer demo](https://codepen.io/marco_solazzi/pen/QwdELZM). If your browser doesn't support these APIs, there's a video below:
+Here's the [drawer demo](https://codepen.io/marco_solazzi/pen/QwdELZM). If your browser doesn't support some of these APIs, there's a video below:
 
 <figure>
   <video src="/assets/blog/drawer.mp4" controls playsinline></video>
