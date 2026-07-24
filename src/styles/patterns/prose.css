@@ -117,6 +117,7 @@
     text-align: center;
 
     & :where(img, picture) {
+      max-inline-size: min(100%, 38rem);
       margin-inline: auto;
     }
   }
