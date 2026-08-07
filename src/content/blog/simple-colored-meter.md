@@ -1,12 +1,10 @@
 ---
-title: Styling a color-shifting meter with CSS
+title: Styling a multi-state <meter> in pure CSS
 publishDate: 2026-08-07
-excerpt: Styling a native HTML <code><meter></meter></code> element so its color shifts across default, warning, and max states using typed `attr()`, the CSS `if()` function, and a math-only fallback for browsers that don't support them yet.
+excerpt: Styling a three-state native HTML <code>&lt;meter&gt;</code> using typed <code>attr()</code> and the CSS <code>if()</code> function, with a fallback for older browsers.
 ---
 
-# Styling a color-shifting meter with CSS
-
-In the last few years HTML and CSS have grown to a limit where it's almost possible to describe every common UI pattern without resorting to JavaScript. In this spirit, I recently embarked on a new experiment during my off times: styling the native `<meter>` element as a bar with specific colors for some of its states using only valid HTML and CSS.
+In the last few years HTML and CSS have grown to a limit where it's almost possible to describe every common UI pattern. In this spirit, I recently embarked on a new experiment during my off times: styling the native `<meter>` element as a bar with specific colors for some of its states using only valid HTML and CSS.
 
 What sent me down this path was a concrete UI requirement: re-create the credits/usage bar you see in many contexts like subscription products, system usage overview etc.; a bar showing how much of your quota is used, that shifts color as you approach the limit.
 
@@ -87,7 +85,7 @@ The `<meter>` element already gives me all the features I need to fulfill the re
 
 Think of `value` as the current usage, `max` as the maximum allowed usage, and `high` as the threshold at which a system would want to nudge you with a warning before you actually run out of space.
 
-And that's it for the HTML part. But if you are using this for something other than just plain numbers, it's a good idea to add at least a [visually hidden](https://www.w3.org/WAI/WCAG22/Techniques/css/C7), human-readable description for accessibility.
+And that's it for the HTML part. But if you are using this for something other than just plain numbers, it's a good idea to **add at least a [visually hidden](https://www.w3.org/WAI/WCAG22/Techniques/css/C7), human-readable description for accessibility**. For a more in-depth review of this subject, please read this 2022 [article about `<meter>` accessibility by Dana Byerly](https://www.htmhell.dev/adventcalendar/2022/5/#:~:text=Using%20visually%20hidden%20text%20instead%20of%20fallback).
 
 In my case, I used the text as a visual description of the meter value and positioned it with [Anchor positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Anchor_positioning/Using).
 
@@ -109,8 +107,6 @@ In my case, I used the text as a visual description of the meter value and posit
 </style>
 ```
 
-For a more in-depth review of this subject, please read this 2022 [article about `<meter>` accessibility by Dana Byerly](https://www.htmhell.dev/adventcalendar/2022/5/#:~:text=Using%20visually%20hidden%20text%20instead%20of%20fallback).
-
 ### Design choices
 
 - No gradients between states, just a hard swap with a short transition.
@@ -120,7 +116,7 @@ For a more in-depth review of this subject, please read this 2022 [article about
 
 Now, for the CSS implementation I used some new CSS features:
 
-- [Typed `attr()`](https://developer.chrome.com/blog/advanced-attr) (`attr(value type(<number>), 0)`): reads an HTML attribute straight into a CSS custom property as a real `<number>`, not a string
+- [Typed `attr()`](https://developer.chrome.com/blog/advanced-attr): reads an HTML attribute straight into a CSS custom property as a real `<number>`, not a string
 - [`if()`](https://developer.mozilla.org/en-US/docs/Web/CSS/if) with [`style()` queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@container#container_style_queries): sets a native conditional for choosing a value based on comparing two custom properties
 
 Since not all browsers support `if()` and typed `attr()` at the time of writing, I added a fallback using more widely available web features:
@@ -134,6 +130,8 @@ Typed `attr()` and `if()` make the code straightforward and easier to maintain, 
 
 Plain `attr()` has existed in CSS for a long time, but it only ever returned a string. [Typed `attr()`](https://developer.chrome.com/blog/advanced-attr) lets you specify the expected type (and an optional fallback):
 
+:::snippetdescription
+
 ```css
 /* Set the custom properties only if the browser supports typed attributes */
 @supports (x: attr(x type(*))) {
@@ -146,6 +144,8 @@ Plain `attr()` has existed in CSS for a long time, but it only ever returned a s
 - **#1:** By default, `--value` is 0 if not defined in the HTML.
 - **#2:** When `--max` is not defined elsewhere, fall back to `infinity` to drop all color codes and just render the default color.
 - **#3:** The threshold can be set using `<meter>`'s attribute `high`. Defaults to `--max` as per [HTML spec](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/meter#high).
+
+:::
 
 Once `--value`, `--max`, and `--threshold` are numbers, we can use `if()` and style queries to assign the correct color for each state:
 
@@ -161,7 +161,9 @@ Read top to bottom like a switch statement: full value → alert, past threshold
 
 ### The fallback: a sprinkle of hacky arithmetic
 
-For browsers without `if()`, there's no native "if/else" to fall back on, so the trick is to encode the three states as a single number and let math pick the color. `--state` ends up being `0` (default), `1` (warning), or `2` (alert):
+For browsers not supporting `if()`, there's no native <i>if/else</i> to fall back on, so the trick is to encode the three states as a single number and let math pick the color. Our `--state` property ends up being `0` (default), `1` (warning), or `2` (alert):
+
+:::snippetdescription
 
 ```css
 --state: clamp(
@@ -174,13 +176,16 @@ For browsers without `if()`, there's no native "if/else" to fall back on, so the
 );
 ```
 
-- `sign()`: returns `-1`, `0`, or `1` depending on whether its argument is negative, zero, or positive.
+`sign()`: returns `-1`, `0`, or `1` depending on whether its argument is negative, zero, or positive:
+
 - First `sign()` checks the threshold: `sign(value - threshold + 1)`
   - The `+ 1` shifts the comparison so that `value === threshold` counts as _already_ crossing into warning, not just approaching it.
   - Without that `+ 1`, hitting the threshold exactly would give `sign(0) = 0`, which reads as "still default."
 - Second `sign()` checks value against the maximum: `sign(value - max)`
   - This stays at `0` (no effect) until `value` reaches `max`, at which point it adds `1` more.
 - The trailing `+ 1` sets the baseline, so with neither condition triggered, the total lands on `0`.
+
+:::
 
 Once we have computed the value of `--state` as a plain number, `color-mix()` turns it into the final color (note that we need to nest two `color-mix()` calls since [Chrome and Safari cap color-mix at two colors](https://caniuse.com/wf-color-mix-variadic)):
 
