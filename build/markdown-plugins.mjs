@@ -65,6 +65,18 @@ export function remarkContainersPlugin() {
         }
         return transformNode(node, 'figure', { class: 'p-table-scroller' });
       }
+      if (node.name === 'snippetdescription') {
+        const captionNodes = node.children.splice(1);
+        node.children.push({
+          type: 'element',
+          tagName: 'figcaption',
+          data: {
+            hName: 'figcaption',
+          },
+          children: captionNodes,
+        });
+        return transformNode(node, 'figure');
+      }
       transformNode(node, node.name);
     });
   };

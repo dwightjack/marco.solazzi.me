@@ -1,12 +1,12 @@
 ---
-title: A simple native <meter> with colored thresholds
-publishDate: 2026-08-01
-excerpt: Styling a native HTML meter with typed attr(), the CSS if() function, and a math-only fallback for browsers that don't support it yet.
+title: Styling a color-shifting meter with CSS
+publishDate: 2026-08-07
+excerpt: Styling a native HTML <code><meter></meter></code> element so its color shifts across default, warning, and max states using typed `attr()`, the CSS `if()` function, and a math-only fallback for browsers that don't support them yet.
 ---
 
-# A simple native `<meter>` with colored thresholds
+# Styling a color-shifting meter with CSS
 
-In the last few days I enbaqued in a new experiment during my off times: styling the native `<meter>` element as a bar with specific colors for some of its states using only valid HTML and CSS.
+In the last few years HTML and CSS have grown to a limit where it's almost possible to describe every common UI pattern without resorting to JavaScript. In this spirit, I recently embarked on a new experiment during my off times: styling the native `<meter>` element as a bar with specific colors for some of its states using only valid HTML and CSS.
 
 What sent me down this path was a concrete UI requirement: re-create the credits/usage bar you see in many contexts like subscription products, system usage overview etc.; a bar showing how much of your quota is used, that shifts color as you approach the limit.
 
@@ -21,7 +21,7 @@ It's a common enough pattern that I expected a ready-made component for it. Inst
 
 ## Is it a progress bar?
 
-By looking at some of the popular libraries it might seems that this kind of UI element is called <i>Progress</i>. For example both [shadcn/ui](https://ui.shadcn.com/docs/components/base/progress) and [Bootstrap](https://getbootstrap.com/docs/4.0/components/progress/) has a Progress component and both appy a `role="progressbar"` to it. While it might be tempting to use these components, in reality a progressbar (or the HTML native counterpart, `<progress>`) is <b>the wrong element for the task</b>:
+By looking at some of the popular libraries it might seem that this kind of UI element is called <i>Progress</i>. For example both [shadcn/ui](https://ui.shadcn.com/docs/components/base/progress) and [Bootstrap](https://getbootstrap.com/docs/4.0/components/progress/) have a Progress component and both apply a `role="progressbar"` to it. While it might be tempting to use these components, in reality a progressbar (or the HTML native counterpart, `<progress>`) is <b>the wrong element for the task</b>:
 
 <figure>
 
@@ -39,7 +39,7 @@ By looking at some of the popular libraries it might seems that this kind of UI 
 <figcaption>WAI-ARIA 1.2 spec - <cite><a href="https://www.w3.org/TR/wai-aria-1.2/#progressbar">`progressbar` role</a></cite></figcaption>
 </figure>
 
-Instead the HTML spec is very clear on what we should use:
+Instead, the HTML spec is very clear on what we should use:
 
 <figure>
 
@@ -50,11 +50,11 @@ Instead the HTML spec is very clear on what we should use:
 
 ## Implementation
 
-From this I started experimenting with the `<meter>` element to see how for a nice implementation of a usage meter using just HTML and CSS as much as possible.
+From this I started experimenting with the `<meter>` element to see how far I could push a nice implementation of a usage meter using just HTML and CSS.
 
 :::warning
 
-**Disclaimer**: What follows is a CSS experiment. Accessibility and old browsers compatibility hasn't been fully tested.
+**Disclaimer**: What follows is a CSS experiment. Accessibility and old browser compatibility haven't been fully tested.
 
 :::
 
@@ -63,11 +63,11 @@ From this I started experimenting with the `<meter>` element to see how for a ni
 For this experiment, my requirements are:
 
 1. The bar should have <b>rounded corners</b> (both the container and the actual meter bar).
-1. The bar has three state defined by color codes: <b>default</b>, <b>warning (optional)</b>, and <b>max</b>.
+1. The bar has three states defined by color codes: <b>default</b>, <b>warning (optional)</b>, and <b>max</b>.
 
 ### TL;DR
 
-If you are just curious to see the finished implementation here it is the codepen:
+If you're just curious to see the finished implementation, here's the codepen:
 
 <p class="codepen" data-height="300" data-pen-title="Colorized meter" data-preview="true" data-default-tab="result" data-slug-hash="emgKdYy" data-user="marco_solazzi" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
   <span>See the Pen <a href="https://codepen.io/marco_solazzi/pen/emgKdYy">
@@ -78,16 +78,18 @@ If you are just curious to see the finished implementation here it is the codepe
 
 ### HTML setup
 
-The `<meter>` element already gives me all the features I need to fullfil the requirements:
+The `<meter>` element already gives me all the features I need to fulfill the requirements:
 
 ```html
 <label for="meter">Meter</label>
 <meter min="0" max="200" value="100" high="150" id="meter"></meter>
 ```
 
-Think of `value` as the current usage, `max` as the maximum allowed usage, and `high` as the thresold at which a system would want to nudge you with a warning before you actually run out of space.
+Think of `value` as the current usage, `max` as the maximum allowed usage, and `high` as the threshold at which a system would want to nudge you with a warning before you actually run out of space.
 
-And that's it for the HTML part. But if you are using this for something other than just plain numbers it might be a good idea to associate a [visually hidden](https://www.w3.org/WAI/WCAG22/Techniques/css/C7) <i>human</i> reading for accessibility purpose. In my case, I used the text as visual description of the meter value and positioned it with [Anchor positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Anchor_positioning/Using).
+And that's it for the HTML part. But if you are using this for something other than just plain numbers, it's a good idea to add at least a [visually hidden](https://www.w3.org/WAI/WCAG22/Techniques/css/C7), human-readable description for accessibility.
+
+In my case, I used the text as a visual description of the meter value and positioned it with [Anchor positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Anchor_positioning/Using).
 
 ```html
 <label for="meter">Disk Usage</label>
@@ -116,32 +118,36 @@ For a more in-depth review of this subject, please read this 2022 [article about
 
 ### Technical implementation
 
-Now, for the CSS implementation I used some pretty new CSS features:
+Now, for the CSS implementation I used some new CSS features:
 
 - [Typed `attr()`](https://developer.chrome.com/blog/advanced-attr) (`attr(value type(<number>), 0)`): reads an HTML attribute straight into a CSS custom property as a real `<number>`, not a string
-- [`if()`](https://developer.mozilla.org/en-US/docs/Web/CSS/if) with [`style()`](https://developer.mozilla.org/en-US/docs/Web/CSS/@container/style): a native conditional for choosing a value based on comparing two custom properties — see [css-tip.com/if-trick](https://css-tip.com/if-trick/)
-- [`sign()`](https://developer.mozilla.org/en-US/docs/Web/CSS/sign) and [`clamp()`](https://developer.mozilla.org/en-US/docs/Web/CSS/clamp): used together to compute a 0/1/2 "state" number without `if()`, for the fallback path
-- [`color-mix()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-mix), nested twice: turns that state number into an actual color
+- [`if()`](https://developer.mozilla.org/en-US/docs/Web/CSS/if) with [`style()` queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@container#container_style_queries): sets a native conditional for choosing a value based on comparing two custom properties
 
-### Reading attributes as numbers with typed `attr()`
+Since not all browsers support `if()` and typed `attr()` at the time of writing, I added a fallback using more widely available web features:
 
-Plain `attr()` has always existed in CSS, but it only ever returned a string — useless for math. [Typed `attr()`](https://developer.chrome.com/blog/advanced-attr) lets you specify the expected type and a fallback:
+- [`sign()`](https://developer.mozilla.org/en-US/docs/Web/CSS/sign) and [`clamp()`](https://developer.mozilla.org/en-US/docs/Web/CSS/clamp): used together to compute a 0/1/2 state number mapping the three states of the meter
+- [`color-mix()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-mix), nested twice: turns that state number into an actual state color
+
+### The cleaner path
+
+Typed `attr()` and `if()` make the code straightforward and easier to maintain, but they still have limited support at the time of writing.
+
+Plain `attr()` has existed in CSS for a long time, but it only ever returned a string. [Typed `attr()`](https://developer.chrome.com/blog/advanced-attr) lets you specify the expected type (and an optional fallback):
 
 ```css
+/* Set the custom properties only if the browser supports typed attributes */
 @supports (x: attr(x type(*))) {
-  --value: attr(value type(<number>), 0);
-  --max: attr(max type(<number>), infinity);
-  --threshold: attr(high type(<number>), var(--max));
+  --value: attr(value type(<number>), 0); /* #1 */
+  --max: attr(max type(<number>), infinity); /* #2 */
+  --threshold: attr(high type(<number>), var(--max)); /* #3 */
 }
 ```
 
-That last line is worth pausing on: the fallback for `--threshold` is `var(--max))`, which mirrors the [actual HTML spec behavior](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/meter#high) — a meter without a `high` attribute has no "warning" zone, so the threshold effectively becomes the max.
+- **#1:** By default, `--value` is 0 if not defined in the HTML.
+- **#2:** When `--max` is not defined elsewhere, fall back to `infinity` to drop all color codes and just render the default color.
+- **#3:** The threshold can be set using `<meter>`'s attribute `high`. Defaults to `--max` as per [HTML spec](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/meter#high).
 
-Once `--value`, `--max`, and `--threshold` are numbers, the bar's color becomes a pure comparison problem — no JS involved, and it updates automatically whenever the attributes change in the DOM.
-
-### The clean path: `if()`
-
-Where supported, the whole state machine collapses into one declaration:
+Once `--value`, `--max`, and `--threshold` are numbers, we can use `if()` and style queries to assign the correct color for each state:
 
 ```css
 --bar-color: if(
@@ -151,9 +157,9 @@ Where supported, the whole state machine collapses into one declaration:
 );
 ```
 
-Read top to bottom like a switch statement: full value → alert, past threshold → warning, otherwise the default color. This is the version I'd want to ship in a year or two, once support catches up — see [caniuse.com/css-if](https://caniuse.com/css-if).
+Read top to bottom like a switch statement: full value → alert, past threshold → warning, otherwise the default color.
 
-### The fallback: turning comparisons into arithmetic
+### The fallback: a sprinkle of hacky arithmetic
 
 For browsers without `if()`, there's no native "if/else" to fall back on, so the trick is to encode the three states as a single number and let math pick the color. `--state` ends up being `0` (default), `1` (warning), or `2` (alert):
 
@@ -168,76 +174,126 @@ For browsers without `if()`, there's no native "if/else" to fall back on, so the
 );
 ```
 
-`sign()` returns `-1`, `0`, or `1` depending on whether its argument is negative, zero, or positive. The `+ 1` inside the first `sign()` call is what makes the threshold comparison _inclusive_ — without it, hitting `--value === --threshold` exactly would still read as "default," not "warning." The second `sign()` term only kicks in once `--value` reaches `--max`, adding another `+1` to push the state to `2`.
+- `sign()`: returns `-1`, `0`, or `1` depending on whether its argument is negative, zero, or positive.
+- First `sign()` checks the threshold: `sign(value - threshold + 1)`
+  - The `+ 1` shifts the comparison so that `value === threshold` counts as _already_ crossing into warning, not just approaching it.
+  - Without that `+ 1`, hitting the threshold exactly would give `sign(0) = 0`, which reads as "still default."
+- Second `sign()` checks value against the maximum: `sign(value - max)`
+  - This stays at `0` (no effect) until `value` reaches `max`, at which point it adds `1` more.
+- The trailing `+ 1` sets the baseline, so with neither condition triggered, the total lands on `0`.
 
-With `--state` as a plain number, `color-mix()` — nested since [Chrome and Safari cap color-mix at two colors](https://caniuse.com/wf-color-mix-variadic) — turns it into the final color:
+Once we have computed the value of `--state` as a plain number, `color-mix()` turns it into the final color (note that we need to nest two `color-mix()` calls since [Chrome and Safari cap color-mix at two colors](https://caniuse.com/wf-color-mix-variadic)):
 
+<!-- prettier-ignore-start -->
 ```css
---bar-color: color-mix(
+--bar-color: color-mix( /* first color-mix() */
   in srgb,
-  var(--color-alert) max(0%, (var(--state) - 1) * 100%),
-  color-mix(
+  var(--color-alert) max(0%, (var(--state) - 1) * 100%), /* #1 */
+  color-mix( /* second color-mix() */
     in srgb,
-    var(--color-warning) min(100%, calc(var(--state) * 100%)),
-    var(--color-default)
+    var(--color-warning) min(100%, calc(var(--state) * 100%)), /* #2 */
+    var(--color-default) /* #3 */
   )
 );
 ```
+<!-- prettier-ignore-end -->
 
-Walking through it at `--state: 1`: the outer mix contributes `0%` alert (so it's fully transparent to the inner result), and the inner mix contributes `100%` warning — landing exactly on `--color-warning`. At `--state: 0` both mixes bottom out at the default color; at `--state: 2` the outer mix goes to `100%` alert and wins outright. No branching, just weighted blending that happens to land on discrete colors at integer inputs.
+Let's walk through it for each value of `--state`. It might feel confusing at times, but bear with me:
 
-### Resetting two completely different pseudo-element trees
+- when `--state === 0`:
+  - in the first `color-mix()` the amount of the color #1 computes to `max(0%, -100%) === 0%`. This means that <b>only the result of the second `color-mix()` defines the final color</b>.
+  - in the second `color-mix()`, the amount of the color #2 computes to `min(100%, 0%) === 0%`.
+  - the last color of the second `color-mix()` doesn't have a percentage so it defaults to 100%.
+  - final color: `--color-default`.
+- when `--state === 1`:
+  - in the first `color-mix()` the amount of the color #1 computes to `max(0%, 0%) === 0%`. This means that <b>only the result of the second `color-mix()` defines the final color</b>.
+  - in the second `color-mix()`, the amount of the color #2 computes to `min(100%, 100%) === 100%`.
+  - the last color of the second `color-mix()` doesn't have a percentage so it defaults to 0%.
+  - final color: `--color-warning`.
+- when `--state === 2`:
+  - in the first `color-mix()` the amount of the color #1 computes to `max(0%, 100%) === 100%`.
+  - since the second `color-mix()` does not have its own percentage, it defaults to `0%` and is dropped altogether.
+  - final color: `--color-alert`.
 
-Firefox and Chromium/WebKit expose `<meter>`'s internals through unrelated pseudo-elements, so both need resetting before the custom `--bar-color` can show through:
+I think it's very clear that this implementation is harder to read and maintain than the one using `if()`.
+
+### Applying the computed styles
+
+Firefox and Chromium/WebKit expose `<meter>`'s internals through unrelated pseudo-elements, so both need resetting before the custom `--bar-color` can be applied:
 
 ```css
-&::-moz-meter-bar {
-  appearance: none;
-  background: var(--bar-color);
-}
+meter {
+  /* Firefox Reset */
+  &::-moz-meter-bar {
+    appearance: none;
+    background: none;
+  }
 
-&::-webkit-meter-bar,
-&::-webkit-meter-inner-element,
-&::-webkit-meter-optimum-value,
-&::-webkit-meter-suboptimum-value,
-&::-webkit-meter-even-less-good-value {
-  appearance: none;
-  background: none;
-}
+  /* WebKit / Blink Reset */
+  &::-webkit-meter-bar,
+  &::-webkit-meter-inner-element,
+  &::-webkit-meter-optimum-value,
+  &::-webkit-meter-suboptimum-value,
+  &::-webkit-meter-even-less-good-value {
+    appearance: none;
+    background: none;
+  }
 
-&::-webkit-meter-suboptimum-value,
-&::-webkit-meter-optimum-value {
-  background: var(--bar-color);
+  /* Firefox styles */
+  &::-moz-meter-bar {
+    background: var(--bar-color);
+    border-radius: 99em;
+    transition: var(--transition);
+  }
+
+  /* WebKit / Blink style */
+  &::-webkit-meter-bar {
+    block-size: var(--bar-height);
+  }
+
+  &::-webkit-meter-suboptimum-value,
+  &::-webkit-meter-optimum-value {
+    background: var(--bar-color);
+    border-radius: 99em;
+    transition: var(--transition);
+  }
 }
 ```
 
-WebKit alone has four pseudo-elements standing in for the track and the value fill in its different built-in states — all of them need `appearance: none` before `background` will actually apply.
+WebKit / Blink alone has four pseudo-elements standing in for the track and the value fill in its different built-in states — all of them need `appearance: none` before `background` will actually apply.
 
-### JavaScript's only job: syncing what CSS can't read yet
+### JavaScript fallback
 
-In browsers without typed `attr()` support, custom properties can't read HTML attributes at all, so `script.js` mirrors them manually:
+In browsers without typed `attr()` support, custom properties won't be set correctly, but we can assign them manually by reading the value of each attribute:
 
 ```js
-const hasIf = CSS.supports('color', 'if(style(--a >= --b): red; else: blue)');
+// check for typed `attr()` support
+const hasTypedAttr = CSS.supports('x', 'attr(x type(*))');
+const $meter = document.querySelector('#meter');
 
-if (!hasIf) {
-  $meter.style.setProperty('--value', $meter.value);
-  $meter.style.setProperty('--max', $meter.getAttribute('max'));
+if (!hasTypedAttr) {
+  const update = () => {
+    $meter.style.setProperty('--value', $meter.value);
+    $meter.style.setProperty('--max', $meter.getAttribute('max'));
+    $meter.style.setProperty('--threshold', $meter.getAttribute('high'));
+  };
+
+  // watch for changes on specific attributes
+  // and manually update the fallback CSS custom properties
+  const observer = new MutationObserver(update);
+  observer.observe($meter, {
+    attributes: true,
+    attributeFilter: ['value', 'max', 'high'],
+  });
+
+  // sync the fallback custom properties
+  // at DOM ready
+  update();
 }
-
-$range.addEventListener('input', ({ target }) => {
-  $meter.value = target.value;
-  $output.value = target.value;
-  if (!hasIf) {
-    $meter.style.setProperty('--value', target.value);
-  }
-});
 ```
 
-Note the feature check is against `if()` support, not typed `attr()` — in this codebase, if a browser supports `if()` it's assumed modern enough to also support typed `attr()`, so the two checks are collapsed into one `CSS.supports()` call. Everywhere else, the actual HTML attributes (`value`, `high`) still get updated too, so the DOM stays correct regardless of which CSS path is active — this is purely a rendering fallback, not a data source.
+I am using a [`MutationObserver`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) to keep the fallback CSS custom properties in sync with the attributes.
 
-## Experiment results
+## Final Thoughts
 
-What stood out most is how little JavaScript survives once typed `attr()` is available: no listeners are needed to keep the bar in sync with `value` or `high`, because CSS is reading the attributes directly. The `hasIf` check exists purely to skip that reactive wiring in modern browsers, not to add a second implementation of the logic.
-
-The fallback math is the more fragile piece of the whole thing — `sign()`-based state detection works, but it's clearly a workaround, not something I'd want to write from scratch for every component. `if()` is the feature that makes this pattern actually pleasant to author; until it lands everywhere, I'd reach for it selectively, on components where the payoff (deleting a chunk of reactive JS) is worth the extra CSS complexity of maintaining a fallback.
+This was a fun experiment. The fallback part was pretty interesting and <i>satisfying</i> to code, even if I'd trade it a hundred times for the simplicity of an `if()` statement in production code. While the implementation works across all major browsers, remember that this was just a quick experiment and that production-level code should go through extensive tests, especially when it comes to usability and accessibility.

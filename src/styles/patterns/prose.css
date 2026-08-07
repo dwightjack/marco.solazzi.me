@@ -1,8 +1,19 @@
+@property --prose-shadow-spread {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 1px;
+}
+
 .p-prose {
   --prose-pullquote-space-gutter-inline: 0;
   --prose-box-color-background-warning: light-dark(
     oklch(97% 0.05 87.31deg),
     oklch(39% 0.07 90.79deg)
+  );
+  --prose-box-color-background-code: light-dark(var(--color-light), #24292e);
+  --prose-box-color-shadow-code: light-dark(
+    color-mix(in oklch, var(--box-color-border), transparent 64%),
+    transparent
   );
   --prose-navigation-color-background-hover: transparent;
 
@@ -89,17 +100,22 @@
 
   pre {
     padding: var(--space-2);
-    background-color: light-dark(var(--color-light), #24292e);
+    transition: --prose-shadow-spread 250ms;
+    background-color: var(--prose-box-color-background-code);
+    box-shadow: 0 0 5px var(--prose-shadow-spread)
+      var(--prose-box-color-shadow-code);
     font-size: 0.8em;
     white-space: pre-wrap;
     tab-size: 2;
 
-    @media (--viewport-tablet) {
-      font-size: 0.9em;
+    @media (--pointer-mouse) {
+      &:hover {
+        --prose-shadow-spread: 3px;
+      }
     }
 
-    @media not (prefers-color-scheme: dark) {
-      box-shadow: 0 0 5px 1px color-mix(in oklch, currentcolor, transparent 95%);
+    @media (--viewport-tablet) {
+      font-size: 0.9em;
     }
   }
 
@@ -141,6 +157,31 @@
 
     @media (--viewport-tablet) {
       font-size: 1.15em;
+    }
+  }
+
+  figure:has(pre:first-child + figcaption) {
+    transition: --prose-shadow-spread 250ms;
+    box-shadow: 0 0 5px var(--prose-shadow-spread)
+      var(--prose-box-color-shadow-code);
+
+    @media (--pointer-mouse) {
+      &:hover {
+        --prose-shadow-spread: 3px;
+      }
+    }
+
+    & > pre {
+      transition: none;
+      box-shadow: none;
+    }
+
+    & > figcaption {
+      border-block-start: 2px solid
+        color-mix(in oklch, var(--box-color-border), transparent 64%);
+      padding: var(--space-2);
+      padding-block-start: var(--space-1);
+      background-color: var(--prose-box-color-background-code);
     }
   }
 
