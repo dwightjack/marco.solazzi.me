@@ -11,9 +11,10 @@
     oklch(39% 0.07 90.79deg)
   );
   --prose-box-color-background-code: light-dark(var(--color-light), #24292e);
-  --prose-box-color-shadow-code: light-dark(
-    color-mix(in oklch, var(--box-color-border), transparent 64%),
-    transparent
+  --prose-box-color-shadow-code: color-mix(
+    in oklch,
+    var(--box-color-border),
+    transparent 64%
   );
   --prose-navigation-color-background-hover: transparent;
 
@@ -100,7 +101,8 @@
 
   pre {
     padding: var(--space-2);
-    transition: --prose-shadow-spread 250ms;
+    transition: --prose-shadow-spread 250ms ease 100ms;
+    border-radius: 4px;
     background-color: var(--prose-box-color-background-code);
     box-shadow: 0 0 5px var(--prose-shadow-spread)
       var(--prose-box-color-shadow-code);
@@ -111,6 +113,8 @@
     @media (--pointer-mouse) {
       &:hover {
         --prose-shadow-spread: 3px;
+
+        transition-delay: 0s;
       }
     }
 
@@ -161,18 +165,24 @@
   }
 
   figure:has(pre:first-child + figcaption) {
-    transition: --prose-shadow-spread 250ms;
+    transition: --prose-shadow-spread 250ms ease 100ms;
+    border-radius: 4px;
+    background-color: var(--prose-box-color-background-code);
     box-shadow: 0 0 5px var(--prose-shadow-spread)
       var(--prose-box-color-shadow-code);
 
     @media (--pointer-mouse) {
       &:hover {
         --prose-shadow-spread: 3px;
+
+        transition-delay: 0ms;
       }
     }
 
     & > pre {
       transition: none;
+      border-radius: 0;
+      background-color: transparent !important;
       box-shadow: none;
     }
 
@@ -181,7 +191,6 @@
         color-mix(in oklch, var(--box-color-border), transparent 64%);
       padding: var(--space-2);
       padding-block-start: var(--space-1);
-      background-color: var(--prose-box-color-background-code);
     }
   }
 
