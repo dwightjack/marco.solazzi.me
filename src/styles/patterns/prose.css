@@ -11,10 +11,9 @@
     oklch(39% 0.07 90.79deg)
   );
   --prose-box-color-background-code: light-dark(var(--color-light), #24292e);
-  --prose-box-color-shadow-code: color-mix(
-    in oklch,
-    var(--box-color-border),
-    transparent 64%
+  --prose-box-color-shadow-code: light-dark(
+    oklch(from var(--color-brand-400) l c h / 15%),
+    oklch(from var(--color-brand-500) l c h / 54%)
   );
   --prose-navigation-color-background-hover: transparent;
 
@@ -121,6 +120,11 @@
     @media (--viewport-tablet) {
       font-size: 0.9em;
     }
+
+    @media (--theme-dark) {
+      box-shadow: 0 0 0 var(--prose-shadow-spread)
+        var(--prose-box-color-shadow-code);
+    }
   }
 
   :not(pre) > :is(code, samp) {
@@ -179,6 +183,11 @@
       }
     }
 
+    @media (--theme-dark) {
+      box-shadow: 0 0 0 var(--prose-shadow-spread)
+        var(--prose-box-color-shadow-code);
+    }
+
     & > pre {
       transition: none;
       border-radius: 0;
@@ -187,8 +196,7 @@
     }
 
     & > figcaption {
-      border-block-start: 2px solid
-        color-mix(in oklch, var(--box-color-border), transparent 64%);
+      border-block-start: 2px solid var(--prose-box-color-shadow-code);
       padding: var(--space-2);
       padding-block-start: var(--space-1);
     }
@@ -213,9 +221,11 @@
       background-color: var(--prose-box-color-background-warning);
     }
 
-    @media not (prefers-color-scheme: dark) {
-      box-shadow: 0 0 5px 1px color-mix(in oklch, currentcolor, transparent 95%);
-    }
+    box-shadow: 0 0 5px 1px
+      light-dark(
+        oklch(from var(--prose-box-color-background-warning) 92% c h),
+        oklch(from var(--prose-box-color-background-warning) 25% c h)
+      );
   }
 
   table {
