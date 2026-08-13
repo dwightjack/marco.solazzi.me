@@ -39,6 +39,7 @@
     "@fontsource/noto-sans-jp": "5.2.9",
     "@iconify-json/logos": "1.2.11",
     "@iconify-json/mdi": "1.2.3",
+    "@shikijs/transformers": "4.4.2",
     "astro": "6.4.4",
     "astro-icon": "1.1.5",
     "modern-normalize": "3.0.1",
