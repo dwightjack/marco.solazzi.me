@@ -365,8 +365,8 @@ meter {
 }
 ```
 
-WebKit / Blink alone has four pseudo-elements standing in for the track and the value fill in its different built-in states — all of them need `appearance: none` before `background` will actually apply.
-
 ## Final Thoughts
 
-This was a fun experiment. The fallback part was pretty interesting and <i>satisfying</i> to code, even if I'd trade it a hundred times for the simplicity of an `if()` statement in production code. While the implementation works across all major browsers, remember that this was just a quick experiment and that production-level code should go through extensive tests, especially when it comes to usability and accessibility.
+This was a fun experiment. The fallback part was pretty interesting and <i>satisfying</i> to code, even if I'd trade it a hundred times for the simplicity of an `if()` statement in production code.
+
+While the implementation works across all major browsers, remember that this was just a quick experiment and that production-level code should go through extensive tests, especially when it comes to usability and accessibility.
