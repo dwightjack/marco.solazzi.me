@@ -353,6 +353,7 @@
   }
 
   .astro-code {
+    display: flex;
     counter-reset: step;
     counter-increment: step 0;
 
