@@ -1,8 +1,19 @@
+@property --prose-shadow-spread {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 1px;
+}
+
 .p-prose {
   --prose-pullquote-space-gutter-inline: 0;
   --prose-box-color-background-warning: light-dark(
     oklch(97% 0.05 87.31deg),
     oklch(39% 0.07 90.79deg)
+  );
+  --prose-box-color-background-code: light-dark(var(--color-light), #24292e);
+  --prose-box-color-shadow-code: light-dark(
+    oklch(from var(--color-brand-400) l c h / 15%),
+    oklch(from var(--color-brand-500) l c h / 54%)
   );
   --prose-navigation-color-background-hover: transparent;
 
@@ -89,17 +100,30 @@
 
   pre {
     padding: var(--space-2);
-    background-color: light-dark(var(--color-light), #24292e);
+    transition: --prose-shadow-spread 250ms ease 100ms;
+    border-radius: 4px;
+    background-color: var(--prose-box-color-background-code);
+    box-shadow: 0 0 5px var(--prose-shadow-spread)
+      var(--prose-box-color-shadow-code);
     font-size: 0.8em;
-    white-space: pre-wrap;
+    white-space: pre;
     tab-size: 2;
+
+    @media (--pointer-mouse) {
+      &:hover {
+        --prose-shadow-spread: 3px;
+
+        transition-delay: 0s;
+      }
+    }
 
     @media (--viewport-tablet) {
       font-size: 0.9em;
     }
 
-    @media not (prefers-color-scheme: dark) {
-      box-shadow: 0 0 5px 1px color-mix(in oklch, currentcolor, transparent 95%);
+    @media (--theme-dark) {
+      box-shadow: 0 0 0 var(--prose-shadow-spread)
+        var(--prose-box-color-shadow-code);
     }
   }
 
@@ -107,6 +131,11 @@
     padding: 0.2em;
     background-color: color-mix(in oklch, currentcolor, transparent 92%);
     font-size: 0.9em;
+  }
+
+  var {
+    padding: 0.2em;
+    background-color: color-mix(in oklch, currentcolor, transparent 92%);
   }
 
   figure {
@@ -117,6 +146,7 @@
     text-align: center;
 
     & :where(img, picture) {
+      max-inline-size: min(100%, 38rem);
       margin-inline: auto;
     }
   }
@@ -143,6 +173,40 @@
     }
   }
 
+  figure:has(pre:first-child + figcaption) {
+    transition: --prose-shadow-spread 250ms ease 100ms;
+    border-radius: 4px;
+    background-color: var(--prose-box-color-background-code);
+    box-shadow: 0 0 5px var(--prose-shadow-spread)
+      var(--prose-box-color-shadow-code);
+
+    @media (--pointer-mouse) {
+      &:hover {
+        --prose-shadow-spread: 3px;
+
+        transition-delay: 0ms;
+      }
+    }
+
+    @media (--theme-dark) {
+      box-shadow: 0 0 0 var(--prose-shadow-spread)
+        var(--prose-box-color-shadow-code);
+    }
+
+    & > pre {
+      transition: none;
+      border-radius: 0;
+      background-color: transparent !important;
+      box-shadow: none;
+    }
+
+    & > figcaption {
+      border-block-start: 2px solid var(--prose-box-color-shadow-code);
+      padding: var(--space-2);
+      padding-block-start: var(--space-1);
+    }
+  }
+
   img,
   video {
     display: block;
@@ -162,9 +226,11 @@
       background-color: var(--prose-box-color-background-warning);
     }
 
-    @media not (prefers-color-scheme: dark) {
-      box-shadow: 0 0 5px 1px color-mix(in oklch, currentcolor, transparent 95%);
-    }
+    box-shadow: 0 0 5px 1px
+      light-dark(
+        oklch(from var(--prose-box-color-background-warning) 92% c h),
+        oklch(from var(--prose-box-color-background-warning) 25% c h)
+      );
   }
 
   table {
@@ -286,16 +352,42 @@
     margin-block-start: 1.5rem;
   }
 
+  .astro-code {
+    display: flex;
+    counter-reset: step;
+    counter-increment: step 0;
+
+    .line {
+      display: inline-block;
+      inline-size: 100%;
+
+      &::before {
+        content: counter(step);
+        display: inline-block;
+        inline-size: 2ch;
+        margin-inline-end: 1rem;
+        color: oklch(55.1% 0.019 251deg);
+        text-align: end;
+        counter-increment: step;
+      }
+    }
+
+    .highlighted {
+      background-color: light-dark(
+        oklch(90% 0.2 100deg / 24%),
+        oklch(59% 0.12 100deg / 24%)
+      );
+    }
+  }
+
   @media (prefers-color-scheme: dark) {
-    .astro-code,
-    .astro-code span {
+    .astro-code {
       background-color: var(--shiki-dark-bg) !important;
       color: var(--shiki-dark) !important;
+    }
 
-      /* Optional, if you also want font styles */
-      font-style: var(--shiki-dark-font-style) !important;
-      font-weight: var(--shiki-dark-font-weight) !important;
-      text-decoration: var(--shiki-dark-text-decoration) !important;
+    .astro-code span {
+      color: var(--shiki-dark) !important;
     }
   }
 }

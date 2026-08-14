@@ -7,6 +7,10 @@ import {
 } from './build/markdown-plugins.mjs';
 import sitemap from '@astrojs/sitemap';
 import { unified } from '@astrojs/markdown-remark';
+import {
+  transformerMetaHighlight,
+  transformerNotationFocus,
+} from '@shikijs/transformers';
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,9 +24,10 @@ export default defineConfig({
     }),
     shikiConfig: {
       themes: {
-        light: 'github-light-high-contrast',
-        dark: 'github-dark-high-contrast',
+        light: 'github-light',
+        dark: 'github-dark',
       },
+      transformers: [transformerMetaHighlight(), transformerNotationFocus()],
     },
   },
 });
