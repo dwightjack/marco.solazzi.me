@@ -1,6 +1,6 @@
 ---
 title: Styling a multi-state <meter> in pure CSS
-publishDate: 2026-08-15
+publishDate: 2026-08-14
 excerpt: Styling a three-state native HTML <code>&lt;meter&gt;</code> using typed <code>attr()</code> and the CSS <code>if()</code> function, with a fallback for older browsers.
 ---
 
