@@ -228,8 +228,10 @@
 
     box-shadow: 0 0 5px 1px
       light-dark(
-        oklch(from var(--prose-box-color-background-warning) 92% c h),
-        oklch(from var(--prose-box-color-background-warning) 25% c h)
+        oklch(
+          from var(--prose-box-color-background-warning) calc(l - 0.05) c h
+        ),
+        oklch(from var(--prose-box-color-background-warning) calc(l - 0.14) c h)
       );
   }
 
