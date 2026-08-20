@@ -136,7 +136,7 @@ export async function getBlogPosts() {
     })
     .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
     .map((entry) => {
-      const { title, mark, isDraft, ...data } = entry.data;
+      const { title, mark, isDraft, lastUpdateDate: _, ...data } = entry.data;
 
       return {
         mark,
