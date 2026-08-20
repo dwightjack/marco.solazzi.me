@@ -96,6 +96,7 @@ const blog = defineCollection({
     title: z.string(),
     isDraft: z.boolean().default(false),
     publishDate: z.coerce.date(),
+    lastUpdateDate: z.coerce.date().optional(),
     mark: z.string().default('記事'),
     excerpt: z.string().optional(),
   }),
