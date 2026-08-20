@@ -1,12 +1,21 @@
 ---
 title: Not Everything Needs a Component
 publishDate: 2024-11-20
-excerpt: "Components are a powerful abstraction but sometimes they might become a constraint"
+lastUpdateDate: 2026-08-21
+excerpt: 'Components are a powerful abstraction but sometimes they might become a constraint'
 ---
 
-In the early 2000s, a new term, [*Divitis*](https://en.wiktionary.org/wiki/divitis), was coined to refer to <q cite="https://en.wiktionary.org/wiki/divitis">The practice of authoring web-page code with many div elements in place of meaningful semantic HTML elements</q>. This was part of an effort to increase awareness of semantics in HTML within the frame of the [Progressive Enhancement](https://alistapart.com/article/testdriven/) technique.
+:::info{class="small"}
 
-Fast forward 20 years - I witness a new *syndrome* affecting web developers, one I call *componentitis*. Here is my made-up definition:
+## Updates
+
+- [08/2026](#update-082026): Added Tailwind v4+ utility example
+
+:::
+
+In the early 2000s, a new term, [<i>Divitis</i>](https://en.wiktionary.org/wiki/divitis), was coined to refer to <q cite="https://en.wiktionary.org/wiki/divitis">The practice of authoring web-page code with many div elements in place of meaningful semantic HTML elements</q>. This was part of an effort to increase awareness of semantics in HTML within the frame of the [Progressive Enhancement](https://alistapart.com/article/testdriven/) technique.
+
+Fast forward 20 years - I witness a new _syndrome_ affecting web developers, one I call <i>componentitis</i>. Here is my made-up definition:
 
 :::pullquote
 
@@ -16,7 +25,7 @@ Fast forward 20 years - I witness a new *syndrome* affecting web developers, one
 
 ## Components
 
-So, first of all, what is a *component*? I think React popularized the term to refer to its building blocks:
+So, first of all, what is a <i>component</i>? I think React popularized the term to refer to its building blocks:
 
 <figure>
 
@@ -25,34 +34,34 @@ So, first of all, what is a *component*? I think React popularized the term to r
 <figcaption>React documentation - <cite><a href="https://react.dev/learn/your-first-component#:~:text=React%20lets%20you%20combine%20your%20markup%2C%20CSS%2C%20and%20JavaScript%20into%20custom%20%E2%80%9Ccomponents%E2%80%9D%2C%20reusable%20UI%20elements%20for%20your%20app">Your First Component</a></cite></figcaption>
 </figure>
 
-While the concept of reusable UI elements wasn’t new at the time (in CSS, we already had techniques like [OOCSS](https://www.smashingmagazine.com/2011/12/an-introduction-to-object-oriented-css-oocss/), [SMACSS](https://smacss.com/), and [BEM](https://en.bem.info/methodology/quick-start/)), the key difference is its original approach to the location of markup, style, and interaction. With React components (and all the subsequent UI libraries), it’s possible to [co-locate](https://kentcdodds.com/blog/colocation) everything in a single file within the boundaries of a component. 
+While the concept of reusable UI elements wasn’t new at the time (in CSS, we already had techniques like [OOCSS](https://www.smashingmagazine.com/2011/12/an-introduction-to-object-oriented-css-oocss/), [SMACSS](https://smacss.com/), and [BEM](https://en.bem.info/methodology/quick-start/)), the key difference is its original approach to the location of markup, style, and interaction. With React components (and all the subsequent UI libraries), it’s possible to [co-locate](https://kentcdodds.com/blog/colocation) everything in a single file within the boundaries of a component.
 
 So, using Facebook’s latest CSS library [Stylex](https://stylexjs.com/), you could write:
 
 ```tsx
-import * as stylex from "@stylexjs/stylex";
-import { useState } from "react";
+import * as stylex from '@stylexjs/stylex';
+import { useState } from 'react';
 
 // styles
 const styles = stylex.create({
-	base: {
-		fontSize: 16,
-		lineHeight: 1.5,
-		color: "#000",
-	},
+  base: {
+    fontSize: 16,
+    lineHeight: 1.5,
+    color: '#000',
+  },
 });
 
 export function Toggle() {
-	// interactions
-	const [toggle, setToggle] = useState(false);
-	const onClick = () => setToggle((t) => !t);
+  // interactions
+  const [toggle, setToggle] = useState(false);
+  const onClick = () => setToggle((t) => !t);
 
-	// markup
-	return (
-		<button {...stylex.props(styles.base)} type="button" onClick={onClick}>
-			{toggle}
-		</button>
-	);
+  // markup
+  return (
+    <button {...stylex.props(styles.base)} type="button" onClick={onClick}>
+      {toggle}
+    </button>
+  );
 }
 ```
 
@@ -62,40 +71,38 @@ In libraries like Svelte, the co-location is even more clear (and the code more 
 
 ```html
 <script>
-	let toggle = $state(false)
-	const onclick = () => toggle = !toggle
+  let toggle = $state(false);
+  const onclick = () => (toggle = !toggle);
 </script>
 
-<button type='button' {onclick}>
-	{toggle}
-</button>
+<button type="button" {onclick}>{toggle}</button>
 
 <style>
-button {
-	font-size: 16px;
-	line-height: 1.5;
-	color: #000;
-}
-</style> 
+  button {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #000;
+  }
+</style>
 ```
 
-Over time, this pattern has gained so much traction to the point that everything is encapsulated in components. You have probably encountered page components like this: 
+Over time, this pattern has gained so much traction to the point that everything is encapsulated in components. You have probably encountered page components like this:
 
 ```tsx
 export function Page() {
-	return (
-		<Layout>
-			<Header nav={<Nav />} />
-			<Body>
-				<Stack spacing={2}>
-					<Item>Item 1</Item>
-					<Item>Item 2</Item>
-					<Item>Item 3</Item>
-				</Stack>
-			</Body>
-			<Footer />
-		</Layout>
-	);
+  return (
+    <Layout>
+      <Header nav={<Nav />} />
+      <Body>
+        <Stack spacing={2}>
+          <Item>Item 1</Item>
+          <Item>Item 2</Item>
+          <Item>Item 3</Item>
+        </Stack>
+      </Body>
+      <Footer />
+    </Layout>
+  );
 }
 ```
 
@@ -103,35 +110,35 @@ export function Page() {
 
 The above code looks clean and consistent: we use the component interface to describe a page.
 
-But then, let’s look at the possible implementation of `Stack`. This component is usually a wrapper to ensure all direct child elements are vertically stacked and evenly spaced: 
+But then, let’s look at the possible implementation of `Stack`. This component is usually a wrapper to ensure all direct child elements are vertically stacked and evenly spaced:
 
 ```tsx
-import * as stylex from "@stylexjs/stylex";
-import type { PropsWithChildren } from "react";
+import * as stylex from '@stylexjs/stylex';
+import type { PropsWithChildren } from 'react';
 
 const styles = stylex.create({
-	root: {
-		display: "flex",
-		flexDirection: "column",
-	},
-	spacing: (value) => ({
-		rowGap: value * 16,
-	}),
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  spacing: (value) => ({
+    rowGap: value * 16,
+  }),
 });
 
 export function Stack({
-	spacing = 0,
-	children,
+  spacing = 0,
+  children,
 }: PropsWithChildren<{ spacing?: number }>) {
-	return (
-		<div {...stylex.props(styles.root, styles.spacing(spacing))}>
-			{children}
-		</div>
-	);
+  return (
+    <div {...stylex.props(styles.root, styles.spacing(spacing))}>
+      {children}
+    </div>
+  );
 }
 ```
 
-We only define the styles and the root element of the component. 
+We only define the styles and the root element of the component.
 
 In this case, we could even say that **the only thing we are co-locating is the style block** since the HTML is only used to hold a CSS class reference, and there is no interactivity or business logic.
 
@@ -140,39 +147,39 @@ In this case, we could even say that **the only thing we are co-locating is the 
 Now, what if we want to be able to render the root element as a `section` and maybe add some attributes? We need to enter the realm of polymorphic components. In React and with TypeScript this might end up being something like the following:
 
 ```tsx
-import * as stylex from "@stylexjs/stylex";
+import * as stylex from '@stylexjs/stylex';
 
 type PolymorphicComponentProps<T extends React.ElementType> = {
-	as?: T;
-	children?: React.ReactNode;
-	spacing?: number;
+  as?: T;
+  children?: React.ReactNode;
+  spacing?: number;
 } & React.ComponentPropsWithoutRef<T>;
 
 const styles = stylex.create({
-	root: {
-		display: "flex",
-		flexDirection: "column",
-	},
-	spacing: (value) => ({
-		rowGap: value * 16,
-	}),
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  spacing: (value) => ({
+    rowGap: value * 16,
+  }),
 });
 
-export function Stack<T extends React.ElementType = "div">({
-	as,
-	spacing = 1,
-	children,
-	...props
+export function Stack<T extends React.ElementType = 'div'>({
+  as,
+  spacing = 1,
+  children,
+  ...props
 }: PolymorphicComponentProps<T>) {
-	const Component = as || "div";
-	return (
-		<Component
-			{...props}
-			{...stylex.props(styles.root, styles.spacing(spacing))}
-		>
-			{children}
-		</Component>
-	);
+  const Component = as || 'div';
+  return (
+    <Component
+      {...props}
+      {...stylex.props(styles.root, styles.spacing(spacing))}
+    >
+      {children}
+    </Component>
+  );
 }
 ```
 
@@ -180,50 +187,49 @@ In my opinion, this isn't very readable at first glance. And remember: we are ju
 
 ## Back to the basics
 
-A while back, I was working on a pet project in Angular. Being used to thinking in components, I reached out to them to create a `Stack`. It turns out that in Angular polymorphic components are [even more complex to create](https://www.angularspace.com/bringing-polymorphic-functional-components-to-angular-with-signal-inputs-2/). 
+A while back, I was working on a pet project in Angular. Being used to thinking in components, I reached out to them to create a `Stack`. It turns out that in Angular polymorphic components are [even more complex to create](https://www.angularspace.com/bringing-polymorphic-functional-components-to-angular-with-signal-inputs-2/).
 
 I started to question my implementation design and then I had an epiphany: why spend time and lines of code on complex implementations when the solution had been right in front of me all along?
 
 ```html
-<div class="stack"> 
-</div>
+<div class="stack"></div>
 ```
 
 ```css
 .stack {
   --s: 0;
-	display: flex;
-	flex-direction: column;
-	row-gap: calc(var(--s) * 16px);
+  display: flex;
+  flex-direction: column;
+  row-gap: calc(var(--s) * 16px);
 }
 ```
 
-Really, that’s the barebone *native* implementation of the `Stack` . Once you load the CSS in the layout, it can be used right away in your code:
+Really, that’s the barebone _native_ implementation of the `Stack` . Once you load the CSS in the layout, it can be used right away in your code:
 
 ```tsx
 export function Page() {
-	return (
-		<Layout>
-			<Header nav={<Nav />} />
-			<Body>
-				<div className="stack" style="--s: 2">
-					<Item>Item 1</Item>
-					<Item>Item 2</Item>
-					<Item>Item 3</Item>
-				</div>
-			</Body>
-			<Footer />
-		</Layout>
-	);
+  return (
+    <Layout>
+      <Header nav={<Nav />} />
+      <Body>
+        <div className="stack" style="--s: 2">
+          <Item>Item 1</Item>
+          <Item>Item 2</Item>
+          <Item>Item 3</Item>
+        </div>
+      </Body>
+      <Footer />
+    </Layout>
+  );
 }
 ```
 
 Let's see the main advantages of this approach:
 
-* reusability
-* reduced complexity
-* smaller JavaScript bundle and less overhead
-* **interoperability**
+- reusability
+- reduced complexity
+- smaller JavaScript bundle and less overhead
+- **interoperability**
 
 The last point is easy to overlook: Not every project uses React, and if you’re including the stack layout pattern in a Design System or a redistributable UI library, developers could use it in projects using different UI frameworks or a server-side language like PHP or Ruby.
 
@@ -241,11 +247,19 @@ If you're developing a component library you definitely want to define a set of 
   display: flex;
   flex-direction: column;
   row-gap: calc(var(--s) * 16px);
-  
-  &.s\:1 { --s: 1 }
-  &.s\:2 { --s: 2 }
-  &.s\:4 { --s: 4 }
-  &.s\:6 { --s: 6 }
+
+  &.s\:1 {
+    --s: 1;
+  }
+  &.s\:2 {
+    --s: 2;
+  }
+  &.s\:4 {
+    --s: 4;
+  }
+  &.s\:6 {
+    --s: 6;
+  }
 }
 
 /** Usage:
@@ -272,11 +286,19 @@ Here is the result with CSS Modules:
   display: flex;
   flex-direction: column;
   row-gap: calc(var(--s) * 16px);
-  
-  &.s1 { --s: 1 }
-  &.s2 { --s: 2 }
-  &.s4 { --s: 4 }
-  &.s6 { --s: 6 }
+
+  &.s1 {
+    --s: 1;
+  }
+  &.s2 {
+    --s: 2;
+  }
+  &.s4 {
+    --s: 4;
+  }
+  &.s6 {
+    --s: 6;
+  }
 }
 
 /** Usage
@@ -290,16 +312,16 @@ import * from './styles/stack.module.css'
 
 ### Add type-safety in JavaScript frameworks
 
-The CSS-only solution provides neither typing nor IDE auto-completion. 
+The CSS-only solution provides neither typing nor IDE auto-completion.
 
 Also, if we are not using spacing variants, it might feel too verbose to write both a `class` and a `style` attribute instead of a `spacing` prop. Assuming you're using React, you could leverage JSX and create a utility function:
 
 ```ts
 function stack({ spacing }: { spacing: number }) {
-	return { 
-		className: 'stack', 
-		style: { '--s': spacing } as React.CSSProperties 
-	}
+  return {
+    className: 'stack',
+    style: { '--s': spacing } as React.CSSProperties,
+  };
 }
 
 /* Usage:
@@ -315,7 +337,7 @@ If you’re using variants you can modify the utility function to provide a deve
 
 ```ts
 export function stack({ spacing }: { spacing: 0 | 1 | 2 | 4 | 6 }) {
-  return `stack s:${spacing}`
+  return `stack s:${spacing}`;
 }
 
 /* Usage:
@@ -327,7 +349,7 @@ export function stack({ spacing }: { spacing: 0 | 1 | 2 | 4 | 6 }) {
 
 ### Prevent code duplication and hardcoded values
 
-Some of you might have noticed that, in the last example, I hardcoded the expected values of `spacing` in both the CSS and the utility files. If a value is removed or added, this might be an issue because we must keep the two files in sync. 
+Some of you might have noticed that, in the last example, I hardcoded the expected values of `spacing` in both the CSS and the utility files. If a value is removed or added, this might be an issue because we must keep the two files in sync.
 
 If you’re building a library, automated visual regression tests will probably catch this kind of issue. Anyway, if it still bothers you, a solution might be to reach for CSS Modules and either use [typed-css-modules](https://blog.logrocket.com/write-type-safe-css-modules/) or throw a runtime error for unsupported values:
 
@@ -337,24 +359,32 @@ If you’re building a library, automated visual regression tests will probably 
   display: flex;
   flex-direction: column;
   row-gap: calc(var(--s) * 16px);
-  
-  &.s\:1 { --s: 1 }
-  &.s\:2 { --s: 2 }
-  &.s\:4 { --s: 4 }
-  &.s\:6 { --s: 6 }
+
+  &.s\:1 {
+    --s: 1;
+  }
+  &.s\:2 {
+    --s: 2;
+  }
+  &.s\:4 {
+    --s: 4;
+  }
+  &.s\:6 {
+    --s: 6;
+  }
 }
 ```
 
 ```ts
 import styles from './stack.module.css';
 
-export function stack({ spacing }: { spacing: number} = {}) {
-const modifier = styles['s:' + spacing]
+export function stack({ spacing }: { spacing: number } = {}) {
+  const modifier = styles['s:' + spacing];
   if (!modifier) {
-    throw new Error('Spacing value not supported: ' + spacing)
+    throw new Error('Spacing value not supported: ' + spacing);
   }
-  return `${styles.stack} ${modifier}`
-} 
+  return `${styles.stack} ${modifier}`;
+}
 ```
 
 ## Alternatives
@@ -366,7 +396,7 @@ Another alternative worth considering is [Tailwind CSS](https://tailwindcss.com/
 Using the default [spacing scale](https://tailwindcss.com/docs/customizing-spacing#default-spacing-scale) defined by Tailwind, we could create a `stack-` plugin like this:
 
 ```js
-import plugin from 'tailwindcss/plugin'
+import plugin from 'tailwindcss/plugin';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -375,21 +405,24 @@ export default {
     extend: {},
   },
   plugins: [
-    plugin(function({ matchComponents, theme }) {
-	    // dynamic component
-	    // will match stack-0, stack-1, stack-4, ... 
-      matchComponents({
-        'stack': (value) => ({
-          display: 'flex',
-          flexDirection: 'column',
-          rowGap: `${value}`,
-        }),
-      }, { 
-        values: theme('spacing')
-      })
-    })
+    plugin(function ({ matchComponents, theme }) {
+      // dynamic component
+      // will match stack-0, stack-1, stack-4, ...
+      matchComponents(
+        {
+          stack: (value) => ({
+            display: 'flex',
+            flexDirection: 'column',
+            rowGap: `${value}`,
+          }),
+        },
+        {
+          values: theme('spacing'),
+        },
+      );
+    }),
   ],
-}
+};
 
 /* Usage:
 <div className="stack-2">
@@ -398,8 +431,26 @@ export default {
 */
 ```
 
-As a side note: it's interesting that Tailwind uses the component mental model in `matchComponents` to describe complex CSS rulesets, even if it does not create any *real* component. Maybe another example of how pervasive the concept is?  
+As a side note: it's interesting that Tailwind uses the component mental model in `matchComponents` to describe complex CSS rulesets, even if it does not create any _real_ component. Maybe another example of how pervasive the concept is?
+
+:::info
+
+### Update 08/2026
+
+In Tailwind v4+ the same result can be achieved adding the following utility:
+
+```scss
+@utility stack-* {
+  display: flex;
+  flex-direction: column;
+  row-gap: --spacing(--value(integer));
+}
+```
+
+In my opinion this way cleaner are much more <i>CSSesque</i>.
+
+:::
 
 ## Takeaways
 
-The case of *Componentitis*, beyond its technical aspects, demonstrates the importance of pausing to examine and question our mental models and habits. Like many patterns in software development, components emerged as solutions to real problems, but when we began defaulting to this pattern, it became a silent source of complexity. *Componentitis* resembles those nutritional deficiencies caused by a restricted diet: the problem isn't with any single food but rather with missing out on everything else.
+The case of <i>Componentitis</i>, beyond its technical aspects, demonstrates the importance of pausing to examine and question our mental models and habits. Like many patterns in software development, components emerged as solutions to real problems, but when we began defaulting to this pattern, it became a silent source of complexity. <i>Componentitis</i> resembles those nutritional deficiencies caused by a restricted diet: the problem isn't with any single food but rather with missing out on everything else.
