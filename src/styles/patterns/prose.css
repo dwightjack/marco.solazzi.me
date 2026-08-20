@@ -10,6 +10,10 @@
     oklch(97% 0.05 87.31deg),
     oklch(39% 0.07 90.79deg)
   );
+  --prose-box-color-background-info: light-dark(
+    oklch(95.5% 0.02312 246deg),
+    oklch(34% 0.03 256.66deg)
+  );
   --prose-box-color-background-code: light-dark(var(--color-light), #24292e);
   --prose-box-color-shadow-code: light-dark(
     oklch(from var(--color-brand-400) l c h / 15%),
@@ -47,7 +51,8 @@
   h2,
   h3,
   h4,
-  h5 {
+  h5,
+  .h {
     font-family: var(--text-heading-font-family);
     font-weight: normal;
     text-wrap: balance;
@@ -59,7 +64,7 @@
     line-height: 1.4;
   }
 
-  h2 {
+  :where(h2) {
     margin-block: 1.5rem;
     font-size: var(--text-heading-font-size-x2);
   }
@@ -87,7 +92,6 @@
 
   .small {
     h2 {
-      margin-block: 1.5rem 0;
       font-size: var(--text-heading-font-size-mq);
     }
 
@@ -222,17 +226,21 @@
       margin-block-start: 1.5rem;
     }
 
-    &.p-prose__warning {
-      background-color: var(--prose-box-color-background-warning);
+    &.p-prose__box {
+      box-shadow: 0 0 5px 1px
+        light-dark(
+          oklch(from var(--box-color-background) calc(l - 0.05) c h),
+          oklch(from var(--box-color-background) calc(l - 0.14) c h)
+        );
     }
 
-    box-shadow: 0 0 5px 1px
-      light-dark(
-        oklch(
-          from var(--prose-box-color-background-warning) calc(l - 0.05) c h
-        ),
-        oklch(from var(--prose-box-color-background-warning) calc(l - 0.14) c h)
-      );
+    &.p-prose__box--warning {
+      --box-color-background: var(--prose-box-color-background-warning);
+    }
+
+    &.p-prose__box--info {
+      --box-color-background: var(--prose-box-color-background-info);
+    }
   }
 
   table {

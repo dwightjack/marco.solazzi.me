@@ -13,8 +13,13 @@ import { h } from 'hastscript';
  */
 function transformNode(node, name, attributes = {}) {
   const data = node.data || (node.data = {});
+  const { class: className, attrs } = attributes;
 
-  node.attributes = Object.assign(node.attributes ?? {}, attributes);
+  node.attributes = Object.assign(node.attributes ?? {}, attrs);
+  if (className) {
+    node.attributes.class =
+      `${node.attributes.class ?? ''} ${className}`.trim();
+  }
 
   const hast = h(name, node.attributes || {});
 
@@ -53,7 +58,14 @@ export function remarkContainersPlugin() {
         return transformNode(node, 'figure', { class: 'pullquote' });
       }
       if (/^warn|warning$/.test(node.name)) {
-        return transformNode(node, 'aside', { class: 'p-prose__warning' });
+        return transformNode(node, 'aside', {
+          class: 'p-prose__box p-prose__box--warning',
+        });
+      }
+      if (/^info$/.test(node.name)) {
+        return transformNode(node, 'aside', {
+          class: 'p-prose__box p-prose__box--info',
+        });
       }
       if (node.name === 'table') {
         const id = `table-caption-${idx++}`;
