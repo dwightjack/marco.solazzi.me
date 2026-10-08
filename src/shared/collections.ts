@@ -5,16 +5,16 @@ export async function getJobs() {
   const jobs = (await getCollection('jobs'))
     .sort((a, b) => b.data.from.getTime() - a.data.from.getTime())
     .map(({ data, body, id }) => {
-      const { href, title, company } = data;
+      const { href, role, company } = data;
 
       return {
         title: company,
         id: `job-${id}`,
         href,
         data: {
+          role,
           from: data.from,
           to: data.to,
-          title,
           description: body?.trim(),
         },
       };

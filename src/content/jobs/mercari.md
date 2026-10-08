@@ -1,7 +1,7 @@
 ---
 company: Mercari Inc
+role: Senior Frontend Engineer
 from: 2020-02-17
-title: Senior Frontend Engineer
 href: https://about.mercari.com/en/
 ---
 
