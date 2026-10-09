@@ -7,10 +7,10 @@
   "author": {
     "name": "Marco Solazzi"
   },
-  "packageManager": "pnpm@11.6.0",
+  "packageManager": "pnpm@12.9.1",
   "engines": {
-    "node": ">=24.0.0",
-    "pnpm": "^11.6.0"
+    "node": ">=26.11.1",
+    "pnpm": "^12.9.1"
   },
   "private": true,
   "browserslist": [
