@@ -1,8 +1,8 @@
 ---
 company: Intesys Srl
+role: Senior Frontend Developer
 from: 2009-12-01
 to: 2014-12-01
-title: Senior Frontend Developer
 href: http://www.intesys.it/
 ---
 

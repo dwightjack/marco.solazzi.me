@@ -39,7 +39,7 @@ const {
       Object.entries(data).map(
         ([heading, value]) =>
           value && (
-            <div data-row={heading}>
+            <>
               <dt>.{heading}:</dt>
               <dd>
                 {value instanceof Date ? (
@@ -48,7 +48,7 @@ const {
                   <Fragment set:html={value} />
                 )}
               </dd>
-            </div>
+            </>
           ),
       )
     }
@@ -95,6 +95,7 @@ const {
     }
 
     .c-card__data {
+      max-inline-size: 60ch;
       margin-block: var(--space-2);
 
       @media (--viewport-tablet-landscape) {
@@ -102,24 +103,15 @@ const {
       }
     }
 
-    .c-card__data > * {
-      max-inline-size: 60ch;
-      margin-inline-start: 0.3em;
-    }
-
-    .c-card__data :is(dt, dd) {
-      display: inline;
+    .c-card__data :is(dd, dt) {
       margin-inline-start: 0;
-      line-height: 1.5;
     }
 
     .c-card__data dt {
-      margin-inline-start: -0.3em;
+      margin-inline-end: 0.3rem;
+      float: inline-start;
+      clear: both;
       font-weight: 700;
-    }
-
-    .c-card__data [data-row='title'] {
-      margin-block-start: 0.5em;
     }
   }
 </style>

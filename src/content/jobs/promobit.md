@@ -1,8 +1,8 @@
 ---
 company: Promobit Srl
+role: Full Stack Web Developer
 from: 2005-07-04
 to: 2009-12-01
-title: Full Stack Web Developer
 href: http://www.promobit.it/
 ---
 
