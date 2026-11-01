@@ -171,7 +171,7 @@ importers:
         version: 0.9.9(prettier-plugin-astro@0.14.1)(prettier@3.8.1)(typescript@5.9.3)
       '@astrojs/markdown-remark':
         specifier: ^7.2.0
-        version: 7.2.0
+        version: 7.2.0(supports-color@7.2.0)
       '@astrojs/rss':
         specifier: ^4.0.18
         version: 4.0.18
@@ -198,10 +198,10 @@ importers:
         version: 4.4.2
       astro:
         specifier: 6.4.4
-        version: 6.4.4(@types/node@25.9.1)(rollup@4.61.1)(yaml@2.9.0)
+        version: 6.4.4(@types/node@25.9.1)(rollup@4.61.1)(supports-color@7.2.0)(yaml@2.9.0)
       astro-icon:
         specifier: 1.1.5
-        version: 1.1.5
+        version: 1.1.5(supports-color@7.2.0)
       modern-normalize:
         specifier: 3.0.1
         version: 3.0.1
@@ -217,7 +217,7 @@ importers:
         version: 9.39.4
       '@percy/cli':
         specifier: 1.31.10
-        version: 1.31.10(typescript@5.9.3)
+        version: 1.31.10(supports-color@7.2.0)(typescript@5.9.3)
       '@percy/playwright':
         specifier: 1.1.0
         version: 1.1.0(playwright-core@1.60.0)
@@ -226,25 +226,25 @@ importers:
         version: 1.60.0
       '@typescript-eslint/parser':
         specifier: 8.60.1
-        version: 8.60.1(eslint@10.4.1)(typescript@5.9.3)
+        version: 8.60.1(eslint@10.4.1(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3)
       eslint:
         specifier: 10.4.1
-        version: 10.4.1
+        version: 10.4.1(supports-color@7.2.0)
       eslint-config-prettier:
         specifier: 10.1.8
-        version: 10.1.8(eslint@10.4.1)
+        version: 10.1.8(eslint@10.4.1(supports-color@7.2.0))
       eslint-plugin-astro:
         specifier: 1.7.0
-        version: 1.7.0(eslint@10.4.1)
+        version: 1.7.0(eslint@10.4.1(supports-color@7.2.0))(supports-color@7.2.0)
       eslint-plugin-prettier:
         specifier: 5.5.6
-        version: 5.5.6(eslint-config-prettier@10.1.8(eslint@10.4.1))(eslint@10.4.1)(prettier@3.8.1)
+        version: 5.5.6(eslint-config-prettier@10.1.8(eslint@10.4.1(supports-color@7.2.0)))(eslint@10.4.1(supports-color@7.2.0))(prettier@3.8.1)
       hastscript:
         specifier: ^9.0.1
         version: 9.0.1
       lefthook:
-        specifier: 1.13.6
-        version: 1.13.6
+        specifier: 2.2.2
+        version: 2.2.2
       postcss:
         specifier: 8.5.8
         version: 8.5.8
@@ -262,31 +262,31 @@ importers:
         version: 0.14.1
       remark-directive:
         specifier: ^4.0.0
-        version: 4.0.0
+        version: 4.0.0(supports-color@7.2.0)
       sharp:
         specifier: 0.34.5
         version: 0.34.5
       stylelint:
         specifier: 16.26.1
-        version: 16.26.1(typescript@5.9.3)
+        version: 16.26.1(supports-color@7.2.0)(typescript@5.9.3)
       stylelint-config-html:
         specifier: 1.1.0
-        version: 1.1.0(postcss-html@1.8.1)(stylelint@16.26.1(typescript@5.9.3))
+        version: 1.1.0(postcss-html@1.8.1)(stylelint@16.26.1(supports-color@7.2.0)(typescript@5.9.3))
       stylelint-config-property-sort-order-smacss:
         specifier: 10.0.0
-        version: 10.0.0(stylelint@16.26.1(typescript@5.9.3))
+        version: 10.0.0(stylelint@16.26.1(supports-color@7.2.0)(typescript@5.9.3))
       stylelint-config-standard:
         specifier: 38.0.0
-        version: 38.0.0(stylelint@16.26.1(typescript@5.9.3))
+        version: 38.0.0(stylelint@16.26.1(supports-color@7.2.0)(typescript@5.9.3))
       stylelint-use-logical:
         specifier: 2.1.3
-        version: 2.1.3(stylelint@16.26.1(typescript@5.9.3))
+        version: 2.1.3(stylelint@16.26.1(supports-color@7.2.0)(typescript@5.9.3))
       typescript:
         specifier: 5.9.3
         version: 5.9.3
       typescript-eslint:
         specifier: 8.60.1
-        version: 8.60.1(eslint@10.4.1)(typescript@5.9.3)
+        version: 8.60.1(eslint@10.4.1(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3)
       unified:
         specifier: ^11.0.5
         version: 11.0.5
@@ -2517,58 +2517,63 @@ packages:
   kolorist@1.8.0:
     resolution: {integrity: sha512-Y+60/zizpJ3HRH8DCss+q95yr6145JXZo46OTpFvDZWLfRCE4qChOyk1b26nMaNpfHHgxagk9dXT5OP0Tfe+dQ==}
 
-  lefthook-darwin-arm64@1.13.6:
-    resolution: {integrity: sha512-m6Lb77VGc84/Qo21Lhq576pEvcgFCnvloEiP02HbAHcIXD0RTLy9u2yAInrixqZeaz13HYtdDaI7OBYAAdVt8A==}
+  lefthook-android-arm64@2.2.2:
+    resolution: {integrity: sha512-wb9rQQFLX7u1dJLxvMrq9VUfMYi5kxM7tJQ6Y4mWEOwaU+SmIm2wjoT/nromKq27Y8fh2Qd7FgCD3G1wfW8CnQ==}
+    cpu: [arm64]
+    os: [android]
+
+  lefthook-darwin-arm64@2.2.2:
+    resolution: {integrity: sha512-6V8D3bLnD/60Xhqn0o2EQD6H3Fe/U9LGkt4WF1O/3eBHbux+5ZJqoH0hfrC+Bi9Dy1Ve1AWxiAY7U2asYl8qVA==}
     cpu: [arm64]
     os: [darwin]
 
-  lefthook-darwin-x64@1.13.6:
-    resolution: {integrity: sha512-CoRpdzanu9RK3oXR1vbEJA5LN7iB+c7hP+sONeQJzoOXuq4PNKVtEaN84Gl1BrVtCNLHWFAvCQaZPPiiXSy8qg==}
+  lefthook-darwin-x64@2.2.2:
+    resolution: {integrity: sha512-fH/kArZ9ZZ65wCFtvBMgGcq25qwQpkQ5jp93ba+8wpjgxxzjczYGluwHvM/NQDJWLOFXuKXW0yFs76SramQkyQ==}
     cpu: [x64]
     os: [darwin]
 
-  lefthook-freebsd-arm64@1.13.6:
-    resolution: {integrity: sha512-X4A7yfvAJ68CoHTqP+XvQzdKbyd935sYy0bQT6Ajz7FL1g7hFiro8dqHSdPdkwei9hs8hXeV7feyTXbYmfjKQQ==}
+  lefthook-freebsd-arm64@2.2.2:
+    resolution: {integrity: sha512-MCRsU01ju989QQffOfS3gCeFfyVDXs5B/FzR65fmrNvqcxb98fldvfzzoAbnK2q6SBJlRT3QT1tNEMCxddCwlA==}
     cpu: [arm64]
     os: [freebsd]
 
-  lefthook-freebsd-x64@1.13.6:
-    resolution: {integrity: sha512-ai2m+Sj2kGdY46USfBrCqLKe9GYhzeq01nuyDYCrdGISePeZ6udOlD1k3lQKJGQCHb0bRz4St0r5nKDSh1x/2A==}
+  lefthook-freebsd-x64@2.2.2:
+    resolution: {integrity: sha512-LkKuJU0S2oLimeoHwPTy1TLWB6GcN0t5lLxiXNlsBKUkr6R47QRcvPMZMoXmu3IetQtd+WliXMLE8qTwi2fqBg==}
     cpu: [x64]
     os: [freebsd]
 
-  lefthook-linux-arm64@1.13.6:
-    resolution: {integrity: sha512-cbo4Wtdq81GTABvikLORJsAWPKAJXE8Q5RXsICFUVznh5PHigS9dFW/4NXywo0+jfFPCT6SYds2zz4tCx6DA0Q==}
+  lefthook-linux-arm64@2.2.2:
+    resolution: {integrity: sha512-d+HFtS2DEKaOnD7vRU0tUz8pNgHwsUYmQ22+1dyXpOrXGyzNXR0AqX5KsIRF36JGhVvO5X5Anw5QYgR3mxVSuA==}
     cpu: [arm64]
     os: [linux]
 
-  lefthook-linux-x64@1.13.6:
-    resolution: {integrity: sha512-uJl9vjCIIBTBvMZkemxCE+3zrZHlRO7Oc+nZJ+o9Oea3fu+W82jwX7a7clw8jqNfaeBS+8+ZEQgiMHWCloTsGw==}
+  lefthook-linux-x64@2.2.2:
+    resolution: {integrity: sha512-N/OlQyAhcU6RAXjrwFxLsh70sn96rBoi+XkuLJ8CVBkk9Ci3VDXQayDZTNz5B1xML8RwoMcV8Wblniy1xFOmSA==}
     cpu: [x64]
     os: [linux]
 
-  lefthook-openbsd-arm64@1.13.6:
-    resolution: {integrity: sha512-7r153dxrNRQ9ytRs2PmGKKkYdvZYFPre7My7XToSTiRu5jNCq++++eAKVkoyWPduk97dGIA+YWiEr5Noe0TK2A==}
+  lefthook-openbsd-arm64@2.2.2:
+    resolution: {integrity: sha512-6G/gKXcpIwC+XcODg7ELZYP/hIrVIHQxhy2GoRdVyecmpGMFj+BZo3iqcUmeWusQMuL+UdNexbkrUaeJalIkNw==}
     cpu: [arm64]
     os: [openbsd]
 
-  lefthook-openbsd-x64@1.13.6:
-    resolution: {integrity: sha512-Z+UhLlcg1xrXOidK3aLLpgH7KrwNyWYE3yb7ITYnzJSEV8qXnePtVu8lvMBHs/myzemjBzeIr/U/+ipjclR06g==}
+  lefthook-openbsd-x64@2.2.2:
+    resolution: {integrity: sha512-eMJGi3/tqKEqu7XCZlqwQWRtK5JlL/9diaqqgRlEdlRD7GxwzHZN21z6awbITum9emea3lALvXFe6V8odQLGOA==}
     cpu: [x64]
     os: [openbsd]
 
-  lefthook-windows-arm64@1.13.6:
-    resolution: {integrity: sha512-Uxef6qoDxCmUNQwk8eBvddYJKSBFglfwAY9Y9+NnnmiHpWTjjYiObE9gT2mvGVpEgZRJVAatBXc+Ha5oDD/OgQ==}
+  lefthook-windows-arm64@2.2.2:
+    resolution: {integrity: sha512-4P1EaQb5xG1zhYD1RLJ6TEGdFkmHkB+Slqx6yRDPKuBDNxMiD0+kTAAdUY2E8xPuRR35xHpVPR+b3/HtzPrjQQ==}
     cpu: [arm64]
     os: [win32]
 
-  lefthook-windows-x64@1.13.6:
-    resolution: {integrity: sha512-mOZoM3FQh3o08M8PQ/b3IYuL5oo36D9ehczIw1dAgp1Ly+Tr4fJ96A+4SEJrQuYeRD4mex9bR7Ps56I73sBSZA==}
+  lefthook-windows-x64@2.2.2:
+    resolution: {integrity: sha512-9Ck4zancQilBfXT3ZeRipm7Lcq4RQfxyMpy8SAVINw0t/BrbjsT25V46ZuziERcwdajnE4myfMzC33GoCBwr7g==}
     cpu: [x64]
     os: [win32]
 
-  lefthook@1.13.6:
-    resolution: {integrity: sha512-ojj4/4IJ29Xn4drd5emqVgilegAPN3Kf0FQM2p/9+lwSTpU+SZ1v4Ig++NF+9MOa99UKY8bElmVrLhnUUNFh5g==}
+  lefthook@2.2.2:
+    resolution: {integrity: sha512-37fYHAhL12r1twaEV0PA5TwoIT491eTGGYjhhXxlYNMq3DSkiGZBQ++Jfk5maXj0vq52NRauLtMikBKtbNJs3Q==}
     hasBin: true
 
   levn@0.4.1:
@@ -4019,7 +4024,7 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@astrojs/markdown-remark@7.2.0':
+  '@astrojs/markdown-remark@7.2.0(supports-color@7.2.0)':
     dependencies:
       '@astrojs/internal-helpers': 0.10.0
       '@astrojs/prism': 4.0.2
@@ -4029,8 +4034,8 @@ snapshots:
       mdast-util-definitions: 6.0.0
       rehype-raw: 7.0.0
       rehype-stringify: 10.0.1
-      remark-gfm: 4.0.1
-      remark-parse: 11.0.0
+      remark-gfm: 4.0.1(supports-color@7.2.0)
+      remark-parse: 11.0.0(supports-color@7.2.0)
       remark-rehype: 11.1.2
       remark-smartypants: 3.0.2
       unified: 11.0.5
@@ -4541,17 +4546,17 @@ snapshots:
   '@esbuild/win32-x64@0.27.7':
     optional: true
 
-  '@eslint-community/eslint-utils@4.9.1(eslint@10.4.1)':
+  '@eslint-community/eslint-utils@4.9.1(eslint@10.4.1(supports-color@7.2.0))':
     dependencies:
-      eslint: 10.4.1
+      eslint: 10.4.1(supports-color@7.2.0)
       eslint-visitor-keys: 3.4.3
 
   '@eslint-community/regexpp@4.12.2': {}
 
-  '@eslint/config-array@0.23.5':
+  '@eslint/config-array@0.23.5(supports-color@7.2.0)':
     dependencies:
       '@eslint/object-schema': 3.0.5
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@7.2.0)
       minimatch: 10.2.5
     transitivePeerDependencies:
       - supports-color
@@ -4603,13 +4608,13 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify/tools@4.2.0':
+  '@iconify/tools@4.2.0(supports-color@7.2.0)':
     dependencies:
       '@iconify/types': 2.0.0
-      '@iconify/utils': 2.3.0
+      '@iconify/utils': 2.3.0(supports-color@7.2.0)
       cheerio: 1.2.0
       domhandler: 5.0.3
-      extract-zip: 2.0.1
+      extract-zip: 2.0.1(supports-color@7.2.0)
       local-pkg: 1.2.1
       pathe: 2.0.3
       svgo: 3.3.3
@@ -4619,12 +4624,12 @@ snapshots:
 
   '@iconify/types@2.0.0': {}
 
-  '@iconify/utils@2.3.0':
+  '@iconify/utils@2.3.0(supports-color@7.2.0)':
     dependencies:
       '@antfu/install-pkg': 1.1.0
       '@antfu/utils': 8.1.1
       '@iconify/types': 2.0.0
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@7.2.0)
       globals: 15.15.0
       kolorist: 1.8.0
       local-pkg: 1.2.1
@@ -4758,26 +4763,29 @@ snapshots:
 
   '@oslojs/encoding@1.1.0': {}
 
-  '@percy/cli-app@1.31.10(typescript@5.9.3)':
+  '@percy/cli-app@1.31.10(supports-color@7.2.0)(typescript@5.9.3)':
     dependencies:
-      '@percy/cli-command': 1.31.10(typescript@5.9.3)
-      '@percy/cli-exec': 1.31.10(typescript@5.9.3)
+      '@percy/cli-command': 1.31.10(supports-color@7.2.0)(typescript@5.9.3)
+      '@percy/cli-exec': 1.31.10(supports-color@7.2.0)(typescript@5.9.3)
     transitivePeerDependencies:
       - bufferutil
       - supports-color
       - typescript
       - utf-8-validate
 
-  '@percy/cli-build@1.31.10(typescript@5.9.3)':
+  '@percy/cli-build@1.31.10(supports-color@7.2.0)(typescript@5.9.3)':
     dependencies:
-      '@percy/cli-command': 1.31.10(typescript@5.9.3)
+      '@percy/cli-command': 1.31.10(supports-color@7.2.0)(typescript@5.9.3)
     transitivePeerDependencies:
+      - bufferutil
+      - supports-color
       - typescript
+      - utf-8-validate
 
-  '@percy/cli-command@1.31.10(typescript@5.9.3)':
+  '@percy/cli-command@1.31.10(supports-color@7.2.0)(typescript@5.9.3)':
     dependencies:
       '@percy/config': 1.31.10(typescript@5.9.3)
-      '@percy/core': 1.31.10(typescript@5.9.3)
+      '@percy/core': 1.31.10(supports-color@7.2.0)(typescript@5.9.3)
       '@percy/logger': 1.31.10
     transitivePeerDependencies:
       - bufferutil
@@ -4785,21 +4793,24 @@ snapshots:
       - typescript
       - utf-8-validate
 
-  '@percy/cli-config@1.31.10(typescript@5.9.3)':
+  '@percy/cli-config@1.31.10(supports-color@7.2.0)(typescript@5.9.3)':
     dependencies:
-      '@percy/cli-command': 1.31.10(typescript@5.9.3)
+      '@percy/cli-command': 1.31.10(supports-color@7.2.0)(typescript@5.9.3)
     transitivePeerDependencies:
+      - bufferutil
+      - supports-color
       - typescript
+      - utf-8-validate
 
-  '@percy/cli-doctor@1.31.10(typescript@5.9.3)':
+  '@percy/cli-doctor@1.31.10(supports-color@7.2.0)(typescript@5.9.3)':
     dependencies:
-      '@percy/cli-command': 1.31.10(typescript@5.9.3)
-      '@percy/client': 1.31.10(typescript@5.9.3)
+      '@percy/cli-command': 1.31.10(supports-color@7.2.0)(typescript@5.9.3)
+      '@percy/client': 1.31.10(supports-color@7.2.0)(typescript@5.9.3)
       '@percy/config': 1.31.10(typescript@5.9.3)
-      '@percy/core': 1.31.10(typescript@5.9.3)
+      '@percy/core': 1.31.10(supports-color@7.2.0)(typescript@5.9.3)
       '@percy/env': 1.31.10
       '@percy/logger': 1.31.10
-      '@percy/monitoring': 1.31.10(typescript@5.9.3)
+      '@percy/monitoring': 1.31.10(supports-color@7.2.0)(typescript@5.9.3)
       minimatch: 9.0.9
       ws: 8.21.0
     transitivePeerDependencies:
@@ -4808,9 +4819,9 @@ snapshots:
       - typescript
       - utf-8-validate
 
-  '@percy/cli-exec@1.31.10(typescript@5.9.3)':
+  '@percy/cli-exec@1.31.10(supports-color@7.2.0)(typescript@5.9.3)':
     dependencies:
-      '@percy/cli-command': 1.31.10(typescript@5.9.3)
+      '@percy/cli-command': 1.31.10(supports-color@7.2.0)(typescript@5.9.3)
       '@percy/logger': 1.31.10
       cross-spawn: 7.0.6
       which: 2.0.2
@@ -4820,32 +4831,38 @@ snapshots:
       - typescript
       - utf-8-validate
 
-  '@percy/cli-snapshot@1.31.10(typescript@5.9.3)':
+  '@percy/cli-snapshot@1.31.10(supports-color@7.2.0)(typescript@5.9.3)':
     dependencies:
-      '@percy/cli-command': 1.31.10(typescript@5.9.3)
+      '@percy/cli-command': 1.31.10(supports-color@7.2.0)(typescript@5.9.3)
       yaml: 2.9.0
     transitivePeerDependencies:
+      - bufferutil
+      - supports-color
       - typescript
+      - utf-8-validate
 
-  '@percy/cli-upload@1.31.10(typescript@5.9.3)':
+  '@percy/cli-upload@1.31.10(supports-color@7.2.0)(typescript@5.9.3)':
     dependencies:
-      '@percy/cli-command': 1.31.10(typescript@5.9.3)
+      '@percy/cli-command': 1.31.10(supports-color@7.2.0)(typescript@5.9.3)
       fast-glob: 3.3.3
       image-size: 1.2.1
     transitivePeerDependencies:
+      - bufferutil
+      - supports-color
       - typescript
+      - utf-8-validate
 
-  '@percy/cli@1.31.10(typescript@5.9.3)':
+  '@percy/cli@1.31.10(supports-color@7.2.0)(typescript@5.9.3)':
     dependencies:
-      '@percy/cli-app': 1.31.10(typescript@5.9.3)
-      '@percy/cli-build': 1.31.10(typescript@5.9.3)
-      '@percy/cli-command': 1.31.10(typescript@5.9.3)
-      '@percy/cli-config': 1.31.10(typescript@5.9.3)
-      '@percy/cli-doctor': 1.31.10(typescript@5.9.3)
-      '@percy/cli-exec': 1.31.10(typescript@5.9.3)
-      '@percy/cli-snapshot': 1.31.10(typescript@5.9.3)
-      '@percy/cli-upload': 1.31.10(typescript@5.9.3)
-      '@percy/client': 1.31.10(typescript@5.9.3)
+      '@percy/cli-app': 1.31.10(supports-color@7.2.0)(typescript@5.9.3)
+      '@percy/cli-build': 1.31.10(supports-color@7.2.0)(typescript@5.9.3)
+      '@percy/cli-command': 1.31.10(supports-color@7.2.0)(typescript@5.9.3)
+      '@percy/cli-config': 1.31.10(supports-color@7.2.0)(typescript@5.9.3)
+      '@percy/cli-doctor': 1.31.10(supports-color@7.2.0)(typescript@5.9.3)
+      '@percy/cli-exec': 1.31.10(supports-color@7.2.0)(typescript@5.9.3)
+      '@percy/cli-snapshot': 1.31.10(supports-color@7.2.0)(typescript@5.9.3)
+      '@percy/cli-upload': 1.31.10(supports-color@7.2.0)(typescript@5.9.3)
+      '@percy/client': 1.31.10(supports-color@7.2.0)(typescript@5.9.3)
       '@percy/logger': 1.31.10
     transitivePeerDependencies:
       - bufferutil
@@ -4853,12 +4870,12 @@ snapshots:
       - typescript
       - utf-8-validate
 
-  '@percy/client@1.31.10(typescript@5.9.3)':
+  '@percy/client@1.31.10(supports-color@7.2.0)(typescript@5.9.3)':
     dependencies:
       '@percy/config': 1.31.10(typescript@5.9.3)
       '@percy/env': 1.31.10
       '@percy/logger': 1.31.10
-      pac-proxy-agent: 7.2.0
+      pac-proxy-agent: 7.2.0(supports-color@7.2.0)
       pako: 2.1.0
     transitivePeerDependencies:
       - supports-color
@@ -4873,17 +4890,17 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@percy/core@1.31.10(typescript@5.9.3)':
+  '@percy/core@1.31.10(supports-color@7.2.0)(typescript@5.9.3)':
     dependencies:
-      '@percy/client': 1.31.10(typescript@5.9.3)
+      '@percy/client': 1.31.10(supports-color@7.2.0)(typescript@5.9.3)
       '@percy/config': 1.31.10(typescript@5.9.3)
       '@percy/dom': 1.31.10
       '@percy/logger': 1.31.10
-      '@percy/monitoring': 1.31.10(typescript@5.9.3)
-      '@percy/webdriver-utils': 1.31.10(typescript@5.9.3)
+      '@percy/monitoring': 1.31.10(supports-color@7.2.0)(typescript@5.9.3)
+      '@percy/webdriver-utils': 1.31.10(supports-color@7.2.0)(typescript@5.9.3)
       content-disposition: 0.5.4
       cross-spawn: 7.0.6
-      extract-zip: 2.0.1
+      extract-zip: 2.0.1(supports-color@7.2.0)
       fast-glob: 3.3.3
       micromatch: 4.0.8
       mime-types: 2.1.35
@@ -4893,7 +4910,7 @@ snapshots:
       ws: 8.21.0
       yaml: 2.9.0
     optionalDependencies:
-      '@percy/cli-doctor': 1.31.10(typescript@5.9.3)
+      '@percy/cli-doctor': 1.31.10(supports-color@7.2.0)(typescript@5.9.3)
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -4908,11 +4925,11 @@ snapshots:
 
   '@percy/logger@1.31.10': {}
 
-  '@percy/monitoring@1.31.10(typescript@5.9.3)':
+  '@percy/monitoring@1.31.10(supports-color@7.2.0)(typescript@5.9.3)':
     dependencies:
       '@percy/config': 1.31.10(typescript@5.9.3)
       '@percy/logger': 1.31.10
-      '@percy/sdk-utils': 1.31.10
+      '@percy/sdk-utils': 1.31.10(supports-color@7.2.0)
       systeminformation: 5.31.7
     transitivePeerDependencies:
       - supports-color
@@ -4922,16 +4939,16 @@ snapshots:
     dependencies:
       playwright-core: 1.60.0
 
-  '@percy/sdk-utils@1.31.10':
+  '@percy/sdk-utils@1.31.10(supports-color@7.2.0)':
     dependencies:
-      pac-proxy-agent: 7.2.0
+      pac-proxy-agent: 7.2.0(supports-color@7.2.0)
     transitivePeerDependencies:
       - supports-color
 
-  '@percy/webdriver-utils@1.31.10(typescript@5.9.3)':
+  '@percy/webdriver-utils@1.31.10(supports-color@7.2.0)(typescript@5.9.3)':
     dependencies:
       '@percy/config': 1.31.10(typescript@5.9.3)
-      '@percy/sdk-utils': 1.31.10
+      '@percy/sdk-utils': 1.31.10(supports-color@7.2.0)
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -5141,15 +5158,15 @@ snapshots:
       '@types/node': 25.9.1
     optional: true
 
-  '@typescript-eslint/eslint-plugin@8.60.1(@typescript-eslint/parser@8.60.1(eslint@10.4.1)(typescript@5.9.3))(eslint@10.4.1)(typescript@5.9.3)':
+  '@typescript-eslint/eslint-plugin@8.60.1(@typescript-eslint/parser@8.60.1(eslint@10.4.1(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3))(eslint@10.4.1(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3)':
     dependencies:
       '@eslint-community/regexpp': 4.12.2
-      '@typescript-eslint/parser': 8.60.1(eslint@10.4.1)(typescript@5.9.3)
+      '@typescript-eslint/parser': 8.60.1(eslint@10.4.1(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3)
       '@typescript-eslint/scope-manager': 8.60.1
-      '@typescript-eslint/type-utils': 8.60.1(eslint@10.4.1)(typescript@5.9.3)
-      '@typescript-eslint/utils': 8.60.1(eslint@10.4.1)(typescript@5.9.3)
+      '@typescript-eslint/type-utils': 8.60.1(eslint@10.4.1(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3)
+      '@typescript-eslint/utils': 8.60.1(eslint@10.4.1(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3)
       '@typescript-eslint/visitor-keys': 8.60.1
-      eslint: 10.4.1
+      eslint: 10.4.1(supports-color@7.2.0)
       ignore: 7.0.5
       natural-compare: 1.4.0
       ts-api-utils: 2.5.0(typescript@5.9.3)
@@ -5157,23 +5174,23 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/parser@8.60.1(eslint@10.4.1)(typescript@5.9.3)':
+  '@typescript-eslint/parser@8.60.1(eslint@10.4.1(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3)':
     dependencies:
       '@typescript-eslint/scope-manager': 8.60.1
       '@typescript-eslint/types': 8.60.1
-      '@typescript-eslint/typescript-estree': 8.60.1(typescript@5.9.3)
+      '@typescript-eslint/typescript-estree': 8.60.1(supports-color@7.2.0)(typescript@5.9.3)
       '@typescript-eslint/visitor-keys': 8.60.1
-      debug: 4.4.3
-      eslint: 10.4.1
+      debug: 4.4.3(supports-color@7.2.0)
+      eslint: 10.4.1(supports-color@7.2.0)
       typescript: 5.9.3
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/project-service@8.60.1(typescript@5.9.3)':
+  '@typescript-eslint/project-service@8.60.1(supports-color@7.2.0)(typescript@5.9.3)':
     dependencies:
       '@typescript-eslint/tsconfig-utils': 8.60.1(typescript@5.9.3)
       '@typescript-eslint/types': 8.60.1
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@7.2.0)
       typescript: 5.9.3
     transitivePeerDependencies:
       - supports-color
@@ -5187,13 +5204,13 @@ snapshots:
     dependencies:
       typescript: 5.9.3
 
-  '@typescript-eslint/type-utils@8.60.1(eslint@10.4.1)(typescript@5.9.3)':
+  '@typescript-eslint/type-utils@8.60.1(eslint@10.4.1(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3)':
     dependencies:
       '@typescript-eslint/types': 8.60.1
-      '@typescript-eslint/typescript-estree': 8.60.1(typescript@5.9.3)
-      '@typescript-eslint/utils': 8.60.1(eslint@10.4.1)(typescript@5.9.3)
-      debug: 4.4.3
-      eslint: 10.4.1
+      '@typescript-eslint/typescript-estree': 8.60.1(supports-color@7.2.0)(typescript@5.9.3)
+      '@typescript-eslint/utils': 8.60.1(eslint@10.4.1(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3)
+      debug: 4.4.3(supports-color@7.2.0)
+      eslint: 10.4.1(supports-color@7.2.0)
       ts-api-utils: 2.5.0(typescript@5.9.3)
       typescript: 5.9.3
     transitivePeerDependencies:
@@ -5201,13 +5218,13 @@ snapshots:
 
   '@typescript-eslint/types@8.60.1': {}
 
-  '@typescript-eslint/typescript-estree@8.60.1(typescript@5.9.3)':
+  '@typescript-eslint/typescript-estree@8.60.1(supports-color@7.2.0)(typescript@5.9.3)':
     dependencies:
-      '@typescript-eslint/project-service': 8.60.1(typescript@5.9.3)
+      '@typescript-eslint/project-service': 8.60.1(supports-color@7.2.0)(typescript@5.9.3)
       '@typescript-eslint/tsconfig-utils': 8.60.1(typescript@5.9.3)
       '@typescript-eslint/types': 8.60.1
       '@typescript-eslint/visitor-keys': 8.60.1
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@7.2.0)
       minimatch: 10.2.5
       semver: 7.8.2
       tinyglobby: 0.2.17
@@ -5216,13 +5233,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/utils@8.60.1(eslint@10.4.1)(typescript@5.9.3)':
+  '@typescript-eslint/utils@8.60.1(eslint@10.4.1(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3)':
     dependencies:
-      '@eslint-community/eslint-utils': 4.9.1(eslint@10.4.1)
+      '@eslint-community/eslint-utils': 4.9.1(eslint@10.4.1(supports-color@7.2.0))
       '@typescript-eslint/scope-manager': 8.60.1
       '@typescript-eslint/types': 8.60.1
-      '@typescript-eslint/typescript-estree': 8.60.1(typescript@5.9.3)
-      eslint: 10.4.1
+      '@typescript-eslint/typescript-estree': 8.60.1(supports-color@7.2.0)(typescript@5.9.3)
+      eslint: 10.4.1(supports-color@7.2.0)
       typescript: 5.9.3
     transitivePeerDependencies:
       - supports-color
@@ -5337,13 +5354,13 @@ snapshots:
 
   astral-regex@2.0.0: {}
 
-  astro-eslint-parser@1.4.0:
+  astro-eslint-parser@1.4.0(supports-color@7.2.0):
     dependencies:
       '@astrojs/compiler': 3.0.1
       '@typescript-eslint/scope-manager': 8.60.1
       '@typescript-eslint/types': 8.60.1
       astrojs-compiler-sync: 1.1.1(@astrojs/compiler@3.0.1)
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@7.2.0)
       entities: 7.0.1
       eslint-scope: 8.4.0
       eslint-visitor-keys: 4.2.1
@@ -5354,19 +5371,19 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  astro-icon@1.1.5:
+  astro-icon@1.1.5(supports-color@7.2.0):
     dependencies:
-      '@iconify/tools': 4.2.0
+      '@iconify/tools': 4.2.0(supports-color@7.2.0)
       '@iconify/types': 2.0.0
-      '@iconify/utils': 2.3.0
+      '@iconify/utils': 2.3.0(supports-color@7.2.0)
     transitivePeerDependencies:
       - supports-color
 
-  astro@6.4.4(@types/node@25.9.1)(rollup@4.61.1)(yaml@2.9.0):
+  astro@6.4.4(@types/node@25.9.1)(rollup@4.61.1)(supports-color@7.2.0)(yaml@2.9.0):
     dependencies:
       '@astrojs/compiler': 4.0.0
       '@astrojs/internal-helpers': 0.10.0
-      '@astrojs/markdown-remark': 7.2.0
+      '@astrojs/markdown-remark': 7.2.0(supports-color@7.2.0)
       '@astrojs/telemetry': 3.3.2
       '@capsizecss/unpack': 4.0.0
       '@clack/prompts': 1.5.1
@@ -5690,9 +5707,11 @@ snapshots:
 
   data-uri-to-buffer@6.0.2: {}
 
-  debug@4.4.3:
+  debug@4.4.3(supports-color@7.2.0):
     dependencies:
       ms: 2.1.3
+    optionalDependencies:
+      supports-color: 7.2.0
 
   decode-named-character-reference@1.3.0:
     dependencies:
@@ -5821,37 +5840,37 @@ snapshots:
     optionalDependencies:
       source-map: 0.6.1
 
-  eslint-compat-utils@0.6.5(eslint@10.4.1):
+  eslint-compat-utils@0.6.5(eslint@10.4.1(supports-color@7.2.0)):
     dependencies:
-      eslint: 10.4.1
+      eslint: 10.4.1(supports-color@7.2.0)
       semver: 7.8.2
 
-  eslint-config-prettier@10.1.8(eslint@10.4.1):
+  eslint-config-prettier@10.1.8(eslint@10.4.1(supports-color@7.2.0)):
     dependencies:
-      eslint: 10.4.1
+      eslint: 10.4.1(supports-color@7.2.0)
 
-  eslint-plugin-astro@1.7.0(eslint@10.4.1):
+  eslint-plugin-astro@1.7.0(eslint@10.4.1(supports-color@7.2.0))(supports-color@7.2.0):
     dependencies:
-      '@eslint-community/eslint-utils': 4.9.1(eslint@10.4.1)
+      '@eslint-community/eslint-utils': 4.9.1(eslint@10.4.1(supports-color@7.2.0))
       '@jridgewell/sourcemap-codec': 1.5.5
       '@typescript-eslint/types': 8.60.1
-      astro-eslint-parser: 1.4.0
-      eslint: 10.4.1
-      eslint-compat-utils: 0.6.5(eslint@10.4.1)
+      astro-eslint-parser: 1.4.0(supports-color@7.2.0)
+      eslint: 10.4.1(supports-color@7.2.0)
+      eslint-compat-utils: 0.6.5(eslint@10.4.1(supports-color@7.2.0))
       globals: 16.5.0
       postcss: 8.5.8
       postcss-selector-parser: 7.1.1
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-prettier@5.5.6(eslint-config-prettier@10.1.8(eslint@10.4.1))(eslint@10.4.1)(prettier@3.8.1):
+  eslint-plugin-prettier@5.5.6(eslint-config-prettier@10.1.8(eslint@10.4.1(supports-color@7.2.0)))(eslint@10.4.1(supports-color@7.2.0))(prettier@3.8.1):
     dependencies:
-      eslint: 10.4.1
+      eslint: 10.4.1(supports-color@7.2.0)
       prettier: 3.8.1
       prettier-linter-helpers: 1.0.1
       synckit: 0.11.13
     optionalDependencies:
-      eslint-config-prettier: 10.1.8(eslint@10.4.1)
+      eslint-config-prettier: 10.1.8(eslint@10.4.1(supports-color@7.2.0))
 
   eslint-scope@8.4.0:
     dependencies:
@@ -5871,11 +5890,11 @@ snapshots:
 
   eslint-visitor-keys@5.0.1: {}
 
-  eslint@10.4.1:
+  eslint@10.4.1(supports-color@7.2.0):
     dependencies:
-      '@eslint-community/eslint-utils': 4.9.1(eslint@10.4.1)
+      '@eslint-community/eslint-utils': 4.9.1(eslint@10.4.1(supports-color@7.2.0))
       '@eslint-community/regexpp': 4.12.2
-      '@eslint/config-array': 0.23.5
+      '@eslint/config-array': 0.23.5(supports-color@7.2.0)
       '@eslint/config-helpers': 0.6.0
       '@eslint/core': 1.2.1
       '@eslint/plugin-kit': 0.7.2
@@ -5885,7 +5904,7 @@ snapshots:
       '@types/estree': 1.0.9
       ajv: 6.15.0
       cross-spawn: 7.0.6
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@7.2.0)
       escape-string-regexp: 4.0.0
       eslint-scope: 9.1.2
       eslint-visitor-keys: 5.0.1
@@ -5940,9 +5959,9 @@ snapshots:
 
   extend@3.0.2: {}
 
-  extract-zip@2.0.1:
+  extract-zip@2.0.1(supports-color@7.2.0):
     dependencies:
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@7.2.0)
       get-stream: 5.2.0
       yauzl: 2.10.0
     optionalDependencies:
@@ -6065,11 +6084,11 @@ snapshots:
     dependencies:
       resolve-pkg-maps: 1.0.0
 
-  get-uri@6.0.5:
+  get-uri@6.0.5(supports-color@7.2.0):
     dependencies:
       basic-ftp: 5.3.1
       data-uri-to-buffer: 6.0.2
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@7.2.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -6248,17 +6267,17 @@ snapshots:
 
   http-cache-semantics@4.2.0: {}
 
-  http-proxy-agent@7.0.2:
+  http-proxy-agent@7.0.2(supports-color@7.2.0):
     dependencies:
       agent-base: 7.1.4
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@7.2.0)
     transitivePeerDependencies:
       - supports-color
 
-  https-proxy-agent@7.0.6:
+  https-proxy-agent@7.0.6(supports-color@7.2.0):
     dependencies:
       agent-base: 7.1.4
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@7.2.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -6373,48 +6392,52 @@ snapshots:
 
   kolorist@1.8.0: {}
 
-  lefthook-darwin-arm64@1.13.6:
+  lefthook-android-arm64@2.2.2:
     optional: true
 
-  lefthook-darwin-x64@1.13.6:
+  lefthook-darwin-arm64@2.2.2:
     optional: true
 
-  lefthook-freebsd-arm64@1.13.6:
+  lefthook-darwin-x64@2.2.2:
     optional: true
 
-  lefthook-freebsd-x64@1.13.6:
+  lefthook-freebsd-arm64@2.2.2:
     optional: true
 
-  lefthook-linux-arm64@1.13.6:
+  lefthook-freebsd-x64@2.2.2:
     optional: true
 
-  lefthook-linux-x64@1.13.6:
+  lefthook-linux-arm64@2.2.2:
     optional: true
 
-  lefthook-openbsd-arm64@1.13.6:
+  lefthook-linux-x64@2.2.2:
     optional: true
 
-  lefthook-openbsd-x64@1.13.6:
+  lefthook-openbsd-arm64@2.2.2:
     optional: true
 
-  lefthook-windows-arm64@1.13.6:
+  lefthook-openbsd-x64@2.2.2:
     optional: true
 
-  lefthook-windows-x64@1.13.6:
+  lefthook-windows-arm64@2.2.2:
     optional: true
 
-  lefthook@1.13.6:
+  lefthook-windows-x64@2.2.2:
+    optional: true
+
+  lefthook@2.2.2:
     optionalDependencies:
-      lefthook-darwin-arm64: 1.13.6
-      lefthook-darwin-x64: 1.13.6
-      lefthook-freebsd-arm64: 1.13.6
-      lefthook-freebsd-x64: 1.13.6
-      lefthook-linux-arm64: 1.13.6
-      lefthook-linux-x64: 1.13.6
-      lefthook-openbsd-arm64: 1.13.6
-      lefthook-openbsd-x64: 1.13.6
-      lefthook-windows-arm64: 1.13.6
-      lefthook-windows-x64: 1.13.6
+      lefthook-android-arm64: 2.2.2
+      lefthook-darwin-arm64: 2.2.2
+      lefthook-darwin-x64: 2.2.2
+      lefthook-freebsd-arm64: 2.2.2
+      lefthook-freebsd-x64: 2.2.2
+      lefthook-linux-arm64: 2.2.2
+      lefthook-linux-x64: 2.2.2
+      lefthook-openbsd-arm64: 2.2.2
+      lefthook-openbsd-x64: 2.2.2
+      lefthook-windows-arm64: 2.2.2
+      lefthook-windows-x64: 2.2.2
 
   levn@0.4.1:
     dependencies:
@@ -6459,13 +6482,13 @@ snapshots:
       '@types/unist': 3.0.3
       unist-util-visit: 5.1.0
 
-  mdast-util-directive@3.1.0:
+  mdast-util-directive@3.1.0(supports-color@7.2.0):
     dependencies:
       '@types/mdast': 4.0.4
       '@types/unist': 3.0.3
       ccount: 2.0.1
       devlop: 1.1.0
-      mdast-util-from-markdown: 2.0.3
+      mdast-util-from-markdown: 2.0.3(supports-color@7.2.0)
       mdast-util-to-markdown: 2.1.2
       parse-entities: 4.0.2
       stringify-entities: 4.0.4
@@ -6480,14 +6503,14 @@ snapshots:
       unist-util-is: 6.0.1
       unist-util-visit-parents: 6.0.2
 
-  mdast-util-from-markdown@2.0.3:
+  mdast-util-from-markdown@2.0.3(supports-color@7.2.0):
     dependencies:
       '@types/mdast': 4.0.4
       '@types/unist': 3.0.3
       decode-named-character-reference: 1.3.0
       devlop: 1.1.0
       mdast-util-to-string: 4.0.0
-      micromark: 4.0.2
+      micromark: 4.0.2(supports-color@7.2.0)
       micromark-util-decode-numeric-character-reference: 2.0.2
       micromark-util-decode-string: 2.0.1
       micromark-util-normalize-identifier: 2.0.1
@@ -6505,51 +6528,51 @@ snapshots:
       mdast-util-find-and-replace: 3.0.2
       micromark-util-character: 2.1.1
 
-  mdast-util-gfm-footnote@2.1.0:
+  mdast-util-gfm-footnote@2.1.0(supports-color@7.2.0):
     dependencies:
       '@types/mdast': 4.0.4
       devlop: 1.1.0
-      mdast-util-from-markdown: 2.0.3
+      mdast-util-from-markdown: 2.0.3(supports-color@7.2.0)
       mdast-util-to-markdown: 2.1.2
       micromark-util-normalize-identifier: 2.0.1
     transitivePeerDependencies:
       - supports-color
 
-  mdast-util-gfm-strikethrough@2.0.0:
+  mdast-util-gfm-strikethrough@2.0.0(supports-color@7.2.0):
     dependencies:
       '@types/mdast': 4.0.4
-      mdast-util-from-markdown: 2.0.3
+      mdast-util-from-markdown: 2.0.3(supports-color@7.2.0)
       mdast-util-to-markdown: 2.1.2
     transitivePeerDependencies:
       - supports-color
 
-  mdast-util-gfm-table@2.0.0:
+  mdast-util-gfm-table@2.0.0(supports-color@7.2.0):
     dependencies:
       '@types/mdast': 4.0.4
       devlop: 1.1.0
       markdown-table: 3.0.4
-      mdast-util-from-markdown: 2.0.3
+      mdast-util-from-markdown: 2.0.3(supports-color@7.2.0)
       mdast-util-to-markdown: 2.1.2
     transitivePeerDependencies:
       - supports-color
 
-  mdast-util-gfm-task-list-item@2.0.0:
+  mdast-util-gfm-task-list-item@2.0.0(supports-color@7.2.0):
     dependencies:
       '@types/mdast': 4.0.4
       devlop: 1.1.0
-      mdast-util-from-markdown: 2.0.3
+      mdast-util-from-markdown: 2.0.3(supports-color@7.2.0)
       mdast-util-to-markdown: 2.1.2
     transitivePeerDependencies:
       - supports-color
 
-  mdast-util-gfm@3.1.0:
+  mdast-util-gfm@3.1.0(supports-color@7.2.0):
     dependencies:
-      mdast-util-from-markdown: 2.0.3
+      mdast-util-from-markdown: 2.0.3(supports-color@7.2.0)
       mdast-util-gfm-autolink-literal: 2.0.1
-      mdast-util-gfm-footnote: 2.1.0
-      mdast-util-gfm-strikethrough: 2.0.0
-      mdast-util-gfm-table: 2.0.0
-      mdast-util-gfm-task-list-item: 2.0.0
+      mdast-util-gfm-footnote: 2.1.0(supports-color@7.2.0)
+      mdast-util-gfm-strikethrough: 2.0.0(supports-color@7.2.0)
+      mdast-util-gfm-table: 2.0.0(supports-color@7.2.0)
+      mdast-util-gfm-task-list-item: 2.0.0(supports-color@7.2.0)
       mdast-util-to-markdown: 2.1.2
     transitivePeerDependencies:
       - supports-color
@@ -6776,10 +6799,10 @@ snapshots:
 
   micromark-util-types@2.0.2: {}
 
-  micromark@4.0.2:
+  micromark@4.0.2(supports-color@7.2.0):
     dependencies:
       '@types/debug': 4.1.13
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@7.2.0)
       decode-named-character-reference: 1.3.0
       devlop: 1.1.0
       micromark-core-commonmark: 2.0.3
@@ -6918,16 +6941,16 @@ snapshots:
 
   p-timeout@7.0.1: {}
 
-  pac-proxy-agent@7.2.0:
+  pac-proxy-agent@7.2.0(supports-color@7.2.0):
     dependencies:
       '@tootallnate/quickjs-emscripten': 0.23.0
       agent-base: 7.1.4
-      debug: 4.4.3
-      get-uri: 6.0.5
-      http-proxy-agent: 7.0.2
-      https-proxy-agent: 7.0.6
+      debug: 4.4.3(supports-color@7.2.0)
+      get-uri: 6.0.5(supports-color@7.2.0)
+      http-proxy-agent: 7.0.2(supports-color@7.2.0)
+      https-proxy-agent: 7.0.6(supports-color@7.2.0)
       pac-resolver: 7.0.1
-      socks-proxy-agent: 8.0.5
+      socks-proxy-agent: 8.0.5(supports-color@7.2.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -7361,30 +7384,30 @@ snapshots:
       rehype-stringify: 10.0.1
       unified: 11.0.5
 
-  remark-directive@4.0.0:
+  remark-directive@4.0.0(supports-color@7.2.0):
     dependencies:
       '@types/mdast': 4.0.4
-      mdast-util-directive: 3.1.0
+      mdast-util-directive: 3.1.0(supports-color@7.2.0)
       micromark-extension-directive: 4.0.0
       unified: 11.0.5
     transitivePeerDependencies:
       - supports-color
 
-  remark-gfm@4.0.1:
+  remark-gfm@4.0.1(supports-color@7.2.0):
     dependencies:
       '@types/mdast': 4.0.4
-      mdast-util-gfm: 3.1.0
+      mdast-util-gfm: 3.1.0(supports-color@7.2.0)
       micromark-extension-gfm: 3.0.0
-      remark-parse: 11.0.0
+      remark-parse: 11.0.0(supports-color@7.2.0)
       remark-stringify: 11.0.0
       unified: 11.0.5
     transitivePeerDependencies:
       - supports-color
 
-  remark-parse@11.0.0:
+  remark-parse@11.0.0(supports-color@7.2.0):
     dependencies:
       '@types/mdast': 4.0.4
-      mdast-util-from-markdown: 2.0.3
+      mdast-util-from-markdown: 2.0.3(supports-color@7.2.0)
       micromark-util-types: 2.0.2
       unified: 11.0.5
     transitivePeerDependencies:
@@ -7576,10 +7599,10 @@ snapshots:
 
   smol-toml@1.6.1: {}
 
-  socks-proxy-agent@8.0.5:
+  socks-proxy-agent@8.0.5(supports-color@7.2.0):
     dependencies:
       agent-base: 7.1.4
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@7.2.0)
       socks: 2.8.9
     transitivePeerDependencies:
       - supports-color
@@ -7615,37 +7638,37 @@ snapshots:
 
   strnum@2.3.0: {}
 
-  stylelint-config-html@1.1.0(postcss-html@1.8.1)(stylelint@16.26.1(typescript@5.9.3)):
+  stylelint-config-html@1.1.0(postcss-html@1.8.1)(stylelint@16.26.1(supports-color@7.2.0)(typescript@5.9.3)):
     dependencies:
       postcss-html: 1.8.1
-      stylelint: 16.26.1(typescript@5.9.3)
+      stylelint: 16.26.1(supports-color@7.2.0)(typescript@5.9.3)
 
-  stylelint-config-property-sort-order-smacss@10.0.0(stylelint@16.26.1(typescript@5.9.3)):
+  stylelint-config-property-sort-order-smacss@10.0.0(stylelint@16.26.1(supports-color@7.2.0)(typescript@5.9.3)):
     dependencies:
       css-property-sort-order-smacss: 2.2.0
-      stylelint: 16.26.1(typescript@5.9.3)
-      stylelint-order: 6.0.4(stylelint@16.26.1(typescript@5.9.3))
+      stylelint: 16.26.1(supports-color@7.2.0)(typescript@5.9.3)
+      stylelint-order: 6.0.4(stylelint@16.26.1(supports-color@7.2.0)(typescript@5.9.3))
 
-  stylelint-config-recommended@16.0.0(stylelint@16.26.1(typescript@5.9.3)):
+  stylelint-config-recommended@16.0.0(stylelint@16.26.1(supports-color@7.2.0)(typescript@5.9.3)):
     dependencies:
-      stylelint: 16.26.1(typescript@5.9.3)
+      stylelint: 16.26.1(supports-color@7.2.0)(typescript@5.9.3)
 
-  stylelint-config-standard@38.0.0(stylelint@16.26.1(typescript@5.9.3)):
+  stylelint-config-standard@38.0.0(stylelint@16.26.1(supports-color@7.2.0)(typescript@5.9.3)):
     dependencies:
-      stylelint: 16.26.1(typescript@5.9.3)
-      stylelint-config-recommended: 16.0.0(stylelint@16.26.1(typescript@5.9.3))
+      stylelint: 16.26.1(supports-color@7.2.0)(typescript@5.9.3)
+      stylelint-config-recommended: 16.0.0(stylelint@16.26.1(supports-color@7.2.0)(typescript@5.9.3))
 
-  stylelint-order@6.0.4(stylelint@16.26.1(typescript@5.9.3)):
+  stylelint-order@6.0.4(stylelint@16.26.1(supports-color@7.2.0)(typescript@5.9.3)):
     dependencies:
       postcss: 8.5.8
       postcss-sorting: 8.0.2(postcss@8.5.8)
-      stylelint: 16.26.1(typescript@5.9.3)
+      stylelint: 16.26.1(supports-color@7.2.0)(typescript@5.9.3)
 
-  stylelint-use-logical@2.1.3(stylelint@16.26.1(typescript@5.9.3)):
+  stylelint-use-logical@2.1.3(stylelint@16.26.1(supports-color@7.2.0)(typescript@5.9.3)):
     dependencies:
-      stylelint: 16.26.1(typescript@5.9.3)
+      stylelint: 16.26.1(supports-color@7.2.0)(typescript@5.9.3)
 
-  stylelint@16.26.1(typescript@5.9.3):
+  stylelint@16.26.1(supports-color@7.2.0)(typescript@5.9.3):
     dependencies:
       '@csstools/css-parser-algorithms': 3.0.5(@csstools/css-tokenizer@3.0.4)
       '@csstools/css-syntax-patches-for-csstree': 1.1.5(css-tree@3.2.1)
@@ -7658,7 +7681,7 @@ snapshots:
       cosmiconfig: 9.0.1(typescript@5.9.3)
       css-functions-list: 3.3.3
       css-tree: 3.2.1
-      debug: 4.4.3
+      debug: 4.4.3(supports-color@7.2.0)
       fast-glob: 3.3.3
       fastest-levenshtein: 1.0.16
       file-entry-cache: 11.1.3
@@ -7782,13 +7805,13 @@ snapshots:
     dependencies:
       semver: 7.8.2
 
-  typescript-eslint@8.60.1(eslint@10.4.1)(typescript@5.9.3):
+  typescript-eslint@8.60.1(eslint@10.4.1(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3):
     dependencies:
-      '@typescript-eslint/eslint-plugin': 8.60.1(@typescript-eslint/parser@8.60.1(eslint@10.4.1)(typescript@5.9.3))(eslint@10.4.1)(typescript@5.9.3)
-      '@typescript-eslint/parser': 8.60.1(eslint@10.4.1)(typescript@5.9.3)
-      '@typescript-eslint/typescript-estree': 8.60.1(typescript@5.9.3)
-      '@typescript-eslint/utils': 8.60.1(eslint@10.4.1)(typescript@5.9.3)
-      eslint: 10.4.1
+      '@typescript-eslint/eslint-plugin': 8.60.1(@typescript-eslint/parser@8.60.1(eslint@10.4.1(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3))(eslint@10.4.1(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3)
+      '@typescript-eslint/parser': 8.60.1(eslint@10.4.1(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3)
+      '@typescript-eslint/typescript-estree': 8.60.1(supports-color@7.2.0)(typescript@5.9.3)
+      '@typescript-eslint/utils': 8.60.1(eslint@10.4.1(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3)
+      eslint: 10.4.1(supports-color@7.2.0)
       typescript: 5.9.3
     transitivePeerDependencies:
       - supports-color
